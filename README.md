@@ -33,7 +33,7 @@ else
 
 ## Parting Thoughts
 
-A lot of these functions (specifically the auth functions) will require a DLL/modified exe to be defined in non-DSO files.
+A lot of these functions (specifically the auth functions) will require a DLL/modified exe for them to be defined in non-DSO files.
 
 Everything is cleaned up for the most part.  The only thing I haven't done is `allClientScripts` which I have no intention of doing any time soon.  `allGameScripts` took me almost two months and I was grinding on it for hours and hours every day—I don't have that kind of time anymore.
 
