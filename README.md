@@ -3,12 +3,12 @@
 This is a _very_ WIP project I've been working on in secret for the past 9 months or so (off and on).  I've got most of them cleaned up pretty well, but **_@hatf0's decompiler is far from perfect so not all of these functions will work properly_**.  _Please_ keep this in mind when using these.  Some functions just plain don't work at all because the decompiler fucked up so badly (e.g. `fxDTSBrick::radiusImpulse` and `ProjectileData::onExplode`).
 
 
-#### Reporting Bugs/Errors
+## Reporting Bugs/Errors
 
 If you find an issue with one of the scripts, _please_ make a new issue.  If you know how to fix it, make a pull request and I'll check it out.
 
 
-#### Common Errors
+## Common Errors
 
 * `while` and `if` statements get mixed up a lot, creating infinite loops.
 * `\c#` are usually off by 1 so `\c1` becomes `\c2`, etc. until `\c7` where it becomes `\cb`, `\c8` becomes `\cc`, and `\c9` becomes `\ce`; also `\c0` becomes `\c2\c1`.  It's weird.
@@ -31,7 +31,7 @@ else
 ```
 
 
-#### Parting Thoughts
+## Parting Thoughts
 
 A lot of these functions (specifically the auth functions) will require a DLL/modified exe to be defined in non-DSO files.
 
