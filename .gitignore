@@ -1,0 +1,8 @@
+crapOns_Cache.cs
+data/
+hats/
+help/
+lighting/
+
+*.sublime-project
+*.sublime-workspace

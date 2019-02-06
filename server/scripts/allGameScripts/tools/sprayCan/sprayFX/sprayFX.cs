@@ -1,0 +1,9 @@
+exec ("./flat.cs");
+exec ("./pearl.cs");
+exec ("./glow.cs");
+exec ("./chrome.cs");
+exec ("./blink.cs");
+exec ("./swirl.cs");
+exec ("./rainbow.cs");
+exec ("./stable.cs");
+exec ("./jello.cs");
