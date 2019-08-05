@@ -1,6 +1,6 @@
 function initCommon ()
 {
-	setRandomSeed();
+	setRandomSeed ();
 
 	exec ("./client/canvas.cs");
 	exec ("./client/audio.cs");

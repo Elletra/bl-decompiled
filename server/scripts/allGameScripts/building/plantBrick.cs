@@ -105,7 +105,7 @@ function serverCmdPlantBrick ( %client )
 	}
 
 
-	%plantBrick = new fxDTSBrick()
+	%plantBrick = new fxDTSBrick ()
 	{
 		dataBlock = %tempBrick.getDataBlock();
 		position = %tempBrickTrans;

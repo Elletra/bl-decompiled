@@ -1,6 +1,6 @@
 function OpenALInit ()
 {
-	OpenALShutdownDriver();
+	OpenALShutdownDriver ();
 
 	echo ("");
 	echo ("OpenAL Driver Init:");
@@ -9,7 +9,7 @@ function OpenALInit ()
 
 	if ( $pref::Audio::driver $= "OpenAL" )
 	{
-		if ( !OpenALInitDriver() )
+		if ( !OpenALInitDriver () )
 		{
 			error ("   Failed to initialize driver.");
 			$Audio::initFailed = 1;
@@ -37,5 +37,5 @@ function OpenALInit ()
 
 function OpenALShutdown ()
 {
-	OpenALShutdownDriver();
+	OpenALShutdownDriver ();
 }

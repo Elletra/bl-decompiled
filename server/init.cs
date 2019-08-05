@@ -15,7 +15,7 @@ function initServer ()
 	echo ("\n--------- Initializing Base: Server " @ %dashes);
 
 	$useSteam = 0;
-	$useSteam = SteamAPI_Init();
+	$useSteam = SteamAPI_Init ();
 
 	if ( $useSteam )
 	{
@@ -24,7 +24,7 @@ function initServer ()
 
 	if ( $useSteam )
 	{
-		if ( SteamUnlock() )
+		if ( SteamUnlock () )
 		{
 			echo ("Steam unlock successful, will use Steam authentication");
 		}
@@ -32,21 +32,22 @@ function initServer ()
 		{
 			echo ("Steam unlock failed, will use Blockland authentication");
 			$useSteam = 0;
-			Unlock();
+			Unlock ();
 		}
 	}
 	else
 	{
-		if ( !isUnlocked() )
+		if ( !isUnlocked () )
 		{
-			Unlock();
+			Unlock ();
 		}
 	}
 
 	$Server::Status = "Unknown";
 	$Server::TestCheats = 1;
 
-	initBaseServer();
+	initBaseServer ();
+
 	exec ("./scripts/game/game.cs");
 }
 
@@ -74,36 +75,36 @@ function initDedicatedLAN ()
 
 function dedicatedKeyCheck ()
 {
-	if ( GameWindowExists()  &&  !$Server::Dedicated )
+	if ( GameWindowExists ()  &&  !$Server::Dedicated )
 	{
 		return;
 	}
 
-	if ( isUnlocked() )
+	if ( isUnlocked () )
 	{
 		if ( $Server::LAN )
 		{
-			initDedicatedLAN();
+			initDedicatedLAN ();
 		}
-		else if ( $useSteam  &&  SteamEnabled() )
+		else if ( $useSteam  &&  SteamEnabled () )
 		{
 			$createServerAfterAuth = 1;
-			auth_Init_Server();
+			auth_Init_Server ();
 		}
 		else
 		{
-			initDedicated();
+			initDedicated ();
 		}
 	}
 	else
 	{
-		dedicatedKeyPrompt();
+		dedicatedKeyPrompt ();
 	}
 }
 
 function dedicatedKeyPrompt ()
 {
-	if ( GameWindowExists()  &&  !$Server::Dedicated )
+	if ( GameWindowExists ()  &&  !$Server::Dedicated )
 	{
 		return;
 	}
@@ -120,9 +121,9 @@ function dedicatedKeyPrompt ()
 	echo ("");
 }
 
-function setKey (%val)
+function setKey ( %val )
 {
-	if ( GameWindowExists()  &&  !$Server::Dedicated )
+	if ( GameWindowExists ()  &&  !$Server::Dedicated )
 	{
 		return;
 	}
@@ -140,8 +141,8 @@ function setKey (%val)
 	%val = strupr (%val);
 
 	setKeyDat (%val, 238811);
-	Unlock();
-	dedicatedKeyCheck();
+	Unlock ();
+	dedicatedKeyCheck ();
 }
 
 function serverPart2 ()
@@ -149,13 +150,13 @@ function serverPart2 ()
 	if ( $Server::Dedicated )
 	{
 		$useSteam = 0;
-		$useSteam = SteamAPI_Init();
+		$useSteam = SteamAPI_Init ();
 
 		if ( $useSteam )
 		{
 			echo ("Steam (server,1) initialized");
 
-			if ( SteamUnlock() )
+			if ( SteamUnlock () )
 			{
 				echo ("Steam (server,1) unlock successful, will use Steam authentication");
 			}
@@ -163,33 +164,33 @@ function serverPart2 ()
 			{
 				echo ("Steam (server,1) unlock failed, will use Blockland authentication");
 				$useSteam = 0;
-				Unlock();
+				Unlock ();
 			}
 		}
 		else
 		{
-			Unlock();
+			Unlock ();
 		}
 
-		if ( isUnlocked() )
+		if ( isUnlocked () )
 		{
 			if ( $Server::LAN )
 			{
-				initDedicatedLAN();
+				initDedicatedLAN ();
 			}
 			else
 			{
-				dedicatedKeyCheck();
+				dedicatedKeyCheck ();
 			}
 		}
 		else
 		{
-			dedicatedKeyPrompt();
+			dedicatedKeyPrompt ();
 		}
 	}
 	else
 	{
-		initClient();
+		initClient ();
 	}
 
 	if ( $connectArg !$= ""  &&  !$Server::Dedicated )

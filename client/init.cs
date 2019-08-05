@@ -1,15 +1,12 @@
 function initClient ()
 {
-	%dashes = "";
+	%dashes  = "";
 	%version = atoi ($Version);
 	%version = mClampF (%version, 0, 25);
 
-	%i = 0;
-
-	while ( %i < %version )
+	for ( %i = 0;   %i < %version;  %i++ )
 	{
 		%dashes = %dashes @ "-";
-		%i++;
 	}
 
 	echo ("\n--------- Initializing Base: Client " @ %dashes);
@@ -18,7 +15,7 @@ function initClient ()
 	{
 		if ( $pref::Video::fullScreen )
 		{
-			$pref::Video::resolution = getDesktopResolution();
+			$pref::Video::resolution = getDesktopResolution ();
 
 			if ( $pref::Video::resolution $= "" )
 			{
@@ -27,9 +24,9 @@ function initClient ()
 		}
 		else
 		{
-			%desktopW = getWord ( getDesktopResolution(), 0 );
-			%desktopH = getWord ( getDesktopResolution(), 1 );
-			%desktopBpp = getWord ( getDesktopResolution(), 2 );
+			%desktopW   = getWord (getDesktopResolution (), 0 );
+			%desktopH   = getWord (getDesktopResolution (), 1 );
+			%desktopBpp = getWord (getDesktopResolution (), 2 );
 
 			%fudge = 30;
 
@@ -55,13 +52,13 @@ function initClient ()
 	$Client::GameTypeQuery = "Blockland";
 	$Client::MissionTypeQuery = "Any";
 
-	initBaseClient();
+	initBaseClient ();
 	initCanvas ("Blockland");
 
 	exec ("./scripts/allClientScripts.cs");
 	exec ("base/client/ui/allClientGuis.gui");
 
-	if ( isFile("config/client/config.cs") )
+	if ( isFile ("config/client/config.cs") )
 	{
 		exec ("config/client/config.cs");
 	}
@@ -70,28 +67,28 @@ function initClient ()
 
 	echo ("\n--------- Loading Client Add-Ons ---------");
 
-	loadClientAddOns();
-	$numClientPackages = getNumActivePackages();
+	loadClientAddOns ();
+	$numClientPackages = getNumActivePackages ();
 
-	setNetPort (getRandom(64511) + 1024);
+	setNetPort (getRandom (64511) + 1024);
 
 	optionsDlg.setShaderQuality ($Pref::ShaderQuality);
 
 	setDefaultFov ($pref::Player::defaultFov);
 	setZoomSpeed ($pref::Player::zoomSpeed);
 
-	loadMainMenu();
+	loadMainMenu ();
 
-	BringWindowToForeground();  // FIXME: Remove this bullshit
+	BringWindowToForeground ();  // FIXME: Remove this bullshit
 	schedule (1000, 0, BringWindowToForeground);  // FIXME: Remove this too
 
-	loadTrustList();
-	updateTempBrickSettings();
+	loadTrustList ();
+	updateTempBrickSettings ();
 }
 
 function onUDPFailure ()
 {
-	schedule (100, 0, setNetPort, getRandom(64511) + 1024.0);
+	schedule (100, 0, setNetPort, getRandom (64511) + 1024);
 }
 
 function loadMainMenu ()
@@ -102,30 +99,29 @@ function loadMainMenu ()
 
 function convertFile ( %inFileName, %outFileName )
 {
-	if ( getBuildString() !$= "Debug"  &&  getBuildString() !$= "Release" )
+	if ( getBuildString () !$= "Debug"  &&  getBuildString () !$= "Release" )
 	{
 		return;
 	}
 
-	if ( !isFile(%inFileName) )
+	if ( !isFile (%inFileName) )
 	{
 		return;
 	}
 
 
-	%outFile = new FileObject();
+	%outFile = new FileObject ();
 	%outFile.openForWrite (%outFileName);
 
-	%file = new FileObject();
+	%file = new FileObject ();
 	%file.openForRead (%inFileName);
 
 	%buff = "";
-	%line = %file.readLine();
+	%line = %file.readLine ();
 
-
-	while ( !%file.isEOF() )
+	while ( !%file.isEOF () )
 	{
-		%line = %file.readLine();
+		%line = %file.readLine ();
 		%line = trim (%line);
 
 		%commentPos = strpos (%line, "//");
@@ -142,9 +138,9 @@ function convertFile ( %inFileName, %outFileName )
 		%line = strreplace (%line, "\t", " ");
 		%line = trim (%line);
 
-		while (true)
+		while ( true )
 		{
-			if ( strpos(%line, "  ") != -1 )
+			if ( strpos (%line, "  ") != -1 )
 			{
 				%line = strreplace (%line, "  ", " ");
 			}
@@ -155,11 +151,11 @@ function convertFile ( %inFileName, %outFileName )
 
 	%outFile.writeLine (%buff);
 
-	%file.close();
-	%file.delete();
+	%file.close ();
+	%file.delete ();
 
-	%outFile.close();
-	%outFile.delete();
+	%outFile.close ();
+	%outFile.delete ();
 }
 
 
@@ -170,9 +166,9 @@ $ArrangedAddyCount = 0;
 
 function notifyArrangedStart ( %addy )
 {
-	if ( !isObject(ServerGroup) )
+	if ( !isObject (ServerGroup) )
 	{
-		%timeDelta = getSimTime() - $arrangedConnectionRequestTime;
+		%timeDelta = getSimTime () - $arrangedConnectionRequestTime;
 
 		if ( %timeDelta > 5000  ||  %timeDelta < 0 )
 		{
@@ -211,7 +207,7 @@ function notifyArrangedFinish ( %nonceA, %nonceB, %spamConnect )
 	$ArrangedActive = 0;
 	$ArrangedConnection = new GameConnection();
 
-	if ( isObject(ServerGroup) )
+	if ( isObject (ServerGroup) )
 	{
 		%isClient = 0;
 	}
@@ -219,9 +215,8 @@ function notifyArrangedFinish ( %nonceA, %nonceB, %spamConnect )
 	{
 		%isClient = 1;
 		%spamConnect = 0;
-		Connecting_Text.setText ( Connecting_Text.getText()  @  "\nStarting arranged connection..." );
+		Connecting_Text.setText (Connecting_Text.getText () @ "\nStarting arranged connection...");
 	}
-
 
 	switch ( $ArrangedAddyCount )
 	{
@@ -269,18 +264,18 @@ function notifyArrangedFinish ( %nonceA, %nonceB, %spamConnect )
 				$ArrangedAddys[6], $ArrangedAddys[7], $ArrangedAddys[8], $ArrangedAddys[9]);
 			
 		default:
-			error ("notifyArrangedFinish - Failed to call with addyCount = "  @  $ArrangedAddyCount);
+			error ("notifyArrangedFinish - Failed to call with addyCount = " @ $ArrangedAddyCount);
 	}
 }
 
 function onSendPunchPacket ( %ip )
 {
-	if ( isObject(Connecting_Text) )
+	if ( isObject (Connecting_Text) )
 	{
-		Connecting_Text.setText ( Connecting_Text.getText()  @  "\nSending punch packet..." );
+		Connecting_Text.setText (Connecting_Text.getText () @ "\nSending punch packet...");
 	}
 	else
 	{
-		echo ("Sending punch packet to "  @  %ip);
+		echo ("Sending punch packet to " @ %ip);
 	}
 }
