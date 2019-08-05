@@ -12221,27 +12221,29 @@ function dumpPrints()
 	}
 }
 
-function SaveBricks_WriteSingleBrick(%file, %obj)
+function SaveBricks_WriteSingleBrick ( %file, %obj )
 {
-	%objData = %obj.getDataBlock();
-	%uiName = %objData.uiName;
-	%trans = %obj.getTransform();
-	%pos = getWords(%trans, 0, 2);
-	if (%objData.hasPrint)
+	%objData = %obj.getDataBlock ();
+	%uiName  = %objData.uiName;
+	%trans   = %obj.getTransform ();
+	%pos     = getWords (%trans, 0, 2);
+
+	if ( %objData.hasPrint )
 	{
-		%filename = getPrintTexture(%obj.getPrintID());
-		%fileBase = fileBase(%filename);
-		%path = filePath(%filename);
-		if (%path $= "" || %filename $= "base/data/shapes/bricks/brickTop.png")
+		%filename = getPrintTexture (%obj.getPrintID ());
+		%fileBase = fileBase (%filename);
+		%path     = filePath (%filename);
+
+		if ( %path $= ""  ||  %filename $= "base/data/shapes/bricks/brickTop.png" )
 		{
 			%printTexture = "/";
 		}
 		else
 		{
-			%dirName = getSubStr(%path, strlen("Add-Ons/"), strlen(%path) - strlen("Add-Ons/"));
-			%posA = strpos(%dirName, "_");
-			%posB = strpos(%dirName, "_", %posA + 1.0);
-			%aspectRatio = getSubStr(%dirName, %posA + 1.0, %posB - %posA - 1.0);
+			%dirName      = getSubStr (%path, strlen ("Add-Ons/"), strlen (%path) - strlen ("Add-Ons/"));
+			%posA         = strpos (%dirName, "_");
+			%posB         = strpos (%dirName, "_", %posA + 1);
+			%aspectRatio  = getSubStr (%dirName, %posA + 1, %posB - %posA - 1);
 			%printTexture = %aspectRatio @ "/" @ %fileBase;
 		}
 	}
@@ -12249,134 +12251,140 @@ function SaveBricks_WriteSingleBrick(%file, %obj)
 	{
 		%printTexture = "";
 	}
-	%line = %uiName @ "" @ %pos @ %obj.getAngleID() @ %obj.isBasePlate() @ %obj.getColorID() @ %printTexture @ %obj.getColorFxID() @ %obj.getShapeFxID() @ %obj.isRayCasting() @ %obj.isColliding() @ %obj.isRendering();
-	%file.writeLine(%line);
-	if ($pref::SaveOwnership)
+
+	%line = %uiName @ "\" " @ %pos SPC %obj.getAngleID () SPC %obj.isBasePlate () SPC 
+	        %obj.getColorID () SPC %printTexture SPC %obj.getColorFxID () SPC %obj.getShapeFxID () SPC 
+	        %obj.isRayCasting () SPC %obj.isColliding () SPC %obj.isRendering ();
+
+	%file.writeLine (%line);
+
+	if ( $pref::SaveOwnership )
 	{
-		if (ServerConnection.isLocal())
+		if ( ServerConnection.isLocal () )
 		{
-			if (%obj.isBasePlate)
+			if ( %obj.isBasePlate )
 			{
-				%line = "+-OWNER" @ %obj.getGroup().bl_id;
-				%file.writeLine(%line);
+				%line = "+-OWNER" SPC %obj.getGroup ().bl_id;
+				%file.writeLine (%line);
+			}
+		}
+		else if ( %obj.bl_id !$= "" )
+		{
+			%line = "+-OWNER" SPC %obj.bl_id;
+			%file.writeLine (%line);
+		}
+	}
+
+	if ( %obj.getName() !$= "" )
+	{
+		%line = "+-NTOBJECTNAME" SPC %obj.getName ();
+		%file.writeLine (%line);
+	}
+
+	for ( %i = 0;  %i < %obj.numEvents;  %i++ )
+	{
+		%class     = %obj.getClassName ();
+		%enabled   = %obj.eventEnabled[%i];
+		%inputName = $InputEvent_Name[%class,%obj.eventInputIdx[%i]];
+		%delay     = %obj.eventDelay[%i];
+
+		if ( %obj.eventTargetIdx[%i] == -1 )
+		{
+			%targetName  = -1;
+			%NT          = %obj.eventNT[%i];
+			%targetClass = "FxDTSBrick";
+		}
+		else
+		{
+			%targetList  = $InputEvent_TargetList[%class, %obj.eventInputIdx[%i]];
+			%target      = getField (%targetList, %obj.eventTargetIdx[%i]);
+			%targetName  = getWord (%target, 0);
+			%targetClass = getWord (%target, 1);
+			%NT          = "";
+		}
+
+		%outputName = $OutputEvent_Name[%targetClass, %obj.eventOutputIdx[%i]];
+		%line       = "+-EVENT" TAB %i TAB %enabled TAB %inputName TAB %delay TAB %targetName TAB %NT TAB %outputName;
+
+		if ( ServerConnection.isLocal () )
+		{
+			for ( %j = 0;  %j < 4;  %j++ )
+			{
+				%field    = getField ($OutputEvent_parameterList[%targetClass, %obj.eventOutputIdx[%i]], %j);
+				%dataType = getWord (%field, 0);
+
+				if ( %dataType $= "dataBlock" )
+				{
+					if ( isObject (%obj.eventOutputParameter[%i, %j + 1]) )
+					{
+						%line = %line TAB (%obj.eventOutputParameter[%i, %j + 1]).getName ();
+					}
+					else
+					{
+						%line = %line TAB -1;
+					}
+				}
+				else
+				{
+					%line = %line TAB %obj.eventOutputParameter[%i, %j + 1];
+				}
 			}
 		}
 		else
 		{
-			if (%obj.bl_id !$= "")
-			{
-				%line = "+-OWNER" @ %obj.bl_id;
-				%file.writeLine(%line);
-			}
+			%par1 = %obj.eventOutputParameter[%i, 1];
+			%par2 = %obj.eventOutputParameter[%i, 2];
+			%par3 = %obj.eventOutputParameter[%i, 3];
+			%par4 = %obj.eventOutputParameter[%i, 4];
+			%line = %line TAB %par1 TAB %par2 TAB %par3 TAB %par4;
 		}
+
+		%file.writeLine (%line);
 	}
-	while(%i < %rowCount)
+
+	if ( isObject (%obj.emitter) )
 	{
-		if (%obj.getName() !$= "")
-		{
-			%line = "+-NTOBJECTNAME" @ %obj.getName();
-			%file.writeLine(%line);
-		}
-		%i = 0;
-		while(%i < %obj.numEvents)
-		{
-			%class = %obj.getClassName();
-			%enabled = %obj.eventEnabled[%i];
-			%inputName = $InputEvent_Name[%class,%obj.eventInputIdx[%i]];
-			%delay = %obj.eventDelay[%i];
-			if (%obj.eventTargetIdx[%i] == -1.0)
-			{
-				%targetName = -1.0;
-				%NT = %obj.eventNT[%i];
-				%targetClass = "FxDTSBrick";
-			}
-			else
-			{
-				%targetList = $InputEvent_TargetList[%class,%obj.eventInputIdx[%i]];
-				%target = getField(%targetList, %obj.eventTargetIdx[%i]);
-				%targetName = getWord(%target, 0);
-				%targetClass = getWord(%target, 1);
-				%NT = "";
-			}
-			%outputName = $OutputEvent_Name[%targetClass,%obj.eventOutputIdx[%i]];
-			%line = "+-EVENT" TAB %i TAB %enabled TAB %inputName TAB %delay TAB %targetName TAB %NT TAB %outputName;
-			if (ServerConnection.isLocal())
-			{
-				%j = 0;
-				while(%j < 4.0)
-				{
-					%field = getField($OutputEvent_parameterList[%targetClass,%obj.eventOutputIdx[%i]], %j);
-					%dataType = getWord(%field, 0);
-					if (%dataType $= "dataBlock")
-					{
-						if (isObject(%obj.eventOutputParameter[%i,%j + 1.0]))
-						{
-							%line = %line TAB (%obj.eventOutputParameter[%i,%j + 1.0]).getName();
-						}
-						else
-						{
-							%line = %line TAB -1;
-						}
-					}
-					else
-					{
-						%line = %line TAB %obj.eventOutputParameter[%i,%j + 1.0];
-					}
-					%j = %j + 1.0;
-				}
-			}
-			else
-			{
-				%par1 = %obj.eventOutputParameter[%i,1];
-				%par2 = %obj.eventOutputParameter[%i,2];
-				%par3 = %obj.eventOutputParameter[%i,3];
-				%par4 = %obj.eventOutputParameter[%i,4];
-				%line = %line TAB %par1 TAB %par2 TAB %par3 TAB %par4;
-			}
-			%file.writeLine(%line);
-			%i = %i + 1.0;
-		}
+		%line = "+-EMITTER" SPC %obj.emitter.getEmitterDataBlock ().uiName @ "\" " @ %obj.emitterDirection;
+		%file.writeLine (%line);
 	}
-	if (isObject(%obj.emitter))
+	else if ( %obj.emitterDirection != 0 )
 	{
-		%line = "+-EMITTER" @ %obj.emitter.getEmitterDataBlock().uiName @ " " @ %obj.emitterDirection;
-		%file.writeLine(%line);
+		%line = "+-EMITTER NONE\" " @ %obj.emitterDirection;
+		%file.writeLine (%line);
 	}
-	else
+
+	if ( isObject (%obj.light) )
 	{
-		if (%obj.emitterDirection != 0.0)
-		{
-			%line = "+-EMITTER NONE\" " @ %obj.emitterDirection;
-			%file.writeLine(%line);
-		}
+		%line = "+-LIGHT" SPC %obj.light.getDataBlock ().uiName @ "\" " @ %obj.light.enable;
+		%file.writeLine (%line);
 	}
-	if (isObject(%obj.light))
+
+	if ( isObject (%obj.item) )
 	{
-		%line = "+-LIGHT" @ %obj.light.getDataBlock().uiName @ "" @ %obj.light.Enable;
-		%file.writeLine(%line);
+		%line = "+-ITEM" SPC %obj.item.getDataBlock ().uiName @ "\" " @ %obj.itemPosition SPC 
+		        %obj.itemDirection SPC %obj.itemRespawnTime;
+
+		%file.writeLine (%line);
 	}
-	if (isObject(%obj.Item))
+	else if ( %obj.itemDirection != 2   &&  %obj.itemDirection !$= ""  ||  %obj.itemPosition != 0  ||  
+		    (%obj.itemRespawnTime != 0  &&  %obj.itemRespawnTime != 4000) )
 	{
-		%line = "+-ITEM" @ %obj.Item.getDataBlock().uiName @ " " @ %obj.itemPosition @ %obj.itemDirection @ %obj.itemRespawnTime;
-		%file.writeLine(%line);
+		%line = "+-ITEM NONE\" " @ %obj.itemPosition SPC %obj.itemDirection SPC %obj.itemRespawnTime;
+		%file.writeLine (%line);
 	}
-	else
+
+	if ( isObject (%obj.audioEmitter) )
 	{
-		if (%obj.itemDirection != 2.0 && %obj.itemDirection !$= "" || %obj.itemPosition != 0.0 || (%obj.itemRespawnTime != 0.0 && %obj.itemRespawnTime != 4000.0))
-		{
-			%line = "+-ITEM NONE\" " @ %obj.itemPosition @ %obj.itemDirection @ %obj.itemRespawnTime;
-			%file.writeLine(%line);
-		}
+		%line = "+-AUDIOEMITTER" SPC %obj.audioEmitter.getProfileId ().uiName @ "\" ";
+		%file.writeLine (%line);
 	}
-	if (isObject(%obj.AudioEmitter))
+
+	if ( isObject(%obj.vehicleSpawnMarker) )
 	{
-		%line = "+-AUDIOEMITTER" @ %obj.AudioEmitter.getProfileId().uiName @ " ";
-		%file.writeLine(%line);
-	}
-	if (isObject(%obj.VehicleSpawnMarker))
-	{
-		%line = "+-VEHICLE" @ %obj.VehicleSpawnMarker.getUiName() @ " " @ %obj.VehicleSpawnMarker.getReColorVehicle();
-		%file.writeLine(%line);
+		%line = "+-VEHICLE" SPC %obj.vehicleSpawnMarker.getUiName () @ "\" " @ 
+		        %obj.VehicleSpawnMarker.getReColorVehicle ();
+
+		%file.writeLine (%line);
 	}
 }
 
