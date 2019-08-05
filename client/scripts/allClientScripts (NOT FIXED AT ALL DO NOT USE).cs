@@ -165,63 +165,70 @@ $LastError::Trust = 1;
 $LastError::MiniGameDifferent = 2;
 $LastError::MiniGameNotYours = 3;
 $LastError::NotInMiniGame = 4;
-function eulerToMatrix(%euler)
+
+function eulerToMatrix ( %euler )
 {
-	%euler = VectorScale(%euler, $pi / 180.0);
-	%matrix = MatrixCreateFromEuler(%euler);
-	%xvec = getWord(%matrix, 3);
-	%yvec = getWord(%matrix, 4);
-	%zvec = getWord(%matrix, 5);
-	%ang = getWord(%matrix, 6);
-	%ang = %ang * 180.0 / $pi;
+	%euler  = VectorScale (%euler, $pi / 180);
+	%matrix = MatrixCreateFromEuler (%euler);
+	%xvec   = getWord (%matrix, 3);
+	%yvec   = getWord (%matrix, 4);
+	%zvec   = getWord (%matrix, 5);
+	%ang    = getWord (%matrix, 6);
+	%ang    *= 180 / $pi;
+
 	%rotationMatrix = %xvec @ " " @ %yvec @ " " @ %zvec @ " " @ %ang;
 	return %rotationMatrix;
 }
 
-function eulerRadToMatrix(%euler)
+function eulerRadToMatrix ( %euler )
 {
-	%matrix = MatrixCreateFromEuler(%euler);
-	%xvec = getWord(%matrix, 3);
-	%yvec = getWord(%matrix, 4);
-	%zvec = getWord(%matrix, 5);
-	%ang = getWord(%matrix, 6);
+	%matrix = MatrixCreateFromEuler (%euler);
+	%xvec   = getWord (%matrix, 3);
+	%yvec   = getWord (%matrix, 4);
+	%zvec   = getWord (%matrix, 5);
+	%ang    = getWord (%matrix, 6);
+
 	%rotationMatrix = %xvec @ " " @ %yvec @ " " @ %zvec @ " " @ %ang;
 	return %rotationMatrix;
 }
 
-function eulerToQuat(%euler)
+function eulerToQuat ( %euler )
 {
-	%euler = VectorScale(%euler, $pi / 180.0);
-	%matrix = MatrixCreateFromEuler(%euler);
-	%xvec = getWord(%matrix, 3);
-	%yvec = getWord(%matrix, 4);
-	%zvec = getWord(%matrix, 5);
-	%ang = getWord(%matrix, 6);
+	%euler  = VectorScale (%euler, $pi / 180);
+	%matrix = MatrixCreateFromEuler (%euler);
+	%xvec   = getWord (%matrix, 3);
+	%yvec   = getWord (%matrix, 4);
+	%zvec   = getWord (%matrix, 5);
+	%ang    = getWord (%matrix, 6);
+
 	%quat = %xvec @ %yvec @ %zvec @ %ang;
 	return %quat;
 }
 
-function eulerToQuat_degrees(%euler)
+function eulerToQuat_degrees ( %euler )
 {
-	%euler = VectorScale(%euler, $pi / 180.0);
-	%matrix = MatrixCreateFromEuler(%euler);
-	%xvec = getWord(%matrix, 3);
-	%yvec = getWord(%matrix, 4);
-	%zvec = getWord(%matrix, 5);
-	%ang = getWord(%matrix, 6);
-	%ang = %ang * 180.0 / $pi;
+	%euler  = VectorScale (%euler, $pi / 180);
+	%matrix = MatrixCreateFromEuler (%euler);
+	%xvec   = getWord(%matrix, 3);
+	%yvec   = getWord(%matrix, 4);
+	%zvec   = getWord(%matrix, 5);
+	%ang    = getWord(%matrix, 6);
+	%ang    *= 180 / $pi;
+
 	%quat = %xvec @ %yvec @ %zvec @ %ang;
 	return %quat;
 }
 
-function getLine(%phrase, %lineNum)
+function getLine ( %phrase, %lineNum )
 {
 	%offset = 0;
 	%lineCount = 0;
-	while(%lineCount <= %lineNum)
+
+	while ( %lineCount <= %lineNum )
 	{
-		%pos = strpos(%phrase, "\n", %offset);
-		if (%pos >= 0.0)
+		%pos = strpos (%phrase, "\n", %offset);
+
+		if ( %pos >= 0 )
 		{
 			%len = %pos - %offset;
 		}
@@ -229,481 +236,564 @@ function getLine(%phrase, %lineNum)
 		{
 			%len = 99999;
 		}
-		%line = getSubStr(%phrase, %offset, %len);
-		if (%lineCount == %lineNum)
+
+		%line = getSubStr (%phrase, %offset, %len);
+
+		if ( %lineCount == %lineNum )
 		{
 			return %line;
 		}
-		%lineCount = %lineCount + 1.0;
-		%offset = %pos + 1.0;
-		if (%pos == -1.0)
+
+		%lineCount++;
+		%offset = %pos + 1;
+
+		if ( %pos == -1 )
 		{
 			return "";
 		}
 	}
+
 	return "";
 }
 
-function getLineCount(%phrase)
+function getLineCount ( %phrase )
 {
 	%offset = 0;
 	%lineCount = 0;
-	while(%offset >= 0.0)
+
+	while ( %offset >= 0 )
 	{
-		%offset = strpos(%phrase, "\n", %offset + 1.0);
-		%lineCount = %lineCount + 1.0;
+		%offset = strpos (%phrase, "\n", %offset + 1);
+		%lineCount++;
 	}
+
 	return %lineCount;
 }
 
-function posFromTransform(%transform)
+function posFromTransform ( %transform )
 {
-	%position = getWord(%transform, 0) @ " " @ getWord(%transform, 1) @ " " @ getWord(%transform, 2);
+	%position = getWord (%transform, 0) @ " " @ getWord (%transform, 1) @ " " @ getWord (%transform, 2);
 	return %position;
 }
 
-function rotFromTransform(%transform)
+function rotFromTransform ( %transform )
 {
-	%rotation = getWord(%transform, 3) @ " " @ getWord(%transform, 4) @ " " @ getWord(%transform, 5) @ " " @ getWord(%transform, 6);
+	%rotation = getWord (%transform, 3) @ " " @ getWord (%transform, 4) @ " " @ getWord (%transform, 5) @ " " @ getWord (%transform, 6);
 	return %rotation;
 }
 
-function posFromRaycast(%transform)
+function posFromRaycast ( %transform )
 {
-	%position = getWord(%transform, 1) @ " " @ getWord(%transform, 2) @ " " @ getWord(%transform, 3);
+	%position = getWord (%transform, 1) @ " " @ getWord (%transform, 2) @ " " @ getWord (%transform, 3);
 	return %position;
 }
 
-function normalFromRaycast(%transform)
+function normalFromRaycast ( %transform )
 {
-	%norm = getWord(%transform, 4) @ " " @ getWord(%transform, 5) @ " " @ getWord(%transform, 6);
+	%norm = getWord (%transform, 4) @ " " @ getWord (%transform, 5) @ " " @ getWord (%transform, 6);
 	return %norm;
 }
 
-function round(%val)
+function round ( %val )
 {
-	%val = %val * 100.0;
-	%val = mFloor(%val + 0.5);
-	%val = %val / 100.0;
+	%val *= 100;
+	%val = mFloor (%val + 0.5);
+	%val /= 100;
+
 	return %val;
 }
 
-function getTimeString(%timeS)
+function getTimeString ( %timeS )
 {
-	if (%timeS >= 3600.0)
+	if ( %timeS >= 3600 )
 	{
-		%hours = mFloor(%timeS / 3600.0);
-		%timeS = %timeS - %hours * 3600.0;
-		%minutes = mFloor(%timeS / 60.0);
-		%timeS = %timeS - %minutes * 60.0;
+		%hours  = mFloor (%timeS / 3600);
+		%timeS -= %hours * 3600;
+		%minutes = mFloor (%timeS / 60);
+		%timeS -= %minutes * 60;
 		%seconds = %timeS;
-		if (%minutes < 10.0)
+
+		if ( %minutes < 10 )
 		{
 			%minutes = 0 @ %minutes;
 		}
-		if (%seconds < 10.0)
+
+		if ( %seconds < 10)
 		{
 			%seconds = 0 @ %seconds;
 		}
+
 		return %hours @ ":" @ %minutes @ ":" @ %seconds;
+	}
+	else if ( %timeS >= 60 )
+	{
+		%minutes = mFloor (%timeS / 60);
+		%timeS -= %minutes * 60;
+		%seconds = %timeS;
+
+		if ( %seconds < 10 )
+		{
+			%seconds = 0 @ %seconds;
+		}
+
+		return %minutes @ ":" @ %seconds;
 	}
 	else
 	{
-		if (%timeS >= 60.0)
+		%seconds = %timeS;
+
+		if ( %seconds < 10 )
 		{
-			%minutes = mFloor(%timeS / 60.0);
-			%timeS = %timeS - %minutes * 60.0;
-			%seconds = %timeS;
-			if (%seconds < 10.0)
-			{
-				%seconds = 0 @ %seconds;
-			}
-			return %minutes @ ":" @ %seconds;
+			%seconds = 0 @ %seconds;
 		}
-		else
-		{
-			%seconds = %timeS;
-			if (%seconds < 10.0)
-			{
-				%seconds = 0 @ %seconds;
-			}
-			return "0:" @ %seconds;
-		}
+
+		return "0:" @ %seconds;
 	}
 }
 
-function isListenServer()
+function isListenServer ()
 {
-	while(!isObject(ServerConnection))
+	if ( !isObject (ServerConnection) )
 	{
 		return 0;
 	}
-	if (ServerConnection.isLocal())
+
+	if ( ServerConnection.isLocal () )
 	{
 		return 1;
 	}
+
 	return 0;
 }
 
 $GuiAudioType = 1;
 $SimAudioType = 2;
 $MessageAudioType = 3;
-new AudioDescription(AudioGui){
-	volume = 1;
-	isLooping = 0;
-	is3D = 0;
-	type = $GuiAudioType;
+
+new AudioDescription (AudioGui)
+{
+	volume    = 1;
+	isLooping = false;
+	is3D      = false;
+	type      = $GuiAudioType;
 };
-new AudioDescription(AudioMessage){
-	volume = 1;
-	isLooping = 0;
-	is3D = 0;
-	type = $MessageAudioType;
+
+new AudioDescription (AudioMessage)
+{
+	volume    = 1;
+	isLooping = false;
+	is3D      = false;
+	type      = $MessageAudioType;
 };
-new AudioProfile(AudioButtonOver){
-	fileName = "~/data/sound/buttonOver.wav";
+
+new AudioProfile (AudioButtonOver)
+{
+	fileName    = "~/data/sound/buttonOver.wav";
 	description = "AudioGui";
-	preload = 1;
+	preload     = true;
 };
-new AudioProfile(AudioError){
-	fileName = "~/data/sound/error.wav";
+
+new AudioProfile (AudioError)
+{
+	fileName    = "~/data/sound/error.wav";
 	description = "AudioGui";
-	preload = 1;
+	preload     = true;
 };
-new AudioProfile(ItemPickup){
-	fileName = "~/data/sound/error.wav";
+
+new AudioProfile (ItemPickup)
+{
+	fileName    = "~/data/sound/error.wav";
 	description = "AudioGui";
-	preload = 1;
+	preload     = true;
 };
-new AudioProfile(AdminSound){
-	fileName = "~/data/sound/admin.wav";
+
+new AudioProfile (AdminSound)
+{
+	fileName    = "~/data/sound/admin.wav";
 	description = "AudioGui";
-	preload = 1;
+	preload     = true;
 };
-new AudioProfile(BrickClearSound){
-	fileName = "~/data/sound/brickClear.wav";
+
+new AudioProfile (BrickClearSound)
+{
+	fileName    = "~/data/sound/brickClear.wav";
 	description = "AudioGui";
-	preload = 1;
+	preload     = true;
 };
-new AudioProfile(ClientJoinSound){
-	fileName = "~/data/sound/playerConnect.wav";
+
+new AudioProfile (ClientJoinSound)
+{
+	fileName    = "~/data/sound/playerConnect.wav";
 	description = "AudioGui";
-	preload = 1;
+	preload     = true;
 };
-new AudioProfile(ClientDropSound){
-	fileName = "~/data/sound/playerLeave.wav";
+
+new AudioProfile (ClientDropSound)
+{
+	fileName    = "~/data/sound/playerLeave.wav";
 	description = "AudioGui";
-	preload = 1;
+	preload     = true;
 };
-new AudioProfile(UploadStartSound){
-	fileName = "~/data/sound/uploadStart.wav";
+
+new AudioProfile (UploadStartSound)
+{
+	fileName    = "~/data/sound/uploadStart.wav";
 	description = "AudioGui";
-	preload = 1;
+	preload     = true;
 };
-new AudioProfile(UploadEndSound){
-	fileName = "~/data/sound/uploadEnd.wav";
+
+new AudioProfile (UploadEndSound)
+{
+	fileName    = "~/data/sound/uploadEnd.wav";
 	description = "AudioGui";
-	preload = 1;
+	preload     = true;
 };
-new AudioProfile(ProcessCompleteSound){
-	fileName = "~/data/sound/processComplete.wav";
+
+new AudioProfile (ProcessCompleteSound)
+{
+	fileName    = "~/data/sound/processComplete.wav";
 	description = "AudioGui";
-	preload = 1;
+	preload     = true;
 };
-new AudioProfile(ClickMoveSound){
-	fileName = "base/data/sound/ClickMove.wav";
+
+new AudioProfile (ClickMoveSound)
+{
+	fileName    = "base/data/sound/ClickMove.wav";
 	description = "AudioGui";
-	preload = 1;
+	preload     = true;
 };
-new AudioProfile(ClickPlantSound){
+
+new AudioProfile (ClickPlantSound)
+{
 	fileName = "base/data/sound/ClickPlant.wav";
 };
-new AudioDescription(AudioBGMusic2D){
-	volume = 0.8;
-	isLooping = 1;
-	is3D = 1;
-	ReferenceDistance = 10;
-	maxDistance = 60;
-	type = $GuiAudioType;
-};
-new AudioProfile(TitleMusic){
-	fileName = "~/data/sound/music/Ambient Deep.ogg";
-	description = "AudioBGMusic2D";
-	preload = 1;
-};
-new AudioDescription(AudioClientClose3d){
-	volume = 1;
-	isLooping = 0;
-	is3D = 1;
-	ReferenceDistance = 10;
-	maxDistance = 60;
-	type = $SimAudioType;
-};
-new AudioProfile(BrickBreak){
-	fileName = "~/data/sound/breakBrick.wav";
-	description = "AudioClientClose3d";
-	preload = 1;
-};
-new AudioProfile(BrickMove){
-	fileName = "~/data/sound/clickMove.wav";
-	description = "AudioClientClose3d";
-	preload = 1;
-};
-new AudioProfile(BrickPlant){
-	fileName = "~/data/sound/clickPlant.wav";
-	description = "AudioClientClose3d";
-	preload = 1;
-};
-new AudioProfile(BrickRotate){
-	fileName = "~/data/sound/clickRotate.wav";
-	description = "AudioClientClose3d";
-	preload = 1;
-};
-new AudioProfile(BrickChange){
-	fileName = "~/data/sound/clickChange.wav";
-	description = "AudioClientClose3d";
-	preload = 1;
-};
-loadBrickSounds();
-addMessageCallback('MsgClientInYourMiniGame', handleClientInYourMiniGame);
-addMessageCallback('MsgClientJoin', handleClientJoin);
-function handleClientJoin()
+
+new AudioDescription (AudioBGMusic2D)
 {
-	alxPlay(ClientJoinSound);
+	volume            = 0.8;
+	isLooping         = true;
+	is3D              = true;
+	referenceDistance = 10;
+	maxDistance       = 60;
+	type              = $GuiAudioType;
+};
+
+new AudioProfile (TitleMusic)
+{
+	fileName    = "~/data/sound/music/Ambient Deep.ogg";
+	description = "AudioBGMusic2D";
+	preload     = true;
+};
+
+new AudioDescription (AudioClientClose3d)
+{
+	volume            = 1;
+	isLooping         = false;
+	is3D              = true;
+	referenceDistance = 10;
+	maxDistance       = 60;
+	type              = $SimAudioType;
+};
+
+new AudioProfile (BrickBreak)
+{
+	fileName    = "~/data/sound/breakBrick.wav";
+	description = "AudioClientClose3d";
+	preload     = true;
+};
+
+new AudioProfile (BrickMove)
+{
+	fileName    = "~/data/sound/clickMove.wav";
+	description = "AudioClientClose3d";
+	preload     = true;
+};
+
+new AudioProfile (BrickPlant)
+{
+	fileName    = "~/data/sound/clickPlant.wav";
+	description = "AudioClientClose3d";
+	preload     = true;
+};
+
+new AudioProfile (BrickRotate)
+{
+	fileName    = "~/data/sound/clickRotate.wav";
+	description = "AudioClientClose3d";
+	preload     = true;
+};
+
+new AudioProfile (BrickChange)
+{
+	fileName    = "~/data/sound/clickChange.wav";
+	description = "AudioClientClose3d";
+	preload     = true;
+};
+
+loadBrickSounds ();
+addMessageCallback ('MsgClientInYourMiniGame', handleClientInYourMiniGame);
+addMessageCallback ('MsgClientJoin', handleClientJoin);
+
+function handleClientJoin ()
+{
+	alxPlay (ClientJoinSound);
 }
 
-function secureClientCmd_ClientJoin(%clientName, %clientId, %bl_id, %score, %isAI, %isAdmin, %isSuperAdmin, %trust, %inYourMiniGame)
+function secureClientCmd_ClientJoin ( %clientName, %clientId, %bl_id, %score, %isAI, %isAdmin, %isSuperAdmin, %trust, %inYourMiniGame )
 {
-	%name = StripMLControlChars(detag(%clientName));
-	%bl_id = mFloor(%bl_id);
-	%trust = mFloor(%trust);
-	%inYourMiniGame = mFloor(%inYourMiniGame);
-	NewPlayerListGui.update(%clientId, %name, %bl_id, %isSuperAdmin, %isAdmin, %score, %trust, %inYourMiniGame);
-	if (%bl_id == getLAN_BLID())
+	%name  = StripMLControlChars (detag (%clientName));
+	%bl_id = mFloor (%bl_id);
+	%trust = mFloor (%trust);
+	%inYourMiniGame = mFloor (%inYourMiniGame);
+	NewPlayerListGui.update (%clientId, %name, %bl_id, %isSuperAdmin, %isAdmin, %score, %trust, %inYourMiniGame);
+
+	if ( %bl_id == getLAN_BLID () )
 	{
 		%bl_id = "LAN";
 	}
-	if (lstAdminPlayerList.getRowNumById(%clientId) == -1.0)
+
+	if ( lstAdminPlayerList.getRowNumById (%clientId) == -1 )
 	{
-		lstAdminPlayerList.addRow(%clientId, %name TAB %bl_id);
+		lstAdminPlayerList.addRow (%clientId, %name TAB %bl_id);
 	}
 	else
 	{
-		lstAdminPlayerList.setRowById(%clientId, %name TAB %bl_id);
+		lstAdminPlayerList.setRowById (%clientId, %name TAB %bl_id);
 	}
-	if (NPL_List.rowCount() >= 32.0)
+
+	if ( NPL_List.rowCount () >= 32 )
 	{
-		steamGetAchievement("ACH_FULL_HOUSE", "steamGetAchievement");
+		steamGetAchievement ("ACH_FULL_HOUSE", "steamGetAchievement");
 	}
 }
 
-function secureClientCmd_ClientDrop(%clientName, %clientId)
+function secureClientCmd_ClientDrop ( %clientName, %clientId )
 {
-	alxPlay(ClientDropSound);
-	lstAdminPlayerList.removeRowById(%clientId);
-	NPL_List.removeRowById(%clientId);
+	alxPlay (ClientDropSound);
+	lstAdminPlayerList.removeRowById (%clientId);
+	NPL_List.removeRowById (%clientId);
 }
 
-function secureClientCmd_ClientScoreChanged(%score, %clientId)
+function secureClientCmd_ClientScoreChanged ( %score, %clientId )
 {
-	%score = mFloor(%score);
-	%row = NPL_List.getRowTextById(%clientId);
-	%trustLevel = getField(%row, 4);
-	if (%trustLevel $= "You")
+	%score = mFloor (%score);
+	%row = NPL_List.getRowTextById (%clientId);
+	%trustLevel = getField (%row, 4);
+
+	if ( %trustLevel $= "You" )
 	{
-		if (%score >= 1000000.0)
+		if ( %score >= 1000000 )
 		{
-			steamGetAchievement("ACH_HIGH_SCORE", "steamGetAchievement");
+			steamGetAchievement ("ACH_HIGH_SCORE", "steamGetAchievement");
 		}
-		if (%score >= 1.0)
+
+		if ( %score >= 1 )
 		{
-			steamGetAchievement("ACH_SCORE", "steamGetAchievement");
+			steamGetAchievement ("ACH_SCORE", "steamGetAchievement");
 		}
 	}
-	NewPlayerListGui.updateScore(%clientId, %score);
+
+	NewPlayerListGui.updateScore (%clientId, %score);
 }
 
-function secureClientCmd_ClientTrust(%clientId, %trustLevel)
+function secureClientCmd_ClientTrust ( %clientId, %trustLevel )
 {
-	%trustLevel = mFloor(%trustLevel);
-	%clientId = mFloor(%clientId);
-	NewPlayerListGui.updateTrust(%clientId, %trustLevel);
+	%trustLevel = mFloor (%trustLevel);
+	%clientId = mFloor (%clientId);
+
+	NewPlayerListGui.updateTrust (%clientId, %trustLevel);
 }
 
-function handleClientInYourMiniGame(%msgType, %msgString, %clientId, %val)
+function handleClientInYourMiniGame ( %msgType, %msgString, %clientId, %val )
 {
-	%clientId = mFloor(%clientId);
-	%val = mFloor(%val);
-	NewPlayerListGui.updateInYourMiniGame(%clientId, %val);
+	%clientId = mFloor (%clientId);
+	%val = mFloor (%val);
+
+	NewPlayerListGui.updateInYourMiniGame (%clientId, %val);
 }
 
-addMessageCallback('InitTeams', handleInitTeams);
-addMessageCallback('AddTeam', handleAddTeam);
-addMessageCallback('RemoveTeam', handleRemoveTeam);
-addMessageCallback('SetTeamName', handleSetTeamName);
-function handleInitTeams(%msgType, %msgString)
+addMessageCallback ('InitTeams', handleInitTeams);
+addMessageCallback ('AddTeam', handleAddTeam);
+addMessageCallback ('RemoveTeam', handleRemoveTeam);
+addMessageCallback ('SetTeamName', handleSetTeamName);
+
+function handleInitTeams ( %msgType, %msgString )
 {
-	InitClientTeamManager();
+	InitClientTeamManager ();
 }
 
-function handleAddTeam(%msgType, %msgString, %teamID, %teamName)
+function handleAddTeam ( %msgType, %msgString, %teamID, %teamName )
 {
-	ClientTeamManager.addTeam(%teamID, %teamName);
+	ClientTeamManager.addTeam (%teamID, %teamName);
 }
 
-function handleRemoveTeam(%msgType, %msgString, %teamID)
+function handleRemoveTeam ( %msgType, %msgString, %teamID )
 {
-	ClientTeamManager.removeTeam(%teamID);
+	ClientTeamManager.removeTeam (%teamID);
 }
 
-function handleSetTeamName(%msgType, %msgString, %teamID, %teamName)
+function handleSetTeamName ( %msgType, %msgString, %teamID, %teamName )
 {
-	ClientTeamManager.setTeamName(%teamID, %teamName);
+	ClientTeamManager.setTeamName (%teamID, %teamName);
 }
 
-addMessageCallback('AddClientToTeam', handleAddClientToTeam);
-addMessageCallback('RemoveClientFromTeam', handleRemoveClientFromTeam);
-addMessageCallback('SetTeamCaptain', handleSetTeamCaptain);
-function handleAddClientToTeam(%msgType, %msgString, %clientId, %clientName, %teamID)
+addMessageCallback ('AddClientToTeam', handleAddClientToTeam);
+addMessageCallback ('RemoveClientFromTeam', handleRemoveClientFromTeam);
+addMessageCallback ('SetTeamCaptain', handleSetTeamCaptain);
+
+function handleAddClientToTeam ( %msgType, %msgString, %clientId, %clientName, %teamID )
 {
-	%teamObj = ClientTeamManager.findTeamByID(%teamID);
-	while(%teamObj == 0.0)
+	%teamObj = ClientTeamManager.findTeamByID (%teamID);
+
+	if ( %teamObj == 0 )
 	{
-		error("ERROR: handleAddClientToTeam - Team ID " @ %teamID @ " not found in manager");
+		error ("ERROR: handleAddClientToTeam - Team ID " @ %teamID @ " not found in manager");
 		return 0;
 	}
-	%teamObj.addMember(%clientId, %clientName);
+
+	%teamObj.addMember (%clientId, %clientName);
 }
 
-function handleRemoveClientFromTeam(%msgType, %msgString, %clientId, %teamID)
+function handleRemoveClientFromTeam ( %msgType, %msgString, %clientId, %teamID )
 {
-	%teamObj = ClientTeamManager.findTeamByID(%teamID);
-	while(%teamObj == 0.0)
+	%teamObj = ClientTeamManager.findTeamByID (%teamID);
+
+	if ( %teamObj == 0 )
 	{
-		error("ERROR: handleRemoveClientFromTeam - Team ID " @ %teamID @ " not found in manager");
+		error ("ERROR: handleRemoveClientFromTeam - Team ID " @ %teamID @ " not found in manager");
 		return 0;
 	}
-	%teamObj.removeMember(%clientId);
+
+	%teamObj.removeMember (%clientId);
 }
 
-function handleSetTeamCaptain(%msgType, %msgString, %clientId, %teamID)
+function handleSetTeamCaptain ( %msgType, %msgString, %clientId, %teamID )
 {
-	%teamObj = ClientTeamManager.findTeamByID(%teamID);
-	while(%teamObj == 0.0)
+	%teamObj = ClientTeamManager.findTeamByID (%teamID);
+
+	if ( %teamObj == 0 )
 	{
-		error("ERROR: handleSetTeamCaptain - Team ID " @ %teamID @ " not found in manager");
+		error ("ERROR: handleSetTeamCaptain - Team ID " @ %teamID @ " not found in manager");
 		return 0;
 	}
+
 	%teamObj.captain = %clientId;
 }
 
-function InitClientTeamManager()
+function InitClientTeamManager ()
 {
-	if (isObject(ClientTeamManager))
+	if ( isObject (ClientTeamManager) )
 	{
-		%i = 0;
-		while(%i < "ClientTeamManager".teamCount)
+		if ( %i = 0;  %i < ClientTeamManager.teamCount;  %i++ )
 		{
-			if (isObject(ClientTeamManager.team[%i]))
+			if ( isObject (ClientTeamManager.team[%i]) )
 			{
-				ClientTeamManager.team[%i].delete();
+				ClientTeamManager.team[%i].delete ();
 			}
-			%i = %i + 1.0;
 		}
-		ClientTeamManager.delete();
+
+		ClientTeamManager.delete ();
 	}
-	new ScriptObject(ClientTeamManager){
+
+	new ScriptObject (ClientTeamManager)
+	{
 		class = SO_ClientTeamManager;
 		teamCount = 0;
 	};
 }
 
-function SO_ClientTeamManager::addTeam(%this, %teamID, %teamName)
+function SO_ClientTeamManager::addTeam ( %this, %teamID, %teamName )
 {
-	while(%this.findTeamByID(%teamID) != 0.0)
+	if ( %this.findTeamByID(%teamID) != 0 )
 	{
-		error("ERROR: SO_ClientTeamManager::addTeam - Team ID " @ %teamID @ " is already in use");
+		error ("ERROR: SO_ClientTeamManager::addTeam - Team ID " @ %teamID @ " is already in use");
 		return 0;
 	}
-	%newTeam = new ScriptObject(""){
-		class = SO_ClientTeam;
+
+	%newTeam = new ScriptObject ()
+	{
+		class       = SO_ClientTeam;
 		memberCount = 0;
-		serverID = %teamID;
-		name = %teamName;
+		serverID    = %teamID;
+		name        = %teamName;
 	};
+
 	%this.team[%this.teamCount] = %newTeam;
-	%this.teamCount = %this.teamCount + 1.0;
+	%this.teamCount++;
 }
 
-function SO_ClientTeamManager::removeTeam(%this, %teamID)
+function SO_ClientTeamManager::removeTeam ( %this, %teamID )
 {
-	%i = 0;
-	while(%i < %this.teamCount)
+	for ( %i = 0;  %i < %this.teamCount;  %i++ )
 	{
 		%currTeam = %this.team[%i];
-		if (%currTeam.serverID == %teamID)
+
+		if ( %currTeam.serverID == %teamID )
 		{
-			%currTeam.delete();
-			%j = %i;
-			while(%j < %this.teamCount - 1.0)
+			%currTeam.delete ();
+			
+			for ( %j = %i;  %j < %this.teamCount - 1;  %j++ )
 			{
-				%this.team[%j] = %this.team[%j + 1.0];
-				%j = %j + 1.0;
+				%this.team[%j] = %this.team[%j + 1];
 			}
+
 			%this.team[%this.teamCount] = "";
-			%this.teamCount = %this.teamCount - 1.0;
+			%this.teamCount--;
+
 			return 1;
 		}
-		%i = %i + 1.0;
 	}
-	error("ERROR: SO_ClientTeamManager::removeTeam - Team ID " @ %teamID @ " not found in manager");
+
+	error ("ERROR: SO_ClientTeamManager::removeTeam - Team ID " @ %teamID @ " not found in manager");
 	return 0;
 }
 
-function SO_ClientTeamManager::setTeamName(%this, %teamID, %teamName)
+function SO_ClientTeamManager::setTeamName ( %this, %teamID, %teamName )
 {
-	%teamObj = %this.findTeamByID(%teamID);
-	if (%teamObj != 0.0)
+	%teamObj = %this.findTeamByID (%teamID);
+
+	if ( %teamObj != 0 )
 	{
 		%teamObj.name = %teamName;
 	}
 	else
 	{
-		error("ERROR: SO_ClientTeamManager::setTeamName - Team ID " @ %teamID @ " not found in manager");
+		error ("ERROR: SO_ClientTeamManager::setTeamName - Team ID " @ %teamID @ " not found in manager");
 	}
 }
 
-function SO_ClientTeamManager::findTeamByID(%this, %teamID)
+function SO_ClientTeamManager::findTeamByID ( %this, %teamID )
 {
-	%i = 0;
-	while(%i < %this.teamCount)
+	for ( %i = 0;  %i < %this.teamCount;  %i++ )
 	{
 		%currTeam = %this.team[%i];
-		if (%currTeam.serverID == %teamID)
+
+		if ( %currTeam.serverID == %teamID )
 		{
 			return %currTeam;
 		}
-		%i = %i + 1.0;
 	}
+
 	return 0;
 }
 
-function SO_ClientTeamManager::dumpTeams(%this)
+function SO_ClientTeamManager::dumpTeams ( %this )
 {
-	echo("===============");
-	echo("CLIENT Team Manager ID = ", %this);
-	echo("Number of teams = ", %this.teamCount);
-	%i = 0;
-	while(%i < %this.teamCount)
+	echo ("===============");
+	echo ("CLIENT Team Manager ID = ", %this);
+	echo ("Number of teams = ", %this.teamCount);
+
+	for ( %i = 0;  %i < %this.teamCount;  %i++ )
 	{
 		%currTeam = %this.team[%i];
-		echo("   Team " @ %i @ " = " @ %currTeam @ "(server:" @ %currTeam.serverID @ ") : " @ %currTeam.name @ " : " @ %currTeam.memberCount @ " members");
-		%j = 0;
-		while(%j < %currTeam.memberCount)
+		echo ("   Team " @ %i @ " = " @ %currTeam @ "(server:" @ %currTeam.serverID @ ") : " @ %currTeam.name @ " : " @ %currTeam.memberCount @ " members");
+
+		for ( %j = 0;  %j < %currTeam.memberCount;  %j++ )
 		{
 			%client = %currTeam.memberID[%j];
-			%clientName = StripMLControlChars(getTaggedString(%currTeam.memberName[%j]));
-			if (%currTeam.captain == %client)
+			%clientName = StripMLControlChars (getTaggedString (%currTeam.memberName[%j]));
+
+			if ( %currTeam.captain == %client )
 			{
 				echo("      " @ %client @ " : " @ %clientName @ " <CAPT>");
 			}
@@ -711,67 +801,68 @@ function SO_ClientTeamManager::dumpTeams(%this)
 			{
 				echo("      " @ %client @ " : " @ %clientName);
 			}
-			%j = %j + 1.0;
 		}
-		%i = %i + 1.0;
 	}
-	echo("===============");
+
+	echo ("===============");
 }
 
-function SO_ClientTeam::addMember(%this, %clientId, %name)
+function SO_ClientTeam::addMember ( %this, %clientId, %name )
 {
 	%this.memberID[%this.memberCount] = %clientId;
 	%this.memberName[%this.memberCount] = %name;
-	%this.memberCount = %this.memberCount + 1.0;
+	%this.memberCount++;
 }
 
-function SO_ClientTeam::removeMember(%this, %clientId)
+function SO_ClientTeam::removeMember ( %this, %clientId )
 {
-	%i = 0;
-	while(%i < %this.memberCount)
+	for ( %i = 0;  %i < %this.memberCount;  %i++ )
 	{
-		if (%this.memberID[%i] == %clientId)
+		if ( %this.memberID[%i] == %clientId )
 		{
-			%j = %i;
-			while(%j < %this.memberCount - 1.0)
+			for ( %j = %i;  %j < %this.memberCount - 1;  %j++ )
 			{
-				%this.memberID[%j] = %this.memberID[%j + 1.0];
-				%this.memberName[%j] = %this.memberName[%j + 1.0];
-				%j = %j + 1.0;
+				%this.memberID[%j] = %this.memberID[%j + 1];
+				%this.memberName[%j] = %this.memberName[%j + 1];
 			}
+
 			%this.memberID[%this.memberCount] = "";
 			%this.memberName[%this.memberCount] = "";
-			%this.memberCount = %this.memberCount - 1.0;
+			%this.memberCount--;
+
 			return 1;
 		}
-		%i = %i + 1.0;
 	}
-	error("ERROR: SO_ClientTeam::removeMember - Client ID " @ %clientId @ " not found in team " @ %this @ "(server:" @ %this.serverID @ ")");
+
+	error ("ERROR: SO_ClientTeam::removeMember - Client ID " @ %clientId @ " not found in team " @ %this @ "(server:" @ %this.serverID @ ")");
 }
 
-function SO_ClientTeam::setCaptain(%this, %clientId)
+function SO_ClientTeam::setCaptain ( %this, %clientId )
 {
 	%this.captain = %client;
 }
 
-function NewPlayerListGui::onWake(%this)
+function NewPlayerListGui::onWake ( %this )
 {
-	if (NPL_List.getSelectedId() <= 0.0)
+	if ( NPL_List.getSelectedId() <= 0 )
 	{
-		NPL_List.setSelectedRow(0);
+		NPL_List.setSelectedRow (0);
 	}
-	NewPlayerListGui.UpdateWindowTitle();
-	NewPlayerListGui.clickList();
-	commandToServer('OpenPlayerList');
-	if ($Pref::Gui::ShowPlayerListBLIDs)
+
+	NewPlayerListGui.UpdateWindowTitle ();
+	NewPlayerListGui.clickList ();
+
+	commandToServer ('OpenPlayerList');
+
+	if ( $Pref::Gui::ShowPlayerListBLIDs )
 	{
-		"NPL_List".columns = "0 33 190 245 310";
-		NPL_BLIDButton.setVisible(1);
+		NPL_List.columns = "0 33 190 245 310";
+		NPL_BLIDButton.setVisible (1);
 	}
 	else
 	{
-		"NPL_List".columns = "0 33 190 9999 310";
-		NPL_BLIDButton.setVisible(0);
+		NPL_List.columns = "0 33 190 9999 310";
+		NPL_BLIDButton.setVisible (0);
 	}
 }
 
