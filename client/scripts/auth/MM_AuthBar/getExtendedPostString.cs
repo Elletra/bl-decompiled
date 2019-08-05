@@ -51,7 +51,7 @@ function MM_AuthBar::getExtendedPostString ()
 		%glRenderer = strreplace (%glRenderer, "/PCI", "");
 		%glRenderer = strreplace (%glRenderer, "/3DNOW!", "");
 		%glRenderer = strreplace (%glRenderer, "_", " ");
-		%glRenderer = strreplace(%glRenderer, "  ", " ");
+		%glRenderer = strreplace (%glRenderer, "  ", " ");
 
 		trim (%glRenderer);
 
