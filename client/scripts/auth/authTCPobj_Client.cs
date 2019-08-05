@@ -164,7 +164,7 @@ function authTCPobj_Client::onLine ( %this, %line )
 	}
 	else if ( %word $= "NAMEFAIL" )
 	{
-		%reason = getSubStr (%line, 9, strlen (%line) - 9.0);
+		%reason = getSubStr (%line, 9, strlen (%line) - 9);
 		regName_registerWindow.setVisible (0);
 		MessageBoxOK ("Name Change Failed", %reason);
 		$NewNetName = "";
