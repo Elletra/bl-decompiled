@@ -1,5 +1,7 @@
 # Blockland's Default Scripts Decompiled
 
+Credit to @hatf0 for making the PyDSO decompiler.
+
 This is a _very_ WIP project I've been working on in secret for the past 9 months or so (off and on).  I've got most of them cleaned up pretty well, but **_@hatf0's PyDSO is far from perfect so not all of these functions will work properly_**.  _Please_ keep this in mind when using these.  Some functions just plain don't work at all because the decompiler fucked up so badly (e.g. `fxDTSBrick::radiusImpulse` and `ProjectileData::onExplode`).
 
 
