@@ -4,7 +4,7 @@ function GameConnection::ResetVehicles ( %client )
 	{
 		if ( getBuildString () !$= "Ship" )
 		{
-			Error("ERROR: GameConnection::ResetVehicles() - MissionCleanUp group not found!");
+			Error ("ERROR: GameConnection::ResetVehicles() - MissionCleanUp group not found!");
 		}
 
 		return;
@@ -44,18 +44,17 @@ function serverCmdResetVehicles ( %client )
 		return;
 	}
 
+	MessageAll ('', "\c3" @ %client.getPlayerName () @ "\c0 reset all vehicles.");
 
-	MessageAll ('', "\c3" @  %client.getPlayerName()  @ "\c0 reset all vehicles.");
-
-	%count = MissionCleanup.getCount();
+	%count = MissionCleanup.getCount ();
 
 	for ( %i = 0;  %i < %count;  %i++ )
 	{
 		%obj = MissionCleanup.getObject (%i);
 
-		if ( %obj.getType() & $TypeMasks::VehicleObjectType )
+		if ( %obj.getType () & $TypeMasks::VehicleObjectType )
 		{
-			if ( isObject(%obj.spawnBrick) )
+			if ( isObject (%obj.spawnBrick) )
 			{
 				%obj.spawnBrick.schedule (10, spawnVehicle);
 			}
@@ -64,12 +63,9 @@ function serverCmdResetVehicles ( %client )
 				%obj.schedule (10, delete);
 			}
 		}
-		else if ( %obj.getType() & $TypeMasks::PlayerObjectType )
+		else if ( (%obj.getType () & $TypeMasks::PlayerObjectType)  &&  isObject (%obj.spawnBrick) )
 		{
-			if ( isObject(%obj.spawnBrick) )
-			{
-				%obj.spawnBrick.schedule (10, spawnVehicle);
-			}
+			%obj.spawnBrick.schedule (10, spawnVehicle);
 		}
 	}
 }
