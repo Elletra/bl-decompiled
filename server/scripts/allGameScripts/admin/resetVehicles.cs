@@ -1,32 +1,41 @@
-function GameConnection::resetVehicles ( %client )
+function GameConnection::ResetVehicles ( %client )
 {
-	if ( !isObject(MissionCleanup) )
+	if ( !isObject (MissionCleanUp) )
 	{
-		if ( getBuildString() !$= "Ship" )
+		if ( getBuildString () !$= "Ship" )
 		{
-			error ("ERROR: GameConnection::ResetVehicles() - MissionCleanUp group not found!");
+			Error("ERROR: GameConnection::ResetVehicles() - MissionCleanUp group not found!");
 		}
 
 		return;
 	}
 
+	// Cycle through mission cleanup and look for vehicles that belong to this client's brick group
 	%ourBrickGroup = %client.brickGroup;
-	%count = MissionCleanup.getCount();
+	%count         = MissionCleanUp.getCount ();
 
 	for ( %i = 0;  %i < %count;  %i++ )
 	{
-		%obj = MissionCleanup.getObject(%i);
+		%obj = MissionCleanup.getObject (%i);
 
-		if ( %obj.getType() & $TypeMasks::VehicleObjectType | $TypeMasks::PlayerObjectType  &&  isObject(%obj.spawnBrick) )
+		if ( !(%obj.getType () & ($TypeMasks::VehicleObjectType | $TypeMasks::PlayerObjectType)) )
 		{
-			if ( %obj.spawnBrick.getGroup() == %ourBrickGroup )
-			{
-				%obj.spawnBrick.schedule (10, spawnVehicle);
-			}
+			continue;
 		}
+
+		if ( !isObject (%obj.spawnBrick) )
+		{
+			continue;
+		}
+
+		if ( %obj.spawnBrick.getGroup () != %ourBrickGroup )
+		{
+			continue;
+		}
+
+		%obj.spawnBrick.schedule (10, spawnVehicle);
 	}
 }
-
 
 function serverCmdResetVehicles ( %client )
 {
