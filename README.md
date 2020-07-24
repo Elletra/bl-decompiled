@@ -1,4 +1,4 @@
-!!! This is out of date and created from an inaccurate decompiler !!! Do not rely on this.
+# !!! This is out of date and created from an inaccurate decompiler !!! Do not rely on this to be accurate or up to date.
 
 # Blockland's Default Scripts Decompiled
 
