@@ -1,3 +1,5 @@
+!!! This is out of date and created from an inaccurate decompiler !!! Do not rely on this.
+
 # Blockland's Default Scripts Decompiled
 
 Credit to @hatf0 for making the PyDSO decompiler.
