@@ -1,3 +1,5 @@
+# !!! This is out of date and created from an inaccurate decompiler !!! Do not rely on this to be accurate or up to date.
+
 # Blockland's Default Scripts Decompiled
 
 These scripts were decompiled using my [DSO decompiler](https://github.com/Electrk/dso.js).  They are logically and functionally accurate, but they ain't pretty.  Decompilation, particularly for DSOs, is tricky and will produce some _unconventional_ code...
