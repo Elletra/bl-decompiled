@@ -1,7 +1,6 @@
 function onManifestHashReceived ()
 {
 	$manifestPending = 1;
-
 	LoadingProgressTxt.setValue ("DOWNLOADING FILE MANIFEST");
 	LoadingProgress.setValue (0);
 	LoadingSecondaryProgress.setValue (0);
@@ -13,49 +12,44 @@ function onManifestRecieved ()
 	$totalPendingBlobs = 0;
 }
 
-function setTotalPendingBlobs ( %tpb )
+function setTotalPendingBlobs (%tpb)
 {
 	$totalPendingBlobs = %tpb;
 }
 
 function onBlobCacheCheckFinished ()
 {
-	if ( $totalPendingBlobs == 1 )
+	if ($totalPendingBlobs == 1)
 	{
 		LoadingProgressTxt.setValue ("CHECKING CDN FOR 1 FILE");
 	}
-	else
+	else 
 	{
-		LoadingProgressTxt.setValue ("CHECKING CDN FOR " @  $totalPendingBlobs  @ " FILES");
+		LoadingProgressTxt.setValue ("CHECKING CDN FOR " @ $totalPendingBlobs @ " FILES");
 	}
-
 	LoadingProgress.setValue (0);
 	LoadingSecondaryProgress.setValue (0);
 }
 
-function updateBlobsRemaining ( %blobsRemaining )
+function updateBlobsRemaining (%blobsRemaining)
 {
-	if ( $manifestPending  &&  %blobsRemaining == 1 )
+	if ($manifestPending && %blobsRemaining == 1)
 	{
 		LoadingProgressTxt.setValue ("DOWNLOADING FILE MANIFEST");
 		LoadingProgress.setValue (0);
 		LoadingSecondaryProgress.setValue (0);
-
 		return;
 	}
-
-	if ( %blobsRemaining > $totalPendingBlobs )
+	if (%blobsRemaining > $totalPendingBlobs)
 	{
 		$totalPendingBlobs = %blobsRemaining;
 	}
-
-	if ( $totalPendingBlobs > 0 )
+	if ($totalPendingBlobs > 0)
 	{
-		LoadingProgressTxt.setValue ( "DOWNLOADING FILE " @  $totalPendingBlobs - %blobsRemaining + 1  @ " OF " @  $totalPendingBlobs );
-		LoadingProgress.setValue ( ($totalPendingBlobs - %blobsRemaining)  /  $totalPendingBlobs );
+		LoadingProgressTxt.setValue ("DOWNLOADING FILE " @ ($totalPendingBlobs - %blobsRemaining) + 1 @ " OF " @ $totalPendingBlobs);
+		LoadingProgress.setValue (($totalPendingBlobs - %blobsRemaining) / $totalPendingBlobs);
 		LoadingSecondaryProgress.setValue (0);
-
-		Canvas.repaint();
+		Canvas.repaint ();
 	}
 }
 
@@ -64,47 +58,43 @@ function onBlobDownloadFinished ()
 	LoadingProgressTxt.setValue ("LOADING DATABLOCKS");
 	LoadingSecondaryProgress.setValue (0);
 	LoadingProgress.setValue (0);
-
 	commandToServer ('BlobDownloadFinished');
 }
 
-function setDownloadSize ( %size )
+function setDownloadSize (%size)
 {
 	$currDownloadSize = %size;
 }
 
-function updateDownloadProgress ( %val )
+function updateDownloadProgress (%val)
 {
 	%percent = %val / $currDownloadSize;
 	LoadingSecondaryProgress.setValue (%percent);
 }
 
-function clientCmdMissionStartPhase1 ( %seq )
+function clientCmdMissionStartPhase1 (%seq)
 {
 	echo ("*** New Mission");
 	echo ("*** Phase 1: Download Datablocks & Targets");
-
-	onMissionDownloadPhase1();
+	onMissionDownloadPhase1 ();
 	commandToServer ('MissionStartPhase1Ack', %seq);
 }
 
-function onDataBlockObjectReceived ( %index, %total )
+function onDataBlockObjectReceived (%index, %total)
 {
 	onPhase1Progress (%index / %total);
 }
 
-function clientCmdMissionStartPhase2 ( %seq )
+function clientCmdMissionStartPhase2 (%seq)
 {
-	onPhase1Complete();
-
+	onPhase1Complete ();
 	echo ("*** Phase 2: Download Ghost Objects");
-	purgeResources();
-
-	onMissionDownloadPhase2();
+	purgeResources ();
+	onMissionDownloadPhase2 ();
 	commandToServer ('MissionStartPhase2Ack', %seq);
 }
 
-function onGhostAlwaysStarted ( %ghostCount )
+function onGhostAlwaysStarted (%ghostCount)
 {
 	$ghostCount = %ghostCount;
 	$ghostsRecvd = 0;
@@ -112,25 +102,22 @@ function onGhostAlwaysStarted ( %ghostCount )
 
 function onGhostAlwaysObjectReceived ()
 {
-	$ghostsRecvd++;
-	onPhase2Progress($ghostsRecvd / $ghostCount);
+	$ghostsRecvd += 1;
+	onPhase2Progress ($ghostsRecvd / $ghostCount);
 }
 
-function clientCmdMissionStartPhase3 ( %seq )
+function clientCmdMissionStartPhase3 (%seq)
 {
-	onPhase2Complete();
-
+	onPhase2Complete ();
 	echo ("*** Phase 3: Mission Lighting");
-
 	$MSeq = %seq;
-	sceneLightingComplete();
+	sceneLightingComplete ();
 }
 
 function updateLightingProgress ()
 {
 	onPhase3Progress ($SceneLighting::lightingProgress);
-
-	if ( $lightingMission )
+	if ($lightingMission)
 	{
 		$lightingProgressThread = schedule (1, 0, "updateLightingProgress");
 	}
@@ -139,10 +126,9 @@ function updateLightingProgress ()
 function sceneLightingComplete ()
 {
 	echo ("Mission lighting done");
-
-	onPhase3Complete();
-	onMissionDownloadComplete();
-
+	onPhase3Complete ();
+	onMissionDownloadComplete ();
 	commandToServer ('MissionStartPhase3Ack', $MSeq);
 	commandToServer ('RequestNamedTargets');
 }
+

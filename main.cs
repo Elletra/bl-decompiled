@@ -1,7 +1,6 @@
 function initCommon ()
 {
 	setRandomSeed ();
-
 	exec ("./client/canvas.cs");
 	exec ("./client/audio.cs");
 }
@@ -16,11 +15,11 @@ function initBaseClient ()
 
 function initBaseServer ()
 {
-	if ( true )
+	if (1)
 	{
-		exec ("./server/mainServer/mainServer.cs");
+		exec ("./server/mainServer.cs");
 	}
-	else
+	else 
 	{
 		exec ("./server/webCom.cs");
 		exec ("./server/authQuery.cs");
@@ -38,10 +37,11 @@ function initBaseServer ()
 
 function onDatablockLimitExceeded ()
 {
-	$datablockExceededCount++;
+	$datablockExceededCount += 1;
 }
 
 function onDatablocksDeleted ()
 {
 	$datablockExceededCount = 0;
 }
+
