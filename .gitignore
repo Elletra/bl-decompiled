@@ -1,8 +1,10 @@
-crapOns_Cache.cs
-data/
-hats/
-help/
-lighting/
+# Ignore everything...
+*
 
-*.sublime-project
-*.sublime-workspace
+# ...except these files...
+!*.cs
+!*.gui
+!*.md
+
+# ...as long as they don't have any of these names:
+crapOns_Cache.cs
