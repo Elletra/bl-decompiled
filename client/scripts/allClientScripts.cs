@@ -1,162 +1,162 @@
 $currCheckVal = 10;
 
 $RightHandSlot = 0;
-$LeftHandSlot  = 1;
-$BackSlot      = 2;
+$LeftHandSlot = 1;
+$BackSlot = 2;
 $RightFootSlot = 3;
-$LeftFootSlot  = 4;
-$HeadSlot      = 5;
-$VisorSlot     = 6;
-$HipSlot       = 7;
+$LeftFootSlot = 4;
+$HeadSlot = 5;
+$VisorSlot = 6;
+$HipSlot = 7;
 
-$pi      = 3.1415927;
+$pi = 3.1415927;
 $piOver2 = 1.5707963;
-$m2pi    = 6.2831853;
+$m2pi = 6.2831853;
 
-$ItemTime     = 10000;
+$ItemTime = 10000;
 $ItemDropTime = 1000;
 
 $tallestBrick = 6 * 0.6;
 
-$Game::MinRespawnTime        = 1000;
-$Game::MaxRespawnTime        = 30000;
+$Game::MinRespawnTime = 1000;
+$Game::MaxRespawnTime = 30000;
 $Game::MinVehicleRespawnTime = 0;
 $Game::MaxVehicleRespawnTime = 360000;
-$Game::MinBrickRespawnTime   = 2000;
-$Game::MaxBrickRespawnTime   = 360000;
-$Game::MinBotRespawnTime     = 0;
-$Game::MaxBotRespawnTime     = 360000;
+$Game::MinBrickRespawnTime = 2000;
+$Game::MaxBrickRespawnTime = 360000;
+$Game::MinBotRespawnTime = 0;
+$Game::MaxBotRespawnTime = 360000;
 
-$Game::Item::PopTime        = 10 * 1000;
-$Game::Item::RespawnTime    = 4000;
+$Game::Item::PopTime = 10 * 1000;
+$Game::Item::RespawnTime = 4000;
 $Game::Item::MinRespawnTime = 1000;
 $Game::Item::MaxRespawnTime = 360000;
 
 $Game::MiniGameJoinTime = 5000;
-$Game::MaxAdminTries    = 3;
+$Game::MaxAdminTries = 3;
 
-$Game::DefaultMinImpactSpeed     = 30;
-$Game::DefaultSpeedDamageScale   = 3.8;
-$Game::DefaultMinRunOverSpeed    = 2;
+$Game::DefaultMinImpactSpeed = 30;
+$Game::DefaultSpeedDamageScale = 3.8;
+$Game::DefaultMinRunOverSpeed = 2;
 $Game::DefaultRunOverDamageScale = 5;
-$Game::DefaultRunOverPushScale   = 1.2;
+$Game::DefaultRunOverPushScale = 1.2;
 
-$Game::MinMountTime               = 2000;
-$Game::OnTouchImmuneTime          = 2000;
-$Game::PlayerInvulnerabilityTime  = 2500;
+$Game::MinMountTime = 2000;
+$Game::OnTouchImmuneTime = 2000;
+$Game::PlayerInvulnerabilityTime = 2500;
 $Game::VehicleInvulnerabilityTime = 100;
 
 $Game::MaxEventsPerBrick = 100;
 
 $Game::BrickActivateRange = 5;
 
-$Max::Quota::Schedules   = 1000;
-$Max::Quota::Misc        = 9999;
-$Max::Quota::Projectile  = 200;
-$Max::Quota::Item        = 1000;
+$Max::Quota::Schedules = 1000;
+$Max::Quota::Misc = 9999;
+$Max::Quota::Projectile = 200;
+$Max::Quota::Item = 1000;
 $Max::Quota::Environment = 5000;
-$Max::Quota::Player      = 250;
-$Max::Quota::Vehicle     = 100;
-$Min::Quota::Schedules   = 10;
-$Min::Quota::Misc        = 10;
-$Min::Quota::Projectile  = 5;
-$Min::Quota::Item        = 5;
+$Max::Quota::Player = 250;
+$Max::Quota::Vehicle = 100;
+$Min::Quota::Schedules = 10;
+$Min::Quota::Misc = 10;
+$Min::Quota::Projectile = 5;
+$Min::Quota::Item = 5;
 $Min::Quota::Environment = 20;
-$Min::Quota::Player      = 0;
-$Min::Quota::Vehicle     = 0;
+$Min::Quota::Player = 0;
+$Min::Quota::Vehicle = 0;
 
-$Default::Quota::Schedules   = 50;
-$Default::Quota::Misc        = 100;
-$Default::Quota::Projectile  = 25;
-$Default::Quota::Item        = 25;
+$Default::Quota::Schedules = 50;
+$Default::Quota::Misc = 100;
+$Default::Quota::Projectile = 25;
+$Default::Quota::Item = 25;
 $Default::Quota::Environment = 100;
-$Default::Quota::Player      = 10;
-$Default::Quota::Vehicle     = 5;
+$Default::Quota::Player = 10;
+$Default::Quota::Vehicle = 5;
 
-$Max::QuotaLAN::Schedules   = 1000;
-$Max::QuotaLAN::Misc        = 9999;
-$Max::QuotaLAN::Projectile  = 500;
-$Max::QuotaLAN::Item        = 1000;
+$Max::QuotaLAN::Schedules = 1000;
+$Max::QuotaLAN::Misc = 9999;
+$Max::QuotaLAN::Projectile = 500;
+$Max::QuotaLAN::Item = 1000;
 $Max::QuotaLAN::Environment = 5000;
-$Max::QuotaLAN::Player      = 250;
-$Max::QuotaLAN::Vehicle     = 100;
-$Min::QuotaLAN::Schedules   = 10;
-$Min::QuotaLAN::Misc        = 10;
-$Min::QuotaLAN::Projectile  = 5;
-$Min::QuotaLAN::Item        = 5;
+$Max::QuotaLAN::Player = 250;
+$Max::QuotaLAN::Vehicle = 100;
+$Min::QuotaLAN::Schedules = 10;
+$Min::QuotaLAN::Misc = 10;
+$Min::QuotaLAN::Projectile = 5;
+$Min::QuotaLAN::Item = 5;
 $Min::QuotaLAN::Environment = 20;
-$Min::QuotaLAN::Player      = 0;
-$Min::QuotaLAN::Vehicle     = 0;
+$Min::QuotaLAN::Player = 0;
+$Min::QuotaLAN::Vehicle = 0;
 
-$Default::QuotaLAN::Schedules   = 50;
-$Default::QuotaLAN::Misc        = 100;
-$Default::QuotaLAN::Projectile  = 25;
-$Default::QuotaLAN::Item        = 25;
+$Default::QuotaLAN::Schedules = 50;
+$Default::QuotaLAN::Misc = 100;
+$Default::QuotaLAN::Projectile = 25;
+$Default::QuotaLAN::Item = 25;
 $Default::QuotaLAN::Environment = 100;
-$Default::QuotaLAN::Player      = 50;
-$Default::QuotaLAN::Vehicle     = 20;
+$Default::QuotaLAN::Player = 50;
+$Default::QuotaLAN::Vehicle = 20;
 
-$Min::MaxPhysVehicles_Total     = 0;
-$Max::MaxPhysVehicles_Total     = 20;
+$Min::MaxPhysVehicles_Total = 0;
+$Max::MaxPhysVehicles_Total = 20;
 $Default::MaxPhysVehicles_Total = 10;
 
-$Min::MaxPlayerVehicles_Total     = 0;
-$Max::MaxPlayerVehicles_Total     = 200;
+$Min::MaxPlayerVehicles_Total = 0;
+$Max::MaxPlayerVehicles_Total = 200;
 $Default::MaxPlayerVehicles_Total = 50;
 
-$Min::Net::PacketRateToClient     = 10;
-$Max::Net::PacketRateToClient     = 32;
+$Min::Net::PacketRateToClient = 10;
+$Max::Net::PacketRateToClient = 32;
 $Default::Net::PacketRateToClient = 32;
 
-$Min::Net::PacketRateToServer     = 8;
-$Max::Net::PacketRateToServer     = 32;
+$Min::Net::PacketRateToServer = 8;
+$Max::Net::PacketRateToServer = 32;
 $Default::Net::PacketRateToServer = 32;
 
-$Min::Net::PacketSize     = 200;
-$Max::Net::PacketSize     = 1023;
+$Min::Net::PacketSize = 200;
+$Max::Net::PacketSize = 1023;
 $Default::Net::PacketSize = 1023;
 
-$Min::Net::LagThreshold     = 200;
-$Max::Net::LagThreshold     = 600;
+$Min::Net::LagThreshold = 200;
+$Max::Net::LagThreshold = 600;
 $Default::Net::LagThreshold = 400;
 
 $Default::Port = 28000;
 
-$Default::BrickLimit         = 256000;
+$Default::BrickLimit = 256000;
 $Default::MaxBricksPerSecond = 10;
-$Default::TooFarDistance     = 9999;
-$Default::RandomBrickColor   = false;
+$Default::TooFarDistance = 9999;
+$Default::RandomBrickColor = false;
 
-$Default::MaxChatLen  = 120;
+$Default::MaxChatLen = 120;
 $Default::ETardFilter = true;
 
 $Default::FallingDamage = false;
 
 $Default::BrickPublicDomainTimeout = -1;
-$Default::BrickRespawnTime         = 30000;
+$Default::BrickRespawnTime = 30000;
 
 $Default::ClearEventsOnClientExit = true;
-$Default::WrenchEventsAdminOnly   = false;
+$Default::WrenchEventsAdminOnly = false;
 
-$Min::GhostLimit     = 32768;
-$Max::GhostLimit     = 1048576;
+$Min::GhostLimit = 32768;
+$Max::GhostLimit = 1048576;
 $Default::GhostLimit = 262144;
 
-$LastError::Trust             = 1;
+$LastError::Trust = 1;
 $LastError::MiniGameDifferent = 2;
-$LastError::MiniGameNotYours  = 3;
-$LastError::NotInMiniGame     = 4;
+$LastError::MiniGameNotYours = 3;
+$LastError::NotInMiniGame = 4;
 
 function eulerToMatrix ( %euler )
 {
-	%euler  = VectorScale (%euler, $pi / 180);
+	%euler = VectorScale (%euler, $pi / 180);
 	%matrix = MatrixCreateFromEuler (%euler);
 
 	%xvec = getWord (%matrix, 3);
 	%yvec = getWord (%matrix, 4);
 	%zvec = getWord (%matrix, 5);
-	%ang  = getWord (%matrix, 6);
-	%ang  = (%ang * 180) / $pi;
+	%ang = getWord (%matrix, 6);
+	%ang = (%ang * 180) / $pi;
 
 	%rotationMatrix = %xvec @ " " @ %yvec @ " " @ %zvec @ " " @ %ang;
 
@@ -170,7 +170,7 @@ function eulerRadToMatrix ( %euler )
 	%xvec = getWord (%matrix, 3);
 	%yvec = getWord (%matrix, 4);
 	%zvec = getWord (%matrix, 5);
-	%ang  = getWord (%matrix, 6);
+	%ang = getWord (%matrix, 6);
 
 	%rotationMatrix = %xvec @ " " @ %yvec @ " " @ %zvec @ " " @ %ang;
 
@@ -179,13 +179,13 @@ function eulerRadToMatrix ( %euler )
 
 function eulerToQuat ( %euler )
 {
-	%euler  = VectorScale (%euler, $pi / 180);
+	%euler = VectorScale (%euler, $pi / 180);
 	%matrix = MatrixCreateFromEuler (%euler);
 
 	%xvec = getWord (%matrix, 3);
 	%yvec = getWord (%matrix, 4);
 	%zvec = getWord (%matrix, 5);
-	%ang  = getWord (%matrix, 6);
+	%ang = getWord (%matrix, 6);
 
 	%quat = %xvec SPC %yvec SPC %zvec SPC %ang;
 
@@ -194,14 +194,14 @@ function eulerToQuat ( %euler )
 
 function eulerToQuat_degrees ( %euler )
 {
-	%euler  = VectorScale (%euler, $pi / 180);
+	%euler = VectorScale (%euler, $pi / 180);
 	%matrix = MatrixCreateFromEuler (%euler);
 
 	%xvec = getWord (%matrix, 3);
 	%yvec = getWord (%matrix, 4);
 	%zvec = getWord (%matrix, 5);
-	%ang  = getWord (%matrix, 6);
-	%ang  = (%ang * 180) / $pi;
+	%ang = getWord (%matrix, 6);
+	%ang = (%ang * 180) / $pi;
 
 	%quat = %xvec SPC %yvec SPC %zvec SPC %ang;
 
@@ -210,7 +210,7 @@ function eulerToQuat_degrees ( %euler )
 
 function getLine ( %phrase, %lineNum )
 {
-	%offset    = 0;
+	%offset = 0;
 	%lineCount = 0;
 
 	while ( %lineCount <= %lineNum )
@@ -360,101 +360,101 @@ function isListenServer ()
 }
 
 
-$GuiAudioType     = 1;
-$SimAudioType     = 2;
+$GuiAudioType = 1;
+$SimAudioType = 2;
 $MessageAudioType = 3;
 
 new AudioDescription (AudioGui)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = false;
-	type      = $GuiAudioType;
+	is3D = false;
+	type = $GuiAudioType;
 };
 
 new AudioDescription (AudioMessage)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = false;
-	type      = $MessageAudioType;
+	is3D = false;
+	type = $MessageAudioType;
 };
 
 new AudioProfile (AudioButtonOver)
 {
-	fileName    = "~/data/sound/buttonOver.wav";
+	fileName = "~/data/sound/buttonOver.wav";
 	description = "AudioGui";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (AudioError)
 {
-	fileName    = "~/data/sound/error.wav";
+	fileName = "~/data/sound/error.wav";
 	description = "AudioGui";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (ItemPickup)
 {
-	fileName    = "~/data/sound/error.wav";
+	fileName = "~/data/sound/error.wav";
 	description = "AudioGui";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (AdminSound)
 {
-	fileName    = "~/data/sound/admin.wav";
+	fileName = "~/data/sound/admin.wav";
 	description = "AudioGui";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (BrickClearSound)
 {
-	fileName    = "~/data/sound/brickClear.wav";
+	fileName = "~/data/sound/brickClear.wav";
 	description = "AudioGui";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (ClientJoinSound)
 {
-	fileName    = "~/data/sound/playerConnect.wav";
+	fileName = "~/data/sound/playerConnect.wav";
 	description = "AudioGui";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (ClientDropSound)
 {
-	fileName    = "~/data/sound/playerLeave.wav";
+	fileName = "~/data/sound/playerLeave.wav";
 	description = "AudioGui";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (UploadStartSound)
 {
-	fileName    = "~/data/sound/uploadStart.wav";
+	fileName = "~/data/sound/uploadStart.wav";
 	description = "AudioGui";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (UploadEndSound)
 {
-	fileName    = "~/data/sound/uploadEnd.wav";
+	fileName = "~/data/sound/uploadEnd.wav";
 	description = "AudioGui";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (ProcessCompleteSound)
 {
-	fileName    = "~/data/sound/processComplete.wav";
+	fileName = "~/data/sound/processComplete.wav";
 	description = "AudioGui";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (ClickMoveSound)
 {
-	fileName    = "base/data/sound/ClickMove.wav";
+	fileName = "base/data/sound/ClickMove.wav";
 	description = "AudioGui";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (ClickPlantSound : ClickMoveSound)
@@ -464,68 +464,68 @@ new AudioProfile (ClickPlantSound : ClickMoveSound)
 
 new AudioDescription (AudioBGMusic2D)
 {
-	volume    = 0.8;
+	volume = 0.8;
 	isLooping = true;
-	is3D      = true;
+	is3D = true;
 
 	ReferenceDistance = 10;
-	maxDistance       = 60;
+	maxDistance = 60;
 
 	type = $GuiAudioType;
 };
 
 new AudioProfile (TitleMusic)
 {
-	fileName    = "~/data/sound/music/Ambient Deep.ogg";
+	fileName = "~/data/sound/music/Ambient Deep.ogg";
 	description = "AudioBGMusic2D";
-	preload     = true;
+	preload = true;
 };
 
 new AudioDescription (AudioClientClose3d)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = true;
+	is3D = true;
 
 	ReferenceDistance = 10;
-	maxDistance       = 60;
+	maxDistance = 60;
 
 	type = $SimAudioType;
 };
 
 new AudioProfile (BrickBreak)
 {
-	fileName    = "~/data/sound/breakBrick.wav";
+	fileName = "~/data/sound/breakBrick.wav";
 	description = "AudioClientClose3d";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (BrickMove)
 {
-	fileName    = "~/data/sound/clickMove.wav";
+	fileName = "~/data/sound/clickMove.wav";
 	description = "AudioClientClose3d";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (BrickPlant)
 {
-	fileName    = "~/data/sound/clickPlant.wav";
+	fileName = "~/data/sound/clickPlant.wav";
 	description = "AudioClientClose3d";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (BrickRotate)
 {
-	fileName    = "~/data/sound/clickRotate.wav";
+	fileName = "~/data/sound/clickRotate.wav";
 	description = "AudioClientClose3d";
-	preload     = true;
+	preload = true;
 };
 
 new AudioProfile (BrickChange)
 {
-	fileName    = "~/data/sound/clickChange.wav";
+	fileName = "~/data/sound/clickChange.wav";
 	description = "AudioClientClose3d";
-	preload     = true;
+	preload = true;
 };
 
 loadBrickSounds ();
@@ -540,9 +540,9 @@ function handleClientJoin ()
 
 function secureClientCmd_ClientJoin ( %clientName, %clientId, %bl_id, %score, %isAI, %isAdmin, %isSuperAdmin, %trust, %inYourMiniGame )
 {
-	%name           = StripMLControlChars (detag (%clientName));
-	%bl_id          = mFloor (%bl_id);
-	%trust          = mFloor (%trust);
+	%name = StripMLControlChars (detag (%clientName));
+	%bl_id = mFloor (%bl_id);
+	%trust = mFloor (%trust);
 	%inYourMiniGame = mFloor (%inYourMiniGame);
 
 	NewPlayerListGui.update (%clientId, %name, %bl_id, %isSuperAdmin, %isAdmin, %score, %trust, %inYourMiniGame);
@@ -577,8 +577,8 @@ function secureClientCmd_ClientDrop ( %clientName, %clientId )
 
 function secureClientCmd_ClientScoreChanged ( %score, %clientId )
 {
-	%score      = mFloor (%score);
-	%row        = NPL_List.getRowTextById (%clientId);
+	%score = mFloor (%score);
+	%row = NPL_List.getRowTextById (%clientId);
 	%trustLevel = getField (%row, 4);
 
 	if ( %trustLevel $= "You" )
@@ -599,7 +599,7 @@ function secureClientCmd_ClientScoreChanged ( %score, %clientId )
 function secureClientCmd_ClientTrust ( %clientId, %trustLevel )
 {
 	%trustLevel = mFloor (%trustLevel);
-	%clientId   = mFloor (%clientId);
+	%clientId = mFloor (%clientId);
 
 	NewPlayerListGui.updateTrust (%clientId, %trustLevel);
 }
@@ -607,7 +607,7 @@ function secureClientCmd_ClientTrust ( %clientId, %trustLevel )
 function handleClientInYourMiniGame ( %msgType, %msgString, %clientId, %val )
 {
 	%clientId = mFloor (%clientId);
-	%val      = mFloor (%val);
+	%val = mFloor (%val);
 
 	NewPlayerListGui.updateInYourMiniGame (%clientId, %val);
 }
@@ -699,7 +699,7 @@ function InitClientTeamManager ()
 
 	new ScriptObject (ClientTeamManager)
 	{
-		class     = SO_ClientTeamManager;
+		class = SO_ClientTeamManager;
 		teamCount = 0;
 	};
 }
@@ -717,8 +717,8 @@ function SO_ClientTeamManager::addTeam ( %this, %teamID, %teamName )
 		class = SO_ClientTeam;
 
 		memberCount = 0;
-		serverID    = %teamID;
-		name        = %teamName;
+		serverID = %teamID;
+		name = %teamName;
 	};
 
 	%this.team[%this.teamCount] = %newTeam;
@@ -816,7 +816,7 @@ function SO_ClientTeamManager::dumpTeams ( %this )
 
 function SO_ClientTeam::addMember ( %this, %clientId, %name )
 {
-	%this.memberID[%this.memberCount]   = %clientId;
+	%this.memberID[%this.memberCount] = %clientId;
 	%this.memberName[%this.memberCount] = %name;
 	%this.memberCount++;
 }
@@ -829,11 +829,11 @@ function SO_ClientTeam::removeMember ( %this, %clientId )
 		{
 			for ( %j = %i; %j < %this.memberCount - 1; %j++ )
 			{
-				%this.memberID[%j]   = %this.memberID[%j + 1];
+				%this.memberID[%j] = %this.memberID[%j + 1];
 				%this.memberName[%j] = %this.memberName[%j + 1];
 			}
 
-			%this.memberID[%this.memberCount]   = "";
+			%this.memberID[%this.memberCount] = "";
 			%this.memberName[%this.memberCount] = "";
 			%this.memberCount--;
 
@@ -894,9 +894,9 @@ function NewPlayerListGui::toggle ( %this )
 function clientCmdNewPlayerListGui_UpdateWindowTitle ( %serverTitle, %maxPlayers )
 {
 	%serverTitle = getSubStr (%serverTitle, 0, 100);
-	%maxPlayers  = mFloor (%maxPlayers);
+	%maxPlayers = mFloor (%maxPlayers);
 
-	$ServerInfo::Name       = %serverTitle;
+	$ServerInfo::Name = %serverTitle;
 	$ServerInfo::MaxPlayers = %maxPlayers;
 
 	NewPlayerListGui.UpdateWindowTitle ();
@@ -905,7 +905,7 @@ function clientCmdNewPlayerListGui_UpdateWindowTitle ( %serverTitle, %maxPlayers
 function NewPlayerListGui::UpdateWindowTitle ( %this )
 {
 	%playerCount = NPL_List.rowCount ();
-	%windowText  = %playerCount @ " / " @ $ServerInfo::MaxPlayers @ " Players";
+	%windowText = %playerCount @ " / " @ $ServerInfo::MaxPlayers @ " Players";
 
 	if ( ServerConnection.isLocal () )
 	{
@@ -964,11 +964,11 @@ function NewPlayerListGui::update ( %this, %clientId, %clientName, %bl_id, %isSu
 		%adminChar = "A";
 	}
 
-	%row            = NPL_List.getRowTextById (%clientId);
-	%oldAdminChar   = getField (%row, 0);
-	%trust          = getField (%row, 4);
+	%row = NPL_List.getRowTextById (%clientId);
+	%oldAdminChar = getField (%row, 0);
+	%trust = getField (%row, 4);
 	%inYourMiniGame = getField (%row, 5);
-	%ignoring       = mFloor (getField (%row, 6));
+	%ignoring = mFloor (getField (%row, 6));
 
 	if ( strlen (%oldAdminChar) > 1 )
 	{
@@ -984,8 +984,12 @@ function NewPlayerListGui::update ( %this, %clientId, %clientName, %bl_id, %isSu
 		%bl_id = "LAN";
 	}
 
-	%line = %miniGameChar @ %adminChar TAB %clientName TAB %score TAB %bl_id TAB %trust
-	    TAB %inYourMiniGame TAB %ignoring;
+	%line = %miniGameChar @ %adminChar
+		TAB %clientName
+		TAB %score
+		TAB %bl_id
+		TAB %trust
+		TAB %inYourMiniGame TAB %ignoring;
 
 	if ( NPL_List.getRowNumById (%clientId) == -1 )
 	{
@@ -1006,13 +1010,13 @@ function NewPlayerListGui::updateTrust ( %this, %clientId, %trustLevel )
 		return;
 	}
 
-	%row            = NPL_List.getRowTextById (%clientId);
-	%admin          = getField (%row, 0);
-	%name           = getField (%row, 1);
-	%score          = getField (%row, 2);
-	%bl_id          = getField (%row, 3);
+	%row = NPL_List.getRowTextById (%clientId);
+	%admin = getField (%row, 0);
+	%name = getField (%row, 1);
+	%score = getField (%row, 2);
+	%bl_id = getField (%row, 3);
 	%inYourMiniGame = getField (%row, 5);
-	%ignoring       = mFloor (getField (%row, 6));
+	%ignoring = mFloor (getField (%row, 6));
 
 	%trust = "-";
 
@@ -1068,12 +1072,12 @@ function NewPlayerListGui::updateInYourMiniGame ( %this, %clientId, %val )
 		return;
 	}
 
-	%row      = NPL_List.getRowTextById (%clientId);
-	%admin    = StripMLControlChars (getField (%row, 0));
-	%name     = getField (%row, 1);
-	%score    = getField (%row, 2);
-	%bl_id    = getField (%row, 3);
-	%trust    = getField (%row, 4);
+	%row = NPL_List.getRowTextById (%clientId);
+	%admin = StripMLControlChars (getField (%row, 0));
+	%name = getField (%row, 1);
+	%score = getField (%row, 2);
+	%bl_id = getField (%row, 3);
+	%trust = getField (%row, 4);
 	%ignoring = mFloor (getField (%row, 6));
 
 	if ( %val )
@@ -1101,12 +1105,12 @@ function NewPlayerListGui::ClearInYourMiniGame ( %this )
 			return;
 		}
 
-		%id       = NPL_List.getRowId (%i);
-		%admin    = StripMLControlChars (getField (%row, 0));
-		%name     = getField (%row, 1);
-		%score    = getField (%row, 2);
-		%bl_id    = getField (%row, 3);
-		%trust    = getField (%row, 4);
+		%id = NPL_List.getRowId (%i);
+		%admin = StripMLControlChars (getField (%row, 0));
+		%name = getField (%row, 1);
+		%score = getField (%row, 2);
+		%bl_id = getField (%row, 3);
+		%trust = getField (%row, 4);
 		%ignoring = mFloor (getField (%row, 6));
 
 		%row = %admin TAB %name TAB %score TAB %bl_id TAB %trust TAB 0 TAB %ignoring;
@@ -1124,13 +1128,13 @@ function NewPlayerListGui::updateScore ( %this, %clientId, %score )
 		return;
 	}
 
-	%row            = NPL_List.getRowTextById (%clientId);
-	%admin          = getField (%row, 0);
-	%name           = getField (%row, 1);
-	%bl_id          = getField (%row, 3);
-	%trust          = getField (%row, 4);
+	%row = NPL_List.getRowTextById (%clientId);
+	%admin = getField (%row, 0);
+	%name = getField (%row, 1);
+	%bl_id = getField (%row, 3);
+	%trust = getField (%row, 4);
 	%inYourMiniGame = getField (%row, 5);
-	%ignoring       = mFloor (getField (%row, 6));
+	%ignoring = mFloor (getField (%row, 6));
 
 	%line = %admin TAB %name TAB %score TAB %bl_id TAB %trust TAB %inYourMiniGame TAB %ignoring;
 
@@ -1139,7 +1143,7 @@ function NewPlayerListGui::updateScore ( %this, %clientId, %score )
 
 function NewPlayerListGui::clickList ( %this )
 {
-	%id  = NPL_List.getSelectedId ();
+	%id = NPL_List.getSelectedId ();
 	%row = NPL_List.getRowTextById (%id);
 
 	if ( $RemoteServer::LAN )
@@ -1243,7 +1247,7 @@ function NewPlayerListGui::sortList ( %this, %col )
 	}
 	else
 	{
-		NPL_List.sortedBy  = %col;
+		NPL_List.sortedBy = %col;
 		NPL_List.sortedAsc = false;
 
 		NPL_List.sort (NPL_List.sortedBy, NPL_List.sortedAsc);
@@ -1261,7 +1265,7 @@ function NewPlayerListGui::sortNumList ( %this, %col )
 	}
 	else
 	{
-		NPL_List.sortedBy  = %col;
+		NPL_List.sortedBy = %col;
 		NPL_List.sortedAsc = false;
 
 		NPL_List.sortNumerical (NPL_List.sortedBy, NPL_List.sortedAsc);
@@ -1277,7 +1281,7 @@ function NewPlayerListGui::ClickTrustInviteBuild ( %this )
 		return;
 	}
 
-	%bl_id        = getField (%row, 3);
+	%bl_id = getField (%row, 3);
 	%targetClient = NPL_List.getSelectedId ();
 
 	commandToServer ('Trust_Invite', %targetClient, %bl_id, 1);
@@ -1295,7 +1299,7 @@ function NewPlayerListGui::ClickTrustInviteFull ( %this )
 		return;
 	}
 
-	%bl_id        = getField (%row, 3);
+	%bl_id = getField (%row, 3);
 	%targetClient = NPL_List.getSelectedId ();
 
 	commandToServer ('Trust_Invite', %targetClient, %bl_id, 2);
@@ -1399,17 +1403,17 @@ function NewPlayerListGui::setIgnoring ( %this, %clientId, %val )
 
 function NewPlayerListGui::setIgnoringBL_ID ( %this, %targetBL_ID, %val )
 {
-	%i   = 0;
+	%i = 0;
 	%row = NPL_List.getRowText (%i);
 
 	while ( %row !$= "" )
 	{
-		%rowID          = NPL_List.getRowId (%i);
-		%admin          = getField (%row, 0);
-		%name           = getField (%row, 1);
-		%score          = getField (%row, 2);
-		%bl_id          = getField (%row, 3);
-		%trust          = getField (%row, 4);
+		%rowID = NPL_List.getRowId (%i);
+		%admin = getField (%row, 0);
+		%name = getField (%row, 1);
+		%score = getField (%row, 2);
+		%bl_id = getField (%row, 3);
+		%trust = getField (%row, 4);
 		%inYourMiniGame = getField (%row, 5);
 
 		%ignoring = %val;
@@ -1428,13 +1432,13 @@ function NewPlayerListGui::setIgnoringBL_ID ( %this, %targetBL_ID, %val )
 
 function NewPlayerListGui::getIgnoringBL_ID ( %this, %targetBL_ID )
 {
-	%i   = 0;
+	%i = 0;
 	%row = NPL_List.getRowText (%i);
 
 	while ( %row !$= "" )
 	{
-		%rowID    = NPL_List.getRowId (%i);
-		%bl_id    = getField (%row, 3);
+		%rowID = NPL_List.getRowId (%i);
+		%bl_id = getField (%row, 3);
 		%ignoring = getField (%row, 6);
 
 		if ( %bl_id == %targetBL_ID )
@@ -1534,7 +1538,7 @@ function clientCmdTrustInviteAccepted ( %clientId, %bl_id, %level )
 {
 	if ( $TrustInvite[%bl_id] == %level )
 	{
-		%row  = NPL_List.getRowTextById (%clientId);
+		%row = NPL_List.getRowTextById (%clientId);
 		%name = getField (%row, 1);
 
 		if ( %name $= "" )
@@ -1553,7 +1557,7 @@ function clientCmdTrustInviteAccepted ( %clientId, %bl_id, %level )
 
 function secureClientCmd_TrustDemoted ( %clientId, %bl_id, %level )
 {
-	%row  = NPL_List.getRowTextById (%clientId);
+	%row = NPL_List.getRowTextById (%clientId);
 	%name = getField (%row, 1);
 
 	if ( %name $= "" )
@@ -1598,10 +1602,10 @@ function saveTrustList ()
 
 	for ( %i = 0; %i < $Trust::Count; %i++ )
 	{
-		%blid  = mFloor (getField ($Trust::Line[%i], 0));
+		%blid = mFloor (getField ($Trust::Line[%i], 0));
 		%level = mFloor (getField ($Trust::Line[%i], 1));
-		%name  = getField ($Trust::Line[%i], 2);
-		%line  = %blid TAB %level TAB %name;
+		%name = getField ($Trust::Line[%i], 2);
+		%line = %blid TAB %level TAB %name;
 
 		%file.writeLine (%line);
 	}
@@ -1626,10 +1630,10 @@ function loadTrustList ()
 
 	while ( !%file.isEOF () )
 	{
-		%line  = %file.readLine ();
-		%blid  = getField (%line, 0);
+		%line = %file.readLine ();
+		%blid = getField (%line, 0);
 		%level = getField (%line, 1);
-		%name  = getField (%line, 2);
+		%name = getField (%line, 2);
 
 		if ( mFloor (%blid) != %blid || %blid $= "" )
 		{
@@ -1664,9 +1668,9 @@ function dumpTrustList ()
 
 	for ( %i = 0; %i < %count; %i++ )
 	{
-		%blid  = getField ($Trust::Line[%i], 0);
+		%blid = getField ($Trust::Line[%i], 0);
 		%level = getField ($Trust::Line[%i], 1);
-		%name  = getField ($Trust::Line[%i], 2);
+		%name = getField ($Trust::Line[%i], 2);
 
 		if ( %level == 1 )
 		{
@@ -1786,7 +1790,7 @@ function joinMiniGameGui::onSleep ( %this )
 function clientCmdAddMiniGameLine ( %line, %id, %colorIdx )
 {
 	%colorIdx = mFloor (%colorIdx);
-	%id       = mFloor (%id);
+	%id = mFloor (%id);
 
 	%CC0 = "\c1\c0";
 	%CC1 = "\c1";
@@ -1965,7 +1969,7 @@ function joinMiniGameGui::sortList ( %this, %col )
 	}
 	else
 	{
-		JMG_List.sortedBy  = %col;
+		JMG_List.sortedBy = %col;
 		JMG_List.sortedAsc = false;
 
 		JMG_List.sort (JMG_List.sortedBy, JMG_List.sortedAsc);
@@ -1983,7 +1987,7 @@ function joinMiniGameGui::sortNumList ( %this, %col )
 	}
 	else
 	{
-		JMG_List.sortedBy  = %col;
+		JMG_List.sortedBy = %col;
 		JMG_List.sortedAsc = false;
 
 		JMG_List.sortNumerical (JMG_List.sortedBy, JMG_List.sortedAsc);
@@ -2014,27 +2018,27 @@ function CreateMiniGameGui::onWake ( %this )
 	{
 		$cmg_hasLoaded = true;
 
-		$MiniGameGui::BrickDamage      = true;
+		$MiniGameGui::BrickDamage = true;
 		$MiniGameGui::BrickRespawnTime = 30;
 
 		$MiniGameGui::ColorName = "Red";
 
-		$MiniGameGui::EnableBuilding   = true;
-		$MiniGameGui::EnablePainting   = true;
-		$MiniGameGui::EnableWand       = true;
-		$MiniGameGui::FallingDamage    = true;
-		$MiniGameGui::InviteOnly       = false;
+		$MiniGameGui::EnableBuilding = true;
+		$MiniGameGui::EnablePainting = true;
+		$MiniGameGui::EnableWand = true;
+		$MiniGameGui::FallingDamage = true;
+		$MiniGameGui::InviteOnly = false;
 
 		$MiniGameGui::PlayerDataBlock = "Standard Player";
 
 		$MiniGameGui::PlayersUseOwnBricks = false;
 
 		$MiniGameGui::Points::BreakBrick = 0;
-		$MiniGameGui::Points::Die        = 0;
+		$MiniGameGui::Points::Die = 0;
 		$MiniGameGui::Points::KillPlayer = 1;
-		$MiniGameGui::Points::KillSelf   = -1;
+		$MiniGameGui::Points::KillSelf = -1;
 		$MiniGameGui::Points::PlantBrick = 0;
-		$MiniGameGui::RespawnTime        = 1;
+		$MiniGameGui::RespawnTime = 1;
 
 		$MiniGameGui::SelfDamage = true;
 
@@ -2044,9 +2048,9 @@ function CreateMiniGameGui::onWake ( %this )
 		$MiniGameGui::StartEquip3 = "Gun";
 		$MiniGameGui::StartEquip4 = "Rocket L.";
 
-		$MiniGameGui::BotRespawnTime  = 5;
+		$MiniGameGui::BotRespawnTime = 5;
 		$MiniGameGui::Points::KillBot = 1;
-		$MiniGameGui::BotDamage       = true;
+		$MiniGameGui::BotDamage = true;
 
 		if ( isObject (ServerConnection) )
 		{
@@ -2076,11 +2080,11 @@ function CreateMiniGameGui::onWake ( %this )
 		}
 
 		$MiniGameGui::UseAllPlayersBricks = false;
-		$MiniGameGui::UseSpawnBricks      = true;
+		$MiniGameGui::UseSpawnBricks = true;
 
-		$MiniGameGui::VehicleDamage      = true;
+		$MiniGameGui::VehicleDamage = true;
 		$MiniGameGui::VehicleRespawnTime = 5;
-		$MiniGameGui::WeaponDamage       = true;
+		$MiniGameGui::WeaponDamage = true;
 
 		CreateMiniGameGui.Refresh ();
 
@@ -2146,27 +2150,27 @@ function CreateMiniGameGui::LoadDataBlocks ()
 
 	$MiniGameGui::UseAllPlayersBricks = mFloor ($MiniGameGui::UseAllPlayersBricks);
 	$MiniGameGui::PlayersUseOwnBricks = mFloor ($MiniGameGui::PlayersUseOwnBricks);
-	$MiniGameGui::UseSpawnBricks      = mFloor ($MiniGameGui::UseSpawnBricks);
+	$MiniGameGui::UseSpawnBricks = mFloor ($MiniGameGui::UseSpawnBricks);
 
 	$MiniGameGui::Points::BreakBrick = mFloor ($MiniGameGui::Points::BreakBrick);
 	$MiniGameGui::Points::PlantBrick = mFloor ($MiniGameGui::Points::PlantBrick);
 	$MiniGameGui::Points::KillPlayer = mFloor ($MiniGameGui::Points::KillPlayer);
-	$MiniGameGui::Points::KillSelf   = mFloor ($MiniGameGui::Points::KillSelf);
-	$MiniGameGui::Points::Die        = mFloor ($MiniGameGui::Points::Die);
+	$MiniGameGui::Points::KillSelf = mFloor ($MiniGameGui::Points::KillSelf);
+	$MiniGameGui::Points::Die = mFloor ($MiniGameGui::Points::Die);
 
-	$MiniGameGui::RespawnTime        = mFloor ($MiniGameGui::RespawnTime);
+	$MiniGameGui::RespawnTime = mFloor ($MiniGameGui::RespawnTime);
 	$MiniGameGui::VehicleRespawnTime = mFloor ($MiniGameGui::VehicleRespawnTime);
-	$MiniGameGui::BrickRespawnTime   = mFloor ($MiniGameGui::BrickRespawnTime);
+	$MiniGameGui::BrickRespawnTime = mFloor ($MiniGameGui::BrickRespawnTime);
 
 	$MiniGameGui::JetLevel = mFloor ($MiniGameGui::JetLevel);
 
 	$MiniGameGui::FallingDamage = mFloor ($MiniGameGui::FallingDamage);
-	$MiniGameGui::WeaponDamage  = mFloor ($MiniGameGui::WeaponDamage);
+	$MiniGameGui::WeaponDamage = mFloor ($MiniGameGui::WeaponDamage);
 	$MiniGameGui::VehicleDamage = mFloor ($MiniGameGui::VehicleDamage);
-	$MiniGameGui::BrickDamage   = mFloor ($MiniGameGui::BrickDamage);
-	$MiniGameGui::SelfDamage    = mFloor ($MiniGameGui::SelfDamage);
+	$MiniGameGui::BrickDamage = mFloor ($MiniGameGui::BrickDamage);
+	$MiniGameGui::SelfDamage = mFloor ($MiniGameGui::SelfDamage);
 
-	$MiniGameGui::EnableWand     = mFloor ($MiniGameGui::EnableWand);
+	$MiniGameGui::EnableWand = mFloor ($MiniGameGui::EnableWand);
 	$MiniGameGui::EnableBuilding = mFloor ($MiniGameGui::EnableBuilding);
 
 	if ( $MiniGameGui::PlayerDataBlock $= "" )
@@ -2219,10 +2223,10 @@ function ClientCmdAddMiniGameColor ( %idx, %name, %RGB )
 
 function CreateMiniGameGui::clickColorList ()
 {
-	%idx   = CMG_ColorList.getSelected ();
+	%idx = CMG_ColorList.getSelected ();
 	%color = getColorI (CMG_ColorList.colorF[%idx]);
-	%RGB   = getWords (%color, 0, 2);
-	%rgba  = %RGB @ " 255";
+	%RGB = getWords (%color, 0, 2);
+	%rgba = %RGB @ " 255";
 
 	CMG_Swatch.setColor (%rgba);
 }
@@ -2292,7 +2296,7 @@ function CreateMiniGameGui::clickSetFavs ( %this )
 
 function CreateMiniGameGui::ClickFav ( %this, %idx )
 {
-	%idx      = mFloor (%idx);
+	%idx = mFloor (%idx);
 	%filename = "config/client/MiniGameFavorites/" @ %idx @ ".cs";
 
 	if ( CMG_FavsHelper.isVisible () )
@@ -2375,31 +2379,31 @@ function CreateMiniGameGui::Refresh ( %this, %parentObj )
 function CreateMiniGameGui::send ( %this )
 {
 	%line = "";
-	%line = %line TAB "T"    SPC $MiniGameGui::Title;
-	%line = %line TAB "IO"   SPC $MiniGameGui::InviteOnly;
+	%line = %line TAB "T" SPC $MiniGameGui::Title;
+	%line = %line TAB "IO" SPC $MiniGameGui::InviteOnly;
 	%line = %line TAB "UAPB" SPC $MiniGameGui::UseAllPlayersBricks;
 	%line = %line TAB "PUOB" SPC $MiniGameGui::PlayersUseOwnBricks;
-	%line = %line TAB "USB"  SPC $MiniGameGui::UseSpawnBricks;
-	%line = %line TAB "PBB"  SPC $MiniGameGui::Points::BreakBrick;
-	%line = %line TAB "PPB"  SPC $MiniGameGui::Points::PlantBrick;
-	%line = %line TAB "PKP"  SPC $MiniGameGui::Points::KillPlayer;
-	%line = %line TAB "PKB"  SPC $MiniGameGui::Points::KillBot;
-	%line = %line TAB "PKS"  SPC $MiniGameGui::Points::KillSelf;
-	%line = %line TAB "PD"   SPC $MiniGameGui::Points::Die;
-	%line = %line TAB "RT"   SPC $MiniGameGui::RespawnTime;
-	%line = %line TAB "VRT"  SPC $MiniGameGui::VehicleRespawnTime;
-	%line = %line TAB "BRT"  SPC $MiniGameGui::BrickRespawnTime;
+	%line = %line TAB "USB" SPC $MiniGameGui::UseSpawnBricks;
+	%line = %line TAB "PBB" SPC $MiniGameGui::Points::BreakBrick;
+	%line = %line TAB "PPB" SPC $MiniGameGui::Points::PlantBrick;
+	%line = %line TAB "PKP" SPC $MiniGameGui::Points::KillPlayer;
+	%line = %line TAB "PKB" SPC $MiniGameGui::Points::KillBot;
+	%line = %line TAB "PKS" SPC $MiniGameGui::Points::KillSelf;
+	%line = %line TAB "PD" SPC $MiniGameGui::Points::Die;
+	%line = %line TAB "RT" SPC $MiniGameGui::RespawnTime;
+	%line = %line TAB "VRT" SPC $MiniGameGui::VehicleRespawnTime;
+	%line = %line TAB "BRT" SPC $MiniGameGui::BrickRespawnTime;
 	%line = %line TAB "BtRT" SPC $MiniGameGui::BotRespawnTime;
-	%line = %line TAB "FD"   SPC $MiniGameGui::FallingDamage;
-	%line = %line TAB "WD"   SPC $MiniGameGui::WeaponDamage;
-	%line = %line TAB "SD"   SPC $MiniGameGui::SelfDamage;
-	%line = %line TAB "VD"   SPC $MiniGameGui::VehicleDamage;
-	%line = %line TAB "BD"   SPC $MiniGameGui::BrickDamage;
-	%line = %line TAB "BtD"  SPC $MiniGameGui::BotDamage;
-	%line = %line TAB "EW"   SPC $MiniGameGui::EnableWand;
-	%line = %line TAB "EB"   SPC $MiniGameGui::EnableBuilding;
-	%line = %line TAB "EP"   SPC $MiniGameGui::EnablePainting;
-	%line = %line TAB "DB"   SPC CMG_PlayerDataBlock.getSelected ();
+	%line = %line TAB "FD" SPC $MiniGameGui::FallingDamage;
+	%line = %line TAB "WD" SPC $MiniGameGui::WeaponDamage;
+	%line = %line TAB "SD" SPC $MiniGameGui::SelfDamage;
+	%line = %line TAB "VD" SPC $MiniGameGui::VehicleDamage;
+	%line = %line TAB "BD" SPC $MiniGameGui::BrickDamage;
+	%line = %line TAB "BtD" SPC $MiniGameGui::BotDamage;
+	%line = %line TAB "EW" SPC $MiniGameGui::EnableWand;
+	%line = %line TAB "EB" SPC $MiniGameGui::EnableBuilding;
+	%line = %line TAB "EP" SPC $MiniGameGui::EnablePainting;
+	%line = %line TAB "DB" SPC CMG_PlayerDataBlock.getSelected ();
 
 	for ( %i = 0; %i < 5; %i++ )
 	{
@@ -2413,7 +2417,7 @@ function CreateMiniGameGui::send ( %this )
 
 	if ( strlen (%line) > 200 )
 	{
-		%tempLine   = "";
+		%tempLine = "";
 		%fieldCount = getFieldCount (%line);
 
 		for ( %i = 0; %i < %fieldCount; %i++ )
@@ -2459,7 +2463,7 @@ function connectingGui::cancel ()
 		$conn.delete ();
 	}
 
-	$ArrangedActive    = false;
+	$ArrangedActive = false;
 	$ArrangedAddyCount = 0;
 
 	if ( isObject ($ArrangedConnection) )
@@ -2711,7 +2715,7 @@ function cacheImpactFont ()
 
 function clientCmdSetRemoteServerData ( %serverLAN, %listenServer )
 {
-	$RemoteServer::LAN    = mFloor (%serverLAN);
+	$RemoteServer::LAN = mFloor (%serverLAN);
 	$RemoteServer::Listen = mFloor (%listenServer);
 }
 
@@ -2823,8 +2827,8 @@ function onMissionDownloadComplete ()
 	clientCmdWrench_LoadMenus ();
 	CreateMiniGameGui.LoadDataBlocks ();
 
-	$RunningMiniGame  = false;
-	$PlayingMiniGame  = false;
+	$RunningMiniGame = false;
+	$PlayingMiniGame = false;
 	$BuildingDisabled = false;
 	$PaintingDisabled = false;
 
@@ -2845,9 +2849,9 @@ function getValidSaveName ( %saveName )
 {
 	%invalidChars = strreplace (%saveName, " ", "");
 
-	%letters  = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 0";
+	%letters = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 0";
 	%currWord = 0;
-	%letter   = getWord (%letters, %currWord);
+	%letter = getWord (%letters, %currWord);
 
 	while ( %letter !$= "" )
 	{
@@ -2862,7 +2866,7 @@ function getValidSaveName ( %saveName )
 
 		for ( %i = 0; %i < %len; %i++ )
 		{
-			%badchar  = getSubStr (%invalidChars, %i, 1);
+			%badchar = getSubStr (%invalidChars, %i, 1);
 			%saveName = strreplace (%saveName, %badchar, "");
 		}
 	}
@@ -3009,7 +3013,7 @@ function GameConnection::onConnectRequestRejected ( %this, %msg )
 		{
 			$JoinNetServer = 1;
 
-			$ServerInfo::Ping    = "???";
+			$ServerInfo::Ping = "???";
 			$ServerInfo::Address = $connectArg;
 
 			Canvas.popDialog (connectingGui);
@@ -3189,11 +3193,11 @@ function disconnectedCleanup ( %doReconnect )
 
 	$BrickAutoBuyDone = false;
 
-	$CurrPaintSwatch     = 0;
-	$CurrPaintRow        = 0;
-	$currSprayCanIndex   = 0;
+	$CurrPaintSwatch = 0;
+	$CurrPaintRow = 0;
+	$currSprayCanIndex = 0;
 	$CurrScrollBrickSlot = 0;
-	$CurrScrollToolSlot  = 0;
+	$CurrScrollToolSlot = 0;
 
 	NetGraph.cancel ();
 
@@ -3314,7 +3318,7 @@ function optionsDlg::onWake ( %this )
 	Opt_SSSmartToggle.setVisible ($pref::Input::UseSuperShiftToggle);
 
 	%buffer = getDisplayDeviceList ();
-	%count  = getFieldCount (%buffer);
+	%count = getFieldCount (%buffer);
 
 	OptGraphicsDriverMenu.clear ();
 
@@ -3389,7 +3393,7 @@ function optionsDlg::onWake ( %this )
 	}
 
 	$oldTextureQuality = $pref::TextureQuality;
-	$oldBorderless     = $pref::Video::Borderless;
+	$oldBorderless = $pref::Video::Borderless;
 
 	for ( %i = 0; %i < 5; %i++ )
 	{
@@ -3563,24 +3567,24 @@ function optionsDlg::onSleep ( %this )
 	$pref::visibleDistanceMax = SliderGraphicsDistanceMax.getValue ();
 
 	$pref::ParticleFalloffMinDistance = SliderGraphicsParticleFalloffDist.getValue ();
-	$pref::ParticleFalloffMaxLevel    = SliderGraphicsParticleMaxFalloff.getValue ();
+	$pref::ParticleFalloffMaxLevel = SliderGraphicsParticleMaxFalloff.getValue ();
 
-	$pref::Player::defaultFov       = SliderDefaultFOV.getValue ();
+	$pref::Player::defaultFov = SliderDefaultFOV.getValue ();
 	$pref::Input::KeyboardTurnSpeed = slider_KeyboardTurnSpeed.getValue ();
 
 	$Pref::Chat::LineTime = Opt_ChatLineTime.getValue ();
 
-	$pref::HUD::tempBrickFlashTime   = mClamp (Opt_TempBrickFlashTime.getValue (), 100, 10000);
-	$pref::HUD::tempBrickFlashRange  = mClampF (Opt_TempBrickFlashRange.getValue (), 0, 1);
+	$pref::HUD::tempBrickFlashTime = mClamp (Opt_TempBrickFlashTime.getValue (), 100, 10000);
+	$pref::HUD::tempBrickFlashRange = mClampF (Opt_TempBrickFlashRange.getValue (), 0, 1);
 	$pref::HUD::tempBrickFlashoffset = mClampF (Opt_TempBrickFlashOffset.getValue (), 0, 1);
 
-	$pref::HUD::tempBrickOutsideRed   = mClampF (Opt_TempBrickOutsideRed.getValue (), 0, 1);
+	$pref::HUD::tempBrickOutsideRed = mClampF (Opt_TempBrickOutsideRed.getValue (), 0, 1);
 	$pref::HUD::tempBrickOutsideGreen = mClampF (Opt_TempBrickOutsideGreen.getValue (), 0, 1);
-	$pref::HUD::tempBrickOutsideBlue  = mClampF (Opt_TempBrickOutsideBlue.getValue (), 0, 1);
+	$pref::HUD::tempBrickOutsideBlue = mClampF (Opt_TempBrickOutsideBlue.getValue (), 0, 1);
 
-	$pref::HUD::tempBrickInsideRed   = mClampF (Opt_TempBrickInsideRed.getValue (), 0, 1);
+	$pref::HUD::tempBrickInsideRed = mClampF (Opt_TempBrickInsideRed.getValue (), 0, 1);
 	$pref::HUD::tempBrickInsideGreen = mClampF (Opt_TempBrickInsideGreen.getValue (), 0, 1);
-	$pref::HUD::tempBrickInsideBlue  = mClampF (Opt_TempBrickInsideBlue.getValue (), 0, 1);
+	$pref::HUD::tempBrickInsideBlue = mClampF (Opt_TempBrickInsideBlue.getValue (), 0, 1);
 
 	updateTempBrickSettings ();
 
@@ -3723,7 +3727,8 @@ function OptGraphicsDriverMenu::onSelect ( %this, %id, %text )
 	}
 
 	OptGraphicsResolutionMenu.init (%this.getText (), OptGraphicsFullscreenToggle.getValue ()
-		                                           || OptGraphicsBorderlessToggle.getValue ());
+		|| OptGraphicsBorderlessToggle.getValue ());
+
 	OptGraphicsBPPMenu.init (%this.getText ());
 
 	%selId = OptGraphicsResolutionMenu.findText (%prevRes);
@@ -3759,8 +3764,8 @@ function OptGraphicsResolutionMenu::onSelect ( %this, %id, %text )
 {
 	OptGraphicsHzMenu.clear ();
 
-	%device   = OptGraphicsDriverMenu.getText ();
-	%resList  = getResolutionList (%device);
+	%device = OptGraphicsDriverMenu.getText ();
+	%resList = getResolutionList (%device);
 	%resCount = getFieldCount (%resList);
 
 	%currRes = OptGraphicsResolutionMenu.getText ();
@@ -3784,8 +3789,8 @@ function OptGraphicsResolutionMenu::onSelect ( %this, %id, %text )
 	for ( %i = 0; %i < %resCount; %i++ )
 	{
 		%checkField = getField (%resList, %i);
-		%checkRes   = getWords (%checkField, 0, 1);
-		%checkBpp   = getWord (%checkField, 2);
+		%checkRes = getWords (%checkField, 0, 1);
+		%checkBpp = getWord (%checkField, 2);
 
 		if ( %checkRes $= %currRes && %checkBpp $= %currBpp )
 		{
@@ -3801,12 +3806,12 @@ function OptGraphicsResolutionMenu::init ( %this, %device, %fullScreen )
 {
 	%this.clear ();
 
-	%resList  = getResolutionList (%device);
+	%resList = getResolutionList (%device);
 	%resCount = getFieldCount (%resList);
-	%deskRes  = getDesktopResolution ();
+	%deskRes = getDesktopResolution ();
 
 	%captionHeight = getWindowCaptionHeight ();
-	%frameSize     = getWindowFrameSize ();
+	%frameSize = getWindowFrameSize ();
 
 	%deskW = getWord (%deskRes, 0) - %frameSize * 2;
 	%deskH = (getWord (%deskRes, 1) - %frameSize * 2) - %captionHeight;
@@ -3885,7 +3890,7 @@ function OptGraphicsBPPMenu::init ( %this, %device )
 	}
 	else
 	{
-		%resList  = getResolutionList (%device);
+		%resList = getResolutionList (%device);
 		%resCount = getFieldCount (%resList);
 
 		%count = 0;
@@ -3918,16 +3923,16 @@ function OptScreenshotMenu::init ( %this )
 
 function optionsDlg::applyGraphics ( %this )
 {
-	%newDriver     = OptGraphicsDriverMenu.getText ();
-	%newRes        = OptGraphicsResolutionMenu.getText ();
-	%newBpp        = OptGraphicsBPPMenu.getText ();
+	%newDriver = OptGraphicsDriverMenu.getText ();
+	%newRes = OptGraphicsResolutionMenu.getText ();
+	%newBpp = OptGraphicsBPPMenu.getText ();
 	%newFullScreen = OptGraphicsFullscreenToggle.getValue ();
-	%newHz         = OptGraphicsHzMenu.getText ();
+	%newHz = OptGraphicsHzMenu.getText ();
 
 	$pref::Video::screenShotFormat = OptScreenshotMenu.getText ();
 
 	%oldShaderEnabled = $Shader::Enabled;
-	$Shader::Enabled  = false;
+	$Shader::Enabled = false;
 
 	Canvas.repaint ();
 
@@ -3935,7 +3940,7 @@ function optionsDlg::applyGraphics ( %this )
 	  || $pref::OpenGL::maxHardwareLights != $oldMaxLights )
 	{
 		$oldTextureQuality = $pref::TextureQuality;
-		$oldMaxLights      = $pref::OpenGL::maxHardwareLights;
+		$oldMaxLights = $pref::OpenGL::maxHardwareLights;
 
 		if ( %newFullScreen )
 		{
@@ -3976,416 +3981,416 @@ function optionsDlg::applyGraphics ( %this )
 $RemapCount = 0;
 
 $RemapDivision[$RemapCount] = "Movement";
-$RemapName[$RemapCount]     = "Forward";
-$RemapCmd[$RemapCount]      = "moveforward";
+$RemapName[$RemapCount] = "Forward";
+$RemapCmd[$RemapCount] = "moveforward";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Backward";
-$RemapCmd[$RemapCount]  = "movebackward";
+$RemapCmd[$RemapCount] = "movebackward";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Strafe Left";
-$RemapCmd[$RemapCount]  = "moveleft";
+$RemapCmd[$RemapCount] = "moveleft";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Strafe Right";
-$RemapCmd[$RemapCount]  = "moveright";
+$RemapCmd[$RemapCount] = "moveright";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Jump";
-$RemapCmd[$RemapCount]  = "jump";
+$RemapCmd[$RemapCount] = "jump";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Crouch";
-$RemapCmd[$RemapCount]  = "crouch";
+$RemapCmd[$RemapCount] = "crouch";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Walk";
-$RemapCmd[$RemapCount]  = "walk";
+$RemapCmd[$RemapCount] = "walk";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Jet";
-$RemapCmd[$RemapCount]  = "jet";
+$RemapCmd[$RemapCount] = "jet";
 
 $RemapCount++;
 
 $RemapDivision[$RemapCount] = "View";
-$RemapName[$RemapCount]     = "Turn Left";
-$RemapCmd[$RemapCount]      = "turnLeft";
+$RemapName[$RemapCount] = "Turn Left";
+$RemapCmd[$RemapCount] = "turnLeft";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Turn Right";
-$RemapCmd[$RemapCount]  = "turnRight";
+$RemapCmd[$RemapCount] = "turnRight";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Look Up";
-$RemapCmd[$RemapCount]  = "panUp";
+$RemapCmd[$RemapCount] = "panUp";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Look Down";
-$RemapCmd[$RemapCount]  = "panDown";
+$RemapCmd[$RemapCount] = "panDown";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Toggle Zoom";
-$RemapCmd[$RemapCount]  = "toggleZoom";
+$RemapCmd[$RemapCount] = "toggleZoom";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Free Look";
-$RemapCmd[$RemapCount]  = "toggleFreeLook";
+$RemapCmd[$RemapCount] = "toggleFreeLook";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Switch 1st/3rd";
-$RemapCmd[$RemapCount]  = "toggleFirstPerson";
+$RemapCmd[$RemapCount] = "toggleFirstPerson";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Drop Camera at Player";
-$RemapCmd[$RemapCount]  = "dropCameraAtPlayer";
+$RemapCmd[$RemapCount] = "dropCameraAtPlayer";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Drop Player at Camera";
-$RemapCmd[$RemapCount]  = "dropPlayerAtCamera";
+$RemapCmd[$RemapCount] = "dropPlayerAtCamera";
 
 $RemapCount++;
 
 $RemapDivision[$RemapCount] = "Action";
-$RemapName[$RemapCount]     = "Fire Weapon/Tool";
-$RemapCmd[$RemapCount]      = "mouseFire";
+$RemapName[$RemapCount] = "Fire Weapon/Tool";
+$RemapCmd[$RemapCount] = "mouseFire";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Suicide";
-$RemapCmd[$RemapCount]  = "Suicide";
+$RemapCmd[$RemapCount] = "Suicide";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Next Vehicle Seat";
-$RemapCmd[$RemapCount]  = "NextSeat";
+$RemapCmd[$RemapCount] = "NextSeat";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Prev Vehicle Seat";
-$RemapCmd[$RemapCount]  = "PrevSeat";
+$RemapCmd[$RemapCount] = "PrevSeat";
 
 $RemapCount++;
 
 $RemapDivision[$RemapCount] = "Communication";
-$RemapName[$RemapCount]     = "Global Chat";
-$RemapCmd[$RemapCount]      = "GlobalChat";
+$RemapName[$RemapCount] = "Global Chat";
+$RemapCmd[$RemapCount] = "GlobalChat";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Team Chat";
-$RemapCmd[$RemapCount]  = "TeamChat";
+$RemapCmd[$RemapCount] = "TeamChat";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Chat Hud PageUp";
-$RemapCmd[$RemapCount]  = "PageUpNewChatHud";
+$RemapCmd[$RemapCount] = "PageUpNewChatHud";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Chat Hud PageDown";
-$RemapCmd[$RemapCount]  = "PageDownNewChatHud";
+$RemapCmd[$RemapCount] = "PageDownNewChatHud";
 
 $RemapCount++;
 
 $RemapDivision[$RemapCount] = "Gui";
-$RemapName[$RemapCount]     = "Toggle Cursor";
-$RemapCmd[$RemapCount]      = "ToggleCursor";
+$RemapName[$RemapCount] = "Toggle Cursor";
+$RemapCmd[$RemapCount] = "ToggleCursor";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Open Admin Window";
-$RemapCmd[$RemapCount]  = "openAdminWindow";
+$RemapCmd[$RemapCount] = "openAdminWindow";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Open Options Window";
-$RemapCmd[$RemapCount]  = "openOptionsWindow";
+$RemapCmd[$RemapCount] = "openOptionsWindow";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Show Player List";
-$RemapCmd[$RemapCount]  = "showPlayerList";
+$RemapCmd[$RemapCount] = "showPlayerList";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Toggle NetGraph";
-$RemapCmd[$RemapCount]  = "toggleNetGraph";
+$RemapCmd[$RemapCount] = "toggleNetGraph";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Toggle Player Names / Crosshair";
-$RemapCmd[$RemapCount]  = "ToggleShapeNameHud";
+$RemapCmd[$RemapCount] = "ToggleShapeNameHud";
 
 $RemapCount++;
 
 $RemapDivision[$RemapCount] = "Tools / Inventory";
-$RemapName[$RemapCount]     = "Use Bricks";
-$RemapCmd[$RemapCount]      = "useBricks";
+$RemapName[$RemapCount] = "Use Bricks";
+$RemapCmd[$RemapCount] = "useBricks";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use Tools";
-$RemapCmd[$RemapCount]  = "useTools";
+$RemapCmd[$RemapCount] = "useTools";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use Spray Can";
-$RemapCmd[$RemapCount]  = "useSprayCan";
+$RemapCmd[$RemapCount] = "useSprayCan";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use Light";
-$RemapCmd[$RemapCount]  = "useLight";
+$RemapCmd[$RemapCount] = "useLight";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Drop Tool";
-$RemapCmd[$RemapCount]  = "dropTool";
+$RemapCmd[$RemapCount] = "dropTool";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use 1st Slot";
-$RemapCmd[$RemapCount]  = "useFirstSlot";
+$RemapCmd[$RemapCount] = "useFirstSlot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use 2nd Slot";
-$RemapCmd[$RemapCount]  = "useSecondSlot";
+$RemapCmd[$RemapCount] = "useSecondSlot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use 3rd Slot";
-$RemapCmd[$RemapCount]  = "useThirdSlot";
+$RemapCmd[$RemapCount] = "useThirdSlot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use 4th Slot";
-$RemapCmd[$RemapCount]  = "useFourthSlot";
+$RemapCmd[$RemapCount] = "useFourthSlot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use 5th Slot";
-$RemapCmd[$RemapCount]  = "useFifthSlot";
+$RemapCmd[$RemapCount] = "useFifthSlot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use 6th Slot";
-$RemapCmd[$RemapCount]  = "useSixthSlot";
+$RemapCmd[$RemapCount] = "useSixthSlot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use 7th Slot";
-$RemapCmd[$RemapCount]  = "useSeventhSlot";
+$RemapCmd[$RemapCount] = "useSeventhSlot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use 8th Slot";
-$RemapCmd[$RemapCount]  = "useEighthSlot";
+$RemapCmd[$RemapCount] = "useEighthSlot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use 9th Slot";
-$RemapCmd[$RemapCount]  = "useNinthSlot";
+$RemapCmd[$RemapCount] = "useNinthSlot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Use 10th Slot";
-$RemapCmd[$RemapCount]  = "useTenthSlot";
+$RemapCmd[$RemapCount] = "useTenthSlot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Inventory Up";
-$RemapCmd[$RemapCount]  = "invUp";
+$RemapCmd[$RemapCount] = "invUp";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Inventory Down";
-$RemapCmd[$RemapCount]  = "invDown";
+$RemapCmd[$RemapCount] = "invDown";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Inventory Left";
-$RemapCmd[$RemapCount]  = "invLeft";
+$RemapCmd[$RemapCount] = "invLeft";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Inventory Right";
-$RemapCmd[$RemapCount]  = "invRight";
+$RemapCmd[$RemapCount] = "invRight";
 
 $RemapCount++;
 
 $RemapDivision[$RemapCount] = "Building";
-$RemapName[$RemapCount]     = "Open Brick Selector";
-$RemapCmd[$RemapCount]      = "openBSD";
+$RemapName[$RemapCount] = "Open Brick Selector";
+$RemapCmd[$RemapCount] = "openBSD";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Plant Brick";
-$RemapCmd[$RemapCount]  = "plantBrick";
+$RemapCmd[$RemapCount] = "plantBrick";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Undo Brick";
-$RemapCmd[$RemapCount]  = "undoBrick";
+$RemapCmd[$RemapCount] = "undoBrick";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Cancel Brick";
-$RemapCmd[$RemapCount]  = "cancelBrick";
+$RemapCmd[$RemapCount] = "cancelBrick";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Shift Brick Away";
-$RemapCmd[$RemapCount]  = "shiftBrickAway";
+$RemapCmd[$RemapCount] = "shiftBrickAway";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Shift Brick Towards";
-$RemapCmd[$RemapCount]  = "shiftBrickTowards";
+$RemapCmd[$RemapCount] = "shiftBrickTowards";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Shift Brick Left";
-$RemapCmd[$RemapCount]  = "shiftBrickLeft";
+$RemapCmd[$RemapCount] = "shiftBrickLeft";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Shift Brick Right";
-$RemapCmd[$RemapCount]  = "shiftBrickRight";
+$RemapCmd[$RemapCount] = "shiftBrickRight";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Shift Brick Up";
-$RemapCmd[$RemapCount]  = "shiftBrickUp";
+$RemapCmd[$RemapCount] = "shiftBrickUp";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Shift Brick Down";
-$RemapCmd[$RemapCount]  = "shiftBrickDown";
+$RemapCmd[$RemapCount] = "shiftBrickDown";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Shift Brick Up 1/3";
-$RemapCmd[$RemapCount]  = "shiftBrickThirdUp";
+$RemapCmd[$RemapCount] = "shiftBrickThirdUp";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Shift Brick Down 1/3";
-$RemapCmd[$RemapCount]  = "shiftBrickThirdDown";
+$RemapCmd[$RemapCount] = "shiftBrickThirdDown";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Rotate Brick CW";
-$RemapCmd[$RemapCount]  = "RotateBrickCW";
+$RemapCmd[$RemapCount] = "RotateBrickCW";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Rotate Brick CCW";
-$RemapCmd[$RemapCount]  = "RotateBrickCCW";
+$RemapCmd[$RemapCount] = "RotateBrickCCW";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Toggle Super Shift";
-$RemapCmd[$RemapCount]  = "toggleSuperShift";
+$RemapCmd[$RemapCount] = "toggleSuperShift";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Super Shift Brick Away";
-$RemapCmd[$RemapCount]  = "superShiftBrickAwayProxy";
+$RemapCmd[$RemapCount] = "superShiftBrickAwayProxy";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Super Shift Brick Towards";
-$RemapCmd[$RemapCount]  = "superShiftBrickTowardsProxy";
+$RemapCmd[$RemapCount] = "superShiftBrickTowardsProxy";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Super Shift Brick Left";
-$RemapCmd[$RemapCount]  = "superShiftBrickLeftProxy";
+$RemapCmd[$RemapCount] = "superShiftBrickLeftProxy";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Super Shift Brick Right";
-$RemapCmd[$RemapCount]  = "superShiftBrickRightProxy";
+$RemapCmd[$RemapCount] = "superShiftBrickRightProxy";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Super Shift Brick Up";
-$RemapCmd[$RemapCount]  = "superShiftBrickUpProxy";
+$RemapCmd[$RemapCount] = "superShiftBrickUpProxy";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Super Shift Brick Down";
-$RemapCmd[$RemapCount]  = "superShiftBrickDownProxy";
+$RemapCmd[$RemapCount] = "superShiftBrickDownProxy";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Toggle Build Macro Recording";
-$RemapCmd[$RemapCount]  = "ToggleBuildMacroRecording";
+$RemapCmd[$RemapCount] = "ToggleBuildMacroRecording";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Playback Build Macro";
-$RemapCmd[$RemapCount]  = "PlayBackBuildMacro";
+$RemapCmd[$RemapCount] = "PlayBackBuildMacro";
 
 $RemapCount++;
 
 $RemapDivision[$RemapCount] = "Recording";
-$RemapName[$RemapCount]     = "Take Hud Screenshot";
-$RemapCmd[$RemapCount]      = "doHudScreenshot";
+$RemapName[$RemapCount] = "Take Hud Screenshot";
+$RemapCmd[$RemapCount] = "doHudScreenshot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Take Screenshot";
-$RemapCmd[$RemapCount]  = "doScreenShot";
+$RemapCmd[$RemapCount] = "doScreenShot";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Take DOF Screenshot";
-$RemapCmd[$RemapCount]  = "doDofScreenShot";
+$RemapCmd[$RemapCount] = "doDofScreenShot";
 
 $RemapCount++;
 
 $RemapDivision[$RemapCount] = "Emotes";
-$RemapName[$RemapCount]     = "Sit";
-$RemapCmd[$RemapCount]      = "emoteSit";
+$RemapName[$RemapCount] = "Sit";
+$RemapCmd[$RemapCount] = "emoteSit";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Love";
-$RemapCmd[$RemapCount]  = "emoteLove";
+$RemapCmd[$RemapCount] = "emoteLove";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Hate";
-$RemapCmd[$RemapCount]  = "emoteHate";
+$RemapCmd[$RemapCount] = "emoteHate";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Confusion";
-$RemapCmd[$RemapCount]  = "emoteConfusion";
+$RemapCmd[$RemapCount] = "emoteConfusion";
 
 $RemapCount++;
 
 $RemapName[$RemapCount] = "Alarm";
-$RemapCmd[$RemapCount]  = "emoteAlarm";
+$RemapCmd[$RemapCount] = "emoteAlarm";
 
 $RemapCount++;
 
@@ -4402,8 +4407,8 @@ function getMapDisplayName ( %device, %action )
 
 		if ( %pos != -1 )
 		{
-			%mods     = getSubStr (%action, 0, %pos);
-			%object   = getSubStr (%action, %pos, 1000);
+			%mods = getSubStr (%action, 0, %pos);
+			%object = getSubStr (%action, %pos, 1000);
 			%instance = getSubStr (%object, strlen ("button"), 1000);
 
 			return %mods @ "mouse" @ %instance + 1;
@@ -4419,8 +4424,8 @@ function getMapDisplayName ( %device, %action )
 
 		if ( %pos != -1 )
 		{
-			%mods     = getSubStr (%action, 0, %pos);
-			%object   = getSubStr (%action, %pos, 1000);
+			%mods = getSubStr (%action, 0, %pos);
+			%object = getSubStr (%action, %pos, 1000);
 			%instance = getSubStr (%object, strlen ("button"), 1000);
 
 			return %mods @ "joystick" @ %instance + 1;
@@ -4432,8 +4437,8 @@ function getMapDisplayName ( %device, %action )
 			if ( %pos != -1 )
 			{
 				%wordCount = getWordCount (%action);
-				%mods      = %wordCount > 1 ? getWords (%action, 0, %wordCount - 2) @ " " : "";
-				%object    = getWord (%action, %wordCount - 1);
+				%mods = %wordCount > 1 ? getWords (%action, 0, %wordCount - 2) @ " " : "";
+				%object = getWord (%action, %wordCount - 1);
 
 				switch$ ( %object )
 				{
@@ -4463,9 +4468,9 @@ function getMapDisplayName ( %device, %action )
 
 function buildFullMapString ( %index )
 {
-	%name   = $RemapName[%index];
-	%cmd    = $RemapCmd[%index];
-	%temp   = moveMap.getBinding (%cmd);
+	%name = $RemapName[%index];
+	%cmd = $RemapCmd[%index];
+	%temp = moveMap.getBinding (%cmd);
 	%device = getField (%temp, 0);
 	%object = getField (%temp, 1);
 
@@ -4479,7 +4484,7 @@ function buildFullMapString ( %index )
 	}
 
 	%mapString = strupr (%mapString);
-	%name      = %name @ "\c5";
+	%name = %name @ "\c5";
 
 	return %name TAB %mapString;
 }
@@ -4508,7 +4513,7 @@ function OptRemapList::fillList ( %this )
 function OptRemapList::doRemap ( %this )
 {
 	%selId = %this.getSelectedId ();
-	%name  = $RemapName[%selId];
+	%name = $RemapName[%selId];
 
 	if ( %name $= "" )
 	{
@@ -4587,7 +4592,7 @@ function OptRemapInputCtrl::onInputEvent ( %this, %device, %action )
 		}
 		else if ( %action $= "backspace" )
 		{
-			%bind   = moveMap.getBinding ($RemapCmd[%this.index]);
+			%bind = moveMap.getBinding ($RemapCmd[%this.index]);
 			%device = getWord (%bind, 0);
 			%action = getWords (%bind, 1, getWordCount (%bind) - 1);
 
@@ -4604,7 +4609,7 @@ function OptRemapInputCtrl::onInputEvent ( %this, %device, %action )
 		}
 	}
 
-	%cmd  = $RemapCmd[%this.index];
+	%cmd = $RemapCmd[%this.index];
 	%name = $RemapName[%this.index];
 
 	%prevMap = moveMap.getCommand (%device, %action);
@@ -4618,7 +4623,7 @@ function OptRemapInputCtrl::onInputEvent ( %this, %device, %action )
 		}
 		else
 		{
-			%mapName      = getMapDisplayName (%device, %action);
+			%mapName = getMapDisplayName (%device, %action);
 			%prevMapIndex = findRemapCmdIndex (%prevMap);
 
 			if ( %prevMapIndex == -1 )
@@ -4630,10 +4635,14 @@ function OptRemapInputCtrl::onInputEvent ( %this, %device, %action )
 			{
 				%prevCmdName = $RemapName[%prevMapIndex];
 
-				messageBoxYesNo ("WARNING", "\""  @ %mapName @ "\" is already bound to \"" @ %prevCmdName
+				messageBoxYesNo ("WARNING", "\"" @ %mapName @ "\" is already bound to \"" @ %prevCmdName
 					@ "\"!\nDo you want to undo this mapping?",
-					"redoMapping(" @ %device @ ", \"" @ %action @ "\", \"" @ %cmd @ "\", " @ %prevMapIndex
-					@ ", " @ %this.index @ ");", "");
+					"redoMapping(" @ %device @ ", \""
+						@ %action @ "\", \""
+						@ %cmd @ "\", "
+						@ %prevMapIndex @ ", "
+						@ %this.index @ ");",
+					"");
 			}
 
 			return;
@@ -4658,7 +4667,7 @@ function optionsDlg::clearAllBinds ( %this, %confirm )
 	{
 		for ( %index = 0; %index < $RemapCount; %index++ )
 		{
-			%bind   = moveMap.getBinding ($RemapCmd[%index]);
+			%bind = moveMap.getBinding ($RemapCmd[%index]);
 			%device = getWord (%bind, 0);
 			%action = getWords (%bind, 1, getWordCount (%bind) - 1);
 
@@ -4681,10 +4690,10 @@ function optionsDlg::setDefaultBinds ( %this, %confirm )
 
 function OptAudioUpdate ()
 {
-	%text = " Vendor: "     @ alGetString ("AL_VENDOR")
-	    @ "\n Version: "    @ alGetString ("AL_VERSION")
-	    @ "\n Renderer: "   @ alGetString ("AL_RENDERER")
-	    @ "\n Extensions: " @ alGetString ("AL_EXTENSIONS");
+	%text = " Vendor: " @ alGetString ("AL_VENDOR")
+		@ "\n Version: " @ alGetString ("AL_VERSION")
+		@ "\n Renderer: " @ alGetString ("AL_RENDERER")
+		@ "\n Extensions: " @ alGetString ("AL_EXTENSIONS");
 
 	OptAudioInfo.setText (%text);
 }
@@ -4692,74 +4701,74 @@ function OptAudioUpdate ()
 
 new AudioDescription (AudioChannel0)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = false;
-	type      = 0;
+	is3D = false;
+	type = 0;
 };
 
 new AudioDescription (AudioChannel1)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = false;
-	type      = 1;
+	is3D = false;
+	type = 1;
 };
 
 new AudioDescription (AudioChannel2)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = false;
-	type      = 2;
+	is3D = false;
+	type = 2;
 };
 
 new AudioDescription (AudioChannel3)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = false;
-	type      = 3;
+	is3D = false;
+	type = 3;
 };
 
 new AudioDescription (AudioChannel4)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = false;
-	type      = 4;
+	is3D = false;
+	type = 4;
 };
 
 new AudioDescription (AudioChannel5)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = false;
-	type      = 5;
+	is3D = false;
+	type = 5;
 };
 
 new AudioDescription (AudioChannel6)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = false;
-	type      = 6;
+	is3D = false;
+	type = 6;
 };
 
 new AudioDescription (AudioChannel7)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = false;
-	type      = 7;
+	is3D = false;
+	type = 7;
 };
 
 new AudioDescription (AudioChannel8)
 {
-	volume    = 1;
+	volume = 1;
 	isLooping = false;
-	is3D      = false;
-	type      = 8;
+	is3D = false;
+	type = 8;
 };
 
 $AudioTestHandle = 0;
@@ -5174,7 +5183,7 @@ function dropTenthSlot ( %val )
 
 
 $BrickFirstRepeatTime = 200;
-$BrickRepeatTime      = 50;
+$BrickRepeatTime = 50;
 
 function repeatBrickAway ( %val )
 {
@@ -5740,9 +5749,9 @@ function openBSD ( %val )
 
 
 $SCROLLMODE_BRICKS = 0;
-$SCROLLMODE_PAINT  = 1;
-$SCROLLMODE_TOOLS  = 2;
-$SCROLLMODE_NONE   = 3;
+$SCROLLMODE_PAINT = 1;
+$SCROLLMODE_TOOLS = 2;
+$SCROLLMODE_NONE = 3;
 
 function scrollInventory ( %val )
 {
@@ -5990,8 +5999,8 @@ function shiftPaintColumn ( %direction )
 		if ( $pref::Hud::RecolorBrickIcons )
 		{
 			%color = getColorIDTable ($currSprayCanIndex);
-			%RGB   = getWords (%color, 0, 2);
-			%a     = mClampF (getWord (%color, 3), 0.1, 1);
+			%RGB = getWords (%color, 0, 2);
+			%a = mClampF (getWord (%color, 3), 0.1, 1);
 			%color = %RGB SPC %a;
 
 			for ( %i = 0; %i < $BSD_NumInventorySlots; %i++ )
@@ -6072,8 +6081,8 @@ function scrollPaint ( %direction )
 		if ( $pref::Hud::RecolorBrickIcons )
 		{
 			%color = getColorIDTable ($currSprayCanIndex);
-			%RGB   = getWords (%color, 0, 2);
-			%a     = mClampF (getWord (%color, 3), 0.1, 1);
+			%RGB = getWords (%color, 0, 2);
+			%a = mClampF (getWord (%color, 3), 0.1, 1);
 			%color = %RGB SPC %a;
 
 			for ( %i = 0; %i < $BSD_NumInventorySlots; %i++ )
@@ -6780,32 +6789,32 @@ function ToggleCursor ( %val )
 }
 
 
-$Net_PacketSize[1]   = 240;
+$Net_PacketSize[1] = 240;
 $Net_RateToClient[1] = 16;
 $Net_RateToServer[1] = 20;
 $Net_LagThreshold[1] = 400;
 
-$Net_PacketSize[2]   = 240;
+$Net_PacketSize[2] = 240;
 $Net_RateToClient[2] = 16;
 $Net_RateToServer[2] = 20;
 $Net_LagThreshold[2] = 400;
 
-$Net_PacketSize[3]   = 240;
+$Net_PacketSize[3] = 240;
 $Net_RateToClient[3] = 16;
 $Net_RateToServer[3] = 20;
 $Net_LagThreshold[3] = 400;
 
-$Net_PacketSize[4]   = 1023;
+$Net_PacketSize[4] = 1023;
 $Net_RateToClient[4] = 32;
 $Net_RateToServer[4] = 32;
 $Net_LagThreshold[4] = 400;
 
-$Net_PacketSize[5]   = 1023;
+$Net_PacketSize[5] = 1023;
 $Net_RateToClient[5] = 32;
 $Net_RateToServer[5] = 32;
 $Net_LagThreshold[5] = 400;
 
-$Net_PacketSize[6]   = 1023;
+$Net_PacketSize[6] = 1023;
 $Net_RateToClient[6] = 32;
 $Net_RateToServer[6] = 32;
 $Net_LagThreshold[6] = 400;
@@ -6823,10 +6832,10 @@ function SetConnectionType ( %val )
 	{
 		CustomNetworkBlocker.setVisible (true);
 
-		$pref::Net::PacketSize         = $Net_PacketSize[%val];
+		$pref::Net::PacketSize = $Net_PacketSize[%val];
 		$pref::Net::PacketRateToClient = $Net_RateToClient[%val];
 		$pref::Net::PacketRateToServer = $Net_RateToServer[%val];
-		$Pref::Net::LagThreshold       = $Net_LagThreshold[%val];
+		$Pref::Net::LagThreshold = $Net_LagThreshold[%val];
 
 		PacketSizeDisplay.setValue ($pref::Net::PacketSize);
 		SliderPacketSize.setValue ($pref::Net::PacketSize);
@@ -6939,16 +6948,16 @@ function OPT_ChatSizeSlide ()
 
 function OPT_SetChatSize ( %val )
 {
-	%maxHeight[0]  = 16;
-	%maxHeight[1]  = 18;
-	%maxHeight[2]  = 20;
-	%maxHeight[3]  = 22;
-	%maxHeight[4]  = 24;
-	%maxHeight[5]  = 26;
-	%maxHeight[6]  = 28;
-	%maxHeight[7]  = 30;
-	%maxHeight[8]  = 32;
-	%maxHeight[9]  = 34;
+	%maxHeight[0] = 16;
+	%maxHeight[1] = 18;
+	%maxHeight[2] = 20;
+	%maxHeight[3] = 22;
+	%maxHeight[4] = 24;
+	%maxHeight[5] = 26;
+	%maxHeight[6] = 28;
+	%maxHeight[7] = 30;
+	%maxHeight[8] = 32;
+	%maxHeight[9] = 34;
 	%maxHeight[10] = 36;
 
 	if ( %val >= 0 && %val <= 10 )
@@ -7083,57 +7092,57 @@ function optionsDlg::setTextureQuality ( %this, %val )
 
 	if ( %val == 0 )
 	{
-		$pref::Terrain::texDetail  = 0;
+		$pref::Terrain::texDetail = 0;
 		$pref::Interior::texdetail = 0;
 
-		$pref::OpenGL::texDetail    = 0;
+		$pref::OpenGL::texDetail = 0;
 		$pref::OpenGL::skyTexDetail = 0;
 
-		$pref::Terrain::enableDetails     = true;
+		$pref::Terrain::enableDetails = true;
 		$pref::Terrain::enableEmbossBumps = true;
 	}
 	else if ( %val == 1 )
 	{
-		$pref::Terrain::texDetail  = 0;
+		$pref::Terrain::texDetail = 0;
 		$pref::Interior::texdetail = 0;
 
-		$pref::OpenGL::texDetail    = 0;
+		$pref::OpenGL::texDetail = 0;
 		$pref::OpenGL::skyTexDetail = 0;
 
-		$pref::Terrain::enableDetails     = false;
+		$pref::Terrain::enableDetails = false;
 		$pref::Terrain::enableEmbossBumps = false;
 	}
 	else if ( %val == 2 )
 	{
-		$pref::Terrain::texDetail  = 1;
+		$pref::Terrain::texDetail = 1;
 		$pref::Interior::texdetail = 1;
 
-		$pref::OpenGL::texDetail    = 1;
+		$pref::OpenGL::texDetail = 1;
 		$pref::OpenGL::skyTexDetail = 1;
 
-		$pref::Terrain::enableDetails     = false;
+		$pref::Terrain::enableDetails = false;
 		$pref::Terrain::enableEmbossBumps = false;
 	}
 	else if ( %val == 3 )
 	{
-		$pref::Terrain::texDetail  = 2;
+		$pref::Terrain::texDetail = 2;
 		$pref::Interior::texdetail = 2;
 
-		$pref::OpenGL::texDetail    = 2;
+		$pref::OpenGL::texDetail = 2;
 		$pref::OpenGL::skyTexDetail = 2;
 
-		$pref::Terrain::enableDetails     = false;
+		$pref::Terrain::enableDetails = false;
 		$pref::Terrain::enableEmbossBumps = false;
 	}
 	else if ( %val == 4 )
 	{
-		$pref::Terrain::texDetail  = 4;
+		$pref::Terrain::texDetail = 4;
 		$pref::Interior::texdetail = 4;
 
-		$pref::OpenGL::texDetail    = 4;
+		$pref::OpenGL::texDetail = 4;
 		$pref::OpenGL::skyTexDetail = 4;
 
-		$pref::Terrain::enableDetails     = false;
+		$pref::Terrain::enableDetails = false;
 		$pref::Terrain::enableEmbossBumps = false;
 	}
 }
@@ -7177,29 +7186,29 @@ function optionsDlg::setParticleQuality ( %this, %val )
 function optionsDlg::UpdateAvailableShaders ( %this )
 {
 	%glMajorVersion = getSubStr (getGLVersion (), 0, 1);
-	%shaderVersion  = getSubStr (getShaderVersion (), 0, 3);
+	%shaderVersion = getSubStr (getShaderVersion (), 0, 3);
 
 	%haveMinimum = %shaderVersion >= 1.2
-	            && %glMajorVersion >= 2
-	            && GLEW_ARB_shader_objects ()
-	            && GLEW_ARB_shading_language_100 ();
+		&& %glMajorVersion >= 2
+		&& GLEW_ARB_shader_objects ()
+		&& GLEW_ARB_shading_language_100 ();
 
 	OPT_ShaderQuality1.enabled = %haveMinimum;
 
 	%haveCompatibility = %shaderVersion >= 1.2
-	                  && %glMajorVersion >= 2
-	                  && GLEW_ARB_shader_objects ()
-	                  && GLEW_ARB_shading_language_100 ()
-	                  && GLEW_EXT_framebuffer_object ()
-	                  && GLEW_ARB_shadow ();
+		&& %glMajorVersion >= 2
+		&& GLEW_ARB_shader_objects ()
+		&& GLEW_ARB_shading_language_100 ()
+		&& GLEW_EXT_framebuffer_object ()
+		&& GLEW_ARB_shadow ();
 
 	%haveCSM = %shaderVersion >= 1.2
-	        && %glMajorVersion >= 2
-	        && GLEW_ARB_shader_objects ()
-	        && GLEW_ARB_shading_language_100 ()
-	        && GLEW_EXT_texture_array ()
-	        && (GLEW_EXT_texture3D () || glTexImage3D ())
-	        && GLEW_EXT_framebuffer_object () && GLEW_ARB_shadow ();
+		&& %glMajorVersion >= 2
+		&& GLEW_ARB_shader_objects ()
+		&& GLEW_ARB_shading_language_100 ()
+		&& GLEW_EXT_texture_array ()
+		&& (GLEW_EXT_texture3D () || glTexImage3D ())
+		&& GLEW_EXT_framebuffer_object () && GLEW_ARB_shadow ();
 
 	OPT_ShaderQuality2.enabled = %haveCSM;
 	OPT_ShaderQuality3.enabled = %haveCSM;
@@ -7229,7 +7238,7 @@ function optionsDlg::setShaderQuality ( %this, %val )
 			$Shader::Enabled = false;
 
 			$Shader::ShadowCount = 0;
-			$Shader::ShadowSize  = 0;
+			$Shader::ShadowSize = 0;
 
 			$Shader::DynamicShadows0 = true;
 			$Shader::DynamicShadows1 = false;
@@ -7239,9 +7248,9 @@ function optionsDlg::setShaderQuality ( %this, %val )
 		case 1:
 			$Shader::Enabled = true;
 
-			$Shader::ShaderName  = "minimum";
+			$Shader::ShaderName = "minimum";
 			$Shader::ShadowCount = 0;
-			$Shader::ShadowSize  = 0;
+			$Shader::ShadowSize = 0;
 
 			$Shader::DynamicShadows0 = false;
 			$Shader::DynamicShadows1 = false;
@@ -7251,9 +7260,9 @@ function optionsDlg::setShaderQuality ( %this, %val )
 		case 2:
 			$Shader::Enabled = true;
 
-			$Shader::ShaderName  = "renderCsm";
+			$Shader::ShaderName = "renderCsm";
 			$Shader::ShadowCount = 2;
-			$Shader::ShadowSize  = 1024;
+			$Shader::ShadowSize = 1024;
 
 			$Shader::DynamicShadows0 = true;
 			$Shader::DynamicShadows1 = false;
@@ -7263,9 +7272,9 @@ function optionsDlg::setShaderQuality ( %this, %val )
 		case 3:
 			$Shader::Enabled = true;
 
-			$Shader::ShaderName  = "renderCsm";
+			$Shader::ShaderName = "renderCsm";
 			$Shader::ShadowCount = 2;
-			$Shader::ShadowSize  = 2048;
+			$Shader::ShadowSize = 2048;
 
 			$Shader::DynamicShadows0 = true;
 			$Shader::DynamicShadows1 = true;
@@ -7275,9 +7284,9 @@ function optionsDlg::setShaderQuality ( %this, %val )
 		case 4:
 			$Shader::Enabled = true;
 
-			$Shader::ShaderName  = "renderCsm";
+			$Shader::ShaderName = "renderCsm";
 			$Shader::ShadowCount = 4;
-			$Shader::ShadowSize  = 2048;
+			$Shader::ShadowSize = 2048;
 
 			$Shader::DynamicShadows0 = true;
 			$Shader::DynamicShadows1 = true;
@@ -7287,9 +7296,9 @@ function optionsDlg::setShaderQuality ( %this, %val )
 		case 5:
 			$Shader::Enabled = true;
 
-			$Shader::ShaderName  = "renderCsm";
+			$Shader::ShaderName = "renderCsm";
 			$Shader::ShadowCount = 3;
-			$Shader::ShadowSize  = 4096;
+			$Shader::ShadowSize = 4096;
 
 			$Shader::DynamicShadows0 = true;
 			$Shader::DynamicShadows1 = true;
@@ -7299,9 +7308,9 @@ function optionsDlg::setShaderQuality ( %this, %val )
 		case 6:
 			$Shader::Enabled = true;
 
-			$Shader::ShaderName  = "renderCsm";
+			$Shader::ShaderName = "renderCsm";
 			$Shader::ShadowCount = 4;
-			$Shader::ShadowSize  = 4096;
+			$Shader::ShadowSize = 4096;
 
 			$Shader::DynamicShadows0 = true;
 			$Shader::DynamicShadows1 = true;
@@ -7311,9 +7320,9 @@ function optionsDlg::setShaderQuality ( %this, %val )
 		case 7:
 			$Shader::Enabled = true;
 
-			$Shader::ShaderName  = "renderCsm";
+			$Shader::ShaderName = "renderCsm";
 			$Shader::ShadowCount = 4;
-			$Shader::ShadowSize  = 8192;
+			$Shader::ShadowSize = 8192;
 
 			$Shader::DynamicShadows0 = true;
 			$Shader::DynamicShadows1 = true;
@@ -7324,7 +7333,7 @@ function optionsDlg::setShaderQuality ( %this, %val )
 			$Shader::Enabled = false;
 
 			$Shader::ShadowCount = 0;
-			$Shader::ShadowSize  = 0;
+			$Shader::ShadowSize = 0;
 
 			$Shader::DynamicShadows0 = true;
 			$Shader::DynamicShadows1 = false;
@@ -7359,27 +7368,27 @@ function optionsDlg::setLightingQuality ( %this, %val )
 
 	if ( %val == 4 )
 	{
-		$pref::OpenGL::maxDynLights      = 2;
+		$pref::OpenGL::maxDynLights = 2;
 		$pref::OpenGL::maxHardwareLights = 3;
 	}
 	else if ( %val == 3 )
 	{
-		$pref::OpenGL::maxDynLights      = 4;
+		$pref::OpenGL::maxDynLights = 4;
 		$pref::OpenGL::maxHardwareLights = 4;
 	}
 	else if ( %val == 2 )
 	{
-		$pref::OpenGL::maxDynLights      = 5;
+		$pref::OpenGL::maxDynLights = 5;
 		$pref::OpenGL::maxHardwareLights = 6;
 	}
 	else if ( %val == 1 )
 	{
-		$pref::OpenGL::maxDynLights      = 6;
+		$pref::OpenGL::maxDynLights = 6;
 		$pref::OpenGL::maxHardwareLights = 8;
 	}
 	else if ( %val == 0 )
 	{
-		$pref::OpenGL::maxDynLights      = 10;
+		$pref::OpenGL::maxDynLights = 10;
 		$pref::OpenGL::maxHardwareLights = 8;
 	}
 }
@@ -7400,27 +7409,27 @@ function optionsDlg::setPhysicsQuality ( %this, %val )
 
 	if ( %val == 4 )
 	{
-		$pref::Physics::Enabled   = false;
+		$pref::Physics::Enabled = false;
 		$pref::Physics::MaxBricks = 1;
 	}
 	else if ( %val == 3 )
 	{
-		$pref::Physics::Enabled   = true;
+		$pref::Physics::Enabled = true;
 		$pref::Physics::MaxBricks = 25;
 	}
 	else if ( %val == 2 )
 	{
-		$pref::Physics::Enabled   = true;
+		$pref::Physics::Enabled = true;
 		$pref::Physics::MaxBricks = 50;
 	}
 	else if ( %val == 1 )
 	{
-		$pref::Physics::Enabled   = true;
+		$pref::Physics::Enabled = true;
 		$pref::Physics::MaxBricks = 100;
 	}
 	else if ( %val == 0 )
 	{
-		$pref::Physics::Enabled   = true;
+		$pref::Physics::Enabled = true;
 		$pref::Physics::MaxBricks = 300;
 	}
 
@@ -7576,10 +7585,10 @@ function optionsDlg::updateFOV ( %this )
 
 function optionsDlg::clickLatencyOption ( %this )
 {
-	$pref::OpenGL::UsePreGLFinish  = Opt_PreFinish.getValue ();
-	$pref::OpenGL::UsePreGLFlush   = Opt_PreFlush.getValue ();
+	$pref::OpenGL::UsePreGLFinish = Opt_PreFinish.getValue ();
+	$pref::OpenGL::UsePreGLFlush = Opt_PreFlush.getValue ();
 	$pref::OpenGL::UsePostGLFinish = Opt_PostFinish.getValue ();
-	$pref::OpenGL::UsePostGLFlush  = Opt_PostFlush.getValue ();
+	$pref::OpenGL::UsePostGLFlush = Opt_PostFlush.getValue ();
 }
 
 function PlayGui::onWake ( %this )
@@ -7613,7 +7622,7 @@ function PlayGui::onRender ( %this )
 	if ( isFullScreen () )
 	{
 		%oldShaderEnabled = $Shader::Enabled;
-		$Shader::Enabled  = false;
+		$Shader::Enabled = false;
 
 		flushTextureCache ();
 		regenerateShadowMapFBOs ();
@@ -7672,17 +7681,17 @@ function PlayGui::createInvHUD ( %this )
 
 	%numSlots = $BSD_NumInventorySlots;
 
-	%res          = getRes ();
-	%screenWidth  = getWord (%res, 0);
+	%res = getRes ();
+	%screenWidth = getWord (%res, 0);
 	%screenHeight = getWord (%res, 1);
-	%iconWidth    = mFloor (%screenWidth / $BSD_NumInventorySlots);
+	%iconWidth = mFloor (%screenWidth / $BSD_NumInventorySlots);
 
 	if ( %iconWidth > 64 )
 	{
 		%iconWidth = 64;
 	}
 
-	%bottomSpace  = 0;
+	%bottomSpace = 0;
 	%iconBoxWidth = $BSD_NumInventorySlots * %iconWidth;
 
 	%newBox = new GuiSwatchCtrl ();
@@ -7765,8 +7774,8 @@ function PlayGui::createInvHUD ( %this )
 		if ( $pref::Hud::RecolorBrickIcons )
 		{
 			%color = getColorIDTable ($currSprayCanIndex);
-			%RGB   = getWords (%color, 0, 2);
-			%a     = mClampF (getWord (%color, 3), 0.1, 1);
+			%RGB = getWords (%color, 0, 2);
+			%a = mClampF (getWord (%color, 3), 0.1, 1);
 			%color = %RGB SPC %a;
 
 			$HUD_BrickIcon[%i].setColor (%color);
@@ -7934,7 +7943,7 @@ function PlayGui::hideBrickBox ( %this, %dist, %totalSteps, %currStep )
 
 	if ( %currStep == %totalSteps - 1 )
 	{
-		%sum      = (%totalSteps - 1) * mFloor (%dist / %totalSteps);
+		%sum = (%totalSteps - 1) * mFloor (%dist / %totalSteps);
 		%stepDist = %dist - %sum;
 	}
 	else
@@ -7944,7 +7953,7 @@ function PlayGui::hideBrickBox ( %this, %dist, %totalSteps, %currStep )
 
 	%pos = getWord (HUD_BrickBox.position, 1) + %stepDist;
 
-	HUD_BrickBox.position    = getWord (HUD_BrickBox.position, 0) SPC %pos;
+	HUD_BrickBox.position = getWord (HUD_BrickBox.position, 0) SPC %pos;
 	HUD_BrickNameBG.position = getWord (HUD_BrickNameBG.position, 0)
 		SPC %pos - getWord (HUD_BrickNameBG.extent, 1);
 
@@ -7962,8 +7971,8 @@ function PlayGui::loadPaint ( %this )
 
 	%swatchSize = 16;
 
-	%res          = getRes ();
-	%screenWidth  = getWord (%res, 0);
+	%res = getRes ();
+	%screenWidth = getWord (%res, 0);
 	%screenHeight = getWord (%res, 1);
 
 	%numDivs = 0;
@@ -7982,14 +7991,14 @@ function PlayGui::loadPaint ( %this )
 
 	%numDivs++;
 
-	%lastDivStart   = -1;
+	%lastDivStart = -1;
 	%largestDivSize = 3;
 
 	for ( %i = 0; %i < %numDivs; %i++ )
 	{
 		%currDivSize = getSprayCanDivisionSlot (%i) - %lastDivStart;
 
-		$Paint_Row[%i]             = new ScriptObject (PaintRow);
+		$Paint_Row[%i] = new ScriptObject (PaintRow);
 		$Paint_Row[%i].numSwatches = %currDivSize;
 
 		if ( !isObject ("PaintRowGroup") )
@@ -8013,10 +8022,10 @@ function PlayGui::loadPaint ( %this )
 
 	$Paint_Row[$Paint_NumPaintRows - 1].numSwatches = 8 + 1;
 
-	%sideSpace   = 0;
+	%sideSpace = 0;
 	%bottomSpace = 0;
-	%boxWidth    = (%numDivs * (%swatchSize + 1)) + 1;
-	%boxHeight   = (%largestDivSize * (%swatchSize + 1)) + 1;
+	%boxWidth = (%numDivs * (%swatchSize + 1)) + 1;
+	%boxHeight = (%largestDivSize * (%swatchSize + 1)) + 1;
 
 	%newBox = new GuiSwatchCtrl ();
 	%this.add (%newBox);
@@ -8116,9 +8125,9 @@ function PlayGui::loadPaint ( %this )
 	for ( %i = 0; %i < 64; %i++ )
 	{
 		%color = getColorIDTable (%i);
-		%red   = getWord (%color, 0);
+		%red = getWord (%color, 0);
 		%green = getWord (%color, 1);
-		%blue  = getWord (%color, 2);
+		%blue = getWord (%color, 2);
 		%alpha = getWord (%color, 3);
 
 		if ( %red == 0 && %green == 0 && %blue == 0 && %alpha == 0 )
@@ -8465,8 +8474,8 @@ function PlayGui::hidePaintBox ( %this, %dist, %totalSteps, %currStep )
 
 	%pos = getWord (HUD_PaintBox.position, 0) - %stepDist;
 
-	HUD_PaintBox.position     = %pos SPC getWord (HUD_PaintBox.position, 1);
-	HUD_PaintNameBG.position  = %pos SPC getWord (HUD_PaintNameBG.position, 1);
+	HUD_PaintBox.position = %pos SPC getWord (HUD_PaintBox.position, 1);
+	HUD_PaintNameBG.position = %pos SPC getWord (HUD_PaintNameBG.position, 1);
 	HUD_PaintBox.moveSchedule = PlayGui.schedule (10, hidePaintBox, %dist, %totalSteps,
 		%currStep + 1, %originalPos);
 }
@@ -8504,11 +8513,11 @@ function PlayGui::FadePaintRow ( %this, %row )
 {
 	for ( %i = 0; %i < $Paint_Row[%row].numSwatches; %i++ )
 	{
-		%color    = $Paint_Row[%row].swatch[%i].getColor ();
-		%red      = getWord (%color, 0);
-		%green    = getWord (%color, 1);
-		%blue     = getWord (%color, 2);
-		%alpha    = getWord (%color, 3);
+		%color = $Paint_Row[%row].swatch[%i].getColor ();
+		%red = getWord (%color, 0);
+		%green = getWord (%color, 1);
+		%blue = getWord (%color, 2);
+		%alpha = getWord (%color, 3);
 		%newColor = %red @ " " @ %green @ " " @ %blue @ " " @ %alpha * 0.3;
 
 		$Paint_Row[%row].swatch[%i].setColor (%newColor);
@@ -8519,11 +8528,11 @@ function PlayGui::UnFadePaintRow ( %this, %row )
 {
 	for ( %i = 0; %i < $Paint_Row[%row].numSwatches; %i++ )
 	{
-		%color    = $Paint_Row[%row].swatch[%i].getColor ();
-		%red      = getWord (%color, 0);
-		%green    = getWord (%color, 1);
-		%blue     = getWord (%color, 2);
-		%alpha    = getWord (%color, 3);
+		%color = $Paint_Row[%row].swatch[%i].getColor ();
+		%red = getWord (%color, 0);
+		%green = getWord (%color, 1);
+		%blue = getWord (%color, 2);
+		%alpha = getWord (%color, 3);
 		%newColor = %red @ " " @ %green @ " " @ %blue @ " " @ %alpha / 0.3;
 
 		$Paint_Row[%row].swatch[%i].setColor (%newColor);
@@ -8581,10 +8590,10 @@ function PlayGui::createToolHUD ( %this )
 
 	%numSlots = $HUD_NumToolSlots;
 
-	%res          = getRes ();
-	%screenWidth  = getWord (%res, 0);
+	%res = getRes ();
+	%screenWidth = getWord (%res, 0);
 	%screenHeight = getWord (%res, 1);
-	%iconWidth    = mFloor (%screenWidth / $BSD_NumInventorySlots);
+	%iconWidth = mFloor (%screenWidth / $BSD_NumInventorySlots);
 
 	if ( %iconWidth > 64 )
 	{
@@ -8593,7 +8602,7 @@ function PlayGui::createToolHUD ( %this )
 
 	%iconBoxHeight = $HUD_NumToolSlots * %iconWidth;
 
-	%topSpace  = 0;
+	%topSpace = 0;
 	%sideSpace = 0;
 
 	%newBox = new GuiBitmapCtrl ();
@@ -8639,7 +8648,7 @@ function PlayGui::createToolHUD ( %this )
 			if ( !isFile ($ToolData[%i].iconName @ ".png") )
 			{
 				%firstLetter = getSubStr ($ToolData[%i].uiName, 0, 1);
-				%letterFile  = "Add-Ons/Print_Letters_Default/icons/" @ %firstLetter @ ".png";
+				%letterFile = "Add-Ons/Print_Letters_Default/icons/" @ %firstLetter @ ".png";
 
 				if ( isFile (%letterFile) )
 				{
@@ -8795,8 +8804,8 @@ function PlayGui::hideToolBox ( %this, %dist, %totalSteps, %currStep )
 
 	%pos = getWord (HUD_ToolBox.position, 1) - %stepDist;
 
-	HUD_ToolBox.position     = getWord (HUD_ToolBox.position, 0) SPC %pos;
-	HUD_ToolNameBG.position  = getWord (HUD_ToolNameBG.position, 0)
+	HUD_ToolBox.position = getWord (HUD_ToolBox.position, 0) SPC %pos;
+	HUD_ToolNameBG.position = getWord (HUD_ToolNameBG.position, 0)
 		SPC %pos + getWord (HUD_ToolBox.extent, 1);
 
 	HUD_ToolBox.moveSchedule = PlayGui.schedule (10, hideToolBox, %dist, %totalSteps, %currStep + 1);
@@ -8863,7 +8872,7 @@ function clientCmdCenterPrint ( %message, %time, %size )
 	else
 	{
 		CenterPrintDlg.visible = true;
-		$centerPrintActive     = true;
+		$centerPrintActive = true;
 	}
 
 	CenterPrintText.setText ("<just:center>" @ %message @ "\n");
@@ -8919,7 +8928,7 @@ function CenterPrintText::onResize ( %this, %width, %height )
 
 function clientCmdClearCenterPrint ()
 {
-	$centerPrintActive     = false;
+	$centerPrintActive = false;
 	CenterPrintDlg.visible = false;
 
 	if ( isEventPending ($CenterPrintDlg::removePrintEvent) )
@@ -8932,7 +8941,7 @@ function clientCmdClearCenterPrint ()
 
 function clientCmdclearBottomPrint ()
 {
-	$bottomPrintActive     = false;
+	$bottomPrintActive = false;
 	bottomPrintDlg.visible = false;
 
 	if ( isEventPending ($bottomPrintDlg::removePrintEvent) )
@@ -9044,7 +9053,7 @@ function handleYourSpawn ( %msgType, %msgString )
 
 	if ( $pref::Input::AutoLight )
 	{
-		%sun  = getClientSunColor ();
+		%sun = getClientSunColor ();
 		%sunR = getWord (%sun, 0);
 		%sunG = getWord (%sun, 1);
 		%sunB = getWord (%sun, 2);
@@ -9121,16 +9130,16 @@ function handlePlantError ( %msgType, %msgString )
 
 	switch ( getTag (%msgType) )
 	{
-		case getTag ('MsgPlantError_Overlap'):  %bitmap = %bitmap @ "PlantError_Overlap";
-		case getTag ('MsgPlantError_Float'):    %bitmap = %bitmap @ "PlantError_Float";
+		case getTag ('MsgPlantError_Overlap'): %bitmap = %bitmap @ "PlantError_Overlap";
+		case getTag ('MsgPlantError_Float'): %bitmap = %bitmap @ "PlantError_Float";
 		case getTag ('MsgPlantError_Unstable'): %bitmap = %bitmap @ "PlantError_Unstable";
-		case getTag ('MsgPlantError_Buried'):   %bitmap = %bitmap @ "PlantError_Buried";
-		case getTag ('MsgPlantError_Stuck'):    %bitmap = %bitmap @ "PlantError_Stuck";
-		case getTag ('MsgPlantError_TooFar'):   %bitmap = %bitmap @ "PlantError_TooFar";
-		case getTag ('MsgPlantError_Teams'):    %bitmap = %bitmap @ "PlantError_Teams";
-		case getTag ('MsgPlantError_Flood'):    %bitmap = %bitmap @ "PlantError_Flood";
-		case getTag ('MsgPlantError_Limit'):    %bitmap = %bitmap @ "PlantError_Limit";
-		case getTag ('MsgPlantError_TooLoud'):  %bitmap = %bitmap @ "PlantError_TooLoud";
+		case getTag ('MsgPlantError_Buried'): %bitmap = %bitmap @ "PlantError_Buried";
+		case getTag ('MsgPlantError_Stuck'): %bitmap = %bitmap @ "PlantError_Stuck";
+		case getTag ('MsgPlantError_TooFar'): %bitmap = %bitmap @ "PlantError_TooFar";
+		case getTag ('MsgPlantError_Teams'): %bitmap = %bitmap @ "PlantError_Teams";
+		case getTag ('MsgPlantError_Flood'): %bitmap = %bitmap @ "PlantError_Flood";
+		case getTag ('MsgPlantError_Limit'): %bitmap = %bitmap @ "PlantError_Limit";
+		case getTag ('MsgPlantError_TooLoud'): %bitmap = %bitmap @ "PlantError_TooLoud";
 
 		default: %bitmap = %bitmap @ "PlantError_Forbidden";
 	}
@@ -9169,7 +9178,7 @@ function handleItemPickup ( %msgType, %msgString, %slot, %itemData, %silent )
 			else
 			{
 				%firstLetter = getSubStr (%itemData.uiName, 0, 1);
-				%letterFile  = "Add-Ons/Print_Letters_Default/icons/" @ %firstLetter @ ".png";
+				%letterFile = "Add-Ons/Print_Letters_Default/icons/" @ %firstLetter @ ".png";
 
 				if ( isFile (%letterFile) )
 				{
@@ -9354,7 +9363,7 @@ function handleStartTalking ( %msgType, %msgString, %clientId )
 	return;
 
 	%text = chatWhosTalkingText.getValue ();
-	%row  = lstAdminPlayerList.getRowTextById (%clientId);
+	%row = lstAdminPlayerList.getRowTextById (%clientId);
 	%name = getField (%row, 0);
 
 	if ( strpos (%text, %name) == -1 && %name !$= "" )
@@ -9411,19 +9420,23 @@ function clientCmdUpdatePrefs ()
 {
 	commandToServer ('updatePrefs', $pref::Player::LANName);
 
-	commandToServer ('updateBodyColors', $pref::Avatar::HeadColor, $pref::Avatar::HatColor,
-		$pref::Avatar::AccentColor, $pref::Avatar::PackColor, $pref::Avatar::SecondPackColor,
-		$pref::Avatar::TorsoColor,  $pref::Avatar::HipColor,
-		$pref::Avatar::LLegColor,   $pref::Avatar::RLegColor,
-		$pref::Avatar::LArmColor,   $pref::Avatar::RArmColor,
-		$pref::Avatar::LHandColor,  $pref::Avatar::RHandColor,
-		fileBase ($Pref::Avatar::DecalName), fileBase ($Pref::Avatar::FaceName));
+	commandToServer ('updateBodyColors',
+		$pref::Avatar::HeadColor, $pref::Avatar::HatColor,
+		$pref::Avatar::AccentColor,
+		$pref::Avatar::PackColor, $pref::Avatar::SecondPackColor,
+		$pref::Avatar::TorsoColor, $pref::Avatar::HipColor,
+		$pref::Avatar::LLegColor, $pref::Avatar::RLegColor,
+		$pref::Avatar::LArmColor, $pref::Avatar::RArmColor,
+		$pref::Avatar::LHandColor, $pref::Avatar::RHandColor,
+		fileBase ($Pref::Avatar::DecalName),
+		fileBase ($Pref::Avatar::FaceName));
 
-	commandToServer ('updateBodyParts', $pref::Avatar::Hat, $pref::Avatar::Accent,
-		$pref::Avatar::Pack,  $Pref::Avatar::SecondPack,
+	commandToServer ('updateBodyParts',
+		$pref::Avatar::Hat, $pref::Avatar::Accent,
+		$pref::Avatar::Pack, $Pref::Avatar::SecondPack,
 		$Pref::Avatar::Chest, $Pref::Avatar::Hip,
-		$Pref::Avatar::LLeg,  $Pref::Avatar::RLeg,
-		$Pref::Avatar::LArm,  $Pref::Avatar::RArm,
+		$Pref::Avatar::LLeg, $Pref::Avatar::RLeg,
+		$Pref::Avatar::LArm, $Pref::Avatar::RArm,
 		$Pref::Avatar::LHand, $Pref::Avatar::RHand);
 
 	commandToServer ('setHatTicket', $HatTicket);
@@ -9469,7 +9482,7 @@ function MJ_connect ()
 {
 	cancelServerQuery ();
 
-	%ip       = MJ_txtIP.getValue ();
+	%ip = MJ_txtIP.getValue ();
 	%joinPass = MJ_txtJoinPass.getValue ();
 
 	echo ("Attempting to connect to ", %ip);
@@ -9516,10 +9529,10 @@ function JoinServerGuiBS::onWake ()
 
 function JoinServerGuiBS::queryWebMaster ( %this )
 {
-	%this.hasQueriedOnce          = true;
+	%this.hasQueriedOnce = true;
 	JoinServerGuiBS.lastQueryTime = getSimTime ();
 
-	$JoinNetServer       = true;
+	$JoinNetServer = true;
 	$MasterQueryCanceled = false;
 
 	if ( isObject (queryMasterTCPObj) )
@@ -9529,12 +9542,10 @@ function JoinServerGuiBS::queryWebMaster ( %this )
 
 	new TCPObject (queryMasterTCPObj);
 
-	queryMasterTCPObj.site     = "master3.blockland.us";
-	queryMasterTCPObj.port     = 80;
+	queryMasterTCPObj.site = "master3.blockland.us";
+	queryMasterTCPObj.port = 80;
 	queryMasterTCPObj.filePath = "/index.php";
-	queryMasterTCPObj.cmd      = "GET " @ queryMasterTCPObj.filePath @ " HTTP/1.0\r\nHost: "
-	                           @ queryMasterTCPObj.site @ "\r\n\r\n";
-
+	queryMasterTCPObj.cmd = "GET " @ queryMasterTCPObj.filePath @ " HTTP/1.0\r\nHost: " @ queryMasterTCPObj.site @ "\r\n\r\n";
 	queryMasterTCPObj.connect (queryMasterTCPObj.site @ ":" @ queryMasterTCPObj.port);
 
 	JS_queryStatus.setVisible (true);
@@ -9628,7 +9639,7 @@ function queryMasterTCPObj::onLine ( %this, %line )
 		warn ("WARNING: queryMasterTCPObj - Location redirect to " @ %url);
 
 		%this.filePath = %url;
-		%this.cmd      = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
+		%this.cmd = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
 
 		%this.schedule (0, disconnect);
 		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
@@ -9640,7 +9651,7 @@ function queryMasterTCPObj::onLine ( %this, %line )
 		warn ("WARNING: queryMasterTCPObj - Content-Location redirect to " @ %url);
 
 		%this.filePath = %url;
-		%this.cmd      = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
+		%this.cmd = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
 
 		%this.schedule (0, disconnect);
 		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
@@ -9686,7 +9697,7 @@ function queryMasterTCPObj::onLine ( %this, %line )
 	}
 	else if ( %word $= "Content-Length:" )
 	{
-		%fileSize      = getWord (%line, 1);
+		%fileSize = getWord (%line, 1);
 		%this.fileSize = %fileSize;
 	}
 
@@ -9704,18 +9715,18 @@ function queryMasterTCPObj::onLine ( %this, %line )
 			{
 				case "":  // Don't do anything, I guess...
 
-				case "IP":         %siso.ip         = %field;
-				case "PORT":       %siso.port       = %field;
-				case "PASSWORDED": %siso.pass       = %field;
-				case "DEDICATED":  %siso.dedicated  = %field;
+				case "IP": %siso.ip = %field;
+				case "PORT": %siso.port = %field;
+				case "PASSWORDED": %siso.pass = %field;
+				case "DEDICATED": %siso.dedicated = %field;
 				case "SERVERNAME": %siso.serverName = %field;
-				case "PLAYERS":    %siso.players    = %field;
+				case "PLAYERS": %siso.players = %field;
 				case "MAXPLAYERS": %siso.maxPlayers = %field;
-				case "GAMEMODE":   %siso.gameMode   = %field;
+				case "GAMEMODE": %siso.gameMode = %field;
 				case "BRICKCOUNT": %siso.brickCount = %field;
-				case "STEAMID":    %siso.steamID    = %field;
-				case "BLID":       %siso.blid       = %field;
-				case "ADMINNAME":  %siso.adminName  = %field;
+				case "STEAMID": %siso.steamID = %field;
+				case "BLID": %siso.blid = %field;
+				case "ADMINNAME": %siso.adminName = %field;
 			}
 		}
 
@@ -9734,9 +9745,9 @@ function JoinServerGuiBS::queryLan ( %this )
 	$JoinNetServer = 0;
 
 	%flags = $Pref::Filter::Dedicated | $Pref::Filter::NoPassword << 1
-	       | $Pref::Filter::LinuxServer << 2 | $Pref::Filter::WindowsServer << 3
-	       | $Pref::Filter::TeamDamageOn << 4 | $Pref::Filter::TeamDamageOff << 5
-	       | $Pref::Filter::CurrentVersion << 7;
+		| $Pref::Filter::LinuxServer << 2 | $Pref::Filter::WindowsServer << 3
+		| $Pref::Filter::TeamDamageOn << 4 | $Pref::Filter::TeamDamageOff << 5
+		| $Pref::Filter::CurrentVersion << 7;
 
 	queryLanServers (28050, 0, $Client::GameTypeQuery, $Client::MissionTypeQuery,
 		$pref::Filter::minPlayers, 100, 0, 2, $pref::Filter::maxPing, $pref::Filter::minCpu, %flags);
@@ -9776,10 +9787,10 @@ function JoinServerGuiBS::join ( %this )
 
 		if ( isObject (%so) )
 		{
-			$ServerInfo::Address    = %so.ip @ ":" @ %so.port;
-			$ServerInfo::Name       = %so.serverName;
+			$ServerInfo::Address = %so.ip @ ":" @ %so.port;
+			$ServerInfo::Name = %so.serverName;
 			$ServerInfo::MaxPlayers = %so.maxPlayers;
-			$ServerInfo::Ping       = %so.ping;
+			$ServerInfo::Ping = %so.ping;
 
 			if ( %so.pass $= "Yes" || %so.pass == 1 )
 			{
@@ -9832,7 +9843,7 @@ function JoinServerGuiBS::join ( %this )
 		%so = $ServerSO[JS_ServerListBS.getSelectedId ()];
 
 		echo ("Connecting to \"" @ $ServerInfo::Name @ "\" (" @ $ServerInfo::Address @ ", "
-			                     @ $ServerInfo::Ping @ "ms)");
+			@ $ServerInfo::Ping @ "ms)");
 
 		echo ("  Download Sounds:      " @ $Pref::Net::DownloadSounds ? "True" : "False");
 		echo ("  Download Music:       " @ $Pref::Net::DownloadMusic ? "True" : "False");
@@ -9841,29 +9852,29 @@ function JoinServerGuiBS::join ( %this )
 
 		if ( $JoinNetServer )
 		{
-			%doDirect   = true;
+			%doDirect = true;
 			%doArranged = true;
 
 			if ( $ServerInfo::Ping $= "???" )
 			{
-				%doDirect   = true;
+				%doDirect = true;
 				%doArranged = true;
 			}
 			else if ( $ServerInfo::Ping $= "---" )
 			{
-				%doDirect   = false;
+				%doDirect = false;
 				%doArranged = true;
 			}
 			else if ( $ServerInfo::Ping $= mFloor ($ServerInfo::Ping) )
 			{
-				%doDirect   = true;
+				%doDirect = true;
 				%doArranged = false;
 			}
 			else
 			{
 				error ("ERROR: Strange ping value \"" @ $ServerInfo::Ping @ "\"");
 
-				%doDirect   = true;
+				%doDirect = true;
 				%doArranged = true;
 			}
 
@@ -10091,21 +10102,21 @@ function ServerInfoSO_Add ()
 	{
 		ping = "???";
 
-		ip   = "";
+		ip = "";
 		port = "";
 
-		pass      = false;
+		pass = false;
 		dedicated = false;
 
-		name       = "";
-		players    = 0;
+		name = "";
+		players = 0;
 		maxPlayers = 0;
-		gameMode   = "";
+		gameMode = "";
 		brickCount = 0;
-		adminName  = "";
+		adminName = "";
 
 		steamID = "";
-		blid    = "";
+		blid = "";
 	};
 
 	if ( !isObject ("ServerInfoGroup") )
@@ -10173,7 +10184,7 @@ function ServerInfoSO_DisplayAll ()
 		if ( %doRow )
 		{
 			%rowText = %obj.serialize ();
-			%obj.id  = %i;
+			%obj.id = %i;
 
 			JS_ServerListBS.addRow (%obj.id, %rowText);
 		}
@@ -10386,9 +10397,9 @@ function ConnectToServer ( %address, %password, %useDirect, %useArranged )
 		%useArranged = true;
 	}
 
-	$Connection::Address  = %address;
+	$Connection::Address = %address;
 	$Connection::Password = %password;
-	$Connection::Direct   = %useDirect;
+	$Connection::Direct = %useDirect;
 	$Connection::Arranged = %useArranged;
 
 	ReConnectToServer ();
@@ -10509,29 +10520,29 @@ function JoinServerPassGui::enterPass ( %this )
 
 		if ( $JoinNetServer )
 		{
-			%doDirect   = true;
+			%doDirect = true;
 			%doArranged = true;
 
 			if ( $ServerInfo::Ping $= "???" )
 			{
-				%doDirect   = true;
+				%doDirect = true;
 				%doArranged = true;
 			}
 			else if ( $ServerInfo::Ping $= "---" )
 			{
-				%doDirect   = false;
+				%doDirect = false;
 				%doArranged = true;
 			}
 			else if ( $ServerInfo::Ping $= mFloor ($ServerInfo::Ping) )
 			{
-				%doDirect   = true;
+				%doDirect = true;
 				%doArranged = false;
 			}
 			else
 			{
 				error ("ERROR: Strange ping value \"" @ $ServerInfo::Ping @ "\"");
 
-				%doDirect   = true;
+				%doDirect = true;
 				%doArranged = true;
 			}
 
@@ -10650,7 +10661,7 @@ function adminGui::ban ()
 
 function adminGui::spy ()
 {
-	%victimID   = lstAdminPlayerList.getSelectedId ();
+	%victimID = lstAdminPlayerList.getSelectedId ();
 	%victimName = lstAdminPlayerList.getRowTextById (%victimID);
 
 	if ( %victimID <= 0 )
@@ -10713,8 +10724,8 @@ function AdminGui_KickPlayer ()
 
 function AdminGui_BanPlayer ()
 {
-	%victimID    = lstAdminPlayerList.getSelectedId ();
-	%victimName  = getField (lstAdminPlayerList.getRowTextById (%victimID), 0);
+	%victimID = lstAdminPlayerList.getSelectedId ();
+	%victimName = getField (lstAdminPlayerList.getRowTextById (%victimID), 0);
 	%victimBL_ID = getField (lstAdminPlayerList.getRowTextById (%victimID), 1);
 
 	if ( %victimID <= 0 )
@@ -10738,7 +10749,7 @@ function adminGui::sortList ( %this, %col )
 	}
 	else
 	{
-		lstAdminPlayerList.sortedBy  = %col;
+		lstAdminPlayerList.sortedBy = %col;
 		lstAdminPlayerList.sortedAsc = false;
 
 		lstAdminPlayerList.sort (lstAdminPlayerList.sortedBy, lstAdminPlayerList.sortedAsc);
@@ -10756,7 +10767,7 @@ function adminGui::sortNumList ( %this, %col )
 	}
 	else
 	{
-		lstAdminPlayerList.sortedBy  = %col;
+		lstAdminPlayerList.sortedBy = %col;
 		lstAdminPlayerList.sortedAsc = false;
 
 		lstAdminPlayerList.sortNumerical (lstAdminPlayerList.sortedBy, lstAdminPlayerList.sortedAsc);
@@ -10827,8 +10838,8 @@ function addBanGui::setVictim ( %this, %name, %id, %bl_id )
 {
 	addBan_Window.setText ("BAN " @ %name);
 
-	addBanGui.victimName  = %name;
-	addBanGui.victimId    = %id;
+	addBanGui.victimName = %name;
+	addBanGui.victimId = %id;
 	addBanGui.victimBL_ID = %bl_id;
 }
 
@@ -10893,7 +10904,7 @@ function unBanGui::clickUnBan ( %this )
 		return;
 	}
 
-	%row        = unBan_list.getRowTextById (%rowID);
+	%row = unBan_list.getRowTextById (%rowID);
 	%victimName = getField (%row, 1);
 
 	messageBoxYesNo ("Un-Ban Player?", "Are you sure you want to Un-Ban \"" @ %victimName @ "\" ?",
@@ -10913,13 +10924,13 @@ function clientCmdClearUnBans ()
 
 function clientCmdAddUnBanLine ( %line, %idx )
 {
-	%adminName   = getField (%line, 0);
-	%victimName  = getField (%line, 1);
+	%adminName = getField (%line, 0);
+	%victimName = getField (%line, 1);
 	%victimBL_ID = getField (%line, 2);
-	%victimIP    = getField (%line, 3);
-	%reason      = getField (%line, 4);
+	%victimIP = getField (%line, 3);
+	%reason = getField (%line, 4);
 	%timeMinutes = getField (%line, 5);
-	%timeString  = "1:00";
+	%timeString = "1:00";
 
 	if ( %timeMinutes == -1 )
 	{
@@ -10927,9 +10938,9 @@ function clientCmdAddUnBanLine ( %line, %idx )
 	}
 	else if ( %timeMinutes > 24 * 60 )
 	{
-		%numDays      = mFloor (%timeMinutes / (24 * 60));
+		%numDays = mFloor (%timeMinutes / (24 * 60));
 		%timeLeftover = %timeMinutes % (24 * 60);
-		%timeString   = %numDays @ "d " @ getTimeString (%timeLeftover);
+		%timeString = %numDays @ "d " @ getTimeString (%timeLeftover);
 	}
 	else
 	{
@@ -10958,7 +10969,7 @@ function unBanGui::sortList ( %this, %col )
 	}
 	else
 	{
-		unBan_list.sortedBy  = %col;
+		unBan_list.sortedBy = %col;
 		unBan_list.sortedAsc = false;
 
 		unBan_list.sort (unBan_list.sortedBy, unBan_list.sortedAsc);
@@ -10976,7 +10987,7 @@ function unBanGui::sortNumList ( %this, %col )
 	}
 	else
 	{
-		unBan_list.sortedBy  = %col;
+		unBan_list.sortedBy = %col;
 		unBan_list.sortedAsc = false;
 
 		unBan_list.sortNumerical (unBan_list.sortedBy, unBan_list.sortedAsc);
@@ -11013,9 +11024,9 @@ function clientCmdAddBrickManLine ( %bl_id, %line )
 
 function BrickManGui::clickClear ( %this )
 {
-	%id         = BrickMan_list.getSelectedId ();
-	%row        = BrickMan_list.getRowTextById (%id);
-	%name       = getField (%row, 1);
+	%id = BrickMan_list.getSelectedId ();
+	%row = BrickMan_list.getRowTextById (%id);
+	%name = getField (%row, 1);
 	%brickCount = getField (%row, 2);
 
 	if ( %row $= "" )
@@ -11060,8 +11071,8 @@ function BrickManGui::clickBan ( %this )
 		return;
 	}
 
-	%victimID    = 0;
-	%victimName  = getField (%row, 1);
+	%victimID = 0;
+	%victimName = getField (%row, 1);
 	%victimBL_ID = getField (%row, 0);
 
 	addBanGui.setVictim (%victimName, %victimID, %victimBL_ID);
@@ -11080,7 +11091,7 @@ function BrickManGui::sortList ( %this, %col )
 	}
 	else
 	{
-		BrickMan_list.sortedBy  = %col;
+		BrickMan_list.sortedBy = %col;
 		BrickMan_list.sortedAsc = false;
 
 		BrickMan_list.sort (BrickMan_list.sortedBy, BrickMan_list.sortedAsc);
@@ -11098,7 +11109,7 @@ function BrickManGui::sortNumList ( %this, %col )
 	}
 	else
 	{
-		BrickMan_list.sortedBy  = %col;
+		BrickMan_list.sortedBy = %col;
 		BrickMan_list.sortedAsc = false;
 
 		BrickMan_list.sortNumerical (BrickMan_list.sortedBy, BrickMan_list.sortedAsc);
@@ -11125,25 +11136,25 @@ function escapeMenu::onWake ( %this )
 {
 	if ( $Pref::Gui::ColorEscapeMenu )
 	{
-		EM_Options.mColor    = "255 255 255 255";
+		EM_Options.mColor = "255 255 255 255";
 		EM_PlayerList.mColor = " 50 255  50 255";
-		EM_MiniGames.mColor  = "170 170 170 255";
-		EM_AdminMenu.mColor  = "255 255  50 255";
+		EM_MiniGames.mColor = "170 170 170 255";
+		EM_AdminMenu.mColor = "255 255  50 255";
 		EM_SaveBricks.mColor = " 50 130 255 255";
 		EM_LoadBricks.mColor = " 50 255 255 255";
 		EM_Disconnect.mColor = "255 150   0 255";
-		EM_Quit.mColor       = "255  75   0 255";
+		EM_Quit.mColor = "255  75   0 255";
 	}
 	else
 	{
-		EM_Options.mColor    = "255 255 255 255";
+		EM_Options.mColor = "255 255 255 255";
 		EM_PlayerList.mColor = "255 255 255 255";
-		EM_MiniGames.mColor  = "255 255 255 255";
-		EM_AdminMenu.mColor  = "255 255 255 255";
+		EM_MiniGames.mColor = "255 255 255 255";
+		EM_AdminMenu.mColor = "255 255 255 255";
 		EM_SaveBricks.mColor = "255 255 255 255";
 		EM_LoadBricks.mColor = "255 255 255 255";
 		EM_Disconnect.mColor = "255 255 255 255";
-		EM_Quit.mColor       = "255 255 255 255";
+		EM_Quit.mColor = "255 255 255 255";
 	}
 }
 
@@ -11222,7 +11233,7 @@ function clientCmdSetAdminLevel ( %newAdminLevel )
 	}
 
 	%newAdminLevel = mFloor (%newAdminLevel);
-	$IamAdmin      = %newAdminLevel;
+	$IamAdmin = %newAdminLevel;
 
 	if ( %newAdminLevel > 0 )
 	{
@@ -11257,7 +11268,7 @@ function clientCmdSetAdminLevel ( %newAdminLevel )
 
 	for ( %i = 0; %i < %rowCount; %i++ )
 	{
-		%row   = NPL_List.getRowText (%i);
+		%row = NPL_List.getRowText (%i);
 		%trust = getField (%row, 4);
 
 		if ( %trust !$= "You" )
@@ -11265,7 +11276,7 @@ function clientCmdSetAdminLevel ( %newAdminLevel )
 			continue;
 		}
 
-		%row   = setField (%row, 0, %adminChar);
+		%row = setField (%row, 0, %adminChar);
 		%rowID = NPL_List.getRowId (%i);
 
 		NPL_List.setRowById (%rowID, %row);
@@ -11285,7 +11296,7 @@ function clientCmdAdminFailure ()
 function clientCmdSetLetterPrintInfo ( %start, %numLetters )
 {
 	$PSD_letterStart = %start;
-	$PSD_numLetters  = %numLetters;
+	$PSD_numLetters = %numLetters;
 }
 
 function clientCmdOpenPrintSelectorDlg ( %aspectRatio, %startPrint, %numPrints )
@@ -11432,10 +11443,10 @@ function PSD_LoadPrints ( %aspectRatio, %startPrint, %numPrints )
 	for ( %i = %startPrint; %i < %startPrint + %numPrints; %i++ )
 	{
 		%rawFileName = getPrintTexture (%i);
-		%rawBase     = fileBase (%rawFileName);
-		%rawPath     = filePath (%rawFileName);
-		%rawPath     = getSubStr (%rawPath, 0, strlen (%rawPath) - 7);
-		%filename    = %rawPath @ "/icons/" @ %rawBase @ ".png";
+		%rawBase = fileBase (%rawFileName);
+		%rawPath = filePath (%rawFileName);
+		%rawPath = getSubStr (%rawPath, 0, strlen (%rawPath) - 7);
+		%filename = %rawPath @ "/icons/" @ %rawBase @ ".png";
 
 		%newPrint = new GuiBitmapCtrl ();
 		%boxObj.add (%newPrint);
@@ -11583,7 +11594,7 @@ function PSD_LoadPrints ( %aspectRatio, %startPrint, %numPrints )
 function BrickSelectorDlg::onWake ( %this )
 {
 	$BSD_CurrClickData = -1;
-	$BSD_CurrClickInv  = -1;
+	$BSD_CurrClickInv = -1;
 
 	BSD_FavsHelper.setVisible (false);
 	BSD_SetFavsButton.setText ("Set Favs>");
@@ -11613,7 +11624,7 @@ function BrickSelectorDlg::onSleep ( %this )
 	}
 
 	$BSD_CurrClickData = -1;
-	$BSD_CurrClickInv  = -1;
+	$BSD_CurrClickInv = -1;
 
 	HUD_BrickBox.setVisible (true);
 	HUD_BrickNameBG.setVisible (true);
@@ -11633,7 +11644,7 @@ function clientCmdBSD_LoadBricks ()
 	BSD_LoadBricks ();
 	BSD_LoadFavorites ();
 
-	$UINameTableCreated    = 0;
+	$UINameTableCreated = 0;
 	$PrintNameTableCreated = 0;
 
 	BSD_Window.pushToBack (BSD_FavsHelper);
@@ -11643,8 +11654,8 @@ function clientCmdBSD_LoadBricks ()
 	if ( $pref::Hud::RecolorBrickIcons )
 	{
 		%color = getColorIDTable ($currSprayCanIndex);
-		%RGB   = getWords (%color, 0, 2);
-		%a     = mClampF (getWord (%color, 3), 0.1, 1);
+		%RGB = getWords (%color, 0, 2);
+		%a = mClampF (getWord (%color, 3), 0.1, 1);
 		%color = %RGB SPC %a;
 
 		for ( %i = 0; %i < $BSD_NumInventorySlots; %i++ )
@@ -11672,12 +11683,12 @@ function BSD_LoadBricks ()
 
 	for ( %i = 0; %i < %dbCount; %i++ )
 	{
-		%db      = getDataBlock (%i);
+		%db = getDataBlock (%i);
 		%dbClass = %db.getClassName ();
 
 		if ( %dbClass $= "fxDTSBrickData" )
 		{
-			%cat    = %db.category;
+			%cat = %db.category;
 			%subCat = %db.subCategory;
 			%uiName = %db.uiName;
 
@@ -11746,7 +11757,7 @@ function BSD_LoadBricks ()
 		%newScroll = new GuiScrollCtrl ();
 		BSD_ScrollBox.add (%newScroll);
 
-		%newScroll.rowHeight  = 64;
+		%newScroll.rowHeight = 64;
 		%newScroll.hScrollBar = "alwaysOff";
 		%newScroll.vScrollBar = "alwaysOn";
 
@@ -11773,16 +11784,16 @@ function BSD_LoadBricks ()
 
 		%newBox.resize (%x, %y, %w, %h);
 
-		$BSD_category[%i].tab    = %newTab;
+		$BSD_category[%i].tab = %newTab;
 		$BSD_category[%i].Scroll = %newScroll;
-		$BSD_category[%i].box    = %newBox;
+		$BSD_category[%i].box = %newBox;
 
 		BSD_createSubHeadings ($BSD_category[%i]);
 	}
 
 	for ( %i = 0; %i < %dbCount; %i++ )
 	{
-		%db      = getDataBlock (%i);
+		%db = getDataBlock (%i);
 		%dbClass = %db.getClassName ();
 
 		if ( %dbClass !$= "fxDTSBrickData" )
@@ -11892,7 +11903,7 @@ function BSD_addCategory ( %newcat )
 
 	$BSD_category[$BSD_numCategories] = new ScriptObject (BSD_category)
 	{
-		name             = %newcat;
+		name = %newcat;
 		numSubCategories = 0;
 	};
 
@@ -11931,7 +11942,7 @@ function BSD_addSubCategory ( %cat, %newSubCat )
 
 		$BSD_category[%catID].subCategory[$BSD_category[%catID].numSubCategories] = new ScriptObject (BSD_SubCategory)
 		{
-			name            = %newSubCat;
+			name = %newSubCat;
 			numBrickButtons = 0;
 		};
 
@@ -11971,10 +11982,10 @@ function BSD_createSubHeadings ( %cat )
 
 	for ( %i = 0; %i < %cat.numSubCategories; %i++ )
 	{
-		%subCatObj    = %cat.subCategory[%i];
-		%boxExtent    = %box.getExtent ();
+		%subCatObj = %cat.subCategory[%i];
+		%boxExtent = %box.getExtent ();
 		%boxMinExtent = %box.getMinExtent ();
-		%boxHeight    = getWord (%boxExtent, 1) - getWord (%boxMinExtent, 1);
+		%boxHeight = getWord (%boxExtent, 1) - getWord (%boxMinExtent, 1);
 
 		%subCatObj.startHeight = %boxHeight;
 
@@ -12015,10 +12026,10 @@ function BSD_createSubHeadings ( %cat )
 
 function BSD_CreateBrickButton ( %data )
 {
-	%catName    = %data.category;
+	%catName = %data.category;
 	%subCatName = %data.subCategory;
-	%catObj     = BSD_findCategory (%catName);
-	%subCatObj  = BSD_findSubCategory (%catObj, %subCatName);
+	%catObj = BSD_findCategory (%catName);
+	%subCatObj = BSD_findSubCategory (%catObj, %subCatName);
 
 	if ( %catObj == 0 || %subCatObj == 0 )
 	{
@@ -12040,8 +12051,8 @@ function BSD_CreateBrickButton ( %data )
 	}
 
 	%box = %catObj.box;
-	%x   = ((%subCatObj.numBrickButtons % 6) * 97) + 18;
-	%y   = (mFloor (%subCatObj.numBrickButtons / 6) * 97) + %subCatObj.startHeight + 18;
+	%x = ((%subCatObj.numBrickButtons % 6) * 97) + 18;
+	%y = (mFloor (%subCatObj.numBrickButtons / 6) * 97) + %subCatObj.startHeight + 18;
 
 	%subCatObj.numBrickButtons++;
 
@@ -12086,7 +12097,7 @@ function BSD_CreateBrickButton ( %data )
 	%newIconButton.setProfile (BlockButtonProfile);
 	%newIconButton.setText (" ");
 
-	%newIconButton.command    = "BSD_ClickIcon(" @ %data @ ");";
+	%newIconButton.command = "BSD_ClickIcon(" @ %data @ ");";
 	%newIconButton.altCommand = "BSD_RightClickIcon(" @ %data @ ");";
 
 	%newLabel = new GuiTextCtrl ();
@@ -12114,7 +12125,7 @@ function BSD_CreateInventoryButtons ()
 {
 	$BSD_NumInventorySlots = 10;
 
-	%invWidth    = 617;
+	%invWidth = 617;
 	%buttonWidth = mFloor (%invWidth / 11) - 1;
 
 	%newBox = new GuiSwatchCtrl ();
@@ -12200,13 +12211,13 @@ function BSD_ClickInv ( %index )
 		$BSD_InvActive[%index].setVisible (false);
 
 		$BSD_CurrClickData = -1;
-		$BSD_CurrClickInv  = -1;
+		$BSD_CurrClickInv = -1;
 	}
 	else if ( $BSD_CurrClickInv != -1 )
 	{
 		%tempData = $BSD_InvData[%index];
 
-		$BSD_InvData[%index]            = $BSD_InvData[$BSD_CurrClickInv];
+		$BSD_InvData[%index] = $BSD_InvData[$BSD_CurrClickInv];
 		$BSD_InvData[$BSD_CurrClickInv] = %tempData;
 
 		if ( $BSD_InvData[%index] > 0 )
@@ -12245,7 +12256,7 @@ function BSD_ClickInv ( %index )
 		$BSD_InvActive[$BSD_CurrClickInv].setVisible (false);
 
 		$BSD_CurrClickData = -1;
-		$BSD_CurrClickInv  = -1;
+		$BSD_CurrClickInv = -1;
 	}
 	else if ( $BSD_CurrClickData != -1 )
 	{
@@ -12263,14 +12274,14 @@ function BSD_ClickInv ( %index )
 		$BSD_activeBitmap[$BSD_CurrClickData].setVisible (false);
 
 		$BSD_CurrClickData = -1;
-		$BSD_CurrClickInv  = -1;
+		$BSD_CurrClickInv = -1;
 	}
 	else
 	{
 		$BSD_InvActive[%index].setVisible (true);
 
 		$BSD_CurrClickData = -1;
-		$BSD_CurrClickInv  = %index;
+		$BSD_CurrClickInv = %index;
 	}
 }
 
@@ -12335,7 +12346,7 @@ function BSD_ClickIcon ( %data )
 		$BSD_activeBitmap[$BSD_CurrClickData].setVisible (false);
 
 		$BSD_CurrClickData = -1;
-		$BSD_CurrClickInv  = -1;
+		$BSD_CurrClickInv = -1;
 	}
 	else
 	{
@@ -12351,7 +12362,7 @@ function BSD_ClickIcon ( %data )
 		$BSD_activeBitmap[%data].setVisible (true);
 
 		$BSD_CurrClickData = %data;
-		$BSD_CurrClickInv  = -1;
+		$BSD_CurrClickInv = -1;
 	}
 }
 
@@ -12362,7 +12373,7 @@ function BSD_RightClickIcon ( %data )
 	commandToServer ('InstantUseBrick', %data);
 
 	$LastInstantUseData = %data;
-	$InstantUse         = true;
+	$InstantUse = true;
 
 	setActiveInv (-1);
 	setScrollMode ($SCROLLMODE_BRICKS);
@@ -12541,7 +12552,7 @@ function listAllDataBlocks ()
 
 	for ( %i = 0; %i < %numDataBlocks; %i++ )
 	{
-		%db      = getDataBlock (%i);
+		%db = getDataBlock (%i);
 		%dbClass = %db.getClassName ();
 
 		echo (%db, " : ", %dbClass);
@@ -12660,17 +12671,17 @@ function saveBricks_ProcessWrenchExtras ()
 			if ( %obj.getEmitterDataBlock ().uiName !$= "" )
 			{
 				%trans = %obj.getTransform ();
-				%pos   = getWords (%trans, 0, 2);
-				%rot   = getWords (%trans, 3, 6);
+				%pos = getWords (%trans, 0, 2);
+				%rot = getWords (%trans, 3, 6);
 
 				switch$ ( %rot )
 				{
-					case "1 0 0 0":       %dir = 0;
+					case "1 0 0 0": %dir = 0;
 					case "0 1 0 3.14159": %dir = 1;
-					case "1 0 0 1.5708":  %dir = 2;
+					case "1 0 0 1.5708": %dir = 2;
 					case "0 -1 0 1.5708": %dir = 3;
 					case "-1 0 0 1.5708": %dir = 4;
-					case "0 1 0 1.5708":  %dir = 5;
+					case "0 1 0 1.5708": %dir = 5;
 
 					default: %dir = 0;
 				}
@@ -12682,7 +12693,7 @@ function saveBricks_ProcessWrenchExtras ()
 				{
 					if ( %searchBrick.isPlanted () )
 					{
-						%searchBrick.emitter          = %obj;
+						%searchBrick.emitter = %obj;
 						%searchBrick.emitterDirection = %dir;
 
 						break;
@@ -12697,8 +12708,8 @@ function saveBricks_ProcessWrenchExtras ()
 		{
 			if ( %obj.getDataBlock ().uiName !$= "" )
 			{
-				%trans     = %obj.getTransform ();
-				%pos       = getWords (%trans, 0, 2);
+				%trans = %obj.getTransform ();
+				%pos = getWords (%trans, 0, 2);
 				%searchBox = "0.015 0.015 0.015";
 
 				initClientBrickSearch (%pos, %searchBox);
@@ -12730,12 +12741,12 @@ function saveBricks_ProcessWrenchExtras ()
 			}
 
 			%trans = %obj.getTransform ();
-			%pos   = %obj.getWorldBoxCenter ();
+			%pos = %obj.getWorldBoxCenter ();
 
 			%posX = getWord (%pos, 0);
 			%posY = getWord (%pos, 1);
 			%posZ = getWord (%pos, 2);
-			%rot  = getWords (%trans, 3, 6);
+			%rot = getWords (%trans, 3, 6);
 
 			if ( %rot $= "1 0 0 0" )
 			{
@@ -12758,7 +12769,7 @@ function saveBricks_ProcessWrenchExtras ()
 				%dir = 2;
 			}
 
-			%itemBox  = %obj.getWorldBox ();
+			%itemBox = %obj.getWorldBox ();
 			%itemBoxX = mAbs (getWord (%itemBox, 0) - getWord (%itemBox, 3)) + 0.05;
 			%itemBoxY = mAbs (getWord (%itemBox, 1) - getWord (%itemBox, 4)) + 0.05;
 			%itemBoxZ = mAbs (getWord (%itemBox, 2) - getWord (%itemBox, 5)) + 0.05;
@@ -12771,7 +12782,7 @@ function saveBricks_ProcessWrenchExtras ()
 			{
 				if ( %searchBrick.isPlanted () )
 				{
-					%brickPos  = %searchBrick.getPosition ();
+					%brickPos = %searchBrick.getPosition ();
 					%brickPosX = getWord (%brickPos, 0);
 					%brickPosY = getWord (%brickPos, 1);
 					%brickPosZ = getWord (%brickPos, 2);
@@ -12801,9 +12812,9 @@ function saveBricks_ProcessWrenchExtras ()
 						{
 							if ( mAbs (getWord (%itemBox, 5) - getWord (%searchBrick.getWorldBox (), 2)) < 0.01 )
 							{
-								%searchBrick.item            = %obj;
-								%searchBrick.itemPosition    = 1;
-								%searchBrick.itemDirection   = %dir;
+								%searchBrick.item = %obj;
+								%searchBrick.itemPosition = 1;
+								%searchBrick.itemDirection = %dir;
 								%searchBrick.itemRespawnTime = %obj.getRespawnTime ();
 
 								break;
@@ -12811,9 +12822,9 @@ function saveBricks_ProcessWrenchExtras ()
 						}
 						else if ( mAbs (getWord (%itemBox, 2) - getWord (%searchBrick.getWorldBox (), 5)) < 0.01 )
 						{
-							%searchBrick.item            = %obj;
-							%searchBrick.itemPosition    = 0;
-							%searchBrick.itemDirection   = %dir;
+							%searchBrick.item = %obj;
+							%searchBrick.itemPosition = 0;
+							%searchBrick.itemDirection = %dir;
 							%searchBrick.itemRespawnTime = %obj.getRespawnTime ();
 
 							break;
@@ -12825,9 +12836,9 @@ function saveBricks_ProcessWrenchExtras ()
 						{
 							if ( mAbs (getWord (%itemBox, 4) - getWord (%searchBrick.getWorldBox (), 1)) < 0.01 )
 							{
-								%searchBrick.item            = %obj;
-								%searchBrick.itemPosition    = 4;
-								%searchBrick.itemDirection   = %dir;
+								%searchBrick.item = %obj;
+								%searchBrick.itemPosition = 4;
+								%searchBrick.itemDirection = %dir;
 								%searchBrick.itemRespawnTime = %obj.getRespawnTime ();
 
 								break;
@@ -12835,9 +12846,9 @@ function saveBricks_ProcessWrenchExtras ()
 						}
 						else if ( mAbs (getWord (%itemBox, 1) - getWord (%searchBrick.getWorldBox (), 4)) < 0.01 )
 						{
-							%searchBrick.item            = %obj;
-							%searchBrick.itemPosition    = 2;
-							%searchBrick.itemDirection   = %dir;
+							%searchBrick.item = %obj;
+							%searchBrick.itemPosition = 2;
+							%searchBrick.itemDirection = %dir;
 							%searchBrick.itemRespawnTime = %obj.getRespawnTime ();
 
 							break;
@@ -12849,9 +12860,9 @@ function saveBricks_ProcessWrenchExtras ()
 						{
 							if ( mAbs (getWord (%itemBox, 3) - getWord (%searchBrick.getWorldBox (), 0)) < 0.01 )
 							{
-								%searchBrick.item            = %obj;
-								%searchBrick.itemPosition    = 5;
-								%searchBrick.itemDirection   = %dir;
+								%searchBrick.item = %obj;
+								%searchBrick.itemPosition = 5;
+								%searchBrick.itemDirection = %dir;
 								%searchBrick.itemRespawnTime = %obj.getRespawnTime ();
 
 								break;
@@ -12859,9 +12870,9 @@ function saveBricks_ProcessWrenchExtras ()
 						}
 						else if ( mAbs (getWord (%itemBox, 0) - getWord (%searchBrick.getWorldBox (), 3)) < 0.01 )
 						{
-							%searchBrick.item            = %obj;
-							%searchBrick.itemPosition    = 3;
-							%searchBrick.itemDirection   = %dir;
+							%searchBrick.item = %obj;
+							%searchBrick.itemPosition = 3;
+							%searchBrick.itemDirection = %dir;
 							%searchBrick.itemRespawnTime = %obj.getRespawnTime ();
 
 							break;
@@ -12879,8 +12890,8 @@ function saveBricks_ProcessWrenchExtras ()
 			{
 				if ( %obj.getProfileId ().getDescription ().isLooping == 1 )
 				{
-					%trans     = %obj.getTransform ();
-					%pos       = getWords (%trans, 0, 2);
+					%trans = %obj.getTransform ();
+					%pos = getWords (%trans, 0, 2);
 					%searchBox = "0.015 0.015 0.015";
 
 					initClientBrickSearch (%pos, %searchBox);
@@ -12903,8 +12914,8 @@ function saveBricks_ProcessWrenchExtras ()
 
 		if ( %obj.getClassName () $= "VehicleSpawnMarker" )
 		{
-			%trans     = %obj.getTransform ();
-			%pos       = getWords (%trans, 0, 2);
+			%trans = %obj.getTransform ();
+			%pos = getWords (%trans, 0, 2);
 			%searchBox = "0.015 0.015 0.015";
 
 			initClientBrickSearch (%pos, %searchBox);
@@ -12987,7 +12998,7 @@ function saveBricks ( %filename, %description )
 	%list = new GuiTextListCtrl ();
 
 	%gotInvalidDFG = false;
-	%gotValidDFG   = false;
+	%gotValidDFG = false;
 
 	if ( ServerConnection.isLocal () )
 	{
@@ -13134,7 +13145,7 @@ function saveBricks ( %filename, %description )
 	%file.delete ();
 
 	%screenshotName = getSubStr (%filename, 0, strlen (%filename) - 4) @ ".jpg";
-	%oldContent     = Canvas.getContent ();
+	%oldContent = Canvas.getContent ();
 
 	Canvas.setContent (noHudGui);
 
@@ -13168,15 +13179,15 @@ function dumpPrints ()
 function SaveBricks_WriteSingleBrick ( %file, %obj )
 {
 	%objData = %obj.getDataBlock ();
-	%uiName  = %objData.uiName;
-	%trans   = %obj.getTransform ();
-	%pos     = getWords (%trans, 0, 2);
+	%uiName = %objData.uiName;
+	%trans = %obj.getTransform ();
+	%pos = getWords (%trans, 0, 2);
 
 	if ( %objData.hasPrint )
 	{
 		%filename = getPrintTexture (%obj.getPrintID ());
 		%fileBase = fileBase (%filename);
-		%path     = filePath (%filename);
+		%path = filePath (%filename);
 
 		if ( %path $= "" || %filename $= "base/data/shapes/bricks/brickTop.png" )
 		{
@@ -13184,10 +13195,10 @@ function SaveBricks_WriteSingleBrick ( %file, %obj )
 		}
 		else
 		{
-			%dirName      = getSubStr (%path, strlen ("Add-Ons/"), strlen (%path) - strlen ("Add-Ons/"));
-			%posA         = strpos (%dirName, "_");
-			%posB         = strpos (%dirName, "_", %posA + 1);
-			%aspectRatio  = getSubStr (%dirName, %posA + 1, (%posB - %posA) - 1);
+			%dirName = getSubStr (%path, strlen ("Add-Ons/"), strlen (%path) - strlen ("Add-Ons/"));
+			%posA = strpos (%dirName, "_");
+			%posB = strpos (%dirName, "_", %posA + 1);
+			%aspectRatio = getSubStr (%dirName, %posA + 1, (%posB - %posA) - 1);
 			%printTexture = %aspectRatio @ "/" @ %fileBase;
 		}
 	}
@@ -13197,16 +13208,16 @@ function SaveBricks_WriteSingleBrick ( %file, %obj )
 	}
 
 	%line = %uiName @ "\""
-	    SPC %pos
-	    SPC %obj.getAngleID ()
-	    SPC %obj.isBasePlate ()
-	    SPC %obj.getColorID ()
-	    SPC %printTexture
-	    SPC %obj.getColorFxID ()
-	    SPC %obj.getShapeFxID ()
-	    SPC %obj.isRayCasting ()
-	    SPC %obj.isColliding ()
-	    SPC %obj.isRendering ();
+		SPC %pos
+		SPC %obj.getAngleID ()
+		SPC %obj.isBasePlate ()
+		SPC %obj.getColorID ()
+		SPC %printTexture
+		SPC %obj.getColorFxID ()
+		SPC %obj.getShapeFxID ()
+		SPC %obj.isRayCasting ()
+		SPC %obj.isColliding ()
+		SPC %obj.isRendering ();
 
 	%file.writeLine (%line);
 
@@ -13237,41 +13248,42 @@ function SaveBricks_WriteSingleBrick ( %file, %obj )
 
 		for ( %i = 0; %i < %obj.numEvents; %i++ )
 		{
-			%class     = %obj.getClassName ();
-			%enabled   = %obj.eventEnabled[%i];
+			%class = %obj.getClassName ();
+			%enabled = %obj.eventEnabled[%i];
 			%inputName = $InputEvent_Name[%class, %obj.eventInputIdx[%i]];
-			%delay     = %obj.eventDelay[%i];
+			%delay = %obj.eventDelay[%i];
 
 			if ( %obj.eventTargetIdx[%i] == -1 )
 			{
-				%targetName  = -1;
-				%NT          = %obj.eventNT[%i];
+				%targetName = -1;
+				%NT = %obj.eventNT[%i];
 				%targetClass = "FxDTSBrick";
 			}
 			else
 			{
-				%targetList  = $InputEvent_TargetList[%class, %obj.eventInputIdx[%i]];
-				%target      = getField (%targetList, %obj.eventTargetIdx[%i]);
-				%targetName  = getWord (%target, 0);
+				%targetList = $InputEvent_TargetList[%class, %obj.eventInputIdx[%i]];
+				%target = getField (%targetList, %obj.eventTargetIdx[%i]);
+				%targetName = getWord (%target, 0);
 				%targetClass = getWord (%target, 1);
-				%NT          = "";
+				%NT = "";
 			}
 
 			%outputName = $OutputEvent_Name[%targetClass, %obj.eventOutputIdx[%i]];
-			%line       = "+-EVENT"
-			          TAB %i
-			          TAB %enabled
-			          TAB %inputName
-			          TAB %delay
-			          TAB %targetName
-			          TAB %NT
-			          TAB %outputName;
+
+			%line = "+-EVENT"
+				TAB %i
+				TAB %enabled
+				TAB %inputName
+				TAB %delay
+				TAB %targetName
+				TAB %NT
+				TAB %outputName;
 
 			if ( ServerConnection.isLocal () )
 			{
 				for ( %j = 0; %j < 4; %j++ )
 				{
-					%field    = getField ($OutputEvent_parameterList[%targetClass,
+					%field = getField ($OutputEvent_parameterList[%targetClass,
 						%obj.eventOutputIdx[%i]], %j);
 
 					%dataType = getWord (%field, 0);
@@ -13326,12 +13338,12 @@ function SaveBricks_WriteSingleBrick ( %file, %obj )
 	if ( isObject (%obj.Item) )
 	{
 		%line = "+-ITEM" SPC %obj.Item.getDataBlock ().uiName @ "\" " @ %obj.itemPosition
-		    SPC %obj.itemDirection SPC %obj.itemRespawnTime;
+			SPC %obj.itemDirection SPC %obj.itemRespawnTime;
 
 		%file.writeLine (%line);
 	}
 	else if (  (%obj.itemDirection != 2 && %obj.itemDirection !$= "") || %obj.itemPosition != 0
-		 || (%obj.itemRespawnTime != 0 && %obj.itemRespawnTime != 4000) )
+	        || (%obj.itemRespawnTime != 0 && %obj.itemRespawnTime != 4000) )
 	{
 		%line = "+-ITEM NONE\" " @ %obj.itemPosition SPC %obj.itemDirection SPC %obj.itemRespawnTime;
 		%file.writeLine (%line);
@@ -13346,7 +13358,7 @@ function SaveBricks_WriteSingleBrick ( %file, %obj )
 	if ( isObject (%obj.VehicleSpawnMarker) )
 	{
 		%line = "+-VEHICLE" SPC %obj.VehicleSpawnMarker.getUiName () @ "\" "
-		      @ %obj.VehicleSpawnMarker.getReColorVehicle ();
+			@ %obj.VehicleSpawnMarker.getReColorVehicle ();
 
 		%file.writeLine (%line);
 	}
@@ -13514,7 +13526,7 @@ function clientCmdLoadBricksHandshake ( %val, %allowColorLoads )
 			cancel ($LoadingBricks_HandShakeSchedule);
 		}
 
-		$LoadingBricks_FileName    = "";
+		$LoadingBricks_FileName = "";
 		$LoadingBricks_ColorMethod = "";
 	}
 }
@@ -13600,17 +13612,17 @@ function LoadBricks_PopulateFileList ()
 {
 	LoadBricks_FileList.clear ();
 
-	%dir      = "saves/*.bls";
+	%dir = "saves/*.bls";
 	%filename = findFirstFile (%dir);
 
 	%count = 0;
 
 	while ( %filename !$= "" )
 	{
-		%baseName     = fileBase (%filename);
-		%fileDate     = getFileModifiedTime (%filename);
+		%baseName = fileBase (%filename);
+		%fileDate = getFileModifiedTime (%filename);
 		%fileSortDate = getFileModifiedSortTime (%filename);
-		%filePath     = filePath (%filename);
+		%filePath = filePath (%filename);
 
 		if ( %filePath $= "saves" )
 		{
@@ -13618,7 +13630,7 @@ function LoadBricks_PopulateFileList ()
 		}
 		else
 		{
-			%filePath    = strreplace (%filePath, "saves/", "");
+			%filePath = strreplace (%filePath, "saves/", "");
 			%displayName = %filePath @ "/" @ %baseName;
 		}
 
@@ -13644,9 +13656,9 @@ function LoadBricks_PopulateFileList ()
 
 function LoadBricks_FileClick ()
 {
-	%id          = LoadBricks_FileList.getSelectedId ();
-	%filename    = getField (LoadBricks_FileList.getRowTextById (%id), 0);
-	%fullPath    = "saves/" @ %filename @ ".bls";
+	%id = LoadBricks_FileList.getSelectedId ();
+	%filename = getField (LoadBricks_FileList.getRowTextById (%id), 0);
+	%fullPath = "saves/" @ %filename @ ".bls";
 	%description = SaveBricks_GetFileDescription (%fullPath);
 
 	LoadBricks_Description.setText (%description);
@@ -13665,7 +13677,7 @@ function LoadBricks_FileClick ()
 
 function LoadBricks_ClickLoadButton ()
 {
-	%id       = LoadBricks_FileList.getSelectedId ();
+	%id = LoadBricks_FileList.getSelectedId ();
 	%filename = getField (LoadBricks_FileList.getRowTextById (%id), 0);
 
 	if ( %filename $= "" )
@@ -13779,10 +13791,10 @@ function saveBricksGui::onWake ( %this )
 
 	while ( %filename !$= "" )
 	{
-		%baseName     = fileBase (%filename);
-		%fileDate     = getFileModifiedTime (%filename);
+		%baseName = fileBase (%filename);
+		%fileDate = getFileModifiedTime (%filename);
 		%fileSortDate = getFileModifiedSortTime (%filename);
-		%filePath     = filePath (%filename);
+		%filePath = filePath (%filename);
 
 		if ( %filePath $= "saves" )
 		{
@@ -13790,7 +13802,7 @@ function saveBricksGui::onWake ( %this )
 		}
 		else
 		{
-			%filePath    = strreplace (%filePath, "saves/", "");
+			%filePath = strreplace (%filePath, "saves/", "");
 			%displayName = %filePath @ "/" @ %baseName;
 		}
 
@@ -13859,7 +13871,7 @@ function SaveBricks_ConfirmDelete ( %list, %gui )
 		return;
 	}
 
-	%id       = %list.getSelectedId ();
+	%id = %list.getSelectedId ();
 	%filename = getField (%list.getRowTextById (%id), 0);
 	%saveFile = "saves/" @ %filename @ ".bls";
 	%thumbJpg = "saves/" @ %filename @ ".jpg";
@@ -13886,7 +13898,7 @@ function SaveBricks_ConfirmDelete ( %list, %gui )
 
 function SaveBricks_ClickFileList ()
 {
-	%id       = SaveBricks_FileList.getSelectedId ();
+	%id = SaveBricks_FileList.getSelectedId ();
 	%filename = getField (SaveBricks_FileList.getRowTextById (%id), 0);
 
 	SaveBricks_FileName.setText (%filename);
@@ -13919,7 +13931,7 @@ function isValidFileName ( %filename )
 	}
 
 	%badChars = "\\ / : * ? \" < > |";
-	%count    = getWordCount (%badChars);
+	%count = getWordCount (%badChars);
 
 	for ( %i = 0; %i < %count; %i++ )
 	{
@@ -13950,7 +13962,7 @@ function SaveBricks_Save ()
 		return;
 	}
 
-	%fullPath       = "saves/" @ %filename @ ".bls";
+	%fullPath = "saves/" @ %filename @ ".bls";
 	%fullScreenshot = "saves/" @ %filename @ ".jpg";
 
 	%description = SaveBricks_Description.getText ();
@@ -13959,18 +13971,18 @@ function SaveBricks_Save ()
 	{
 		%description = expandEscape (%description);
 
-		$SaveBricksPath        = %fullPath;
+		$SaveBricksPath = %fullPath;
 		$SaveBricksDescription = %description;
 
 		if ( $pref::SaveExtendedBrickInfo && !ServerConnection.isLocal () )
 		{
 			%callback = "fileDelete(\"" @ %fullScreenshot
-			          @ "\");SaveBricks_DownloadWindow.setVisible(true);SaveBricks_StartInfoDownload();";
+				@ "\");SaveBricks_DownloadWindow.setVisible(true);SaveBricks_StartInfoDownload();";
 		}
 		else
 		{
 			%callback = "fileDelete(\"" @ %fullScreenshot
-			          @ "\");canvas.popDialog(SaveBricksGui);canvas.popDialog(EscapeMenu);canvas.pushDialog(SavingGui);";
+				@ "\");canvas.popDialog(SaveBricksGui);canvas.popDialog(EscapeMenu);canvas.pushDialog(SavingGui);";
 		}
 
 		messageBoxYesNo ("File Exists, Overwrite?",
@@ -13978,7 +13990,7 @@ function SaveBricks_Save ()
 	}
 	else
 	{
-		$SaveBricksPath        = %fullPath;
+		$SaveBricksPath = %fullPath;
 		$SaveBricksDescription = %description;
 
 		if ( $pref::SaveExtendedBrickInfo && !ServerConnection.isLocal () )
@@ -14014,7 +14026,7 @@ function SaveBricks_GetFileDescription ( %filename )
 	%file.openForRead (%filename);
 	%file.readLine ();
 
-	%lineCount   = %file.readLine ();
+	%lineCount = %file.readLine ();
 	%description = "";
 
 	for ( %i = 0; %i < %lineCount; %i++ )
@@ -14088,10 +14100,10 @@ function LoadBricks_CreateFromLine ( %line, %i )
 	{
 		if ( $LastLoadedBrick )
 		{
-			%line   = getSubStr (%line, 8, strlen (%line) - 8);
-			%pos    = strpos (%line, "\"");
+			%line = getSubStr (%line, 8, strlen (%line) - 8);
+			%pos = strpos (%line, "\"");
 			%dbName = getSubStr (%line, 0, %pos);
-			%db     = $uiNameTable_Lights[%dbName];
+			%db = $uiNameTable_Lights[%dbName];
 
 			$LastLoadedBrick.setLight (%db);
 		}
@@ -14102,12 +14114,12 @@ function LoadBricks_CreateFromLine ( %line, %i )
 	{
 		if ( $LastLoadedBrick )
 		{
-			%line   = getSubStr (%line, 10, strlen (%line) - 10);
-			%pos    = strpos (%line, "\"");
+			%line = getSubStr (%line, 10, strlen (%line) - 10);
+			%pos = strpos (%line, "\"");
 			%dbName = getSubStr (%line, 0, %pos);
-			%db     = $uiNameTable_Emitters[%dbName];
-			%line   = getSubStr (%line, %pos + 2, (strlen (%line) - %pos) - 2);
-			%dir    = getWord (%line, 0);
+			%db = $uiNameTable_Emitters[%dbName];
+			%line = getSubStr (%line, %pos + 2, (strlen (%line) - %pos) - 2);
+			%dir = getWord (%line, 0);
 
 			$LastLoadedBrick.setEmitter (%db);
 			$LastLoadedBrick.setEmitterDirection (%dir);
@@ -14119,13 +14131,13 @@ function LoadBricks_CreateFromLine ( %line, %i )
 	{
 		if ( $LastLoadedBrick )
 		{
-			%line   = getSubStr (%line, 7, strlen (%line) - 7);
-			%pos    = strpos (%line, "\"");
+			%line = getSubStr (%line, 7, strlen (%line) - 7);
+			%pos = strpos (%line, "\"");
 			%dbName = getSubStr (%line, 0, %pos);
-			%db     = $uiNameTable_Items[%dbName];
-			%line   = getSubStr (%line, %pos + 2, (strlen (%line) - %pos) - 2);
-			%pos    = getWord (%line, 0);
-			%dir    = getWord (%line, 1);
+			%db = $uiNameTable_Items[%dbName];
+			%line = getSubStr (%line, %pos + 2, (strlen (%line) - %pos) - 2);
+			%pos = getWord (%line, 0);
+			%dir = getWord (%line, 1);
 
 			$LastLoadedBrick.setItem (%db);
 			$LastLoadedBrick.setItemDirection (%dir);
@@ -14138,10 +14150,10 @@ function LoadBricks_CreateFromLine ( %line, %i )
 	{
 		if ( $LastLoadedBrick )
 		{
-			%line   = getSubStr (%line, 15, strlen (%line) - 15);
-			%pos    = strpos (%line, "\"");
+			%line = getSubStr (%line, 15, strlen (%line) - 15);
+			%pos = strpos (%line, "\"");
 			%dbName = getSubStr (%line, 0, %pos);
-			%db     = $uiNameTable_Music[%dbName];
+			%db = $uiNameTable_Music[%dbName];
 
 			$LastLoadedBrick.setSound (%db);
 		}
@@ -14150,10 +14162,10 @@ function LoadBricks_CreateFromLine ( %line, %i )
 	}
 
 	%quotePos = strstr (%line, "\"");
-	%uiName   = getSubStr (%line, 0, %quotePos);
+	%uiName = getSubStr (%line, 0, %quotePos);
 
-	%line  = getSubStr (%line, %quotePos + 2, 9999);
-	%pos   = getWords (%line, 0, 2);
+	%line = getSubStr (%line, %quotePos + 2, 9999);
+	%pos = getWords (%line, 0, 2);
 	%angId = getWord (%line, 3);
 
 	%isBaseplate = getWord (%line, 4);
@@ -14190,11 +14202,11 @@ function LoadBricks_CreateFromLine ( %line, %i )
 		{
 			dataBlock = %db;
 
-			angleID     = %angId;
+			angleID = %angId;
 			isBasePlate = %isBaseplate;
 
-			colorID   = %colorId;
-			printID   = %printId;
+			colorID = %colorId;
+			printID = %printId;
 			colorFxID = %colorFX;
 			shapeFxID = %shapeFX;
 
@@ -14315,8 +14327,8 @@ function updateListSort ( %obj )
 	if ( %obj.sortedNumerical $= "" )
 	{
 		%obj.sortedNumerical = false;
-		%obj.sortedBy        = 0;
-		%obj.sortedAsc       = true;
+		%obj.sortedBy = 0;
+		%obj.sortedAsc = true;
 	}
 
 	if ( %obj.sortedNumerical )
@@ -14457,16 +14469,16 @@ function ClientCmdTransmitEvent ( %ghostID, %line )
 {
 	%brick = ServerConnection.resolveGhostID (%ghostID);
 
-	%x   = -1;
+	%x = -1;
 	%idx = getField (%line, %x++);
 
-	%brick.eventEnabled[%idx]   = getField (%line, %x++);
-	%brick.eventInputIdx[%idx]  = getField (%line, %x++);
-	%brick.eventDelay[%idx]     = getField (%line, %x++);
+	%brick.eventEnabled[%idx] = getField (%line, %x++);
+	%brick.eventInputIdx[%idx] = getField (%line, %x++);
+	%brick.eventDelay[%idx] = getField (%line, %x++);
 	%brick.eventTargetIdx[%idx] = getField (%line, %x++);
-	%brick.eventNT[%idx]        = getField (%line, %x++);
+	%brick.eventNT[%idx] = getField (%line, %x++);
 
-	%brick.eventOutputIdx[%idx]          = getField (%line, %x++);
+	%brick.eventOutputIdx[%idx] = getField (%line, %x++);
 	%brick.eventOutputParameter[%idx, 1] = getField (%line, %x++);
 	%brick.eventOutputParameter[%idx, 2] = getField (%line, %x++);
 	%brick.eventOutputParameter[%idx, 3] = getField (%line, %x++);
@@ -14489,8 +14501,8 @@ function ClientCmdTransmitItemDirection ( %ghostID, %line )
 {
 	%brick = ServerConnection.resolveGhostID (%ghostID);
 
-	%brick.itemPosition    = getField (%line, 0);
-	%brick.itemDirection   = getField (%line, 1);
+	%brick.itemPosition = getField (%line, 0);
+	%brick.itemDirection = getField (%line, 1);
 	%brick.itemRespawnTime = getField (%line, 2);
 
 	SaveBricks_DownloadText.setText (SaveBricks_DownloadText.getText () + 1);
@@ -14498,7 +14510,7 @@ function ClientCmdTransmitItemDirection ( %ghostID, %line )
 
 function ClientCmdTransmitBrickOwner ( %ghostID, %ownerBL_ID )
 {
-	%brick       = ServerConnection.resolveGhostID (%ghostID);
+	%brick = ServerConnection.resolveGhostID (%ghostID);
 	%brick.bl_id = %ownerBL_ID;
 
 	SaveBricks_DownloadText.setText (SaveBricks_DownloadText.getText () + 1);
@@ -14561,38 +14573,38 @@ function AvatarGui::onWake ( %this )
 	AvatarGui.updateFavButtons ();
 	AV_FavsHelper.setVisible (false);
 
-	$Old::Avatar::Accent          = $pref::Avatar::Accent;
-	$Old::Avatar::AccentColor     = $pref::Avatar::AccentColor;
-	$Old::Avatar::Authentic       = $pref::Avatar::Authentic;
-	$Old::Avatar::Chest           = $Pref::Avatar::Chest;
-	$Old::Avatar::ChestColor      = $pref::Avatar::ChestColor;
-	$Old::Avatar::DecalColor      = $pref::Avatar::DecalColor;
-	$Old::Avatar::DecalName       = $Pref::Avatar::DecalName;
-	$Old::Avatar::FaceColor       = $pref::Avatar::FaceColor;
-	$Old::Avatar::FaceName        = $Pref::Avatar::FaceName;
-	$Old::Avatar::Hat             = $pref::Avatar::Hat;
-	$Old::Avatar::HatColor        = $pref::Avatar::HatColor;
-	$Old::Avatar::HeadColor       = $pref::Avatar::HeadColor;
-	$Old::Avatar::Hip             = $Pref::Avatar::Hip;
-	$Old::Avatar::HipColor        = $pref::Avatar::HipColor;
-	$Old::Avatar::LArm            = $Pref::Avatar::LArm;
-	$Old::Avatar::LArmColor       = $pref::Avatar::LArmColor;
-	$Old::Avatar::LHand           = $Pref::Avatar::LHand;
-	$Old::Avatar::LHandColor      = $pref::Avatar::LHandColor;
-	$Old::Avatar::LLeg            = $Pref::Avatar::LLeg;
-	$Old::Avatar::LLegColor       = $pref::Avatar::LLegColor;
-	$Old::Avatar::Pack            = $pref::Avatar::Pack;
-	$Old::Avatar::PackColor       = $pref::Avatar::PackColor;
-	$Old::Avatar::RArm            = $Pref::Avatar::RArm;
-	$Old::Avatar::RArmColor       = $pref::Avatar::RArmColor;
-	$Old::Avatar::RHand           = $Pref::Avatar::RHand;
-	$Old::Avatar::RHandColor      = $pref::Avatar::RHandColor;
-	$Old::Avatar::RLeg            = $Pref::Avatar::RLeg;
-	$Old::Avatar::RLegColor       = $pref::Avatar::RLegColor;
-	$Old::Avatar::SecondPack      = $Pref::Avatar::SecondPack;
+	$Old::Avatar::Accent = $pref::Avatar::Accent;
+	$Old::Avatar::AccentColor = $pref::Avatar::AccentColor;
+	$Old::Avatar::Authentic = $pref::Avatar::Authentic;
+	$Old::Avatar::Chest = $Pref::Avatar::Chest;
+	$Old::Avatar::ChestColor = $pref::Avatar::ChestColor;
+	$Old::Avatar::DecalColor = $pref::Avatar::DecalColor;
+	$Old::Avatar::DecalName = $Pref::Avatar::DecalName;
+	$Old::Avatar::FaceColor = $pref::Avatar::FaceColor;
+	$Old::Avatar::FaceName = $Pref::Avatar::FaceName;
+	$Old::Avatar::Hat = $pref::Avatar::Hat;
+	$Old::Avatar::HatColor = $pref::Avatar::HatColor;
+	$Old::Avatar::HeadColor = $pref::Avatar::HeadColor;
+	$Old::Avatar::Hip = $Pref::Avatar::Hip;
+	$Old::Avatar::HipColor = $pref::Avatar::HipColor;
+	$Old::Avatar::LArm = $Pref::Avatar::LArm;
+	$Old::Avatar::LArmColor = $pref::Avatar::LArmColor;
+	$Old::Avatar::LHand = $Pref::Avatar::LHand;
+	$Old::Avatar::LHandColor = $pref::Avatar::LHandColor;
+	$Old::Avatar::LLeg = $Pref::Avatar::LLeg;
+	$Old::Avatar::LLegColor = $pref::Avatar::LLegColor;
+	$Old::Avatar::Pack = $pref::Avatar::Pack;
+	$Old::Avatar::PackColor = $pref::Avatar::PackColor;
+	$Old::Avatar::RArm = $Pref::Avatar::RArm;
+	$Old::Avatar::RArmColor = $pref::Avatar::RArmColor;
+	$Old::Avatar::RHand = $Pref::Avatar::RHand;
+	$Old::Avatar::RHandColor = $pref::Avatar::RHandColor;
+	$Old::Avatar::RLeg = $Pref::Avatar::RLeg;
+	$Old::Avatar::RLegColor = $pref::Avatar::RLegColor;
+	$Old::Avatar::SecondPack = $Pref::Avatar::SecondPack;
 	$Old::Avatar::SecondPackColor = $pref::Avatar::SecondPackColor;
-	$Old::Avatar::Symmetry        = $pref::Avatar::Symmetry;
-	$Old::Avatar::TorsoColor      = $pref::Avatar::TorsoColor;
+	$Old::Avatar::Symmetry = $pref::Avatar::Symmetry;
+	$Old::Avatar::TorsoColor = $pref::Avatar::TorsoColor;
 
 	if ( $AvatarHasLoaded )
 	{
@@ -14698,16 +14710,16 @@ function AvatarGui::onWake ( %this )
 		{
 			baseShape = "base/data/shapes/player/m.dts";
 
-			sequence0  = "base/data/shapes/player/m_root.dsq root";
-			sequence1  = "base/data/shapes/player/m_run.dsq run";
-			sequence2  = "base/data/shapes/player/m_run.dsq walk";
-			sequence3  = "base/data/shapes/player/m_back.dsq back";
-			sequence4  = "base/data/shapes/player/m_side.dsq side";
-			sequence5  = "base/data/shapes/player/m_crouch.dsq crouch";
-			sequence6  = "base/data/shapes/player/m_crouchRun.dsq crouchRun";
-			sequence7  = "base/data/shapes/player/m_crouchBack.dsq crouchBack";
-			sequence8  = "base/data/shapes/player/m_crouchSide.dsq crouchSide";
-			sequence9  = "base/data/shapes/player/m_look.dsq look";
+			sequence0 = "base/data/shapes/player/m_root.dsq root";
+			sequence1 = "base/data/shapes/player/m_run.dsq run";
+			sequence2 = "base/data/shapes/player/m_run.dsq walk";
+			sequence3 = "base/data/shapes/player/m_back.dsq back";
+			sequence4 = "base/data/shapes/player/m_side.dsq side";
+			sequence5 = "base/data/shapes/player/m_crouch.dsq crouch";
+			sequence6 = "base/data/shapes/player/m_crouchRun.dsq crouchRun";
+			sequence7 = "base/data/shapes/player/m_crouchBack.dsq crouchBack";
+			sequence8 = "base/data/shapes/player/m_crouchSide.dsq crouchSide";
+			sequence9 = "base/data/shapes/player/m_look.dsq look";
 			sequence10 = "base/data/shapes/player/m_headSide.dsq headside";
 			sequence11 = "base/data/shapes/player/m_headup.dsq headUp";
 			sequence12 = "base/data/shapes/player/m_standjump.dsq jump";
@@ -14773,38 +14785,38 @@ function AvatarGui::onWake ( %this )
 
 function AvatarGui::ClickX ( %this )
 {
-	$pref::Avatar::Accent          = $Old::Avatar::Accent;
-	$pref::Avatar::AccentColor     = $Old::Avatar::AccentColor;
-	$pref::Avatar::Authentic       = $Old::Avatar::Authentic;
-	$Pref::Avatar::Chest           = $Old::Avatar::Chest;
-	$pref::Avatar::ChestColor      = $Old::Avatar::ChestColor;
-	$pref::Avatar::DecalColor      = $Old::Avatar::DecalColor;
-	$Pref::Avatar::DecalName       = $Old::Avatar::DecalName;
-	$pref::Avatar::FaceColor       = $Old::Avatar::FaceColor;
-	$Pref::Avatar::FaceName        = $Old::Avatar::FaceName;
-	$pref::Avatar::Hat             = $Old::Avatar::Hat;
-	$pref::Avatar::HatColor        = $Old::Avatar::HatColor;
-	$pref::Avatar::HeadColor       = $Old::Avatar::HeadColor;
-	$Pref::Avatar::Hip             = $Old::Avatar::Hip;
-	$pref::Avatar::HipColor        = $Old::Avatar::HipColor;
-	$Pref::Avatar::LArm            = $Old::Avatar::LArm;
-	$pref::Avatar::LArmColor       = $Old::Avatar::LArmColor;
-	$Pref::Avatar::LHand           = $Old::Avatar::LHand;
-	$pref::Avatar::LHandColor      = $Old::Avatar::LHandColor;
-	$Pref::Avatar::LLeg            = $Old::Avatar::LLeg;
-	$pref::Avatar::LLegColor       = $Old::Avatar::LLegColor;
-	$pref::Avatar::Pack            = $Old::Avatar::Pack;
-	$pref::Avatar::PackColor       = $Old::Avatar::PackColor;
-	$Pref::Avatar::RArm            = $Old::Avatar::RArm;
-	$pref::Avatar::RArmColor       = $Old::Avatar::RArmColor;
-	$Pref::Avatar::RHand           = $Old::Avatar::RHand;
-	$pref::Avatar::RHandColor      = $Old::Avatar::RHandColor;
-	$Pref::Avatar::RLeg            = $Old::Avatar::RLeg;
-	$pref::Avatar::RLegColor       = $Old::Avatar::RLegColor;
-	$Pref::Avatar::SecondPack      = $Old::Avatar::SecondPack;
+	$pref::Avatar::Accent = $Old::Avatar::Accent;
+	$pref::Avatar::AccentColor = $Old::Avatar::AccentColor;
+	$pref::Avatar::Authentic = $Old::Avatar::Authentic;
+	$Pref::Avatar::Chest = $Old::Avatar::Chest;
+	$pref::Avatar::ChestColor = $Old::Avatar::ChestColor;
+	$pref::Avatar::DecalColor = $Old::Avatar::DecalColor;
+	$Pref::Avatar::DecalName = $Old::Avatar::DecalName;
+	$pref::Avatar::FaceColor = $Old::Avatar::FaceColor;
+	$Pref::Avatar::FaceName = $Old::Avatar::FaceName;
+	$pref::Avatar::Hat = $Old::Avatar::Hat;
+	$pref::Avatar::HatColor = $Old::Avatar::HatColor;
+	$pref::Avatar::HeadColor = $Old::Avatar::HeadColor;
+	$Pref::Avatar::Hip = $Old::Avatar::Hip;
+	$pref::Avatar::HipColor = $Old::Avatar::HipColor;
+	$Pref::Avatar::LArm = $Old::Avatar::LArm;
+	$pref::Avatar::LArmColor = $Old::Avatar::LArmColor;
+	$Pref::Avatar::LHand = $Old::Avatar::LHand;
+	$pref::Avatar::LHandColor = $Old::Avatar::LHandColor;
+	$Pref::Avatar::LLeg = $Old::Avatar::LLeg;
+	$pref::Avatar::LLegColor = $Old::Avatar::LLegColor;
+	$pref::Avatar::Pack = $Old::Avatar::Pack;
+	$pref::Avatar::PackColor = $Old::Avatar::PackColor;
+	$Pref::Avatar::RArm = $Old::Avatar::RArm;
+	$pref::Avatar::RArmColor = $Old::Avatar::RArmColor;
+	$Pref::Avatar::RHand = $Old::Avatar::RHand;
+	$pref::Avatar::RHandColor = $Old::Avatar::RHandColor;
+	$Pref::Avatar::RLeg = $Old::Avatar::RLeg;
+	$pref::Avatar::RLegColor = $Old::Avatar::RLegColor;
+	$Pref::Avatar::SecondPack = $Old::Avatar::SecondPack;
 	$pref::Avatar::SecondPackColor = $Old::Avatar::SecondPackColor;
-	$pref::Avatar::Symmetry        = $Old::Avatar::Symmetry;
-	$pref::Avatar::TorsoColor      = $Old::Avatar::TorsoColor;
+	$pref::Avatar::Symmetry = $Old::Avatar::Symmetry;
+	$pref::Avatar::TorsoColor = $Old::Avatar::TorsoColor;
 
 	Canvas.popDialog ("AvatarGui");
 }
@@ -14831,11 +14843,11 @@ function AvatarGui_LoadAccentInfo ( %arrayName, %filename )
 	%file.readLine ();
 
 	%line = %file.readLine ();
-	%wc   = getWordCount (%line);
+	%wc = getWordCount (%line);
 
 	for ( %i = 0; %i < %wc; %i++ )
 	{
-		%word    = getWord (%line, %i);
+		%word = getWord (%line, %i);
 		%command = "$" @ %arrayName @ "[" @ %i @ "] = " @ %word @ ";";
 
 		eval (%command);
@@ -14845,9 +14857,9 @@ function AvatarGui_LoadAccentInfo ( %arrayName, %filename )
 
 	for ( %lineCount = 0; !%file.isEOF (); %lineCount++ )
 	{
-		%line    = %file.readLine ();
-		%wc      = getWordCount (%line);
-		%hat     = getWord (%line, 0);
+		%line = %file.readLine ();
+		%wc = getWordCount (%line);
+		%hat = getWord (%line, 0);
 		%allowed = getWords (%line, 1, %wc - 1);
 		%command = "$" @ %arrayName @ "sAllowed[" @ %hat @ "] = \"" @ %allowed @ "\";";
 
@@ -14895,7 +14907,7 @@ function AvatarGui_CreatePartMenu ( %name, %cmdString, %filename, %xPos, %yPos )
 	%file.openForRead (%filename);
 
 	%itemCount = 0;
-	%iconDir   = "base/client/ui/avatarIcons/" @ fileBase (%filename) @ "/";
+	%iconDir = "base/client/ui/avatarIcons/" @ fileBase (%filename) @ "/";
 	%varString = "$" @ fileBase (%filename);
 
 	for ( %line = %file.readLine (); %line !$= ""; %line = %file.readLine () )
@@ -15162,7 +15174,7 @@ function AvatarGui_CreateColorMenu ( %prefString, %colorList, %xPos, %yPos, %sym
 		}
 	}
 
-	$CurrColorPrefString         = %prefString;
+	$CurrColorPrefString = %prefString;
 	$CurrColorSymmetryPrefString = %symmetryPrefString;
 
 	%newScroll = new GuiScrollCtrl ();
@@ -15247,7 +15259,7 @@ function AvatarGui_CreateColorMenu ( %prefString, %colorList, %xPos, %yPos, %sym
 function Avatar_AssignColor ( %index )
 {
 	%color = $Avatar::Color[%index];
-	%cmd   = $CurrColorPrefString @ " = \"" @ %color @ "\";";
+	%cmd = $CurrColorPrefString @ " = \"" @ %color @ "\";";
 
 	eval (%cmd);
 
@@ -15335,9 +15347,9 @@ function Avatar_ClickHatColor ()
 
 function Avatar_ClickAccentColor ()
 {
-	%hatName     = $hat[$pref::Avatar::Hat];
+	%hatName = $hat[$pref::Avatar::Hat];
 	%AccentArray = $accentsAllowed[%hatName];
-	%AccentName  = getWord (%AccentArray, $pref::Avatar::Accent);
+	%AccentName = getWord (%AccentArray, $pref::Avatar::Accent);
 
 	%x = getWord (Avatar_AccentColor.position, 0) + 32;
 	%y = getWord (Avatar_AccentColor.position, 1);
@@ -15534,7 +15546,7 @@ function Avatar_HideAllPartMenus ()
 
 function Avatar_SetFace ( %index, %imageObj )
 {
-	$Pref::Avatar::FaceName  = $face[%index];
+	$Pref::Avatar::FaceName = $face[%index];
 	$pref::Avatar::FaceColor = %index;
 
 	Avatar_FaceMenu.setVisible (false);
@@ -15543,7 +15555,7 @@ function Avatar_SetFace ( %index, %imageObj )
 
 function Avatar_SetDecal ( %index, %imageObj )
 {
-	$Pref::Avatar::DecalName  = $decal[%index];
+	$Pref::Avatar::DecalName = $decal[%index];
 	$pref::Avatar::DecalColor = %index;
 
 	Avatar_DecalMenu.setVisible (false);
@@ -15952,12 +15964,12 @@ function Avatar_UpdatePreview ()
 	%iconDir = "base/client/ui/avatarIcons/";
 
 	%thumb = filePath ($face[$pref::Avatar::FaceColor]) @ "/thumbs/"
-	       @ fileBase ($face[$pref::Avatar::FaceColor]);
+		@ fileBase ($face[$pref::Avatar::FaceColor]);
 
 	Avatar_FacePreview.setBitmap (%thumb);
 
 	%thumb = filePath ($decal[$pref::Avatar::DecalColor]) @ "/thumbs/"
-	       @ fileBase ($decal[$pref::Avatar::DecalColor]);
+		@ fileBase ($decal[$pref::Avatar::DecalColor]);
 
 	Avatar_DecalPreview.setBitmap ($decal[$pref::Avatar::DecalColor]);
 
@@ -15984,7 +15996,7 @@ function Avatar_UpdatePreview ()
 	Avatar_RLegPreview.setBitmap (%iconDir @ "Rleg/" @ $RLeg[$Pref::Avatar::RLeg]);
 
 	%accentList = $accentsAllowed[$hat[$pref::Avatar::Hat]];
-	%accent     = getWord (%accentList, $pref::Avatar::Accent);
+	%accent = getWord (%accentList, $pref::Avatar::Accent);
 
 	if ( %accent $= "" )
 	{
@@ -16016,10 +16028,10 @@ $AvatarRandomizeCount = 0;
 
 function Avatar_Randomize ()
 {
-	$pref::Avatar::FaceColor  = getRandom ($numFace - 1);
-	$Pref::Avatar::FaceName   = fileBase ($face[$pref::Avatar::FaceColor]);
+	$pref::Avatar::FaceColor = getRandom ($numFace - 1);
+	$Pref::Avatar::FaceName = fileBase ($face[$pref::Avatar::FaceColor]);
 	$pref::Avatar::DecalColor = getRandom ($numDecal - 1);
-	$Pref::Avatar::DecalName  = fileBase ($decal[$pref::Avatar::DecalColor]);
+	$Pref::Avatar::DecalName = fileBase ($decal[$pref::Avatar::DecalColor]);
 
 	$AvatarRandomizeCount++;
 
@@ -16028,13 +16040,13 @@ function Avatar_Randomize ()
 		steamGetAchievement ("ACH_GAY_PIRATE", "steamGetAchievement");
 	}
 
-	$pref::Avatar::Hat        = getRandom ($numHat - 1);
-	$pref::Avatar::Pack       = getRandom ($numPack - 1);
+	$pref::Avatar::Hat = getRandom ($numHat - 1);
+	$pref::Avatar::Pack = getRandom ($numPack - 1);
 	$Pref::Avatar::SecondPack = getRandom ($numSecondPack - 1);
-	$Pref::Avatar::LArm       = getRandom ($numLArm - 1);
-	$Pref::Avatar::RArm       = $Pref::Avatar::LArm;
+	$Pref::Avatar::LArm = getRandom ($numLArm - 1);
+	$Pref::Avatar::RArm = $Pref::Avatar::LArm;
 
-	%chance      = getRandom (100);
+	%chance = getRandom (100);
 	%normalHands = false;
 
 	if ( %chance < 70 )
@@ -16090,7 +16102,7 @@ function Avatar_Randomize ()
 	}
 
 	%partList = $accentsAllowed[$hat[$pref::Avatar::Hat]];
-	%count    = getWordCount (%partList) - 1;
+	%count = getWordCount (%partList) - 1;
 
 	if ( %count > 0 )
 	{
@@ -16113,9 +16125,9 @@ function Avatar_Randomize ()
 	%x = getWord (Avatar_AccentPreview.position, 0) + 64;
 	%y = getWord (Avatar_AccentPreview.position, 1);
 
-	%hatName     = $hat[$pref::Avatar::Hat];
+	%hatName = $hat[$pref::Avatar::Hat];
 	%AccentArray = $accentsAllowed[%hatName];
-	%AccentName  = getWord (%AccentArray, $pref::Avatar::Accent);
+	%AccentName = getWord (%AccentArray, $pref::Avatar::Accent);
 
 	AvatarGui_CreateSubPartMenu ("Avatar_AccentMenu", "Avatar_SetAccent", %AccentArray, %x, %y);
 
@@ -16123,7 +16135,7 @@ function Avatar_Randomize ()
 	$pref::Avatar::TorsoColor = Avatar_GetRandomColor (false);
 
 	%count = getWordCount (%packColorList) - 1;
-	$pref::Avatar::PackColor       = Avatar_GetRandomColor (false);
+	$pref::Avatar::PackColor = Avatar_GetRandomColor (false);
 	$pref::Avatar::SecondPackColor = Avatar_GetRandomColor (false);
 
 	%count = getWordCount (%hatColorList) - 1;
@@ -16154,8 +16166,8 @@ function Avatar_Randomize ()
 
 	if ( $pref::Player::Symmetry == 1 )
 	{
-		$pref::Avatar::RLegColor  = $pref::Avatar::LLegColor;
-		$pref::Avatar::RArmColor  = $pref::Avatar::LArmColor;
+		$pref::Avatar::RLegColor = $pref::Avatar::LLegColor;
+		$pref::Avatar::RArmColor = $pref::Avatar::LArmColor;
 		$pref::Avatar::RHandColor = $pref::Avatar::LHandColor;
 	}
 	else
@@ -16232,7 +16244,7 @@ function AvatarGui::clickSetFavs ( %this )
 
 function AvatarGui::ClickFav ( %this, %idx )
 {
-	%idx      = mFloor (%idx);
+	%idx = mFloor (%idx);
 	%filename = "config/client/AvatarFavorites/" @ %idx @ ".cs";
 
 	if ( AV_FavsHelper.isVisible () )
@@ -16290,36 +16302,36 @@ function AvatarGui::ClickFav ( %this, %idx )
 
 function transferOldAvatarPrefs ()
 {
-	$pref::Avatar::Accent          = $Pref::Player::Accent;
-	$pref::Avatar::AccentColor     = $Pref::Player::AccentColor;
-	$Pref::Avatar::Chest           = $Pref::Player::Chest;
-	$pref::Avatar::ChestColor      = $Pref::Player::ChestColor;
-	$pref::Avatar::DecalColor      = $Pref::Player::DecalColor;
-	$Pref::Avatar::DecalName       = $Pref::Player::DecalName;
-	$pref::Avatar::FaceColor       = $Pref::Player::FaceColor;
-	$Pref::Avatar::FaceName        = $Pref::Player::FaceName;
-	$pref::Avatar::Hat             = $Pref::Player::Hat;
-	$pref::Avatar::HatColor        = $Pref::Player::HatColor;
-	$pref::Avatar::HeadColor       = $Pref::Player::HeadColor;
-	$Pref::Avatar::Hip             = $Pref::Player::Hip;
-	$pref::Avatar::HipColor        = $Pref::Player::HipColor;
-	$Pref::Avatar::LArm            = $Pref::Player::LArm;
-	$pref::Avatar::LArmColor       = $Pref::Player::LArmColor;
-	$Pref::Avatar::LHand           = $Pref::Player::LHand;
-	$pref::Avatar::LHandColor      = $Pref::Player::LHandColor;
-	$Pref::Avatar::LLeg            = $Pref::Player::LLeg;
-	$pref::Avatar::LLegColor       = $Pref::Player::LLegColor;
-	$pref::Avatar::Pack            = $Pref::Player::Pack;
-	$pref::Avatar::PackColor       = $Pref::Player::PackColor;
-	$Pref::Avatar::RArm            = $Pref::Player::RArm;
-	$pref::Avatar::RArmColor       = $Pref::Player::RArmColor;
-	$Pref::Avatar::RHand           = $Pref::Player::RHand;
-	$pref::Avatar::RHandColor      = $Pref::Player::RHandColor;
-	$Pref::Avatar::RLeg            = $Pref::Player::RLeg;
-	$pref::Avatar::RLegColor       = $Pref::Player::RLegColor;
-	$Pref::Avatar::SecondPack      = $Pref::Player::SecondPack;
+	$pref::Avatar::Accent = $Pref::Player::Accent;
+	$pref::Avatar::AccentColor = $Pref::Player::AccentColor;
+	$Pref::Avatar::Chest = $Pref::Player::Chest;
+	$pref::Avatar::ChestColor = $Pref::Player::ChestColor;
+	$pref::Avatar::DecalColor = $Pref::Player::DecalColor;
+	$Pref::Avatar::DecalName = $Pref::Player::DecalName;
+	$pref::Avatar::FaceColor = $Pref::Player::FaceColor;
+	$Pref::Avatar::FaceName = $Pref::Player::FaceName;
+	$pref::Avatar::Hat = $Pref::Player::Hat;
+	$pref::Avatar::HatColor = $Pref::Player::HatColor;
+	$pref::Avatar::HeadColor = $Pref::Player::HeadColor;
+	$Pref::Avatar::Hip = $Pref::Player::Hip;
+	$pref::Avatar::HipColor = $Pref::Player::HipColor;
+	$Pref::Avatar::LArm = $Pref::Player::LArm;
+	$pref::Avatar::LArmColor = $Pref::Player::LArmColor;
+	$Pref::Avatar::LHand = $Pref::Player::LHand;
+	$pref::Avatar::LHandColor = $Pref::Player::LHandColor;
+	$Pref::Avatar::LLeg = $Pref::Player::LLeg;
+	$pref::Avatar::LLegColor = $Pref::Player::LLegColor;
+	$pref::Avatar::Pack = $Pref::Player::Pack;
+	$pref::Avatar::PackColor = $Pref::Player::PackColor;
+	$Pref::Avatar::RArm = $Pref::Player::RArm;
+	$pref::Avatar::RArmColor = $Pref::Player::RArmColor;
+	$Pref::Avatar::RHand = $Pref::Player::RHand;
+	$pref::Avatar::RHandColor = $Pref::Player::RHandColor;
+	$Pref::Avatar::RLeg = $Pref::Player::RLeg;
+	$pref::Avatar::RLegColor = $Pref::Player::RLegColor;
+	$Pref::Avatar::SecondPack = $Pref::Player::SecondPack;
 	$pref::Avatar::SecondPackColor = $Pref::Player::SecondPackColor;
-	$pref::Avatar::TorsoColor      = $Pref::Player::TorsoColor;
+	$pref::Avatar::TorsoColor = $Pref::Player::TorsoColor;
 
 	deleteVariables ("$pref::Player::Accent");
 	deleteVariables ("$pref::Player::AccentColor");
@@ -16397,7 +16409,7 @@ function MainMenuGui::onWake ( %this )
 
 	if ( $Version $= "Pre-v9" )
 	{
-		$Pref::Net::ConnectionType     = 1;
+		$Pref::Net::ConnectionType = 1;
 		$Pref::Input::SelectedDefaults = 1;
 	}
 
@@ -16565,18 +16577,18 @@ function MainMenuGui::onWake ( %this )
 	if ( $Version <= 1.03 )
 	{
 		$Pref::Server::BrickPublicDomainTimeout = -1;
-		$pref::OpenGL::noVertexBufferObjects    = 0;
+		$pref::OpenGL::noVertexBufferObjects = 0;
 	}
 
 	if ( $Version $= 10 || $Version $= "10m" )
 	{
-		$Pref::Net::DownloadMusic  = 0;
+		$Pref::Net::DownloadMusic = 0;
 		$Pref::Net::DownloadSounds = 0;
 	}
 
 	if ( $Version $= 11 || $Version $= "11m" )
 	{
-		$pref::ParticleFalloffMaxLevel    = 3;
+		$pref::ParticleFalloffMaxLevel = 3;
 		$pref::ParticleFalloffMinDistance = "35.0";
 	}
 
@@ -16600,7 +16612,7 @@ function MainMenuGui::onWake ( %this )
 		{
 			exec ("config/server/ADD_ON_LIST.cs");
 
-			$AddOn__Particle_Tools           = 1;
+			$AddOn__Particle_Tools = 1;
 			$AddOn__Script_TerrainBuildRules = -1;
 
 			export ("$AddOn__*", "config/server/ADD_ON_LIST.cs");
@@ -16615,7 +16627,7 @@ function MainMenuGui::onWake ( %this )
 		{
 			exec ("config/server/ADD_ON_LIST.cs");
 
-			$AddOn__Vehicle_Rowboat       = 1;
+			$AddOn__Vehicle_Rowboat = 1;
 			$AddOn__Vehicle_Pirate_Cannon = 1;
 
 			export ("$AddOn__*", "config/server/ADD_ON_LIST.cs");
@@ -16759,21 +16771,21 @@ function MainMenuGui::showButtons ( %this )
 
 function getOldSaves ()
 {
-	%pattern   = "base/saves/*.bls";
+	%pattern = "base/saves/*.bls";
 	%fileCount = getFileCount (%pattern);
-	%filename  = findFirstFile (%pattern);
+	%filename = findFirstFile (%pattern);
 
 	echo ("Getting old save files from base/saves/ ...");
 	echo ("  " @ %fileCount @ " files found");
 
 	for ( %i = 0; %i < %fileCount; %i++ )
 	{
-		%path    = filePath (%filename);
+		%path = filePath (%filename);
 		%dirName = getSubStr (%path, strlen ("base/saves/"), strlen (%path) - strlen ("base/saves/"));
 
 		echo ("  dirName: " @ %dirName);
 
-		%base        = fileBase (%filename);
+		%base = fileBase (%filename);
 		%newFileName = "saves/" @ %dirName @ "/" @ %base @ ".bls";
 
 		if ( !isFile (%newFileName) )
@@ -16903,8 +16915,7 @@ function buildIFLs ()
 
 	%search = "Add-Ons/Face_*/*.png";
 
-	while ( %fullPath = findFirstFile (%search); %fullPath !$= ""
-	        %fullPath = findNextFile (%search) )
+	for ( %fullPath = findFirstFile (%search); %fullPath !$= ""; %fullPath = findNextFile (%search) )
 	{
 		if ( isValidDecal (%fullPath) )
 		{
@@ -16918,8 +16929,8 @@ function buildIFLs ()
 
 function isValidDecal ( %file )
 {
-	%path     = filePath (%file);
-	%dirName  = getSubStr (%path, strlen ("Add-Ons/"), strlen (%path) - strlen ("Add-Ons/"));
+	%path = filePath (%file);
+	%dirName = getSubStr (%path, strlen ("Add-Ons/"), strlen (%path) - strlen ("Add-Ons/"));
 	%fileBase = fileBase (%file);
 
 	if ( !isFile (%file) )
@@ -16958,7 +16969,7 @@ function isValidDecal ( %file )
 
 	if ( %wordCount > 1 )
 	{
-		%lastWord      = getWord (%dirName, %wordCount - 1);
+		%lastWord = getWord (%dirName, %wordCount - 1);
 		%floorLastWord = mFloor (%lastWord);
 
 		if ( %floorLastWord $= %lastWord )
@@ -16986,7 +16997,7 @@ function isValidDecal ( %file )
 	}
 
 	%wordCount = getWordCount (%spaceName);
-	%lastWord  = getWord (%spaceName, %wordCount - 1);
+	%lastWord = getWord (%spaceName, %wordCount - 1);
 
 	if ( mFloor (%lastWord) $= %lastWord )
 	{
@@ -17080,9 +17091,9 @@ function WhoTalk_Init ()
 
 	$WhoTalkSO = new ScriptObject ()
 	{
-		class   = WhoTalkSO;
+		class = WhoTalkSO;
 		textObj = chatWhosTalkingText.getId ();
-		count   = 0;
+		count = 0;
 	};
 }
 
@@ -17298,7 +17309,7 @@ function NMH_Type::type ( %this )
 
 function NMH_Type::send ( %this )
 {
-	%text      = %this.getValue ();
+	%text = %this.getValue ();
 	%firstChar = getSubStr (%text, 0, 1);
 
 	if ( %firstChar $= "/" )
@@ -17340,8 +17351,8 @@ function NMH_Type::send ( %this )
 		if ( %firstPos != -1 )
 		{
 			%posChain = "";
-			%offset   = %firstPos + 1;
-			%len      = strlen (%text);
+			%offset = %firstPos + 1;
+			%len = strlen (%text);
 
 			while ( %offset < %len )
 			{
@@ -17353,8 +17364,8 @@ function NMH_Type::send ( %this )
 				}
 
 				%relativePos = %pos - %firstPos;
-				%posChain    = %posChain SPC %relativePos;
-				%offset      = %pos + 1;
+				%posChain = %posChain SPC %relativePos;
+				%offset = %pos + 1;
 			}
 
 			if ( strpos (%posChain, "5 10") != -1 )
@@ -17424,9 +17435,9 @@ function newChatHud_Init ()
 {
 	if ( $Pref::Chat::CacheLines $= "" )
 	{
-		$Pref::Chat::CacheLines      = 1000;
+		$Pref::Chat::CacheLines = 1000;
 		$Pref::Chat::MaxDisplayLines = 10;
-		$Pref::Chat::LineTime        = 4000;
+		$Pref::Chat::LineTime = 4000;
 	}
 
 	if ( $Pref::Chat::CacheLines < 100 )
@@ -17456,7 +17467,7 @@ function newChatHud_Init ()
 
 	$NewChatSO = new ScriptObject (NewChatSO)
 	{
-		size     = $Pref::Chat::CacheLines;
+		size = $Pref::Chat::CacheLines;
 		maxLines = $Pref::Chat::MaxDisplayLines;
 		lineTime = $Pref::Chat::LineTime;
 
@@ -17499,11 +17510,8 @@ function newChatHud_UpdateIndicatorPosition ()
 {
 	%w = getWord (chatScrollDownIndicator.getExtent (), 0);
 	%h = getWord (chatScrollDownIndicator.getExtent (), 1);
-
 	%x = getWord (chatScrollDownIndicator.getPosition (), 0);
-
-	%y = (getWord ($NewChatSO.textObj.getPosition (), 1)
-	   + getWord ($NewChatSO.textObj.getExtent (), 1)) - %h;
+	%y = (getWord ($NewChatSO.textObj.getPosition (), 1) + getWord ($NewChatSO.textObj.getExtent (), 1)) - %h;
 
 	chatScrollDownIndicator.resize (%x, %y, %w, %h);
 }
@@ -17539,7 +17547,7 @@ function newChatHud_AddLine ( %line )
 function getCensor ( %word )
 {
 	%numChars = strlen (%word);
-	%censor   = "";
+	%censor = "";
 
 	for ( %i = 0; %i < %numChars; %i++ )
 	{
@@ -17562,8 +17570,8 @@ function censorString ( %line )
 {
 	%badList = $Pref::Chat::CurseList;
 	%lwrText = strlwr (%line) @ " ";
-	%offset  = 0;
-	%max     = strlen (%badList) - 1;
+	%offset = 0;
+	%max = strlen (%badList) - 1;
 
 	%i = 0;
 
@@ -17585,19 +17593,19 @@ function censorString ( %line )
 		}
 
 		%wordLen = %nextDelim - %offset;
-		%word    = getSubStr (%badList, %offset, %wordLen);
-		%badPos  = strstr (%lwrText, %word);
+		%word = getSubStr (%badList, %offset, %wordLen);
+		%badPos = strstr (%lwrText, %word);
 
 		if ( %badPos != -1 )
 		{
-			%start  = getSubStr (%line, 0, %badPos);
+			%start = getSubStr (%line, 0, %badPos);
 			%censor = getCensor (%word);
 
 			%endPos = mClamp (%badPos + strlen (%word), 0, strlen (%line));
 			%endLen = mClamp (strlen (%line) - (%badPos + strlen (%word)), 0, strlen (%line));
-			%end    = getSubStr (%line, %endPos, %endLen);
+			%end = getSubStr (%line, %endPos, %endLen);
 
-			%line    = %start @ %censor @ %end;
+			%line = %start @ %censor @ %end;
 			%lwrText = strlwr (%line) @ " ";
 		}
 		else
@@ -17620,7 +17628,7 @@ function NewChatSO::displayLatest ( %this )
 
 	if ( isObject (%text) )
 	{
-		%buff     = "";
+		%buff = "";
 		%currTime = getSimTime ();
 
 		for ( %i = 0; %i < %this.maxLines; %i++ )
@@ -17721,10 +17729,8 @@ function NewChatSO::displayLatest ( %this )
 
 		%w = getWord (MouseToolTip.getExtent (), 0);
 		%h = getWord (MouseToolTip.getExtent (), 1);
-
 		%x = getWord (MouseToolTip.getPosition (), 0);
-		%y = getWord ($NewChatSO.textObj.getPosition (), 1)
-		   + getWord ($NewChatSO.textObj.getExtent (), 1) + %h;
+		%y = getWord ($NewChatSO.textObj.getPosition (), 1) + getWord ($NewChatSO.textObj.getExtent (), 1) + %h;
 
 		MouseToolTip.resize (%x, %y, %w, %h);
 	}
@@ -17978,11 +17984,8 @@ function NewChatSO::displayPage ( %this )
 
 		%w = getWord (MouseToolTip.getExtent (), 0);
 		%h = getWord (MouseToolTip.getExtent (), 1);
-
 		%x = getWord (MouseToolTip.getPosition (), 0);
-
-		%y = getWord ($NewChatSO.textObj.getPosition (), 1)
-		   + getWord ($NewChatSO.textObj.getExtent (), 1) + %h;
+		%y = getWord ($NewChatSO.textObj.getPosition (), 1) + getWord ($NewChatSO.textObj.getExtent (), 1) + %h;
 
 		MouseToolTip.resize (%x, %y, %w, %h);
 	}
@@ -18371,7 +18374,7 @@ function SavingGui::save ( %this )
 	{
 		saveBricks ($SaveBricksPath, $SaveBricksDescription);
 
-		$SaveBricksPath        = "";
+		$SaveBricksPath = "";
 		$SaveBricksDescription = "";
 	}
 }
@@ -18402,7 +18405,7 @@ function clientCmdSetWrenchData ( %data )
 	for ( %j = 0; %j < %fieldCount; %j++ )
 	{
 		%field = getField (%data, %j);
-		%type  = getWord (%field, 0);
+		%type = getWord (%field, 0);
 
 		switch$ ( %type )
 		{
@@ -18595,10 +18598,10 @@ function clientCmdWrench_LoadMenus ()
 
 function wrenchDlg::LoadDataBlocks ()
 {
-	%oldLight   = Wrench_Lights.getText ();
+	%oldLight = Wrench_Lights.getText ();
 	%oldEmitter = Wrench_Emitters.getText ();
-	%oldItem    = Wrench_Items.getText ();
-	%oldSound   = WrenchSound_Sounds.getText ();
+	%oldItem = Wrench_Items.getText ();
+	%oldSound = WrenchSound_Sounds.getText ();
 
 	Wrench_Lights.clear ();
 	Wrench_Emitters.clear ();
@@ -18616,21 +18619,16 @@ function wrenchDlg::LoadDataBlocks ()
 
 	for ( %i = 0; %i < %dbCount; %i++ )
 	{
-		%db      = getDataBlock (%i);
+		%db = getDataBlock (%i);
 		%dbClass = %db.getClassName ();
 
 		if ( %db.uiName !$= "" )
 		{
 			switch$ ( %dbClass )
 			{
-				case "FxLightData":
-					Wrench_Lights.add (%db.uiName, %db);
-
-				case "ParticleEmitterData":
-					Wrench_Emitters.add (%db.uiName, %db);
-
-				case "ItemData":
-					Wrench_Items.add (%db.uiName, %db);
+				case "FxLightData": Wrench_Lights.add (%db.uiName, %db);
+				case "ParticleEmitterData": Wrench_Emitters.add (%db.uiName, %db);
+				case "ItemData": Wrench_Items.add (%db.uiName, %db);
 
 				case "AudioProfile":
 					if ( %db.getDescription ().isLooping )
@@ -18661,7 +18659,6 @@ function wrenchDlg::LoadDataBlocks ()
 					{
 						WrenchVehicleSpawn_Vehicles.add (%db.uiName, %db);
 					}
-				}
 			}
 		}
 	}
@@ -18709,10 +18706,10 @@ function wrenchDlg::send ( %this )
 		%data = %data TAB "N" SPC " ";
 	}
 
-	%lightDB   = Wrench_Lights.getSelected ();
-	%data      = %data TAB "LDB" SPC %lightDB;
+	%lightDB = Wrench_Lights.getSelected ();
+	%data = %data TAB "LDB" SPC %lightDB;
 	%emitterDB = Wrench_Emitters.getSelected ();
-	%data      = %data TAB "EDB" SPC %emitterDB;
+	%data = %data TAB "EDB" SPC %emitterDB;
 
 	%emitterDir = 0;
 
@@ -18727,9 +18724,9 @@ function wrenchDlg::send ( %this )
 		}
 	}
 
-	%data   = %data TAB "EDIR" SPC %emitterDir;
+	%data = %data TAB "EDIR" SPC %emitterDir;
 	%itemDB = Wrench_Items.getSelected ();
-	%data   = %data TAB "IDB" SPC %itemDB;
+	%data = %data TAB "IDB" SPC %itemDB;
 
 	%itemPos = 0;
 
@@ -18764,9 +18761,9 @@ function wrenchDlg::send ( %this )
 	%val = mFloor (Wrench_ItemRespawnTime.getValue ());
 
 	%data = %data TAB "IRT" SPC %val;
-	%data = %data TAB "RC"  SPC Wrench_RayCasting.getValue ();
-	%data = %data TAB "C"   SPC Wrench_Collision.getValue ();
-	%data = %data TAB "R"   SPC Wrench_Rendering.getValue ();
+	%data = %data TAB "RC" SPC Wrench_RayCasting.getValue ();
+	%data = %data TAB "C" SPC Wrench_Collision.getValue ();
+	%data = %data TAB "R" SPC Wrench_Rendering.getValue ();
 	%data = trim (%data);
 
 	commandToServer ('SetWrenchData', %data);
@@ -18823,8 +18820,8 @@ function wrenchSoundDlg::send ( %this )
 	}
 
 	%soundDB = WrenchSound_Sounds.getSelected ();
-	%data    = %data TAB "SDB" SPC %soundDB;
-	%data    = trim (%data);
+	%data = %data TAB "SDB" SPC %soundDB;
+	%data = trim (%data);
 
 	commandToServer ('SetWrenchData', %data);
 
@@ -18886,14 +18883,14 @@ function wrenchVehicleSpawnDlg::send ( %this )
 	}
 
 	%vehicleDB = mFloor (WrenchVehicleSpawn_Vehicles.getSelected ());
-	%data      = %data TAB "VDB" SPC %vehicleDB;
+	%data = %data TAB "VDB" SPC %vehicleDB;
 
 	%val = WrenchVehicleSpawn_ReColorVehicle.getValue ();
 
 	%data = %data TAB "RCV" SPC %val;
-	%data = %data TAB "RC"  SPC WrenchVehicleSpawn_RayCasting.getValue ();
-	%data = %data TAB "C"   SPC WrenchVehicleSpawn_Collision.getValue ();
-	%data = %data TAB "R"   SPC WrenchVehicleSpawn_Rendering.getValue ();
+	%data = %data TAB "RC" SPC WrenchVehicleSpawn_RayCasting.getValue ();
+	%data = %data TAB "C" SPC WrenchVehicleSpawn_Collision.getValue ();
+	%data = %data TAB "R" SPC WrenchVehicleSpawn_Rendering.getValue ();
 	%data = trim (%data);
 
 	commandToServer ('SetWrenchData', %data);
@@ -18921,25 +18918,25 @@ function auth_Init_Client ()
 
 	new TCPObject (authTCPobj_Client);
 
-	authTCPobj_Client.site     = "master3.blockland.us";
-	authTCPobj_Client.port     = 80;
-	authTCPobj_Client.done     = false;
-	authTCPobj_Client.success  = false;
+	authTCPobj_Client.site = "master3.blockland.us";
+	authTCPobj_Client.port = 80;
+	authTCPobj_Client.done = false;
+	authTCPobj_Client.success = false;
 	authTCPobj_Client.filePath = "/authSteam.php";
 
 	%postText = "steamTicket=" @ SteamGetAuthSessionTicket ();
 	%postText = %postText @ "&build=" @ urlEnc (getBuildNumber ());
 
-	authTCPobj_Client.postText    = %postText;
+	authTCPobj_Client.postText = %postText;
 	authTCPobj_Client.postTextLen = strlen (%postText);
 
-	authTCPobj_Client.cmd = "POST "  @ authTCPobj_Client.filePath @ " HTTP/1.0\r\n"
-	                      @ "Host: " @ authTCPobj_Client.site     @ "\r\n"
-	                      @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n"
-	                      @ "Content-Type: application/x-www-form-urlencoded\r\n"
-	                      @ "Content-Length: " @ authTCPobj_Client.postTextLen @ "\r\n"
-	                      @ "\r\n"
-	                      @ authTCPobj_Client.postText @ "\r\n";
+	authTCPobj_Client.cmd = "POST " @ authTCPobj_Client.filePath @ " HTTP/1.0\r\n"
+		@ "Host: " @ authTCPobj_Client.site @ "\r\n"
+		@ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n"
+		@ "Content-Type: application/x-www-form-urlencoded\r\n"
+		@ "Content-Length: " @ authTCPobj_Client.postTextLen @ "\r\n"
+		@ "\r\n"
+		@ authTCPobj_Client.postText @ "\r\n";
 
 	authTCPobj_Client.connect (authTCPobj_Client.site @ ":" @ authTCPobj_Client.port);
 }
@@ -19025,7 +19022,7 @@ function authTCPobj_Client::onLine ( %this, %line )
 			warn ("WARNING: authTCPobj_Client - Location redirect to " @ %url);
 
 			%this.filePath = %url;
-			%this.cmd      = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
+			%this.cmd = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
 
 			%this.schedule (0, disconnect);
 			%this.schedule (5000, connect, %this.site @ ":" @ %this.port);
@@ -19036,7 +19033,7 @@ function authTCPobj_Client::onLine ( %this, %line )
 			warn ("WARNING: authTCPobj_Client - Content-Location redirect to " @ %url);
 
 			%this.filePath = %url;
-			%this.cmd      = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
+			%this.cmd = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
 
 			%this.schedule (0, disconnect);
 			%this.schedule (5000, connect, %this.site @ ":" @ %this.port);
@@ -19116,7 +19113,7 @@ function authTCPobj_Client::onLine ( %this, %line )
 				MM_AuthNameButton.setVisible (true);
 			}
 
-			$authed       = true;
+			$authed = true;
 			%this.success = true;
 
 			JS_QueryInternetBlocker.setVisible (false);
@@ -19209,10 +19206,10 @@ function authTCPobj_Client::onLine ( %this, %line )
 
 		case "BLID":
 			%wordCount = getWordCount (%line);
-			%blid      = getWord (%line, 1);
-			%name      = getWords (%line, 2, 99);
+			%blid = getWord (%line, 1);
+			%name = getWords (%line, 2, 99);
 
-			$Auth::blidCount              = mFloor ($Auth::blidCount);
+			$Auth::blidCount = mFloor ($Auth::blidCount);
 			$Auth::name[$Auth::blidCount] = %name;
 			$Auth::blid[$Auth::blidCount] = %blid;
 			$Auth::blidCount++;
@@ -19287,7 +19284,7 @@ function selectBLIDGui::select ()
 		selectBLID_list.setSelectedRow (0);
 	}
 
-	%row  = selectBLID_list.getRowTextById (selectBLID_list.getSelectedId ());
+	%row = selectBLID_list.getRowTextById (selectBLID_list.getSelectedId ());
 	%blid = getField (%row, 0);
 
 	setMyBLID (%blid);
@@ -19321,7 +19318,7 @@ function regNameGui::onWake ()
 	regName_actionButton.setText ("Check Availability");
 
 	regName_actionButton.enabled = false;
-	regName_actionButton.mColor  = "255 255 255 128";
+	regName_actionButton.mColor = "255 255 255 128";
 
 	if ( !SteamEnabled () )
 	{
@@ -19346,8 +19343,8 @@ function regNameGui::register ()
 	if ( regName_actionButton.getText () $= "Check Availability" )
 	{
 		regName_actionButton.enabled = false;
-		regName_actionButton.mColor  = "255 255 255 128";
-		regName_newName.enabled      = false;
+		regName_actionButton.mColor = "255 255 255 128";
+		regName_newName.enabled = false;
 
 		regName_message.setText ("Connecting...");
 
@@ -19358,30 +19355,30 @@ function regNameGui::register ()
 
 		new TCPObject (regName_tcpObj);
 
-		regName_tcpObj.site     = "master3.blockland.us";
-		regName_tcpObj.port     = 80;
+		regName_tcpObj.site = "master3.blockland.us";
+		regName_tcpObj.port = 80;
 		regName_tcpObj.filePath = "/nameAvailable.php";
 
 		%postText = "name=" @ regName_newName.getValue ();
 
-		regName_tcpObj.postText    = %postText;
+		regName_tcpObj.postText = %postText;
 		regName_tcpObj.postTextLen = strlen (%postText);
 
-		regName_tcpObj.cmd = "POST "  @ regName_tcpObj.filePath @ " HTTP/1.0\r\n"
-		                   @ "Host: " @ regName_tcpObj.site     @ "\r\n"
-		                   @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n"
-		                   @ "Content-Type: application/x-www-form-urlencoded\r\n"
-		                   @ "Content-Length: " @ regName_tcpObj.postTextLen @ "\r\n"
-		                   @ "\r\n"
-		                   @ regName_tcpObj.postText @ "\r\n";
+		regName_tcpObj.cmd = "POST " @ regName_tcpObj.filePath @ " HTTP/1.0\r\n"
+			@ "Host: " @ regName_tcpObj.site @ "\r\n"
+			@ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n"
+			@ "Content-Type: application/x-www-form-urlencoded\r\n"
+			@ "Content-Length: " @ regName_tcpObj.postTextLen @ "\r\n"
+			@ "\r\n"
+			@ regName_tcpObj.postText @ "\r\n";
 
 		regName_tcpObj.connect (regName_tcpObj.site @ ":" @ regName_tcpObj.port);
 	}
 	else if ( regName_actionButton.getText () $= "Register" )
 	{
 		regName_actionButton.enabled = false;
-		regName_actionButton.mColor  = "255 255 255 128";
-		regName_newName.enabled      = false;
+		regName_actionButton.mColor = "255 255 255 128";
+		regName_newName.enabled = false;
 
 		regName_message.setText ("Connecting...");
 
@@ -19392,24 +19389,24 @@ function regNameGui::register ()
 
 		new TCPObject (regName_tcpObj);
 
-		regName_tcpObj.site     = "master3.blockland.us";
-		regName_tcpObj.port     = 80;
+		regName_tcpObj.site = "master3.blockland.us";
+		regName_tcpObj.port = 80;
 		regName_tcpObj.filePath = "/nameSet.php";
 
-		%postText = "name="   @ regName_newName.getValue ();
-		%postText = %postText @ "&blid="        @ getMyBLID ();
+		%postText = "name=" @ regName_newName.getValue ();
+		%postText = %postText @ "&blid=" @ getMyBLID ();
 		%postText = %postText @ "&steamTicket=" @ SteamGetAuthSessionTicket ();
 
-		regName_tcpObj.postText    = %postText;
+		regName_tcpObj.postText = %postText;
 		regName_tcpObj.postTextLen = strlen (%postText);
 
-		regName_tcpObj.cmd = "POST "  @ regName_tcpObj.filePath @ " HTTP/1.0\r\n"
-		                   @ "Host: " @ regName_tcpObj.site     @ "\r\n"
-		                   @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n"
-		                   @ "Content-Type: application/x-www-form-urlencoded\r\n"
-		                   @ "Content-Length: " @ regName_tcpObj.postTextLen @ "\r\n"
-		                   @ "\r\n"
-		                   @ regName_tcpObj.postText @ "\r\n";
+		regName_tcpObj.cmd = "POST " @ regName_tcpObj.filePath @ " HTTP/1.0\r\n"
+			@ "Host: " @ regName_tcpObj.site @ "\r\n"
+			@ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n"
+			@ "Content-Type: application/x-www-form-urlencoded\r\n"
+			@ "Content-Length: " @ regName_tcpObj.postTextLen @ "\r\n"
+			@ "\r\n"
+			@ regName_tcpObj.postText @ "\r\n";
 
 		regName_tcpObj.connect (regName_tcpObj.site @ ":" @ regName_tcpObj.port);
 	}
@@ -19422,7 +19419,7 @@ function regNameGui::register ()
 function regNameGui::onType ()
 {
 	regName_actionButton.enabled = true;
-	regName_actionButton.mColor  = "255 255 255 255";
+	regName_actionButton.mColor = "255 255 255 255";
 	regName_actionButton.setText ("Check Availability");
 
 	regName_message.setText ("");
@@ -19434,8 +19431,8 @@ function regName_tcpObj::onDNSFailed ( %this )
 	regName_message.setText ("Error: DNS Failed");
 
 	regName_actionButton.enabled = true;
-	regName_actionButton.mColor  = "255 255 255 255";
-	regName_newName.enabled      = true;
+	regName_actionButton.mColor = "255 255 255 255";
+	regName_newName.enabled = true;
 }
 
 function regName_tcpObj::onConnectFailed ( %this )
@@ -19444,8 +19441,8 @@ function regName_tcpObj::onConnectFailed ( %this )
 	regName_message.setText ("Error: Connection Failed");
 
 	regName_actionButton.enabled = true;
-	regName_actionButton.mColor  = "255 255 255 255";
-	regName_newName.enabled      = true;
+	regName_actionButton.mColor = "255 255 255 255";
+	regName_newName.enabled = true;
 }
 
 function regName_tcpObj::onConnected ( %this )
@@ -19498,7 +19495,7 @@ function regName_tcpObj::onLine ( %this, %line )
 			warn ("WARNING: regName_tcpObj - Location redirect to " @ %url);
 
 			%this.filePath = %url;
-			%this.cmd      = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
+			%this.cmd = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
 
 			%this.schedule (0, disconnect);
 			%this.schedule (500, connect, %this.site @ ":" @ %this.port);
@@ -19508,7 +19505,7 @@ function regName_tcpObj::onLine ( %this, %line )
 			warn ("WARNING: regName_tcpObj - Content-Location redirect to " @ %url);
 
 			%this.filePath = %url;
-			%this.cmd      = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
+			%this.cmd = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
 
 			%this.schedule (0, disconnect);
 			%this.schedule (500, connect, %this.site @ ":" @ %this.port);
@@ -19521,7 +19518,7 @@ function regName_tcpObj::onLine ( %this, %line )
 			regName_message.setText ("Name available! ");
 
 			regName_actionButton.enabled = true;
-			regName_actionButton.mColor  = "255 255 255 255";
+			regName_actionButton.mColor = "255 255 255 255";
 
 			regName_actionButton.setText ("Register");
 
@@ -19560,7 +19557,6 @@ function regName_tcpObj::onLine ( %this, %line )
 			MM_AuthBar.blinkSuccess ();
 
 			Canvas.popDialog ("regNameGui");
-		}
 	}
 }
 
@@ -19583,15 +19579,15 @@ $ColorGui_Mode = 0;
 function colorGui::popUp ( %this, %targetVar, %targetSwatch, %callback, %alpha )
 {
 	%targetVar = %targetVar;
-	%cmd       = "%val = " @ %targetVar @ ";";
+	%cmd = "%val = " @ %targetVar @ ";";
 
 	eval (%cmd);
 
 	%color = getColorF (%val);
-	%r     = getWord (%color, 0);
-	%g     = getWord (%color, 1);
-	%b     = getWord (%color, 2);
-	%a     = getWord (%color, 3);
+	%r = getWord (%color, 0);
+	%g = getWord (%color, 1);
+	%b = getWord (%color, 2);
+	%a = getWord (%color, 3);
 
 	%this.initialColor = %color;
 
@@ -19605,9 +19601,9 @@ function colorGui::popUp ( %this, %targetVar, %targetSwatch, %callback, %alpha )
 		ColorGui_Slider3.setVisible (false);
 	}
 
-	%this.callBack     = %callback;
+	%this.callBack = %callback;
 	%this.targetSwatch = %targetSwatch;
-	%this.targetVar    = %targetVar;
+	%this.targetVar = %targetVar;
 
 	if ( $ColorGui_Mode == $COLORMODE_RGB )
 	{
@@ -19619,9 +19615,9 @@ function colorGui::popUp ( %this, %targetVar, %targetSwatch, %callback, %alpha )
 	else
 	{
 		%hsv = RGBtoHSV (%r, %g, %b);
-		%h   = getWord (%hsv, 0);
-		%s   = getWord (%hsv, 1);
-		%v   = getWord (%hsv, 2);
+		%h = getWord (%hsv, 0);
+		%s = getWord (%hsv, 1);
+		%v = getWord (%hsv, 2);
 
 		ColorGui_Slider0.setValue (%h);
 		ColorGui_Slider1.setValue (%s);
@@ -19665,9 +19661,9 @@ function colorGui::setMode ( %this, %mode )
 			%a = ColorGui_Slider3.getValue ();
 
 			%RGB = HSVtoRGB (%h, %s, %v);
-			%r   = getWord (%RGB, 0);
-			%g   = getWord (%RGB, 1);
-			%b   = getWord (%RGB, 2);
+			%r = getWord (%RGB, 0);
+			%g = getWord (%RGB, 1);
+			%b = getWord (%RGB, 2);
 
 			ColorGui_Slider0.setValue (%r);
 			ColorGui_Slider1.setValue (%g);
@@ -19729,9 +19725,9 @@ function colorGui::update ( %this )
 		%v = ColorGui_Slider2.getValue ();
 
 		%RGB = HSVtoRGB (%h, %s, %v);
-		%r   = getWord (%RGB, 0);
-		%g   = getWord (%RGB, 1);
-		%b   = getWord (%RGB, 2);
+		%r = getWord (%RGB, 0);
+		%g = getWord (%RGB, 1);
+		%b = getWord (%RGB, 2);
 	}
 
 	%a = ColorGui_Slider3.getValue ();
@@ -19744,10 +19740,10 @@ function colorGui::doCallbacks ( %this )
 {
 	if ( $ColorGui_Mode == $COLORMODE_RGB )
 	{
-		%r    = ColorGui_Slider0.getValue ();
-		%g    = ColorGui_Slider1.getValue ();
-		%b    = ColorGui_Slider2.getValue ();
-		%a    = ColorGui_Slider3.getValue ();
+		%r = ColorGui_Slider0.getValue ();
+		%g = ColorGui_Slider1.getValue ();
+		%b = ColorGui_Slider2.getValue ();
+		%a = ColorGui_Slider3.getValue ();
 		%rgba = %r SPC %g SPC %b SPC %a;
 	}
 	else
@@ -19758,9 +19754,9 @@ function colorGui::doCallbacks ( %this )
 		%a = ColorGui_Slider3.getValue ();
 
 		%rgba = HSVtoRGB (%h, %s, %v) SPC %a;
-		%r    = getWord (%rgba, 0);
-		%g    = getWord (%rgba, 1);
-		%b    = getWord (%rgba, 2);
+		%r = getWord (%rgba, 0);
+		%g = getWord (%rgba, 1);
+		%b = getWord (%rgba, 2);
 	}
 
 	%cmd = %this.targetVar @ " = \"" @ %rgba @ "\";";
@@ -19781,7 +19777,7 @@ function colorGui::done ( %this )
 function colorGui::clickCancel ( %this )
 {
 	%rgba = %this.initialColor;
-	%cmd  = %this.targetVar @ " = \"" @ %rgba @ "\";";
+	%cmd = %this.targetVar @ " = \"" @ %rgba @ "\";";
 
 	eval (%cmd);
 
@@ -19910,7 +19906,7 @@ function ColorSetGui::Display ( %this )
 	}
 
 	%itemCount = 0;
-	%rowLimit  = 6;
+	%rowLimit = 6;
 
 	for ( %i = 0; %i < $Avatar::NumColors; %i++ )
 	{
@@ -20019,9 +20015,9 @@ function ColorSetGui::selectColor ( %this, %idx )
 	else
 	{
 		%hsv = RGBtoHSV (%r, %g, %b);
-		%h   = getWord (%hsv, 0);
-		%s   = getWord (%hsv, 1);
-		%v   = getWord (%hsv, 2);
+		%h = getWord (%hsv, 0);
+		%s = getWord (%hsv, 1);
+		%v = getWord (%hsv, 2);
 
 		ColorSetGui_Slider0.setValue (%h);
 		ColorSetGui_Slider1.setValue (%s);
@@ -20046,9 +20042,9 @@ function ColorSetGui::setMode ( %this, %mode )
 			%a = ColorSetGui_Slider3.getValue ();
 
 			%RGB = HSVtoRGB (%h, %s, %v);
-			%r   = getWord (%RGB, 0);
-			%g   = getWord (%RGB, 1);
-			%b   = getWord (%RGB, 2);
+			%r = getWord (%RGB, 0);
+			%g = getWord (%RGB, 1);
+			%b = getWord (%RGB, 2);
 
 			ColorSetGui_Slider0.setValue (%r);
 			ColorSetGui_Slider1.setValue (%g);
@@ -20119,9 +20115,9 @@ function ColorSetGui::update ()
 		%v = ColorSetGui_Slider2.getValue ();
 
 		%RGB = HSVtoRGB (%h, %s, %v);
-		%r   = getWord (%RGB, 0);
-		%g   = getWord (%RGB, 1);
-		%b   = getWord (%RGB, 2);
+		%r = getWord (%RGB, 0);
+		%g = getWord (%RGB, 1);
+		%b = getWord (%RGB, 2);
 	}
 
 	%a = ColorSetGui_Slider3.getValue ();
@@ -20150,10 +20146,10 @@ function IColorToFColor ( %IColor )
 
 function RGBtoHSV ( %r, %g, %b )
 {
-	%min   = getMin (%r, getMin (%g, %b));
-	%max   = getMax (%r, getMax (%g, %b));
+	%min = getMin (%r, getMin (%g, %b));
+	%max = getMax (%r, getMax (%g, %b));
 	%delta = %max - %min;
-	%v     = %max;
+	%v = %max;
 
 	if ( %max != 0 )
 	{
@@ -20277,7 +20273,7 @@ function ToggleBuildMacroRecording ( %val )
 
 		$BuildMacroSO = new ScriptObject ()
 		{
-			class     = BuildMacroSO;
+			class = BuildMacroSO;
 			numEvents = 0;
 		};
 
@@ -20319,8 +20315,14 @@ function BuildMacroSO::pushEvent ( %this, %eventType, %event, %arg1, %arg2, %arg
 	}
 	else if ( %eventType $= "Server" )
 	{
-		%val = %eventType TAB getTaggedString (%event) TAB %arg1 TAB %arg2 TAB %arg3 TAB %arg4
-		   TAB %arg5      TAB %arg6;
+		%val = %eventType
+			TAB getTaggedString (%event)
+			TAB %arg1
+			TAB %arg2
+			TAB %arg3
+			TAB %arg4
+			TAB %arg5
+			TAB %arg6;
 	}
 	else
 	{
@@ -20336,7 +20338,7 @@ function BuildMacroSO::compress ( %this )
 	for ( %i = 0; %i < %this.numEvents; %i++ )
 	{
 		%string = %this.event[%i];
-		%event  = getField (%string, 1);
+		%event = getField (%string, 1);
 
 		switch$ ( %event )
 		{
@@ -20346,7 +20348,7 @@ function BuildMacroSO::compress ( %this )
 				while ( %j < %this.numEvents )
 				{
 					%stringB = %this.event[%j];
-					%eventB  = getField (%stringB, 1);
+					%eventB = getField (%stringB, 1);
 
 					if ( %eventB $= "PlantBrick" )
 					{
@@ -20367,7 +20369,7 @@ function BuildMacroSO::compress ( %this )
 				while ( %j < %this.numEvents )
 				{
 					%stringB = %this.event[%j];
-					%eventB  = getField (%stringB, 1);
+					%eventB = getField (%stringB, 1);
 
 					if ( %eventB $= "ShiftBrick" )
 					{
@@ -20402,7 +20404,7 @@ function BuildMacroSO::compress ( %this )
 				while ( %j < %this.numEvents )
 				{
 					%stringB = %this.event[%j];
-					%eventB  = getField (%stringB, 1);
+					%eventB = getField (%stringB, 1);
 
 					if ( %eventB $= "ShiftBrick" )
 					{
@@ -20441,7 +20443,7 @@ function BuildMacroSO::compress ( %this )
 				while ( %j < %this.numEvents )
 				{
 					%stringB = %this.event[%j];
-					%eventB  = getField (%stringB, 1);
+					%eventB = getField (%stringB, 1);
 
 					if ( %eventB $= "UseInventory" )
 					{
@@ -20505,20 +20507,20 @@ function BuildMacroSO::PlayBack ( %this, %line )
 
 function BuildMacroSO::PlayEvent ( %this, %eventNum )
 {
-	%string    = %this.event[%eventNum];
+	%string = %this.event[%eventNum];
 	%eventType = getField (%string, 0);
-	%event     = getField (%string, 1);
-	%arg1      = getField (%string, 2);
-	%arg2      = getField (%string, 3);
-	%arg3      = getField (%string, 4);
-	%arg4      = getField (%string, 5);
-	%arg5      = getField (%string, 6);
-	%arg6      = getField (%string, 7);
+	%event = getField (%string, 1);
+	%arg1 = getField (%string, 2);
+	%arg2 = getField (%string, 3);
+	%arg3 = getField (%string, 4);
+	%arg4 = getField (%string, 5);
+	%arg5 = getField (%string, 6);
+	%arg6 = getField (%string, 7);
 
 	if ( %eventType $= "Client" )
 	{
 		eval (%event @ "(" @ %arg1 @ "," @ %arg2 @ "," @ %arg3 @ "," @ %arg4 @ ","
-			@ %arg5  @ "," @ %arg6 @ ");");
+			@ %arg5 @ "," @ %arg6 @ ");");
 	}
 	else if ( %eventType $= "Server" )
 	{
@@ -20536,18 +20538,18 @@ function BuildMacroSO::dump ( %this )
 
 	for ( %i = 0; %i < %this.numEvents; %i++ )
 	{
-		%string    = %this.event[%i];
+		%string = %this.event[%i];
 		%eventType = getField (%string, 0);
-		%event     = getField (%string, 1);
-		%arg1      = getField (%string, 2);
-		%arg2      = getField (%string, 3);
-		%arg3      = getField (%string, 4);
-		%arg4      = getField (%string, 5);
-		%arg5      = getField (%string, 6);
-		%arg6      = getField (%string, 7);
+		%event = getField (%string, 1);
+		%arg1 = getField (%string, 2);
+		%arg2 = getField (%string, 3);
+		%arg3 = getField (%string, 4);
+		%arg4 = getField (%string, 5);
+		%arg5 = getField (%string, 6);
+		%arg6 = getField (%string, 7);
 
-		echo ("  " @ %i @ " - " @ %eventType TAB %event TAB %arg1 TAB %arg2 TAB %arg3
-		  TAB %arg4 TAB %arg5 TAB %arg6);
+		echo ("  " @ %i @ " - " @ %eventType TAB %event TAB %arg1 TAB %arg2 TAB %arg3 TAB %arg4
+			TAB %arg5 TAB %arg6);
 	}
 
 	echo ("----------------------------------------------");
@@ -20555,7 +20557,7 @@ function BuildMacroSO::dump ( %this )
 
 function wrenchEventsDlg::onWake ( %this )
 {
-	%res  = getRes ();
+	%res = getRes ();
 	%resW = getWord (%res, 0);
 	%resH = getWord (%res, 1);
 
@@ -20621,7 +20623,7 @@ function wrenchEventsDlg::onWake ( %this )
 
 	%box.resize (%x, %y, %w, %h);
 
-	%box.vertSizing  = "Bottom";
+	%box.vertSizing = "Bottom";
 	%box.horizSizing = "Width";
 
 	WrenchEvents_LoadingWindow.setVisible (false);
@@ -20666,7 +20668,7 @@ function wrenchEventsDlg::clear ( %this )
 
 	%box.resize (%x, %y, %w, %h);
 
-	%box.vertSizing  = "Bottom";
+	%box.vertSizing = "Bottom";
 	%box.horizSizing = "Width";
 
 	WrenchEvents_LoadingWindow.setVisible (false);
@@ -20698,7 +20700,7 @@ function ClientCmdRegisterInputEvent ( %class, %name, %targetList )
 	{
 		if ( $InputEvent_Name[%class, %i] $= %name )
 		{
-			$InputEvent_Name[%class, %i]       = %name;
+			$InputEvent_Name[%class, %i] = %name;
 			$InputEvent_TargetList[%class, %i] = %targetList;
 
 			return;
@@ -20707,7 +20709,7 @@ function ClientCmdRegisterInputEvent ( %class, %name, %targetList )
 
 	%i = mFloor ($InputEvent_Count[%class]);
 
-	$InputEvent_Name[%class, %i]       = %name;
+	$InputEvent_Name[%class, %i] = %name;
 	$InputEvent_TargetList[%class, %i] = %targetList;
 
 	$InputEvent_Count[%class]++;
@@ -20728,7 +20730,7 @@ function ClientCmdRegisterOutputEvent ( %class, %name, %parameterListA, %paramet
 	{
 		if ( $OutputEvent_Name[%class, %i] $= %name )
 		{
-			$OutputEvent_Name[%class, %i]          = %name;
+			$OutputEvent_Name[%class, %i] = %name;
 			$OutputEvent_parameterList[%class, %i] = %parameterList;
 
 			return;
@@ -20737,7 +20739,7 @@ function ClientCmdRegisterOutputEvent ( %class, %name, %parameterListA, %paramet
 
 	%i = mFloor ($OutputEvent_Count[%class]);
 
-	$OutputEvent_Name[%class, %i]          = %name;
+	$OutputEvent_Name[%class, %i] = %name;
 	$OutputEvent_parameterList[%class, %i] = %parameterList;
 
 	$OutputEvent_Count[%class]++;
@@ -20901,7 +20903,7 @@ function wrenchEventsDlg::reshuffleScrollbox ( %this, %target )
 
 	for ( %i = 0; %i < %count; %i++ )
 	{
-		%obj      = WrenchEvents_Box.getObject (%i);
+		%obj = WrenchEvents_Box.getObject (%i);
 		%checkBox = %obj.getObject (0);
 
 		%checkBox.setText (%i);
@@ -20920,7 +20922,7 @@ function wrenchEventsDlg::createTargetList ( %this, %box, %inputMenu )
 		%lastObject = %box.getObject (%box.getCount () - 1);
 	}
 
-	%class    = "fxDTSBrick";
+	%class = "fxDTSBrick";
 	%selected = %inputMenu.getSelected ();
 
 	if ( %inputMenu.getText () $= "" )
@@ -20955,14 +20957,14 @@ function wrenchEventsDlg::createTargetList ( %this, %box, %inputMenu )
 	%targetMenu.resize (%x, %y, %w, %h);
 
 	%targetMenu.command = "wrenchEventsDlg.createOutputList(" @ %box @ "," @ %targetMenu
-	                    @ "," @ %selected @ ");";
+		@ "," @ %selected @ ");";
 
 	%targetCount = getFieldCount ($InputEvent_TargetList[%class, %selected]);
 
 	for ( %i = 0; %i < %targetCount; %i++ )
 	{
 		%field = getField ($InputEvent_TargetList[%class, %selected], %i);
-		%name  = getWord (%field, 0);
+		%name = getWord (%field, 0);
 
 		%targetMenu.add (%name, %i);
 	}
@@ -21002,14 +21004,13 @@ function wrenchEventsDlg::CreateNamedBrickList ( %this, %box, %targetMenu, %inpu
 
 		%x = getWord (%lastObject.getPosition (), 0);
 		%y = getWord (%lastObject.getPosition (), 1) + getWord (%lastObject.getExtent (), 1);
-
 		%w = 100;
 		%h = 18;
 
 		%namedBrickMenu.resize (%x, %y, %w, %h);
 
 		%namedBrickMenu.command = "wrenchEventsDlg.createOutputList(" @ %box @ "," @ %namedBrickMenu
-		                        @ "," @ %inputEventIdx @ ", FxDTSBrick);";
+			@ "," @ %inputEventIdx @ ", FxDTSBrick);";
 
 		for ( %i = 0; %i < ServerConnection.NTNameCount; %i++ )
 		{
@@ -21059,7 +21060,7 @@ function wrenchEventsDlg::createOutputList ( %this, %box, %targetMenu, %inputEve
 
 	if ( %outputClass $= "" )
 	{
-		%selected    = %targetMenu.getSelected ();
+		%selected = %targetMenu.getSelected ();
 		%outputClass = getWord (getField ($InputEvent_TargetList[%class, %inputEventIdx], %selected), 1);
 	}
 
@@ -21122,14 +21123,13 @@ function wrenchEventsDlg::createOutputList ( %this, %box, %targetMenu, %inputEve
 
 	%x = 2 + getWord (%lastObject.getPosition (), 0) + getWord (%lastObject.getExtent (), 0);
 	%y = 0;
-
 	%w = 100;
 	%h = 18;
 
 	%outputMenu.resize (%x, %y, %w, %h);
 
 	%outputMenu.command = "wrenchEventsDlg.createOutputParameters(" @ %box @ "," @ %outputMenu
-	                    @ "," @ %outputClass @ ");";
+		@ "," @ %outputClass @ ");";
 
 	for ( %i = 0; %i < $OutputEvent_Count[%outputClass]; %i++ )
 	{
@@ -21167,7 +21167,7 @@ function wrenchEventsDlg::VerifyInt ( %this, %textBox, %min, %max )
 		%textBox.setText (%newVal);
 	}
 }
-// ->>> Bookmark
+
 function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %outputClass )
 {
 	%this.closeColorMenu ();
@@ -21177,7 +21177,6 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 	while ( %lastObject != %outputMenu )
 	{
 		%lastObject.delete ();
-
 		%lastObject = %box.getObject (%box.getCount () - 1);
 	}
 
@@ -21195,9 +21194,11 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 	{
 		%field = getField (%parList, %i);
 		%lastObject = %box.getObject (%box.getCount () - 1);
+
 		%x = 2 + getWord (%lastObject.getPosition (), 0) + getWord (%lastObject.getExtent (), 0);
 		%y = 0;
 		%h = 18;
+
 		%type = getWord (%field, 0);
 
 		if ( %type $= "int" )
@@ -21222,30 +21223,27 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 				%testVal /= 10;
 			}
 
-			%gui = new GuiTextEditCtrl ("");
-
+			%gui = new GuiTextEditCtrl ();
 			%box.add (%gui);
 
 			%w = (%maxChars * 6) + 6;
 
 			%gui.resize (%x, %y, %w, %h);
-
 			%gui.command = "wrenchEventsDlg.VerifyInt(" @ %gui @ "," @ %min @ "," @ %max @ ");";
-
 			%gui.setText (%default);
 		}
 		else if ( %type $= "intList" )
 		{
 			%maxLength = 200;
-			%width = mFloor (getWord (%field, 1));
-			%gui = new GuiTextEditCtrl ("");
 
+			%width = mFloor (getWord (%field, 1));
+
+			%gui = new GuiTextEditCtrl ();
 			%box.add (%gui);
 
 			%w = %width;
 
 			%gui.resize (%x, %y, %w, %h);
-
 			%gui.maxLength = %maxLength;
 		}
 		else if ( %type $= "float" )
@@ -21259,30 +21257,28 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 			{
 				%step = (%max - %min) / 10;
 			}
+
 			if ( %step <= 0 )
 			{
 				%step = 0.1;
 			}
 
-			%gui = new GuiSliderCtrl ("");
-
+			%gui = new GuiSliderCtrl ();
 			%box.add (%gui);
 
 			%w = 100;
 			%h = 36;
 
 			%gui.resize (%x, %y, %w, %h);
-
 			%gui.range = %min SPC %max;
-
 			%gui.setValue (%default);
 
-			%gui.command = " $thisControl.setValue(       mFloor( $thisControl.getValue() * (1 / " @ %step @ ") )   * " @ %step @ "   ) ;";
+			%gui.command = " $thisControl.setValue(       mFloor( $thisControl.getValue() * (1 / "
+				@ %step @ ") )   * " @ %step @ "   ) ;";
 		}
 		else if ( %type $= "bool" )
 		{
-			%gui = new GuiCheckBoxCtrl ("");
-
+			%gui = new GuiCheckBoxCtrl ();
 			%box.add (%gui);
 
 			%w = %h;
@@ -21294,25 +21290,23 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 		{
 			%maxLength = mFloor (getWord (%field, 1));
 			%width = mFloor (getWord (%field, 2));
-			%gui = new GuiTextEditCtrl ("");
 
+			%gui = new GuiTextEditCtrl ();
 			%box.add (%gui);
 
 			%w = %width;
 
 			%gui.resize (%x, %y, %w, %h);
-
 			%gui.maxLength = %maxLength;
 		}
 		else if ( %type $= "datablock" )
 		{
 			%dbClassName = getWord (%field, 1);
-			%gui = new GuiPopUpMenuCtrl ("");
 
+			%gui = new GuiPopUpMenuCtrl ();
 			%box.add (%gui);
 
 			%w = 100;
-
 			%gui.resize (%x, %y, %w, %h);
 
 			%dbCount = getDataBlockGroupSize ();
@@ -21328,6 +21322,7 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 					{
 						continue;
 					}
+
 					if ( %db.uiName $= "" )
 					{
 						continue;
@@ -21347,21 +21342,23 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 					{
 						continue;
 					}
+
 					if ( %db.uiName !$= "" )
 					{
 						continue;
 					}
+
 					if ( %db.getDescription ().isLooping == 1 )
 					{
 						continue;
 					}
+
 					if ( !%db.getDescription ().is3D )
 					{
 						continue;
 					}
 
 					%name = fileName (%db.fileName);
-
 					%gui.add (%name, %db);
 				}
 			}
@@ -21376,7 +21373,9 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 					{
 						continue;
 					}
-					if ( %dbClass $= "WheeledVehicleData" || %dbClass $= "HoverVehicleData" || %dbClass $= "FlyingVehicleData" || (%dbClass $= "PlayerData" && %db.rideAble) )
+
+					if ( %dbClass $= "WheeledVehicleData" || %dbClass $= "HoverVehicleData"
+					  || %dbClass $= "FlyingVehicleData" || (%dbClass $= "PlayerData" && %db.rideAble) )
 					{
 						%gui.add (%db.uiName, %db);
 					}
@@ -21393,6 +21392,7 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 					{
 						continue;
 					}
+
 					if ( %dbClass !$= %dbClassName )
 					{
 						continue;
@@ -21413,8 +21413,8 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 		else if ( %type $= "vector" )
 		{
 			%tw = 31;
-			%gui = new GuiSwatchCtrl ("");
 
+			%gui = new GuiSwatchCtrl ();
 			%box.add (%gui);
 
 			%w = ((%tw + 2) * 3) + 2;
@@ -21422,8 +21422,7 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 			%gui.resize (%x, %y, %w, %h);
 			%gui.setColor ("0 0 0 0.75");
 
-			%xTextBox = new GuiTextEditCtrl ("");
-
+			%xTextBox = new GuiTextEditCtrl ();
 			%gui.add (%xTextBox);
 
 			%tx = 0 + 2;
@@ -21432,35 +21431,29 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 
 			%xTextBox.resize (%tx, %ty, %tw, %th);
 
-			%yTextBox = new GuiTextEditCtrl ("");
-
+			%yTextBox = new GuiTextEditCtrl ();
 			%gui.add (%yTextBox);
 
 			%tx = ((%tw + 2) * 1) + 2;
-
 			%yTextBox.resize (%tx, %ty, %tw, %th);
 
-			%zTextBox = new GuiTextEditCtrl ("");
-
+			%zTextBox = new GuiTextEditCtrl ();
 			%gui.add (%zTextBox);
 
 			%tx = ((%tw + 2) * 2) + 2;
-
 			%zTextBox.resize (%tx, %ty, %tw, %th);
 
 			%gui = %xTextBox;
 		}
 		else if ( %type $= "list" )
 		{
-			%gui = new GuiPopUpMenuCtrl ("");
-
+			%gui = new GuiPopUpMenuCtrl ();
 			%box.add (%gui);
 
 			%w = 100;
 			%h = 18;
 
 			%gui.resize (%x, %y, %w, %h);
-
 			%itemCount = (getWordCount (%field) - 1) / 2;
 
 			for ( %itr = 0; %itr < %itemCount; %itr++ )
@@ -21481,8 +21474,7 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 		}
 		else if ( %type $= "paintColor" )
 		{
-			%gui = new GuiSwatchCtrl ("");
-
+			%gui = new GuiSwatchCtrl ();
 			%box.add (%gui);
 
 			%w = 18;
@@ -21490,9 +21482,9 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 
 			%gui.resize (%x, %y, %w, %h);
 
-			%button = new GuiBitmapButtonCtrl ("");
-
+			%button = new GuiBitmapButtonCtrl ();
 			%gui.add (%button);
+
 			%button.resize (0, 0, %w, %h);
 			%button.setBitmap ("base/client/ui/btnColor");
 			%button.setText ("");
@@ -21505,6 +21497,7 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 		{
 			error ("ERROR: wrenchEventsDlg::createOutputParameters() - unknown type \"" @ %type @ "\"");
 		}
+
 		if ( !%focusControl )
 		{
 			%focusControl = %gui;
@@ -21513,7 +21506,7 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 
 	if ( isObject (%focusControl) )
 	{
-		%focusControl.makeFirstResponder (1);
+		%focusControl.makeFirstResponder (true);
 	}
 }
 
@@ -21535,6 +21528,7 @@ function wrenchEventsDlg::send ( %this )
 		{
 			continue;
 		}
+
 		if ( %box.getCount () <= 4 )
 		{
 			continue;
@@ -21554,6 +21548,7 @@ function wrenchEventsDlg::send ( %this )
 			{
 				%NTNameIdx = %NTNameMenu.getSelected ();
 			}
+
 			if ( %box.getCount () <= 5 )
 			{
 				continue;
@@ -21594,7 +21589,8 @@ function wrenchEventsDlg::send ( %this )
 				}
 				else
 				{
-					error ("ERROR: wrenchEventsDlg::Send() - unknown number of things in a swatch control: " @ %guiObj.getCount ());
+					error ("ERROR: wrenchEventsDlg::Send() - unknown number of things in a swatch control: "
+						@ %guiObj.getCount ());
 				}
 			}
 			else
@@ -21605,7 +21601,8 @@ function wrenchEventsDlg::send ( %this )
 			%par[%j - (%x - 1)] = %val;
 		}
 
-		commandToServer ('addEvent', %enabled, %inputEventIdx, %delay, %targetIdx, %NTNameIdx, %outputEventIdx, %par1, %par2, %par3, %par4);
+		commandToServer ('addEvent', %enabled, %inputEventIdx, %delay, %targetIdx, %NTNameIdx,
+			%outputEventIdx, %par1, %par2, %par3, %par4);
 	}
 
 	Canvas.popDialog (wrenchEventsDlg);
@@ -21617,6 +21614,7 @@ function wrenchEventsDlg::send ( %this )
 function clientCmdAddEvent ( %line )
 {
 	%x = -1;
+
 	%enabled = getField (%line, %x++);
 	%inputIdx = getField (%line, %x++);
 	%delay = getField (%line, %x++);
@@ -21627,8 +21625,11 @@ function clientCmdAddEvent ( %line )
 	%par[2] = getField (%line, %x++);
 	%par[3] = getField (%line, %x++);
 	%par[4] = getField (%line, %x++);
+
 	%box = WrenchEvents_Box.getObject (WrenchEvents_Box.getCount () - 1);
-	$WrenchEventLoading = 1;
+
+	$WrenchEventLoading = true;
+
 	%x = -1;
 
 	%box.getObject (%x++).setValue (%enabled);
@@ -21638,8 +21639,7 @@ function clientCmdAddEvent ( %line )
 	{
 		%box.getObject (%x++).setSelected (-1);
 
-		$WrenchEventLoading = 0;
-
+		$WrenchEventLoading = false;
 		wrenchEventsDlg.newEvent ();
 
 		return;
@@ -21665,6 +21665,7 @@ function clientCmdAddEvent ( %line )
 		%box.getObject (%x).setSelected (%targetIdx);
 		%box.getObject (%x++).setValue (%NTIdx);
 		%box.getObject (%x).setActive (0);
+
 		wrenchEventsDlg.createOutputList (%box, %box.getObject (%x), %inputIdx, fxDTSBrick);
 	}
 	else
@@ -21701,7 +21702,8 @@ function clientCmdAddEvent ( %line )
 			}
 			else
 			{
-				error ("ERROR: clientCmdAddEvent() - unknown number of things in a swatch control: " @ %guiObj.getCount ());
+				error ("ERROR: clientCmdAddEvent() - unknown number of things in a swatch control: "
+					@ %guiObj.getCount ());
 			}
 		}
 		else
@@ -21710,12 +21712,12 @@ function clientCmdAddEvent ( %line )
 		}
 	}
 
-	$WrenchEventLoading = 0;
+	$WrenchEventLoading = false;
 }
 
 function clientCmdAddEventsDone ()
 {
-
+	// Empty callback
 }
 
 function ClientCmdAddNTName ( %name )
@@ -21730,7 +21732,9 @@ function ClientCmdRemoveNTName ( %name )
 	if ( wrenchEventsDlg.isAwake () )
 	{
 		Canvas.popDialog (wrenchEventsDlg);
-		MessageBoxOK ("Named Target List Invalidated", "The wrench events dialog has been closed because the named target list changed while the dialog was open.\n\nSorry for any inconvenience.", "");
+		MessageBoxOK ("Named Target List Invalidated",
+			"The wrench events dialog has been closed because the named target list changed while the dialog was open.\n\nSorry for any inconvenience.",
+			"");
 	}
 
 	ServerConnection.CLIENTremoveNTName (%name);
@@ -21792,7 +21796,6 @@ function SimGroup::CLIENTDumpNTNames ( %obj )
 function wrenchEventsDlg::pickColor ( %this, %gui, %idx )
 {
 	%gui.value = %idx;
-
 	%gui.setColor (getColorIDTable (%idx));
 
 	if ( isObject (%this.colorMenu) )
@@ -21812,8 +21815,10 @@ function wrenchEventsDlg::closeColorMenu ( %this )
 function wrenchEventsDlg::CreateColorMenu ( %this, %gui )
 {
 	%rowLimit = 6;
+
 	%xPos = getWord (%gui.getPosition (), 0) + getWord (%gui.getExtent (), 0);
 	%yPos = getWord (%gui.getPosition (), 1);
+
 	%parent = %gui;
 
 	for ( %i = 0; %i < 3; %i++ )
@@ -21836,25 +21841,25 @@ function wrenchEventsDlg::CreateColorMenu ( %this, %gui )
 		}
 	}
 
-	%newScroll = new GuiScrollCtrl ("");
+	%newScroll = new GuiScrollCtrl ();
 
 	%newScroll.setProfile (ColorScrollProfile);
-
 	%newScroll.vScrollBar = "alwaysOn";
 	%newScroll.hScrollBar = "alwaysOff";
-
 	WrenchEvents_Window.add (%newScroll);
+
 	%newScroll.resize (%xPos, %yPos, 18 + 12, 18);
 	%newScroll.setName ("Avatar_ColorMenu");
 
-	%newBox = new GuiSwatchCtrl ("");
-
+	%newBox = new GuiSwatchCtrl ();
 	%newScroll.add (%newBox);
+
 	%newBox.setColor ("0 0 0 1");
 	%newBox.resize (0, 0, 18, 18);
 
 	%itemCount = 0;
 	%i = 0;
+
 	%color = getColorIDTable (%i);
 
 	while ( getWord (%color, 3) > 0 && %i < 64 )
@@ -21864,8 +21869,7 @@ function wrenchEventsDlg::CreateColorMenu ( %this, %gui )
 			%color = "1 1 1 1";
 		}
 
-		%newSwatch = new GuiSwatchCtrl ("");
-
+		%newSwatch = new GuiSwatchCtrl ();
 		%newBox.add (%newSwatch);
 		%newSwatch.setColor (%color);
 
@@ -21874,16 +21878,17 @@ function wrenchEventsDlg::CreateColorMenu ( %this, %gui )
 
 		%newSwatch.resize (%x, %y, 18, 18);
 
-		%newButton = new GuiBitmapButtonCtrl ("");
-
+		%newButton = new GuiBitmapButtonCtrl ();
 		%newBox.add (%newButton);
+
 		%newButton.setBitmap ("base/client/ui/btnColor");
 		%newButton.setText (" ");
 		%newButton.resize (%x, %y, 18, 18);
-
 		%newButton.command = "wrenchEventsDlg.pickColor(" @ %gui @ "," @ %i @ ");";
+
 		%itemCount++;
 		%i++;
+
 		%color = getColorIDTable (%i);
 	}
 
@@ -21906,91 +21911,124 @@ function wrenchEventsDlg::CreateColorMenu ( %this, %gui )
 	}
 
 	%newScroll.resize (%xPos, %yPos, %w + 12, %h);
-
 	%this.colorMenu = %newScroll;
 }
 
 function fpsMetricsCallback ()
 {
-	return " FPS: " @ $fps::virtual * getTimeScale () @ "  mspf: " @ 1000 / ($fps::virtual * getTimeScale ());
+	return " FPS: " @ $fps::virtual * getTimeScale ()
+		@ "  mspf: " @ 1000 / ($fps::virtual * getTimeScale ());
 }
 
 function terrainMetricsCallback ()
 {
-	return fpsMetricsCallback () @ "  Terrain -" @ "  L0: " @ $T2::levelZeroCount @ "  FMC: " @ $T2::fullMipCount @ "  DTC: " @ $T2::dynamicTextureCount @ "  UNU: " @ $T2::unusedTextureCount @ "  STC: " @ $T2::staticTextureCount @ "  DTSU: " @ $T2::textureSpaceUsed @ "  STSU: " @ $T2::staticTSU @ "  FRB: " @ $T2::FogRejections;
+	return fpsMetricsCallback ()
+		@ "  Terrain -"
+		@ "  L0: " @ $T2::levelZeroCount
+		@ "  FMC: " @ $T2::fullMipCount
+		@ "  DTC: " @ $T2::dynamicTextureCount
+		@ "  UNU: " @ $T2::unusedTextureCount
+		@ "  STC: " @ $T2::staticTextureCount
+		@ "  DTSU: " @ $T2::textureSpaceUsed
+		@ "  STSU: " @ $T2::staticTSU
+		@ "  FRB: " @ $T2::FogRejections;
 }
 
 function videoMetricsCallback ()
 {
-	return fpsMetricsCallback () @ "  Video -" @ "  TC: " @ $OpenGL::triCount0 + $OpenGL::triCount1 + $OpenGL::triCount2 + $OpenGL::triCount3 @ "  PC: " @ $OpenGL::primCount0 + $OpenGL::primCount1 + $OpenGL::primCount2 + $OpenGL::primCount3 @ "  T_T: " @ $OpenGL::triCount1 @ "  T_P: " @ $OpenGL::primCount1 @ "  I_T: " @ $OpenGL::triCount2 @ "  I_P: " @ $OpenGL::primCount2 @ "  TS_T: " @ $OpenGL::triCount3 @ "  TS_P: " @ $OpenGL::primCount3 @ "  ?_T: " @ $OpenGL::triCount0 @ "  ?_P: " @ $OpenGL::primCount0;
+	return fpsMetricsCallback ()
+		@ "  Video -"
+		@ "  TC: " @ $OpenGL::triCount0 + $OpenGL::triCount1 + $OpenGL::triCount2 + $OpenGL::triCount3
+		@ "  PC: " @ $OpenGL::primCount0 + $OpenGL::primCount1 + $OpenGL::primCount2 + $OpenGL::primCount3
+		@ "  T_T: " @ $OpenGL::triCount1
+		@ "  T_P: " @ $OpenGL::primCount1
+		@ "  I_T: " @ $OpenGL::triCount2
+		@ "  I_P: " @ $OpenGL::primCount2
+		@ "  TS_T: " @ $OpenGL::triCount3
+		@ "  TS_P: " @ $OpenGL::primCount3
+		@ "  ?_T: " @ $OpenGL::triCount0
+		@ "  ?_P: " @ $OpenGL::primCount0;
 }
 
 function textureMetricsCallback ()
 {
-	return fpsMetricsCallback () @ "  Texture --" @ "  NTL: " @ $Video::numTexelsLoaded @ "  TRP: " @ $Video::texResidentPercentage @ "  TCM: " @ $Video::textureCacheMisses;
+	return fpsMetricsCallback ()
+		@ "  Texture --"
+		@ "  NTL: " @ $Video::numTexelsLoaded
+		@ "  TRP: " @ $Video::texResidentPercentage
+		@ "  TCM: " @ $Video::textureCacheMisses;
 }
 
 function waterMetricsCallback ()
 {
-	return fpsMetricsCallback () @ "  Water --" @ "  Tri#: " @ $T2::waterTriCount @ "  Pnt#: " @ $T2::waterPointCount @ "  Hz#: " @ $T2::waterHazePointCount;
+	return fpsMetricsCallback ()
+		@ "  Water --"
+		@ "  Tri#: " @ $T2::waterTriCount
+		@ "  Pnt#: " @ $T2::waterPointCount
+		@ "  Hz#: " @ $T2::waterHazePointCount;
 }
 
 function timeMetricsCallback ()
 {
-	return fpsMetricsCallback () @ "  Time -- " @ "  Sim Time: " @ getSimTime () @ "  Mod: " @ getSimTime () % 32;
+	return fpsMetricsCallback ()
+		@ "  Time -- "
+		@ "  Sim Time: " @ getSimTime ()
+		@ "  Mod: " @ getSimTime () % 32;
 }
 
 function vehicleMetricsCallback ()
 {
-	return fpsMetricsCallback () @ "  Vehicle --" @ "  R: " @ $Vehicle::retryCount @ "  C: " @ $Vehicle::searchCount @ "  P: " @ $Vehicle::polyCount @ "  V: " @ $Vehicle::vertexCount;
+	return fpsMetricsCallback ()
+		@ "  Vehicle --"
+		@ "  R: " @ $Vehicle::retryCount
+		@ "  C: " @ $Vehicle::searchCount
+		@ "  P: " @ $Vehicle::polyCount
+		@ "  V: " @ $Vehicle::vertexCount;
 }
 
 function audioMetricsCallback ()
 {
-	return fpsMetricsCallback () @ "  Audio --" @ " OH:  " @ $Audio::numOpenHandles @ " OLH: " @ $Audio::numOpenLoopingHandles @ " AS:  " @ $Audio::numActiveStreams @ " NAS: " @ $Audio::numNullActiveStreams @ " LAS: " @ $Audio::numActiveLoopingStreams @ " LS:  " @ $Audio::numLoopingStreams @ " ILS: " @ $Audio::numInactiveLoopingStreams @ " CLS: " @ $Audio::numCulledLoopingStreams;
+	return fpsMetricsCallback ()
+		@ "  Audio --"
+		@ " OH:  " @ $Audio::numOpenHandles
+		@ " OLH: " @ $Audio::numOpenLoopingHandles
+		@ " AS:  " @ $Audio::numActiveStreams
+		@ " NAS: " @ $Audio::numNullActiveStreams
+		@ " LAS: " @ $Audio::numActiveLoopingStreams
+		@ " LS:  " @ $Audio::numLoopingStreams
+		@ " ILS: " @ $Audio::numInactiveLoopingStreams
+		@ " CLS: " @ $Audio::numCulledLoopingStreams;
 }
 
 function debugMetricsCallback ()
 {
-	return fpsMetricsCallback () @ "  Debug --" @ "  NTL: " @ $Video::numTexelsLoaded @ "  TRP: " @ $Video::texResidentPercentage @ "  NP:  " @ $Metrics::numPrimitives @ "  NT:  " @ $Metrics::numTexturesUsed @ "  NO:  " @ $Metrics::numObjectsRendered;
+	return fpsMetricsCallback ()
+		@ "  Debug --"
+		@ "  NTL: " @ $Video::numTexelsLoaded
+		@ "  TRP: " @ $Video::texResidentPercentage
+		@ "  NP:  " @ $Metrics::numPrimitives
+		@ "  NT:  " @ $Metrics::numTexturesUsed
+		@ "  NO:  " @ $Metrics::numObjectsRendered;
 }
 
 function metrics ( %expr )
 {
-	if ( %expr $= "audio" )
+	switch$ ( %expr )
 	{
-		%cb = "audioMetricsCallback()";
-	}
-	else if ( %expr $= "debug" )
-	{
-		%cb = "debugMetricsCallback()";
-	}
-	else if ( %expr $= "fps" )
-	{
-		%cb = "fpsMetricsCallback()";
-	}
-	else if ( %expr $= "time" )
-	{
-		%cb = "timeMetricsCallback()";
-	}
-	else if ( %expr $= "texture" )
-	{
-		GLEnableMetrics (1);
+		case "audio": %cb = "audioMetricsCallback()";
+		case "debug": %cb = "debugMetricsCallback()";
+		case "fps": %cb = "fpsMetricsCallback()";
+		case "time": %cb = "timeMetricsCallback()";
 
-		%cb = "textureMetricsCallback()";
+		case "texture":
+			GLEnableMetrics (true);
+			%cb = "textureMetricsCallback()";
+
+		case "video": %cb = "videoMetricsCallback()";
+		case "vehicle": %cb = "vehicleMetricsCallback()";
+		case "water": %cb = "waterMetricsCallback()";
 	}
-	else if ( %expr $= "video" )
-	{
-		%cb = "videoMetricsCallback()";
-	}
-	else if ( %expr $= "vehicle" )
-	{
-		%cb = "vehicleMetricsCallback()";
-	}
-	else if ( %expr $= "water" )
-	{
-		%cb = "waterMetricsCallback()";
-	}
+
 	if ( %cb !$= "" )
 	{
 		Canvas.pushDialog (FrameOverlayGui, 1000);
@@ -21998,7 +22036,7 @@ function metrics ( %expr )
 	}
 	else
 	{
-		GLEnableMetrics (0);
+		GLEnableMetrics (false);
 		Canvas.popDialog (FrameOverlayGui);
 	}
 }
@@ -22018,10 +22056,14 @@ function MBSetText ( %text, %frame, %msg )
 
 	%newExtent = %text.getExtent ();
 	%deltaY = getWord (%newExtent, 1) - getWord (%ext, 1);
+
 	%windowPos = %frame.getPosition ();
 	%windowExt = %frame.getExtent ();
 
-	%frame.resize (getWord (%windowPos, 0), getWord (%windowPos, 1) - %deltaY / 2, getWord (%windowExt, 0), getWord (%windowExt, 1) + %deltaY);
+	%frame.resize (getWord (%windowPos, 0),
+		getWord (%windowPos, 1) - %deltaY / 2,
+		getWord (%windowExt, 0),
+		getWord (%windowExt, 1) + %deltaY);
 }
 
 function MessageBoxOK ( %title, %message, %callback )
@@ -22070,7 +22112,6 @@ function clientCmdMessageBoxOKCancel ( %title, %message, %okServerCmd, %cancelSe
 	}
 
 	%cancelCallback = "commandToServer(\'MessageBoxCancel\');";
-
 	MessageBoxOKCancel (detag (%title), detag (%message), %okCallBack, %cancelCallback);
 }
 
@@ -22106,7 +22147,6 @@ function clientCmdMessageBoxYesNo ( %title, %message, %okServerCmd, %cancelServe
 	}
 
 	%cancelCallback = "commandToServer(\'MessageBoxNo\');";
-
 	messageBoxYesNo (detag (%title), detag (%message), %okCallBack, %cancelCallback);
 }
 
@@ -22139,14 +22179,17 @@ function formatImageNumber ( %number )
 	{
 		%number = 0 @ %number;
 	}
+
 	if ( %number < 100 )
 	{
 		%number = 0 @ %number;
 	}
+
 	if ( %number < 1000 )
 	{
 		%number = 0 @ %number;
 	}
+
 	if ( %number < 10000 )
 	{
 		%number = 0 @ %number;
@@ -22164,17 +22207,14 @@ function recordMovie ( %movieName, %fps )
 function movieGrabScreen ( %movieName, %frameNumber )
 {
 	screenShot (%movieName @ formatImageNumber (%frameNumber) @ ".png");
-
 	$screenGrabThread = schedule ($timeAdvance, 0, movieGrabScreen, %movieName, %frameNumber + 1);
 }
 
 function stopMovie ()
 {
 	$timeAdvance = 0;
-
 	cancel ($screenGrabThread);
 }
-
 
 $screenshotNumber = 0;
 
@@ -22212,7 +22252,7 @@ function doScreenShot ( %val )
 		%screenshotsExist = 1;
 	}
 
-	while ( 1 )
+	while ( true )
 	{
 		%filename = "screenshots/Blockland_" @ formatImageNumber ($pref::screenshotNumber++);
 
@@ -22227,6 +22267,7 @@ function doScreenShot ( %val )
 		{
 			break;
 		}
+
 		if ( !%screenshotsExist )
 		{
 			break;
@@ -22259,14 +22300,14 @@ function doHudScreenshot ( %val )
 		}
 	}
 
-	%screenshotsExist = 0;
+	%screenshotsExist = false;
 
 	if ( findFirstFile ("screenshots/*.*") !$= "" )
 	{
-		%screenshotsExist = 1;
+		%screenshotsExist = true;
 	}
 
-	while ( 1 )
+	while ( true )
 	{
 		%filename = "screenshots/Blockland_" @ formatImageNumber ($pref::screenshotNumber++);
 
@@ -22281,6 +22322,7 @@ function doHudScreenshot ( %val )
 		{
 			break;
 		}
+
 		if ( !%screenshotsExist )
 		{
 			break;
@@ -22296,6 +22338,7 @@ function doDofScreenShot ( %val )
 	{
 		return;
 	}
+
 	if ( isObject (ServerGroup) )
 	{
 		if ( $Server::ServerType !$= "Single-Player" )
@@ -22303,7 +22346,6 @@ function doDofScreenShot ( %val )
 			if ( ClientGroup.getCount () > 1 )
 			{
 				doScreenShot (%val);
-
 				return;
 			}
 		}
@@ -22316,7 +22358,6 @@ function doDofScreenShot ( %val )
 	PlayGui.setHasRendered (true);
 
 	%oldShowNames = NoHudGui_ShapeNameHud.isVisible ();
-
 	NoHudGui_ShapeNameHud.setVisible (false);
 
 	if ( !$dofDisableAutoFocus )
@@ -22338,14 +22379,14 @@ function doDofScreenShot ( %val )
 		}
 	}
 
-	%screenshotsExist = 0;
+	%screenshotsExist = false;
 
 	if ( findFirstFile ("screenshots/*.*") !$= "" )
 	{
-		%screenshotsExist = 1;
+		%screenshotsExist = true;
 	}
 
-	while ( 1 )
+	while ( true )
 	{
 		%filename = "screenshots/Blockland_" @ formatImageNumber ($pref::screenshotNumber++);
 
@@ -22360,6 +22401,7 @@ function doDofScreenShot ( %val )
 		{
 			break;
 		}
+
 		if ( !%screenshotsExist )
 		{
 			break;
@@ -22378,15 +22420,18 @@ function doPanoramaScreenShot ( %val )
 
 		if ( $pref::Video::screenShotFormat $= "JPG" )
 		{
-			panoramaScreenShot ("screenshots/Blockland_" @ formatImageNumber ($pref::screenshotNumber++), "JPG");
+			panoramaScreenShot ("screenshots/Blockland_"
+				@ formatImageNumber ($pref::screenshotNumber++), "JPG");
 		}
 		else if ( $pref::Video::screenShotFormat $= "PNG" )
 		{
-			panoramaScreenShot ("screenshots/Blockland_" @ formatImageNumber ($pref::screenshotNumber++), "PNG");
+			panoramaScreenShot ("screenshots/Blockland_"
+				@ formatImageNumber ($pref::screenshotNumber++), "PNG");
 		}
 		else
 		{
-			panoramaScreenShot ("screenshots/Blockland_" @ formatImageNumber ($pref::screenshotNumber++), "PNG");
+			panoramaScreenShot ("screenshots/Blockland_"
+				@ formatImageNumber ($pref::screenshotNumber++), "PNG");
 		}
 	}
 }
@@ -22397,6 +22442,7 @@ function dofPreview ( %val )
 	{
 		cancel ($dofPreviewSchedule);
 	}
+
 	if ( !%val )
 	{
 		$dofX = 0;
@@ -22404,6 +22450,7 @@ function dofPreview ( %val )
 
 		return;
 	}
+
 	if ( mAbs ($dofX) != mAbs ($dofScale) )
 	{
 		$dofX = $dofScale;
@@ -22413,14 +22460,13 @@ function dofPreview ( %val )
 	$dofPreviewSchedule = schedule (30, 0, dofPreview, 1);
 }
 
-
-$cursorControlled = 1;
+$cursorControlled = true;
 
 function cursorOff ()
 {
 	if ( $cursorControlled )
 	{
-		lockMouse (1);
+		lockMouse (true);
 	}
 
 	Canvas.cursorOff ();
@@ -22430,19 +22476,18 @@ function cursorOn ()
 {
 	if ( $cursorControlled )
 	{
-		lockMouse (0);
+		lockMouse (false);
 	}
 
 	Canvas.cursorOn ();
 	Canvas.setCursor (DefaultCursor);
 }
 
-
 package CanvasCursor
 {
 	function GuiCanvas::checkCursor ( %this )
 	{
-		%cursorShouldBeOn = 0;
+		%cursorShouldBeOn = false;
 
 		for ( %i = 0; %i < %this.getCount (); %i++ )
 		{
@@ -22450,8 +22495,7 @@ package CanvasCursor
 
 			if ( %control.noCursor $= "" )
 			{
-				%cursorShouldBeOn = 1;
-
+				%cursorShouldBeOn = true;
 				break;
 			}
 		}
@@ -22479,13 +22523,12 @@ package CanvasCursor
 
 			if ( %control.noTabFocus == 1 )
 			{
-				%this.canTabFocus (0);
-
+				%this.canTabFocus (false);
 				return;
 			}
 		}
 
-		%this.canTabFocus (1);
+		%this.canTabFocus (true);
 	}
 
 	function GuiCanvas::setContent ( %this, %ctrl )
@@ -22517,7 +22560,6 @@ activatePackage (CanvasCursor);
 function HelpDlg::onWake ( %this )
 {
 	HelpFileList.entryCount = 0;
-
 	HelpFileList.clear ();
 
 	%file = findFirstFile ("*.hfl");
@@ -22525,10 +22567,9 @@ function HelpDlg::onWake ( %this )
 	while ( %file !$= "" )
 	{
 		HelpFileList.fileName[HelpFileList.entryCount] = %file;
-
 		HelpFileList.addRow (HelpFileList.entryCount, fileBase (%file));
-
 		HelpFileList.entryCount++;
+
 		%file = findNextFile ("*.hfl");
 	}
 
@@ -22538,8 +22579,7 @@ function HelpDlg::onWake ( %this )
 
 function HelpFileList::onSelect ( %this, %row )
 {
-	%fo = new FileObject ("");
-
+	%fo = new FileObject ();
 	%fo.openForRead (%this.fileName[%row]);
 
 	%text = "";
@@ -22561,7 +22601,6 @@ function getHelp ( %helpName )
 	if ( %helpName !$= "" )
 	{
 		%index = HelpFileList.findTextIndex (%helpName);
-
 		HelpFileList.setSelectedRow (%index);
 	}
 }
@@ -22573,7 +22612,6 @@ function contextHelp ()
 		if ( Canvas.getObject (%i).getName () $= HelpDlg )
 		{
 			Canvas.popDialog (HelpDlg);
-
 			return;
 		}
 	}
@@ -22679,6 +22717,7 @@ function startDemoRecord ()
 	{
 		return;
 	}
+
 	if ( $currentMod $= "editor" || $currentMod $= "" )
 	{
 		%mod = "base";
@@ -22698,6 +22737,7 @@ function startDemoRecord ()
 		{
 			%num = 0 @ %num;
 		}
+
 		if ( %num < 100 )
 		{
 			%num = 0 @ %num;
@@ -22719,6 +22759,7 @@ function startDemoRecord ()
 	$DemoFileName = %file;
 
 	newChatHud_AddLine ("\c4Recording to file [\c2" @ $DemoFileName @ "\c4]");
+
 	ServerConnection.prepDemoRecord ();
 	ServerConnection.startRecording ($DemoFileName);
 
@@ -22747,7 +22788,6 @@ function demoPlaybackComplete ()
 	Canvas.pushDialog (recordingsDlg);
 }
 
-
 $Gui::fontCacheDirectory = ExpandFilename ("base/client/ui/cache");
 $Gui::clipboardFile = ExpandFilename ("base/client/ui/cache/clipboard.gui");
 
@@ -22755,18 +22795,21 @@ if ( !isObject (GuiDefaultProfile) )
 {
 	new GuiControlProfile (GuiDefaultProfile)
 	{
-		tab = 0;
-		canKeyFocus = 0;
-		hasBitmapArray = 0;
-		mouseOverSelected = 0;
-		opaque = 0;
+		tab = false;
+		canKeyFocus = false;
+		hasBitmapArray = false;
+		mouseOverSelected = false;
+		opaque = false;
+
 		fillColor = "200 200 200";
 		fillColorHL = "200 200 200";
 		fillColorNA = "200 200 200";
+
 		border = 0;
 		borderColor = "0 0 0";
 		borderColorHL = "128 128 128";
 		borderColorNA = "64 64 64";
+
 		fontType = "Arial";
 		fontSize = 14;
 		fontColor = "0 0 0";
@@ -22775,58 +22818,74 @@ if ( !isObject (GuiDefaultProfile) )
 		fontColorSEL = "200 200 200";
 		fontColorLink = "0 0 204 255";
 		fontColorLinkHL = "85 26 139 255";
+
 		bitmap = "base/client/ui/BlockWindow";
 		bitmapBase = "";
+
 		textOffset = "0 0";
-		modal = 1;
+		modal = true;
 		justify = "left";
-		autoSizeWidth = 0;
-		autoSizeHeight = 0;
-		returnTab = 0;
-		numbersOnly = 0;
+
+		autoSizeWidth = false;
+		autoSizeHeight = false;
+		returnTab = false;
+		numbersOnly = false;
+
 		cursorColor = "0 0 0 255";
+
 		soundButtonDown = "";
 		soundButtonOver = "";
-		doFontOutline = 0;
+
+		doFontOutline = false;
 		fontOutlineColor = "255 255 255 255";
 	};
 }
+
 if ( !isObject (GuiInputCtrlProfile) )
 {
 	new GuiControlProfile (GuiInputCtrlProfile)
 	{
-		tab = 1;
-		canKeyFocus = 1;
+		tab = true;
+		canKeyFocus = true;
 	};
 }
+
 if ( !isObject (GuiDialogProfile) )
 {
 	new GuiControlProfile (GuiDialogProfile);
 }
+
 if ( !isObject (GuiSolidDefaultProfile) )
 {
 	new GuiControlProfile (GuiSolidDefaultProfile)
 	{
-		opaque = 1;
+		opaque = true;
 		border = 1;
 	};
 }
+
 if ( !isObject (GuiWindowProfile) )
 {
 	new GuiControlProfile (GuiWindowProfile)
 	{
-		opaque = 1;
+		opaque = true;
+
 		border = 2;
+
 		fillColor = "200 200 200";
 		fillColorHL = "200 200 200";
 		fillColorNA = "200 200 200";
 		fontColor = "255 255 255";
 		fontColorHL = "255 255 255";
+
 		text = "GuiWindowCtrl test";
 		bitmap = "base/client/ui/blockWindow";
 		textOffset = "5 2";
-		hasBitmapArray = 1;
+
+		hasBitmapArray = true;
+
 		justify = $platform $= "macos" ? "center" : "left";
+
 		fontType = "Impact";
 		fontSize = 18;
 	};
@@ -22835,54 +22894,67 @@ if ( !isObject (GuiToolWindowProfile) )
 {
 	new GuiControlProfile (GuiToolWindowProfile)
 	{
-		opaque = 1;
+		opaque = true;
+
 		border = 2;
+
 		fillColor = "255 0 0";
 		fillColorHL = "64 150 150";
 		fillColorNA = "150 150 150";
 		fontColor = "255 255 255";
 		fontColorHL = "0 0 0";
+
 		bitmap = "base/client/ui/torqueToolWindow";
+
 		textOffset = "6 6";
 	};
 }
+
 if ( !isObject (EditorToolButtonProfile) )
 {
 	new GuiControlProfile (EditorToolButtonProfile)
 	{
-		opaque = 1;
+		opaque = true;
 		border = 2;
 	};
 }
+
 if ( !isObject (GuiContentProfile) )
 {
 	new GuiControlProfile (GuiContentProfile)
 	{
-		opaque = 1;
+		opaque = true;
 		fillColor = "255 255 255";
 	};
 }
+
 if ( !isObject (GuiModelessDialogProfile) )
 {
 	new GuiControlProfile ("GuiModelessDialogProfile")
 	{
-		modal = 0;
+		modal = false;
 	};
 }
+
 if ( !isObject (GuiButtonProfile) )
 {
 	new GuiControlProfile (GuiButtonProfile)
 	{
-		opaque = 1;
+		opaque = true;
+
 		border = 1;
+
 		fillColorHL = "0 0 200";
 		fontColor = "0 0 0";
 		fontColorHL = "32 100 100";
-		fixedExtent = 1;
+
+		fixedExtent = true;
 		justify = "center";
-		canKeyFocus = 0;
+
+		canKeyFocus = false;
 	};
 }
+
 if ( !isObject (GuiBorderButtonProfile) )
 {
 	new GuiControlProfile (GuiBorderButtonProfile)
@@ -22890,24 +22962,30 @@ if ( !isObject (GuiBorderButtonProfile) )
 		fontColorHL = "0 0 0";
 	};
 }
+
 if ( !isObject (GuiMenuBarProfile) )
 {
 	new GuiControlProfile (GuiMenuBarProfile)
 	{
-		opaque = 1;
+		opaque = true;
+
 		fillColorHL = "0 0 96";
 		border = 4;
 		fontColor = "0 0 0";
 		fontColorHL = "255 255 255";
 		fontColorNA = "128 128 128";
-		fixedExtent = 1;
+
+		fixedExtent = true;
 		justify = "center";
-		canKeyFocus = 0;
-		mouseOverSelected = 1;
+
+		canKeyFocus = false;
+		mouseOverSelected = true;
+
 		bitmap = "base/client/ui/torqueMenu";
-		hasBitmapArray = 1;
+		hasBitmapArray = true;
 	};
 }
+
 if ( !isObject (GuiButtonSmProfile) )
 {
 	new GuiControlProfile (GuiButtonSmProfile : GuiButtonProfile)
@@ -22915,39 +22993,49 @@ if ( !isObject (GuiButtonSmProfile) )
 		fontSize = 14;
 	};
 }
+
 if ( !isObject (GuiRadioProfile) )
 {
 	new GuiControlProfile (GuiRadioProfile)
 	{
 		fontSize = 14;
+
 		fillColor = "232 232 232";
 		fontColorHL = "32 100 100";
 		fontColorNA = "128 128 128";
 		fontColor = "0 0 0";
-		fixedExtent = 1;
+
+		fixedExtent = true;
+
 		bitmap = "base/client/ui/torqueRadio";
-		hasBitmapArray = 1;
+		hasBitmapArray = true;
 	};
 }
+
 if ( !isObject (GuiScrollProfile) )
 {
 	new GuiControlProfile (GuiScrollProfile)
 	{
-		opaque = 1;
+		opaque = true;
+
 		fillColor = "255 255 255";
 		fillColorHL = "171 171 171 255";
 		fillColorNA = "171 171 171 255";
+
 		border = 1;
 		borderThickness = 1;
 		borderColor = "0 0 0";
+
 		bitmap = "base/client/ui/blockScroll";
-		hasBitmapArray = 1;
+		hasBitmapArray = true;
 	};
 }
+
 if ( !isObject (GuiSliderProfile) )
 {
 	new GuiControlProfile (GuiSliderProfile);
 }
+
 if ( !isObject (GuiTextProfile) )
 {
 	new GuiControlProfile (GuiTextProfile)
@@ -22956,30 +23044,34 @@ if ( !isObject (GuiTextProfile) )
 		fontColorLink = "255 96 96";
 		fontColorLinkHL = "0 0 255";
 		fontColorNA = "128 128 128";
-		autoSizeWidth = 1;
-		autoSizeHeight = 1;
+
+		autoSizeWidth = true;
+		autoSizeHeight = true;
 	};
 }
+
 if ( !isObject (EditorTextProfile) )
 {
 	new GuiControlProfile (EditorTextProfile)
 	{
 		fontType = "Arial Bold";
 		fontColor = "0 0 0";
-		autoSizeWidth = 1;
-		autoSizeHeight = 1;
+		autoSizeWidth = true;
+		autoSizeHeight = true;
 	};
 }
+
 if ( !isObject (EditorTextProfileWhite) )
 {
 	new GuiControlProfile (EditorTextProfileWhite)
 	{
 		fontType = "Arial Bold";
 		fontColor = "255 255 255";
-		autoSizeWidth = 1;
-		autoSizeHeight = 1;
+		autoSizeWidth = true;
+		autoSizeHeight = true;
 	};
 }
+
 if ( !isObject (GuiMediumTextProfile) )
 {
 	new GuiControlProfile (GuiMediumTextProfile : GuiTextProfile)
@@ -22987,6 +23079,7 @@ if ( !isObject (GuiMediumTextProfile) )
 		fontSize = 24;
 	};
 }
+
 if ( !isObject (GuiBigTextProfile) )
 {
 	new GuiControlProfile (GuiBigTextProfile : GuiTextProfile)
@@ -22994,6 +23087,7 @@ if ( !isObject (GuiBigTextProfile) )
 		fontSize = 36;
 	};
 }
+
 if ( !isObject (GuiCenterTextProfile) )
 {
 	new GuiControlProfile (GuiCenterTextProfile : GuiTextProfile)
@@ -23001,67 +23095,86 @@ if ( !isObject (GuiCenterTextProfile) )
 		justify = "center";
 	};
 }
+
 if ( !isObject (MissionEditorProfile) )
 {
 	new GuiControlProfile (MissionEditorProfile)
 	{
-		canKeyFocus = 1;
+		canKeyFocus = true;
 	};
 }
+
 if ( !isObject (EditorScrollProfile) )
 {
 	new GuiControlProfile (EditorScrollProfile)
 	{
-		opaque = 1;
+		opaque = true;
+
 		fillColor = "192 192 192 192";
+
 		border = 3;
 		borderThickness = 2;
 		borderColor = "0 0 0";
+
 		bitmap = "base/client/ui/blockScroll";
-		hasBitmapArray = 1;
+		hasBitmapArray = true;
 	};
 }
+
 if ( !isObject (GuiTextEditProfile) )
 {
 	new GuiControlProfile (GuiTextEditProfile)
 	{
-		opaque = 1;
+		opaque = true;
+
 		fillColor = "255 255 255";
 		fillColorHL = "128 128 128";
+
 		border = 1;
 		borderThickness = 1;
 		borderColor = "0 0 0";
+
 		fontColor = "0 0 0";
 		fontColorHL = "255 255 255";
 		fontColorNA = "128 128 128";
 		textOffset = "0 0";
-		autoSizeWidth = 0;
-		autoSizeHeight = 1;
-		tab = 1;
-		canKeyFocus = 1;
+
+		autoSizeWidth = false;
+		autoSizeHeight = true;
+
+		tab = true;
+		canKeyFocus = true;
 	};
 }
+
 if ( !isObject (GuiControlListPopupProfile) )
 {
 	new GuiControlProfile (GuiControlListPopupProfile)
 	{
-		opaque = 1;
+		opaque = true;
+
 		fillColor = "255 255 255";
 		fillColorHL = "128 128 128";
+
 		border = 1;
 		borderColor = "0 0 0";
+
 		fontColor = "0 0 0";
 		fontColorHL = "255 255 255";
 		fontColorNA = "128 128 128";
 		textOffset = "0 2";
-		autoSizeWidth = 0;
-		autoSizeHeight = 1;
-		tab = 1;
-		canKeyFocus = 1;
+
+		autoSizeWidth = false;
+		autoSizeHeight = true;
+
+		tab = true;
+		canKeyFocus = true;
+
 		bitmap = "base/client/ui/blockScroll";
-		hasBitmapArray = 1;
+		hasBitmapArray = true;
 	};
 }
+
 if ( !isObject (GuiTextArrayProfile) )
 {
 	new GuiControlProfile (GuiTextArrayProfile : GuiTextProfile)
@@ -23070,6 +23183,7 @@ if ( !isObject (GuiTextArrayProfile) )
 		fillColorHL = "200 200 200";
 	};
 }
+
 if ( !isObject (GuiTextListProfile) )
 {
 	new GuiControlProfile (GuiTextListProfile : GuiTextProfile)
@@ -23080,6 +23194,7 @@ if ( !isObject (GuiTextListProfile) )
 		fontColors[1] = "128 128 128";
 	};
 }
+
 if ( !isObject (GuiTreeViewProfile) )
 {
 	new GuiControlProfile (GuiTreeViewProfile)
@@ -23089,69 +23204,87 @@ if ( !isObject (GuiTreeViewProfile) )
 		fontColorHL = "64 150 150";
 	};
 }
+
 if ( !isObject (GuiCheckBoxProfile) )
 {
 	new GuiControlProfile (GuiCheckBoxProfile)
 	{
-		opaque = 0;
+		opaque = false;
+
 		fillColor = "232 232 232";
 		border = 0;
 		borderColor = "0 0 0";
+
 		fontSize = 14;
 		fontColor = "0 0 0";
 		fontColorHL = "32 100 100";
-		fixedExtent = 1;
+
+		fixedExtent = true;
 		justify = "left";
+
 		bitmap = "base/client/ui/torqueCheck";
-		hasBitmapArray = 1;
+		hasBitmapArray = true;
 	};
 }
+
 if ( !isObject (GuiPopUpMenuProfile) )
 {
 	new GuiControlProfile (GuiPopUpMenuProfile)
 	{
-		opaque = 1;
-		mouseOverSelected = 1;
+		opaque = true;
+
+		mouseOverSelected = true;
+
 		border = 1;
 		borderThickness = 1;
 		borderColor = "0 0 0";
+
 		fontSize = 14;
 		fontColor = "0 0 0";
 		fontColorHL = "32 100 100";
 		fontColorSEL = "32 100 100";
 		fontColorNA = "128 128 128";
-		fixedExtent = 1;
+
+		fixedExtent = true;
 		justify = "center";
+
 		bitmap = "base/client/ui/blockScroll";
-		hasBitmapArray = 0;
+		hasBitmapArray = false;
 	};
 }
+
 if ( !isObject (GuiEditorClassProfile) )
 {
 	new GuiControlProfile (GuiEditorClassProfile)
 	{
-		opaque = 1;
+		opaque = true;
+
 		fillColor = "232 232 232";
 		border = 1;
 		borderColor = "0 0 0";
 		borderColorHL = "127 127 127";
+
 		fontColor = "0 0 0";
 		fontColorHL = "32 100 100";
-		fixedExtent = 1;
+
+		fixedExtent = true;
 		justify = "center";
+
 		bitmap = "base/client/ui/blockScroll";
-		hasBitmapArray = 1;
+		hasBitmapArray = true;
 	};
 }
+
 if ( !isObject (LoadTextProfile) )
 {
 	new GuiControlProfile ("LoadTextProfile")
 	{
 		fontColor = "66 219 234";
-		autoSizeWidth = 1;
-		autoSizeHeight = 1;
+		autoSizeWidth = true;
+		autoSizeHeight = true;
 	};
 }
+
 if ( !isObject (GuiMLTextProfile) )
 {
 	new GuiControlProfile ("GuiMLTextProfile")
@@ -23163,23 +23296,29 @@ if ( !isObject (GuiMLTextProfile) )
 		fontColorLinkHL = "85 26 139 255";
 	};
 }
+
 if ( !isObject (GuiMLTextEditProfile) )
 {
 	new GuiControlProfile (GuiMLTextEditProfile)
 	{
 		fontColorLink = "255 96 96";
 		fontColorLinkHL = "0 0 255";
+
 		fillColor = "255 255 255";
 		fillColorHL = "128 128 128";
+
 		fontColor = "0 0 0";
 		fontColorHL = "255 255 255";
 		fontColorNA = "128 128 128";
-		autoSizeWidth = 1;
-		autoSizeHeight = 1;
-		tab = 1;
-		canKeyFocus = 1;
+
+		autoSizeWidth = true;
+		autoSizeHeight = true;
+
+		tab = true;
+		canKeyFocus = true;
 	};
 }
+
 if ( !isObject (GuiConsoleProfile) )
 {
 	new GuiControlProfile ("GuiConsoleProfile")
@@ -23195,26 +23334,29 @@ if ( !isObject (GuiConsoleProfile) )
 		fontColors[9] = "0 50 0";
 	};
 }
+
 if ( !isObject (GuiProgressProfile) )
 {
 	new GuiControlProfile ("GuiProgressProfile")
 	{
-		opaque = 0;
+		opaque = false;
 		fillColor = "0 0 0 128";
 		border = 1;
 		borderColor = "0 0 0";
 	};
 }
+
 if ( !isObject (GuiSecondaryProgressProfile) )
 {
 	new GuiControlProfile ("GuiSecondaryProgressProfile")
 	{
-		opaque = 0;
+		opaque = false;
 		fillColor = "39 131 194 192";
 		border = 1;
 		borderColor = "0 0 0";
 	};
 }
+
 if ( !isObject (GuiProgressTextProfile) )
 {
 	new GuiControlProfile ("GuiProgressTextProfile")
@@ -23223,28 +23365,35 @@ if ( !isObject (GuiProgressTextProfile) )
 		justify = "center";
 	};
 }
+
 if ( !isObject (GuiInspectorTextEditProfile) )
 {
 	new GuiControlProfile ("GuiInspectorTextEditProfile")
 	{
-		opaque = 1;
+		opaque = true;
+
 		fillColor = "255 255 255";
 		fillColorHL = "128 128 128";
+
 		border = 1;
 		borderColor = "0 0 0";
+
 		fontColor = "0 0 0";
 		fontColorHL = "255 255 255";
-		autoSizeWidth = 0;
-		autoSizeHeight = 1;
-		tab = 0;
-		canKeyFocus = 1;
+
+		autoSizeWidth = false;
+		autoSizeHeight = true;
+
+		tab = false;
+		canKeyFocus = true;
 	};
 }
+
 if ( !isObject (GuiBitmapBorderProfile) )
 {
 	new GuiControlProfile (GuiBitmapBorderProfile)
 	{
-		hasBitmapArray = 0;
+		hasBitmapArray = false;
 	};
 }
 
@@ -23256,96 +23405,123 @@ new GuiCursor (DefaultCursor)
 
 new GuiControlProfile (BlockDefaultProfile)
 {
-	tab = 0;
-	canKeyFocus = 0;
-	hasBitmapArray = 0;
-	mouseOverSelected = 0;
-	opaque = 0;
+	tab = false;
+	canKeyFocus = false;
+	hasBitmapArray = false;
+	mouseOverSelected = false;
+	opaque = false;
+
 	fillColor = "201 182 153";
 	fillColorHL = "221 202 173";
 	fillColorNA = "221 202 173";
+
 	border = 0;
 	borderColor = "0 0 0";
 	borderColorHL = "179 134 94";
 	borderColorNA = "126 79 37";
+
 	fontType = "Arial";
 	fontSize = 14;
 	fontColor = "0 0 0";
 	fontColorHL = "32 100 100";
 	fontColorNA = "0 0 0";
 	fontColorSEL = "200 200 200";
+
 	bitmap = "base/client/ui/blockWindow.png";
 	bitmapBase = "";
+
 	textOffset = "0 0";
-	modal = 1;
+
+	modal = true;
+
 	justify = "left";
-	autoSizeWidth = 0;
-	autoSizeHeight = 0;
-	returnTab = 0;
-	numbersOnly = 0;
+	autoSizeWidth = false;
+	autoSizeHeight = false;
+
+	returnTab = false;
+	numbersOnly = false;
+
 	cursorColor = "0 0 0 255";
 };
 
 new GuiControlProfile (BlockWindowProfile)
 {
-	opaque = 1;
+	opaque = true;
+
 	border = 2;
+
 	fillColor = "171 171 171 255";
 	fillColorHL = "171 171 171 255";
 	fillColorNA = "171 171 171 255";
 	fillColor = "200 200 200 255";
+
 	fontType = "Impact";
 	fontSize = 18;
 	fontColor = "255 255 255";
 	fontColorHL = "255 255 255";
+
 	text = "Window";
 	bitmap = "base/client/ui/blockWindow.png";
 	textOffset = "5 2";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
+
 	justify = "left";
 };
 
 new GuiControlProfile (BlockScrollProfile)
 {
-	opaque = 1;
+	opaque = true;
+
 	fillColor = "255 255 255 255";
 	fillColorHL = "171 171 171 255";
 	fillColorNA = "171 171 171 255";
+
 	border = 1;
 	borderThickness = 1;
 	borderColor = "0 0 0";
+
 	bitmap = "base/client/ui/blockScroll.png";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
+
 	textOffset = "2 2";
 };
 
 new GuiControlProfile (BSDScrollProfile)
 {
-	opaque = 1;
+	opaque = true;
+
 	fillColor = "200 200 200 255";
 	fillColorHL = "171 171 171 255";
 	fillColorNA = "171 171 171 255";
+
 	border = 1;
 	borderThickness = 1;
 	borderColor = "0 0 0";
+
 	bitmap = "base/client/ui/blockScroll.png";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
+
 	textOffset = "2 2";
 };
 
 new GuiControlProfile (BlockCheckBoxProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	fillColor = "232 232 232";
+
 	border = 0;
 	borderColor = "0 0 0";
+
 	fontSize = 14;
 	fontColor = "0 0 0";
 	fontColorHL = "32 100 100";
-	fixedExtent = 1;
+
+	fixedExtent = true;
 	justify = "left";
+
 	bitmap = "base/client/ui/torqueCheck.png";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
 };
 
 new GuiControlProfile (BlockRadioProfile)
@@ -23353,128 +23529,163 @@ new GuiControlProfile (BlockRadioProfile)
 	fontSize = 14;
 	fillColor = "232 232 232";
 	fontColorHL = "32 100 100";
-	fixedExtent = 0;
+
+	fixedExtent = false;
+
 	bitmap = "base/client/ui/torqueRadio";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
 };
 
 new GuiControlProfile (BlockButtonProfile)
 {
-	opaque = 1;
+	opaque = true;
+
 	border = 1;
 	borderThickness = 1;
 	borderColor = "0 0 0";
+
 	fillColor = "149 152 166";
 	fillColorHL = "171 171 171";
 	fillColorNA = "221 202 173";
+
 	fontType = "Impact";
 	fontSize = 18;
 	fontColor = "0 0 0";
 	fontColorHL = "255 255 255";
+
 	text = "GuiWindowCtrl test";
 	bitmap = "base/client/ui/blockScroll.png";
 	textOffset = "6 6";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
+
 	justify = "center";
 };
 
 new GuiControlProfile (BrickListSubCategoryProfile)
 {
-	opaque = 1;
+	opaque = true;
+
 	border = 1;
 	borderThickness = 1;
 	borderColor = "0 0 0";
+
 	fillColor = "149 152 166";
 	fillColorHL = "171 171 171";
 	fillColorNA = "221 202 173";
+
 	fontType = "Impact";
 	fontSize = 18;
 	fontColor = "0 0 0";
 	fontColorHL = "255 255 255";
+
 	text = "GuiWindowCtrl test";
 	bitmap = "base/client/ui/blockScroll.png";
 	textOffset = "6 6";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
+
 	justify = "left";
 };
 
 new GuiControlProfile (BlockListProfile)
 {
-	opaque = 1;
+	opaque = true;
+
 	border = 1;
 	borderThickness = 1;
 	borderColor = "0 0 0";
+
 	fillColor = "149 152 166";
 	fillColorHL = "171 171 171";
 	fillColorNA = "221 202 173";
+
 	fontType = "Impact";
 	fontSize = 18;
 	fontColor = "0 0 0";
 	fontColorHL = "171 171 171";
 	textOffset = "6 6";
-	hasBitmapArray = 1;
+
+	hasBitmapArray = true;
+
 	justify = "center";
 };
 
 new GuiControlProfile (BlockTextEditProfile)
 {
-	opaque = 1;
+	opaque = true;
+
 	fillColor = "255 255 255";
 	fillColorHL = "128 128 128";
+
 	border = 1;
 	borderThickness = 1;
 	borderColor = "0 0 0";
+
 	fontColor = "0 0 0";
 	fontColorHL = "255 255 255";
 	fontColorNA = "128 128 128";
 	textOffset = "0 2";
-	autoSizeWidth = 0;
-	autoSizeHeight = 1;
-	tab = 1;
-	canKeyFocus = 1;
+
+	autoSizeWidth = false;
+	autoSizeHeight = true;
+
+	tab = true;
+	canKeyFocus = true;
 };
 
 new GuiControlProfile (HudInvTextProfile)
 {
-	opaque = 1;
+	opaque = true;
+
 	border = 0;
+
 	fontColor = "255 255 255";
 	fontColorHL = "255 255 255";
 	text = "HUD TEXT";
+
 	justify = "center";
 };
 
 new GuiControlProfile (MapDescriptionTextProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	border = 0;
+
 	fontColor = "255 255 255";
 	fontColorHL = "255 255 255";
-	doFontOutline = 1;
+	doFontOutline = true;
 	fontOutlineColor = "0 64 255";
 	textOffset = "10 10";
+
 	justify = "left";
 };
 
 new GuiControlProfile (LoadingBarTextProfile)
 {
-	opaque = 1;
+	opaque = true;
 	border = 0;
+
 	fontColor = "255 255 255";
 	fontColorHL = "255 255 255";
 	text = "HUD TEXT";
+
 	justify = "center";
-	doFontOutline = 1;
+
+	doFontOutline = true;
 	fontOutlineColor = "0 0 128 64";
 };
 
 new GuiControlProfile (LoadingMapNameProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	border = 0;
+
 	fontColor = "255 255 255";
 	text = "Map Name";
+
 	justify = "center";
+
 	fontType = "Arial";
 	fontSize = 28;
 };
@@ -23483,18 +23694,22 @@ if ( !isObject (ChatHudScrollProfile) )
 {
 	new GuiControlProfile (ChatHudScrollProfile)
 	{
-		opaque = 0;
+		opaque = false;
+
 		fillColor = "255 255 255 0";
+
 		border = 0;
 		borderThickness = 0;
 		borderColor = "0 0 0";
-		hasBitmapArray = 0;
+
+		hasBitmapArray = false;
 	};
 }
 
 new GuiControlProfile (BlockChatTextProfile)
 {
 	textOffset = "3 0";
+
 	fontColor = "0 0 0";
 	fontColorHL = "130 130 130";
 	fontColorNA = "255 0 0";
@@ -23506,8 +23721,10 @@ new GuiControlProfile (BlockChatTextProfile)
 	fontColors[5] = "255 0 255";
 	fontColors[6] = "255 255 255";
 	fontColors[7] = "96 96 96";
-	doFontOutline = 1;
+
+	doFontOutline = true;
 	fontOutlineColor = "0 0 0";
+
 	fontType = "Palatino Linotype";
 	fontSize = 18;
 };
@@ -23572,6 +23789,7 @@ if ( !isObject (BlockChatTextShadowProfile) )
 	new GuiControlProfile (BlockChatTextShadowProfile)
 	{
 		textOffset = "3 0";
+
 		fontColor = "0 0 0";
 		fontColorHL = "0 0 0";
 		fontColorNA = "0 0 0";
@@ -23582,6 +23800,7 @@ if ( !isObject (BlockChatTextShadowProfile) )
 		fontColors[4] = "0 0 0";
 		fontColors[5] = "0 0 0";
 		fontColors[6] = "0 0 0";
+
 		border = 0;
 		borderThickness = 0;
 		borderColor = "0 0 0 0";
@@ -23591,40 +23810,51 @@ if ( !isObject (BlockChatTextShadowProfile) )
 new GuiControlProfile (ColorRadioProfile)
 {
 	fontSize = 14;
+
 	fillColor = "232 232 232";
 	fontColorHL = "32 100 100";
 	fillColorNA = "0 0 0 255";
-	fixedExtent = 1;
+
+	fixedExtent = true;
+
 	bitmap = "base/client/ui/colorRadio.png";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
 };
 
 new GuiControlProfile (ColorScrollProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	fillColor = "255 255 255 0";
+
 	border = 1;
 	borderThickness = 0;
 	borderColor = "140 140 140 255";
+
 	bitmap = "base/client/ui/halfScroll.png";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
 };
 
 new GuiControlProfile (decalRadioProfile)
 {
 	fontSize = 14;
+
 	fillColor = "232 232 232";
 	fontColorHL = "32 100 100";
 	fillColorNA = "0 0 0 255";
-	fixedExtent = 1;
+
+	fixedExtent = true;
+
 	bitmap = "base/client/ui/decalRadio.png";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
 };
 
 new GuiControlProfile (HUDBitmapProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	fillColor = "255 255 255 0";
+
 	border = 0;
 	borderThickness = 0;
 	borderColor = "255 255 255 0";
@@ -23632,88 +23862,120 @@ new GuiControlProfile (HUDBitmapProfile)
 
 new GuiControlProfile (HUDBrickNameProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	border = 0;
+
 	fontColor = "255 255 255";
 	text = "Map Name";
+
 	justify = "center";
+
 	fontType = "Arial";
 	fontSize = 14;
 };
 
 new GuiControlProfile (HUDCenterTextProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	border = 0;
+
 	fontColor = "255 255 255";
 	text = "Map Name";
+
 	justify = "center";
+
 	fontType = "Arial";
 	fontSize = 12;
 };
 
 new GuiControlProfile (HUDRightTextProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	border = 0;
+
 	fontColor = "255 255 255";
 	text = "Map Name";
+
 	justify = "right";
+
 	fontType = "Arial";
 	fontSize = 12;
 };
 
 new GuiControlProfile (HUDLeftTextProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	border = 0;
+
 	fontColor = "255 255 255";
 	text = "Map Name";
+
 	justify = "left";
+
 	fontType = "Arial";
 	fontSize = 12;
 };
 
 new GuiControlProfile (HUDBSDNameProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	border = 0;
+
 	fontColor = "0 0 0";
 	text = "Map Name";
+
 	justify = "center";
+
 	fontType = "Arial";
 	fontSize = 12;
 };
 
 new GuiControlProfile (HUDChatTextProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	border = 0;
+
 	fontColor = "255 255 255";
 	text = "Map Name";
+
 	justify = "left";
+
 	fontType = "Arial";
 	fontSize = 14;
 };
 
 new GuiControlProfile (HUDChatTextEditProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	fillColor = "255 255 255 0";
 	fillColorHL = "128 128 128";
+
 	border = 0;
 	borderThickness = 0;
 	borderColor = "255 255 255";
+
 	fontColor = "255 255 255";
 	fontColorHL = "255 255 255";
 	fontColorNA = "128 128 128";
+
 	textOffset = "0 0";
-	autoSizeWidth = 0;
-	autoSizeHeight = 1;
-	tab = 1;
-	canKeyFocus = 1;
-	doFontOutline = 1;
+
+	autoSizeWidth = false;
+	autoSizeHeight = true;
+
+	tab = true;
+	canKeyFocus = true;
+
+	doFontOutline = true;
 	fontOutlineColor = "0 0 0";
+
 	fontType = "Palatino Linotype";
 	fontSize = 18;
 };
@@ -23775,12 +24037,16 @@ new GuiControlProfile (HUDChatTextEditSize10Profile : HUDChatTextEditProfile)
 
 new GuiControlProfile (MM_LeftProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	border = 0;
+
 	fontColor = "255 255 255";
-	doFontOutline = 1;
+	doFontOutline = true;
 	fontOutlineColor = "24 24 255";
+
 	justify = "left";
+
 	fontType = "Arial";
 	fontSize = 14;
 };
@@ -23800,13 +24066,16 @@ if ( !isObject (BlockChatChannelProfile) )
 	new GuiControlProfile (BlockChatChannelProfile)
 	{
 		textOffset = "3 0";
+
 		fontColor = "0 0 0";
 		fontColorHL = "130 130 130";
 		fontColorNA = "255 0 0";
 		fontColors[0] = "255 255 255";
 		fontColors[1] = "255 0 255";
-		doFontOutline = 1;
+
+		doFontOutline = true;
 		fontOutlineColor = "0 0 0";
+
 		fontType = "Palatino Linotype";
 		fontSize = 18;
 	};
@@ -23870,8 +24139,10 @@ new GuiControlProfile (BlockChatChannelSize10Profile : BlockChatChannelProfile)
 new GuiControlProfile (MiniGameListProfile : GuiTextProfile)
 {
 	fontSize = 18;
+
 	fontColorHL = "0 0 0";
 	fillColorHL = "64 64 64";
+
 	fontColors[0] = "255 0   0  ";
 	fontColors[1] = "255 128 0  ";
 	fontColors[2] = "255 255 0  ";
@@ -23894,11 +24165,15 @@ new GuiControlProfile (PlayerListProfile : GuiTextProfile)
 
 new GuiControlProfile (OptionsMenuTextProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	border = 0;
+
 	fontColor = "255 255 255";
 	text = "LOADING";
+
 	justify = "Left";
+
 	fontType = "Arial";
 	fontSize = 14;
 };
@@ -23906,6 +24181,7 @@ new GuiControlProfile (OptionsMenuTextProfile)
 new GuiControlProfile (ServerListProfile : GuiTextProfile)
 {
 	textOffset = "3 0";
+
 	fontColor = "0 0 0";
 	fontColorHL = "0 0 0";
 	fontColorNA = "255 0 0";
@@ -23918,9 +24194,12 @@ new GuiControlProfile (ServerListProfile : GuiTextProfile)
 	fontColors[6] = "255 255 255";
 	fontColors[7] = "96 96 96";
 	fontColors[8] = "190 190 190";
-	doFontOutline = 1;
+
+	doFontOutline = true;
 	fontOutlineColor = "0 0 0";
-	opaque = 0;
+
+	opaque = false;
+
 	fillColor = "255 255 255";
 	fillColorHL = "230 230 230";
 	fillColorNA = "0 255 0";
@@ -23933,20 +24212,27 @@ new GuiControlProfile (MainMenuButtonProfile)
 
 new GuiControlProfile (ImpactTextProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	border = 0;
+
 	fillColor = "171 171 171 255";
 	fillColorHL = "171 171 171 255";
 	fillColorNA = "171 171 171 255";
 	fillColor = "200 200 200 255";
-	autoSizeWidth = 0;
-	autoSizeHeight = 0;
+
+	autoSizeWidth = false;
+	autoSizeHeight = false;
+
 	fontType = "Impact";
 	fontSize = 47;
+
 	fontColor = "255 255 255 255";
 	fontColorHL = "255 255 255";
 	fontColorNA = "255 255 255 64";
+
 	textOffset = "0 0";
+
 	justify = "right";
 };
 
@@ -23954,54 +24240,74 @@ new GuiControlProfile (ImpactEditProfile)
 {
 	fontType = "Impact";
 	fontSize = 47;
+
 	fontColor = "255 255 255";
 	fontColorHL = "255 255 255";
 	fontColorNA = "255 255 255 64";
+
 	cursorColor = "255 255 255";
-	opaque = 0;
+
+	opaque = false;
+
 	fillColor = "255 0 255 0";
 	fillColorHL = "128 128 128";
+
 	border = 0;
 	borderThickness = 0;
 	borderColor = "255 255 255";
+
 	textOffset = "0 0";
-	autoSizeWidth = 0;
-	autoSizeHeight = 0;
-	tab = 1;
-	canKeyFocus = 1;
+
+	autoSizeWidth = false;
+	autoSizeHeight = false;
+
+	tab = true;
+	canKeyFocus = true;
 };
 
 new GuiControlProfile (ImpactPopUpProfile)
 {
-	mouseOverSelected = 1;
+	mouseOverSelected = true;
+
 	fontType = "Impact";
 	fontSize = 47;
+
 	justify = "center";
+
 	fontColor = "255 255 255 255";
 	fontColorHL = "32 100 100";
 	fontColorSEL = "32 100 100";
 	fontColorNA = "255 255 255 64";
-	opaque = 0;
+
+	opaque = false;
+
 	fillColor = "255 0 255 0";
 	fillColorHL = "128 128 128 0";
+
 	border = 0;
 	borderThickness = 0;
 	borderColor = "255 255 255 0";
-	fixedExtent = 0;
+
+	fixedExtent = false;
+
 	bitmap = "base/client/ui/blockScroll";
-	hasBitmapArray = 0;
+	hasBitmapArray = false;
 };
 
 new GuiControlProfile (ImpactRadioProfile)
 {
 	fontType = "Impact";
 	fontSize = 47;
+
 	fontColor = "255 255 255";
 	fontColorNA = "255 255 255 64";
 	fillColor = "255 0 255 0";
-	fixedExtent = 1;
+
+	fixedExtent = true;
+
 	bitmap = "base/client/ui/impactRadio.png";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
+
 	textOffset = "0 0";
 };
 
@@ -24009,11 +24315,15 @@ new GuiControlProfile (ImpactCheckProfile)
 {
 	fontType = "Impact";
 	fontSize = 47;
+
 	fontColor = "255 255 255";
 	fillColor = "255 0 255 0";
-	fixedExtent = 1;
+
+	fixedExtent = true;
+
 	bitmap = "base/client/ui/impactRadio.png";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
+
 	textOffset = "0 0";
 };
 
@@ -24022,7 +24332,9 @@ new GuiControlProfile (ImpactBackButtonProfile)
 	fontType = "Impact";
 	fontSize = 47;
 	fontColor = "255 255 255";
+
 	justify = "left";
+
 	textOffset = "0 0";
 };
 
@@ -24031,19 +24343,25 @@ new GuiControlProfile (ImpactForwardButtonProfile)
 	fontType = "Impact";
 	fontSize = 47;
 	fontColor = "255 255 255";
+
 	justify = "right";
+
 	textOffset = "0 0";
 };
 
 new GuiControlProfile (ImpactScrollProfile)
 {
-	opaque = 0;
+	opaque = false;
+
 	fillColor = "0 0 0 0";
+
 	border = 0;
 	borderThickness = 0;
 	borderColor = "0 0 0";
+
 	bitmap = "base/client/ui/impactScroll.png";
-	hasBitmapArray = 1;
+	hasBitmapArray = true;
+
 	textOffset = "2 2";
 };
 
@@ -24082,7 +24400,6 @@ function doQuitGame ()
 
 	schedule (10, 0, quit);
 }
-
 
 $movementSpeed = 1;
 
@@ -24163,7 +24480,7 @@ function yaw ( %val )
 function pitch ( %val )
 {
 	%sens = $pref::Input::MouseSensitivity;
-	%invert = 0;
+	%invert = false;
 
 	if ( amIDrivingAVehicle () && !amIStrafeSteering () && !$mvFreeLook )
 	{
@@ -24173,6 +24490,7 @@ function pitch ( %val )
 	{
 		%invert = $pref::Input::MouseInvert;
 	}
+
 	if ( %invert )
 	{
 		$mvPitch -= %sens * getMouseAdjustAmount (%val);
@@ -24193,7 +24511,6 @@ function Jump ( %val )
 	$mvTriggerCount2 = %val;
 }
 
-
 $RunMultiplier = 1;
 
 function Walk ( %val )
@@ -24206,18 +24523,22 @@ function Walk ( %val )
 	{
 		$RunMultiplier = 1;
 	}
+
 	if ( $mvLeftAction )
 	{
 		$mvLeftAction = $RunMultiplier;
 	}
+
 	if ( $mvRightAction )
 	{
 		$mvRightAction = $RunMultiplier;
 	}
+
 	if ( $mvForwardAction )
 	{
 		$mvForwardAction = $RunMultiplier;
 	}
+
 	if ( $mvBackwardAction )
 	{
 		$mvBackwardAction = $RunMultiplier;
@@ -24244,7 +24565,6 @@ function altTrigger ( %val )
 	$mvTriggerCount1 = %val;
 }
 
-
 if ( $Pref::player::CurrentFOV $= "" )
 {
 	$Pref::player::CurrentFOV = 45;
@@ -24262,14 +24582,12 @@ function toggleZoom ( %val )
 {
 	if ( %val )
 	{
-		$ZoomOn = 1;
-
+		$ZoomOn = true;
 		setFov ($Pref::player::CurrentFOV);
 	}
 	else
 	{
-		$ZoomOn = 0;
-
+		$ZoomOn = false;
 		setFov ($pref::Player::defaultFov);
 	}
 }
@@ -24278,11 +24596,11 @@ function toggleFreeLook ( %val )
 {
 	if ( %val )
 	{
-		$mvFreeLook = 1;
+		$mvFreeLook = true;
 	}
 	else
 	{
-		$mvFreeLook = 0;
+		$mvFreeLook = false;
 	}
 }
 
@@ -24329,7 +24647,7 @@ function pageMessageHudDown ( %val )
 
 function resizeMessageHud ( %val )
 {
-
+	// Empty, probably commented out
 }
 
 function startRecordingDemo ( %val )
@@ -24369,7 +24687,6 @@ function dropPlayerAtCamera ( %val )
 	}
 }
 
-
 $MFDebugRenderMode = 0;
 
 function cycleDebugRenderMode ( %val )
@@ -24378,19 +24695,19 @@ function cycleDebugRenderMode ( %val )
 	{
 		return;
 	}
+
 	if ( getBuildString () $= "Debug" )
 	{
 		if ( $MFDebugRenderMode == 0 )
 		{
 			$MFDebugRenderMode = 1;
-
-			GLEnableOutline (1);
+			GLEnableOutline (true);
 		}
 		else if ( $MFDebugRenderMode == 1 )
 		{
 			$MFDebugRenderMode = 2;
 
-			GLEnableOutline (0);
+			GLEnableOutline (false);
 			setInteriorRenderMode (7);
 			showInterior ();
 		}
@@ -24399,7 +24716,7 @@ function cycleDebugRenderMode ( %val )
 			$MFDebugRenderMode = 0;
 
 			setInteriorRenderMode (0);
-			GLEnableOutline (0);
+			GLEnableOutline (false);
 			show ();
 		}
 	}
@@ -24408,7 +24725,6 @@ function cycleDebugRenderMode ( %val )
 		echo ("Debug render modes only available when running a Debug build.");
 	}
 }
-
 
 if ( getBuildString () $= "Debug" )
 {
@@ -24422,6 +24738,7 @@ function togFullScreen ()
 
 	Canvas.repaint ();
 	toggleFullScreen ();
+
 	Canvas.repaint ();
 	flushTextureCache ();
 
@@ -24432,7 +24749,6 @@ function togFullScreen ()
 		initializeShaderAssets ();
 	}
 }
-
 
 GlobalActionMap.bind (keyboard, "tilde", toggleConsole);
 GlobalActionMap.bindCmd (keyboard, "alt enter", "", "togFullScreen();");
@@ -24472,6 +24788,7 @@ function loadClientAddOns ()
 			%filename = findNextFile (%dir);
 		}
 	}
+
 	for ( %i = 0; %i < %dirCount; %i++ )
 	{
 		%dirName = %dirNameList[%i];
@@ -24492,13 +24809,13 @@ function loadClientAddOns ()
 			if ( isFile (%zipFile) )
 			{
 				%zipCRC = getFileCRC (%zipFile);
-
 				echo ("\c4Loading Add-On: " @ %dirName @ " \c1(CRC:" @ %zipCRC @ ")");
 			}
 			else
 			{
 				echo ("\c4Loading Add-On: " @ %dirName);
 			}
+
 			if ( ClientVerifyAddOnScripts (%dirName) == 0 )
 			{
 				echo ("\c2ADD-ON \"" @ %dirName @ "\" CONTAINS SYNTAX ERRORS\n");
@@ -24538,7 +24855,7 @@ function applyPhysicsPrefs ()
 {
 	if ( $Server::Dedicated )
 	{
-		$Physics::enabled = 0;
+		$Physics::enabled = false;
 		$Physics::maxBricks = 0;
 	}
 	else
@@ -24556,6 +24873,7 @@ function onPhysicsDisabled ()
 	{
 		return;
 	}
+
 	if ( isEventPending ($Physics::ReEnableEvent) )
 	{
 		cancel ($Phsics::ReEnableEvent);
@@ -24567,10 +24885,8 @@ function onPhysicsDisabled ()
 function reEnablePhysics ()
 {
 	$Physics::LastEnabledTime = getSimTime ();
-
 	applyPhysicsPrefs ();
 }
-
 
 $CrapOnCRC_[-99783772] = 1;
 $CrapOnCRC_[1052594715] = 1;
@@ -24582,6 +24898,7 @@ $CrapOnCRC_[305028881] = 1;
 $CrapOnCRC_[-1210805212] = 1;
 $CrapOnCRC_[-2098791133] = 1;
 $CrapOnCRC_[1195909889] = 1;
+
 $CrapOnName_["AddOn_LightningRainMist"] = 1;
 $CrapOnName_["Brick_\xc5ny\'sbricks"] = 1;
 $CrapOnName_["Brick_LargeCubes"] = 1;
@@ -24635,6 +24952,7 @@ $CrapOnName_["Weapon_PushBroom"] = 1;
 $CrapOnName_["Weapon_RocketLauncher"] = 1;
 $CrapOnName_["Weapon_SniperRifle"] = 1;
 $CrapOnName_["Weapon_SniperRiflemod3"] = 1;
+
 $CrapOnName_["AddOn_Lightning-Rain-Mist"] = 1;
 $CrapOnName_["Brick_\xc5ny\'s-bricks"] = 1;
 $CrapOnName_["Brick_Large-Cubes"] = 1;
@@ -24688,6 +25006,7 @@ $CrapOnName_["Weapon_Push-Broom"] = 1;
 $CrapOnName_["Weapon_Rocket-Launcher"] = 1;
 $CrapOnName_["Weapon_Sniper-Rifle"] = 1;
 $CrapOnName_["Weapon_Sniper-Rifle-mod3"] = 1;
+
 $CrapOnName_["Brick_1xwater"] = 1;
 $CrapOnName_["Map_Challenge"] = 1;
 $CrapOnName_["Vehicle_Chairss"] = 1;
@@ -24703,21 +25022,28 @@ $CrapOnName_["Script_Zombie_add-on"] = 1;
 $CrapOnName_["Script_NewDeath"] = 1;
 $CrapOnName_["Brick_10xhight"] = 1;
 $CrapOnName_["Script_Emotes"] = 1;
+
 $CrapOnDedicatedName_["Script_WindowConsole"] = 1;
 $CrapOnDedicatedName_["Script_Cashmod"] = 1;
+
 $CrapOnCRC_[-832193700] = 1;
 $CrapOnName_["Server_MinigamePlusPlus"] = 1;
 $CrapOnCRC_[-1079278250] = 1;
 $CrapOnName_["Weapon_BoxSword"] = 1;
+
 $CrapOnCRC_[201153517] = 1;
 $CrapOnCRC_[557088341] = 1;
 $CrapOnCRC_[1904338977] = 1;
 $CrapOnCRC_[-919080965] = 1;
+
 $CrapOnName_["Vehicle_Airliner"] = 1;
+
 $CrapOnCRC_[-1726232238] = 1;
 $CrapOnCRC_[273228533] = 1;
 $CrapOnCRC_[-1998276609] = 1;
+
 $CrapOnName_["Weapon_LegendSpells_L36_T_60_Edited"] = 1;
+
 $CrapOnCRC_[248865066] = 1;
 $CrapOnCRC_[1743600672] = 1;
 $CrapOnCRC_[186849495] = 1;
@@ -24727,14 +25053,18 @@ $CrapOnCRC_[-1024119941] = 1;
 $CrapOnCRC_[-1559765368] = 1;
 $CrapOnCRC_[1598599265] = 1;
 $CrapOnCRC_[638114082] = 1;
+
 $CrapOnName_["Server_NewDeath"] = 1;
+
 $CrapOnCRC_[-620300738] = 1;
 $CrapOnCRC_[-635882705] = 1;
 $CrapOnCRC_[1985709120] = 1;
 $CrapOnCRC_[1319595411] = 1;
 $CrapOnCRC_[-433801842] = 1;
 $CrapOnCRC_[-1530212861] = 1;
+
 $CrapOnName_["Azjh_Tiny"] = 1;
+
 $CrapOnCRC_[-1210089709] = 1;
 $CrapOnCRC_[2095780332] = 1;
 $CrapOnCRC_[-1548347679] = 1;
@@ -24743,71 +25073,102 @@ $CrapOnCRC_[1826416496] = 1;
 $CrapOnCRC_[-2036088468] = 1;
 $CrapOnCRC_[220268580] = 1;
 $CrapOnCRC_[-1003091907] = 1;
+
 $CrapOnName_["Brick_128x_Cube"] = 1;
 $CrapOnName_["Brick_256x_Cube"] = 1;
+
 $CrapOnCRC_[1274091775] = 1;
 $CrapOnCRC_[-1523578070] = 1;
 $CrapOnCRC_[-1266829487] = 1;
+
 $CrapOnName_["Script_TechEval"] = 1;
+
 $CrapOnCRC_[321734599] = 1;
+
 $CrapOnName_["Weapon_BigGun"] = 1;
 $CrapOnName_["Event_doServerCommand"] = 1;
+
 $CrapOnCRC_[1959011148] = 1;
+
 $CrapOnCRC_["Script_Babymodv2"] = 1;
+
 $CrapOnCRC_[-1337322448] = 1;
 $CrapOnCRC_[-170482933] = 1;
 $CrapOnCRC_[-1431575191] = 1;
 $CrapOnCRC_[1229288513] = 1;
 $CrapOnCRC_[-254223049] = 1;
+
 $CrapOnName_["Script_JPod"] = 1;
+
 $CrapOnCRC_[-998949836] = 1;
 $CrapOnCRC_[-1839851280] = 1;
 $CrapOnCRC_[-1753532525] = 1;
 $CrapOnCRC_[-1259520343] = 1;
 $CrapOnCRC_[1690797760] = 1;
 $CrapOnCRC_[-1936061417] = 1;
+
 $CrapOnName_["Vehicle_MilitaryJeep"] = 1;
+
 $CrapOnCRC_[-2008149253] = 1;
 $CrapOnCRC_[-1659433333] = 1;
 $CrapOnCRC_[413923681] = 1;
 $CrapOnCRC_[-2010664312] = 1;
+
 $CrapOnName_["Event_Targets"] = 1;
+
 $CrapOnCRC_[983188746] = 1;
+
 $CrapOnName_["Vehicle_Missle"] = 1;
+
 $CrapOnCRC_[1736498327] = 1;
 $CrapOnCRC_[1774182388] = 1;
 $CrapOnCRC_[-1588278461] = 1;
+
 $CrapOnName_["Brick_DemiansCB"] = 1;
+
 $CrapOnCRC_[-1794780366] = 1;
 $CrapOnCRC_[609324880] = 1;
 $CrapOnCRC_[-1658910565] = 1;
 $CrapOnCRC_[-895748161] = 1;
+
 $CrapOnName_["Weapon_Mininuke"] = 1;
+
 $CrapOnCRC_[-34157070] = 1;
 $CrapOnCRC_[1262347351] = 1;
+
 $CrapOnName_["Vehicle_Chairs"] = 1;
+
 $CrapOnCRC_[-358189557] = 1;
 $CrapOnCRC_[1779834640] = 1;
 $CrapOnCRC_[1591799391] = 1;
+
 $CrapOnCRC_["Projectile_RocketMissile"] = 1;
+
 $CrapOnName_["Zombies_Core"] = 1;
+
 $CrapOnCRC_[-793867802] = 1;
 $CrapOnCRC_[-88277514] = 1;
 $CrapOnCRC_[1447544503] = 1;
 $CrapOnCRC_[-145642719] = 1;
+
 $CrapOnName_["Brick_ScaleSpawn"] = 1;
 $CrapOnName_["Brick_ScaleSpawns"] = 1;
 $CrapOnName_["Vehicle_Go_Kart_V9"] = 1;
+
 $CrapOnCRC_[-1007326207] = 1;
 $CrapOnCRC_[-1890741165] = 1;
+
 $CrapOnName_["Script_TechEval_II"] = 1;
 $CrapOnCRC_[-1914769996] = 1;
 $CrapOnName_["Script_GetmapListPatch"] = 1;
 $CrapOnCRC_[-2075986469] = 1;
 $CrapOnName_["Script_NoZoom"] = 1;
+
 $CrapOnCRC_[475964486] = 1;
 $CrapOnCRC_[-1392896540] = 1;
+
 $CrapOnName_["Scirpt_Headshots"] = 1;
+
 $CrapOnCRC_[-2071440568] = 1;
 $CrapOnCRC_[753342608] = 1;
 $CrapOnCRC_[-790119713] = 1;
@@ -24838,7 +25199,9 @@ $CrapOnCRC_[1170298392] = 1;
 $CrapOnCRC_[-1704482706] = 1;
 $CrapOnCRC_[-892929250] = 1;
 $CrapOnCRC_[269097424] = 1;
+
 $CrapOnName_["Item_Sandvich"] = 1;
+
 $CrapOnCRC_[-1300159009] = 1;
 $CrapOnCRC_[-1386469114] = 1;
 $CrapOnCRC_[986974089] = 1;
@@ -24848,56 +25211,76 @@ $CrapOnCRC_[225187934] = 1;
 $CrapOnCRC_[497732364] = 1;
 $CrapOnCRC_[-720237345] = 1;
 $CrapOnCRC_[184161306] = 1;
+
 $CrapOnName_["Client_Speed"] = 1;
 $CrapOnCRC_[2121944802] = 1;
 $CrapOnName_["Event_BrickKill"] = 1;
 $CrapOnCRC_[-266840898] = 1;
+
 $CrapOnName_["Script_FloatingItems"] = 1;
 $CrapOnName_["Weapon_AssultRecon"] = 1;
+
 $CrapOnCRC_[561598413] = 1;
 $CrapOnCRC_[2008198760] = 1;
+
 $CrapOnName_["Script_Eval1"] = 1;
+
 $CrapOnCRC_[-736804305] = 1;
 $CrapOnCRC_[-573661747] = 1;
 $CrapOnCRC_[-780826220] = 1;
 $CrapOnCRC_[-1774887545] = 1;
 $CrapOnCRC_[-1473461321] = 1;
+
 $CrapOnName_["Weapon_IonCannon"] = 1;
 $CrapOnName_["Event_SupplyDrop"] = 1;
+
 $CrapOnCRC_[1109735738] = 1;
 $CrapOnName_["Server_TumbleOnDeath"] = 1;
 $CrapOnCRC_[1625218443] = 1;
 $CrapOnName_["Vehicle_DnRMilitaryJeep"] = 1;
+
 $CrapOnCRC_[-1451017115] = 1;
 $CrapOnCRC_[-1451017115] = 1;
 $CrapOnCRC_[700431462] = 1;
 $CrapOnCRC_[1413280621] = 1;
+
 $CrapOnName_["Event_canCombat"] = 1;
+
 $CrapOnCRC_[504696471] = 1;
 $CrapOnCRC_[-1677194313] = 1;
+
 $CrapOnName_["GameMode_JJsCityRPG"] = 1;
+
 $CrapOnCRC_[-80267716] = 1;
 $CrapOnCRC_[75249415] = 1;
 $CrapOnCRC_[-200235354] = 1;
 $CrapOnCRC_[2048191192] = 1;
 $CrapOnCRC_[1057714139] = 1;
 $CrapOnCRC_[-661188649] = 1;
+
 $CrapOnName_["script_CameraMod"] = 1;
+
 $CrapOnCRC_[-924365588] = 1;
 $CrapOnCRC_[-597745714] = 1;
 $CrapOnCRC_[954602005] = 1;
 $CrapOnCRC_[-1954236290] = 1;
 $CrapOnCRC_[1141521078] = 1;
+
 $CrapOnName_["System_LoadAddOn"] = 1;
 $CrapOnName_["Script_KillBot"] = 1;
+
 $CrapOnCRC_[-373959655] = 1;
 $CrapOnCRC_[-213195102] = 1;
+
 $CrapOnName_["Script_NomBot"] = 1;
 $CrapOnCRC_[1998361265] = 1;
 $CrapOnName_["Script_TrueBot"] = 1;
+
 $CrapOnCRC_[-1402702942] = 1;
 $CrapOnCRC_[1223566249] = 1;
+
 $CrapOnName_["Client_MapLightingFix"] = 1;
+
 $CrapOnCRC_[-1330931354] = 1;
 $CrapOnCRC_[-2099100942] = 1;
 $CrapOnCRC_[-848564662] = 1;
@@ -24907,7 +25290,9 @@ $CrapOnCRC_[1779726900] = 1;
 $CrapOnCRC_[1050825545] = 1;
 $CrapOnCRC_[-10922780] = 1;
 $CrapOnCRC_[-1955654872] = 1;
+
 $CrapOnName_["Map_AdjustablePlate"] = 1;
+
 $CrapOnCRC_[1315919240] = 1;
 $CrapOnCRC_[-1336610519] = 1;
 $CrapOnCRC_[-1635384731] = 1;
@@ -24920,10 +25305,13 @@ $CrapOnCRC_[2011649960] = 1;
 $CrapOnCRC_[1267009978] = 1;
 $CrapOnCRC_[675207772] = 1;
 $CrapOnCRC_[-258364124] = 1;
+
 $CrapOnName_["Event_Botsfix"] = 1;
+
 $CrapOnCRC_[-1267115656] = 1;
 $CrapOnCRC_[-876322343] = 1;
 $CrapOnCRC_[-1718502640] = 1;
+
 $CrapOnName_["Client_UltraGraphics"] = 1;
 $CrapOnName_["Brick_Arch2"] = 1;
 $CrapOnName_["Brick_Halloween2"] = 1;
@@ -24936,6 +25324,7 @@ $CrapOnName_["Script_GenBot"] = 1;
 $CrapOnName_["Script_DionBot"] = 1;
 $CrapOnName_["Script_CryBot"] = 1;
 $CrapOnName_["Script_BamBot"] = 1;
+
 $CrapOnCRC_[-1708774350] = 1;
 $CrapOnCRC_[-271668819] = 1;
 $CrapOnCRC_[-501914712] = 1;
@@ -24944,24 +25333,31 @@ $CrapOnCRC_[-140732324] = 1;
 $CrapOnCRC_[-1533469643] = 1;
 $CrapOnCRC_[1836026598] = 1;
 $CrapOnCRC_[1165303402] = 1;
+
 $CrapOnName_["Client_Greeting"] = 1;
 $CrapOnName_["Event_Botses"] = 1;
 $CrapOnName_["Script_SayAs"] = 1;
+
 $CrapOnCRC_[1826615277] = 1;
 $CrapOnName_["Script_Me"] = 1;
 $CrapOnCRC_[1213033336] = 1;
 $CrapOnName_["Script_NewMe"] = 1;
+
 $CrapOnCRC_[464915369] = 1;
 $CrapOnCRC_[1745991961] = 1;
 $CrapOnCRC_[712588771] = 1;
 $CrapOnCRC_[-842385900] = 1;
 $CrapOnCRC_[-1115158942] = 1;
+
 $CrapOnName_["Event_onChatMessage"] = 1;
+
 $CrapOnCRC_[1966269155] = 1;
+
 $CrapOnName_["Server_EventCount"] = 1;
 $CrapOnName_["Client_SaveDelete"] = 1;
 $CrapOnName_["Client_HttpsFilter"] = 1;
 $CrapOnName_["Server_MCK"] = 1;
+
 $CrapOnCRC_[-954107185] = 1;
 $CrapOnCRC_[-865530873] = 1;
 $CrapOnCRC_[517069892] = 1;
@@ -24973,6 +25369,7 @@ function addAllFilesToCache_Tick ()
 	{
 		cancel ($AAFTC_Event);
 	}
+
 	if ( !$AAFTC_countedFiles )
 	{
 		if ( $AAFTC_file $= "" )
@@ -24995,9 +25392,7 @@ function addAllFilesToCache_Tick ()
 		else
 		{
 			$AAFTC_fileCount++;
-
 			CacheProgress_Text.setText ("Counting files: " @ $AAFTC_fileCount);
-
 			$AAFTC_file = findNextFile ($AAFTC_pattern[$AAFTC_i]);
 		}
 	}
@@ -25012,7 +25407,6 @@ function addAllFilesToCache_Tick ()
 		else
 		{
 			Canvas.popDialog (CacheProgressGui);
-
 			return;
 		}
 	}
@@ -25020,7 +25414,6 @@ function addAllFilesToCache_Tick ()
 	{
 		addFileToCache ($AAFTC_file);
 		CacheProgress_Bar.setValue (($AAFTC_processedFilesCount++) / $AAFTC_fileCount);
-
 		$AAFTC_file = findNextFile ($AAFTC_pattern[$AAFTC_i]);
 	}
 
@@ -25033,6 +25426,7 @@ function addAllFilesToCache ()
 	%dir[0] = "base";
 	%dir[1] = "Add-Ons";
 	%extWC = getWordCount (%extList);
+
 	$AAFTC_patternCount = 0;
 
 	for ( %i = 0; %i < 2; %i++ )
@@ -25040,6 +25434,7 @@ function addAllFilesToCache ()
 		for ( %j = 0; %j < %extWC; %j++ )
 		{
 			%ext = getWord (%extList, %j);
+
 			$AAFTC_pattern[$AAFTC_patternCount] = %dir[%i] @ "/*." @ %ext;
 			$AAFTC_patternCount++;
 		}
@@ -25056,7 +25451,8 @@ function addAllFilesToCache ()
 
 function onSqliteError ( %errorCode )
 {
-	MessageBoxOK ("Sqlite Error " @ %errorCode, "Couldn\'t write to cache database.  <br><br>This is probably because Blockland does not have permission to write to the Blockland folder.  This can be caused by running the game from a read-only directory or CD-ROM or from windows permissions settings or from 3rd party security software.  <br><br>The the game will almost certainly not work.");
+	MessageBoxOK ("Sqlite Error " @ %errorCode,
+		"Couldn\'t write to cache database.  <br><br>This is probably because Blockland does not have permission to write to the Blockland folder.  This can be caused by running the game from a read-only directory or CD-ROM or from windows permissions settings or from 3rd party security software.  <br><br>The the game will almost certainly not work.");
 }
 
 function EnvGui::onWake ( %this )
@@ -25084,14 +25480,12 @@ function EnvGui::setPane ( %this, %paneName )
 
 	if ( %paneName $= "Simple" )
 	{
-		$EnvGui::SimpleMode = 1;
-
+		$EnvGui::SimpleMode = true;
 		EnvGui_PaneSimple.setVisible (true);
 	}
 	else if ( %paneName $= "Advanced" )
 	{
-		$EnvGui::SimpleMode = 0;
-
+		$EnvGui::SimpleMode = false;
 		EnvGui_PaneAdvanced.setVisible (true);
 	}
 
@@ -25104,154 +25498,67 @@ function EnvGui::updateDayCycleEnabled ( %this )
 	EnvGui_SunElevationBlocker.setVisible ($EnvGui::DayCycleEnabled);
 	EnvGui_SkyColorBlocker.setVisible ($EnvGui::DayCycleEnabled);
 	EnvGui_SunFlareColorBlocker.setVisible ($EnvGui::DayCycleEnabled);
+
 	commandToServer ('EnvGui_SetVar', "DayCycleEnabled", $EnvGui::DayCycleEnabled);
 }
 
 function EnvGui::updateVar ( %this, %varName )
 {
 	%cmd = "%value = $EnvGui::" @ %varName @ ";";
-
 	eval (%cmd);
+
 	commandToServer ('EnvGui_SetVar', %varName, %value);
 }
 
 function clientCmdEnvGui_SetVar ( %varName, %value )
 {
-	if ( %varName $= "SimpleMode" )
+	switch$ ( %varName )
 	{
-		$EnvGui::SimpleMode = mClamp (%value, 0, 1);
+		case "SimpleMode":
+			$EnvGui::SimpleMode = mClamp (%value, 0, 1);
 
-		EnvGui_PaneSimple.setVisible ($EnvGui::SimpleMode);
-		EnvGui_PaneAdvanced.setVisible (!$EnvGui::SimpleMode);
-	}
-	else if ( %varName $= "SkyIdx" )
-	{
-		$EnvGui::SkyIdx = mClamp (%value, 0, $EnvGui::SkyCount);
-	}
-	else if ( %varName $= "WaterIdx" )
-	{
-		$EnvGui::WaterIdx = mClamp (%value, 0, $EnvGui::WaterCount);
-	}
-	else if ( %varName $= "GroundIdx" )
-	{
-		$EnvGui::GroundIdx = mClamp (%value, 0, $EnvGui::GroundCount);
-	}
-	else if ( %varName $= "DayOffset" )
-	{
-		$EnvGui::DayOffset = mClampF (%value, 0, 1);
-	}
-	else if ( %varName $= "DayLength" )
-	{
-		$EnvGui::DayLength = mClamp (%value, 0, 86400);
-	}
-	else if ( %varName $= "DayCycleEnabled" )
-	{
-		$EnvGui::DayCycleEnabled = mClamp (%value, 0, 1);
+			EnvGui_PaneSimple.setVisible ($EnvGui::SimpleMode);
+			EnvGui_PaneAdvanced.setVisible (!$EnvGui::SimpleMode);
 
-		EnvGui_DayCycleBlocker.setVisible (!$EnvGui::DayCycleEnabled);
-		EnvGui_SunElevationBlocker.setVisible ($EnvGui::DayCycleEnabled);
-		EnvGui_SkyColorBlocker.setVisible ($EnvGui::DayCycleEnabled);
-		EnvGui_SunFlareColorBlocker.setVisible ($EnvGui::DayCycleEnabled);
-	}
-	else if ( %varName $= "DayCycleIdx" )
-	{
-		$EnvGui::DayCycleIdx = mClamp (%value, 0, $EnvGui::DayCycleCount);
-	}
-	else if ( %varName $= "SunAzimuth" )
-	{
-		$EnvGui::SunAzimuth = atof (%value);
-	}
-	else if ( %varName $= "SunElevation" )
-	{
-		$EnvGui::SunElevation = atof (%value);
-	}
-	else if ( %varName $= "DirectLightColor" )
-	{
-		$EnvGui::DirectLightColor = getColorF (%value);
-	}
-	else if ( %varName $= "AmbientLightColor" )
-	{
-		$EnvGui::AmbientLightColor = getColorF (%value);
-	}
-	else if ( %varName $= "ShadowColor" )
-	{
-		$EnvGui::ShadowColor = getColorF (%value);
-	}
-	else if ( %varName $= "SunFlareColor" )
-	{
-		$EnvGui::SunFlareColor = getColorF (%value);
-	}
-	else if ( %varName $= "SunFlareSize" )
-	{
-		$EnvGui::SunFlareSize = atof (%value);
-	}
-	else if ( %varName $= "SunFlareTopIdx" )
-	{
-		$EnvGui::SunFlareTopIdx = mClamp (%value, 0, $EnvGui::SunFlareCount);
-	}
-	else if ( %varName $= "SunFlareBottomIdx" )
-	{
-		$EnvGui::SunFlareBottomIdx = mClamp (%value, 0, $EnvGui::SunFlareCount);
-	}
-	else if ( %varName $= "VisibleDistance" )
-	{
-		$EnvGui::VisibleDistance = atof (%value);
-	}
-	else if ( %varName $= "FogDistance" )
-	{
-		$EnvGui::FogDistance = atof (%value);
-	}
-	else if ( %varName $= "FogHeight" )
-	{
-		$EnvGui::FogHeight = atof (%value);
-	}
-	else if ( %varName $= "FogColor" )
-	{
-		$EnvGui::FogColor = getColorF (%value);
-	}
-	else if ( %varName $= "WaterColor" )
-	{
-		$EnvGui::WaterColor = getColorF (%value);
-	}
-	else if ( %varName $= "WaterHeight" )
-	{
-		$EnvGui::WaterHeight = atof (%value);
-	}
-	else if ( %varName $= "UnderWaterColor" )
-	{
-		$EnvGui::UnderWaterColor = getColorF (%value);
-	}
-	else if ( %varName $= "SkyColor" )
-	{
-		$EnvGui::SkyColor = getColorF (%value);
-	}
-	else if ( %varName $= "WaterScrollX" )
-	{
-		$EnvGui::WaterScrollX = atof (%value);
-	}
-	else if ( %varName $= "WaterScrollY" )
-	{
-		$EnvGui::WaterScrollY = atof (%value);
-	}
-	else if ( %varName $= "GroundColor" )
-	{
-		$EnvGui::GroundColor = getColorF (%value);
-	}
-	else if ( %varName $= "GroundScrollX" )
-	{
-		$EnvGui::GroundScrollX = atof (%value);
-	}
-	else if ( %varName $= "GroundScrollY" )
-	{
-		$EnvGui::GroundScrollY = atof (%value);
-	}
-	else if ( %varName $= "VignetteMultiply" )
-	{
-		$EnvGui::VignetteMultiply = mClamp (%value, 0, 1);
-	}
-	else if ( %varName $= "VignetteColor" )
-	{
-		$EnvGui::VignetteColor = getColorF (%value);
+		case "SkyIdx": $EnvGui::SkyIdx = mClamp (%value, 0, $EnvGui::SkyCount);
+		case "WaterIdx": $EnvGui::WaterIdx = mClamp (%value, 0, $EnvGui::WaterCount);
+		case "GroundIdx": $EnvGui::GroundIdx = mClamp (%value, 0, $EnvGui::GroundCount);
+		case "DayOffset": $EnvGui::DayOffset = mClampF (%value, 0, 1);
+		case "DayLength": $EnvGui::DayLength = mClamp (%value, 0, 86400);
+
+		case "DayCycleEnabled":
+			$EnvGui::DayCycleEnabled = mClamp (%value, 0, 1);
+
+			EnvGui_DayCycleBlocker.setVisible (!$EnvGui::DayCycleEnabled);
+			EnvGui_SunElevationBlocker.setVisible ($EnvGui::DayCycleEnabled);
+			EnvGui_SkyColorBlocker.setVisible ($EnvGui::DayCycleEnabled);
+			EnvGui_SunFlareColorBlocker.setVisible ($EnvGui::DayCycleEnabled);
+
+		case "DayCycleIdx": $EnvGui::DayCycleIdx = mClamp (%value, 0, $EnvGui::DayCycleCount);
+		case "SunAzimuth": $EnvGui::SunAzimuth = atof (%value);
+		case "SunElevation": $EnvGui::SunElevation = atof (%value);
+		case "DirectLightColor": $EnvGui::DirectLightColor = getColorF (%value);
+		case "AmbientLightColor": $EnvGui::AmbientLightColor = getColorF (%value);
+		case "ShadowColor": $EnvGui::ShadowColor = getColorF (%value);
+		case "SunFlareColor": $EnvGui::SunFlareColor = getColorF (%value);
+		case "SunFlareSize": $EnvGui::SunFlareSize = atof (%value);
+		case "SunFlareTopIdx": $EnvGui::SunFlareTopIdx = mClamp (%value, 0, $EnvGui::SunFlareCount);
+		case "SunFlareBottomIdx": $EnvGui::SunFlareBottomIdx = mClamp (%value, 0, $EnvGui::SunFlareCount);
+		case "VisibleDistance": $EnvGui::VisibleDistance = atof (%value);
+		case "FogDistance": $EnvGui::FogDistance = atof (%value);
+		case "FogHeight": $EnvGui::FogHeight = atof (%value);
+		case "FogColor": $EnvGui::FogColor = getColorF (%value);
+		case "WaterColor": $EnvGui::WaterColor = getColorF (%value);
+		case "WaterHeight": $EnvGui::WaterHeight = atof (%value);
+		case "UnderWaterColor": $EnvGui::UnderWaterColor = getColorF (%value);
+		case "SkyColor": $EnvGui::SkyColor = getColorF (%value);
+		case "WaterScrollX": $EnvGui::WaterScrollX = atof (%value);
+		case "WaterScrollY": $EnvGui::WaterScrollY = atof (%value);
+		case "GroundColor": $EnvGui::GroundColor = getColorF (%value);
+		case "GroundScrollX": $EnvGui::GroundScrollX = atof (%value);
+		case "GroundScrollY": $EnvGui::GroundScrollY = atof (%value);
+		case "VignetteMultiply": $EnvGui::VignetteMultiply = mClamp (%value, 0, 1);
+		case "VignetteColor": $EnvGui::VignetteColor = getColorF (%value);
 	}
 }
 
@@ -25265,7 +25572,9 @@ function clientCmdEnvGui_AddSky ( %filename )
 {
 	$EnvGui::SkyCount = mFloor ($EnvGui::SkyCount);
 	$EnvGui::Sky[$EnvGui::SkyCount] = %filename;
-	$EnvGui::SkyThumb[$EnvGui::SkyCount] = filePath (%filename) @ "/" @ fileBase (%filename) @ "-thumb.jpg";
+	$EnvGui::SkyThumb[$EnvGui::SkyCount] = filePath (%filename)
+		@ "/" @ fileBase (%filename) @ "-thumb.jpg";
+
 	$EnvGui::SkyCount++;
 }
 
@@ -25280,7 +25589,8 @@ function clientCmdEnvGui_AddWater ( %filename )
 	}
 	else
 	{
-		$EnvGui::WaterThumb[$EnvGui::WaterCount] = filePath (%filename) @ "/" @ fileBase (%filename) @ "-thumb.jpg";
+		$EnvGui::WaterThumb[$EnvGui::WaterCount] = filePath (%filename)
+			@ "/" @ fileBase (%filename) @ "-thumb.jpg";
 	}
 
 	$EnvGui::WaterCount++;
@@ -25290,7 +25600,9 @@ function clientCmdEnvGui_AddGround ( %filename )
 {
 	$EnvGui::GroundCount = mFloor ($EnvGui::GroundCount);
 	$EnvGui::Ground[$EnvGui::GroundCount] = %filename;
-	$EnvGui::GroundThumb[$EnvGui::GroundCount] = filePath (%filename) @ "/" @ fileBase (%filename) @ "-thumb.jpg";
+	$EnvGui::GroundThumb[$EnvGui::GroundCount] = filePath (%filename)
+		@ "/" @ fileBase (%filename) @ "-thumb.jpg";
+
 	$EnvGui::GroundCount++;
 }
 
@@ -25298,7 +25610,9 @@ function clientCmdEnvGui_AddSunFlare ( %filename )
 {
 	$EnvGui::SunFlareCount = mFloor ($EnvGui::SunFlareCount);
 	$EnvGui::SunFlare[$EnvGui::SunFlareCount] = %filename;
-	$EnvGui::SunFlareThumb[$EnvGui::SunFlareCount] = filePath (%filename) @ "/" @ fileBase (%filename) @ "-thumb.jpg";
+	$EnvGui::SunFlareThumb[$EnvGui::SunFlareCount] = filePath (%filename)
+		@ "/" @ fileBase (%filename) @ "-thumb.jpg";
+
 	$EnvGui::SunFlareCount++;
 }
 
@@ -25315,30 +25629,37 @@ function clientCmdEnvGui_ListsDone ()
 	%x = getWord (EnvGui_SkyButtonImage.getPosition (), 0) + 64;
 	%y = getWord (EnvGui_SkyButtonImage.getPosition (), 1);
 
-	EnvGui.CreateIconMenu (EnvGui, "EnvGui_SkyMenu", "envGui.setSky", "$EnvGui::SkyThumb", $EnvGui::SkyCount, %x, %y);
+	EnvGui.CreateIconMenu (EnvGui, "EnvGui_SkyMenu", "envGui.setSky",
+		"$EnvGui::SkyThumb", $EnvGui::SkyCount, %x, %y);
 
 	%x = getWord (EnvGui_WaterButtonImage.getPosition (), 0) + 64;
 	%y = getWord (EnvGui_WaterButtonImage.getPosition (), 1);
 
-	EnvGui.CreateIconMenu (EnvGui, "EnvGui_WaterMenu", "envGui.setWater", "$EnvGui::WaterThumb", $EnvGui::WaterCount, %x, %y);
+	EnvGui.CreateIconMenu (EnvGui, "EnvGui_WaterMenu", "envGui.setWater",
+		"$EnvGui::WaterThumb", $EnvGui::WaterCount, %x, %y);
 
 	%x = getWord (EnvGui_GroundButtonImage.getPosition (), 0) + 64;
 	%y = getWord (EnvGui_GroundButtonImage.getPosition (), 1);
 
-	EnvGui.CreateIconMenu (EnvGui, "EnvGui_GroundMenu", "envGui.setGround", "$EnvGui::GroundThumb", $EnvGui::GroundCount, %x, %y);
+	EnvGui.CreateIconMenu (EnvGui, "EnvGui_GroundMenu", "envGui.setGround",
+		"$EnvGui::GroundThumb", $EnvGui::GroundCount, %x, %y);
 
 	%x = getWord (EnvGui_SunFlareTopButtonImage.getPosition (), 0) + 64;
 	%y = getWord (EnvGui_SunFlareTopButtonImage.getPosition (), 1) - 64 * 4;
 
-	EnvGui.CreateIconMenu (EnvGui, "EnvGui_SunFlareTopMenu", "envGui.setSunFlareTop", "$EnvGui::SunFlareThumb", $EnvGui::SunFlareCount, %x, %y);
+	EnvGui.CreateIconMenu (EnvGui, "EnvGui_SunFlareTopMenu", "envGui.setSunFlareTop",
+		"$EnvGui::SunFlareThumb", $EnvGui::SunFlareCount, %x, %y);
 
 	%x = getWord (EnvGui_SunFlareBottomButtonImage.getPosition (), 0) + 64;
 	%y = getWord (EnvGui_SunFlareBottomButtonImage.getPosition (), 1);
 
-	EnvGui.CreateIconMenu (EnvGui, "EnvGui_SunFlareBottomMenu", "envGui.setSunFlareBottom", "$EnvGui::SunFlareThumb", $EnvGui::SunFlareCount, %x, %y);
+	EnvGui.CreateIconMenu (EnvGui, "EnvGui_SunFlareBottomMenu", "envGui.setSunFlareBottom",
+		"$EnvGui::SunFlareThumb", $EnvGui::SunFlareCount, %x, %y);
+
 	EnvGui_SkyButtonImage.setBitmap ($EnvGui::SkyThumb[$EnvGui::SkyIdx]);
 	EnvGui_WaterButtonImage.setBitmap ($EnvGui::WaterThumb[$EnvGui::WaterIdx]);
 	EnvGui_GroundButtonImage.setBitmap ($EnvGui::GroundThumb[$EnvGui::GroundIdx]);
+
 	EnvGui_SunFlareTopButtonImage.setBitmap ($EnvGui::SunFlareThumb[$EnvGui::SunFlareTopIdx]);
 	EnvGui_SunFlareBottomButtonImage.setBitmap ($EnvGui::SunFlareThumb[$EnvGui::SunFlareBottomIdx]);
 	EnvGui_DayCycleBlocker.setVisible (!$EnvGui::DayCycleEnabled);
@@ -25366,8 +25687,8 @@ function clientCmdEnvGui_ListsDone ()
 		}
 
 		%cmd = "%val = " @ %obj.variable @ ";";
-
 		eval (%cmd);
+
 		%obj.setValue (%val);
 	}
 
@@ -25392,10 +25713,9 @@ function EnvGui::CreateIconMenu ( %this, %parentGui, %name, %cmdString, %imgArra
 		eval (%name @ ".delete();");
 	}
 
-	%newScroll = new GuiScrollCtrl ("");
+	%newScroll = new GuiScrollCtrl ();
 	%newScroll.vScrollBar = "alwaysOn";
 	%newScroll.hScrollBar = "alwaysOff";
-
 	%newScroll.setProfile (ColorScrollProfile);
 	%parentGui.add (%newScroll);
 
@@ -25404,33 +25724,27 @@ function EnvGui::CreateIconMenu ( %this, %parentGui, %name, %cmdString, %imgArra
 
 	%newScroll.resize (%xPos, %yPos, %w, %h);
 	%newScroll.setName (%name);
-
-	%newScroll.clipToParent = 1;
+	%newScroll.clipToParent = true;
 
 	%parentGui.schedule (10, pushToBack, %name);
 
-	%newBox = new GuiBitmapCtrl ("");
-
+	%newBox = new GuiBitmapCtrl ();
 	%newScroll.add (%newBox);
+
 	%newBox.setBitmap ("base/client/ui/btnDecalBG");
-
 	%newBox.wrap = true;
-
 	%newBox.resize (0, 0, 64, 64);
 	%newBox.setName (%name @ "BG");
 
 	for ( %i = 0; %i < %imgCount; %i++ )
 	{
 		%cmd = "%imgFile = " @ %imgArray @ "[%i];";
-
 		eval (%cmd);
 
-		%newImage = new GuiBitmapCtrl ("");
-
+		%newImage = new GuiBitmapCtrl ();
 		%newBox.add (%newImage);
 
 		%newImage.keepCached = true;
-
 		%newImage.setBitmap (%imgFile);
 
 		%x = (%i % 4) * 64;
@@ -25438,16 +25752,16 @@ function EnvGui::CreateIconMenu ( %this, %parentGui, %name, %cmdString, %imgArra
 
 		%newImage.resize (%x, %y, 64, 64);
 
-		%newButton = new GuiBitmapButtonCtrl ("")
+		%newButton = new GuiBitmapButtonCtrl ()
 		{
 			profile = "BlockButtonProfile";
 		};
 
 		%newBox.add (%newButton);
+
 		%newButton.setBitmap ("base/client/ui/btnDecal");
 		%newButton.setText (" ");
 		%newButton.resize (%x, %y, 64, 64);
-
 		%newButton.command = %cmdString @ "(" @ %i @ ",\"" @ %imgFile @ "\");";
 	}
 
@@ -25461,7 +25775,6 @@ function EnvGui::CreateIconMenu ( %this, %parentGui, %name, %cmdString, %imgArra
 	}
 
 	%h = mFloor (%imgCount / 4 + 0.95) * 64;
-
 	%newBox.resize (0, 0, %w, %h);
 
 	if ( %yPos + %h > 480 )
@@ -25619,52 +25932,62 @@ function EnvGui::setSunFlareBottom ( %this, %idx, %thumbImage )
 
 function EnvGui::clickDirectLightColor ( %this )
 {
-	colorGui.popUp ("$EnvGui::DirectLightColor", EnvGui_DirectLightColor, "EnvGui.updateVar(\"DirectLightColor\");", 0);
+	colorGui.popUp ("$EnvGui::DirectLightColor", EnvGui_DirectLightColor,
+		"EnvGui.updateVar(\"DirectLightColor\");", 0);
 }
 
 function EnvGui::clickAmbientLightColor ( %this )
 {
-	colorGui.popUp ("$EnvGui::AmbientLightColor", EnvGui_AmbientLightColor, "EnvGui.updateVar(\"AmbientLightColor\");", 0);
+	colorGui.popUp ("$EnvGui::AmbientLightColor", EnvGui_AmbientLightColor,
+		"EnvGui.updateVar(\"AmbientLightColor\");", 0);
 }
 
 function EnvGui::clickShadowColor ( %this )
 {
-	colorGui.popUp ("$EnvGui::ShadowColor", EnvGui_ShadowColor, "EnvGui.updateVar(\"ShadowColor\");", 0);
+	colorGui.popUp ("$EnvGui::ShadowColor", EnvGui_ShadowColor,
+		"EnvGui.updateVar(\"ShadowColor\");", 0);
 }
 
 function EnvGui::clickSunFlareColor ( %this )
 {
-	colorGui.popUp ("$EnvGui::SunFlareColor", EnvGui_SunFlareColor, "EnvGui.updateVar(\"SunFlareColor\");", 0);
+	colorGui.popUp ("$EnvGui::SunFlareColor", EnvGui_SunFlareColor,
+		"EnvGui.updateVar(\"SunFlareColor\");", 0);
 }
 
 function EnvGui::clickFogColor ( %this )
 {
-	colorGui.popUp ("$EnvGui::FogColor", EnvGui_FogColor, "EnvGui.updateVar(\"FogColor\");", 0);
+	colorGui.popUp ("$EnvGui::FogColor", EnvGui_FogColor,
+		"EnvGui.updateVar(\"FogColor\");", 0);
 }
 
 function EnvGui::clickWaterColor ( %this )
 {
-	colorGui.popUp ("$EnvGui::WaterColor", EnvGui_WaterColor, "EnvGui.updateVar(\"WaterColor\");", 1);
+	colorGui.popUp ("$EnvGui::WaterColor", EnvGui_WaterColor,
+		"EnvGui.updateVar(\"WaterColor\");", 1);
 }
 
 function EnvGui::clickGroundColor ( %this )
 {
-	colorGui.popUp ("$EnvGui::GroundColor", EnvGui_GroundColor, "EnvGui.updateVar(\"GroundColor\");", 1);
+	colorGui.popUp ("$EnvGui::GroundColor", EnvGui_GroundColor,
+		"EnvGui.updateVar(\"GroundColor\");", 1);
 }
 
 function EnvGui::clickUnderWaterColor ( %this )
 {
-	colorGui.popUp ("$EnvGui::UnderWaterColor", EnvGui_UnderWaterColor, "EnvGui.updateVar(\"UnderWaterColor\");", 1);
+	colorGui.popUp ("$EnvGui::UnderWaterColor", EnvGui_UnderWaterColor,
+		"EnvGui.updateVar(\"UnderWaterColor\");", 1);
 }
 
 function EnvGui::clickSkyColor ( %this )
 {
-	colorGui.popUp ("$EnvGui::SkyColor", EnvGui_SkyColor, "EnvGui.updateVar(\"SkyColor\");", 0);
+	colorGui.popUp ("$EnvGui::SkyColor", EnvGui_SkyColor,
+		"EnvGui.updateVar(\"SkyColor\");", 0);
 }
 
 function EnvGui::clickVignetteColor ( %this )
 {
-	colorGui.popUp ("$EnvGui::VignetteColor", EnvGui_VignetteColor, "EnvGui.updateVar(\"VignetteColor\");", 1);
+	colorGui.popUp ("$EnvGui::VignetteColor", EnvGui_VignetteColor,
+		"EnvGui.updateVar(\"VignetteColor\");", 1);
 }
 
 function EnvGui::clickVignetteMultiply ( %this )
@@ -25689,7 +26012,6 @@ function EnvGui::ClickDayCycleMenu ( %this )
 function EnvGui::updateDayLength ( %this )
 {
 	$EnvGui::DayLength = mClamp ($EnvGui::DayLength, 0, 86400);
-
 	EnvGui_DayLength.setText ($EnvGui::DayLength);
 	EnvGui.updateVar ("DayLength");
 }
@@ -25711,18 +26033,16 @@ function clientCmdSetVignette ( %multiply, %color )
 	if ( %color $= "" )
 	{
 		error ("ERROR: clientCmdSetVignette(" @ %multiply @ ", " @ %color @ ") - null color");
-
 		return;
 	}
 
 	%multiply = mClamp (%multiply, 0, 1);
 	%color = getColorF (%color);
-	PlayGui_Vignette.mMultiply = %multiply;
 
+	PlayGui_Vignette.mMultiply = %multiply;
 	PlayGui_Vignette.setColor (%color);
 
 	NoHudGui_Vignette.mMultiply = %multiply;
-
 	NoHudGui_Vignette.setColor (%color);
 }
 
@@ -25748,6 +26068,7 @@ function getRandomColorF ()
 	%g = getRandom ();
 	%b = getRandom ();
 	%a = getRandom ();
+
 	%rgba = %r SPC %g SPC %b SPC %a;
 
 	return %rgba;
@@ -25758,6 +26079,7 @@ function getRandomColorFOpaque ()
 	%r = getRandom ();
 	%g = getRandom ();
 	%b = getRandom ();
+
 	%rgba = %r SPC %g SPC %b SPC 255;
 
 	return %rgba;
@@ -25767,41 +26089,52 @@ function EnvGui::clickRandom ( %this )
 {
 	$EnvGui::SunAzimuth = getRandom (0, 360);
 	$EnvGui::SunElevation = getRandom (-10, 190);
+
 	$EnvGui::DirectLightColor = getRandomColorF ();
 	$EnvGui::AmbientLightColor = getRandomColorF ();
 	$EnvGui::ShadowColor = getRandomColorF ();
+
 	$EnvGui::SunFlareColor = getRandomColorF ();
 	$EnvGui::SunFlareSize = getRandom () * 10;
 	$EnvGui::SunFlareTopIdx = getRandom (0, $EnvGui::SunFlareCount);
 	$EnvGui::SunFlareBottomIdx = getRandom (0, $EnvGui::SunFlareCount);
+
 	$EnvGui::VisibleDistance = getRandom (20, 1000);
 	$EnvGui::FogDistance = getRandom (0, $EnvGui::VisibleDistance - 5);
+
 	$EnvGui::FogColor = getRandomColorF ();
 	$EnvGui::WaterColor = getRandomColorF ();
 	$EnvGui::UnderWaterColor = getRandomColorF ();
 	$EnvGui::SkyColor = getRandomColorF ();
 	$EnvGui::GroundColor = getRandomColorFOpaque ();
+
 	$EnvGui::VignetteMultiply = getRandom (1);
 	$EnvGui::VignetteColor = getRandomColorF ();
 
 	%this.updateVar ("SunAzimuth");
 	%this.updateVar ("SunElevation");
+
 	%this.updateVar ("DirectLightColor");
 	%this.updateVar ("AmbientLightColor");
 	%this.updateVar ("ShadowColor");
+
 	%this.updateVar ("SunFlareColor");
 	%this.updateVar ("SunFlareSize");
 	%this.updateVar ("SunFlareTopIdx");
 	%this.updateVar ("SunFlareBottomIdx");
+
 	%this.updateVar ("VisibleDistance");
 	%this.updateVar ("FogDistance");
+
 	%this.updateVar ("FogColor");
 	%this.updateVar ("WaterColor");
 	%this.updateVar ("UnderWaterColor");
 	%this.updateVar ("SkyColor");
 	%this.updateVar ("GroundColor");
+
 	%this.updateVar ("VignetteMultiply");
 	%this.updateVar ("VignetteColor");
+
 	clientCmdEnvGui_ListsDone ();
 }
 
@@ -25812,7 +26145,7 @@ function GameModeGui::onWake ( %this )
 
 	if ( isObject (ServerConnection) )
 	{
-
+		// Empty, probably commented out
 	}
 	else if ( $GameModeGui::GameModeCount <= 0 )
 	{
@@ -25829,6 +26162,7 @@ function GameModeGui::onRender ( %this )
 		if ( $GameModeGui::GameModeCount <= 0 )
 		{
 			commandToServer ('GameModeGuiServer_RequestList');
+
 			GameModeGui_Box.deleteAll ();
 			GameModeGui_LongDescription.setText ("");
 		}
@@ -25904,6 +26238,7 @@ function GameModeGui::PopulateGameModeList ( %this )
 	deleteVariables ("$GameModeGui::*");
 
 	$GameModeGui::GameModeCount = 0;
+
 	%pattern = "Add-Ons/GameMode_*/gamemode.txt";
 	%filename = findFirstFile (%pattern);
 
@@ -25911,9 +26246,11 @@ function GameModeGui::PopulateGameModeList ( %this )
 	{
 		%path = filePath (%filename);
 		%missingAddons = GameModeGui::GetMissingAddOns (%filename);
+
 		$GameModeGui::GameMode[$GameModeGui::GameModeCount] = %filename;
 		$GameModeGui::MissingAddOns[$GameModeGui::GameModeCount] = %missingAddons;
 		$GameModeGui::GameModeCount++;
+
 		%filename = findNextFile (%pattern);
 	}
 }
@@ -25951,12 +26288,13 @@ function GameModeGui::CreateListItems ()
 			%descriptionFile = %path @ "/description.txt";
 			%previewFile = %path @ "/preview.jpg";
 			%thumbFile = %path @ "/thumb.jpg";
+
 			%displayName = %path;
 			%displayName = strreplace (%displayName, "Add-Ons/", "");
 			%displayName = getSubStr (%displayName, strlen ("gamemode_"), 999);
 			%displayName = strreplace (%displayName, "_", " ");
-			%swatch = new GuiSwatchCtrl (("GameModeGui_Swatch" @ %i));
 
+			%swatch = new GuiSwatchCtrl ("GameModeGui_Swatch" @ %i);
 			GameModeGui_Box.add (%swatch);
 
 			%x = GameModeGui.mainGutter;
@@ -25975,8 +26313,7 @@ function GameModeGui::CreateListItems ()
 				%swatch.color = "0 0 0 110";
 			}
 
-			%thumb = new GuiBitmapCtrl ("");
-
+			%thumb = new GuiBitmapCtrl ();
 			%swatch.add (%thumb);
 
 			%x = 5;
@@ -25987,8 +26324,7 @@ function GameModeGui::CreateListItems ()
 			%thumb.resize (%x, %y, %w, %h);
 			%thumb.setBitmap (%thumbFile);
 
-			%title = new GuiMLTextCtrl ("");
-
+			%title = new GuiMLTextCtrl ();
 			%swatch.add (%title);
 
 			%x = 77;
@@ -26000,15 +26336,14 @@ function GameModeGui::CreateListItems ()
 			%title.setText ("<font:impact:20><color:FFFFFF>" @ %displayName);
 
 			%description = new GuiMLTextCtrl (("GameModeGui_Description" @ %i));
-
 			%swatch.add (%description);
 
 			%x = 93;
 			%y = 27;
 			%w = getWord (GameModeGui_Box.extent, 0) - %x;
 			%h = (getWord (%swatch.extent, 1) - %y) - 8;
-			%description.autoResize = 0;
 
+			%description.autoResize = false;
 			%description.resize (%x, %y, %w, %h);
 
 			%text = "<font:arial:18><color:FFFFFF>";
@@ -26032,8 +26367,7 @@ function GameModeGui::CreateListItems ()
 			}
 			else
 			{
-				%file = new FileObject ("");
-
+				%file = new FileObject ();
 				%file.openForRead (%descriptionFile);
 
 				%line = %file.readLine ();
@@ -26052,7 +26386,7 @@ function GameModeGui::CreateListItems ()
 			%description.setText (%text);
 			%description.schedule (34, resize, %x, %y, %w, %h);
 
-			%button = new GuiBitmapButtonCtrl ("")
+			%button = new GuiBitmapButtonCtrl ()
 			{
 				text = " ";
 				bitmap = "base/client/ui/btnBlank";
@@ -26066,7 +26400,6 @@ function GameModeGui::CreateListItems ()
 			%h = getWord (%swatch.extent, 1);
 
 			%button.resize (%x, %y, %w, %h);
-
 			%button.command = "GameModeGui.clickGameMode(" @ %i @ ");";
 		}
 	}
@@ -26084,12 +26417,13 @@ function GameModeGui::GetMissingAddOns ( %filename )
 	if ( !isFile (%filename) )
 	{
 		error ("ERROR: GameModeGui::GetMissingAddOns(" @ %filename @ ") - file does not exist");
-
 		return 0;
 	}
 
 	%path = filePath (%filename);
+
 	%missingAddons = "";
+
 	%descriptionFile = %path @ "/description.txt";
 	%previewFile = %path @ "/preview.jpg";
 	%thumbFile = %path @ "/thumb.jpg";
@@ -26100,25 +26434,28 @@ function GameModeGui::GetMissingAddOns ( %filename )
 	{
 		%missingAddons = %missingAddons TAB %descriptionFile;
 	}
+
 	if ( !isFile (%previewFile) )
 	{
 		%missingAddons = %missingAddons TAB %previewFile;
 	}
+
 	if ( !isFile (%thumbFile) )
 	{
 		%missingAddons = %missingAddons TAB %thumbFile;
 	}
+
 	if ( !isFile (%saveFile) )
 	{
 		%missingAddons = %missingAddons TAB %saveFile;
 	}
+
 	if ( !isFile (%colorSetFile) )
 	{
 		%missingAddons = %missingAddons TAB %colorSetFile;
 	}
 
-	%file = new FileObject ("");
-
+	%file = new FileObject ();
 	%file.openForRead (%filename);
 
 	while ( !%file.isEOF () )
@@ -26131,13 +26468,16 @@ function GameModeGui::GetMissingAddOns ( %filename )
 		{
 			continue;
 		}
+
 		if ( getSubStr (%label, 0, 2) $= "//" )
 		{
 			continue;
 		}
+
 		if ( %label $= "ADDON" )
 		{
-			if ( !isFile ("Add-Ons/" @ %value @ "/description.txt") || !isFile ("Add-Ons/" @ %value @ "/server.cs") )
+			if ( !isFile ("Add-Ons/" @ %value @ "/description.txt")
+			  || !isFile ("Add-Ons/" @ %value @ "/server.cs") )
 			{
 				if ( strlen (%missingAddons) > 0 )
 				{
@@ -26174,13 +26514,17 @@ function GameModeGui::GetMissingAddOns ( %filename )
 function GameModeGui::ClickGameMode ( %this, %idx )
 {
 	%idx = mFloor (%idx);
+
 	$GameModeGui::CurrGameModeIdx = %idx;
 	$Pref::Gui::SelectedGameMode = $GameModeGui::GameMode[%idx];
+
 	%filename = $GameModeGui::GameMode[%idx];
 	%path = filePath (%filename);
+
 	%descriptionFile = %path @ "/description.txt";
 	%previewFile = %path @ "/preview.jpg";
 	%thumbFile = %path @ "/thumb.jpg";
+
 	%displayName = %path;
 	%displayName = strreplace (%displayName, "Add-Ons/", "");
 	%displayName = getSubStr (%displayName, strlen ("gamemode_"), 999);
@@ -26207,8 +26551,14 @@ function GameModeGui::ClickGameMode ( %this, %idx )
 	%text = "";
 	%text = %text @ "<font:arial:10><br>";
 	%text = %text @ "<lmargin:" @ GameModeGui.mainGutter @ "><bitmap:" @ %previewFile @ ">";
-	%text = %text @ "<lmargin:" @ GameModeGui.mainGutter + 256 + GameModeGui.mainGutter + 8 @ "><font:impact:47><color:FFFFFF>" @ %displayName @ "<BR>";
-	%text = %text @ "<lmargin:" @ GameModeGui.mainGutter + 256 + GameModeGui.mainGutter + GameModeGui.mainGutter + 16 @ ">" @ (GameModeGui_Description @ %idx).getText ();
+
+	%text = %text @ "<lmargin:"
+		@ GameModeGui.mainGutter + 256 + GameModeGui.mainGutter + 8
+		@ "><font:impact:47><color:FFFFFF>" @ %displayName @ "<BR>";
+
+	%text = %text @ "<lmargin:"
+		@ GameModeGui.mainGutter + 256 + GameModeGui.mainGutter + GameModeGui.mainGutter + 16
+		@ ">" @ (GameModeGui_Description @ %idx).getText ();
 
 	GameModeGui_LongDescription.setText (%text);
 
@@ -26275,7 +26625,9 @@ function GameModeGui::ClickSelect ( %this )
 		}
 		else
 		{
-			messageBoxYesNo ("Changing game mode requires restart", "Restart server?\n\n(bricks will NOT be saved)", "canvas.popDialog(GameModeGui); commandToServer(\'GameModeGuiServer_ChangeGameMode\', " @ $GameModeGui::CurrGameModeIdx @ ");", "");
+			messageBoxYesNo ("Changing game mode requires restart",
+				"Restart server?\n\n(bricks will NOT be saved)", "canvas.popDialog(GameModeGui); commandToServer(\'GameModeGuiServer_ChangeGameMode\', "
+				@ $GameModeGui::CurrGameModeIdx @ ");", "");
 		}
 	}
 	else if ( %dir $= "GameMode_Custom" )
@@ -26298,11 +26650,11 @@ function clientCmdGameModeChange ()
 {
 	if ( ServerConnection.isLocal () )
 	{
-
+		// Empty, probably commented out
 	}
 	else
 	{
-		schedule (10, 0, disconnect, 1);
+		schedule (10, 0, disconnect, true);
 	}
 }
 
@@ -26372,6 +26724,7 @@ function ServerSettingsGui::onWake ( %this )
 	else
 	{
 		deleteVariables ("$ServerSettingsGui::*");
+
 		ServerSettingsGui.ApplyVariablesToGui ();
 		ServerSettingsGui_MaxPlayers.clear ();
 
@@ -26408,7 +26761,7 @@ function ServerSettingsGui::onRender ( %this )
 
 	if ( %this.isLocal )
 	{
-
+		// Empty, probably commented out
 	}
 	else
 	{
@@ -26422,10 +26775,14 @@ function ServerSettingsGui::getVariablesFromFile ( %this )
 	{
 		$Pref::Server::Name = "Blockland Server";
 	}
-	if ( $Pref::Net::ServerType !$= "SinglePlayer" && $Pref::Net::ServerType !$= "LAN" && $Pref::Net::ServerType !$= "Internet" )
+
+	if ( $Pref::Net::ServerType !$= "SinglePlayer"
+	  && $Pref::Net::ServerType !$= "LAN"
+	  && $Pref::Net::ServerType !$= "Internet" )
 	{
 		$Pref::Net::ServerType = "SinglePlayer";
 	}
+
 	if ( $Pref::Server::MaxPlayers <= 0 )
 	{
 		$Pref::Server::MaxPlayers = 8;
@@ -26442,33 +26799,15 @@ function ServerSettingsGui::getVariablesFromFile ( %this )
 
 function clientCmdServerSettingsGui_SetVariable ( %varName, %value )
 {
-	if ( %varName $= "ServerType" )
+	switch$ ( %varName )
 	{
-		$ServerSettingsGui::ServerType = %value;
-	}
-	else if ( %varName $= "ServerName" )
-	{
-		$ServerSettingsGui::ServerName = %value;
-	}
-	else if ( %varName $= "MaxPlayers" )
-	{
-		$ServerSettingsGui::MaxPlayers = mFloor (%value);
-	}
-	else if ( %varName $= "JoinPassword" )
-	{
-		$ServerSettingsGui::JoinPassword = %value;
-	}
-	else if ( %varName $= "AdminPassword" )
-	{
-		$ServerSettingsGui::AdminPassword = %value;
-	}
-	else if ( %varName $= "RTBExists" )
-	{
-		$ServerSettingsGui::RTBExists = mClamp (%value, 0, 1);
-	}
-	else if ( %varName $= "UseRTB" )
-	{
-		$ServerSettingsGui::UseRTB = mClamp (%value, 0, 1);
+		case "ServerType": $ServerSettingsGui::ServerType = %value;
+		case "ServerName": $ServerSettingsGui::ServerName = %value;
+		case "MaxPlayers": $ServerSettingsGui::MaxPlayers = mFloor (%value);
+		case "JoinPassword": $ServerSettingsGui::JoinPassword = %value;
+		case "AdminPassword": $ServerSettingsGui::AdminPassword = %value;
+		case "RTBExists": $ServerSettingsGui::RTBExists = mClamp (%value, 0, 1);
+		case "UseRTB": $ServerSettingsGui::UseRTB = mClamp (%value, 0, 1);
 	}
 }
 
@@ -26510,6 +26849,7 @@ function ServerSettingsGui::getVariablesFromGui ()
 function ServerSettingsGui::copyVariablesToPrefs ()
 {
 	$Server::Name = $ServerSettingsGui::ServerName;
+
 	$Pref::Server::Name = $Server::Name;
 	$Pref::Net::ServerType = $ServerSettingsGui::ServerType;
 	$Pref::Server::Password = $ServerSettingsGui::JoinPassword;
@@ -26564,22 +26904,21 @@ function GuiControl::ScaleText ( %this )
 	}
 
 	%fontSize = mFloor (47 * %scale);
-	%this.fontSize = %fontSize;
-	ImpactPopUpProfile.fontSize = %fontSize;
 
+	%this.fontSize = %fontSize;
+
+	ImpactPopUpProfile.fontSize = %fontSize;
 	ImpactPopUpProfile.updateFont ();
+
 	ServerSettingsGui_MaxPlayers.setSelected (ServerSettingsGui_MaxPlayers.getSelected ());
 
 	ImpactTextProfile.fontSize = %fontSize;
-
 	ImpactTextProfile.updateFont ();
 
 	ImpactBackButtonProfile.fontSize = %fontSize;
-
 	ImpactBackButtonProfile.updateFont ();
 
 	ImpactForwardButtonProfile.fontSize = %fontSize;
-
 	ImpactForwardButtonProfile.updateFont ();
 
 	ImpactRadioProfile.fontSize = %fontSize;
@@ -26594,7 +26933,6 @@ function GuiControl::ScaleText ( %this )
 	}
 
 	ImpactRadioProfile.updateFont ();
-
 	ImpactCheckProfile.fontSize = %fontSize;
 
 	if ( getWord (%this.extent, 0) < 1024 )
@@ -26609,8 +26947,8 @@ function GuiControl::ScaleText ( %this )
 	ImpactCheckProfile.updateFont ();
 
 	ImpactEditProfile.fontSize = %fontSize;
-
 	ImpactEditProfile.updateFont ();
+
 	ServerSettingsGui_ServerName.setText (ServerSettingsGui_ServerName.getValue ());
 	ServerSettingsGui_JoinPassword.setText (ServerSettingsGui_JoinPassword.getValue ());
 	ServerSettingsGui_AdminPassword.setText (ServerSettingsGui_AdminPassword.getValue ());
@@ -26629,6 +26967,7 @@ function GuiControl::ScaleText ( %this )
 		%text = %obj.getText ();
 		%justRight = stripos (%text, "<just:right>") >= 0;
 		%text = StripMLControlChars (%text);
+
 		%newText = "";
 
 		if ( %justRight )
@@ -26649,6 +26988,7 @@ function ServerSettingsGui::ClickBack ( %this )
 	{
 		ServerSettingsGui.getVariablesFromGui ();
 		ServerSettingsGui.copyVariablesToPrefs ();
+
 		Canvas.popDialog (ServerSettingsGui);
 
 		if ( $GameModeArg $= "GameMode_Custom" || $GameModeArg $= "Custom" )
@@ -26672,14 +27012,15 @@ function ServerSettingsGui::clickLaunchGame ( %this )
 	{
 		ServerSettingsGui.getVariablesFromGui ();
 		ServerSettingsGui.copyVariablesToPrefs ();
+
 		Canvas.popDialog (ServerSettingsGui);
 
 		if ( !SteamEnabled () )
 		{
 			if ( $Pref::Net::ServerType $= "Internet" )
 			{
-				MessageBoxOK ("Error", "You need to have steam to host an internet game", "mainMenuGui.showButtons();");
-
+				MessageBoxOK ("Error", "You need to have steam to host an internet game",
+					"mainMenuGui.showButtons();");
 				return;
 			}
 		}
@@ -26696,20 +27037,28 @@ function ServerSettingsGui::clickLaunchGame ( %this )
 		}
 
 		LoadingProgressTxt.setText ("CLEANING UP OLD DATABLOCKS");
+
 		Canvas.setContent (LoadingGui);
 		Canvas.repaint ();
+
 		deleteDataBlocks ();
+
 		LoadingProgressTxt.setText ("CREATING SERVER");
 		Canvas.repaint ();
+
 		createServer ($Pref::Net::ServerType);
+
 		LoadingProgressTxt.setText ("CONNECTING TO LOCAL HOST");
 		Canvas.repaint ();
+
 		setParticleDisconnectMode (0);
-		ConnectToServer ("local", $Client::Password, 1, 0);
+
+		ConnectToServer ("local", $Client::Password, true, false);
 	}
 	else
 	{
 		ServerSettingsGui.getVariablesFromGui ();
+
 		commandToServer ('ServerSettingsGui_SetVariable', "ServerType", $ServerSettingsGui::ServerType);
 		commandToServer ('ServerSettingsGui_SetVariable', "ServerName", $ServerSettingsGui::ServerName);
 		commandToServer ('ServerSettingsGui_SetVariable', "MaxPlayers", $ServerSettingsGui::MaxPlayers);
@@ -26722,6 +27071,7 @@ function ServerSettingsGui::clickLaunchGame ( %this )
 
 		commandToServer ('ServerSettingsGui_SetVariable', "UseRTB", $ServerSettingsGui::UseRTB);
 		commandToServer ('ServerSettingsGui_ApplyVariables');
+
 		Canvas.popDialog (ServerSettingsGui);
 	}
 }
@@ -26732,6 +27082,7 @@ function ServerSettingsGui::clickSinglePlayer ( %this )
 	ServerSettingsGui_JoinPassword.enabled = false;
 	ServerSettingsGui_AdminPassword.enabled = false;
 	ServerSettingsGui_MaxPlayers.enabled = false;
+
 	ServerSettingsGui_ServerNameLabel.enabled = false;
 	ServerSettingsGui_MaxPlayersLabel.enabled = false;
 	ServerSettingsGui_JoinPasswordLabel.enabled = false;
@@ -26744,6 +27095,7 @@ function ServerSettingsGui::clickLAN ( %this )
 	ServerSettingsGui_JoinPassword.enabled = true;
 	ServerSettingsGui_AdminPassword.enabled = true;
 	ServerSettingsGui_MaxPlayers.enabled = true;
+
 	ServerSettingsGui_ServerNameLabel.enabled = true;
 	ServerSettingsGui_MaxPlayersLabel.enabled = true;
 	ServerSettingsGui_JoinPasswordLabel.enabled = true;
@@ -26756,6 +27108,7 @@ function ServerSettingsGui::clickInternet ( %this )
 	ServerSettingsGui_JoinPassword.enabled = true;
 	ServerSettingsGui_AdminPassword.enabled = true;
 	ServerSettingsGui_MaxPlayers.enabled = true;
+
 	ServerSettingsGui_ServerNameLabel.enabled = true;
 	ServerSettingsGui_MaxPlayersLabel.enabled = true;
 	ServerSettingsGui_JoinPasswordLabel.enabled = true;
@@ -26791,6 +27144,7 @@ function CustomGameGui::onWake ( %this )
 		}
 
 		exec ("config/server/prefs.cs");
+
 		CustomGameGui.CopyPrefsToGuiVars ();
 
 		if ( $CustomGameGui::AddOnCount <= 0 )
@@ -26826,15 +27180,16 @@ function CustomGameGui::onRender ( %this )
 	{
 		$CustomGameGui::AddOnCount = 0;
 		$CustomGameGui::MusicCount = 0;
-		$CustomGameGui::MusicDirty = 0;
-		$CustomGameGui::AddOnsDirty = 0;
-		$CustomGameGui::AdvancedDirty = 0;
+		$CustomGameGui::MusicDirty = false;
+		$CustomGameGui::AddOnsDirty = false;
+		$CustomGameGui::AdvancedDirty = false;
 
 		CustomGameGui_AddOnsBox.clear ();
 		CustomGameGui_MusicBox.clear ();
 		CustomGameGui_AdvancedBox.clear ();
 		CustomGameGui_SelectButton.setVisible (false);
 		CustomGameGui.clickAddOns ();
+
 		commandToServer ('CustomGameGui_RequestList');
 	}
 }
@@ -26884,109 +27239,42 @@ function clientCmdCustomGameGui_AddAdvancedConfig ( %varName, %value )
 {
 	%intVal = mFloor (%value);
 
-	if ( %varName $= "$Pref::Server::Port" )
+	switch$ ( %varName )
 	{
-		$CustomGameGui::Port = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::GhostLimit" )
-	{
-		$CustomGameGui::GhostLimit = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::MaxBricksPerSecond" )
-	{
-		$CustomGameGui::MaxBricksPerSecond = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::TooFarDistance" )
-	{
-		$CustomGameGui::TooFarDistance = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::RandomBrickColor" )
-	{
-		$CustomGameGui::RandomBrickColor = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::MaxChatLen" )
-	{
-		$CustomGameGui::MaxChatLen = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::ETardFilter" )
-	{
-		$CustomGameGui::ETardFilter = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::FallingDamage" )
-	{
-		$CustomGameGui::FallingDamage = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::Quota::Schedules" )
-	{
-		$CustomGameGui::Quota::Schedules = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::Quota::Misc" )
-	{
-		$CustomGameGui::Quota::Misc = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::Quota::Projectile" )
-	{
-		$CustomGameGui::Quota::Projectile = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::Quota::Item" )
-	{
-		$CustomGameGui::Quota::Item = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::Quota::Environment" )
-	{
-		$CustomGameGui::Quota::Environment = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::Quota::Player" )
-	{
-		$CustomGameGui::Quota::Player = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::Quota::Vehicle" )
-	{
-		$CustomGameGui::Quota::Vehicle = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::MaxPhysVehicles_Total" )
-	{
-		$CustomGameGui::MaxPhysVehicles_Total = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::MaxPlayerVehicles_Total" )
-	{
-		$CustomGameGui::MaxPlayerVehicles_Total = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::QuotaLAN::Schedules" )
-	{
-		$CustomGameGui::QuotaLAN::Schedules = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::QuotaLAN::Misc" )
-	{
-		$CustomGameGui::QuotaLAN::Misc = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::QuotaLAN::Projectile" )
-	{
-		$CustomGameGui::QuotaLAN::Projectile = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::QuotaLAN::Item" )
-	{
-		$CustomGameGui::QuotaLAN::Item = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::QuotaLAN::Environment" )
-	{
-		$CustomGameGui::QuotaLAN::Environment = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::QuotaLAN::Player" )
-	{
-		$CustomGameGui::QuotaLAN::Player = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::QuotaLAN::Vehicle" )
-	{
-		$CustomGameGui::QuotaLAN::Vehicle = %intVal;
-	}
-	else if ( %varName $= "$Pref::Server::BrickPublicDomainTimeout" )
-	{
-		$CustomGameGui::BrickPublicDomainTimeout = %intVal;
-	}
-	else
-	{
-		error ("ERROR: clientCmdCustomGameGui_AddAdvancedConfig(" @ %varName @ ", " @ %value @ ") - unknown %varName");
+		case "$Pref::Server::Port": $CustomGameGui::Port = %intVal;
+		case "$Pref::Server::GhostLimit": $CustomGameGui::GhostLimit = %intVal;
+		case "$Pref::Server::MaxBricksPerSecond": $CustomGameGui::MaxBricksPerSecond = %intVal;
+		case "$Pref::Server::TooFarDistance": $CustomGameGui::TooFarDistance = %intVal;
+		case "$Pref::Server::RandomBrickColor": $CustomGameGui::RandomBrickColor = %intVal;
+		case "$Pref::Server::MaxChatLen": $CustomGameGui::MaxChatLen = %intVal;
+		case "$Pref::Server::ETardFilter": $CustomGameGui::ETardFilter = %intVal;
+		case "$Pref::Server::FallingDamage": $CustomGameGui::FallingDamage = %intVal;
+
+		case "$Pref::Server::Quota::Schedules": $CustomGameGui::Quota::Schedules = %intVal;
+		case "$Pref::Server::Quota::Misc": $CustomGameGui::Quota::Misc = %intVal;
+		case "$Pref::Server::Quota::Projectile": $CustomGameGui::Quota::Projectile = %intVal;
+		case "$Pref::Server::Quota::Item": $CustomGameGui::Quota::Item = %intVal;
+		case "$Pref::Server::Quota::Environment": $CustomGameGui::Quota::Environment = %intVal;
+		case "$Pref::Server::Quota::Player": $CustomGameGui::Quota::Player = %intVal;
+		case "$Pref::Server::Quota::Vehicle": $CustomGameGui::Quota::Vehicle = %intVal;
+
+		case "$Pref::Server::MaxPhysVehicles_Total": $CustomGameGui::MaxPhysVehicles_Total = %intVal;
+		case "$Pref::Server::MaxPlayerVehicles_Total": $CustomGameGui::MaxPlayerVehicles_Total = %intVal;
+
+		case "$Pref::Server::QuotaLAN::Schedules": $CustomGameGui::QuotaLAN::Schedules = %intVal;
+		case "$Pref::Server::QuotaLAN::Misc": $CustomGameGui::QuotaLAN::Misc = %intVal;
+		case "$Pref::Server::QuotaLAN::Projectile": $CustomGameGui::QuotaLAN::Projectile = %intVal;
+		case "$Pref::Server::QuotaLAN::Item": $CustomGameGui::QuotaLAN::Item = %intVal;
+		case "$Pref::Server::QuotaLAN::Environment": $CustomGameGui::QuotaLAN::Environment = %intVal;
+		case "$Pref::Server::QuotaLAN::Player": $CustomGameGui::QuotaLAN::Player = %intVal;
+		case "$Pref::Server::QuotaLAN::Vehicle": $CustomGameGui::QuotaLAN::Vehicle = %intVal;
+
+		case "$Pref::Server::BrickPublicDomainTimeout": $CustomGameGui::BrickPublicDomainTimeout = %intVal;
+
+		default:
+			error ("ERROR: clientCmdCustomGameGui_AddAdvancedConfig("
+				@ %varName @ ", "
+				@ %value @ ") - unknown %varName");
 	}
 }
 
@@ -27003,6 +27291,7 @@ function CustomGameGui::populateAddOnList ( %this )
 	deleteVariables ("$CustomGameGui::AddOn*");
 
 	$CustomGameGui::AddOnCount = 0;
+
 	%pattern = "Add-Ons/*/server.cs";
 	%fileCount = getFileCount (%pattern);
 	%filename = findFirstFile (%pattern);
@@ -27024,6 +27313,7 @@ function CustomGameGui::populateAddOnList ( %this )
 			$CustomGameGui::AddOn[$CustomGameGui::AddOnCount] = %dirName;
 			$CustomGameGui::AddOnEnabled[%varName] = $AddOn__[%varName];
 			$CustomGameGui::AddOnCount++;
+
 			%filename = findNextFile (%pattern);
 		}
 	}
@@ -27034,6 +27324,7 @@ function CustomGameGui::populateMusicList ( %this )
 	deleteVariables ("$CustomGameGui::Music*");
 
 	$CustomGameGui::MusicCount = 0;
+
 	%pattern = "Add-Ons/Music/*.ogg";
 	%fileCount = getFileCount (%pattern);
 	%filename = findFirstFile (%pattern);
@@ -27053,6 +27344,7 @@ function CustomGameGui::populateMusicList ( %this )
 			$CustomGameGui::Music[$CustomGameGui::MusicCount] = %base;
 			$CustomGameGui::MusicEnabled[%varName] = $Music__[%varName];
 			$CustomGameGui::MusicCount++;
+
 			%filename = findNextFile (%pattern);
 		}
 	}
@@ -27068,12 +27360,14 @@ function CustomGameGui::CreateAddOnListGui ( %this )
 	{
 		%dirName = $CustomGameGui::AddOn[ ($CustomGameGui::AddOnCount - 1) - %i];
 		%varName = getSafeVariableName (%dirName);
-		%newCB = new GuiCheckBoxCtrl ("")
+
+		%newCB = new GuiCheckBoxCtrl ()
 		{
 			profile = ImpactCheckProfile;
 		};
 
 		CustomGameGui_AddOnsBox.add (%newCB);
+
 		%newCB.setText (%dirName);
 
 		%x = 10;
@@ -27103,7 +27397,6 @@ function CustomGameGui::CreateAddOnListGui ( %this )
 	%h = $CustomGameGui::AddOnCount * %checkBoxHeight;
 
 	CustomGameGui_AddOnsBox.resize (%x, %y, %w, %h);
-
 	CustomGameGui_AddOnsScroll.rowHeight = %checkBoxHeight * 3;
 }
 
@@ -27118,12 +27411,14 @@ function CustomGameGui::CreateMusicListGui ( %this )
 		%base = $CustomGameGui::Music[ ($CustomGameGui::MusicCount - 1) - %i];
 		%uiName = strreplace (%base, "_", " ");
 		%varName = getSafeVariableName (%base);
-		%newCB = new GuiCheckBoxCtrl ("")
+
+		%newCB = new GuiCheckBoxCtrl ()
 		{
 			profile = ImpactCheckProfile;
 		};
 
 		CustomGameGui_MusicBox.add (%newCB);
+
 		%newCB.setText (%uiName);
 
 		%x = 10;
@@ -27153,7 +27448,6 @@ function CustomGameGui::CreateMusicListGui ( %this )
 	%h = $CustomGameGui::MusicCount * %checkBoxHeight;
 
 	CustomGameGui_MusicBox.resize (%x, %y, %w, %h);
-
 	CustomGameGui_MusicScroll.rowHeight = %checkBoxHeight * 3;
 }
 
@@ -27167,6 +27461,7 @@ function CustomGameGui::CopyPrefsToGuiVars ()
 	$CustomGameGui::MaxChatLen = $Pref::Server::MaxChatLen;
 	$CustomGameGui::ETardFilter = $Pref::Server::ETardFilter;
 	$CustomGameGui::FallingDamage = $pref::Server::FallingDamage;
+
 	$CustomGameGui::Quota::Schedules = $Pref::Server::Quota::Schedules;
 	$CustomGameGui::Quota::Misc = $Pref::Server::Quota::Misc;
 	$CustomGameGui::Quota::Projectile = $Pref::Server::Quota::Projectile;
@@ -27174,8 +27469,10 @@ function CustomGameGui::CopyPrefsToGuiVars ()
 	$CustomGameGui::Quota::Environment = $Pref::Server::Quota::Environment;
 	$CustomGameGui::Quota::Player = $Pref::Server::Quota::Player;
 	$CustomGameGui::Quota::Vehicle = $Pref::Server::Quota::Vehicle;
+
 	$CustomGameGui::MaxPhysVehicles_Total = $Pref::Server::MaxPhysVehicles_Total;
 	$CustomGameGui::MaxPlayerVehicles_Total = $Pref::Server::MaxPlayerVehicles_Total;
+
 	$CustomGameGui::QuotaLAN::Schedules = $Pref::Server::QuotaLAN::Schedules;
 	$CustomGameGui::QuotaLAN::Misc = $Pref::Server::QuotaLAN::Misc;
 	$CustomGameGui::QuotaLAN::Projectile = $Pref::Server::QuotaLAN::Projectile;
@@ -27183,6 +27480,7 @@ function CustomGameGui::CopyPrefsToGuiVars ()
 	$CustomGameGui::QuotaLAN::Environment = $Pref::Server::QuotaLAN::Environment;
 	$CustomGameGui::QuotaLAN::Player = $Pref::Server::QuotaLAN::Player;
 	$CustomGameGui::QuotaLAN::Vehicle = $Pref::Server::QuotaLAN::Vehicle;
+
 	$CustomGameGui::BrickPublicDomainTimeout = $Pref::Server::BrickPublicDomainTimeout;
 }
 
@@ -27196,6 +27494,7 @@ function CustomGameGui::CopyGuiVarsToPrefs ()
 	$Pref::Server::MaxChatLen = $CustomGameGui::MaxChatLen;
 	$Pref::Server::ETardFilter = $CustomGameGui::ETardFilter;
 	$pref::Server::FallingDamage = $CustomGameGui::FallingDamage;
+
 	$Pref::Server::Quota::Schedules = $CustomGameGui::Quota::Schedules;
 	$Pref::Server::Quota::Misc = $CustomGameGui::Quota::Misc;
 	$Pref::Server::Quota::Projectile = $CustomGameGui::Quota::Projectile;
@@ -27203,8 +27502,10 @@ function CustomGameGui::CopyGuiVarsToPrefs ()
 	$Pref::Server::Quota::Environment = $CustomGameGui::Quota::Environment;
 	$Pref::Server::Quota::Player = $CustomGameGui::Quota::Player;
 	$Pref::Server::Quota::Vehicle = $CustomGameGui::Quota::Vehicle;
+
 	$Pref::Server::MaxPhysVehicles_Total = $CustomGameGui::MaxPhysVehicles_Total;
 	$Pref::Server::MaxPlayerVehicles_Total = $CustomGameGui::MaxPlayerVehicles_Total;
+
 	$Pref::Server::QuotaLAN::Schedules = $CustomGameGui::QuotaLAN::Schedules;
 	$Pref::Server::QuotaLAN::Misc = $CustomGameGui::QuotaLAN::Misc;
 	$Pref::Server::QuotaLAN::Projectile = $CustomGameGui::QuotaLAN::Projectile;
@@ -27212,6 +27513,7 @@ function CustomGameGui::CopyGuiVarsToPrefs ()
 	$Pref::Server::QuotaLAN::Environment = $CustomGameGui::QuotaLAN::Environment;
 	$Pref::Server::QuotaLAN::Player = $CustomGameGui::QuotaLAN::Player;
 	$Pref::Server::QuotaLAN::Vehicle = $CustomGameGui::QuotaLAN::Vehicle;
+
 	$Pref::Server::BrickPublicDomainTimeout = $CustomGameGui::BrickPublicDomainTimeout;
 }
 
@@ -27222,35 +27524,113 @@ function CustomGameGui::CreateAdvancedGui ( %this )
 	CustomGameGui_AdvancedBox.lineCount = 0;
 	CustomGameGui_AdvancedBox.lineHeight = %this.fontSize;
 
-	CustomGameGui.AddAdvancedGuiElement ("Port", "$CustomGameGui::Port", "int", 1, 65535, $Default::Port);
-	CustomGameGui.AddAdvancedGuiElement ("Brick Limit", "$CustomGameGui::GhostLimit", "int", 32768, 1048576, $Default::GhostLimit);
-	CustomGameGui.AddAdvancedGuiElement ("Max Bricks/Second", "$CustomGameGui::MaxBricksPerSecond", "int", 1, 32, $Default::MaxBricksPerSecond);
-	CustomGameGui.AddAdvancedGuiElement ("Too-Far Distance", "$CustomGameGui::TooFarDistance", "int", 0, 9999, $Default::TooFarDistance);
-	CustomGameGui.AddAdvancedGuiElement ("Random Brick Color", "$CustomGameGui::RandomBrickColor", "bool", 0, 1, $Default::RandomBrickColor);
-	CustomGameGui.AddAdvancedGuiElement ("Max Chat Length", "$CustomGameGui::MaxChatLen", "int", 0, 120, $Default::MaxChatLen);
-	CustomGameGui.AddAdvancedGuiElement ("E-Tard Filter", "$CustomGameGui::ETardFilter", "bool", 0, 1, $Default::ETardFilter);
-	CustomGameGui.AddAdvancedGuiElement ("Falling Damage", "$CustomGameGui::FallingDamage", "bool", 0, 1, $Default::FallingDamage);
+	CustomGameGui.AddAdvancedGuiElement ("Port", "$CustomGameGui::Port",
+		"int", 1, 65535,
+		$Default::Port);
+
+	CustomGameGui.AddAdvancedGuiElement ("Brick Limit", "$CustomGameGui::GhostLimit",
+		"int", 32768, 1048576,
+		$Default::GhostLimit);
+
+	CustomGameGui.AddAdvancedGuiElement ("Max Bricks/Second", "$CustomGameGui::MaxBricksPerSecond",
+		"int", 1, 32,
+		$Default::MaxBricksPerSecond);
+
+	CustomGameGui.AddAdvancedGuiElement ("Too-Far Distance", "$CustomGameGui::TooFarDistance",
+		"int", 0, 9999,
+		$Default::TooFarDistance);
+
+	CustomGameGui.AddAdvancedGuiElement ("Random Brick Color", "$CustomGameGui::RandomBrickColor",
+		"bool", 0, 1,
+		$Default::RandomBrickColor);
+
+	CustomGameGui.AddAdvancedGuiElement ("Max Chat Length", "$CustomGameGui::MaxChatLen",
+		"int", 0, 120,
+		$Default::MaxChatLen);
+
+	CustomGameGui.AddAdvancedGuiElement ("E-Tard Filter", "$CustomGameGui::ETardFilter",
+		"bool", 0, 1,
+		$Default::ETardFilter);
+
+	CustomGameGui.AddAdvancedGuiElement ("Falling Damage", "$CustomGameGui::FallingDamage",
+		"bool", 0, 1,
+		$Default::FallingDamage);
+
 	CustomGameGui.AddAdvancedGuiElement ("Per-Player Limits", "$novar", "label");
-	CustomGameGui.AddAdvancedGuiElement ("Schedules", "$CustomGameGui::Quota::Schedules", "int", $Min::Quota::Schedules, $Max::Quota::Schedules, $Default::Quota::Schedules);
-	CustomGameGui.AddAdvancedGuiElement ("Misc", "$CustomGameGui::Quota::Misc", "int", $Min::Quota::Misc, $Max::Quota::Misc, $Default::Quota::Misc);
-	CustomGameGui.AddAdvancedGuiElement ("Projectiles", "$CustomGameGui::Quota::Projectile", "int", $Min::Quota::Projectile, $Max::Quota::Projectile, $Default::Quota::Projectile);
-	CustomGameGui.AddAdvancedGuiElement ("Items", "$CustomGameGui::Quota::Item", "int", $Min::Quota::Item, $Max::Quota::Item, $Default::Quota::Item);
-	CustomGameGui.AddAdvancedGuiElement ("Lights / Emitters", "$CustomGameGui::Quota::Environment", "int", $Min::Quota::Environment, $Max::Quota::Environment, $Default::Quota::Environment);
-	CustomGameGui.AddAdvancedGuiElement ("Players / Bots", "$CustomGameGui::Quota::Player", "int", $Min::Quota::Player, $Max::Quota::Player, $Default::Quota::Player);
-	CustomGameGui.AddAdvancedGuiElement ("Physics Vehicles", "$CustomGameGui::Quota::Vehicle", "int", $Min::Quota::Vehicle, $Max::Quota::Vehicle, $Default::Quota::Vehicle);
+
+	CustomGameGui.AddAdvancedGuiElement ("Schedules", "$CustomGameGui::Quota::Schedules",
+		"int", $Min::Quota::Schedules, $Max::Quota::Schedules,
+		$Default::Quota::Schedules);
+
+	CustomGameGui.AddAdvancedGuiElement ("Misc", "$CustomGameGui::Quota::Misc",
+		"int", $Min::Quota::Misc, $Max::Quota::Misc,
+		$Default::Quota::Misc);
+
+	CustomGameGui.AddAdvancedGuiElement ("Projectiles", "$CustomGameGui::Quota::Projectile",
+		"int", $Min::Quota::Projectile, $Max::Quota::Projectile,
+		$Default::Quota::Projectile);
+
+	CustomGameGui.AddAdvancedGuiElement ("Items", "$CustomGameGui::Quota::Item",
+		"int", $Min::Quota::Item, $Max::Quota::Item,
+		$Default::Quota::Item);
+
+	CustomGameGui.AddAdvancedGuiElement ("Lights / Emitters", "$CustomGameGui::Quota::Environment",
+		"int", $Min::Quota::Environment, $Max::Quota::Environment,
+		$Default::Quota::Environment);
+
+	CustomGameGui.AddAdvancedGuiElement ("Players / Bots", "$CustomGameGui::Quota::Player",
+		"int", $Min::Quota::Player, $Max::Quota::Player,
+		$Default::Quota::Player);
+
+	CustomGameGui.AddAdvancedGuiElement ("Physics Vehicles", "$CustomGameGui::Quota::Vehicle",
+		"int", $Min::Quota::Vehicle, $Max::Quota::Vehicle,
+		$Default::Quota::Vehicle);
+
 	CustomGameGui.AddAdvancedGuiElement ("Global Limits", "$novar", "label");
-	CustomGameGui.AddAdvancedGuiElement ("Physics Vehicles", "$CustomGameGui::MaxPhysVehicles_Total", "int", $Min::MaxPhysVehicles_Total, $Max::MaxPhysVehicles_Total, $Default::MaxPhysVehicles_Total);
-	CustomGameGui.AddAdvancedGuiElement ("Players / Bots", "$CustomGameGui::MaxPlayerVehicles_Total", "int", $Min::MaxPlayerVehicles_Total, $Max::MaxPlayerVehicles_Total, $Default::MaxPlayerVehicles_Total);
+
+	CustomGameGui.AddAdvancedGuiElement ("Physics Vehicles", "$CustomGameGui::MaxPhysVehicles_Total",
+		"int", $Min::MaxPhysVehicles_Total, $Max::MaxPhysVehicles_Total,
+		$Default::MaxPhysVehicles_Total);
+
+	CustomGameGui.AddAdvancedGuiElement ("Players / Bots", "$CustomGameGui::MaxPlayerVehicles_Total",
+		"int", $Min::MaxPlayerVehicles_Total, $Max::MaxPlayerVehicles_Total,
+		$Default::MaxPlayerVehicles_Total);
+
 	CustomGameGui.AddAdvancedGuiElement ("LAN Game Limits", "$novar", "label");
-	CustomGameGui.AddAdvancedGuiElement ("Schedules", "$CustomGameGui::QuotaLAN::Schedules", "int", $Min::QuotaLAN::Schedules, $Max::QuotaLAN::Schedules, $Default::QuotaLAN::Schedules);
-	CustomGameGui.AddAdvancedGuiElement ("Misc", "$CustomGameGui::QuotaLAN::Misc", "int", $Min::QuotaLAN::Misc, $Max::QuotaLAN::Misc, $Default::QuotaLAN::Misc);
-	CustomGameGui.AddAdvancedGuiElement ("Projectiles", "$CustomGameGui::QuotaLAN::Projectile", "int", $Min::QuotaLAN::Projectile, $Max::QuotaLAN::Projectile, $Default::QuotaLAN::Projectile);
-	CustomGameGui.AddAdvancedGuiElement ("Items", "$CustomGameGui::QuotaLAN::Item", "int", $Min::QuotaLAN::Item, $Max::QuotaLAN::Item, $Default::QuotaLAN::Item);
-	CustomGameGui.AddAdvancedGuiElement ("Lights / Emitters", "$CustomGameGui::QuotaLAN::Environment", "int", $Min::QuotaLAN::Environment, $Max::QuotaLAN::Environment, $Default::QuotaLAN::Environment);
-	CustomGameGui.AddAdvancedGuiElement ("Players / Bots", "$CustomGameGui::QuotaLAN::Player", "int", $Min::QuotaLAN::Player, $Max::QuotaLAN::Player, $Default::QuotaLAN::Player);
-	CustomGameGui.AddAdvancedGuiElement ("Physics Vehicles", "$CustomGameGui::QuotaLAN::Vehicle", "int", $Min::QuotaLAN::Vehicle, $Max::QuotaLAN::Vehicle, $Default::QuotaLAN::Vehicle);
+
+	CustomGameGui.AddAdvancedGuiElement ("Schedules", "$CustomGameGui::QuotaLAN::Schedules",
+		"int", $Min::QuotaLAN::Schedules, $Max::QuotaLAN::Schedules,
+		$Default::QuotaLAN::Schedules);
+
+	CustomGameGui.AddAdvancedGuiElement ("Misc", "$CustomGameGui::QuotaLAN::Misc",
+		"int", $Min::QuotaLAN::Misc, $Max::QuotaLAN::Misc,
+		$Default::QuotaLAN::Misc);
+
+	CustomGameGui.AddAdvancedGuiElement ("Projectiles", "$CustomGameGui::QuotaLAN::Projectile",
+		"int", $Min::QuotaLAN::Projectile, $Max::QuotaLAN::Projectile,
+		$Default::QuotaLAN::Projectile);
+
+	CustomGameGui.AddAdvancedGuiElement ("Items", "$CustomGameGui::QuotaLAN::Item",
+		"int", $Min::QuotaLAN::Item, $Max::QuotaLAN::Item,
+		$Default::QuotaLAN::Item);
+
+	CustomGameGui.AddAdvancedGuiElement ("Lights / Emitters", "$CustomGameGui::QuotaLAN::Environment",
+		"int", $Min::QuotaLAN::Environment, $Max::QuotaLAN::Environment,
+		$Default::QuotaLAN::Environment);
+
+	CustomGameGui.AddAdvancedGuiElement ("Players / Bots", "$CustomGameGui::QuotaLAN::Player",
+		"int", $Min::QuotaLAN::Player, $Max::QuotaLAN::Player,
+		$Default::QuotaLAN::Player);
+
+	CustomGameGui.AddAdvancedGuiElement ("Physics Vehicles", "$CustomGameGui::QuotaLAN::Vehicle",
+		"int", $Min::QuotaLAN::Vehicle, $Max::QuotaLAN::Vehicle,
+		$Default::QuotaLAN::Vehicle);
+
 	CustomGameGui.AddAdvancedGuiElement (" ", "$novar", "label");
-	CustomGameGui.AddAdvancedGuiElement ("Public Domain Timeout", "$CustomGameGui::BrickPublicDomainTimeout", "int", -1, 1000000, $Default::BrickPublicDomainTimeout);
+
+	CustomGameGui.AddAdvancedGuiElement ("Public Domain Timeout", "$CustomGameGui::BrickPublicDomainTimeout",
+		"int", -1, 1000000,
+		$Default::BrickPublicDomainTimeout);
 
 	%x = getWord (CustomGameGui_AdvancedBox.getPosition (), 0);
 	%y = getWord (CustomGameGui_AdvancedBox.getPosition (), 1);
@@ -27263,17 +27643,16 @@ function CustomGameGui::CreateAdvancedGui ( %this )
 function CustomGameGui::AddAdvancedGuiElement ( %this, %label, %varName, %type, %min, %max, %default )
 {
 	%box = CustomGameGui_AdvancedBox;
-
 	eval ("%varValue = " @ %varName @ ";");
-
 	%ar = getWord (getRes (), 0) / getWord (getRes (), 1);
 
 	if ( %type $= "label" )
 	{
 		%box.lineCount++;
-		%swatch = new GuiSwatchCtrl ("");
 
+		%swatch = new GuiSwatchCtrl ();
 		%swatch.setColor ("255 255 255 128");
+
 		%box.add (%swatch);
 
 		%x = 10;
@@ -27284,11 +27663,9 @@ function CustomGameGui::AddAdvancedGuiElement ( %this, %label, %varName, %type, 
 		%swatch.resize (%x, %y, %w, %h);
 	}
 
-	%newLabel = new GuiMLTextCtrl ("");
-
+	%newLabel = new GuiMLTextCtrl ();
 	%newLabel.setText ("<just:right><color:FFFFFF><font:impact:" @ %this.fontSize @ ">" @ %label);
-
-	%newLabel.selectable = 0;
+	%newLabel.selectable = false;
 
 	%box.add (%newLabel);
 
@@ -27310,7 +27687,7 @@ function CustomGameGui::AddAdvancedGuiElement ( %this, %label, %varName, %type, 
 
 	if ( %type $= "int" )
 	{
-		%newText = new GuiTextEditCtrl ("")
+		%newText = new GuiTextEditCtrl ()
 		{
 			profile = "ImpactEditProfile";
 		};
@@ -27331,7 +27708,6 @@ function CustomGameGui::AddAdvancedGuiElement ( %this, %label, %varName, %type, 
 			eval (%varName @ " = " @ %default @ ";");
 
 			%newText.variable = %varName;
-
 			%newText.setValue (%default);
 		}
 		else
@@ -27345,12 +27721,13 @@ function CustomGameGui::AddAdvancedGuiElement ( %this, %label, %varName, %type, 
 	}
 	else if ( %type $= "bool" )
 	{
-		%newCB = new GuiCheckBoxCtrl ("")
+		%newCB = new GuiCheckBoxCtrl ()
 		{
 			profile = ImpactCheckProfile;
 		};
 
 		%box.add (%newCB);
+
 		%newCB.setText (" ");
 
 		%x = 10 + %labelWidth + 10;
@@ -27367,13 +27744,11 @@ function CustomGameGui::AddAdvancedGuiElement ( %this, %label, %varName, %type, 
 			eval (%varName @ " = " @ %default @ ";");
 
 			%newCB.variable = %varName;
-
 			%newCB.setValue (%default);
 		}
 		else
 		{
 			%newCB.variable = %varName;
-
 			%newCB.setValue (%varValue);
 		}
 
@@ -27399,6 +27774,7 @@ function CustomGameGui::hideAllTabs ( %this )
 function CustomGameGui::clickAddOns ( %this )
 {
 	%this.hideAllTabs ();
+
 	CustomGameGui_AddOnsHilight.setVisible (true);
 	CustomGameGui_AddOnsScroll.setVisible (true);
 	CustomGameGui_DefaultButton.setVisible (true);
@@ -27409,6 +27785,7 @@ function CustomGameGui::clickAddOns ( %this )
 function CustomGameGui::clickMusic ( %this )
 {
 	%this.hideAllTabs ();
+
 	CustomGameGui_MusicHilight.setVisible (true);
 	CustomGameGui_MusicScroll.setVisible (true);
 	CustomGameGui_DefaultButton.setVisible (true);
@@ -27419,6 +27796,7 @@ function CustomGameGui::clickMusic ( %this )
 function CustomGameGui::clickAdvanced ( %this )
 {
 	%this.hideAllTabs ();
+
 	CustomGameGui_AdvancedHilight.setVisible (true);
 	CustomGameGui_AdvancedScroll.setVisible (true);
 	CustomGameGui_DefaultButton.setVisible (true);
@@ -27431,36 +27809,45 @@ function CustomGameGui::setDefaultAddOns ()
 	$CustomGameGui::AddOnEnabled["Brick_Large_Cubes"] = 1;
 	$CustomGameGui::AddOnEnabled["Brick_Arch"] = 1;
 	$CustomGameGui::AddOnEnabled["Brick_V15"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Emote_Alarm"] = 1;
 	$CustomGameGui::AddOnEnabled["Emote_Confusion"] = 1;
 	$CustomGameGui::AddOnEnabled["Emote_Hate"] = 1;
 	$CustomGameGui::AddOnEnabled["Emote_Love"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Item_Skis"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Light_Animated"] = 1;
 	$CustomGameGui::AddOnEnabled["Light_Basic"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Particle_Basic"] = 1;
 	$CustomGameGui::AddOnEnabled["Particle_FX_Cans"] = 1;
 	$CustomGameGui::AddOnEnabled["Particle_Grass"] = 1;
 	$CustomGameGui::AddOnEnabled["Particle_Player"] = 1;
 	$CustomGameGui::AddOnEnabled["Particle_Tools"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Player_Fuel_Jet"] = 1;
 	$CustomGameGui::AddOnEnabled["Player_Jump_Jet"] = 1;
 	$CustomGameGui::AddOnEnabled["Player_Leap_Jet"] = 1;
 	$CustomGameGui::AddOnEnabled["Player_No_Jet"] = 1;
 	$CustomGameGui::AddOnEnabled["Player_Quake"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Projectile_GravityRocket"] = 1;
 	$CustomGameGui::AddOnEnabled["Projectile_Pinball"] = 1;
 	$CustomGameGui::AddOnEnabled["Projectile_Pong"] = 1;
 	$CustomGameGui::AddOnEnabled["Projectile_Radio_Wave"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Sound_Synth4"] = 1;
 	$CustomGameGui::AddOnEnabled["Sound_Beeps"] = 1;
 	$CustomGameGui::AddOnEnabled["Sound_Phone"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Vehicle_Ball"] = 1;
 	$CustomGameGui::AddOnEnabled["Vehicle_Flying_Wheeled_Jeep"] = 1;
 	$CustomGameGui::AddOnEnabled["Vehicle_Horse"] = 1;
 	$CustomGameGui::AddOnEnabled["Vehicle_Jeep"] = 1;
 	$CustomGameGui::AddOnEnabled["Vehicle_Magic_Carpet"] = 1;
 	$CustomGameGui::AddOnEnabled["Vehicle_Tank"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Weapon_Bow"] = 1;
 	$CustomGameGui::AddOnEnabled["Weapon_Gun"] = 1;
 	$CustomGameGui::AddOnEnabled["Weapon_Guns_Akimbo"] = 1;
@@ -27469,23 +27856,30 @@ function CustomGameGui::setDefaultAddOns ()
 	$CustomGameGui::AddOnEnabled["Weapon_Rocket_Launcher"] = 1;
 	$CustomGameGui::AddOnEnabled["Weapon_Spear"] = 1;
 	$CustomGameGui::AddOnEnabled["Weapon_Sword"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Print_1x2f_Default"] = 1;
 	$CustomGameGui::AddOnEnabled["Print_2x2f_Default"] = 1;
 	$CustomGameGui::AddOnEnabled["Print_2x2r_Default"] = 1;
 	$CustomGameGui::AddOnEnabled["Print_Letters_Default"] = 1;
 	$CustomGameGui::AddOnEnabled["Print_2x2r_Monitor3 "] = 1;
 	$CustomGameGui::AddOnEnabled["Print_1x2f_BLPRemote"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Vehicle_Pirate_Cannon"] = 1;
 	$CustomGameGui::AddOnEnabled["Vehicle_Rowboat"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Item_Key"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Brick_Checkpoint"] = 1;
 	$CustomGameGui::AddOnEnabled["Brick_Treasure_Chest"] = 1;
 	$CustomGameGui::AddOnEnabled["Brick_Halloween"] = 1;
 	$CustomGameGui::AddOnEnabled["Brick_Teledoor"] = 1;
 	$CustomGameGui::AddOnEnabled["Brick_Christmas_Tree"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Brick_Doors"] = 1;
 	$CustomGameGui::AddOnEnabled["Support_Doors"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Item_Sports"] = 1;
+
 	$CustomGameGui::AddOnEnabled["Bot_Blockhead"] = 1;
 	$CustomGameGui::AddOnEnabled["Bot_Hole"] = 1;
 	$CustomGameGui::AddOnEnabled["Bot_Horse"] = 1;
@@ -27521,14 +27915,14 @@ function CustomGameGui::clickDefault ( %this )
 		CustomGameGui.setDefaultAddOns ();
 		CustomGameGui.CreateAddOnListGui ();
 
-		$CustomGameGui::AddOnsDirty = 1;
+		$CustomGameGui::AddOnsDirty = true;
 	}
 	else if ( CustomGameGui_MusicScroll.isVisible () )
 	{
 		CustomGameGui.setDefaultMusic ();
 		CustomGameGui.CreateMusicListGui ();
 
-		$CustomGameGui::MusicDirty = 1;
+		$CustomGameGui::MusicDirty = true;
 	}
 	else if ( CustomGameGui_AdvancedScroll.isVisible () )
 	{
@@ -27541,15 +27935,13 @@ function CustomGameGui::clickDefault ( %this )
 
 			if ( %obj.defaultValue $= "" )
 			{
+				continue;
+			}
 
-			}
-			else
-			{
-				%obj.setValue (%obj.defaultValue);
-			}
+			%obj.setValue (%obj.defaultValue);
 		}
 
-		$CustomGameGui::AdvancedDirty = 1;
+		$CustomGameGui::AdvancedDirty = true;
 	}
 }
 
@@ -27560,13 +27952,14 @@ function CustomGameGui::clickAll ( %this )
 	if ( CustomGameGui_MusicScroll.isVisible () )
 	{
 		%box = CustomGameGui_MusicBox;
-		$CustomGameGui::MusicDirty = 1;
+		$CustomGameGui::MusicDirty = true;
 	}
 	else
 	{
 		%box = CustomGameGui_AddOnsBox;
-		$CustomGameGui::AddOnsDirty = 1;
+		$CustomGameGui::AddOnsDirty = true;
 	}
+
 	if ( !isObject (%box) )
 	{
 		return;
@@ -27594,13 +27987,14 @@ function CustomGameGui::clickNone ( %this )
 	if ( CustomGameGui_MusicScroll.isVisible () )
 	{
 		%box = CustomGameGui_MusicBox;
-		$CustomGameGui::MusicDirty = 1;
+		$CustomGameGui::MusicDirty = true;
 	}
 	else
 	{
 		%box = CustomGameGui_AddOnsBox;
-		$CustomGameGui::AddOnsDirty = 1;
+		$CustomGameGui::AddOnsDirty = true;
 	}
+
 	if ( !isObject (%box) )
 	{
 		return;
@@ -27660,12 +28054,15 @@ function CustomGameGui::ClickSelect ( %this )
 		}
 
 		export ("$AddOn__*", "config/server/ADD_ON_LIST.cs");
+
 		CustomGameGui.CopyGuiVarsToPrefs ();
+
 		export ("$Pref::Server::*", "config/server/prefs.cs", False);
 		export ("$Pref::Net::PacketRateToClient", "config/server/prefs.cs", True);
 		export ("$Pref::Net::PacketRateToServer", "config/server/prefs.cs", True);
 		export ("$Pref::Net::PacketSize", "config/server/prefs.cs", True);
 		export ("$Pref::Net::LagThreshold", "config/server/prefs.cs", True);
+
 		Canvas.popDialog (CustomGameGui);
 		Canvas.pushDialog (ServerSettingsGui);
 	}
@@ -27677,9 +28074,11 @@ function CustomGameGui::ClickSelect ( %this )
 			{
 				%varName = $CustomGameGui::AddOn[%i];
 
-				commandToServer ('CustomGameGui_SetAddOnEnabled', %varName, $CustomGameGui::AddOnEnabled[%varName]);
+				commandToServer ('CustomGameGui_SetAddOnEnabled', %varName,
+					$CustomGameGui::AddOnEnabled[%varName]);
 			}
 		}
+
 		if ( $CustomGameGui::MusicDirty )
 		{
 			for ( %i = 0; %i < $CustomGameGui::AddOnCount; %i++ )
@@ -27687,9 +28086,11 @@ function CustomGameGui::ClickSelect ( %this )
 				%base = $CustomGameGui::Music[%i];
 				%varName = getSafeVariableName (%base);
 
-				commandToServer ('CustomGameGui_SetMusicEnabled', %varName, $CustomGameGui::MusicEnabled[%varName]);
+				commandToServer ('CustomGameGui_SetMusicEnabled', %varName,
+					$CustomGameGui::MusicEnabled[%varName]);
 			}
 		}
+
 		if ( $CustomGameGui::AdvancedDirty )
 		{
 			%count = CustomGameGui_AdvancedBox.getCount ();
@@ -27719,7 +28120,10 @@ function CustomGameGui::ClickSelect ( %this )
 		}
 
 		commandToServer ('CustomGameGui_ListUploadDone');
-		messageBoxYesNo ("Changing server settings requires restart", "Restart server?\n\n(bricks will NOT be saved)", "canvas.popDialog(CustomGameGui); commandToServer(\'GameModeGuiServer_ChangeGameMode\', " @ $GameModeGui::CurrGameModeIdx @ ");", "");
+
+		messageBoxYesNo ("Changing server settings requires restart",
+			"Restart server?\n\n(bricks will NOT be saved)", "canvas.popDialog(CustomGameGui); commandToServer(\'GameModeGuiServer_ChangeGameMode\', "
+			@ $GameModeGui::CurrGameModeIdx @ ");", "");
 	}
 }
 
@@ -27731,17 +28135,17 @@ function CustomGameGui::ClickBack ( %this )
 
 function CustomGameGui::clickAddOnItem ()
 {
-	$CustomGameGui::AddOnsDirty = 1;
+	$CustomGameGui::AddOnsDirty = true;
 }
 
 function CustomGameGui::clickMusicItem ()
 {
-	$CustomGameGui::MusicDirty = 1;
+	$CustomGameGui::MusicDirty = true;
 }
 
 function CustomGameGui::clickAdvancedItem ()
 {
-	$CustomGameGui::AdvancedDirty = 1;
+	$CustomGameGui::AdvancedDirty = true;
 }
 
 function clientIsValidAddOn ( %dirName, %verbose )
@@ -27757,6 +28161,7 @@ function clientIsValidAddOn ( %dirName, %verbose )
 
 		return 0;
 	}
+
 	if ( strstr (%dirName, "_") == -1 )
 	{
 		if ( %verbose )
@@ -27778,6 +28183,7 @@ function clientIsValidAddOn ( %dirName, %verbose )
 
 		return 0;
 	}
+
 	if ( strstr (%dirName, "Copy of") != -1 || strstr (%dirName, "- Copy") != -1 )
 	{
 		if ( %verbose )
@@ -27787,6 +28193,7 @@ function clientIsValidAddOn ( %dirName, %verbose )
 
 		return 0;
 	}
+
 	if ( strstr (%dirName, "(") != -1 || strstr (%dirName, ")") != -1 )
 	{
 		if ( %verbose )
@@ -27808,12 +28215,14 @@ function clientIsValidAddOn ( %dirName, %verbose )
 		{
 			if ( %verbose )
 			{
-				warn ("    Add-On folder ends in \" " @ %lastWord @ "\", possibly a duplicate - will not execute");
+				warn ("    Add-On folder ends in \" " @ %lastWord
+					@ "\", possibly a duplicate - will not execute");
 			}
 
 			return 0;
 		}
 	}
+
 	if ( strstr (%dirName, "+") != -1 )
 	{
 		if ( %verbose )
@@ -27823,6 +28232,7 @@ function clientIsValidAddOn ( %dirName, %verbose )
 
 		return 0;
 	}
+
 	if ( strstr (%dirName, "[") != -1 || strstr (%dirName, "]") != -1 )
 	{
 		if ( %verbose )
@@ -27832,6 +28242,7 @@ function clientIsValidAddOn ( %dirName, %verbose )
 
 		return 0;
 	}
+
 	if ( strstr (%dirName, " ") != -1 )
 	{
 		if ( %verbose )
@@ -27872,8 +28283,7 @@ function clientIsValidAddOn ( %dirName, %verbose )
 
 	if ( isFile (%nameCheckFilename) )
 	{
-		%file = new FileObject ("");
-
+		%file = new FileObject ();
 		%file.openForRead (%nameCheckFilename);
 
 		%nameCheck = %file.readLine ();
@@ -27885,7 +28295,8 @@ function clientIsValidAddOn ( %dirName, %verbose )
 		{
 			if ( %verbose )
 			{
-				warn ("    Add-On has been renamed from \"" @ %nameCheck @ "\" to \"" @ %dirName @ "\" - will not execute");
+				warn ("    Add-On has been renamed from \"" @ %nameCheck @ "\" to \""
+					@ %dirName @ "\" - will not execute");
 			}
 
 			return 0;
@@ -27908,6 +28319,7 @@ function clientIsValidAddOn ( %dirName, %verbose )
 			return 0;
 		}
 	}
+
 	if ( $CrapOnName_[%dirName] == 1 )
 	{
 		if ( %verbose )
@@ -27917,6 +28329,7 @@ function clientIsValidAddOn ( %dirName, %verbose )
 
 		return 0;
 	}
+
 	if ( strstr (%dirName, ".zip") != -1 )
 	{
 		if ( %verbose )
@@ -27947,7 +28360,12 @@ function clientIsValidMusicFilename ( %filename )
 	{
 		return 0;
 	}
-	if ( strstr (%filename, "Copy of") != -1 || strstr (%filename, "Copy_of") != -1 || strstr (%filename, "- Copy") != -1 || strstr (%filename, "-_Copy") != -1 || strstr (%filename, "(") != -1 || strstr (%filename, ")") != -1 || strstr (%filename, "[") != -1 || strstr (%filename, "]") != -1 || strstr (%filename, "+") != -1 || strstr (%filename, " ") != -1 )
+
+	if ( strstr (%filename, "Copy of") != -1 || strstr (%filename, "Copy_of") != -1
+	  || strstr (%filename, "- Copy") != -1 || strstr (%filename, "-_Copy") != -1
+	  || strstr (%filename, "(") != -1 || strstr (%filename, ")") != -1
+	  || strstr (%filename, "[") != -1 || strstr (%filename, "]") != -1
+	  || strstr (%filename, "+") != -1 || strstr (%filename, " ") != -1 )
 	{
 		return 0;
 	}
@@ -27957,21 +28375,23 @@ function clientIsValidMusicFilename ( %filename )
 
 function SteamGreenLightGui::onWake ( %this )
 {
-
+	// Stub method
 }
 
 function SteamGreenLightGui::onRender ( %this )
 {
 	%this.ScaleText ();
 
-	%text = "<lmargin:10><font:impact:" @ %this.fontSize @ "><color:FFFFFF>Do you have a Steam account?<br>Then Blockland needs your help!<br><br>Vote for Blockland on Steam Greenlight!";
+	%text = "<lmargin:10><font:impact:" @ %this.fontSize
+		@ "><color:FFFFFF>Do you have a Steam account?<br>Then Blockland needs your help!<br><br>Vote for Blockland on Steam Greenlight!";
 
 	SteamGreenLightGui_LongDescription.setText (%text);
+
 	SteamGreenLightGui_Image1.setBitmap ("base/client/ui/greenlight-blockland-logo.png");
 	SteamGreenLightGui_Image2.setBitmap ("base/client/ui/greenlight-steam-logo.png");
+
 	SteamGreenLightGui_Select.setVisible (true);
 	SteamGreenLightGui_Select.setText ("VOTE FOR BLOCKLAND >> ");
-
 	SteamGreenLightGui_Select.command = "SteamGreenLightGui.clickForward();";
 }
 
@@ -27984,20 +28404,21 @@ function SteamGreenLightGui::ClickBack ( %this )
 function SteamGreenLightGui::clickForward ( %this )
 {
 	SteamGreenLightGui_Select.setText ("DONE >> ");
-
 	SteamGreenLightGui_Select.command = "SteamGreenLightGui.clickBack();";
 
 	gotoWebPage ("http://steamcommunity.com/sharedfiles/filedetails/?id=95710780");
 
-	%text = "<lmargin:10><font:impact:" @ %this.fontSize @ "><color:FFFFFF>The greenlight page is now open in your web browser.<br>Just click the \x93Yes\x94 button to support Blockland!<br><br>Say /greenlight in game to show your support!";
+	%text = "<lmargin:10><font:impact:" @ %this.fontSize
+		@ "><color:FFFFFF>The greenlight page is now open in your web browser.<br>Just click the \x93Yes\x94 button to support Blockland!<br><br>Say /greenlight in game to show your support!";
 
 	SteamGreenLightGui_LongDescription.setText (%text);
+
 	SteamGreenLightGui_Image1.setBitmap ("base/client/ui/greenlight-01.png");
 	SteamGreenLightGui_Image2.setBitmap ("base/client/ui/greenlight-02.png");
 
 	$Pref::GreenlightCheck = getStringCRC (getMyBLID () @ "ly=ythot");
 
-	export ("$pref::*", "config/client/prefs.cs", 0);
+	export ("$pref::*", "config/client/prefs.cs", false);
 }
 
 function steamOnLobbyEnter ( %yourLobby )
@@ -28031,14 +28452,18 @@ function steamOnLobbyEnter ( %yourLobby )
 	}
 
 	%ip = SteamGetLobbyIP ();
+
 	%port = SteamGetLobbyPort ();
 	%port = mClamp (%port, 0, 65535);
+
 	%ip = numericWhiteListFilter (%ip);
 	%ip = getSubStr (%ip, 0, 15);
+
 	$connectArg = %ip @ ":" @ %port;
 
 	SteamLeaveLobby ();
-	ConnectToServer ($connectArg, "", 1, 1);
+	ConnectToServer ($connectArg, "", true, true);
+
 	Connecting_Text.setText ("Connecting to " @ $connectArg);
 	Canvas.pushDialog (connectingGui);
 }
@@ -28063,8 +28488,7 @@ function steamOnOverlayDeactivated ()
 	schedule (0, 0, activateDirectInput);
 }
 
-
-$ConsoleActive = 0;
+$ConsoleActive = false;
 
 function ConsoleEntry::eval ()
 {
@@ -28098,8 +28522,7 @@ function toggleConsole ( %make )
 		if ( $ConsoleActive )
 		{
 			Canvas.popDialog (ConsoleDlg);
-
-			$ConsoleActive = 0;
+			$ConsoleActive = false;
 		}
 		else
 		{
@@ -28110,7 +28533,7 @@ function toggleConsole ( %make )
 
 			Canvas.pushDialog (ConsoleDlg, 99);
 
-			$ConsoleActive = 1;
+			$ConsoleActive = true;
 		}
 	}
 }
@@ -28124,9 +28547,9 @@ function sendHatRequest ()
 	if ( $Pref::Avatar::HatList $= "" )
 	{
 		$HatTicket = "";
-
 		return;
 	}
+
 	if ( isObject (hatTCPObj) )
 	{
 		hatTCPObj.delete ();
@@ -28138,13 +28561,21 @@ function sendHatRequest ()
 	hatTCPObj.port = 80;
 	hatTCPObj.done = "false";
 	hatTCPObj.filePath = "/signHats.php";
+
 	%postText = "hatList=" @ $Pref::Avatar::HatList;
+
 	hatTCPObj.postText = %postText;
 	hatTCPObj.postTextLen = strlen (%postText);
 
 	echo ("Sending hat signing request");
 
-	hatTCPObj.cmd = "POST " @ hatTCPObj.filePath @ " HTTP/1.0\r\n" @ "Host: " @ hatTCPObj.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ hatTCPObj.postTextLen @ "\r\n" @ "\r\n" @ hatTCPObj.postText @ "\r\n";
+	hatTCPObj.cmd = "POST " @ hatTCPObj.filePath @ " HTTP/1.0\r\n"
+		@ "Host: " @ hatTCPObj.site @ "\r\n"
+		@ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n"
+		@ "Content-Type: application/x-www-form-urlencoded\r\n"
+		@ "Content-Length: " @ hatTCPObj.postTextLen @ "\r\n"
+		@ "\r\n"
+		@ hatTCPObj.postText @ "\r\n";
 
 	hatTCPObj.connect (hatTCPObj.site @ ":" @ hatTCPObj.port);
 }
@@ -28179,76 +28610,84 @@ function hatTCPObj::onLine ( %this, %line )
 
 	%word = getWord (%line, 0);
 
-	if ( %word $= "HTTP/1.1" )
+	switch$ ( %word )
 	{
-		%code = getWord (%line, 1);
+		case "HTTP/1.1":
+			%code = getWord (%line, 1);
 
-		if ( %code != 200 )
-		{
-			warn ("WARNING: " @ %this.getName () @ " - got non-200 http response \"" @ %code @ "\"");
-		}
-		if ( %code >= 400 && %code <= 499 )
-		{
-			warn ("WARNING: 4xx error on " @ %this.getName () @ ", retrying");
+			if ( %code != 200 )
+			{
+				warn ("WARNING: " @ %this.getName () @ " - got non-200 http response \"" @ %code @ "\"");
+			}
+
+			if ( %code >= 400 && %code <= 499 )
+			{
+				warn ("WARNING: 4xx error on " @ %this.getName () @ ", retrying");
+
+				%this.schedule (0, disconnect);
+				%this.schedule (500, connect, %this.site @ ":" @ %this.port);
+			}
+
+			if ( %code >= 300 && %code <= 399 )
+			{
+				warn ("WARNING: 3xx error on " @ %this.getName () @ ", will wait for location header");
+			}
+
+		case "Location:":
+			%url = getWords (%line, 1);
+			warn ("WARNING: " @ %this.getName () @ " - Location redirect to " @ %url);
+			%this.filePath = %url;
+
+			%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n"
+				@ "Host: " @ %this.site
+				@ "\r\n"
+				@ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n"
+				@ "Content-Type: application/x-www-form-urlencoded\r\n"
+				@ "Content-Length: " @ %this.postTextLen @ "\r\n"
+				@ "\r\n"
+				@ %this.postText @ "\r\n";
+
 			%this.schedule (0, disconnect);
 			%this.schedule (500, connect, %this.site @ ":" @ %this.port);
-		}
-		if ( %code >= 300 && %code <= 399 )
-		{
-			warn ("WARNING: 3xx error on " @ %this.getName () @ ", will wait for location header");
-		}
-	}
-	else if ( %word $= "Location:" )
-	{
-		%url = getWords (%line, 1);
 
-		warn ("WARNING: " @ %this.getName () @ " - Location redirect to " @ %url);
+		case "Content-Location:":
+			%url = getWords (%line, 1);
+			warn ("WARNING: " @ %this.getName () @ " - Content-Location redirect to " @ %url);
+			%this.filePath = %url;
 
-		%this.filePath = %url;
-		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
+			%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n"
+				@ "Host: " @ %this.site @ "\r\n"
+				@ "User-Agent: Blockland-r" @ getBuildNumber ()
+				@ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n"
+				@ "Content-Length: " @ %this.postTextLen @ "\r\n"
+				@ "\r\n"
+				@ %this.postText @ "\r\n";
 
-		%this.schedule (0, disconnect);
-		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
-	}
-	else if ( %word $= "Content-Location:" )
-	{
-		%url = getWords (%line, 1);
+			%this.schedule (0, disconnect);
+			%this.schedule (500, connect, %this.site @ ":" @ %this.port);
 
-		warn ("WARNING: " @ %this.getName () @ " - Content-Location redirect to " @ %url);
+		case "TICKET":
+			%ticket = getSubStr (%line, strlen (%word) + 1, strlen (%line) - (strlen (%word) + 1));
+			$HatTicket = %ticket;
 
-		%this.filePath = %url;
-		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
+			echo ("Hat ticket recieved");
 
-		%this.schedule (0, disconnect);
-		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
-	}
-	else if ( %word $= "TICKET" )
-	{
-		%ticket = getSubStr (%line, strlen (%word) + 1, strlen (%line) - (strlen (%word) + 1));
-		$HatTicket = %ticket;
+			if ( checkInventoryTicket ($HatTicket, getPublicKey ()) )
+			{
+				echo ("Hat ticket signature verified");
+			}
+			else
+			{
+				echo ("ERROR: bad hat ticket signature from master server");
+				$HatTicket = "";
+			}
 
-		echo ("Hat ticket recieved");
+			%this.done = true;
 
-		if ( checkInventoryTicket ($HatTicket, getPublicKey ()) )
-		{
-			echo ("Hat ticket signature verified");
-		}
-		else
-		{
-			echo ("ERROR: bad hat ticket signature from master server");
-
-			$HatTicket = "";
-		}
-
-		%this.done = 1;
-	}
-	else if ( %word $= "FAIL" )
-	{
-		%reason = getSubStr (%line, strlen (%word) + 1, strlen (%line) - (strlen (%word) + 1));
-
-		echo ("Hat signing FAILED!");
-
-		%this.done = 1;
+		case "FAIL":
+			%reason = getSubStr (%line, strlen (%word) + 1, strlen (%line) - (strlen (%word) + 1));
+			echo ("Hat signing FAILED!");
+			%this.done = true;
 	}
 }
 
@@ -28257,17 +28696,18 @@ function clientCmdSetClientHatTicket ( %client, %hatTicket )
 	if ( %client !$= mFloor (%client) )
 	{
 		error ("ERROR: Bad client value");
-
 		return;
 	}
+
 	if ( strlen (%hatTicket) <= 0 )
 	{
 		$HatTicket_[%client] = "";
 	}
-	if ( !checkInventoryTicket (%hatTicket, "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDe4Ziy4JEmDaodjIHy1DAdu8/j duLYguf9Z563BVkyKL0IX689Yq4NRwa+5GgDycIbSQ16t61E/o8RZu2RaAIjPlE1 6VRzdHzkuqfrvykLNhq+DLU6SGvCBdUQ2n+G9oOgkHcP9/9kdf3N3cc1h9NlBoIl +SCAcT5NTDjO6+C+IQIDAQAB") )
+
+	if ( !checkInventoryTicket (%hatTicket,
+		"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDe4Ziy4JEmDaodjIHy1DAdu8/j duLYguf9Z563BVkyKL0IX689Yq4NRwa+5GgDycIbSQ16t61E/o8RZu2RaAIjPlE1 6VRzdHzkuqfrvykLNhq+DLU6SGvCBdUQ2n+G9oOgkHcP9/9kdf3N3cc1h9NlBoIl +SCAcT5NTDjO6+C+IQIDAQAB") )
 	{
 		echo ("ERROR: Bad hat ticket from server");
-
 		$HatTicket_[%client] = "";
 	}
 
@@ -28285,6 +28725,7 @@ function transmitJoinIP ( %joinIP )
 
 	setJoinIP_tcpObj.site = "master3.blockland.us";
 	setJoinIP_tcpObj.port = 80;
+
 	%pos = strpos (%joinIP, ":");
 
 	if ( %pos > 0 )
@@ -28293,14 +28734,24 @@ function transmitJoinIP ( %joinIP )
 	}
 
 	setJoinIP_tcpObj.filePath = "/getJoinToken.php";
+
 	%postText = "joinIP=" @ %joinIP;
 	%postText = %postText @ "&blid=" @ getMyBLID ();
 	%postText = %postText @ "&steamTicket=" @ SteamGetAuthSessionTicket ();
+
 	setJoinIP_tcpObj.postText = %postText;
 	setJoinIP_tcpObj.postTextLen = strlen (%postText);
-	setJoinIP_tcpObj.cmd = "POST " @ setJoinIP_tcpObj.filePath @ " HTTP/1.0\r\n" @ "Host: " @ setJoinIP_tcpObj.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ setJoinIP_tcpObj.postTextLen @ "\r\n" @ "\r\n" @ setJoinIP_tcpObj.postText @ "\r\n";
+
+	setJoinIP_tcpObj.cmd = "POST " @ setJoinIP_tcpObj.filePath @ " HTTP/1.0\r\n"
+		@ "Host: " @ setJoinIP_tcpObj.site @ "\r\n"
+		@ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n"
+		@ "Content-Type: application/x-www-form-urlencoded\r\n"
+		@ "Content-Length: " @ setJoinIP_tcpObj.postTextLen @ "\r\n"
+		@ "\r\n"
+		@ setJoinIP_tcpObj.postText @ "\r\n";
 
 	setJoinIP_tcpObj.connect (setJoinIP_tcpObj.site @ ":" @ setJoinIP_tcpObj.port);
+
 	echo ("Set JoinIP: Transmitting " @ %joinIP @ " to Master Server for BLID " @ getMyBLID ());
 }
 
@@ -28324,7 +28775,7 @@ function setJoinIP_tcpObj::onConnected ( %this )
 
 function setJoinIP_tcpObj::onDisconnect ( %this )
 {
-
+	// Stub method
 }
 
 function setJoinIP_tcpObj::onLine ( %this, %line )
@@ -28336,62 +28787,63 @@ function setJoinIP_tcpObj::onLine ( %this, %line )
 
 	%word = getWord (%line, 0);
 
-	if ( %word $= "HTTP/1.1" )
+	switch$ ( %word )
 	{
-		%code = getWord (%line, 1);
+		case "HTTP/1.1":
+			%code = getWord (%line, 1);
 
-		if ( %code != 200 )
-		{
-			warn ("WARNING: setJoinIP_tcpObj - got non-200 http response \"" @ %code @ "\"");
-		}
-		if ( %code >= 400 && %code <= 499 )
-		{
-			warn ("WARNING: 4xx error on setJoinIP_tcpObj, retrying");
+			if ( %code != 200 )
+			{
+				warn ("WARNING: setJoinIP_tcpObj - got non-200 http response \"" @ %code @ "\"");
+			}
+
+			if ( %code >= 400 && %code <= 499 )
+			{
+				warn ("WARNING: 4xx error on setJoinIP_tcpObj, retrying");
+
+				%this.schedule (0, disconnect);
+				%this.schedule (500, connect, %this.site @ ":" @ %this.port);
+
+				echo ("Set JoinIP: Retrying...");
+			}
+
+			if ( %code >= 300 && %code <= 399 )
+			{
+				warn ("WARNING: 3xx error on setJoinIP_tcpObj, will wait for location header");
+			}
+
+		case "Location:":
+			%url = getWords (%line, 1);
+
+			warn ("WARNING: setJoinIP_tcpObj - Location redirect to " @ %url);
+
+			%this.filePath = %url;
+			%this.cmd = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
+
 			%this.schedule (0, disconnect);
 			%this.schedule (500, connect, %this.site @ ":" @ %this.port);
-			echo ("Set JoinIP: Retrying...");
-		}
-		if ( %code >= 300 && %code <= 399 )
-		{
-			warn ("WARNING: 3xx error on setJoinIP_tcpObj, will wait for location header");
-		}
-	}
-	else if ( %word $= "Location:" )
-	{
-		%url = getWords (%line, 1);
 
-		warn ("WARNING: setJoinIP_tcpObj - Location redirect to " @ %url);
+		case "Content-Location:":
+			%url = getWords (%line, 1);
 
-		%this.filePath = %url;
-		%this.cmd = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
+			warn ("WARNING: setJoinIP_tcpObj - Content-Location redirect to " @ %url);
 
-		%this.schedule (0, disconnect);
-		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
-	}
-	else if ( %word $= "Content-Location:" )
-	{
-		%url = getWords (%line, 1);
+			%this.filePath = %url;
+			%this.cmd = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
 
-		warn ("WARNING: setJoinIP_tcpObj - Content-Location redirect to " @ %url);
+			%this.schedule (0, disconnect);
+			%this.schedule (500, connect, %this.site @ ":" @ %this.port);
 
-		%this.filePath = %url;
-		%this.cmd = "GET " @ %this.filePath @ " HTTP/1.0\r\nHost: " @ %this.site @ "\r\n\r\n";
+		case "ERROR:":
+			error ("setJoinIP_tcpObj - " @ %line);
+			MessageBoxOK ("Set JoinIP Error", %line);
 
-		%this.schedule (0, disconnect);
-		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
-	}
-	else if ( %word $= "ERROR:" )
-	{
-		error ("setJoinIP_tcpObj - " @ %line);
-		MessageBoxOK ("Set JoinIP Error", %line);
-	}
-	else if ( %word $= "SUCCESS" )
-	{
-		echo ("Set JoinIP: Success");
+		case "SUCCESS":
+			echo ("Set JoinIP: Success");
 
-		%joinToken = getWord (%line, 1);
+			%joinToken = getWord (%line, 1);
+			setJoinToken (%joinToken);
 
-		setJoinToken (%joinToken);
-		ReconnectToServerB ();
+			ReconnectToServerB ();
 	}
 }
