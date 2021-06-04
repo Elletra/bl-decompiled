@@ -1,9 +1,4 @@
 // -----------------------------------------------------------------------------
-//  Torque Game Engine
-//  Copyright (C) GarageGames.com, Inc.
-// -----------------------------------------------------------------------------
-
-// -----------------------------------------------------------------------------
 //  Mission Loading
 //  Server download handshaking.  This produces a number of manifest, blob, and
 //  onPhaseX calls so the game scripts can update the game's GUI.
