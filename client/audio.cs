@@ -21,9 +21,9 @@ function OpenALInit ()
 		}
 		else
 		{
-			echo ("   Vendor: "     @ alGetString ("AL_VENDOR"));
-			echo ("   Version: "    @ alGetString ("AL_VERSION"));
-			echo ("   Renderer: "   @ alGetString ("AL_RENDERER"));
+			echo ("   Vendor: " @ alGetString ("AL_VENDOR"));
+			echo ("   Version: " @ alGetString ("AL_VERSION"));
+			echo ("   Renderer: " @ alGetString ("AL_RENDERER"));
 			echo ("   Extensions: " @ alGetString ("AL_EXTENSIONS"));
 
 			alxListenerf (AL_GAIN_LINEAR, $pref::Audio::masterVolume);

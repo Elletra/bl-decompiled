@@ -1,12 +1,11 @@
 function AddDamageType ( %name, %deathMessageSuicide, %deathMessageMurder, %vehicleDamageScale, %direct )
 {
 	%dmmString = getTaggedString (%deathMessageSuicide);
-	%startPos  = strpos (%dmmString, "<bitmap:");
+	%startPos = strpos (%dmmString, "<bitmap:");
 
 	if ( %startPos != -1 )
 	{
 		%startPos += strlen ("<bitmap:");
-
 		%endPos = strpos (%dmmString, ">", %startPos);
 
 		%bitmapName = getSubStr (%dmmString, %startPos, %endPos - %startPos) @ ".png";
@@ -22,12 +21,11 @@ function AddDamageType ( %name, %deathMessageSuicide, %deathMessageMurder, %vehi
 	}
 
 	%dmmString = getTaggedString (%deathMessageMurder);
-	%startPos  = strpos (%dmmString, "<bitmap:");
+	%startPos = strpos (%dmmString, "<bitmap:");
 
 	if ( %startPos != -1 )
 	{
 		%startPos += strlen ("<bitmap:");
-
 		%endPos = strpos (%dmmString, ">", %startPos);
 
 		%bitmapName = getSubStr (%dmmString, %startPos, %endPos - %startPos) @ ".png";
@@ -57,12 +55,12 @@ function AddDamageType ( %name, %deathMessageSuicide, %deathMessageMurder, %vehi
 		eval ("$DamageType::" @ %name @ " = $maxDamageType;");
 	}
 
-	$DamageType_Array[%idx]          = %name;
-	$DeathMessage_Suicide[%idx]      = %deathMessageSuicide;
-	$DeathMessage_Murder[%idx]       = %deathMessageMurder;
+	$DamageType_Array[%idx] = %name;
+	$DeathMessage_Suicide[%idx] = %deathMessageSuicide;
+	$DeathMessage_Murder[%idx] = %deathMessageMurder;
 	$DamageType::SuicideBitmap[%idx] = "";
 
-	%str  = getTaggedString (%deathMessageSuicide);
+	%str = getTaggedString (%deathMessageSuicide);
 	%posA = stripos (%str, "<bitmap:");
 
 	if ( %posA > -1 )
@@ -71,8 +69,8 @@ function AddDamageType ( %name, %deathMessageSuicide, %deathMessageMurder, %vehi
 
 		if ( %posB > -1 )
 		{
-			%start    = %posA + strlen ("<bitmap:");
-			%len      = %posB - %start;
+			%start = %posA + strlen ("<bitmap:");
+			%len = %posB - %start;
 			%filename = getSubStr (%str, %start, %len);
 
 			if ( isFile (%filename @ ".png") )
@@ -86,7 +84,7 @@ function AddDamageType ( %name, %deathMessageSuicide, %deathMessageMurder, %vehi
 
 	$DamageType::MurderBitmap[%idx] = "";
 
-	%str  = getTaggedString (%deathMessageMurder);
+	%str = getTaggedString (%deathMessageMurder);
 	%posA = stripos (%str, "<bitmap:");
 
 	if ( %posA > -1 )
@@ -95,8 +93,8 @@ function AddDamageType ( %name, %deathMessageSuicide, %deathMessageMurder, %vehi
 
 		if ( %posB > -1 )
 		{
-			%start    = %posA + strlen ("<bitmap:");
-			%len      = %posB - %start;
+			%start = %posA + strlen ("<bitmap:");
+			%len = %posB - %start;
 			%filename = getSubStr (%str, %start, %len);
 
 			if ( isFile (%filename @ ".png") )

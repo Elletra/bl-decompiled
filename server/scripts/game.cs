@@ -22,90 +22,90 @@ function copyPrefsToServerVars ()
 
 	echo ("Copying prefs to server variables");
 
-	$Server::BrickRespawnTime        = $Pref::Server::BrickRespawnTime;
+	$Server::BrickRespawnTime = $Pref::Server::BrickRespawnTime;
 	$Server::ClearEventsOnClientExit = $Pref::Server::ClearEventsOnClientExit;
 
-	$Server::MaxBricksPerSecond      = $Pref::Server::MaxBricksPerSecond;
-	$Server::MaxPhysVehicles_Total   = $Pref::Server::MaxPhysVehicles_Total;
+	$Server::MaxBricksPerSecond = $Pref::Server::MaxBricksPerSecond;
+	$Server::MaxPhysVehicles_Total = $Pref::Server::MaxPhysVehicles_Total;
 	$Server::MaxPlayerVehicles_Total = $Pref::Server::MaxPlayerVehicles_Total;
 
 	$Server::Quota::Environment = $Pref::Server::Quota::Environment;
-	$Server::Quota::Item        = $Pref::Server::Quota::Item;
-	$Server::Quota::Misc        = $Pref::Server::Quota::Misc;
-	$Server::Quota::Player      = $Pref::Server::Quota::Player;
-	$Server::Quota::Projectile  = $Pref::Server::Quota::Projectile;
-	$Server::Quota::Schedules   = $Pref::Server::Quota::Schedules;
-	$Server::Quota::Vehicle     = $Pref::Server::Quota::Vehicle;
+	$Server::Quota::Item = $Pref::Server::Quota::Item;
+	$Server::Quota::Misc = $Pref::Server::Quota::Misc;
+	$Server::Quota::Player = $Pref::Server::Quota::Player;
+	$Server::Quota::Projectile = $Pref::Server::Quota::Projectile;
+	$Server::Quota::Schedules = $Pref::Server::Quota::Schedules;
+	$Server::Quota::Vehicle = $Pref::Server::Quota::Vehicle;
 
 	$Server::QuotaLAN::Environment = $Pref::Server::QuotaLAN::Environment;
-	$Server::QuotaLAN::Item        = $Pref::Server::QuotaLAN::Item;
-	$Server::QuotaLAN::Misc        = $Pref::Server::QuotaLAN::Misc;
-	$Server::QuotaLAN::Player      = $Pref::Server::QuotaLAN::Player;
-	$Server::QuotaLAN::Projectile  = $Pref::Server::QuotaLAN::Projectile;
-	$Server::QuotaLAN::Schedules   = $Pref::Server::QuotaLAN::Schedules;
-	$Server::QuotaLAN::Vehicle     = $Pref::Server::QuotaLAN::Vehicle;
+	$Server::QuotaLAN::Item = $Pref::Server::QuotaLAN::Item;
+	$Server::QuotaLAN::Misc = $Pref::Server::QuotaLAN::Misc;
+	$Server::QuotaLAN::Player = $Pref::Server::QuotaLAN::Player;
+	$Server::QuotaLAN::Projectile = $Pref::Server::QuotaLAN::Projectile;
+	$Server::QuotaLAN::Schedules = $Pref::Server::QuotaLAN::Schedules;
+	$Server::QuotaLAN::Vehicle = $Pref::Server::QuotaLAN::Vehicle;
 
-	$Server::WelcomeMessage        = $Pref::Server::WelcomeMessage;
+	$Server::WelcomeMessage = $Pref::Server::WelcomeMessage;
 	$Server::WrenchEventsAdminOnly = $Pref::Server::WrenchEventsAdminOnly;
-	$Server::GhostLimit            = $Pref::Server::GhostLimit;
+	$Server::GhostLimit = $Pref::Server::GhostLimit;
 }
 
 function setDefaultServerVars ()
 {
 	echo ("Setting default server variables");
 
-	$Server::BrickRespawnTime        = $Default::BrickRespawnTime;
+	$Server::BrickRespawnTime = $Default::BrickRespawnTime;
 	$Server::ClearEventsOnClientExit = $Default::ClearEventsOnClientExit;
 
-	$Server::MaxBricksPerSecond      = $Default::MaxBricksPerSecond;
-	$Server::MaxPhysVehicles_Total   = $Default::MaxPhysVehicles_Total;
+	$Server::MaxBricksPerSecond = $Default::MaxBricksPerSecond;
+	$Server::MaxPhysVehicles_Total = $Default::MaxPhysVehicles_Total;
 	$Server::MaxPlayerVehicles_Total = $Default::MaxPlayerVehicles_Total;
 
 	$Server::Quota::Environment = $Default::Quota::Environment;
-	$Server::Quota::Item        = $Default::Quota::Item;
-	$Server::Quota::Misc        = $Default::Quota::Misc;
-	$Server::Quota::Player      = $Default::Quota::Player;
-	$Server::Quota::Projectile  = $Default::Quota::Projectile;
-	$Server::Quota::Schedules   = $Default::Quota::Schedules;
-	$Server::Quota::Vehicle     = $Default::Quota::Vehicle;
+	$Server::Quota::Item = $Default::Quota::Item;
+	$Server::Quota::Misc = $Default::Quota::Misc;
+	$Server::Quota::Player = $Default::Quota::Player;
+	$Server::Quota::Projectile = $Default::Quota::Projectile;
+	$Server::Quota::Schedules = $Default::Quota::Schedules;
+	$Server::Quota::Vehicle = $Default::Quota::Vehicle;
 
 	$Server::QuotaLAN::Environment = $Default::QuotaLAN::Environment;
-	$Server::QuotaLAN::Item        = $Default::QuotaLAN::Item;
-	$Server::QuotaLAN::Misc        = $Default::QuotaLAN::Misc;
-	$Server::QuotaLAN::Player      = $Default::QuotaLAN::Player;
-	$Server::QuotaLAN::Projectile  = $Default::QuotaLAN::Projectile;
-	$Server::QuotaLAN::Schedules   = $Default::QuotaLAN::Schedules;
-	$Server::QuotaLAN::Vehicle     = $Default::QuotaLAN::Vehicle;
+	$Server::QuotaLAN::Item = $Default::QuotaLAN::Item;
+	$Server::QuotaLAN::Misc = $Default::QuotaLAN::Misc;
+	$Server::QuotaLAN::Player = $Default::QuotaLAN::Player;
+	$Server::QuotaLAN::Projectile = $Default::QuotaLAN::Projectile;
+	$Server::QuotaLAN::Schedules = $Default::QuotaLAN::Schedules;
+	$Server::QuotaLAN::Vehicle = $Default::QuotaLAN::Vehicle;
 
 	$Server::WrenchEventsAdminOnly = $Default::WrenchEventsAdminOnly;
-	$Server::GhostLimit            = $Default::GhostLimit;
+	$Server::GhostLimit = $Default::GhostLimit;
 }
 
 function validatePrefs ()
 {
-	$Pref::Server::QuotaLAN::Environment = verifyQuotaNumber ($Pref::Server::QuotaLAN::Environment,$Min::QuotaLAN::Environment, $Max::QuotaLAN::Environment, $Default::QuotaLAN::Environment);
-	$Pref::Server::QuotaLAN::Item        = verifyQuotaNumber ($Pref::Server::QuotaLAN::Item, $Min::QuotaLAN::Item, $Max::QuotaLAN::Item, $Default::QuotaLAN::Item);
-	$Pref::Server::QuotaLAN::Misc        = verifyQuotaNumber ($Pref::Server::QuotaLAN::Misc, $Min::QuotaLAN::Misc, $Max::QuotaLAN::Misc, $Default::QuotaLAN::Misc);
-	$Pref::Server::QuotaLAN::Player      = verifyQuotaNumber ($Pref::Server::QuotaLAN::Player, $Min::QuotaLAN::Player, $Max::QuotaLAN::Player, $Default::QuotaLAN::Player);
-	$Pref::Server::QuotaLAN::Projectile  = verifyQuotaNumber ($Pref::Server::QuotaLAN::Projectile, $Min::QuotaLAN::Projectile, $Max::QuotaLAN::Projectile, $Default::QuotaLAN::Projectile);
-	$Pref::Server::QuotaLAN::Schedules   = verifyQuotaNumber ($Pref::Server::QuotaLAN::Schedules, $Min::QuotaLAN::Schedules, $Max::QuotaLAN::Schedules, $Default::QuotaLAN::Schedules);
-	$Pref::Server::QuotaLAN::Vehicle     = verifyQuotaNumber ($Pref::Server::QuotaLAN::Vehicle, $Min::QuotaLAN::Vehicle, $Max::QuotaLAN::Vehicle, $Default::QuotaLAN::Vehicle);
+	$Pref::Server::QuotaLAN::Environment = verifyQuotaNumber ($Pref::Server::QuotaLAN::Environment, $Min::QuotaLAN::Environment, $Max::QuotaLAN::Environment, $Default::QuotaLAN::Environment);
+	$Pref::Server::QuotaLAN::Item = verifyQuotaNumber ($Pref::Server::QuotaLAN::Item, $Min::QuotaLAN::Item, $Max::QuotaLAN::Item, $Default::QuotaLAN::Item);
+	$Pref::Server::QuotaLAN::Misc = verifyQuotaNumber ($Pref::Server::QuotaLAN::Misc, $Min::QuotaLAN::Misc, $Max::QuotaLAN::Misc, $Default::QuotaLAN::Misc);
+	$Pref::Server::QuotaLAN::Player = verifyQuotaNumber ($Pref::Server::QuotaLAN::Player, $Min::QuotaLAN::Player, $Max::QuotaLAN::Player, $Default::QuotaLAN::Player);
+	$Pref::Server::QuotaLAN::Projectile = verifyQuotaNumber ($Pref::Server::QuotaLAN::Projectile, $Min::QuotaLAN::Projectile, $Max::QuotaLAN::Projectile, $Default::QuotaLAN::Projectile);
+	$Pref::Server::QuotaLAN::Schedules = verifyQuotaNumber ($Pref::Server::QuotaLAN::Schedules, $Min::QuotaLAN::Schedules, $Max::QuotaLAN::Schedules, $Default::QuotaLAN::Schedules);
+	$Pref::Server::QuotaLAN::Vehicle = verifyQuotaNumber ($Pref::Server::QuotaLAN::Vehicle, $Min::QuotaLAN::Vehicle, $Max::QuotaLAN::Vehicle, $Default::QuotaLAN::Vehicle);
 
 	$Pref::Server::Quota::Environment = verifyQuotaNumber ($Pref::Server::Quota::Environment, $Min::Quota::Environment, $Max::Quota::Environment, $Default::Quota::Environment);
-	$Pref::Server::Quota::Item        = verifyQuotaNumber ($Pref::Server::Quota::Item, $Min::Quota::Item, $Max::Quota::Item, $Default::Quota::Item);
-	$Pref::Server::Quota::Misc        = verifyQuotaNumber ($Pref::Server::Quota::Misc, $Min::Quota::Misc, $Max::Quota::Misc, $Default::Quota::Misc);
-	$Pref::Server::Quota::Player      = verifyQuotaNumber ($Pref::Server::Quota::Player, $Min::Quota::Player, $Max::Quota::Player, $Default::Quota::Player);
-	$Pref::Server::Quota::Projectile  = verifyQuotaNumber ($Pref::Server::Quota::Projectile, $Min::Quota::Projectile, $Max::Quota::Projectile, $Default::Quota::Projectile);
-	$Pref::Server::Quota::Schedules   = verifyQuotaNumber ($Pref::Server::Quota::Schedules, $Min::Quota::Schedules, $Max::Quota::Schedules, $Default::Quota::Schedules);
-	$Pref::Server::Quota::Vehicle     = verifyQuotaNumber ($Pref::Server::Quota::Vehicle, $Min::Quota::Vehicle, $Max::Quota::Vehicle, $Default::Quota::Vehicle);
+	$Pref::Server::Quota::Item = verifyQuotaNumber ($Pref::Server::Quota::Item, $Min::Quota::Item, $Max::Quota::Item, $Default::Quota::Item);
+	$Pref::Server::Quota::Misc = verifyQuotaNumber ($Pref::Server::Quota::Misc, $Min::Quota::Misc, $Max::Quota::Misc, $Default::Quota::Misc);
+	$Pref::Server::Quota::Player = verifyQuotaNumber ($Pref::Server::Quota::Player, $Min::Quota::Player, $Max::Quota::Player, $Default::Quota::Player);
+	$Pref::Server::Quota::Projectile = verifyQuotaNumber ($Pref::Server::Quota::Projectile, $Min::Quota::Projectile, $Max::Quota::Projectile, $Default::Quota::Projectile);
+	$Pref::Server::Quota::Schedules = verifyQuotaNumber ($Pref::Server::Quota::Schedules, $Min::Quota::Schedules, $Max::Quota::Schedules, $Default::Quota::Schedules);
+	$Pref::Server::Quota::Vehicle = verifyQuotaNumber ($Pref::Server::Quota::Vehicle, $Min::Quota::Vehicle, $Max::Quota::Vehicle, $Default::Quota::Vehicle);
 
 	$Pref::Server::MaxPlayerVehicles_Total = verifyQuotaNumber ($Pref::Server::MaxPlayerVehicles_Total, $Min::MaxPlayerVehicles_Total, $Max::MaxPlayerVehicles_Total, $Default::MaxPlayerVehicles_Total);
-	$Pref::Server::MaxPhysVehicles_Total   = verifyQuotaNumber ($Pref::Server::MaxPhysVehicles_Total, $Min::MaxPhysVehicles_Total, $Max::MaxPhysVehicles_Total, $Default::MaxPhysVehicles_Total);
+	$Pref::Server::MaxPhysVehicles_Total = verifyQuotaNumber ($Pref::Server::MaxPhysVehicles_Total, $Min::MaxPhysVehicles_Total, $Max::MaxPhysVehicles_Total, $Default::MaxPhysVehicles_Total);
 
 	$pref::Net::PacketRateToClient = verifyQuotaNumber ($pref::Net::PacketRateToClient, $Min::Net::PacketRateToClient, $Max::Net::PacketRateToClient, $Default::Net::PacketRateToClient);
 	$pref::Net::PacketRateToServer = verifyQuotaNumber ($pref::Net::PacketRateToServer, $Min::Net::PacketRateToServer, $Max::Net::PacketRateToServer, $Default::Net::PacketRateToServer);
-	$pref::Net::PacketSize         = verifyQuotaNumber ($pref::Net::PacketSize, $Min::Net::PacketSize, $Max::Net::PacketSize, $Default::Net::PacketSize);
-	$Pref::Net::LagThreshold       = verifyQuotaNumber ($Pref::Net::LagThreshold, $Min::Net::LagThreshold, $Max::Net::LagThreshold, $Default::Net::LagThreshold);
+	$pref::Net::PacketSize = verifyQuotaNumber ($pref::Net::PacketSize, $Min::Net::PacketSize, $Max::Net::PacketSize, $Default::Net::PacketSize);
+	$Pref::Net::LagThreshold = verifyQuotaNumber ($Pref::Net::LagThreshold, $Min::Net::LagThreshold, $Max::Net::LagThreshold, $Default::Net::LagThreshold);
 
 	$Pref::Server::GhostLimit = verifyQuotaNumber ($Pref::Server::GhostLimit, $Min::GhostLimit, $Max::GhostLimit, $Default::GhostLimit);
 }
@@ -169,7 +169,7 @@ function onServerCreated ()
 
 	if ( $GameModeArg $= "" || $GameModeArg $= "GameMode_Custom" || $GameModeArg $= "Custom" )
 	{
-		$GameModeArg         = "";
+		$GameModeArg = "";
 		$GameModeDisplayName = "Custom";
 	}
 	else
@@ -194,8 +194,8 @@ function onServerCreated ()
 		else
 		{
 			$GameModeArg = %filename;
-			%filename    = findFirstFile ($GameModeArg);
-			%path        = filePath (%filename);
+			%filename = findFirstFile ($GameModeArg);
+			%path = filePath (%filename);
 
 			$GameModeDisplayName = %path;
 			$GameModeDisplayName = strreplace ($GameModeDisplayName, "Add-Ons/", "");
@@ -365,7 +365,7 @@ function onServerCreated ()
 
 function onServerDestroyed ()
 {
-	// Stub
+	// Empty callback
 }
 
 function verifyBrickUINames ()
@@ -470,7 +470,7 @@ function endGame ()
 
 	resetMission ();
 
-	$Game::Running           = false;
+	$Game::Running = false;
 	$Game::MissionCleaningUp = false;
 }
 
@@ -485,7 +485,7 @@ function GameConnection::onClientEnterGame ( %client )
 	if ( !$Server::LAN )
 	{
 		%doReset = true;
-		%count   = ClientGroup.getCount ();
+		%count = ClientGroup.getCount ();
 
 		for ( %i = 0; %i < %count; %i++ )
 		{
@@ -552,7 +552,7 @@ function GameConnection::onClientEnterGame ( %client )
 	commandToClient (%client, 'clearMapList');
 
 	%client.bpsCount = 0;
-	%client.bpsTime  = %currTime;
+	%client.bpsTime = %currTime;
 
 	sendLetterPrintInfo (%client);
 
@@ -632,7 +632,7 @@ function GameConnection::onClientLeaveGame ( %client )
 	if ( !$Server::LAN )
 	{
 		%doReset = true;
-		%count   = ClientGroup.getCount ();
+		%count = ClientGroup.getCount ();
 
 		for ( %i = 0; %i < %count; %i++ )
 		{
@@ -667,7 +667,7 @@ function GameConnection::onClientLeaveGame ( %client )
 
 					if ( isObject (%quotaObject) )
 					{
-						%quotaObject.cancelEventsEvent      = schedule (31000, %quotaObject, "cancelQuotaSchedules", %quotaObject);
+						%quotaObject.cancelEventsEvent = schedule (31000, %quotaObject, "cancelQuotaSchedules", %quotaObject);
 						%quotaObject.cancelProjectilesEvent = %quotaObject.schedule (31000, $TypeMasks::ProjectileObjectType);
 					}
 				}
@@ -754,12 +754,12 @@ function cleanUpBrickEmptyGroups ()
 
 function GameConnection::onLeaveMissionArea ( %client )
 {
-	// Stub
+	// Empty callback
 }
 
 function GameConnection::onEnterMissionArea ( %client )
 {
-	// Stub
+	// Empty callback
 }
 
 function GameConnection::onDeath ( %client, %sourceObject, %sourceClient, %damageType, %damLoc )
@@ -767,7 +767,7 @@ function GameConnection::onDeath ( %client, %sourceObject, %sourceClient, %damag
 	if ( %sourceObject.sourceObject.isBot )
 	{
 		%sourceClientIsBot = true;
-		%sourceClient      = %sourceObject.sourceObject;
+		%sourceClient = %sourceObject.sourceObject;
 	}
 
 	%player = %client.player;
@@ -1039,7 +1039,7 @@ function GameConnection::createPlayer ( %client, %spawnPoint )
 	%player = new Player ()
 	{
 		dataBlock = %data;
-		client    = %client;
+		client = %client;
 	};
 
 	if ( !isObject (%player) )
@@ -1055,7 +1055,7 @@ function GameConnection::createPlayer ( %client, %spawnPoint )
 	%client.player = %player;
 
 	%player.weaponCount = 0;
-	%player.spawnTime   = getSimTime ();
+	%player.spawnTime = getSimTime ();
 
 	if ( isObject (%oldQuotaObject) )
 	{
@@ -1067,7 +1067,7 @@ function GameConnection::createPlayer ( %client, %spawnPoint )
 	commandToClient (%client, 'PlayGui_CreateToolHud', %player.getDataBlock ().maxTools);
 
 	%client = %client;
-	%mg     = %client.miniGame;
+	%mg = %client.miniGame;
 
 	if ( isObject (%mg) )
 	{
@@ -1125,7 +1125,7 @@ function GameConnection::createPlayer ( %client, %spawnPoint )
 		initialPosition = %player.getHackPosition ();
 
 		sourceObject = %player;
-		sourceSlot   = 0;
+		sourceSlot = 0;
 
 		client = %client;
 	};
@@ -1140,7 +1140,7 @@ function GameConnection::createPlayer ( %client, %spawnPoint )
 function pickSpawnPoint ()
 {
 	%groupName = "MissionGroup/PlayerDropPoints";
-	%group     = nameToID (%groupName);
+	%group = nameToID (%groupName);
 
 	if ( %group != -1 )
 	{
@@ -1158,14 +1158,14 @@ function pickSpawnPoint ()
 				%rayHeight = 100;
 			}
 
-			%trans  = %spawn.getTransform ();
+			%trans = %spawn.getTransform ();
 			%transX = getWord (%trans, 0);
 			%transY = getWord (%trans, 1);
 			%transZ = getWord (%trans, 2);
 
 			for ( %i = 0; %i < 1000; %i++ )
 			{
-				%r   = getRandom (%spawn.radius * 10) / 10;
+				%r = getRandom (%spawn.radius * 10) / 10;
 				%ang = getRandom ($pi * 2 * 100) / 100;
 
 				%transX = getWord (%trans, 0);
@@ -1183,17 +1183,17 @@ function pickSpawnPoint ()
 				%transX += %offsetX;
 				%transY += %offsetY;
 
-				%start    = %transX SPC %transY SPC %transZ + %rayHeight;
-				%end      = %transX SPC %transY SPC %transZ - 2;
-				%mask     = $TypeMasks::FxBrickObjectType | $TypeMasks::StaticObjectType | $TypeMasks::StaticShapeObjectType | $TypeMasks::PlayerObjectType;
+				%start = %transX SPC %transY SPC %transZ + %rayHeight;
+				%end = %transX SPC %transY SPC %transZ - 2;
+				%mask = $TypeMasks::FxBrickObjectType | $TypeMasks::StaticObjectType | $TypeMasks::StaticShapeObjectType | $TypeMasks::PlayerObjectType;
 				%scanTarg = containerRayCast (%start, %end, %mask, 0);
 
 				if ( %scanTarg )
 				{
-					%scanPos   = posFromRaycast (%scanTarg);
-					%transZ    = getWord (%scanPos, 2);
+					%scanPos = posFromRaycast (%scanTarg);
+					%transZ = getWord (%scanPos, 2);
 					%boxCenter = VectorAdd (%scanPos, "0 0 1.6");
-					%mask      = $TypeMasks::FxBrickObjectType | $TypeMasks::StaticShapeObjectType | $TypeMasks::PlayerObjectType;
+					%mask = $TypeMasks::FxBrickObjectType | $TypeMasks::StaticShapeObjectType | $TypeMasks::PlayerObjectType;
 
 					if ( containerBoxClear (%mask, %boxCenter, 0.6, 0.6, 1.3) )
 					{
@@ -1289,7 +1289,7 @@ function GameConnection::resetVehicles ( %client )
 	}
 
 	%ourBrickGroup = %client.brickGroup;
-	%count         = MissionCleanup.getCount ();
+	%count = MissionCleanup.getCount ();
 
 	for ( %i = 0; %i < %count; %i++ )
 	{
@@ -1453,8 +1453,8 @@ function GameConnection::onInfiniteLag ( %client )
 	}
 
 	%currTime = getSimTime ();
-	%pos      = %player.getPosition ();
-	%delta    = VectorSub (%pos, %player.lastInfiniteLagPos);
+	%pos = %player.getPosition ();
+	%delta = VectorSub (%pos, %player.lastInfiniteLagPos);
 	%deltaLen = mAbs (VectorLen (%delta));
 
 	if ( %currTime - mFloor (%player.lastInfiniteLagTime) > 1000
@@ -1506,7 +1506,8 @@ function SimGroup::getTrustFailureMessage ( %group )
 	if ( !isObject (%parent) )
 	{
 		%msg = "ERROR: SimGroup::getTrustFailureMessage(" @ %group.getName ()
-		     @ " [" @ %group.getId () @ "]) - brickgroup is not in a parent group";
+			@ " [" @ %group.getId () @ "]) - brickgroup is not in a parent group";
+
 		error (%msg);
 
 		return %msg;
@@ -1515,7 +1516,8 @@ function SimGroup::getTrustFailureMessage ( %group )
 	if ( %parent != mainBrickGroup.getId () )
 	{
 		%msg = "ERROR: SimGroup::getTrustFailureMessage(" @ %group.getName ()
-		     @ " [" @ %group.getId () @ "]) - brickgroup is not in the main brick group";
+			@ " [" @ %group.getId () @ "]) - brickgroup is not in the main brick group";
+
 		error (%msg);
 
 		return %msg;
@@ -1524,7 +1526,8 @@ function SimGroup::getTrustFailureMessage ( %group )
 	if ( %group.bl_id $= "" )
 	{
 		%msg = "ERROR: SimGroup::getTrustFailureMessage(" @ %group.getName ()
-		     @ " [" @ %group.getId () @ "]) - brickgroup has no bl_id";
+			@ " [" @ %group.getId () @ "]) - brickgroup has no bl_id";
+
 		error (%msg);
 
 		return %msg;

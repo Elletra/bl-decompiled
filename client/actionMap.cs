@@ -23,9 +23,9 @@ function ActionMap::copyBind ( %this, %otherMap, %command )
 		%device = getField (%bind, 0);
 		%action = getField (%bind, 1);
 
-		%flags    = %otherMap.isInverted (%device, %action) ? "SDI" : "SD";
+		%flags = %otherMap.isInverted (%device, %action) ? "SDI" : "SD";
 		%deadZone = %otherMap.getDeadZone (%device, %action);
-		%scale    = %otherMap.getScale (%device, %action);
+		%scale = %otherMap.getScale (%device, %action);
 
 		%this.bind (%device, %action, %flags, %deadZone, %scale, %command);
 	}

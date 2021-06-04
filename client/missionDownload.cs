@@ -31,7 +31,7 @@ function onManifestHashReceived ()
 
 function onManifestRecieved ()
 {
-	$manifestPending   = false;
+	$manifestPending = false;
 	$totalPendingBlobs = 0;
 }
 
@@ -138,7 +138,7 @@ function clientCmdMissionStartPhase2 ( %seq )
 
 function onGhostAlwaysStarted ( %ghostCount )
 {
-	$ghostCount  = %ghostCount;
+	$ghostCount = %ghostCount;
 	$ghostsRecvd = 0;
 }
 

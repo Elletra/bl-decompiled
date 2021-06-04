@@ -58,7 +58,7 @@ function onWindowReactivate ()
 		}
 
 		%oldShaderEnabled = $Shader::Enabled;
-		$Shader::Enabled  = false;
+		$Shader::Enabled = false;
 
 		Canvas.repaint ();
 

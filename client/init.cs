@@ -1,6 +1,6 @@
 function initClient ()
 {
-	%dashes  = "";
+	%dashes = "";
 	%version = atoi ($Version);
 	%version = mClampF (%version, 0, 25);
 
@@ -24,8 +24,8 @@ function initClient ()
 		}
 		else
 		{
-			%desktopW   = getWord (getDesktopResolution (), 0);
-			%desktopH   = getWord (getDesktopResolution (), 1);
+			%desktopW = getWord (getDesktopResolution (), 0);
+			%desktopH = getWord (getDesktopResolution (), 1);
 			%desktopBpp = getWord (getDesktopResolution (), 2);
 
 			%fudge = 30;
@@ -49,7 +49,7 @@ function initClient ()
 	$Server::Dedicated = false;
 
 	// Game information used to query the master server
-	$Client::GameTypeQuery    = "Blockland";
+	$Client::GameTypeQuery = "Blockland";
 	$Client::MissionTypeQuery = "Any";
 
 	// The common module provides basic client functionality
@@ -175,7 +175,7 @@ function convertFile ( %inFileName, %outFileName )
 //-----------------------------------------------------------------------------
 
 
-$ArrangedActive    = false;
+$ArrangedActive = false;
 $ArrangedAddyCount = 0;
 
 function notifyArrangedStart ( %addy )
@@ -193,7 +193,7 @@ function notifyArrangedStart ( %addy )
 
 	%addy = strreplace (%addy, "IP:", "");
 
-	$ArrangedActive    = true;
+	$ArrangedActive = true;
 	$ArrangedAddyCount = 0;
 }
 
@@ -205,7 +205,7 @@ function notifyArrangedAddress ( %addy )
 		return;
 	}
 
-	$ArrangedAddyCount                 = mFloor ($ArrangedAddyCount);
+	$ArrangedAddyCount = mFloor ($ArrangedAddyCount);
 	$ArrangedAddys[$ArrangedAddyCount] = %addy;
 
 	$ArrangedAddyCount++;
@@ -219,7 +219,7 @@ function notifyArrangedFinish ( %nonceA, %nonceB, %spamConnect )
 		return;
 	}
 
-	$ArrangedActive     = false;
+	$ArrangedActive = false;
 	$ArrangedConnection = new GameConnection ();
 
 	if ( isObject (ServerGroup) )
@@ -228,7 +228,7 @@ function notifyArrangedFinish ( %nonceA, %nonceB, %spamConnect )
 	}
 	else
 	{
-		%isClient    = true;
+		%isClient = true;
 		%spamConnect = false;
 
 		Connecting_Text.setText (Connecting_Text.getText () @ "\nStarting arranged connection...");
