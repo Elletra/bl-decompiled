@@ -68,7 +68,10 @@ function updateBlobsRemaining ( %blobsRemaining )
 
 	if ( $totalPendingBlobs > 0 )
 	{
-		LoadingProgressTxt.setValue ("DOWNLOADING FILE " @ ($totalPendingBlobs - %blobsRemaining) + 1 @ " OF " @ $totalPendingBlobs);
+		LoadingProgressTxt.setValue ("DOWNLOADING FILE "
+			@ ($totalPendingBlobs - %blobsRemaining) + 1
+			@ " OF " @ $totalPendingBlobs);
+
 		LoadingProgress.setValue (($totalPendingBlobs - %blobsRemaining) / $totalPendingBlobs);
 		LoadingSecondaryProgress.setValue (0);
 

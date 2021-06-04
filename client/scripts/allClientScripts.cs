@@ -261,13 +261,15 @@ function getLineCount ( %phrase )
 function posFromTransform ( %transform )
 {
 	%position = getWord (%transform, 0) @ " " @ getWord (%transform, 1) @ " " @ getWord (%transform, 2);
-
 	return %position;
 }
 
 function rotFromTransform ( %transform )
 {
-	%rotation = getWord (%transform, 3) @ " " @ getWord (%transform, 4) @ " " @ getWord (%transform, 5) @ " " @ getWord (%transform, 6);
+	%rotation = getWord (%transform, 3) @ " "
+		@ getWord (%transform, 4) @ " "
+		@ getWord (%transform, 5) @ " "
+		@ getWord (%transform, 6);
 
 	return %rotation;
 }
@@ -275,14 +277,12 @@ function rotFromTransform ( %transform )
 function posFromRaycast ( %transform )
 {
 	%position = getWord (%transform, 1) @ " " @ getWord (%transform, 2) @ " " @ getWord (%transform, 3);
-
 	return %position;
 }
 
 function normalFromRaycast ( %transform )
 {
 	%norm = getWord (%transform, 4) @ " " @ getWord (%transform, 5) @ " " @ getWord (%transform, 6);
-
 	return %norm;
 }
 
@@ -311,6 +311,7 @@ function getTimeString ( %timeS )
 		{
 			%minutes = 0 @ %minutes;
 		}
+
 		if ( %seconds < 10 )
 		{
 			%seconds = 0 @ %seconds;
@@ -349,11 +350,12 @@ function isListenServer ()
 {
 	if ( !isObject (ServerConnection) )
 	{
-		return 0;
+		return false;
 	}
+
 	if ( ServerConnection.isLocal () )
 	{
-		return 1;
+		return true;
 	}
 
 	return 0;
@@ -464,6 +466,7 @@ new AudioProfile (ClickPlantSound : ClickMoveSound)
 new AudioDescription (AudioBGMusic2D)
 {
 	volume = 0.8;
+
 	isLooping = true;
 	is3D = true;
 
@@ -483,6 +486,7 @@ new AudioProfile (TitleMusic)
 new AudioDescription (AudioClientClose3d)
 {
 	volume = 1;
+
 	isLooping = false;
 	is3D = true;
 
@@ -537,14 +541,16 @@ function handleClientJoin ()
 	alxPlay (ClientJoinSound);
 }
 
-function secureClientCmd_ClientJoin ( %clientName, %clientId, %bl_id, %score, %isAI, %isAdmin, %isSuperAdmin, %trust, %inYourMiniGame )
+function secureClientCmd_ClientJoin ( %clientName, %clientId, %bl_id, %score, %isAI,
+	%isAdmin, %isSuperAdmin, %trust, %inYourMiniGame )
 {
 	%name = StripMLControlChars (detag (%clientName));
 	%bl_id = mFloor (%bl_id);
 	%trust = mFloor (%trust);
 	%inYourMiniGame = mFloor (%inYourMiniGame);
 
-	NewPlayerListGui.update (%clientId, %name, %bl_id, %isSuperAdmin, %isAdmin, %score, %trust, %inYourMiniGame);
+	NewPlayerListGui.update (%clientId, %name, %bl_id, %isSuperAdmin, %isAdmin, %score,
+		%trust, %inYourMiniGame);
 
 	if ( %bl_id == getLAN_BLID () )
 	{
@@ -2983,74 +2989,66 @@ function GameConnection::onConnectionError ( %this, %msg )
 
 function GameConnection::onConnectRequestRejected ( %this, %msg )
 {
-	if ( %msg $= "CR_BADARGS" )
+	switch$ ( %msg )
 	{
-		%error = "Bad connection arguments";
-	}
-	else if ( %msg $= "CR_INVALID_PROTOCOL_VERSION" )
-	{
-		%error = "Incompatible protocol version: Your game version is not compatible with this server.";
-	}
-	else if ( %msg $= "CR_INVALID_CONNECT_PACKET" )
-	{
-		%error = "Internal Error: badly formed network packet";
-	}
-	else if ( %msg $= "CR_YOUAREBANNED" )
-	{
-		%error = "You are not allowed to play on this server.";
-	}
-	else if ( %msg $= "CR_SERVERFULL" )
-	{
-		%error = "This server is full.";
-	}
-	else if ( %msg $= "CHR_PASSWORD" )
-	{
-		if ( $connectArg || $Connection::Reconnecting )
-		{
-			$JoinNetServer = 1;
+		case "CR_BADARGS":
+			%error = "Bad connection arguments";
 
-			$ServerInfo::Ping = "???";
-			$ServerInfo::Address = $connectArg;
+		case "CR_INVALID_PROTOCOL_VERSION":
+			%error = "Incompatible protocol version: Your game version is not compatible with this server.";
 
-			Canvas.popDialog (connectingGui);
-			Canvas.pushDialog (JoinServerPassGui);
+		case "CR_INVALID_CONNECT_PACKET":
+			%error = "Internal Error: badly formed network packet";
 
-			return;
-		}
+		case "CR_YOUAREBANNED":
+			%error = "You are not allowed to play on this server.";
 
-		%error = "Wrong password.";
-	}
-	else if ( %msg $= "CHR_PROTOCOL" )
-	{
-		%error = "Incompatible protocol version: Your game version is not compatible with this server.";
-	}
-	else if ( %msg $= "CHR_CLASSCRC" )
-	{
-		%error = "Incompatible game classes: Your game version is not compatible with this server.";
-	}
-	else if ( %msg $= "CHR_INVALID_CHALLENGE_PACKET" )
-	{
-		%error = "Internal Error: Invalid server response packet";
-	}
-	else if ( %msg $= "CHR_NO_STEAM" )
-	{
-		%error = "The server does not have steam enabled";
-	}
-	else if ( %msg $= "CHR_BAD_TICKET" )
-	{
-		%error = "Your steam ticket was invalid";
-	}
-	else if ( %msg $= "CHR_STEAM_REQUIRED" )
-	{
-		%error = "The server requires steam";
-	}
-	else if ( getWord (%msg, 0) $= "CR_BANNED" )
-	{
-		%error = "You are banned from this server.  Reason: " @ getWords (%msg, 1, 99);
-	}
-	else
-	{
-		%error = "Connection error.  Please try another server.  Error code: (" @ %msg @ ")";
+		case "CR_SERVERFULL":
+			%error = "This server is full.";
+
+		case "CHR_PASSWORD":
+			if ( $connectArg || $Connection::Reconnecting )
+			{
+				$JoinNetServer = 1;
+
+				$ServerInfo::Ping = "???";
+				$ServerInfo::Address = $connectArg;
+
+				Canvas.popDialog (connectingGui);
+				Canvas.pushDialog (JoinServerPassGui);
+
+				return;
+			}
+
+			%error = "Wrong password.";
+
+		case "CHR_PROTOCOL":
+			%error = "Incompatible protocol version: Your game version is not compatible with this server.";
+
+		case "CHR_CLASSCRC":
+			%error = "Incompatible game classes: Your game version is not compatible with this server.";
+
+		case "CHR_INVALID_CHALLENGE_PACKET":
+			%error = "Internal Error: Invalid server response packet";
+
+		case "CHR_NO_STEAM":
+			%error = "The server does not have steam enabled";
+
+		case "CHR_BAD_TICKET":
+			%error = "Your steam ticket was invalid";
+
+		case "CHR_STEAM_REQUIRED":
+			%error = "The server requires steam";
+
+		default:
+			if ( getWord (%msg, 0) $= "CR_BANNED" )
+			{
+				%error = "You are banned from this server.  Reason: " @ getWords (%msg, 1, 99);
+			}
+			else
+			{
+				%error = "Connection error.  Please try another server.  Error code: (" @ %msg @ ")";
+			}
 	}
 
 	Canvas.popDialog (connectingGui);
@@ -4549,14 +4547,10 @@ function OptRemapInputCtrl::onInputEvent ( %this, %device, %action )
 			{
 				%prevCmdName = $RemapName[%prevMapIndex];
 
-				messageBoxYesNo ("WARNING", "\"" @ %mapName @ "\" is already bound to \"" @ %prevCmdName
-					@ "\"!\nDo you want to undo this mapping?",
-					"redoMapping(" @ %device @ ", \""
-						@ %action @ "\", \""
-						@ %cmd @ "\", "
-						@ %prevMapIndex @ ", "
-						@ %this.index @ ");",
-					"");
+				messageBoxYesNo ("WARNING", "\"" @ %mapName @ "\" is already bound to \""
+					@ %prevCmdName @ "\"!\nDo you want to undo this mapping?",
+					"redoMapping(" @ %device @ ", \"" @ %action @ "\", \"" @ %cmd @ "\", "
+					@ %prevMapIndex @ ", " @ %this.index @ ");", "");
 			}
 
 			return;
@@ -4699,9 +4693,7 @@ function OptAudioUpdateMasterVolume ( %volume )
 
 	if ( !alxIsPlaying ($AudioTestHandle) )
 	{
-		$AudioTestHandle = alxCreateSource ("AudioChannel0",
-			ExpandFilename ("base/data/sound/lightOn.wav"));
-
+		$AudioTestHandle = alxCreateSource ("AudioChannel0", ExpandFilename ("base/data/sound/lightOn.wav"));
 		alxPlay ($AudioTestHandle);
 	}
 }
@@ -5547,7 +5539,6 @@ function useTools ( %val )
 
 			HUD_ToolActive.setVisible (True);
 			setActiveTool ($CurrScrollToolSlot);
-
 			HUD_ToolName.setText (trim ($ToolData[$CurrScrollToolSlot].uiName));
 
 			commandToServer ('UseTool', $CurrScrollToolSlot);
@@ -5567,7 +5558,6 @@ function clientCmdSetActiveTool ( %slot )
 
 	HUD_ToolActive.setVisible (True);
 	setActiveTool ($CurrScrollToolSlot);
-
 	HUD_ToolName.setText (trim ($ToolData[$CurrScrollToolSlot].uiName));
 
 	commandToServer ('UseTool', $CurrScrollToolSlot);
@@ -7000,60 +6990,57 @@ function optionsDlg::setTextureQuality ( %this, %val )
 
 	$pref::TextureQuality = %val;
 
-	if ( %val == 0 )
+	switch ( %val )
 	{
-		$pref::Terrain::texDetail = 0;
-		$pref::Interior::texdetail = 0;
+		case 0:
+			$pref::Terrain::texDetail = 0;
+			$pref::Interior::texdetail = 0;
 
-		$pref::OpenGL::texDetail = 0;
-		$pref::OpenGL::skyTexDetail = 0;
+			$pref::OpenGL::texDetail = 0;
+			$pref::OpenGL::skyTexDetail = 0;
 
-		$pref::Terrain::enableDetails = true;
-		$pref::Terrain::enableEmbossBumps = true;
-	}
-	else if ( %val == 1 )
-	{
-		$pref::Terrain::texDetail = 0;
-		$pref::Interior::texdetail = 0;
+			$pref::Terrain::enableDetails = true;
+			$pref::Terrain::enableEmbossBumps = true;
 
-		$pref::OpenGL::texDetail = 0;
-		$pref::OpenGL::skyTexDetail = 0;
+		case 1:
+			$pref::Terrain::texDetail = 0;
+			$pref::Interior::texdetail = 0;
 
-		$pref::Terrain::enableDetails = false;
-		$pref::Terrain::enableEmbossBumps = false;
-	}
-	else if ( %val == 2 )
-	{
-		$pref::Terrain::texDetail = 1;
-		$pref::Interior::texdetail = 1;
+			$pref::OpenGL::texDetail = 0;
+			$pref::OpenGL::skyTexDetail = 0;
 
-		$pref::OpenGL::texDetail = 1;
-		$pref::OpenGL::skyTexDetail = 1;
+			$pref::Terrain::enableDetails = false;
+			$pref::Terrain::enableEmbossBumps = false;
 
-		$pref::Terrain::enableDetails = false;
-		$pref::Terrain::enableEmbossBumps = false;
-	}
-	else if ( %val == 3 )
-	{
-		$pref::Terrain::texDetail = 2;
-		$pref::Interior::texdetail = 2;
+		case 2:
+			$pref::Terrain::texDetail = 1;
+			$pref::Interior::texdetail = 1;
 
-		$pref::OpenGL::texDetail = 2;
-		$pref::OpenGL::skyTexDetail = 2;
+			$pref::OpenGL::texDetail = 1;
+			$pref::OpenGL::skyTexDetail = 1;
 
-		$pref::Terrain::enableDetails = false;
-		$pref::Terrain::enableEmbossBumps = false;
-	}
-	else if ( %val == 4 )
-	{
-		$pref::Terrain::texDetail = 4;
-		$pref::Interior::texdetail = 4;
+			$pref::Terrain::enableDetails = false;
+			$pref::Terrain::enableEmbossBumps = false;
 
-		$pref::OpenGL::texDetail = 4;
-		$pref::OpenGL::skyTexDetail = 4;
+		case 3:
+			$pref::Terrain::texDetail = 2;
+			$pref::Interior::texdetail = 2;
 
-		$pref::Terrain::enableDetails = false;
-		$pref::Terrain::enableEmbossBumps = false;
+			$pref::OpenGL::texDetail = 2;
+			$pref::OpenGL::skyTexDetail = 2;
+
+			$pref::Terrain::enableDetails = false;
+			$pref::Terrain::enableEmbossBumps = false;
+
+		case 4:
+			$pref::Terrain::texDetail = 4;
+			$pref::Interior::texdetail = 4;
+
+			$pref::OpenGL::texDetail = 4;
+			$pref::OpenGL::skyTexDetail = 4;
+
+			$pref::Terrain::enableDetails = false;
+			$pref::Terrain::enableEmbossBumps = false;
 	}
 }
 
@@ -7071,25 +7058,13 @@ function optionsDlg::setParticleQuality ( %this, %val )
 
 	$pref::ParticleQuality = %val;
 
-	if ( %val == 0 )
+	switch ( %val )
 	{
-		$pref::ParticleDetail = 1;
-	}
-	else if ( %val == 1 )
-	{
-		$pref::ParticleDetail = 2;
-	}
-	else if ( %val == 2 )
-	{
-		$pref::ParticleDetail = 5;
-	}
-	else if ( %val == 3 )
-	{
-		$pref::ParticleDetail = 10;
-	}
-	else if ( %val == 4 )
-	{
-		$pref::ParticleDetail = 15;
+		case 0: $pref::ParticleDetail = 1;
+		case 1: $pref::ParticleDetail = 2;
+		case 2: $pref::ParticleDetail = 5;
+		case 3: $pref::ParticleDetail = 10;
+		case 4: $pref::ParticleDetail = 15;
 	}
 }
 
@@ -7098,22 +7073,19 @@ function optionsDlg::UpdateAvailableShaders ( %this )
 	%glMajorVersion = getSubStr (getGLVersion (), 0, 1);
 	%shaderVersion = getSubStr (getShaderVersion (), 0, 3);
 
-	%haveMinimum = %shaderVersion >= 1.2
-		&& %glMajorVersion >= 2
+	%haveMinimum = %shaderVersion >= 1.2 && %glMajorVersion >= 2
 		&& GLEW_ARB_shader_objects ()
 		&& GLEW_ARB_shading_language_100 ();
 
 	OPT_ShaderQuality1.enabled = %haveMinimum;
 
-	%haveCompatibility = %shaderVersion >= 1.2
-		&& %glMajorVersion >= 2
+	%haveCompatibility = %shaderVersion >= 1.2 && %glMajorVersion >= 2
 		&& GLEW_ARB_shader_objects ()
 		&& GLEW_ARB_shading_language_100 ()
 		&& GLEW_EXT_framebuffer_object ()
 		&& GLEW_ARB_shadow ();
 
-	%haveCSM = %shaderVersion >= 1.2
-		&& %glMajorVersion >= 2
+	%haveCSM = %shaderVersion >= 1.2 && %glMajorVersion >= 2
 		&& GLEW_ARB_shader_objects ()
 		&& GLEW_ARB_shading_language_100 ()
 		&& GLEW_EXT_texture_array ()
@@ -7276,30 +7248,27 @@ function optionsDlg::setLightingQuality ( %this, %val )
 
 	$pref::LightingQuality = %val;
 
-	if ( %val == 4 )
+	switch ( %val )
 	{
-		$pref::OpenGL::maxDynLights = 2;
-		$pref::OpenGL::maxHardwareLights = 3;
-	}
-	else if ( %val == 3 )
-	{
-		$pref::OpenGL::maxDynLights = 4;
-		$pref::OpenGL::maxHardwareLights = 4;
-	}
-	else if ( %val == 2 )
-	{
-		$pref::OpenGL::maxDynLights = 5;
-		$pref::OpenGL::maxHardwareLights = 6;
-	}
-	else if ( %val == 1 )
-	{
-		$pref::OpenGL::maxDynLights = 6;
-		$pref::OpenGL::maxHardwareLights = 8;
-	}
-	else if ( %val == 0 )
-	{
-		$pref::OpenGL::maxDynLights = 10;
-		$pref::OpenGL::maxHardwareLights = 8;
+		case 4:
+			$pref::OpenGL::maxDynLights = 2;
+			$pref::OpenGL::maxHardwareLights = 3;
+
+		case 3:
+			$pref::OpenGL::maxDynLights = 4;
+			$pref::OpenGL::maxHardwareLights = 4;
+
+		case 2:
+			$pref::OpenGL::maxDynLights = 5;
+			$pref::OpenGL::maxHardwareLights = 6;
+
+		case 1:
+			$pref::OpenGL::maxDynLights = 6;
+			$pref::OpenGL::maxHardwareLights = 8;
+
+		case 0:
+			$pref::OpenGL::maxDynLights = 10;
+			$pref::OpenGL::maxHardwareLights = 8;
 	}
 }
 
@@ -7317,30 +7286,27 @@ function optionsDlg::setPhysicsQuality ( %this, %val )
 
 	$pref::PhysicsQuality = %val;
 
-	if ( %val == 4 )
+	switch ( %val )
 	{
-		$pref::Physics::Enabled = false;
-		$pref::Physics::MaxBricks = 1;
-	}
-	else if ( %val == 3 )
-	{
-		$pref::Physics::Enabled = true;
-		$pref::Physics::MaxBricks = 25;
-	}
-	else if ( %val == 2 )
-	{
-		$pref::Physics::Enabled = true;
-		$pref::Physics::MaxBricks = 50;
-	}
-	else if ( %val == 1 )
-	{
-		$pref::Physics::Enabled = true;
-		$pref::Physics::MaxBricks = 100;
-	}
-	else if ( %val == 0 )
-	{
-		$pref::Physics::Enabled = true;
-		$pref::Physics::MaxBricks = 300;
+		case 4:
+			$pref::Physics::Enabled = false;
+			$pref::Physics::MaxBricks = 1;
+
+		case 3:
+			$pref::Physics::Enabled = true;
+			$pref::Physics::MaxBricks = 25;
+
+		case 2:
+			$pref::Physics::Enabled = true;
+			$pref::Physics::MaxBricks = 50;
+
+		case 1:
+			$pref::Physics::Enabled = true;
+			$pref::Physics::MaxBricks = 100;
+
+		case 0:
+			$pref::Physics::Enabled = true;
+			$pref::Physics::MaxBricks = 300;
 	}
 
 	applyPhysicsPrefs ();
@@ -7360,20 +7326,19 @@ function optionsDlg::setBrickFXQuality ( %this, %val )
 
 	$pref::BrickFXQuality = %val;
 
-	if ( %val == 4 )
+	switch ( %val )
 	{
-		$Pref::BrickFX::Shape = 0;
-		$Pref::BrickFX::Color = 0;
-	}
-	else if ( %val == 2 )
-	{
-		$Pref::BrickFX::Shape = 0;
-		$Pref::BrickFX::Color = 1;
-	}
-	else if ( %val == 0 )
-	{
-		$Pref::BrickFX::Shape = 1;
-		$Pref::BrickFX::Color = 1;
+		case 4:
+			$Pref::BrickFX::Shape = 0;
+			$Pref::BrickFX::Color = 0;
+
+		case 2:
+			$Pref::BrickFX::Shape = 0;
+			$Pref::BrickFX::Color = 1;
+
+		case 0:
+			$Pref::BrickFX::Shape = 1;
+			$Pref::BrickFX::Color = 1;
 	}
 }
 
@@ -9425,7 +9390,7 @@ function JoinServerGuiBS::queryWebMaster ( %this )
 	%this.hasQueriedOnce = true;
 	JoinServerGuiBS.lastQueryTime = getSimTime ();
 
-	$JoinNetServer = true;
+	$JoinNetServer = 1;
 	$MasterQueryCanceled = false;
 
 	if ( isObject (queryMasterTCPObj) )
@@ -9438,7 +9403,10 @@ function JoinServerGuiBS::queryWebMaster ( %this )
 	queryMasterTCPObj.site = "master3.blockland.us";
 	queryMasterTCPObj.port = 80;
 	queryMasterTCPObj.filePath = "/index.php";
-	queryMasterTCPObj.cmd = "GET " @ queryMasterTCPObj.filePath @ " HTTP/1.0\r\nHost: " @ queryMasterTCPObj.site @ "\r\n\r\n";
+
+	queryMasterTCPObj.cmd = "GET " @ queryMasterTCPObj.filePath
+		@ " HTTP/1.0\r\nHost: " @ queryMasterTCPObj.site @ "\r\n\r\n";
+
 	queryMasterTCPObj.connect (queryMasterTCPObj.site @ ":" @ queryMasterTCPObj.port);
 
 	JS_queryStatus.setVisible (true);
@@ -13176,9 +13144,7 @@ function SaveBricks_WriteSingleBrick ( %file, %obj )
 			{
 				for ( %j = 0; %j < 4; %j++ )
 				{
-					%field = getField ($OutputEvent_parameterList[%targetClass,
-						%obj.eventOutputIdx[%i]], %j);
-
+					%field = getField ($OutputEvent_parameterList[%targetClass, %obj.eventOutputIdx[%i]], %j);
 					%dataType = getWord (%field, 0);
 
 					if ( %dataType $= "dataBlock" )
@@ -13204,6 +13170,7 @@ function SaveBricks_WriteSingleBrick ( %file, %obj )
 				%par2 = %obj.eventOutputParameter[%i, 2];
 				%par3 = %obj.eventOutputParameter[%i, 3];
 				%par4 = %obj.eventOutputParameter[%i, 4];
+
 				%line = %line TAB %par1 TAB %par2 TAB %par3 TAB %par4;
 			}
 
@@ -13265,7 +13232,6 @@ function LoadBricks_GetColorDifference ( %filename )
 	}
 
 	%file = new FileObject ();
-
 	%file.openForRead (%filename);
 	%file.readLine ();
 
@@ -13483,7 +13449,9 @@ function createUINameTable ()
 
 function LoadBricksGui::onWake ( %this )
 {
-	if ( LoadBricksGui_SavedOwner.getValue () == 0 && LoadBricksGui_Yours.getValue () == 0 && LoadBricksGui_Public.getValue () == 0 )
+	if ( LoadBricksGui_SavedOwner.getValue () == 0
+	  && LoadBricksGui_Yours.getValue () == 0
+	  && LoadBricksGui_Public.getValue () == 0 )
 	{
 		LoadBricksGui_SavedOwner.setValue (1);
 	}
@@ -13851,7 +13819,9 @@ function SaveBricks_Save ()
 
 	if ( !isValidFileName (%filename) )
 	{
-		MessageBoxOK ("Invalid Filename", "Filenames cannot contain any of these characters \\ / : * ? \" < > |");
+		MessageBoxOK ("Invalid Filename",
+			"Filenames cannot contain any of these characters \\ / : * ? \" < > |");
+
 		return;
 	}
 
@@ -13915,7 +13885,6 @@ function SaveBricks_GetFileDescription ( %filename )
 	}
 
 	%file = new FileObject ();
-
 	%file.openForRead (%filename);
 	%file.readLine ();
 
@@ -13960,26 +13929,23 @@ function colorMatch ( %colorA, %colorB )
 function LoadBricks_SendLineToServer ( %line, %i )
 {
 	commandToServer ('UploadSaveFileLine', %line);
-
 	return;
 
 	%firstWord = getWord (%line, 0);
 
-	if ( %firstWord $= "+-LIGHT" )
+	switch$ ( %firstWord )
 	{
-		// Empty, probably commented out
-	}
-	else if ( %firstWord $= "+-EMITTER" )
-	{
-		// Empty, probably commented out
-	}
-	else if ( %firstWord $= "+-ITEM" )
-	{
-		// Empty, probably commented out
-	}
-	else if ( %firstWord $= "+-AUDIOEMITTER" )
-	{
-		// Empty, probably commented out
+		case "+-LIGHT":
+			// Empty, probably commented out
+
+		case "+-EMITTER":
+			// Empty, probably commented out
+
+		case "+-ITEM":
+			// Empty, probably commented out
+
+		case "+-AUDIOEMITTER":
+			// Empty, probably commented out
 	}
 }
 
@@ -13989,69 +13955,67 @@ function LoadBricks_CreateFromLine ( %line, %i )
 
 	%firstWord = getWord (%line, 0);
 
-	if ( %firstWord $= "+-LIGHT" )
+	switch$ ( %firstWord )
 	{
-		if ( $LastLoadedBrick )
-		{
-			%line = getSubStr (%line, 8, strlen (%line) - 8);
-			%pos = strpos (%line, "\"");
-			%dbName = getSubStr (%line, 0, %pos);
-			%db = $uiNameTable_Lights[%dbName];
+		case "+-LIGHT":
+			if ( $LastLoadedBrick )
+			{
+				%line = getSubStr (%line, 8, strlen (%line) - 8);
+				%pos = strpos (%line, "\"");
+				%dbName = getSubStr (%line, 0, %pos);
+				%db = $uiNameTable_Lights[%dbName];
 
-			$LastLoadedBrick.setLight (%db);
-		}
+				$LastLoadedBrick.setLight (%db);
+			}
 
-		return;
-	}
-	else if ( %firstWord $= "+-EMITTER" )
-	{
-		if ( $LastLoadedBrick )
-		{
-			%line = getSubStr (%line, 10, strlen (%line) - 10);
-			%pos = strpos (%line, "\"");
-			%dbName = getSubStr (%line, 0, %pos);
-			%db = $uiNameTable_Emitters[%dbName];
-			%line = getSubStr (%line, %pos + 2, (strlen (%line) - %pos) - 2);
-			%dir = getWord (%line, 0);
+			return;
 
-			$LastLoadedBrick.setEmitter (%db);
-			$LastLoadedBrick.setEmitterDirection (%dir);
-		}
+		case "+-EMITTER":
+			if ( $LastLoadedBrick )
+			{
+				%line = getSubStr (%line, 10, strlen (%line) - 10);
+				%pos = strpos (%line, "\"");
+				%dbName = getSubStr (%line, 0, %pos);
+				%db = $uiNameTable_Emitters[%dbName];
+				%line = getSubStr (%line, %pos + 2, (strlen (%line) - %pos) - 2);
+				%dir = getWord (%line, 0);
 
-		return;
-	}
-	else if ( %firstWord $= "+-ITEM" )
-	{
-		if ( $LastLoadedBrick )
-		{
-			%line = getSubStr (%line, 7, strlen (%line) - 7);
-			%pos = strpos (%line, "\"");
-			%dbName = getSubStr (%line, 0, %pos);
-			%db = $uiNameTable_Items[%dbName];
-			%line = getSubStr (%line, %pos + 2, (strlen (%line) - %pos) - 2);
-			%pos = getWord (%line, 0);
-			%dir = getWord (%line, 1);
+				$LastLoadedBrick.setEmitter (%db);
+				$LastLoadedBrick.setEmitterDirection (%dir);
+			}
 
-			$LastLoadedBrick.setItem (%db);
-			$LastLoadedBrick.setItemDirection (%dir);
-			$LastLoadedBrick.setItemPosition (%pos);
-		}
+			return;
 
-		return;
-	}
-	else if ( %firstWord $= "+-AUDIOEMITTER" )
-	{
-		if ( $LastLoadedBrick )
-		{
-			%line = getSubStr (%line, 15, strlen (%line) - 15);
-			%pos = strpos (%line, "\"");
-			%dbName = getSubStr (%line, 0, %pos);
-			%db = $uiNameTable_Music[%dbName];
+		case "+-ITEM":
+			if ( $LastLoadedBrick )
+			{
+				%line = getSubStr (%line, 7, strlen (%line) - 7);
+				%pos = strpos (%line, "\"");
+				%dbName = getSubStr (%line, 0, %pos);
+				%db = $uiNameTable_Items[%dbName];
+				%line = getSubStr (%line, %pos + 2, (strlen (%line) - %pos) - 2);
+				%pos = getWord (%line, 0);
+				%dir = getWord (%line, 1);
 
-			$LastLoadedBrick.setSound (%db);
-		}
+				$LastLoadedBrick.setItem (%db);
+				$LastLoadedBrick.setItemDirection (%dir);
+				$LastLoadedBrick.setItemPosition (%pos);
+			}
 
-		return;
+			return;
+
+		case "+-AUDIOEMITTER":
+			if ( $LastLoadedBrick )
+			{
+				%line = getSubStr (%line, 15, strlen (%line) - 15);
+				%pos = strpos (%line, "\"");
+				%dbName = getSubStr (%line, 0, %pos);
+				%db = $uiNameTable_Music[%dbName];
+
+				$LastLoadedBrick.setSound (%db);
+			}
+
+			return;
 	}
 
 	%quotePos = strstr (%line, "\"");
@@ -18517,9 +18481,14 @@ function wrenchDlg::LoadDataBlocks ()
 		{
 			switch$ ( %dbClass )
 			{
-				case "FxLightData": Wrench_Lights.add (%db.uiName, %db);
-				case "ParticleEmitterData": Wrench_Emitters.add (%db.uiName, %db);
-				case "ItemData": Wrench_Items.add (%db.uiName, %db);
+				case "FxLightData":
+					Wrench_Lights.add (%db.uiName, %db);
+
+				case "ParticleEmitterData":
+					Wrench_Emitters.add (%db.uiName, %db);
+
+				case "ItemData":
+					Wrench_Items.add (%db.uiName, %db);
 
 				case "AudioProfile":
 					if ( %db.getDescription ().isLooping )
@@ -18599,6 +18568,7 @@ function wrenchDlg::send ( %this )
 
 	%lightDB = Wrench_Lights.getSelected ();
 	%data = %data TAB "LDB" SPC %lightDB;
+
 	%emitterDB = Wrench_Emitters.getSelected ();
 	%data = %data TAB "EDB" SPC %emitterDB;
 
@@ -18617,6 +18587,7 @@ function wrenchDlg::send ( %this )
 
 	%data = %data TAB "EDIR" SPC %emitterDir;
 	%itemDB = Wrench_Items.getSelected ();
+
 	%data = %data TAB "IDB" SPC %itemDB;
 
 	%itemPos = 0;
@@ -19410,7 +19381,6 @@ function regName_tcpObj::onLine ( %this, %line )
 
 			regName_actionButton.enabled = true;
 			regName_actionButton.mColor = "255 255 255 255";
-
 			regName_actionButton.setText ("Register");
 
 			regName_newName.enabled = true;
@@ -19443,8 +19413,8 @@ function regName_tcpObj::onLine ( %this, %line )
 			}
 
 			$pref::Player::NetName = %name;
-			MM_AuthText.setText ("Welcome, " @ %name);
 
+			MM_AuthText.setText ("Welcome, " @ %name);
 			MM_AuthBar.blinkSuccess ();
 
 			Canvas.popDialog ("regNameGui");
@@ -19615,6 +19585,7 @@ function colorGui::update ( %this )
 		%v = ColorGui_Slider2.getValue ();
 
 		%RGB = HSVtoRGB (%h, %s, %v);
+
 		%r = getWord (%RGB, 0);
 		%g = getWord (%RGB, 1);
 		%b = getWord (%RGB, 2);
@@ -19634,6 +19605,7 @@ function colorGui::doCallbacks ( %this )
 		%g = ColorGui_Slider1.getValue ();
 		%b = ColorGui_Slider2.getValue ();
 		%a = ColorGui_Slider3.getValue ();
+
 		%rgba = %r SPC %g SPC %b SPC %a;
 	}
 	else
@@ -19644,6 +19616,7 @@ function colorGui::doCallbacks ( %this )
 		%a = ColorGui_Slider3.getValue ();
 
 		%rgba = HSVtoRGB (%h, %s, %v) SPC %a;
+
 		%r = getWord (%rgba, 0);
 		%g = getWord (%rgba, 1);
 		%b = getWord (%rgba, 2);
@@ -19677,10 +19650,10 @@ function colorGui::clickCancel ( %this )
 	%a = getWord (%rgba, 3);
 
 	%rgbaUB = mFloor (%r * 255) SPC mFloor (%g * 255) SPC mFloor (%b * 255) SPC mFloor (%a * 255);
-
 	%this.targetSwatch.color = %rgbaUB;
 
 	eval (%this.callBack);
+
 	Canvas.popDialog (colorGui);
 }
 
@@ -20011,6 +19984,7 @@ function ColorSetGui::update ()
 	}
 
 	%a = ColorSetGui_Slider3.getValue ();
+
 	$Avatar::Color[ColorSetGui.currColor] = %r SPC %g SPC %b SPC %a;
 
 	colorSet_Result.setColor ($Avatar::Color[ColorSetGui.currColor]);
@@ -20668,7 +20642,6 @@ function wrenchEventsDlg::newEvent ( %this )
 
 	%w = getWord (wrenchEvents_Scroll.getExtent (), 0) - 12;
 	%h = 36;
-
 	%x = 0;
 	%y = (%h + 3) * %this.numEvents;
 
@@ -20680,7 +20653,6 @@ function wrenchEventsDlg::newEvent ( %this )
 
 	%x = 0;
 	%y = 0;
-
 	%w = 36;
 	%h = 18;
 
@@ -20695,7 +20667,6 @@ function wrenchEventsDlg::newEvent ( %this )
 
 	%x = 2 + getWord (%lastObject.getPosition (), 0) + getWord (%lastObject.getExtent (), 0);
 	%y = 0;
-
 	%w = 36;
 	%h = 18;
 
@@ -20710,7 +20681,6 @@ function wrenchEventsDlg::newEvent ( %this )
 
 	%x = 2 + getWord (%lastObject.getPosition (), 0) + getWord (%lastObject.getExtent (), 0);
 	%y = 0;
-
 	%w = 100;
 	%h = 18;
 
@@ -20732,7 +20702,6 @@ function wrenchEventsDlg::newEvent ( %this )
 
 	%x = 0;
 	%y = 0;
-
 	%w = getWord (wrenchEvents_Scroll.getExtent (), 0) - 12;
 	%h = getWord (%box.getExtent (), 1) + getWord (%box.getPosition (), 1);
 
@@ -20782,7 +20751,6 @@ function wrenchEventsDlg::reshuffleScrollbox ( %this, %target )
 
 		%w = getWord (%obj.getExtent (), 0);
 		%h = getWord (%obj.getExtent (), 1);
-
 		%x = 0;
 		%y = (%h + 3) * %i;
 
@@ -20794,8 +20762,8 @@ function wrenchEventsDlg::reshuffleScrollbox ( %this, %target )
 	for ( %i = 0; %i < %count; %i++ )
 	{
 		%obj = WrenchEvents_Box.getObject (%i);
-		%checkBox = %obj.getObject (0);
 
+		%checkBox = %obj.getObject (0);
 		%checkBox.setText (%i);
 	}
 }
@@ -20840,7 +20808,6 @@ function wrenchEventsDlg::createTargetList ( %this, %box, %inputMenu )
 
 	%x = 2 + getWord (%lastObject.getPosition (), 0) + getWord (%lastObject.getExtent (), 0);
 	%y = getWord (%lastObject.getPosition (), 1);
-
 	%w = 100;
 	%h = 18;
 
@@ -20924,7 +20891,6 @@ function wrenchEventsDlg::CreateNamedBrickList ( %this, %box, %targetMenu, %inpu
 
 		%x = getWord (%lastObject.getPosition (), 0) + 4;
 		%y = getWord (%lastObject.getPosition (), 1) + getWord (%lastObject.getExtent (), 1);
-
 		%w = 96;
 		%h = 18;
 
@@ -21018,8 +20984,10 @@ function wrenchEventsDlg::createOutputList ( %this, %box, %targetMenu, %inputEve
 
 	%outputMenu.resize (%x, %y, %w, %h);
 
-	%outputMenu.command = "wrenchEventsDlg.createOutputParameters(" @ %box @ "," @ %outputMenu
-		@ "," @ %outputClass @ ");";
+	%outputMenu.command = "wrenchEventsDlg.createOutputParameters("
+		@ %box @ ","
+		@ %outputMenu @ ","
+		@ %outputClass @ ");";
 
 	for ( %i = 0; %i < $OutputEvent_Count[%outputClass]; %i++ )
 	{
@@ -21091,301 +21059,293 @@ function wrenchEventsDlg::createOutputParameters ( %this, %box, %outputMenu, %ou
 
 		%type = getWord (%field, 0);
 
-		if ( %type $= "int" )
+		switch$ ( %type )
 		{
-			%min = mFloor (getWord (%field, 1));
-			%max = mFloor (getWord (%field, 2));
-			%default = mFloor (getWord (%field, 3));
-			%maxChars = 1;
+			case "int":
+				%min = mFloor (getWord (%field, 1));
+				%max = mFloor (getWord (%field, 2));
+				%default = mFloor (getWord (%field, 3));
+				%maxChars = 1;
 
-			if ( %min < 0 )
-			{
-				%testVal = getMax (mAbs (%min) * 10, %max);
-			}
-			else
-			{
-				%testVal = getMax (mAbs (%min), %max);
-			}
-
-			while ( %testVal >= 10 )
-			{
-				%maxChars++;
-				%testVal /= 10;
-			}
-
-			%gui = new GuiTextEditCtrl ();
-			%box.add (%gui);
-
-			%w = (%maxChars * 6) + 6;
-
-			%gui.resize (%x, %y, %w, %h);
-			%gui.command = "wrenchEventsDlg.VerifyInt(" @ %gui @ "," @ %min @ "," @ %max @ ");";
-			%gui.setText (%default);
-		}
-		else if ( %type $= "intList" )
-		{
-			%maxLength = 200;
-
-			%width = mFloor (getWord (%field, 1));
-
-			%gui = new GuiTextEditCtrl ();
-			%box.add (%gui);
-
-			%w = %width;
-
-			%gui.resize (%x, %y, %w, %h);
-			%gui.maxLength = %maxLength;
-		}
-		else if ( %type $= "float" )
-		{
-			%min = atof (getWord (%field, 1));
-			%max = atof (getWord (%field, 2));
-			%step = mAbs (getWord (%field, 3));
-			%default = atof (getWord (%field, 4));
-
-			if ( %step >= %max - %min )
-			{
-				%step = (%max - %min) / 10;
-			}
-
-			if ( %step <= 0 )
-			{
-				%step = 0.1;
-			}
-
-			%gui = new GuiSliderCtrl ();
-			%box.add (%gui);
-
-			%w = 100;
-			%h = 36;
-
-			%gui.resize (%x, %y, %w, %h);
-			%gui.range = %min SPC %max;
-			%gui.setValue (%default);
-
-			%gui.command = " $thisControl.setValue(       mFloor( $thisControl.getValue() * (1 / "
-				@ %step @ ") )   * " @ %step @ "   ) ;";
-		}
-		else if ( %type $= "bool" )
-		{
-			%gui = new GuiCheckBoxCtrl ();
-			%box.add (%gui);
-
-			%w = %h;
-
-			%gui.resize (%x, %y, %w, %h);
-			%gui.setText ("");
-		}
-		else if ( %type $= "string" )
-		{
-			%maxLength = mFloor (getWord (%field, 1));
-			%width = mFloor (getWord (%field, 2));
-
-			%gui = new GuiTextEditCtrl ();
-			%box.add (%gui);
-
-			%w = %width;
-
-			%gui.resize (%x, %y, %w, %h);
-			%gui.maxLength = %maxLength;
-		}
-		else if ( %type $= "datablock" )
-		{
-			%dbClassName = getWord (%field, 1);
-
-			%gui = new GuiPopUpMenuCtrl ();
-			%box.add (%gui);
-
-			%w = 100;
-			%gui.resize (%x, %y, %w, %h);
-
-			%dbCount = getDataBlockGroupSize ();
-
-			if ( %dbClassName $= "Music" )
-			{
-				for ( %itr = 0; %itr < %dbCount; %itr++ )
+				if ( %min < 0 )
 				{
-					%db = getDataBlock (%itr);
-					%dbClass = %db.getClassName ();
-
-					if ( %dbClass !$= "AudioProfile" )
-					{
-						continue;
-					}
-
-					if ( %db.uiName $= "" )
-					{
-						continue;
-					}
-
-					%gui.add (%db.uiName, %db);
+					%testVal = getMax (mAbs (%min) * 10, %max);
 				}
-			}
-			else if ( %dbClassName $= "Sound" )
-			{
-				for ( %itr = 0; %itr < %dbCount; %itr++ )
+				else
 				{
-					%db = getDataBlock (%itr);
-					%dbClass = %db.getClassName ();
-
-					if ( %dbClass !$= "AudioProfile" )
-					{
-						continue;
-					}
-
-					if ( %db.uiName !$= "" )
-					{
-						continue;
-					}
-
-					if ( %db.getDescription ().isLooping == 1 )
-					{
-						continue;
-					}
-
-					if ( !%db.getDescription ().is3D )
-					{
-						continue;
-					}
-
-					%name = fileName (%db.fileName);
-					%gui.add (%name, %db);
+					%testVal = getMax (mAbs (%min), %max);
 				}
-			}
-			else if ( %dbClassName $= "Vehicle" )
-			{
-				for ( %itr = 0; %itr < %dbCount; %itr++ )
+
+				while ( %testVal >= 10 )
 				{
-					%db = getDataBlock (%itr);
-					%dbClass = %db.getClassName ();
+					%maxChars++;
+					%testVal /= 10;
+				}
 
-					if ( %db.uiName $= "" )
-					{
-						continue;
-					}
+				%gui = new GuiTextEditCtrl ();
+				%box.add (%gui);
 
-					if ( %dbClass $= "WheeledVehicleData" || %dbClass $= "HoverVehicleData"
-					  || %dbClass $= "FlyingVehicleData" || (%dbClass $= "PlayerData" && %db.rideAble) )
+				%w = (%maxChars * 6) + 6;
+
+				%gui.resize (%x, %y, %w, %h);
+				%gui.command = "wrenchEventsDlg.VerifyInt(" @ %gui @ "," @ %min @ "," @ %max @ ");";
+				%gui.setText (%default);
+
+			case "intList":
+				%maxLength = 200;
+
+				%width = mFloor (getWord (%field, 1));
+
+				%gui = new GuiTextEditCtrl ();
+				%box.add (%gui);
+
+				%w = %width;
+
+				%gui.resize (%x, %y, %w, %h);
+				%gui.maxLength = %maxLength;
+
+			case "float":
+				%min = atof (getWord (%field, 1));
+				%max = atof (getWord (%field, 2));
+				%step = mAbs (getWord (%field, 3));
+				%default = atof (getWord (%field, 4));
+
+				if ( %step >= %max - %min )
+				{
+					%step = (%max - %min) / 10;
+				}
+
+				if ( %step <= 0 )
+				{
+					%step = 0.1;
+				}
+
+				%gui = new GuiSliderCtrl ();
+				%box.add (%gui);
+
+				%w = 100;
+				%h = 36;
+
+				%gui.resize (%x, %y, %w, %h);
+				%gui.range = %min SPC %max;
+				%gui.setValue (%default);
+
+				%gui.command = " $thisControl.setValue(       mFloor( $thisControl.getValue() * (1 / "
+					@ %step @ ") )   * " @ %step @ "   ) ;";
+
+			case "bool":
+				%gui = new GuiCheckBoxCtrl ();
+				%box.add (%gui);
+
+				%w = %h;
+
+				%gui.resize (%x, %y, %w, %h);
+				%gui.setText ("");
+
+			case "string":
+				%maxLength = mFloor (getWord (%field, 1));
+				%width = mFloor (getWord (%field, 2));
+
+				%gui = new GuiTextEditCtrl ();
+				%box.add (%gui);
+
+				%w = %width;
+
+				%gui.resize (%x, %y, %w, %h);
+				%gui.maxLength = %maxLength;
+
+			case "datablock":
+				%dbClassName = getWord (%field, 1);
+
+				%gui = new GuiPopUpMenuCtrl ();
+				%box.add (%gui);
+
+				%w = 100;
+				%gui.resize (%x, %y, %w, %h);
+
+				%dbCount = getDataBlockGroupSize ();
+
+				if ( %dbClassName $= "Music" )
+				{
+					for ( %itr = 0; %itr < %dbCount; %itr++ )
 					{
+						%db = getDataBlock (%itr);
+						%dbClass = %db.getClassName ();
+
+						if ( %dbClass !$= "AudioProfile" )
+						{
+							continue;
+						}
+
+						if ( %db.uiName $= "" )
+						{
+							continue;
+						}
+
 						%gui.add (%db.uiName, %db);
 					}
 				}
-			}
-			else
-			{
-				for ( %itr = 0; %itr < %dbCount; %itr++ )
+				else if ( %dbClassName $= "Sound" )
 				{
-					%db = getDataBlock (%itr);
-					%dbClass = %db.getClassName ();
-
-					if ( %db.uiName $= "" )
+					for ( %itr = 0; %itr < %dbCount; %itr++ )
 					{
-						continue;
-					}
+						%db = getDataBlock (%itr);
+						%dbClass = %db.getClassName ();
 
-					if ( %dbClass !$= %dbClassName )
-					{
-						continue;
-					}
+						if ( %dbClass !$= "AudioProfile" )
+						{
+							continue;
+						}
 
-					%gui.add (%db.uiName, %db);
+						if ( %db.uiName !$= "" )
+						{
+							continue;
+						}
+
+						if ( %db.getDescription ().isLooping == 1 )
+						{
+							continue;
+						}
+
+						if ( !%db.getDescription ().is3D )
+						{
+							continue;
+						}
+
+						%name = fileName (%db.fileName);
+						%gui.add (%name, %db);
+					}
 				}
-			}
+				else if ( %dbClassName $= "Vehicle" )
+				{
+					for ( %itr = 0; %itr < %dbCount; %itr++ )
+					{
+						%db = getDataBlock (%itr);
+						%dbClass = %db.getClassName ();
 
-			%gui.sort ();
-			%gui.addFront ("NONE", -1);
+						if ( %db.uiName $= "" )
+						{
+							continue;
+						}
 
-			if ( !$WrenchEventLoading )
-			{
-				%gui.forceOnAction ();
-			}
-		}
-		else if ( %type $= "vector" )
-		{
-			%tw = 31;
+						if ( %dbClass $= "WheeledVehicleData" || %dbClass $= "HoverVehicleData"
+						  || %dbClass $= "FlyingVehicleData" || (%dbClass $= "PlayerData" && %db.rideAble) )
+						{
+							%gui.add (%db.uiName, %db);
+						}
+					}
+				}
+				else
+				{
+					for ( %itr = 0; %itr < %dbCount; %itr++ )
+					{
+						%db = getDataBlock (%itr);
+						%dbClass = %db.getClassName ();
 
-			%gui = new GuiSwatchCtrl ();
-			%box.add (%gui);
+						if ( %db.uiName $= "" )
+						{
+							continue;
+						}
 
-			%w = ((%tw + 2) * 3) + 2;
+						if ( %dbClass !$= %dbClassName )
+						{
+							continue;
+						}
 
-			%gui.resize (%x, %y, %w, %h);
-			%gui.setColor ("0 0 0 0.75");
+						%gui.add (%db.uiName, %db);
+					}
+				}
 
-			%xTextBox = new GuiTextEditCtrl ();
-			%gui.add (%xTextBox);
+				%gui.sort ();
+				%gui.addFront ("NONE", -1);
 
-			%tx = 0 + 2;
-			%ty = 0;
-			%th = %h;
+				if ( !$WrenchEventLoading )
+				{
+					%gui.forceOnAction ();
+				}
 
-			%xTextBox.resize (%tx, %ty, %tw, %th);
+			case "vector":
+				%tw = 31;
 
-			%yTextBox = new GuiTextEditCtrl ();
-			%gui.add (%yTextBox);
+				%gui = new GuiSwatchCtrl ();
+				%box.add (%gui);
 
-			%tx = ((%tw + 2) * 1) + 2;
-			%yTextBox.resize (%tx, %ty, %tw, %th);
+				%w = ((%tw + 2) * 3) + 2;
 
-			%zTextBox = new GuiTextEditCtrl ();
-			%gui.add (%zTextBox);
+				%gui.resize (%x, %y, %w, %h);
+				%gui.setColor ("0 0 0 0.75");
 
-			%tx = ((%tw + 2) * 2) + 2;
-			%zTextBox.resize (%tx, %ty, %tw, %th);
+				%xTextBox = new GuiTextEditCtrl ();
+				%gui.add (%xTextBox);
 
-			%gui = %xTextBox;
-		}
-		else if ( %type $= "list" )
-		{
-			%gui = new GuiPopUpMenuCtrl ();
-			%box.add (%gui);
+				%tx = 0 + 2;
+				%ty = 0;
+				%th = %h;
 
-			%w = 100;
-			%h = 18;
+				%xTextBox.resize (%tx, %ty, %tw, %th);
 
-			%gui.resize (%x, %y, %w, %h);
-			%itemCount = (getWordCount (%field) - 1) / 2;
+				%yTextBox = new GuiTextEditCtrl ();
+				%gui.add (%yTextBox);
 
-			for ( %itr = 0; %itr < %itemCount; %itr++ )
-			{
-				%idx = (%itr * 2) + 1;
-				%name = getWord (%field, %idx);
-				%id = getWord (%field, %idx + 1);
+				%tx = ((%tw + 2) * 1) + 2;
+				%yTextBox.resize (%tx, %ty, %tw, %th);
 
-				%gui.add (%name, %id);
-			}
+				%zTextBox = new GuiTextEditCtrl ();
+				%gui.add (%zTextBox);
 
-			%gui.setSelected (false);
+				%tx = ((%tw + 2) * 2) + 2;
+				%zTextBox.resize (%tx, %ty, %tw, %th);
 
-			if ( !$WrenchEventLoading )
-			{
-				%gui.forceOnAction ();
-			}
-		}
-		else if ( %type $= "paintColor" )
-		{
-			%gui = new GuiSwatchCtrl ();
-			%box.add (%gui);
+				%gui = %xTextBox;
 
-			%w = 18;
-			%h = 18;
+			case "list":
+				%gui = new GuiPopUpMenuCtrl ();
+				%box.add (%gui);
 
-			%gui.resize (%x, %y, %w, %h);
+				%w = 100;
+				%h = 18;
 
-			%button = new GuiBitmapButtonCtrl ();
-			%gui.add (%button);
+				%gui.resize (%x, %y, %w, %h);
+				%itemCount = (getWordCount (%field) - 1) / 2;
 
-			%button.resize (0, 0, %w, %h);
-			%button.setBitmap ("base/client/ui/btnColor");
-			%button.setText ("");
+				for ( %itr = 0; %itr < %itemCount; %itr++ )
+				{
+					%idx = (%itr * 2) + 1;
+					%name = getWord (%field, %idx);
+					%id = getWord (%field, %idx + 1);
 
-			%button.command = "WrenchEventsDlg.CreateColorMenu(" @ %gui @ ");";
+					%gui.add (%name, %id);
+				}
 
-			wrenchEventsDlg.pickColor (%gui, 0);
-		}
-		else
-		{
-			error ("ERROR: wrenchEventsDlg::createOutputParameters() - unknown type \"" @ %type @ "\"");
+				%gui.setSelected (false);
+
+				if ( !$WrenchEventLoading )
+				{
+					%gui.forceOnAction ();
+				}
+
+			case "paintColor":
+				%gui = new GuiSwatchCtrl ();
+				%box.add (%gui);
+
+				%w = 18;
+				%h = 18;
+
+				%gui.resize (%x, %y, %w, %h);
+
+				%button = new GuiBitmapButtonCtrl ();
+				%gui.add (%button);
+
+				%button.resize (0, 0, %w, %h);
+				%button.setBitmap ("base/client/ui/btnColor");
+				%button.setText ("");
+
+				%button.command = "WrenchEventsDlg.CreateColorMenu(" @ %gui @ ");";
+
+				wrenchEventsDlg.pickColor (%gui, 0);
+
+			default:
+				error ("ERROR: wrenchEventsDlg::createOutputParameters() - unknown type \"" @ %type @ "\"");
 		}
 
 		if ( !%focusControl )
@@ -25410,11 +25370,20 @@ function clientCmdEnvGui_SetVar ( %varName, %value )
 			EnvGui_PaneSimple.setVisible ($EnvGui::SimpleMode);
 			EnvGui_PaneAdvanced.setVisible (!$EnvGui::SimpleMode);
 
-		case "SkyIdx": $EnvGui::SkyIdx = mClamp (%value, 0, $EnvGui::SkyCount);
-		case "WaterIdx": $EnvGui::WaterIdx = mClamp (%value, 0, $EnvGui::WaterCount);
-		case "GroundIdx": $EnvGui::GroundIdx = mClamp (%value, 0, $EnvGui::GroundCount);
-		case "DayOffset": $EnvGui::DayOffset = mClampF (%value, 0, 1);
-		case "DayLength": $EnvGui::DayLength = mClamp (%value, 0, 86400);
+		case "SkyIdx":
+			$EnvGui::SkyIdx = mClamp (%value, 0, $EnvGui::SkyCount);
+
+		case "WaterIdx":
+			$EnvGui::WaterIdx = mClamp (%value, 0, $EnvGui::WaterCount);
+
+		case "GroundIdx":
+			$EnvGui::GroundIdx = mClamp (%value, 0, $EnvGui::GroundCount);
+
+		case "DayOffset":
+			$EnvGui::DayOffset = mClampF (%value, 0, 1);
+
+		case "DayLength":
+			$EnvGui::DayLength = mClamp (%value, 0, 86400);
 
 		case "DayCycleEnabled":
 			$EnvGui::DayCycleEnabled = mClamp (%value, 0, 1);
@@ -25424,31 +25393,80 @@ function clientCmdEnvGui_SetVar ( %varName, %value )
 			EnvGui_SkyColorBlocker.setVisible ($EnvGui::DayCycleEnabled);
 			EnvGui_SunFlareColorBlocker.setVisible ($EnvGui::DayCycleEnabled);
 
-		case "DayCycleIdx": $EnvGui::DayCycleIdx = mClamp (%value, 0, $EnvGui::DayCycleCount);
-		case "SunAzimuth": $EnvGui::SunAzimuth = atof (%value);
-		case "SunElevation": $EnvGui::SunElevation = atof (%value);
-		case "DirectLightColor": $EnvGui::DirectLightColor = getColorF (%value);
-		case "AmbientLightColor": $EnvGui::AmbientLightColor = getColorF (%value);
-		case "ShadowColor": $EnvGui::ShadowColor = getColorF (%value);
-		case "SunFlareColor": $EnvGui::SunFlareColor = getColorF (%value);
-		case "SunFlareSize": $EnvGui::SunFlareSize = atof (%value);
-		case "SunFlareTopIdx": $EnvGui::SunFlareTopIdx = mClamp (%value, 0, $EnvGui::SunFlareCount);
-		case "SunFlareBottomIdx": $EnvGui::SunFlareBottomIdx = mClamp (%value, 0, $EnvGui::SunFlareCount);
-		case "VisibleDistance": $EnvGui::VisibleDistance = atof (%value);
-		case "FogDistance": $EnvGui::FogDistance = atof (%value);
-		case "FogHeight": $EnvGui::FogHeight = atof (%value);
-		case "FogColor": $EnvGui::FogColor = getColorF (%value);
-		case "WaterColor": $EnvGui::WaterColor = getColorF (%value);
-		case "WaterHeight": $EnvGui::WaterHeight = atof (%value);
-		case "UnderWaterColor": $EnvGui::UnderWaterColor = getColorF (%value);
-		case "SkyColor": $EnvGui::SkyColor = getColorF (%value);
-		case "WaterScrollX": $EnvGui::WaterScrollX = atof (%value);
-		case "WaterScrollY": $EnvGui::WaterScrollY = atof (%value);
-		case "GroundColor": $EnvGui::GroundColor = getColorF (%value);
-		case "GroundScrollX": $EnvGui::GroundScrollX = atof (%value);
-		case "GroundScrollY": $EnvGui::GroundScrollY = atof (%value);
-		case "VignetteMultiply": $EnvGui::VignetteMultiply = mClamp (%value, 0, 1);
-		case "VignetteColor": $EnvGui::VignetteColor = getColorF (%value);
+		case "DayCycleIdx":
+			$EnvGui::DayCycleIdx = mClamp (%value, 0, $EnvGui::DayCycleCount);
+
+		case "SunAzimuth":
+			$EnvGui::SunAzimuth = atof (%value);
+
+		case "SunElevation":
+			$EnvGui::SunElevation = atof (%value);
+
+		case "DirectLightColor":
+			$EnvGui::DirectLightColor = getColorF (%value);
+
+		case "AmbientLightColor":
+			$EnvGui::AmbientLightColor = getColorF (%value);
+
+		case "ShadowColor":
+			$EnvGui::ShadowColor = getColorF (%value);
+
+		case "SunFlareColor":
+			$EnvGui::SunFlareColor = getColorF (%value);
+
+		case "SunFlareSize":
+			$EnvGui::SunFlareSize = atof (%value);
+
+		case "SunFlareTopIdx":
+			$EnvGui::SunFlareTopIdx = mClamp (%value, 0, $EnvGui::SunFlareCount);
+
+		case "SunFlareBottomIdx":
+			$EnvGui::SunFlareBottomIdx = mClamp (%value, 0, $EnvGui::SunFlareCount);
+
+		case "VisibleDistance":
+			$EnvGui::VisibleDistance = atof (%value);
+
+		case "FogDistance":
+			$EnvGui::FogDistance = atof (%value);
+
+		case "FogHeight":
+			$EnvGui::FogHeight = atof (%value);
+
+		case "FogColor":
+			$EnvGui::FogColor = getColorF (%value);
+
+		case "WaterColor":
+			$EnvGui::WaterColor = getColorF (%value);
+
+		case "WaterHeight":
+			$EnvGui::WaterHeight = atof (%value);
+
+		case "UnderWaterColor":
+			$EnvGui::UnderWaterColor = getColorF (%value);
+
+		case "SkyColor":
+			$EnvGui::SkyColor = getColorF (%value);
+
+		case "WaterScrollX":
+			$EnvGui::WaterScrollX = atof (%value);
+
+		case "WaterScrollY":
+			$EnvGui::WaterScrollY = atof (%value);
+
+		case "GroundColor":
+			$EnvGui::GroundColor = getColorF (%value);
+
+		case "GroundScrollX":
+			$EnvGui::GroundScrollX = atof (%value);
+
+		case "GroundScrollY":
+			$EnvGui::GroundScrollY = atof (%value);
+
+		case "VignetteMultiply":
+			$EnvGui::VignetteMultiply = mClamp (%value, 0, 1);
+
+		case "VignetteColor":
+			$EnvGui::VignetteColor = getColorF (%value);
 	}
 }
 
@@ -25462,8 +25480,8 @@ function clientCmdEnvGui_AddSky ( %filename )
 {
 	$EnvGui::SkyCount = mFloor ($EnvGui::SkyCount);
 	$EnvGui::Sky[$EnvGui::SkyCount] = %filename;
-	$EnvGui::SkyThumb[$EnvGui::SkyCount] = filePath (%filename)
-		@ "/" @ fileBase (%filename) @ "-thumb.jpg";
+	$EnvGui::SkyThumb[$EnvGui::SkyCount] = filePath (%filename) @ "/"
+		@ fileBase (%filename) @ "-thumb.jpg";
 
 	$EnvGui::SkyCount++;
 }
@@ -25479,8 +25497,8 @@ function clientCmdEnvGui_AddWater ( %filename )
 	}
 	else
 	{
-		$EnvGui::WaterThumb[$EnvGui::WaterCount] = filePath (%filename)
-			@ "/" @ fileBase (%filename) @ "-thumb.jpg";
+		$EnvGui::WaterThumb[$EnvGui::WaterCount] = filePath (%filename) @ "/"
+			@ fileBase (%filename) @ "-thumb.jpg";
 	}
 
 	$EnvGui::WaterCount++;
@@ -25490,8 +25508,8 @@ function clientCmdEnvGui_AddGround ( %filename )
 {
 	$EnvGui::GroundCount = mFloor ($EnvGui::GroundCount);
 	$EnvGui::Ground[$EnvGui::GroundCount] = %filename;
-	$EnvGui::GroundThumb[$EnvGui::GroundCount] = filePath (%filename)
-		@ "/" @ fileBase (%filename) @ "-thumb.jpg";
+	$EnvGui::GroundThumb[$EnvGui::GroundCount] = filePath (%filename) @ "/"
+		@ fileBase (%filename) @ "-thumb.jpg";
 
 	$EnvGui::GroundCount++;
 }
@@ -26516,7 +26534,8 @@ function GameModeGui::ClickSelect ( %this )
 		else
 		{
 			messageBoxYesNo ("Changing game mode requires restart",
-				"Restart server?\n\n(bricks will NOT be saved)", "canvas.popDialog(GameModeGui); commandToServer(\'GameModeGuiServer_ChangeGameMode\', "
+				"Restart server?\n\n(bricks will NOT be saved)",
+				"canvas.popDialog(GameModeGui); commandToServer(\'GameModeGuiServer_ChangeGameMode\', "
 				@ $GameModeGui::CurrGameModeIdx @ ");", "");
 		}
 	}
@@ -26911,6 +26930,7 @@ function ServerSettingsGui::clickLaunchGame ( %this )
 			{
 				MessageBoxOK ("Error", "You need to have steam to host an internet game",
 					"mainMenuGui.showButtons();");
+
 				return;
 			}
 		}
@@ -27042,6 +27062,7 @@ function CustomGameGui::onWake ( %this )
 			CustomGameGui_SelectButton.setVisible (false);
 			CustomGameGui.populateAddOnList ();
 		}
+
 		if ( $CustomGameGui::MusicCount <= 0 )
 		{
 			CustomGameGui_SelectButton.setVisible (false);
@@ -27095,11 +27116,11 @@ function clientCmdCustomGameGui_AddAddOn ( %varName, %enabled )
 
 	if ( %enabled > 0 )
 	{
-		%enabled = 1;
+		%enabled = true;
 	}
 	else
 	{
-		%enabled = 0;
+		%enabled = false;
 	}
 
 	$CustomGameGui::AddOn[$CustomGameGui::AddOnCount] = %varName;
@@ -27113,11 +27134,11 @@ function clientCmdCustomGameGui_AddMusic ( %base, %enabled )
 
 	if ( %enabled > 0 )
 	{
-		%enabled = 1;
+		%enabled = true;
 	}
 	else
 	{
-		%enabled = 0;
+		%enabled = false;
 	}
 
 	$CustomGameGui::Music[$CustomGameGui::MusicCount] = %base;
@@ -28529,8 +28550,7 @@ function hatTCPObj::onLine ( %this, %line )
 			%this.filePath = %url;
 
 			%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n"
-				@ "Host: " @ %this.site
-				@ "\r\n"
+				@ "Host: " @ %this.site @ "\r\n"
 				@ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n"
 				@ "Content-Type: application/x-www-form-urlencoded\r\n"
 				@ "Content-Length: " @ %this.postTextLen @ "\r\n"

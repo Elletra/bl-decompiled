@@ -83,31 +83,89 @@ function setDefaultServerVars ()
 
 function validatePrefs ()
 {
-	$Pref::Server::QuotaLAN::Environment = verifyQuotaNumber ($Pref::Server::QuotaLAN::Environment, $Min::QuotaLAN::Environment, $Max::QuotaLAN::Environment, $Default::QuotaLAN::Environment);
-	$Pref::Server::QuotaLAN::Item = verifyQuotaNumber ($Pref::Server::QuotaLAN::Item, $Min::QuotaLAN::Item, $Max::QuotaLAN::Item, $Default::QuotaLAN::Item);
-	$Pref::Server::QuotaLAN::Misc = verifyQuotaNumber ($Pref::Server::QuotaLAN::Misc, $Min::QuotaLAN::Misc, $Max::QuotaLAN::Misc, $Default::QuotaLAN::Misc);
-	$Pref::Server::QuotaLAN::Player = verifyQuotaNumber ($Pref::Server::QuotaLAN::Player, $Min::QuotaLAN::Player, $Max::QuotaLAN::Player, $Default::QuotaLAN::Player);
-	$Pref::Server::QuotaLAN::Projectile = verifyQuotaNumber ($Pref::Server::QuotaLAN::Projectile, $Min::QuotaLAN::Projectile, $Max::QuotaLAN::Projectile, $Default::QuotaLAN::Projectile);
-	$Pref::Server::QuotaLAN::Schedules = verifyQuotaNumber ($Pref::Server::QuotaLAN::Schedules, $Min::QuotaLAN::Schedules, $Max::QuotaLAN::Schedules, $Default::QuotaLAN::Schedules);
-	$Pref::Server::QuotaLAN::Vehicle = verifyQuotaNumber ($Pref::Server::QuotaLAN::Vehicle, $Min::QuotaLAN::Vehicle, $Max::QuotaLAN::Vehicle, $Default::QuotaLAN::Vehicle);
+	$Pref::Server::QuotaLAN::Environment = verifyQuotaNumber ($Pref::Server::QuotaLAN::Environment,
+		$Min::QuotaLAN::Environment, $Max::QuotaLAN::Environment,
+		$Default::QuotaLAN::Environment);
 
-	$Pref::Server::Quota::Environment = verifyQuotaNumber ($Pref::Server::Quota::Environment, $Min::Quota::Environment, $Max::Quota::Environment, $Default::Quota::Environment);
-	$Pref::Server::Quota::Item = verifyQuotaNumber ($Pref::Server::Quota::Item, $Min::Quota::Item, $Max::Quota::Item, $Default::Quota::Item);
-	$Pref::Server::Quota::Misc = verifyQuotaNumber ($Pref::Server::Quota::Misc, $Min::Quota::Misc, $Max::Quota::Misc, $Default::Quota::Misc);
-	$Pref::Server::Quota::Player = verifyQuotaNumber ($Pref::Server::Quota::Player, $Min::Quota::Player, $Max::Quota::Player, $Default::Quota::Player);
-	$Pref::Server::Quota::Projectile = verifyQuotaNumber ($Pref::Server::Quota::Projectile, $Min::Quota::Projectile, $Max::Quota::Projectile, $Default::Quota::Projectile);
-	$Pref::Server::Quota::Schedules = verifyQuotaNumber ($Pref::Server::Quota::Schedules, $Min::Quota::Schedules, $Max::Quota::Schedules, $Default::Quota::Schedules);
-	$Pref::Server::Quota::Vehicle = verifyQuotaNumber ($Pref::Server::Quota::Vehicle, $Min::Quota::Vehicle, $Max::Quota::Vehicle, $Default::Quota::Vehicle);
+	$Pref::Server::QuotaLAN::Item = verifyQuotaNumber ($Pref::Server::QuotaLAN::Item,
+		$Min::QuotaLAN::Item, $Max::QuotaLAN::Item,
+		$Default::QuotaLAN::Item);
 
-	$Pref::Server::MaxPlayerVehicles_Total = verifyQuotaNumber ($Pref::Server::MaxPlayerVehicles_Total, $Min::MaxPlayerVehicles_Total, $Max::MaxPlayerVehicles_Total, $Default::MaxPlayerVehicles_Total);
-	$Pref::Server::MaxPhysVehicles_Total = verifyQuotaNumber ($Pref::Server::MaxPhysVehicles_Total, $Min::MaxPhysVehicles_Total, $Max::MaxPhysVehicles_Total, $Default::MaxPhysVehicles_Total);
+	$Pref::Server::QuotaLAN::Misc = verifyQuotaNumber ($Pref::Server::QuotaLAN::Misc,
+		$Min::QuotaLAN::Misc, $Max::QuotaLAN::Misc,
+		$Default::QuotaLAN::Misc);
 
-	$pref::Net::PacketRateToClient = verifyQuotaNumber ($pref::Net::PacketRateToClient, $Min::Net::PacketRateToClient, $Max::Net::PacketRateToClient, $Default::Net::PacketRateToClient);
-	$pref::Net::PacketRateToServer = verifyQuotaNumber ($pref::Net::PacketRateToServer, $Min::Net::PacketRateToServer, $Max::Net::PacketRateToServer, $Default::Net::PacketRateToServer);
-	$pref::Net::PacketSize = verifyQuotaNumber ($pref::Net::PacketSize, $Min::Net::PacketSize, $Max::Net::PacketSize, $Default::Net::PacketSize);
-	$Pref::Net::LagThreshold = verifyQuotaNumber ($Pref::Net::LagThreshold, $Min::Net::LagThreshold, $Max::Net::LagThreshold, $Default::Net::LagThreshold);
+	$Pref::Server::QuotaLAN::Player = verifyQuotaNumber ($Pref::Server::QuotaLAN::Player,
+		$Min::QuotaLAN::Player, $Max::QuotaLAN::Player,
+		$Default::QuotaLAN::Player);
 
-	$Pref::Server::GhostLimit = verifyQuotaNumber ($Pref::Server::GhostLimit, $Min::GhostLimit, $Max::GhostLimit, $Default::GhostLimit);
+	$Pref::Server::QuotaLAN::Projectile = verifyQuotaNumber ($Pref::Server::QuotaLAN::Projectile,
+		$Min::QuotaLAN::Projectile, $Max::QuotaLAN::Projectile,
+		$Default::QuotaLAN::Projectile);
+
+	$Pref::Server::QuotaLAN::Schedules = verifyQuotaNumber ($Pref::Server::QuotaLAN::Schedules,
+		$Min::QuotaLAN::Schedules, $Max::QuotaLAN::Schedules,
+		$Default::QuotaLAN::Schedules);
+
+	$Pref::Server::QuotaLAN::Vehicle = verifyQuotaNumber ($Pref::Server::QuotaLAN::Vehicle,
+		$Min::QuotaLAN::Vehicle, $Max::QuotaLAN::Vehicle,
+		$Default::QuotaLAN::Vehicle);
+
+	$Pref::Server::Quota::Environment = verifyQuotaNumber ($Pref::Server::Quota::Environment,
+		$Min::Quota::Environment, $Max::Quota::Environment,
+		$Default::Quota::Environment);
+
+	$Pref::Server::Quota::Item = verifyQuotaNumber ($Pref::Server::Quota::Item,
+		$Min::Quota::Item, $Max::Quota::Item,
+		$Default::Quota::Item);
+
+	$Pref::Server::Quota::Misc = verifyQuotaNumber ($Pref::Server::Quota::Misc,
+		$Min::Quota::Misc, $Max::Quota::Misc,
+		$Default::Quota::Misc);
+
+	$Pref::Server::Quota::Player = verifyQuotaNumber ($Pref::Server::Quota::Player,
+		$Min::Quota::Player, $Max::Quota::Player,
+		$Default::Quota::Player);
+
+	$Pref::Server::Quota::Projectile = verifyQuotaNumber ($Pref::Server::Quota::Projectile,
+		$Min::Quota::Projectile, $Max::Quota::Projectile,
+		$Default::Quota::Projectile);
+
+	$Pref::Server::Quota::Schedules = verifyQuotaNumber ($Pref::Server::Quota::Schedules,
+		$Min::Quota::Schedules, $Max::Quota::Schedules,
+		$Default::Quota::Schedules);
+
+	$Pref::Server::Quota::Vehicle = verifyQuotaNumber ($Pref::Server::Quota::Vehicle,
+		$Min::Quota::Vehicle, $Max::Quota::Vehicle,
+		$Default::Quota::Vehicle);
+
+	$Pref::Server::MaxPlayerVehicles_Total = verifyQuotaNumber ($Pref::Server::MaxPlayerVehicles_Total,
+		$Min::MaxPlayerVehicles_Total, $Max::MaxPlayerVehicles_Total,
+		$Default::MaxPlayerVehicles_Total);
+
+	$Pref::Server::MaxPhysVehicles_Total = verifyQuotaNumber ($Pref::Server::MaxPhysVehicles_Total,
+		$Min::MaxPhysVehicles_Total, $Max::MaxPhysVehicles_Total,
+		$Default::MaxPhysVehicles_Total);
+
+	$pref::Net::PacketRateToClient = verifyQuotaNumber ($pref::Net::PacketRateToClient,
+		$Min::Net::PacketRateToClient, $Max::Net::PacketRateToClient,
+		$Default::Net::PacketRateToClient);
+
+	$pref::Net::PacketRateToServer = verifyQuotaNumber ($pref::Net::PacketRateToServer,
+		$Min::Net::PacketRateToServer, $Max::Net::PacketRateToServer,
+		$Default::Net::PacketRateToServer);
+
+	$pref::Net::PacketSize = verifyQuotaNumber ($pref::Net::PacketSize,
+		$Min::Net::PacketSize, $Max::Net::PacketSize,
+		$Default::Net::PacketSize);
+
+	$Pref::Net::LagThreshold = verifyQuotaNumber ($Pref::Net::LagThreshold,
+		$Min::Net::LagThreshold, $Max::Net::LagThreshold,
+		$Default::Net::LagThreshold);
+
+	$Pref::Server::GhostLimit = verifyQuotaNumber ($Pref::Server::GhostLimit,
+		$Min::GhostLimit, $Max::GhostLimit,
+		$Default::GhostLimit);
 }
 
 function onServerCreated ()
@@ -115,7 +173,6 @@ function onServerCreated ()
 	$Game::StartTime = 0;
 
 	exec ("./DamageTypes.cs");
-
 	initDefaultDamageTypes ();
 
 	exec ("./allGameScripts.cs");
@@ -159,7 +216,8 @@ function onServerCreated ()
 		error ("ERROR: Required functions missing from allGameScripts");
 
 		schedule (10, 0, disconnect);
-		schedule (100, 0, MessageBoxOK, "File Error", "Required script files have been corrupted.\n\nPlease re-install the game.");
+		schedule (100, 0, MessageBoxOK, "File Error",
+			"Required script files have been corrupted.\n\nPlease re-install the game.");
 
 		return;
 	}
@@ -668,8 +726,11 @@ function GameConnection::onClientLeaveGame ( %client )
 
 					if ( isObject (%quotaObject) )
 					{
-						%quotaObject.cancelEventsEvent = schedule (31000, %quotaObject, "cancelQuotaSchedules", %quotaObject);
-						%quotaObject.cancelProjectilesEvent = %quotaObject.schedule (31000, $TypeMasks::ProjectileObjectType);
+						%quotaObject.cancelEventsEvent = schedule (31000, %quotaObject,
+							"cancelQuotaSchedules", %quotaObject);
+
+						%quotaObject.cancelProjectilesEvent = %quotaObject.schedule (31000,
+							$TypeMasks::ProjectileObjectType);
 					}
 				}
 			}
@@ -843,7 +904,8 @@ function GameConnection::onDeath ( %client, %sourceObject, %sourceClient, %damag
 	{
 		if ( %sourceClient && isObject (%sourceClient.player) )
 		{
-			%playerVelocity = ((VectorLen (VectorSub (%player.preHitVelocity, %sourceClient.player.getVelocity ())) / 2.64) * 6 * 3600) / 5280;
+			%playerVelocity = ((VectorLen (VectorSub (%player.preHitVelocity,
+				%sourceClient.player.getVelocity ())) / 2.64) * 6 * 3600) / 5280;
 		}
 		else
 		{
@@ -852,14 +914,16 @@ function GameConnection::onDeath ( %client, %sourceObject, %sourceClient, %damag
 
 		%playerPos = %player.getPosition ();
 
-		%mask = $TypeMasks::StaticShapeObjectType | $TypeMasks::FxBrickObjectType | $TypeMasks::TerrainObjectType;
+		%mask = $TypeMasks::StaticShapeObjectType | $TypeMasks::FxBrickObjectType
+			| $TypeMasks::TerrainObjectType;
 
 		%res0 = containerRayCast (VectorAdd (%playerPos, "0 0 2"), VectorAdd (%playerPos, "0 0  -6.8"), %mask);
 		%res1 = containerRayCast (VectorAdd (%playerPos, "0 0 2"), VectorAdd (%playerPos, "0 -1 -6.8"), %mask);
 		%res2 = containerRayCast (VectorAdd (%playerPos, "0 0 2"), VectorAdd (%playerPos, "1 1  -6.8"), %mask);
 		%res3 = containerRayCast (VectorAdd (%playerPos, "0 0 2"), VectorAdd (%playerPos, "-1 1 -6.8"), %mask);
 
-		if ( !isObject (getWord (%res0, 0)) && !isObject (getWord (%res1, 0)) && !isObject (getWord (%res2, 0)) && !isObject (getWord (%res3, 0)) )
+		if ( !isObject (getWord (%res0, 0)) && !isObject (getWord (%res1, 0))
+		  && !isObject (getWord (%res2, 0)) && !isObject (getWord (%res3, 0)) )
 		{
 			%range = round ((VectorLen (VectorSub (%playerPos, %sourceObject.originPoint)) / 2.65) * 6);
 
@@ -1186,7 +1250,10 @@ function pickSpawnPoint ()
 
 				%start = %transX SPC %transY SPC %transZ + %rayHeight;
 				%end = %transX SPC %transY SPC %transZ - 2;
-				%mask = $TypeMasks::FxBrickObjectType | $TypeMasks::StaticObjectType | $TypeMasks::StaticShapeObjectType | $TypeMasks::PlayerObjectType;
+
+				%mask = $TypeMasks::FxBrickObjectType | $TypeMasks::StaticObjectType
+					| $TypeMasks::StaticShapeObjectType | $TypeMasks::PlayerObjectType;
+
 				%scanTarg = containerRayCast (%start, %end, %mask, 0);
 
 				if ( %scanTarg )
@@ -1194,7 +1261,9 @@ function pickSpawnPoint ()
 					%scanPos = posFromRaycast (%scanTarg);
 					%transZ = getWord (%scanPos, 2);
 					%boxCenter = VectorAdd (%scanPos, "0 0 1.6");
-					%mask = $TypeMasks::FxBrickObjectType | $TypeMasks::StaticShapeObjectType | $TypeMasks::PlayerObjectType;
+
+					%mask = $TypeMasks::FxBrickObjectType | $TypeMasks::StaticShapeObjectType
+						| $TypeMasks::PlayerObjectType;
 
 					if ( containerBoxClear (%mask, %boxCenter, 0.6, 0.6, 1.3) )
 					{
@@ -1487,12 +1556,14 @@ function GameConnection::onInfiniteLag ( %client )
 
 function GameConnection::transmitMaxPlayers ( %client )
 {
-	secureCommandToClient ("zbR4HmJcSY8hdRhr", %client, 'SetMaxPlayersDisplay', $Pref::Server::MaxPlayers);
+	secureCommandToClient ("zbR4HmJcSY8hdRhr", %client, 'SetMaxPlayersDisplay',
+		$Pref::Server::MaxPlayers);
 }
 
 function GameConnection::transmitServerName ( %client )
 {
-	secureCommandToClient ("zbR4HmJcSY8hdRhr", %client, 'SetServerNameDisplay', $pref::Player::NetName, $Server::Name);
+	secureCommandToClient ("zbR4HmJcSY8hdRhr", %client, 'SetServerNameDisplay',
+		$pref::Player::NetName, $Server::Name);
 }
 
 function GameConnection::sendTrustFailureMessage ( %client, %targetBrickGroup )
