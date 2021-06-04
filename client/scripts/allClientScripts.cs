@@ -359,7 +359,6 @@ function isListenServer ()
 	return 0;
 }
 
-
 $GuiAudioType = 1;
 $SimAudioType = 2;
 $MessageAudioType = 3;
@@ -612,7 +611,6 @@ function handleClientInYourMiniGame ( %msgType, %msgString, %clientId, %val )
 	NewPlayerListGui.updateInYourMiniGame (%clientId, %val);
 }
 
-
 addMessageCallback ('InitTeams', handleInitTeams);
 addMessageCallback ('AddTeam', handleAddTeam);
 addMessageCallback ('RemoveTeam', handleRemoveTeam);
@@ -637,7 +635,6 @@ function handleSetTeamName ( %msgType, %msgString, %teamID, %teamName )
 {
 	ClientTeamManager.setTeamName (%teamID, %teamName);
 }
-
 
 addMessageCallback ('AddClientToTeam', handleAddClientToTeam);
 addMessageCallback ('RemoveClientFromTeam', handleRemoveClientFromTeam);
@@ -1706,12 +1703,12 @@ function clientCmdTrustListUpload_Start ()
 
 function MiniGameInviteGui::onWake ( %this )
 {
-	// Stub
+	// Empty callback
 }
 
 function MiniGameInviteGui::onSleep ( %this )
 {
-	// Stub
+	// Empty callback
 }
 
 function clientCmdMiniGameInvite ( %title, %name, %bl_id, %miniGameID )
@@ -1784,7 +1781,7 @@ function joinMiniGameGui::onWake ( %this )
 
 function joinMiniGameGui::onSleep ( %this )
 {
-	// Stub
+	// Empty callback
 }
 
 function clientCmdAddMiniGameLine ( %line, %id, %colorIdx )
@@ -2205,7 +2202,7 @@ function CreateMiniGameGui::LoadDataBlocks ()
 
 function CreateMiniGameGui::onSleep ( %this )
 {
-	// Stub
+	// Empty callback
 }
 
 function ClientCmdAddMiniGameColor ( %idx, %name, %RGB )
@@ -2446,7 +2443,7 @@ function CreateMiniGameGui::send ( %this )
 
 function connectingGui::onWake ()
 {
-	// Stub
+	// Empty callback
 }
 
 function onSendConnectChallengeRequest ()
@@ -2721,12 +2718,12 @@ function clientCmdSetRemoteServerData ( %serverLAN, %listenServer )
 
 function clientCmdSyncClock ( %time )
 {
-	// Stub
+	// Empty, possibly commented out
 }
 
 function GameConnection::prepDemoRecord ( %this )
 {
-	// Stub
+	// Empty, probably commented out
 }
 
 function GameConnection::prepDemoPlayback ( %this )
@@ -2761,7 +2758,7 @@ function onPhase1Progress ( %progress )
 
 function onPhase1Complete ()
 {
-	// Stub
+	// Empty callback
 }
 
 function onMissionDownloadPhase2 ()
@@ -2787,7 +2784,7 @@ function onPhase2Progress ( %progress )
 
 function onPhase2Complete ()
 {
-	// Stub
+	// Empty callback
 }
 
 function onMissionDownloadPhase3 ()
@@ -2880,7 +2877,6 @@ function getValidSaveName ( %saveName )
 
 	return %saveName;
 }
-
 
 addMessageCallback ('MsgConnectionError', handleConnectionErrorMessage);
 
@@ -3977,7 +3973,6 @@ function optionsDlg::applyGraphics ( %this )
 	setVerticalSync (!$pref::Video::disableVerticalSync);
 }
 
-
 $RemapCount = 0;
 
 $RemapDivision[$RemapCount] = "Movement";
@@ -3985,415 +3980,334 @@ $RemapName[$RemapCount] = "Forward";
 $RemapCmd[$RemapCount] = "moveforward";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Backward";
 $RemapCmd[$RemapCount] = "movebackward";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Strafe Left";
 $RemapCmd[$RemapCount] = "moveleft";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Strafe Right";
 $RemapCmd[$RemapCount] = "moveright";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Jump";
 $RemapCmd[$RemapCount] = "jump";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Crouch";
 $RemapCmd[$RemapCount] = "crouch";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Walk";
 $RemapCmd[$RemapCount] = "walk";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Jet";
 $RemapCmd[$RemapCount] = "jet";
 
 $RemapCount++;
-
 $RemapDivision[$RemapCount] = "View";
 $RemapName[$RemapCount] = "Turn Left";
 $RemapCmd[$RemapCount] = "turnLeft";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Turn Right";
 $RemapCmd[$RemapCount] = "turnRight";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Look Up";
 $RemapCmd[$RemapCount] = "panUp";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Look Down";
 $RemapCmd[$RemapCount] = "panDown";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Toggle Zoom";
 $RemapCmd[$RemapCount] = "toggleZoom";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Free Look";
 $RemapCmd[$RemapCount] = "toggleFreeLook";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Switch 1st/3rd";
 $RemapCmd[$RemapCount] = "toggleFirstPerson";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Drop Camera at Player";
 $RemapCmd[$RemapCount] = "dropCameraAtPlayer";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Drop Player at Camera";
 $RemapCmd[$RemapCount] = "dropPlayerAtCamera";
 
 $RemapCount++;
-
 $RemapDivision[$RemapCount] = "Action";
 $RemapName[$RemapCount] = "Fire Weapon/Tool";
 $RemapCmd[$RemapCount] = "mouseFire";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Suicide";
 $RemapCmd[$RemapCount] = "Suicide";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Next Vehicle Seat";
 $RemapCmd[$RemapCount] = "NextSeat";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Prev Vehicle Seat";
 $RemapCmd[$RemapCount] = "PrevSeat";
 
 $RemapCount++;
-
 $RemapDivision[$RemapCount] = "Communication";
 $RemapName[$RemapCount] = "Global Chat";
 $RemapCmd[$RemapCount] = "GlobalChat";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Team Chat";
 $RemapCmd[$RemapCount] = "TeamChat";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Chat Hud PageUp";
 $RemapCmd[$RemapCount] = "PageUpNewChatHud";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Chat Hud PageDown";
 $RemapCmd[$RemapCount] = "PageDownNewChatHud";
 
 $RemapCount++;
-
 $RemapDivision[$RemapCount] = "Gui";
 $RemapName[$RemapCount] = "Toggle Cursor";
 $RemapCmd[$RemapCount] = "ToggleCursor";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Open Admin Window";
 $RemapCmd[$RemapCount] = "openAdminWindow";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Open Options Window";
 $RemapCmd[$RemapCount] = "openOptionsWindow";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Show Player List";
 $RemapCmd[$RemapCount] = "showPlayerList";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Toggle NetGraph";
 $RemapCmd[$RemapCount] = "toggleNetGraph";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Toggle Player Names / Crosshair";
 $RemapCmd[$RemapCount] = "ToggleShapeNameHud";
 
 $RemapCount++;
-
 $RemapDivision[$RemapCount] = "Tools / Inventory";
 $RemapName[$RemapCount] = "Use Bricks";
 $RemapCmd[$RemapCount] = "useBricks";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use Tools";
 $RemapCmd[$RemapCount] = "useTools";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use Spray Can";
 $RemapCmd[$RemapCount] = "useSprayCan";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use Light";
 $RemapCmd[$RemapCount] = "useLight";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Drop Tool";
 $RemapCmd[$RemapCount] = "dropTool";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use 1st Slot";
 $RemapCmd[$RemapCount] = "useFirstSlot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use 2nd Slot";
 $RemapCmd[$RemapCount] = "useSecondSlot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use 3rd Slot";
 $RemapCmd[$RemapCount] = "useThirdSlot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use 4th Slot";
 $RemapCmd[$RemapCount] = "useFourthSlot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use 5th Slot";
 $RemapCmd[$RemapCount] = "useFifthSlot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use 6th Slot";
 $RemapCmd[$RemapCount] = "useSixthSlot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use 7th Slot";
 $RemapCmd[$RemapCount] = "useSeventhSlot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use 8th Slot";
 $RemapCmd[$RemapCount] = "useEighthSlot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use 9th Slot";
 $RemapCmd[$RemapCount] = "useNinthSlot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Use 10th Slot";
 $RemapCmd[$RemapCount] = "useTenthSlot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Inventory Up";
 $RemapCmd[$RemapCount] = "invUp";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Inventory Down";
 $RemapCmd[$RemapCount] = "invDown";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Inventory Left";
 $RemapCmd[$RemapCount] = "invLeft";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Inventory Right";
 $RemapCmd[$RemapCount] = "invRight";
 
 $RemapCount++;
-
 $RemapDivision[$RemapCount] = "Building";
 $RemapName[$RemapCount] = "Open Brick Selector";
 $RemapCmd[$RemapCount] = "openBSD";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Plant Brick";
 $RemapCmd[$RemapCount] = "plantBrick";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Undo Brick";
 $RemapCmd[$RemapCount] = "undoBrick";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Cancel Brick";
 $RemapCmd[$RemapCount] = "cancelBrick";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Shift Brick Away";
 $RemapCmd[$RemapCount] = "shiftBrickAway";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Shift Brick Towards";
 $RemapCmd[$RemapCount] = "shiftBrickTowards";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Shift Brick Left";
 $RemapCmd[$RemapCount] = "shiftBrickLeft";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Shift Brick Right";
 $RemapCmd[$RemapCount] = "shiftBrickRight";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Shift Brick Up";
 $RemapCmd[$RemapCount] = "shiftBrickUp";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Shift Brick Down";
 $RemapCmd[$RemapCount] = "shiftBrickDown";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Shift Brick Up 1/3";
 $RemapCmd[$RemapCount] = "shiftBrickThirdUp";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Shift Brick Down 1/3";
 $RemapCmd[$RemapCount] = "shiftBrickThirdDown";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Rotate Brick CW";
 $RemapCmd[$RemapCount] = "RotateBrickCW";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Rotate Brick CCW";
 $RemapCmd[$RemapCount] = "RotateBrickCCW";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Toggle Super Shift";
 $RemapCmd[$RemapCount] = "toggleSuperShift";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Super Shift Brick Away";
 $RemapCmd[$RemapCount] = "superShiftBrickAwayProxy";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Super Shift Brick Towards";
 $RemapCmd[$RemapCount] = "superShiftBrickTowardsProxy";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Super Shift Brick Left";
 $RemapCmd[$RemapCount] = "superShiftBrickLeftProxy";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Super Shift Brick Right";
 $RemapCmd[$RemapCount] = "superShiftBrickRightProxy";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Super Shift Brick Up";
 $RemapCmd[$RemapCount] = "superShiftBrickUpProxy";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Super Shift Brick Down";
 $RemapCmd[$RemapCount] = "superShiftBrickDownProxy";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Toggle Build Macro Recording";
 $RemapCmd[$RemapCount] = "ToggleBuildMacroRecording";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Playback Build Macro";
 $RemapCmd[$RemapCount] = "PlayBackBuildMacro";
 
 $RemapCount++;
-
 $RemapDivision[$RemapCount] = "Recording";
 $RemapName[$RemapCount] = "Take Hud Screenshot";
 $RemapCmd[$RemapCount] = "doHudScreenshot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Take Screenshot";
 $RemapCmd[$RemapCount] = "doScreenShot";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Take DOF Screenshot";
 $RemapCmd[$RemapCount] = "doDofScreenShot";
 
 $RemapCount++;
-
 $RemapDivision[$RemapCount] = "Emotes";
 $RemapName[$RemapCount] = "Sit";
 $RemapCmd[$RemapCount] = "emoteSit";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Love";
 $RemapCmd[$RemapCount] = "emoteLove";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Hate";
 $RemapCmd[$RemapCount] = "emoteHate";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Confusion";
 $RemapCmd[$RemapCount] = "emoteConfusion";
 
 $RemapCount++;
-
 $RemapName[$RemapCount] = "Alarm";
 $RemapCmd[$RemapCount] = "emoteAlarm";
 
 $RemapCount++;
-
 
 function getMapDisplayName ( %device, %action )
 {
@@ -4697,7 +4611,6 @@ function OptAudioUpdate ()
 
 	OptAudioInfo.setText (%text);
 }
-
 
 new AudioDescription (AudioChannel0)
 {
@@ -5180,7 +5093,6 @@ function dropTenthSlot ( %val )
 		commandToServer ('dropInventory', 9);
 	}
 }
-
 
 $BrickFirstRepeatTime = 200;
 $BrickRepeatTime = 50;
@@ -5746,7 +5658,6 @@ function openBSD ( %val )
 		}
 	}
 }
-
 
 $SCROLLMODE_BRICKS = 0;
 $SCROLLMODE_PAINT = 1;
@@ -6787,7 +6698,6 @@ function ToggleCursor ( %val )
 		}
 	}
 }
-
 
 $Net_PacketSize[1] = 240;
 $Net_RateToClient[1] = 16;
@@ -8850,7 +8760,6 @@ function clientCmdSetLoadingIndicator ( %val )
 	ServerConnection.setFinishedInitialGhost (!%val);
 }
 
-
 $centerPrintActive = false;
 $bottomPrintActive = false;
 
@@ -8954,7 +8863,7 @@ function clientCmdclearBottomPrint ()
 
 function clientCmdGameStart ( %seq )
 {
-	// Stub
+	// Empty callback
 }
 
 function clientCmdGameEnd ( %seq )
@@ -8962,7 +8871,6 @@ function clientCmdGameEnd ( %seq )
 	alxStopAll ();
 	reEnablePhysics ();
 }
-
 
 addMessageCallback ('MsgYourDeath', handleYourDeath);
 
@@ -9006,7 +8914,6 @@ function clientCmdCancelAutoBrickBuy ()
 {
 	$BrickAutoBuyDone = true;
 }
-
 
 addMessageCallback ('MsgYourSpawn', handleYourSpawn);
 
@@ -9077,14 +8984,12 @@ function handleYourSpawn ( %msgType, %msgString )
 	}
 }
 
-
 addMessageCallback ('MsgError', handleError);
 
 function handleError ( %msgType, %msgString )
 {
 	alxPlay (AudioError);
 }
-
 
 addMessageCallback ('MsgAdminForce', handleAdminForce);
 
@@ -9093,7 +8998,6 @@ function handleAdminForce ( %msgType, %msgString )
 	alxPlay (AdminSound);
 }
 
-
 addMessageCallback ('MsgClearBricks', handleClearBricks);
 
 function handleClearBricks ( %msgType, %msgString )
@@ -9101,7 +9005,6 @@ function handleClearBricks ( %msgType, %msgString )
 	alxPlay (BrickClearSound);
 	reEnablePhysics ();
 }
-
 
 addMessageCallback ('MsgPlantError_Overlap', handlePlantError);
 addMessageCallback ('MsgPlantError_Float', handlePlantError);
@@ -9159,7 +9062,6 @@ function handlePlantError ( %msgType, %msgString )
 
 	%hudObj.hideSchedule = %hudObj.schedule (800, setVisible, false);
 }
-
 
 addMessageCallback ('MsgItemPickup', handleItemPickup);
 
@@ -9220,14 +9122,12 @@ function handleItemPickup ( %msgType, %msgString, %slot, %itemData, %silent )
 	}
 }
 
-
 addMessageCallback ('MsgDropItem', handleDropItem);
 
 function handleDropItem ( %msgType, %string, %slot )
 {
-	// Stub
+	// Empty callback
 }
-
 
 addMessageCallback ('MsgClearInv', handleClearInv);
 
@@ -9260,7 +9160,6 @@ function handleClearInv ( %msgType )
 
 	return;
 }
-
 
 addMessageCallback ('MsgHilightInv', handleHilightInv);
 
@@ -9307,22 +9206,19 @@ function handleHilightInv ( %msgType, %msgString, %slot )
 	$invHilight = %slot;
 }
 
-
 addMessageCallback ('MsgEquipInv', handleEquipInv);
 
 function handleEquipInv ( %msgType, %msgString, %slot )
 {
-	// Stub
+	// Empty callback
 }
-
 
 addMessageCallback ('MsgDeEquipInv', handleDeEquipInv);
 
 function handleDeEquipInv ( %msgType, %msgString, %slot )
 {
-	// Stub
+	// Empty callback
 }
-
 
 addMessageCallback ('MsgSetInvData', handleSetInvData);
 
@@ -9353,7 +9249,6 @@ function handleSetInvData ( %msgType, %msgString, %slot, %data )
 	}
 }
 
-
 addMessageCallback ('MsgStartTalking', handleStartTalking);
 
 function handleStartTalking ( %msgType, %msgString, %clientId )
@@ -9375,7 +9270,6 @@ function handleStartTalking ( %msgType, %msgString, %clientId )
 	}
 }
 
-
 addMessageCallback ('MsgStopTalking', handleStopTalking);
 
 function handleStopTalking ( %msgType, %msgString, %clientId )
@@ -9395,7 +9289,6 @@ function handleStopTalking ( %msgType, %msgString, %clientId )
 		chatWhosTalkingBox.setVisible (false);
 	}
 }
-
 
 addMessageCallback ('MsgUploadStart', handleUploadStart);
 addMessageCallback ('MsgUploadEnd', handleUploadEnd);
@@ -9585,7 +9478,7 @@ function queryMasterTCPObj::onConnectFailed ( %this )
 
 function queryMasterTCPObj::onDisconnect ( %this )
 {
-	// Stub
+	// Empty callback
 }
 
 function queryMasterTCPObj::onLine ( %this, %line )
@@ -10704,7 +10597,7 @@ function AdminGui_Wand ()
 
 function AdminGui_ClearBricks ()
 {
-	// Stub
+	// Empty, probably commented out
 }
 
 function AdminGui_KickPlayer ()
@@ -10831,7 +10724,7 @@ function addBanGui::onWake ( %this )
 
 function addBanGui::onSleep ( %this )
 {
-	// Stub
+	// Empty callback
 }
 
 function addBanGui::setVictim ( %this, %name, %id, %bl_id )
@@ -10892,7 +10785,7 @@ function unBanGui::onWake ( %this )
 
 function unBanGui::onSleep ( %this )
 {
-	// Stub
+	// Empty callback
 }
 
 function unBanGui::clickUnBan ( %this )
@@ -11002,7 +10895,7 @@ function BrickManGui::onWake ( %this )
 
 function BrickManGui::onSleep ( %this )
 {
-	// Stub
+	// Empty callback
 }
 
 function clientCmdClearBrickMan ()
@@ -14560,7 +14453,7 @@ function SaveBricks_DownloadWindowClose ()
 
 function LoadBricksGui::ClickOwnership ()
 {
-	// Stub
+	// Empty callback
 }
 
 function AvatarGui::onWake ( %this )
@@ -16023,7 +15916,6 @@ function Avatar_ColorAllIcons ( %box, %color )
 	}
 }
 
-
 $AvatarRandomizeCount = 0;
 
 function Avatar_Randomize ()
@@ -17396,7 +17288,6 @@ function NMH_Type::send ( %this )
 	Canvas.popDialog (newMessageHud);
 }
 
-
 if ( $Pref::Chat::FontSize < 14 )
 {
 	$Pref::Chat::FontSize = 14;
@@ -18027,7 +17918,7 @@ function NewChatSO::dumpLines ( %this )
 
 function SelectNetworkGui::onWake ( %this )
 {
-	// Stub method
+	// Empty callback
 }
 
 function SelectNetworkGui::onSleep ( %this )
@@ -18357,7 +18248,7 @@ function defaultControlsGui::clickClose ()
 
 function SavingGui::onWake ( %this )
 {
-	// Stub method
+	// Empty callback
 }
 
 function SavingGui::onRender ( %this )
@@ -19570,7 +19461,6 @@ function regNameGui::onClose ()
 		MM_AuthNameButton.setVisible (true);
 	}
 }
-
 
 $COLORMODE_RGB = 0;
 $COLORMODE_HSV = 1;
@@ -28375,7 +28265,7 @@ function clientIsValidMusicFilename ( %filename )
 
 function SteamGreenLightGui::onWake ( %this )
 {
-	// Stub method
+	// Empty callback
 }
 
 function SteamGreenLightGui::onRender ( %this )
@@ -28775,7 +28665,7 @@ function setJoinIP_tcpObj::onConnected ( %this )
 
 function setJoinIP_tcpObj::onDisconnect ( %this )
 {
-	// Stub method
+	// Empty callback
 }
 
 function setJoinIP_tcpObj::onLine ( %this, %line )

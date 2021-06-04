@@ -8,7 +8,7 @@ function makePadString ( %char, %num )
 
 function onNeedRelight ()
 {
-	// Stub
+	// Empty callback
 }
 
 function copyPrefsToServerVars ()
@@ -389,7 +389,8 @@ function verifyBrickUINames ()
 		{
 			if ( %db.category !$= "" && %db.subCategory !$= "" )
 			{
-				error ("ERROR: Brick datablock \"" @ %db.getName () @ "\" has the same uiname as \""
+				error ("ERROR: Brick datablock \"" @ %db.getName ()
+					@ "\" has the same uiname as \""
 					@ %uiNamePresent[%db.uiName].getName () @ "\" (" @ %db.uiName @ ") - removing.");
 
 				%db.uiName = "";
