@@ -11,23 +11,20 @@
 // This function is for chat messages only; it is invoked on the client when
 // the server does a commandToClient with the tag ChatMessage.  (Cf. the
 // functions chatMessage* in base/server/mainServer.cs.)
-
+//
 // This just invokes onChatMessage, which the mod code must define.
-
 function clientCmdChatMessage ( %sender, %voice, %pitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10 )
 {
 	onChatMessage (detag (%msgString), %voice, %pitch);
 }
 
-
 // Game event descriptions, which may or may not include text messages, can be
 // sent using the message* functions in base/server/mainServer.cs.  Those
 // functions do commandToClient with the tag ServerMessage, which invokes the
 // function below.
-
+//
 // For ServerMessage messages, the client can install callbacks that will be
 // run, according to the "type" of the message.
-
 function clientCmdServerMessage ( %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10 )
 {
 	// Get the message type; terminates at any whitespace.
@@ -50,8 +47,7 @@ function clientCmdServerMessage ( %msgType, %msgString, %a1, %a2, %a3, %a4, %a5,
 	}
 }
 
-// Called by the client to install a callback for a particular type of
-// ServerMessage.
+// Called by the client to install a callback for a particular type of ServerMessage.
 function addMessageCallback ( %msgType, %func )
 {
 	for ( %i = 0; (%afunc = $MSGCB[%msgType, %i]) !$= ""; %i++ )
@@ -67,13 +63,11 @@ function addMessageCallback ( %msgType, %func )
 	$MSGCB[%msgType, %i] = %func;
 }
 
-
 // The following is the callback that will be executed for every ServerMessage,
-// because we're going to install it without a specified type.  Any type-
-// specific callbacks will be executed afterward.
-
+// because we're going to install it without a specified type.  Any type-specific
+// callbacks will be executed afterward.
+//
 // This just invokes onServerMessage, which the mod code must define.
-
 function defaultMessageCallback ( %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10 )
 {
 	onServerMessage (detag (%msgString));

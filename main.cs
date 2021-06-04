@@ -10,10 +10,10 @@
 
 function initCommon ()
 {
-	// All mods need the random seed set
+	// All mods need the random seed set.
 	setRandomSeed ();
 
-	// Very basic functions used by everyone
+	// Very basic functions used by everyone.
 	exec ("./client/canvas.cs");
 	exec ("./client/audio.cs");
 }
@@ -25,21 +25,18 @@ function initBaseClient ()
 	exec ("./client/mission.cs");
 	exec ("./client/missionDownload.cs");
 	exec ("./client/actionMap.cs");
-
-	// There are also a number of support scripts loaded by the canvas
-	// when it's first initialized.  Check out base/client/canvas.cs
 }
 
 function initBaseServer ()
 {
 	if ( true )
 	{
-		// Base server functionality
+		// Base server functionality.
 		exec ("./server/mainServer.cs");
 	}
 	else
 	{
-		// This is presumably the development folder structure
+		// This is presumably the development folder structure.
 		exec ("./server/webCom.cs");
 		exec ("./server/authQuery.cs");
 		exec ("./server/audio.cs");

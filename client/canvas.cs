@@ -4,8 +4,8 @@
 // -----------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------
-//  Function to construct and initialize the default canvas window
-//  used by the games
+//  Functions to construct and initialize the default canvas window used by
+//  the games.
 // -----------------------------------------------------------------------------
 
 
@@ -24,7 +24,7 @@ function initCanvas ( %windowName )
 	setOpenGLMipReduction ($pref::OpenGL::mipReduction);
 	setOpenGLSkyMipReduction ($pref::OpenGL::skyMipReduction);
 
-	// Init the audio system
+	// Initialize the audio system.
 	OpenALInit ();
 }
 
@@ -38,7 +38,7 @@ function resetCanvas ()
 	}
 }
 
-// Called when the game window comes back into focus
+// Called when the game window comes back into focus.
 function onWindowReactivate ()
 {
 	if ( $windowReactivating )
@@ -78,8 +78,7 @@ function onWindowReactivate ()
 	$windowReactivating = false;
 }
 
-// Doesn't appear to be called by either the engine or other game scripts.
-// Unknown purpose.
+// Doesn't appear to be called by either the engine or other game scripts.  Unknown purpose.
 function restartAudio ()
 {
 	OpenALInit ();
