@@ -16463,7 +16463,7 @@ function MainMenuGui::onWake ( %this )
 
 	if ( $Version <= 1.02 )
 	{
-		$Pref::Net::DownloadSounds = 0;
+		$Pref::Net::DownloadSounds = false;
 	}
 
 	if ( $Version <= 1.03 )
@@ -16474,8 +16474,8 @@ function MainMenuGui::onWake ( %this )
 
 	if ( $Version $= 10 || $Version $= "10m" )
 	{
-		$Pref::Net::DownloadMusic = 0;
-		$Pref::Net::DownloadSounds = 0;
+		$Pref::Net::DownloadMusic = false;
+		$Pref::Net::DownloadSounds = false;
 	}
 
 	if ( $Version $= 11 || $Version $= "11m" )
@@ -16498,7 +16498,7 @@ function MainMenuGui::onWake ( %this )
 
 	if ( $Version $= 13 )
 	{
-		$Pref::Net::DownloadTextures = 0;
+		$Pref::Net::DownloadTextures = false;
 
 		if ( isFile ("config/server/ADD_ON_LIST.cs") )
 		{
