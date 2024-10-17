@@ -63,8 +63,8 @@ $pref::HUD::HidePaintBox = 1;
 $pref::HUD::HideToolBox = 1;
 $pref::HUD::showToolTips = 1;
 $Pref::Chat::CacheLines = 1000;
-$pref::Chat::ChatBufferSize = "200.000000";
-$Pref::Chat::FontSize = "14.000000";
+$pref::Chat::ChatBufferSize = 200;
+$Pref::Chat::FontSize = 14;
 $Pref::Chat::LineTime = 6500;
 $Pref::Chat::MaxDisplayLines = 8;
 $Pref::Chat::ShowAllLines = 0;
@@ -150,7 +150,7 @@ $pref::OpenGL::textureTrilinear = 1;
 $pref::OpenGL::useGLNearest = 0;
 $pref::ParticleDetail = 1;
 $pref::ParticleFalloffMaxLevel = 3;
-$pref::ParticleFalloffMinDistance = "35.0";
+$pref::ParticleFalloffMinDistance = 35;
 $pref::ParticleQuality = 0;
 $pref::precipitationOn = 1;
 $pref::sceneLighting::cacheLighting = 1;
@@ -264,21 +264,21 @@ $pref::Physics::MaxBricks = 100;
 $pref::BrickFXQuality = 0;
 $Pref::BrickFX::Color = 1;
 $Pref::BrickFX::Shape = 1;
-function vendorSpecificDefaults ()
+function vendorSpecificDefaults()
 {
-	%vendor = getGLVendor ();
-	%renderer = getGLRenderer ();
-	if (isMacintosh () && stripos (%vendor, "Intel") != -1)
+	%vendor = getGLVendor();
+	%renderer = getGLRenderer();
+	if (isMacintosh() && stripos(%vendor, "Intel") != -1)
 	{
-		%deskRes = getDesktopResolution ();
-		%w = getWord (%deskRes, 0);
-		%h = getWord (%deskRes, 1);
+		%deskRes = getDesktopResolution();
+		%w = getWord(%deskRes, 0);
+		%h = getWord(%deskRes, 1);
 		if (%w > 1024 && %h > 768)
 		{
 			$pref::Video::resolution = "1024 768 32 60";
 		}
 	}
-	if (stripos (%vendor, "Intel") != -1 || stripos (%vendor, "S3") != -1 || stripos (%vendor, "SiS") != -1)
+	if (stripos(%vendor, "Intel") != -1 || stripos(%vendor, "S3") != -1 || stripos(%vendor, "SiS") != -1)
 	{
 		$pref::OpenGL::maxDynLights = 3;
 		$pref::Terrain::enableDetails = 0;
@@ -291,23 +291,23 @@ function vendorSpecificDefaults ()
 		$pref::OpenGL::textureAnisotropy = 0;
 		$pref::OpenGL::textureTrilinear = 0;
 	}
-	else if (stripos (%vendor, "nvidia") != -1)
+	else if (stripos(%vendor, "nvidia") != -1)
 	{
-		if (strpos (%renderer, 8800) != -1 || strpos (%renderer, 8600) != -1 || strpos (%renderer, 7900) != -1 || strpos (%renderer, 7800) != -1 || strpos (%renderer, 7600) != -1 || strpos (%renderer, 6800) != -1)
+		if (strpos(%renderer, 8800) != -1 || strpos(%renderer, 8600) != -1 || strpos(%renderer, 7900) != -1 || strpos(%renderer, 7800) != -1 || strpos(%renderer, 7600) != -1 || strpos(%renderer, 6800) != -1)
 		{
-			$pref::OpenGL::anisotropy = "1.0";
+			$pref::OpenGL::anisotropy = 1;
 			$pref::OpenGL::textureTrilinear = 1;
 		}
 	}
-	else if (stripos (%vendor, "ati") != -1)
+	else if (stripos(%vendor, "ati") != -1)
 	{
-		if (strpos (%renderer, "HD2900") != -1 || strpos (%renderer, "HD3870") != -1 || strpos (%renderer, 1950) != -1 || strpos (%renderer, "X850") != -1 || strpos (%renderer, "X1800") != -1 || strpos (%renderer, "X1650") != -1 || strpos (%renderer, "X1300") != -1 || strpos (%renderer, "X1600") != -1)
+		if (strpos(%renderer, "HD2900") != -1 || strpos(%renderer, "HD3870") != -1 || strpos(%renderer, 1950) != -1 || strpos(%renderer, "X850") != -1 || strpos(%renderer, "X1800") != -1 || strpos(%renderer, "X1650") != -1 || strpos(%renderer, "X1300") != -1 || strpos(%renderer, "X1600") != -1)
 		{
-			$pref::OpenGL::anisotropy = "1.0";
+			$pref::OpenGL::anisotropy = 1;
 			$pref::OpenGL::textureTrilinear = 1;
 		}
 	}
-	%mhz = getCPUMhz ();
+	%mhz = getCPUMhz();
 	if (%mhz <= 800)
 	{
 		$pref::TextureQuality = 2;
@@ -346,547 +346,547 @@ function vendorSpecificDefaults ()
 	}
 }
 
-function setShaderDefaults ()
+function setShaderDefaults()
 {
-	%vendor = getGLVendor ();
-	%renderer = getGLRenderer ();
-	%renderer = strreplace (%renderer, " ", "_");
-	echo ("");
-	echo ("Setting default shader level...");
+	%vendor = getGLVendor();
+	%renderer = getGLRenderer();
+	%renderer = strreplace(%renderer, " ", "_");
+	echo("");
+	echo("Setting default shader level...");
 	%quality = -1;
-	optionsDlg.UpdateAvailableShaders ();
+	optionsDlg.UpdateAvailableShaders();
 	if (!OPT_ShaderQuality1.enabled)
 	{
-		echo ("  shaders not supported");
+		echo("  shaders not supported");
 		return;
 	}
-	if (stripos (%vendor, "nvidia") != -1)
+	if (stripos(%vendor, "nvidia") != -1)
 	{
-		if (stripos (%renderer, "M") != -1)
+		if (stripos(%renderer, "M") != -1)
 		{
-			if (stripos (%renderer, "XXXXXXXX") != -1)
+			if (stripos(%renderer, "XXXXXXXX") != -1)
 			{
 				%quality = 0;
 			}
-			else if (stripos (%renderer, "GTX_980M") != -1)
+			else if (stripos(%renderer, "GTX_980M") != -1)
 			{
 				%quality = 6;
 			}
-			else if (stripos (%renderer, "GTX_970M") != -1)
+			else if (stripos(%renderer, "GTX_970M") != -1)
 			{
 				%quality = 4;
 			}
-			else if (stripos (%renderer, "GTX_880M") != -1)
+			else if (stripos(%renderer, "GTX_880M") != -1)
 			{
 				%quality = 4;
 			}
-			else if (stripos (%renderer, "GTX_780M") != -1)
+			else if (stripos(%renderer, "GTX_780M") != -1)
 			{
 				%quality = 5;
 			}
-			else if (stripos (%renderer, "GTX_775M") != -1)
+			else if (stripos(%renderer, "GTX_775M") != -1)
 			{
 				%quality = 4;
 			}
-			else if (stripos (%renderer, "GTX_770M") != -1)
+			else if (stripos(%renderer, "GTX_770M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_765M") != -1)
+			else if (stripos(%renderer, "GTX_765M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_760M") != -1)
+			else if (stripos(%renderer, "GTX_760M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_680M") != -1)
+			else if (stripos(%renderer, "GTX_680M") != -1)
 			{
 				%quality = 4;
 			}
-			else if (stripos (%renderer, "GTX_675M") != -1)
+			else if (stripos(%renderer, "GTX_675M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_670M") != -1)
+			else if (stripos(%renderer, "GTX_670M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_660M") != -1)
+			else if (stripos(%renderer, "GTX_660M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GTX_580M") != -1)
+			else if (stripos(%renderer, "GTX_580M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_570M") != -1)
+			else if (stripos(%renderer, "GTX_570M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_560M") != -1)
+			else if (stripos(%renderer, "GTX_560M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_485M") != -1)
+			else if (stripos(%renderer, "GTX_485M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_480M") != -1)
+			else if (stripos(%renderer, "GTX_480M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_470M") != -1)
+			else if (stripos(%renderer, "GTX_470M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_460M") != -1)
+			else if (stripos(%renderer, "GTX_460M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GTX_285M") != -1)
+			else if (stripos(%renderer, "GTX_285M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GTX_280M") != -1)
+			else if (stripos(%renderer, "GTX_280M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GTX_260M") != -1)
+			else if (stripos(%renderer, "GTX_260M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GTX_360M") != -1)
+			else if (stripos(%renderer, "GTX_360M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GTX_350M") != -1)
+			else if (stripos(%renderer, "GTX_350M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GTX_250M") != -1)
+			else if (stripos(%renderer, "GTX_250M") != -1)
 			{
 				%quality = 2;
 			}
-			if (stripos (%renderer, "GT_755M") != -1)
+			if (stripos(%renderer, "GT_755M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GT_750M") != -1)
+			else if (stripos(%renderer, "GT_750M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GT_745M") != -1)
+			else if (stripos(%renderer, "GT_745M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GT_740M") != -1)
+			else if (stripos(%renderer, "GT_740M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_730M") != -1)
+			else if (stripos(%renderer, "GT_730M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GT_735M") != -1)
+			else if (stripos(%renderer, "GT_735M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_720M") != -1)
+			else if (stripos(%renderer, "GT_720M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_650M") != -1)
+			else if (stripos(%renderer, "GT_650M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GT_645M") != -1)
+			else if (stripos(%renderer, "GT_645M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_640M") != -1)
+			else if (stripos(%renderer, "GT_640M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_630M") != -1)
+			else if (stripos(%renderer, "GT_630M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT625M") != -1)
+			else if (stripos(%renderer, "GT625M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_550M") != -1)
+			else if (stripos(%renderer, "GT_550M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_550M") != -1)
+			else if (stripos(%renderer, "GT_550M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_520M") != -1)
+			else if (stripos(%renderer, "GT_520M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_445M") != -1)
+			else if (stripos(%renderer, "GT_445M") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "GT_435M") != -1)
+			else if (stripos(%renderer, "GT_435M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_435M") != -1)
+			else if (stripos(%renderer, "GT_435M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_430M") != -1)
+			else if (stripos(%renderer, "GT_430M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_415M") != -1)
+			else if (stripos(%renderer, "GT_415M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_335M") != -1)
+			else if (stripos(%renderer, "GT_335M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_330M") != -1)
+			else if (stripos(%renderer, "GT_330M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_325M") != -1)
+			else if (stripos(%renderer, "GT_325M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_320M") != -1)
+			else if (stripos(%renderer, "GT_320M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_240M") != -1)
+			else if (stripos(%renderer, "GT_240M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_230M") != -1)
+			else if (stripos(%renderer, "GT_230M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_220M") != -1)
+			else if (stripos(%renderer, "GT_220M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_130M") != -1)
+			else if (stripos(%renderer, "GT_130M") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "GT_120M") != -1)
+			else if (stripos(%renderer, "GT_120M") != -1)
 			{
 				%quality = 2;
 			}
 		}
-		else if (stripos (%renderer, "GTX_TITAN") != -1)
+		else if (stripos(%renderer, "GTX_TITAN") != -1)
 		{
 			%quality = 6;
 		}
-		else if (stripos (%renderer, "GTX_980") != -1)
+		else if (stripos(%renderer, "GTX_980") != -1)
 		{
 			%quality = 6;
 		}
-		else if (stripos (%renderer, "GTX_970") != -1)
+		else if (stripos(%renderer, "GTX_970") != -1)
 		{
 			%quality = 6;
 		}
-		else if (stripos (%renderer, "GTX_780") != -1)
+		else if (stripos(%renderer, "GTX_780") != -1)
 		{
 			%quality = 6;
 		}
-		else if (stripos (%renderer, "GTX_770") != -1)
+		else if (stripos(%renderer, "GTX_770") != -1)
 		{
 			%quality = 6;
 		}
-		else if (stripos (%renderer, "GTX_760") != -1)
+		else if (stripos(%renderer, "GTX_760") != -1)
 		{
 			%quality = 5;
 		}
-		else if (stripos (%renderer, "GTX_680") != -1)
+		else if (stripos(%renderer, "GTX_680") != -1)
 		{
 			%quality = 5;
 		}
-		else if (stripos (%renderer, "GTX_670") != -1)
+		else if (stripos(%renderer, "GTX_670") != -1)
 		{
 			%quality = 5;
 		}
-		else if (stripos (%renderer, "GTX_660") != -1)
+		else if (stripos(%renderer, "GTX_660") != -1)
 		{
 			%quality = 4;
 		}
-		else if (stripos (%renderer, "GTX_650_Ti_BOOST") != -1)
+		else if (stripos(%renderer, "GTX_650_Ti_BOOST") != -1)
 		{
 			%quality = 4;
 		}
-		else if (stripos (%renderer, "GTX_650_Ti") != -1)
+		else if (stripos(%renderer, "GTX_650_Ti") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "GTX_650") != -1)
+		else if (stripos(%renderer, "GTX_650") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "GTX_590") != -1)
+		else if (stripos(%renderer, "GTX_590") != -1)
 		{
 			%quality = 4;
 		}
-		else if (stripos (%renderer, "GTX_580") != -1)
+		else if (stripos(%renderer, "GTX_580") != -1)
 		{
 			%quality = 5;
 		}
-		else if (stripos (%renderer, "GTX_570") != -1)
+		else if (stripos(%renderer, "GTX_570") != -1)
 		{
 			%quality = 4;
 		}
-		else if (stripos (%renderer, "GTX_560_Ti") != -1)
+		else if (stripos(%renderer, "GTX_560_Ti") != -1)
 		{
 			%quality = 4;
 		}
-		else if (stripos (%renderer, "GTX_560") != -1)
+		else if (stripos(%renderer, "GTX_560") != -1)
 		{
 			%quality = 4;
 		}
-		else if (stripos (%renderer, "GTX_550_Ti") != -1)
+		else if (stripos(%renderer, "GTX_550_Ti") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "GTX_480") != -1)
+		else if (stripos(%renderer, "GTX_480") != -1)
 		{
 			%quality = 4;
 		}
-		else if (stripos (%renderer, "GTX_470") != -1)
+		else if (stripos(%renderer, "GTX_470") != -1)
 		{
 			%quality = 4;
 		}
-		else if (stripos (%renderer, "GTX_465") != -1)
+		else if (stripos(%renderer, "GTX_465") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "GTX_460") != -1)
+		else if (stripos(%renderer, "GTX_460") != -1)
 		{
 			%quality = 4;
 		}
-		else if (stripos (%renderer, "GTX_295") != -1)
+		else if (stripos(%renderer, "GTX_295") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "GTX_285") != -1)
+		else if (stripos(%renderer, "GTX_285") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "GTX_280") != -1)
+		else if (stripos(%renderer, "GTX_280") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "GTX_275") != -1)
+		else if (stripos(%renderer, "GTX_275") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "GTX_260") != -1)
+		else if (stripos(%renderer, "GTX_260") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "GTS_450") != -1)
+		else if (stripos(%renderer, "GTS_450") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "GTS_350") != -1)
+		else if (stripos(%renderer, "GTS_350") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "GTS_250") != -1)
+		else if (stripos(%renderer, "GTS_250") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "GTS_240") != -1)
+		else if (stripos(%renderer, "GTS_240") != -1)
 		{
 			%quality = 2;
 		}
 	}
-	if (stripos (%vendor, "ati") != -1)
+	if (stripos(%vendor, "ati") != -1)
 	{
-		if (stripos (%renderer, "mobility") != -1)
+		if (stripos(%renderer, "mobility") != -1)
 		{
-			if (stripos (%renderer, "XXXXXXX") != -1)
+			if (stripos(%renderer, "XXXXXXX") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "HD_8970") != -1)
+			else if (stripos(%renderer, "HD_8970") != -1)
 			{
 				%quality = 4;
 			}
-			else if (stripos (%renderer, "HD_8870") != -1)
+			else if (stripos(%renderer, "HD_8870") != -1)
 			{
 				%quality = 3;
 			}
-			else if (stripos (%renderer, "HD_8790") != -1)
+			else if (stripos(%renderer, "HD_8790") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "HD_8670") != -1)
+			else if (stripos(%renderer, "HD_8670") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "HD_5870") != -1)
+			else if (stripos(%renderer, "HD_5870") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "HD_5850") != -1)
+			else if (stripos(%renderer, "HD_5850") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "HD_5730") != -1)
+			else if (stripos(%renderer, "HD_5730") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "HD_5000") != -1)
+			else if (stripos(%renderer, "HD_5000") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "HD_4870") != -1)
+			else if (stripos(%renderer, "HD_4870") != -1)
 			{
 				%quality = 2;
 			}
-			else if (stripos (%renderer, "HD_4850") != -1)
+			else if (stripos(%renderer, "HD_4850") != -1)
 			{
 				%quality = 2;
 			}
 		}
-		else if (stripos (%renderer, "XXXXX") != -1)
+		else if (stripos(%renderer, "XXXXX") != -1)
 		{
 			%quality = 5;
 		}
-		else if (stripos (%renderer, "HD_89") != -1)
+		else if (stripos(%renderer, "HD_89") != -1)
 		{
 			%quality = 5;
 		}
-		else if (stripos (%renderer, "HD_79") != -1)
+		else if (stripos(%renderer, "HD_79") != -1)
 		{
 			%quality = 5;
 		}
-		else if (stripos (%renderer, "HD_7870") != -1)
+		else if (stripos(%renderer, "HD_7870") != -1)
 		{
 			%quality = 5;
 		}
-		else if (stripos (%renderer, "HD_78") != -1)
+		else if (stripos(%renderer, "HD_78") != -1)
 		{
 			%quality = 4;
 		}
-		else if (stripos (%renderer, "HD_77") != -1)
+		else if (stripos(%renderer, "HD_77") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "HD_76") != -1)
+		else if (stripos(%renderer, "HD_76") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_75") != -1)
+		else if (stripos(%renderer, "HD_75") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_74") != -1)
+		else if (stripos(%renderer, "HD_74") != -1)
 		{
 			%quality = 1;
 		}
-		else if (stripos (%renderer, "HD_73") != -1)
+		else if (stripos(%renderer, "HD_73") != -1)
 		{
 			%quality = 1;
 		}
-		else if (stripos (%renderer, "HD_6900M") != -1)
+		else if (stripos(%renderer, "HD_6900M") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_69") != -1)
+		else if (stripos(%renderer, "HD_69") != -1)
 		{
 			%quality = 4;
 		}
-		else if (stripos (%renderer, "HD_6800M") != -1)
+		else if (stripos(%renderer, "HD_6800M") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_68") != -1)
+		else if (stripos(%renderer, "HD_68") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "HD_6750M") != -1)
+		else if (stripos(%renderer, "HD_6750M") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_6770M") != -1)
+		else if (stripos(%renderer, "HD_6770M") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_6700M") != -1)
+		else if (stripos(%renderer, "HD_6700M") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_67") != -1)
+		else if (stripos(%renderer, "HD_67") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "HD_6670") != -1)
+		else if (stripos(%renderer, "HD_6670") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "HD_66") != -1)
+		else if (stripos(%renderer, "HD_66") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_65") != -1)
+		else if (stripos(%renderer, "HD_65") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_59") != -1)
+		else if (stripos(%renderer, "HD_59") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "HD_58") != -1)
+		else if (stripos(%renderer, "HD_58") != -1)
 		{
 			%quality = 3;
 		}
-		else if (stripos (%renderer, "HD_57") != -1)
+		else if (stripos(%renderer, "HD_57") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_56") != -1)
+		else if (stripos(%renderer, "HD_56") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_4850") != -1)
+		else if (stripos(%renderer, "HD_4850") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_4870") != -1)
+		else if (stripos(%renderer, "HD_4870") != -1)
 		{
 			%quality = 2;
 		}
-		else if (stripos (%renderer, "HD_4890") != -1)
+		else if (stripos(%renderer, "HD_4890") != -1)
 		{
 			%quality = 2;
 		}
 	}
-	if (stripos (%vendor, "intel") != -1)
+	if (stripos(%vendor, "intel") != -1)
 	{
-		if (stripos (%renderer, 5200) != -1)
+		if (stripos(%renderer, 5200) != -1)
 		{
 			%quality = 1;
 		}
-		else if (stripos (%renderer, 5100) != -1)
+		else if (stripos(%renderer, 5100) != -1)
 		{
 			%quality = 1;
 		}
-		else if (stripos (%renderer, 5000) != -1)
+		else if (stripos(%renderer, 5000) != -1)
 		{
 			%quality = 1;
 		}
-		else 
+		else
 		{
 			%quality = 0;
 		}
@@ -895,50 +895,50 @@ function setShaderDefaults ()
 	{
 		if (%quality > 1)
 		{
-			echo ("  csm not supported by driver, reducing from " @ %quality @ " to 1");
+			echo("  csm not supported by driver, reducing from " @ %quality @ " to 1");
 		}
-		else 
+		else
 		{
-			echo ("  csm not supported");
+			echo("  csm not supported");
 		}
-		%quality = mClamp (%quality, 0, 1);
+		%quality = mClamp(%quality, 0, 1);
 	}
-	if (isMacintosh ())
+	if (isMacintosh())
 	{
 		if (%quality > 1)
 		{
-			echo ("  csm not supported by driver, reducing from " @ %quality @ " to 1");
+			echo("  csm not supported by driver, reducing from " @ %quality @ " to 1");
 		}
-		else 
+		else
 		{
-			echo ("  csm not supported");
+			echo("  csm not supported");
 		}
-		%quality = mClamp (%quality, 0, 1);
+		%quality = mClamp(%quality, 0, 1);
 	}
-	if (getCPUMhz () > 0)
+	if (getCPUMhz() > 0)
 	{
-		if (getCPUMhz () < 2400)
+		if (getCPUMhz() < 2400)
 		{
 			if (%quality > 2)
 			{
-				echo ("  low cpu speed, reducing from " @ %quality @ " to " @ mClamp (%quality, 0, 2));
+				echo("  low cpu speed, reducing from " @ %quality @ " to " @ mClamp(%quality, 0, 2));
 			}
-			%quality = mClamp (%quality, 0, 2);
+			%quality = mClamp(%quality, 0, 2);
 		}
-		else if (getCPUMhz () < 3000)
+		else if (getCPUMhz() < 3000)
 		{
 			if (%quality > 3)
 			{
-				echo ("  low cpu speed, reducing from " @ %quality @ " to " @ mClamp (%quality, 0, 3));
+				echo("  low cpu speed, reducing from " @ %quality @ " to " @ mClamp(%quality, 0, 3));
 			}
-			%quality = mClamp (%quality, 0, 3);
+			%quality = mClamp(%quality, 0, 3);
 		}
 	}
-	echo ("  Shader level set to " @ %quality);
-	echo ("");
+	echo("  Shader level set to " @ %quality);
+	echo("");
 	if (%quality >= 0)
 	{
-		optionsDlg.setShaderQuality (%quality);
+		optionsDlg.setShaderQuality(%quality);
 	}
 }
 

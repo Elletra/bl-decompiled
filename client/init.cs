@@ -1,30 +1,28 @@
-function initClient ()
+function initClient()
 {
 	%dashes = "";
-	%version = atoi ($Version);
-	%version = mClampF (%version, 0, 25);
-	%i = 0;
-	while (%i < %version)
+	%version = atoi($Version);
+	%version = mClampF(%version, 0, 25);
+	for (%i = 0; %i < %version; %i++)
 	{
 		%dashes = %dashes @ "-";
-		%i += 1;
 	}
-	echo ("\n--------- Initializing Base: Client " @ %dashes);
+	echo("\n--------- Initializing Base: Client " @ %dashes);
 	if ($pref::Video::resolution $= "")
 	{
 		if ($pref::Video::fullScreen)
 		{
-			$pref::Video::resolution = getDesktopResolution ();
+			$pref::Video::resolution = getDesktopResolution();
 			if ($pref::Video::resolution $= "")
 			{
 				$pref::Video::resolution = "800 600 32";
 			}
 		}
-		else 
+		else
 		{
-			%desktopW = getWord (getDesktopResolution (), 0);
-			%desktopH = getWord (getDesktopResolution (), 1);
-			%desktopBpp = getWord (getDesktopResolution (), 2);
+			%desktopW = getWord(getDesktopResolution(), 0);
+			%desktopH = getWord(getDesktopResolution(), 1);
+			%desktopBpp = getWord(getDesktopResolution(), 2);
 			%fudge = 30;
 			if (%desktopW > 1680 + %fudge && %desktopH > 1050 + %fudge)
 			{
@@ -34,7 +32,7 @@ function initClient ()
 			{
 				$pref::Video::resolution = "1280 720 " @ %desktopBpp;
 			}
-			else 
+			else
 			{
 				$pref::Video::resolution = "800 600 " @ %desktopBpp;
 			}
@@ -43,199 +41,195 @@ function initClient ()
 	$Server::Dedicated = 0;
 	$Client::GameTypeQuery = "Blockland";
 	$Client::MissionTypeQuery = "Any";
-	initBaseClient ();
-	initCanvas ("Blockland");
-	exec ("./scripts/allClientScripts.cs");
-	exec ("base/client/ui/allClientGuis.gui");
-	if (isFile ("config/client/config.cs"))
+	initBaseClient();
+	initCanvas("Blockland");
+	exec("./scripts/allClientScripts.cs");
+	exec("base/client/ui/allClientGuis.gui");
+	if (isFile("config/client/config.cs"))
 	{
-		exec ("config/client/config.cs");
+		exec("config/client/config.cs");
 	}
 	JoinServerGuiBS.lastQueryTime = 0;
-	echo ("\n--------- Loading Client Add-Ons ---------");
-	loadClientAddOns ();
-	$numClientPackages = getNumActivePackages ();
-	setNetPort (getRandom (64511) + 1024);
-	optionsDlg.setShaderQuality ($Pref::ShaderQuality);
-	setDefaultFov ($pref::Player::defaultFov);
-	setZoomSpeed ($pref::Player::zoomSpeed);
-	loadMainMenu ();
-	BringWindowToForeground ();
-	schedule (1000, 0, BringWindowToForeground);
-	loadTrustList ();
-	updateTempBrickSettings ();
+	echo("\n--------- Loading Client Add-Ons ---------");
+	loadClientAddOns();
+	$numClientPackages = getNumActivePackages();
+	setNetPort(getRandom(64511) + 1024);
+	optionsDlg.setShaderQuality($Pref::ShaderQuality);
+	setDefaultFov($pref::Player::defaultFov);
+	setZoomSpeed($pref::Player::zoomSpeed);
+	loadMainMenu();
+	BringWindowToForeground();
+	schedule(1000, 0, BringWindowToForeground);
+	loadTrustList();
+	updateTempBrickSettings();
 }
 
-function onUDPFailure ()
+function onUDPFailure()
 {
-	schedule (100, 0, setNetPort, getRandom (64511) + 1024);
+	schedule(100, 0, setNetPort, getRandom(64511) + 1024);
 }
 
-function loadMainMenu ()
+function loadMainMenu()
 {
-	Canvas.setContent (MainMenuGui);
-	Canvas.setCursor ("DefaultCursor");
+	Canvas.setContent(MainMenuGui);
+	Canvas.setCursor("DefaultCursor");
 }
 
-function convertFile (%inFileName, %outFileName)
+function convertFile(%inFileName, %outFileName)
 {
-	if (getBuildString () !$= "Debug" && getBuildString () !$= "Release")
+	if (getBuildString() !$= "Debug" && getBuildString() !$= "Release")
 	{
 		return;
 	}
-	if (!isFile (%inFileName))
+	if (!isFile(%inFileName))
 	{
 		return;
 	}
-	%outFile = new FileObject ("");
-	%outFile.openForWrite (%outFileName);
-	%file = new FileObject ("");
-	%file.openForRead (%inFileName);
+	%outFile = new FileObject();
+	%outFile.openForWrite(%outFileName);
+	%file = new FileObject();
+	%file.openForRead(%inFileName);
 	%buff = "";
-	%line = %file.readLine ();
-	while (!%file.isEOF ())
+	for (%line = %file.readLine(); !%file.isEOF(); %buff = %buff @ %line @ " ")
 	{
-		%line = %file.readLine ();
-		%line = trim (%line);
-		%commentPos = strpos (%line, "//");
+		%line = %file.readLine();
+		%line = trim(%line);
+		%commentPos = strpos(%line, "//");
 		if (%commentPos == 0)
 		{
 			continue;
 		}
 		else if (%commentPos > -1)
 		{
-			%line = getSubStr (%line, 0, %commentPos);
+			%line = getSubStr(%line, 0, %commentPos);
 		}
-		%line = strreplace (%line, "\t", " ");
-		%line = trim (%line);
-		while (1)
+		%line = strreplace(%line, "\t", " ");
+		for (%line = trim(%line); 1; %line = strreplace(%line, "  ", " "))
 		{
-			if (strpos (%line, "  ") == -1)
+			if (strpos(%line, "  ") == -1)
 			{
 				break;
 			}
-			%line = strreplace (%line, "  ", " ");
 		}
-		%buff = %buff @ %line @ " ";
 	}
-	%outFile.writeLine (%buff);
-	%file.close ();
-	%file.delete ();
-	%outFile.close ();
-	%outFile.delete ();
+	%outFile.writeLine(%buff);
+	%file.close();
+	%file.delete();
+	%outFile.close();
+	%outFile.delete();
 }
 
 $ArrangedActive = 0;
 $ArrangedAddyCount = 0;
-function notifyArrangedStart (%addy)
+function notifyArrangedStart(%addy)
 {
-	if (!isObject (ServerGroup))
+	if (!isObject(ServerGroup))
 	{
-		%timeDelta = getSimTime () - $arrangedConnectionRequestTime;
+		%timeDelta = getSimTime() - $arrangedConnectionRequestTime;
 		if (%timeDelta > 5000 || %timeDelta < 0)
 		{
-			warn ("Warning: notifyArrangedStart() - got notify without making a request");
+			warn("Warning: notifyArrangedStart() - got notify without making a request");
 			return;
 		}
 	}
-	%addy = strreplace (%addy, "IP:", "");
+	%addy = strreplace(%addy, "IP:", "");
 	$ArrangedActive = 1;
 	$ArrangedAddyCount = 0;
 }
 
-function notifyArrangedAddress (%addy)
+function notifyArrangedAddress(%addy)
 {
 	if (!$ArrangedActive)
 	{
-		echo ("Got notifyArrangedAddress when no arranged connection active.");
+		echo("Got notifyArrangedAddress when no arranged connection active.");
 		return;
 	}
-	$ArrangedAddyCount = mFloor ($ArrangedAddyCount);
+	$ArrangedAddyCount = mFloor($ArrangedAddyCount);
 	$ArrangedAddys[$ArrangedAddyCount] = %addy;
-	$ArrangedAddyCount += 1;
+	$ArrangedAddyCount++;
 }
 
-function notifyArrangedFinish (%nonceA, %nonceB, %spamConnect)
+function notifyArrangedFinish(%nonceA, %nonceB, %spamConnect)
 {
 	if (!$ArrangedActive)
 	{
-		echo ("Got notifyArrangedFinish when no arranged connection active.");
+		echo("Got notifyArrangedFinish when no arranged connection active.");
 		return;
 	}
 	$ArrangedActive = 0;
-	$ArrangedConnection = new GameConnection ("");
-	if (isObject (ServerGroup))
+	$ArrangedConnection = new GameConnection();
+	if (isObject(ServerGroup))
 	{
 		%isClient = 0;
 	}
-	else 
+	else
 	{
 		%isClient = 1;
 		%spamConnect = 0;
-		Connecting_Text.setText (Connecting_Text.getText () @ "\nStarting arranged connection...");
+		Connecting_Text.setText(Connecting_Text.getText() @ "\nStarting arranged connection...");
 	}
 	if ($ArrangedAddyCount == 1)
 	{
-		$ArrangedConnection.connectArranged (%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0]);
+		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0]);
 		return;
 	}
 	else if ($ArrangedAddyCount == 2)
 	{
-		$ArrangedConnection.connectArranged (%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1]);
+		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1]);
 		return;
 	}
 	else if ($ArrangedAddyCount == 3)
 	{
-		$ArrangedConnection.connectArranged (%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2]);
+		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2]);
 		return;
 	}
 	else if ($ArrangedAddyCount == 4)
 	{
-		$ArrangedConnection.connectArranged (%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3]);
+		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3]);
 		return;
 	}
 	else if ($ArrangedAddyCount == 5)
 	{
-		$ArrangedConnection.connectArranged (%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4]);
+		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4]);
 		return;
 	}
 	else if ($ArrangedAddyCount == 6)
 	{
-		$ArrangedConnection.connectArranged (%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5]);
+		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5]);
 		return;
 	}
 	else if ($ArrangedAddyCount == 7)
 	{
-		$ArrangedConnection.connectArranged (%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6]);
+		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6]);
 		return;
 	}
 	else if ($ArrangedAddyCount == 8)
 	{
-		$ArrangedConnection.connectArranged (%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6], $ArrangedAddys[7]);
+		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6], $ArrangedAddys[7]);
 		return;
 	}
 	else if ($ArrangedAddyCount == 9)
 	{
-		$ArrangedConnection.connectArranged (%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6], $ArrangedAddys[7], $ArrangedAddys[8]);
+		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6], $ArrangedAddys[7], $ArrangedAddys[8]);
 		return;
 	}
 	else if ($ArrangedAddyCount == 10)
 	{
-		$ArrangedConnection.connectArranged (%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6], $ArrangedAddys[7], $ArrangedAddys[8], $ArrangedAddys[9]);
+		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6], $ArrangedAddys[7], $ArrangedAddys[8], $ArrangedAddys[9]);
 		return;
 	}
-	error ("notifyArrangedFinish - Failed to call with addyCount = " @ $ArrangedAddyCount);
+	error("notifyArrangedFinish - Failed to call with addyCount = " @ $ArrangedAddyCount);
 }
 
-function onSendPunchPacket (%ip)
+function onSendPunchPacket(%ip)
 {
-	if (isObject (Connecting_Text))
+	if (isObject(Connecting_Text))
 	{
-		Connecting_Text.setText (Connecting_Text.getText () @ "\nSending punch packet...");
+		Connecting_Text.setText(Connecting_Text.getText() @ "\nSending punch packet...");
 	}
-	else 
+	else
 	{
-		echo ("Sending punch packet to " @ %ip);
+		echo("Sending punch packet to " @ %ip);
 	}
 }
 

@@ -1,43 +1,43 @@
-function onManifestHashReceived ()
+function onManifestHashReceived()
 {
 	$manifestPending = 1;
-	LoadingProgressTxt.setValue ("DOWNLOADING FILE MANIFEST");
-	LoadingProgress.setValue (0);
-	LoadingSecondaryProgress.setValue (0);
+	LoadingProgressTxt.setValue("DOWNLOADING FILE MANIFEST");
+	LoadingProgress.setValue(0);
+	LoadingSecondaryProgress.setValue(0);
 }
 
-function onManifestRecieved ()
+function onManifestRecieved()
 {
 	$manifestPending = 0;
 	$totalPendingBlobs = 0;
 }
 
-function setTotalPendingBlobs (%tpb)
+function setTotalPendingBlobs(%tpb)
 {
 	$totalPendingBlobs = %tpb;
 }
 
-function onBlobCacheCheckFinished ()
+function onBlobCacheCheckFinished()
 {
 	if ($totalPendingBlobs == 1)
 	{
-		LoadingProgressTxt.setValue ("CHECKING CDN FOR 1 FILE");
+		LoadingProgressTxt.setValue("CHECKING CDN FOR 1 FILE");
 	}
-	else 
+	else
 	{
-		LoadingProgressTxt.setValue ("CHECKING CDN FOR " @ $totalPendingBlobs @ " FILES");
+		LoadingProgressTxt.setValue("CHECKING CDN FOR " @ $totalPendingBlobs @ " FILES");
 	}
-	LoadingProgress.setValue (0);
-	LoadingSecondaryProgress.setValue (0);
+	LoadingProgress.setValue(0);
+	LoadingSecondaryProgress.setValue(0);
 }
 
-function updateBlobsRemaining (%blobsRemaining)
+function updateBlobsRemaining(%blobsRemaining)
 {
 	if ($manifestPending && %blobsRemaining == 1)
 	{
-		LoadingProgressTxt.setValue ("DOWNLOADING FILE MANIFEST");
-		LoadingProgress.setValue (0);
-		LoadingSecondaryProgress.setValue (0);
+		LoadingProgressTxt.setValue("DOWNLOADING FILE MANIFEST");
+		LoadingProgress.setValue(0);
+		LoadingSecondaryProgress.setValue(0);
 		return;
 	}
 	if (%blobsRemaining > $totalPendingBlobs)
@@ -46,89 +46,89 @@ function updateBlobsRemaining (%blobsRemaining)
 	}
 	if ($totalPendingBlobs > 0)
 	{
-		LoadingProgressTxt.setValue ("DOWNLOADING FILE " @ ($totalPendingBlobs - %blobsRemaining) + 1 @ " OF " @ $totalPendingBlobs);
-		LoadingProgress.setValue (($totalPendingBlobs - %blobsRemaining) / $totalPendingBlobs);
-		LoadingSecondaryProgress.setValue (0);
-		Canvas.repaint ();
+		LoadingProgressTxt.setValue("DOWNLOADING FILE " @ ($totalPendingBlobs - %blobsRemaining) + 1 @ " OF " @ $totalPendingBlobs);
+		LoadingProgress.setValue(($totalPendingBlobs - %blobsRemaining) / $totalPendingBlobs);
+		LoadingSecondaryProgress.setValue(0);
+		Canvas.repaint();
 	}
 }
 
-function onBlobDownloadFinished ()
+function onBlobDownloadFinished()
 {
-	LoadingProgressTxt.setValue ("LOADING DATABLOCKS");
-	LoadingSecondaryProgress.setValue (0);
-	LoadingProgress.setValue (0);
-	commandToServer ('BlobDownloadFinished');
+	LoadingProgressTxt.setValue("LOADING DATABLOCKS");
+	LoadingSecondaryProgress.setValue(0);
+	LoadingProgress.setValue(0);
+	commandToServer('BlobDownloadFinished');
 }
 
-function setDownloadSize (%size)
+function setDownloadSize(%size)
 {
 	$currDownloadSize = %size;
 }
 
-function updateDownloadProgress (%val)
+function updateDownloadProgress(%val)
 {
 	%percent = %val / $currDownloadSize;
-	LoadingSecondaryProgress.setValue (%percent);
+	LoadingSecondaryProgress.setValue(%percent);
 }
 
-function clientCmdMissionStartPhase1 (%seq)
+function clientCmdMissionStartPhase1(%seq)
 {
-	echo ("*** New Mission");
-	echo ("*** Phase 1: Download Datablocks & Targets");
-	onMissionDownloadPhase1 ();
-	commandToServer ('MissionStartPhase1Ack', %seq);
+	echo("*** New Mission");
+	echo("*** Phase 1: Download Datablocks & Targets");
+	onMissionDownloadPhase1();
+	commandToServer('MissionStartPhase1Ack', %seq);
 }
 
-function onDataBlockObjectReceived (%index, %total)
+function onDataBlockObjectReceived(%index, %total)
 {
-	onPhase1Progress (%index / %total);
+	onPhase1Progress(%index / %total);
 }
 
-function clientCmdMissionStartPhase2 (%seq)
+function clientCmdMissionStartPhase2(%seq)
 {
-	onPhase1Complete ();
-	echo ("*** Phase 2: Download Ghost Objects");
-	purgeResources ();
-	onMissionDownloadPhase2 ();
-	commandToServer ('MissionStartPhase2Ack', %seq);
+	onPhase1Complete();
+	echo("*** Phase 2: Download Ghost Objects");
+	purgeResources();
+	onMissionDownloadPhase2();
+	commandToServer('MissionStartPhase2Ack', %seq);
 }
 
-function onGhostAlwaysStarted (%ghostCount)
+function onGhostAlwaysStarted(%ghostCount)
 {
 	$ghostCount = %ghostCount;
 	$ghostsRecvd = 0;
 }
 
-function onGhostAlwaysObjectReceived ()
+function onGhostAlwaysObjectReceived()
 {
-	$ghostsRecvd += 1;
-	onPhase2Progress ($ghostsRecvd / $ghostCount);
+	$ghostsRecvd++;
+	onPhase2Progress($ghostsRecvd / $ghostCount);
 }
 
-function clientCmdMissionStartPhase3 (%seq)
+function clientCmdMissionStartPhase3(%seq)
 {
-	onPhase2Complete ();
-	echo ("*** Phase 3: Mission Lighting");
+	onPhase2Complete();
+	echo("*** Phase 3: Mission Lighting");
 	$MSeq = %seq;
-	sceneLightingComplete ();
+	sceneLightingComplete();
 }
 
-function updateLightingProgress ()
+function updateLightingProgress()
 {
-	onPhase3Progress ($SceneLighting::lightingProgress);
+	onPhase3Progress($SceneLighting::lightingProgress);
 	if ($lightingMission)
 	{
-		$lightingProgressThread = schedule (1, 0, "updateLightingProgress");
+		$lightingProgressThread = schedule(1, 0, "updateLightingProgress");
 	}
 }
 
-function sceneLightingComplete ()
+function sceneLightingComplete()
 {
-	echo ("Mission lighting done");
-	onPhase3Complete ();
-	onMissionDownloadComplete ();
-	commandToServer ('MissionStartPhase3Ack', $MSeq);
-	commandToServer ('RequestNamedTargets');
+	echo("Mission lighting done");
+	onPhase3Complete();
+	onMissionDownloadComplete();
+	commandToServer('MissionStartPhase3Ack', $MSeq);
+	commandToServer('RequestNamedTargets');
 }
 

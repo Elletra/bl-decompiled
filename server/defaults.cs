@@ -59,6 +59,7 @@ $Pref::Server::Quota::Vehicle = 5;
 $pref::Server::SpeedKart::RoundLimit = 8;
 $Pref::Server::ClearEventsOnClientExit = 1;
 $Pref::Server::UseRTB = 0;
+$Pref::Server::AllowMultiClient = 0;
 $Pref::Server::BrickRespawnTime = 30000;
 $Music__After_School_Special = 1;
 $Music__Ambient_Deep = 1;

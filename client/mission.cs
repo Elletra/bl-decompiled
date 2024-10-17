@@ -1,11 +1,11 @@
-function clientCmdMissionStart (%seq)
+function clientCmdMissionStart(%seq)
 {
-	ClearPhysicsCache ();
+	ClearPhysicsCache();
 }
 
-function clientCmdMissionEnd (%seq)
+function clientCmdMissionEnd(%seq)
 {
-	alxStopAll ();
+	alxStopAll();
 	$lightingMission = 0;
 	$sceneLighting::terminateLighting = 1;
 }

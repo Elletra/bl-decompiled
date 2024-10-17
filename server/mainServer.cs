@@ -1,42 +1,42 @@
 $WebCom_PostSchedule = 0;
-function WebCom_PostServer ()
+function WebCom_PostServer()
 {
 	if ($Server::LAN)
 	{
-		echo ("Can\'t post to master server in LAN game");
+		echo("Can't post to master server in LAN game");
 		return;
 	}
 	if (!$Server::Port)
 	{
-		error ("ERROR: WebCom_PostServer() - $Server::Port is not set, game hasn\'t started yet?");
+		error("ERROR: WebCom_PostServer() - $Server::Port is not set, game hasn't started yet?");
 		return;
 	}
 	if (!$missionRunning)
 	{
-		error ("ERROR: WebCom_PostServer() - mission is not running");
+		error("ERROR: WebCom_PostServer() - mission is not running");
 		return;
 	}
-	echo ("Posting to master server...");
-	if (isEventPending ($WebCom_PostSchedule))
+	echo("Posting to master server...");
+	if (isEventPending($WebCom_PostSchedule))
 	{
-		cancel ($WebCom_PostSchedule);
+		cancel($WebCom_PostSchedule);
 	}
-	if (isObject (postServerTCPObj))
+	if (isObject(postServerTCPObj))
 	{
-		postServerTCPObj.delete ();
+		postServerTCPObj.delete();
 	}
-	new TCPObject (postServerTCPObj);
+	new TCPObject(postServerTCPObj);
 	postServerTCPObj.site = "master3.blockland.us";
 	postServerTCPObj.port = 80;
 	postServerTCPObj.filePath = "/postServer.php";
-	%urlEncName = urlEnc ($Server::Name);
-	%urlEncGameMode = urlEnc ($GameModeDisplayName);
+	%urlEncName = urlEnc($Server::Name);
+	%urlEncGameMode = urlEnc($GameModeDisplayName);
 	%urlEncModPaths = "";
 	if ($Pref::Server::Password !$= "")
 	{
 		%passworded = 1;
 	}
-	else 
+	else
 	{
 		%passworded = 0;
 	}
@@ -44,53 +44,50 @@ function WebCom_PostServer ()
 	{
 		%dedicated = 1;
 		%steamTicket = "";
-		%dToken = getDedicatedToken ();
+		%dToken = getDedicatedToken();
 	}
-	else 
+	else
 	{
 		%dedicated = 0;
-		%steamTicket = SteamGetAuthSessionTicket ();
+		%steamTicket = SteamGetAuthSessionTicket();
 		%dToken = "";
 	}
-	$Server::PlayerCount = ClientGroup.getCount ();
-	%postText = "steamTicket=" @ urlEnc (%steamTicket);
-	%postText = %postText @ "&dToken=" @ urlEnc (%dToken);
-	%postText = %postText @ "&blid=" @ getMyBLID ();
-	%postText = %postText @ "&port=" @ mFloor ($Server::Port);
+	$Server::PlayerCount = ClientGroup.getCount();
+	%postText = "steamTicket=" @ urlEnc(%steamTicket);
+	%postText = %postText @ "&dToken=" @ urlEnc(%dToken);
+	%postText = %postText @ "&blid=" @ getMyBLID();
+	%postText = %postText @ "&port=" @ mFloor($Server::Port);
 	%postText = %postText @ "&passworded=" @ %passworded;
 	%postText = %postText @ "&serverName=" @ %urlEncName;
-	%postText = %postText @ "&players=" @ mFloor ($Server::PlayerCount);
-	%postText = %postText @ "&maxPlayers=" @ mFloor ($Pref::Server::MaxPlayers);
+	%postText = %postText @ "&players=" @ mFloor($Server::PlayerCount);
+	%postText = %postText @ "&maxPlayers=" @ mFloor($Pref::Server::MaxPlayers);
 	%postText = %postText @ "&dedicated=" @ %dedicated;
-	%postText = %postText @ "&brickCount=" @ mFloor (getBrickCount ());
+	%postText = %postText @ "&brickCount=" @ mFloor(getBrickCount());
 	%postText = %postText @ "&gameMode=" @ %urlEncGameMode;
-	%postText = %postText @ "&build=" @ urlEnc (getBuildNumber ());
+	%postText = %postText @ "&build=" @ urlEnc(getBuildNumber());
 	postServerTCPObj.postText = %postText;
-	postServerTCPObj.postTextLen = strlen (%postText);
-	postServerTCPObj.cmd = "POST " @ postServerTCPObj.filePath @ " HTTP/1.0\r\n" @ "Host: " @ postServerTCPObj.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ postServerTCPObj.postTextLen @ "\r\n" @ "\r\n" @ postServerTCPObj.postText @ "\r\n";
-	postServerTCPObj.connect (postServerTCPObj.site @ ":" @ postServerTCPObj.port);
-	%schduleTime = 5 * 60 * 1000 * getTimeScale ();
-	$WebCom_PostSchedule = schedule (%schduleTime, 0, WebCom_PostServer);
+	postServerTCPObj.postTextLen = strlen(%postText);
+	postServerTCPObj.cmd = "POST " @ postServerTCPObj.filePath @ " HTTP/1.0\r\n" @ "Host: " @ postServerTCPObj.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber() @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ postServerTCPObj.postTextLen @ "\r\n" @ "\r\n" @ postServerTCPObj.postText @ "\r\n";
+	postServerTCPObj.connect(postServerTCPObj.site @ ":" @ postServerTCPObj.port);
+	%schduleTime = 5 * 60 * 1000 * getTimeScale();
+	$WebCom_PostSchedule = schedule(%schduleTime, 0, WebCom_PostServer);
 	if ($Pref::Server::BrickPublicDomainTimeout > 0)
 	{
-		%elapsedMS = getSimTime () - $Server::lastPostTime;
-		%elapsedMinutes = mFloor (%elapsedMS / (1000 * 60));
+		%elapsedMS = getSimTime() - $Server::lastPostTime;
+		%elapsedMinutes = mFloor(%elapsedMS / (1000 * 60));
 		if (%elapsedMinutes > 0)
 		{
-			%count = mainBrickGroup.getCount ();
-			%i = 0;
-			while (%i < %count)
+			%count = mainBrickGroup.getCount();
+			for (%i = 0; %i < %count; %i++)
 			{
-				%brickGroup = mainBrickGroup.getObject (%i);
+				%brickGroup = mainBrickGroup.getObject(%i);
 				if (%brickGroup.isPublicDomain)
 				{
-					
 				}
-				else if (%brickGroup.hasUser ())
+				else if (%brickGroup.hasUser())
 				{
-					
 				}
-				else 
+				else
 				{
 					%brickGroup.abandonedTime += %elapsedMinutes;
 					if (%brickGroup.abandonedTime >= $Pref::Server::BrickPublicDomainTimeout)
@@ -98,181 +95,179 @@ function WebCom_PostServer ()
 						%brickGroup.isPublicDomain = 1;
 					}
 				}
-				%i += 1;
 			}
 			$Server::lastPostTime += %elapsedMinutes * 60 * 1000;
 		}
 	}
-	$Server::lastPostTime = getSimTime ();
+	$Server::lastPostTime = getSimTime();
 }
 
-function WebCom_PostServerUpdateLoop ()
+function WebCom_PostServerUpdateLoop()
 {
-	if (!isEventPending ($WebCom_PostSchedule))
+	if (!isEventPending($WebCom_PostSchedule))
 	{
-		WebCom_PostServer ();
+		WebCom_PostServer();
 		return;
 	}
-	%timeLeft = getTimeRemaining ($WebCom_PostSchedule);
-	%schduleTime = 5 * 60 * 1000 * getTimeScale () * 0.2;
+	%timeLeft = getTimeRemaining($WebCom_PostSchedule);
+	%schduleTime = 5 * 60 * 1000 * getTimeScale() * 0.2;
 	if (%timeLeft > %schduleTime)
 	{
-		cancel ($WebCom_PostSchedule);
-		$WebCom_PostSchedule = schedule (%schduleTime, 0, WebCom_PostServer);
+		cancel($WebCom_PostSchedule);
+		$WebCom_PostSchedule = schedule(%schduleTime, 0, WebCom_PostServer);
 	}
 }
 
-function postServerTCPObj::onConnected (%this)
+function postServerTCPObj::onConnected(%this)
 {
-	%this.send (%this.cmd);
+	%this.send(%this.cmd);
 }
 
-function postServerTCPObj::onDNSFailed (%this)
+function postServerTCPObj::onDNSFailed(%this)
 {
-	echo ("Post to master server FAILED: DNS error. Retrying in 5 seconds...");
-	%this.schedule (0, disconnect);
-	schedule (5000, 0, "WebCom_PostServer");
+	echo("Post to master server FAILED: DNS error. Retrying in 5 seconds...");
+	%this.schedule(0, disconnect);
+	schedule(5000, 0, "WebCom_PostServer");
 }
 
-function postServerTCPObj::onConnectFailed (%this)
+function postServerTCPObj::onConnectFailed(%this)
 {
-	echo ("Post to master server FAILED: Connection failure.  Retrying in 5 seconds...");
-	%this.schedule (0, disconnect);
-	schedule (5000, 0, "WebCom_PostServer");
+	echo("Post to master server FAILED: Connection failure.  Retrying in 5 seconds...");
+	%this.schedule(0, disconnect);
+	schedule(5000, 0, "WebCom_PostServer");
 }
 
-function postServerTCPObj::onDisconnect (%this)
+function postServerTCPObj::onDisconnect(%this)
 {
-	
 }
 
-function postServerTCPObj::onLine (%this, %line)
+function postServerTCPObj::onLine(%this, %line)
 {
-	%word = getWord (%line, 0);
+	%word = getWord(%line, 0);
 	if (%word $= "HTTP/1.1")
 	{
-		%code = getWord (%line, 1);
+		%code = getWord(%line, 1);
 		if (%code != 200)
 		{
-			warn ("WARNING: postServerTCPObj - got non-200 http response \"" @ %code @ "\"");
+			warn("WARNING: postServerTCPObj - got non-200 http response \"" @ %code @ "\"");
 		}
 		if (%code >= 400 && %code <= 499)
 		{
-			warn ("WARNING: 4xx error on postServerTCPObj, retrying");
-			%this.schedule (0, disconnect);
-			%this.schedule (5000, connect, %this.site @ ":" @ %this.port);
+			warn("WARNING: 4xx error on postServerTCPObj, retrying");
+			%this.schedule(0, disconnect);
+			%this.schedule(5000, connect, %this.site @ ":" @ %this.port);
 		}
 		if (%code >= 300 && %code <= 399)
 		{
-			warn ("WARNING: 3xx error on postServerTCPObj, will wait for location header");
+			warn("WARNING: 3xx error on postServerTCPObj, will wait for location header");
 		}
 	}
 	else if (%word $= "Location:")
 	{
-		%url = getWords (%line, 1);
-		warn ("WARNING: postServerTCPObj - Location redirect to " @ %url);
+		%url = getWords(%line, 1);
+		warn("WARNING: postServerTCPObj - Location redirect to " @ %url);
 		%this.filePath = %url;
-		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
-		%this.schedule (0, disconnect);
-		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
+		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber() @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
+		%this.schedule(0, disconnect);
+		%this.schedule(500, connect, %this.site @ ":" @ %this.port);
 	}
 	else if (%word $= "Content-Location:")
 	{
-		%url = getWords (%line, 1);
-		warn ("WARNING: postServerTCPObj - Content-Location redirect to " @ %url);
+		%url = getWords(%line, 1);
+		warn("WARNING: postServerTCPObj - Content-Location redirect to " @ %url);
 		%this.filePath = %url;
-		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
-		%this.schedule (0, disconnect);
-		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
+		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber() @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
+		%this.schedule(0, disconnect);
+		%this.schedule(500, connect, %this.site @ ":" @ %this.port);
 	}
 	else if (%word $= "FAIL")
 	{
-		%reason = getSubStr (%line, 5, 1000);
+		%reason = getSubStr(%line, 5, 1000);
 		if (%reason $= "No matching server entry found")
 		{
-			echo ("No matching server entry found, re-sending authentication request");
-			schedule (1000, 0, auth_Init_Server);
+			echo("No matching server entry found, re-sending authentication request");
+			schedule(1000, 0, auth_Init_Server);
 		}
-		else 
+		else
 		{
-			echo ("Posting to master failed: " @ %reason);
+			echo("Posting to master failed: " @ %reason);
 		}
 	}
 	else if (%word $= "SUCCESS")
 	{
-		echo ("Posting to master server: Success");
+		echo("Posting to master server: Success");
 	}
 	else if (%word $= "MMTOK")
 	{
-		%val = getWord (%line, 1);
-		setMatchMakerToken (%val);
+		%val = getWord(%line, 1);
+		setMatchMakerToken(%val);
 	}
 	else if (%word $= "MATCHMAKER")
 	{
-		%val = getWord (%line, 1);
-		setMatchMakerIP (%val);
+		%val = getWord(%line, 1);
+		setMatchMakerIP(%val);
 	}
 	else if (%word $= "NOTE")
 	{
-		%val = getWords (%line, 1, 99);
-		echo ("NOTE: " @ %val);
+		%val = getWords(%line, 1, 99);
+		echo("NOTE: " @ %val);
 	}
 }
 
-function GameConnection::authCheck (%client)
+function GameConnection::authCheck(%client)
 {
 	if ($Server::LAN)
 	{
-		%client.setPlayerName ("au^timoamyo7zene", %client.LANname);
+		%client.setPlayerName("au^timoamyo7zene", %client.LANname);
 		%client.name = %client.LANname;
-		if (%client.isLan ())
+		if (%client.isLan())
 		{
-			echo ("AUTHCHECK: " @ %client.getPlayerName () @ " = LAN client -> LAN server, loading");
-			%client.bl_id = getLAN_BLID ();
-			%client.setBLID ("au^timoamyo7zene", getLAN_BLID ());
-			%client.startLoad (%client);
+			echo("AUTHCHECK: " @ %client.getPlayerName() @ " = LAN client -> LAN server, loading");
+			%client.bl_id = getLAN_BLID();
+			%client.setBLID("au^timoamyo7zene", getLAN_BLID());
+			%client.startLoad(%client);
 			return;
 		}
-		else 
+		else
 		{
-			echo ("AUTHCHECK: " @ %client.getPlayerName () @ " = internet client -> LAN game, rejecting");
-			%client.schedule (10, delete);
+			echo("AUTHCHECK: " @ %client.getPlayerName() @ " = internet client -> LAN game, rejecting");
+			%client.schedule(10, delete);
 			return;
 		}
 	}
-	else 
+	else
 	{
-		%client.setPlayerName ("au^timoamyo7zene", %client.netName);
+		%client.setPlayerName("au^timoamyo7zene", %client.netName);
 		%client.name = %client.netName;
 	}
-	if (isObject (%client.tcpObj))
+	if (isObject(%client.tcpObj))
 	{
-		%client.tcpObj.delete ();
+		%client.tcpObj.delete();
 	}
-	%tcp = new TCPObject (servAuthTCPobj);
+	%tcp = new TCPObject(servAuthTCPobj);
 	%tcp.retryCount = 0;
 	%tcp.site = "master3.blockland.us";
 	%tcp.port = 80;
 	%tcp.filePath = "/authQuery.php";
-	%postText = "joinToken=" @ %client.getJoinToken ();
-	%postText = %postText @ "&blid=" @ %client.getBLID ();
+	%postText = "joinToken=" @ %client.getJoinToken();
+	%postText = %postText @ "&blid=" @ %client.getBLID();
 	%tcp.postText = %postText;
-	%tcp.postTextLen = strlen (%postText);
-	%tcp.cmd = "POST " @ %tcp.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %tcp.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %tcp.postTextLen @ "\r\n" @ "\r\n" @ %tcp.postText @ "\r\n";
-	%tcp.connect (%tcp.site @ ":" @ %tcp.port);
+	%tcp.postTextLen = strlen(%postText);
+	%tcp.cmd = "POST " @ %tcp.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %tcp.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber() @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %tcp.postTextLen @ "\r\n" @ "\r\n" @ %tcp.postText @ "\r\n";
+	%tcp.connect(%tcp.site @ ":" @ %tcp.port);
 	%client.tcpObj = %tcp;
 	%tcp.client = %client;
 }
 
-function GameConnection::startLoad (%client)
+function GameConnection::startLoad(%client)
 {
-	commandToClient (%client, 'updatePrefs');
-	if (%client.getAddress () $= "local")
+	commandToClient(%client, 'updatePrefs');
+	if (%client.getAddress() $= "local")
 	{
 		%client.isAdmin = 1;
 		%client.isSuperAdmin = 1;
 	}
-	else 
+	else
 	{
 		%client.isAdmin = 0;
 		%client.isSuperAdmin = 0;
@@ -280,399 +275,380 @@ function GameConnection::startLoad (%client)
 	%client.score = 0;
 	$instantGroup = ServerGroup;
 	$instantGroup = MissionCleanup;
-	echo ("CADD: " @ %client @ " " @ %client.getAddress ());
-	echo (" +- bl_id = ", %client.getBLID ());
-	%autoAdmin = %client.autoAdminCheck ();
-	%count = ClientGroup.getCount ();
-	%cl = 0;
-	while (%cl < %count)
+	echo("CADD: " @ %client @ " " @ %client.getAddress());
+	echo(" +- bl_id = ", %client.getBLID());
+	%autoAdmin = %client.autoAdminCheck();
+	%count = ClientGroup.getCount();
+	for (%cl = 0; %cl < %count; %cl++)
 	{
-		%other = ClientGroup.getObject (%cl);
+		%other = ClientGroup.getObject(%cl);
 		if (%other != %client)
 		{
-			secureCommandToClient ("zbR4HmJcSY8hdRhr", %client, 'ClientJoin', %other.getPlayerName (), %other, %other.getBLID (), %other.score, %other.isAIControlled (), %other.isAdmin, %other.isSuperAdmin);
+			secureCommandToClient("zbR4HmJcSY8hdRhr", %client, 'ClientJoin', %other.getPlayerName(), %other, %other.getBLID(), %other.score, %other.isAIControlled(), %other.isAdmin, %other.isSuperAdmin);
 		}
-		%cl += 1;
 	}
-	commandToClient (%client, 'NewPlayerListGui_UpdateWindowTitle', $Server::Name, $Pref::Server::MaxPlayers);
-	serverCmdRequestMiniGameList (%client);
-	$Server::WelcomeMessage = strreplace ($Server::WelcomeMessage, ";", "");
-	$Server::WelcomeMessage = strreplace ($Server::WelcomeMessage, "\\\'", "\'");
-	$Server::WelcomeMessage = strreplace ($Server::WelcomeMessage, "\'", "\\\'");
-	eval ("%taggedMessage = \'" @ $Server::WelcomeMessage @ "\';");
-	messageClient (%client, '', %taggedMessage, %client.getPlayerName ());
-	messageAllExcept (%client, -1, 'MsgClientJoin', '\c1%1 connected.', %client.getPlayerName ());
-	secureCommandToAll ("zbR4HmJcSY8hdRhr", 'ClientJoin', %client.getPlayerName (), %client, %client.getBLID (), %client.score, %client.isAIControlled (), %client.isAdmin, %client.isSuperAdmin);
+	commandToClient(%client, 'NewPlayerListGui_UpdateWindowTitle', $Server::Name, $Pref::Server::MaxPlayers);
+	serverCmdRequestMiniGameList(%client);
+	$Server::WelcomeMessage = strreplace($Server::WelcomeMessage, ";", "");
+	$Server::WelcomeMessage = strreplace($Server::WelcomeMessage, "\\'", "'");
+	$Server::WelcomeMessage = strreplace($Server::WelcomeMessage, "'", "\\'");
+	eval("%taggedMessage = '" @ $Server::WelcomeMessage @ "';");
+	messageClient(%client, '', %taggedMessage, %client.getPlayerName());
+	messageAllExcept(%client, -1, 'MsgClientJoin', '\c1%1 connected.', %client.getPlayerName());
+	secureCommandToAll("zbR4HmJcSY8hdRhr", 'ClientJoin', %client.getPlayerName(), %client, %client.getBLID(), %client.score, %client.isAIControlled(), %client.isAdmin, %client.isSuperAdmin);
 	if (%autoAdmin == 0)
 	{
-		echo (" +- no auto admin");
+		echo(" +- no auto admin");
 	}
 	else if (%autoAdmin == 1)
 	{
-		MessageAll ('MsgAdminForce', '\c2%1 has become Admin (Auto)', %client.getPlayerName ());
-		echo (" +- AUTO ADMIN");
+		MessageAll('MsgAdminForce', '\c2%1 has become Admin (Auto)', %client.getPlayerName());
+		echo(" +- AUTO ADMIN");
 	}
 	else if (%autoAdmin == 2)
 	{
-		MessageAll ('MsgAdminForce', '\c2%1 has become Super Admin (Auto)', %client.getPlayerName ());
-		echo (" +- AUTO SUPER ADMIN (List)");
+		MessageAll('MsgAdminForce', '\c2%1 has become Super Admin (Auto)', %client.getPlayerName());
+		echo(" +- AUTO SUPER ADMIN (List)");
 	}
 	else if (%autoAdmin == 3)
 	{
-		MessageAll ('MsgAdminForce', '\c2%1 has become Super Admin (Host)', %client.getPlayerName ());
-		echo (" +- AUTO SUPER ADMIN (ID same as host)");
+		MessageAll('MsgAdminForce', '\c2%1 has become Super Admin (Host)', %client.getPlayerName());
+		echo(" +- AUTO SUPER ADMIN (ID same as host)");
 	}
-	if (%client.getBLID () <= -1)
+	if (%client.getBLID() <= -1)
 	{
-		error ("ERROR: GameConnection::startLoad() - Client has no bl_id");
-		%client.schedule (10, delete);
+		error("ERROR: GameConnection::startLoad() - Client has no bl_id");
+		%client.schedule(10, delete);
 		return;
 	}
-	else if (isObject ("BrickGroup_" @ %client.getBLID ()))
+	else if (isObject("BrickGroup_" @ %client.getBLID()))
 	{
-		%obj = "BrickGroup_" @ %client.getBLID ();
-		%client.brickGroup = %obj.getId ();
+		%obj = "BrickGroup_" @ %client.getBLID();
+		%client.brickGroup = %obj.getId();
 		%client.brickGroup.isPublicDomain = 0;
 		%client.brickGroup.abandonedTime = 0;
-		%client.brickGroup.name = %client.getPlayerName ();
+		%client.brickGroup.name = %client.getPlayerName();
 		%client.brickGroup.client = %client;
 		%quotaObject = %client.brickGroup.QuotaObject;
-		if (isObject (%quotaObject))
+		if (isObject(%quotaObject))
 		{
-			if (isEventPending (%quotaObject.cancelEventsEvent))
+			if (isEventPending(%quotaObject.cancelEventsEvent))
 			{
-				cancel (%quotaObject.cancelEventsEvent);
+				cancel(%quotaObject.cancelEventsEvent);
 			}
-			if (isEventPending (%quotaObject.cancelProjectilesEvent))
+			if (isEventPending(%quotaObject.cancelProjectilesEvent))
 			{
-				cancel (%quotaObject.cancelProjectilesEvent);
+				cancel(%quotaObject.cancelProjectilesEvent);
 			}
 		}
 	}
-	else 
+	else
 	{
-		%client.brickGroup = new SimGroup (("BrickGroup_" @ %client.getBLID ()));
-		mainBrickGroup.add (%client.brickGroup);
+		%client.brickGroup = new SimGroup("BrickGroup_" @ %client.getBLID());
+		mainBrickGroup.add(%client.brickGroup);
 		%client.brickGroup.client = %client;
-		%client.brickGroup.name = %client.getPlayerName ();
-		%client.brickGroup.bl_id = %client.getBLID ();
+		%client.brickGroup.name = %client.getPlayerName();
+		%client.brickGroup.bl_id = %client.getBLID();
 	}
-	%client.InitializeTrustListUpload ();
+	%client.InitializeTrustListUpload();
 	if ($missionRunning)
 	{
-		%client.loadMission ();
+		%client.loadMission();
 	}
-	if ($Server::PlayerCount >= $Pref::Server::MaxPlayers || getSimTime () - $Server::lastPostTime > 30 * 1000 || $Server::lastPostTime < 30 * 1000)
+	if ($Server::PlayerCount >= $Pref::Server::MaxPlayers || getSimTime() - $Server::lastPostTime > 30 * 1000 || $Server::lastPostTime < 30 * 1000)
 	{
-		WebCom_PostServer ();
+		WebCom_PostServer();
 	}
 }
 
-function GameConnection::autoAdminCheck (%client)
+function GameConnection::autoAdminCheck(%client)
 {
-	if (getMyBLID () <= 0)
+	if (getMyBLID() <= 0)
 	{
 		return 0;
 	}
-	%clientBLID = %client.getBLID ();
-	if (%clientBLID == getMyBLID ())
+	%clientBLID = %client.getBLID();
+	if (%clientBLID == getMyBLID())
 	{
 		%client.isSuperAdmin = 1;
 		%client.isAdmin = 1;
 		return 3;
 	}
-	%count = getWordCount ($Pref::Server::AutoSuperAdminList);
-	%i = 0;
-	while (%i < %count)
+	%count = getWordCount($Pref::Server::AutoSuperAdminList);
+	for (%i = 0; %i < %count; %i++)
 	{
-		%checkBL_ID = getWord ($Pref::Server::AutoSuperAdminList, %i);
+		%checkBL_ID = getWord($Pref::Server::AutoSuperAdminList, %i);
 		if (%clientBLID $= %checkBL_ID)
 		{
 			%client.isSuperAdmin = 1;
 			%client.isAdmin = 1;
 			return 2;
 		}
-		%i += 1;
 	}
-	%count = getWordCount ($Pref::Server::AutoAdminList);
-	%i = 0;
-	while (%i < %count)
+	%count = getWordCount($Pref::Server::AutoAdminList);
+	for (%i = 0; %i < %count; %i++)
 	{
-		%checkBL_ID = getWord ($Pref::Server::AutoAdminList, %i);
+		%checkBL_ID = getWord($Pref::Server::AutoAdminList, %i);
 		if (%clientBLID $= %checkBL_ID)
 		{
 			%client.isAdmin = 1;
 			return 1;
 		}
-		%i += 1;
 	}
 	return 0;
 }
 
-function GameConnection::killDupes (%client)
+function GameConnection::killDupes(%client)
 {
-	%ourIP = %client.getRawIP ();
-	%ourBLID = %client.getBLID ();
-	%count = ClientGroup.getCount ();
-	%clientIndex = 0;
-	while (%clientIndex < %count)
+	%ourIP = %client.getRawIP();
+	%ourBLID = %client.getBLID();
+	%count = ClientGroup.getCount();
+	for (%clientIndex = 0; %clientIndex < %count; %clientIndex++)
 	{
-		%cl = ClientGroup.getObject (%clientIndex);
+		%cl = ClientGroup.getObject(%clientIndex);
 		if (%cl == %client)
 		{
-			
 		}
-		else if (%cl.getBLID () !$= %ourBLID)
+		else if (%cl.getBLID() !$= %ourBLID)
 		{
-			
 		}
-		else if (%cl.getRawIP () $= %ourIP && %cl.getPlayerName () $= %client.getPlayerName ())
+		else if (%cl.getRawIP() $= %ourIP && %cl.getPlayerName() $= %client.getPlayerName())
 		{
-			
 		}
-		else if (%cl.isLocal () || %cl.isLan ())
+		else if (%cl.isLocal() || %cl.isLan())
 		{
-			
 		}
-		else 
+		else
 		{
-			%cl.schedule (10, delete, "Someone using your Blockland ID joined the server from a different IP address.");
+			%cl.schedule(10, delete, "Someone using your Blockland ID joined the server from a different IP address.");
 		}
-		%clientIndex += 1;
 	}
 }
 
-function servAuthTCPobj::onDNSFailed (%this)
+function servAuthTCPobj::onDNSFailed(%this)
 {
-	%this.retryCount += 1;
+	%this.retryCount++;
 	%maxRetries = 3;
 	if (%this.retryCount > %maxRetries)
 	{
-		if (%this.client.isLocal ())
+		if (%this.client.isLocal())
 		{
-			error ("ERROR: - Authentication DNS Failed For Host.");
-			%this.client.schedule (60 * 1000 * 5, authCheck);
+			error("ERROR: - Authentication DNS Failed For Host.");
+			%this.client.schedule(60 * 1000 * 5, authCheck);
 		}
-		else 
+		else
 		{
-			error ("ERROR: - Authentication DNS Failed.");
-			%this.client.schedule (60 * 1000 * 5, authCheck);
+			error("ERROR: - Authentication DNS Failed.");
+			%this.client.schedule(60 * 1000 * 5, authCheck);
 		}
 	}
-	else if (%this.client.isLocal () && !%this.client.getHasAuthedOnce ())
+	else if (%this.client.isLocal() && !%this.client.getHasAuthedOnce())
 	{
-		error ("ERROR: - Authentication DNS Failed when attempting to host.");
-		MessageBoxOK ("Cannot Host Internet Game", "Authentication DNS Failed.", "disconnect();");
+		error("ERROR: - Authentication DNS Failed when attempting to host.");
+		MessageBoxOK("Cannot Host Internet Game", "Authentication DNS Failed.", "disconnect();");
 	}
-	else 
+	else
 	{
-		%this.schedule (0, disconnect);
-		%this.schedule (10, connect, %this.site @ ":" @ %this.port);
-		error ("ERROR: - Authentication DNS Failed.  Retry ", %this.retryCount);
+		%this.schedule(0, disconnect);
+		%this.schedule(10, connect, %this.site @ ":" @ %this.port);
+		error("ERROR: - Authentication DNS Failed.  Retry ", %this.retryCount);
 	}
 }
 
-function servAuthTCPobj::onConnectFailed (%this)
+function servAuthTCPobj::onConnectFailed(%this)
 {
-	%this.retryCount += 1;
+	%this.retryCount++;
 	%maxRetries = 5;
-	if (%this.client.isLocal () && !%this.client.getHasAuthedOnce ())
+	if (%this.client.isLocal() && !%this.client.getHasAuthedOnce())
 	{
 		%maxRetries = 3;
 	}
 	if (%this.retryCount > %maxRetries)
 	{
-		if (%this.client.isLocal ())
+		if (%this.client.isLocal())
 		{
-			error ("ERROR: - Authentication Connnection Failed For Host.");
-			%this.client.schedule (60 * 1000 * 5, authCheck);
+			error("ERROR: - Authentication Connnection Failed For Host.");
+			%this.client.schedule(60 * 1000 * 5, authCheck);
 		}
-		else 
+		else
 		{
-			error ("ERROR: - Authentication Connection Failed.");
-			%this.client.schedule (60 * 1000 * 5, authCheck);
+			error("ERROR: - Authentication Connection Failed.");
+			%this.client.schedule(60 * 1000 * 5, authCheck);
 		}
 	}
-	else if (%this.client.isLocal () && !%this.client.getHasAuthedOnce ())
+	else if (%this.client.isLocal() && !%this.client.getHasAuthedOnce())
 	{
 		if (%this.retryCount > 1)
 		{
-			error ("ERROR: - Authentication Connection Failed when attempting to host.");
-			MessageBoxOK ("Cannot Host Internet Game", "Authentication Connection Failed.", "disconnect();");
+			error("ERROR: - Authentication Connection Failed when attempting to host.");
+			MessageBoxOK("Cannot Host Internet Game", "Authentication Connection Failed.", "disconnect();");
 		}
-		else 
+		else
 		{
-			%this.schedule (0, disconnect);
-			%this.schedule (10, connect, %this.site @ ":" @ %this.port);
-			error ("ERROR: - Authentication Connection Failed.  Retry ", %this.retryCount);
+			%this.schedule(0, disconnect);
+			%this.schedule(10, connect, %this.site @ ":" @ %this.port);
+			error("ERROR: - Authentication Connection Failed.  Retry ", %this.retryCount);
 		}
 	}
-	else 
+	else
 	{
-		%this.schedule (0, disconnect);
-		%this.schedule (10, connect, %this.site @ ":" @ %this.port);
-		error ("ERROR: - Authentication Connection Failed.  Retry ", %this.retryCount);
+		%this.schedule(0, disconnect);
+		%this.schedule(10, connect, %this.site @ ":" @ %this.port);
+		error("ERROR: - Authentication Connection Failed.  Retry ", %this.retryCount);
 	}
 }
 
-function servAuthTCPobj::onConnected (%this)
+function servAuthTCPobj::onConnected(%this)
 {
-	%this.send (%this.cmd);
+	%this.send(%this.cmd);
 }
 
-function servAuthTCPobj::onLine (%this, %line)
+function servAuthTCPobj::onLine(%this, %line)
 {
-	%word = getWord (%line, 0);
+	%word = getWord(%line, 0);
 	if (%word $= "HTTP/1.1")
 	{
-		%code = getWord (%line, 1);
+		%code = getWord(%line, 1);
 		if (%code != 200)
 		{
-			warn ("WARNING: servAuthTCPobj - got non-200 http response \"" @ %code @ "\"");
+			warn("WARNING: servAuthTCPobj - got non-200 http response \"" @ %code @ "\"");
 		}
 		if (%code >= 400 && %code <= 499)
 		{
-			warn ("WARNING: 4xx error on servAuthTCPobj, retrying");
-			%this.schedule (0, disconnect);
-			%this.schedule (500, connect, %this.site @ ":" @ %this.port);
+			warn("WARNING: 4xx error on servAuthTCPobj, retrying");
+			%this.schedule(0, disconnect);
+			%this.schedule(500, connect, %this.site @ ":" @ %this.port);
 		}
 		if (%code >= 300 && %code <= 399)
 		{
-			warn ("WARNING: 3xx error on servAuthTCPobj, will wait for location header");
+			warn("WARNING: 3xx error on servAuthTCPobj, will wait for location header");
 		}
 	}
 	else if (%word $= "Location:")
 	{
-		%url = getWords (%line, 1);
-		warn ("WARNING: servAuthTCPobj - Location redirect to " @ %url);
+		%url = getWords(%line, 1);
+		warn("WARNING: servAuthTCPobj - Location redirect to " @ %url);
 		%this.filePath = %url;
-		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
-		%this.schedule (0, disconnect);
-		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
+		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber() @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
+		%this.schedule(0, disconnect);
+		%this.schedule(500, connect, %this.site @ ":" @ %this.port);
 	}
 	else if (%word $= "Content-Location:")
 	{
-		%url = getWords (%line, 1);
-		warn ("WARNING: servAuthTCPobj - Content-Location redirect to " @ %url);
+		%url = getWords(%line, 1);
+		warn("WARNING: servAuthTCPobj - Content-Location redirect to " @ %url);
 		%this.filePath = %url;
-		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
-		%this.schedule (0, disconnect);
-		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
+		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber() @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
+		%this.schedule(0, disconnect);
+		%this.schedule(500, connect, %this.site @ ":" @ %this.port);
 	}
 	else if (%word $= "NAME")
 	{
-		%this.client.netName = getWords (%line, 1, 99);
-		%this.client.setPlayerName ("au^timoamyo7zene", %this.client.netName);
+		%this.client.netName = getWords(%line, 1, 99);
+		%this.client.setPlayerName("au^timoamyo7zene", %this.client.netName);
 		%this.client.name = %this.client.netName;
 	}
 	else if (%word $= "STEAMID")
 	{
-		%this.client.steamID = getWord (%line, 1);
+		%this.client.steamID = getWord(%line, 1);
 	}
 	else if (%word $= "SUCCESS")
 	{
-		if (!%this.client.getHasAuthedOnce ())
+		if (!%this.client.getHasAuthedOnce())
 		{
-			echo ("Auth Init Successfull: " @ %this.client.getPlayerName ());
-			%this.client.setHasAuthedOnce (1);
-			%this.client.startLoad ();
-			%this.client.killDupes ();
-			%this.client.schedule (60 * 1000 * 5, authCheck);
+			echo("Auth Init Successfull: " @ %this.client.getPlayerName());
+			%this.client.setHasAuthedOnce(1);
+			%this.client.startLoad();
+			%this.client.killDupes();
+			%this.client.schedule(60 * 1000 * 5, authCheck);
 			if (!$Pref::Server::AllowMultiClient)
 			{
-				%count = ClientGroup.getCount ();
-				%i = 0;
-				while (%i < %count)
+				%count = ClientGroup.getCount();
+				for (%i = 0; %i < %count; %i++)
 				{
-					%cl = ClientGroup.getObject (%i);
+					%cl = ClientGroup.getObject(%i);
 					if (%cl == %this.client)
 					{
-						
 					}
-					else if (%cl.getBLID () == %this.client.getBLID ())
+					else if (%cl.getBLID() == %this.client.getBLID())
 					{
-						%cl.schedule (10, delete, "Duplicate client removed (2)");
+						%cl.schedule(10, delete, "Duplicate client removed (2)");
 					}
-					%i += 1;
 				}
 			}
 		}
-		else 
+		else
 		{
-			echo ("Auth Continue Successfull: " @ %this.client.getPlayerName ());
-			%this.client.schedule (60 * 1000 * 5, authCheck);
+			echo("Auth Continue Successfull: " @ %this.client.getPlayerName());
+			%this.client.schedule(60 * 1000 * 5, authCheck);
 		}
 	}
 	else if (%word $= "FAIL")
 	{
-		if (isObject (%this.client))
+		if (isObject(%this.client))
 		{
-			if (%this.client.getHasAuthedOnce ())
+			if (%this.client.getHasAuthedOnce())
 			{
-				MessageAll ('', '\c2%1 Authentication Failed (%2).', %this.client.getPlayerName (), %this.client.getRawIP ());
+				MessageAll('', '\c2%1 Authentication Failed (%2).', %this.client.getPlayerName(), %this.client.getRawIP());
 			}
-			echo (" Authentication Failed for " @ %this.client.getPlayerName () @ " (" @ %this.client.getRawIP () @ ").");
-			if (%this.client.isLocal ())
+			echo(" Authentication Failed for " @ %this.client.getPlayerName() @ " (" @ %this.client.getRawIP() @ ").");
+			if (%this.client.isLocal())
 			{
-				shutDown ("Authentication failed for server host.");
-				schedule (10, 0, disconnect);
-				schedule (11, 0, MessageBoxOK, "Server Shut Down", "Server shut down - Authentication Failed.");
+				shutDown("Authentication failed for server host.");
+				schedule(10, 0, disconnect);
+				schedule(11, 0, MessageBoxOK, "Server Shut Down", "Server shut down - Authentication Failed.");
 			}
-			else 
+			else
 			{
-				%this.client.schedule (10, delete, "Server could not verify your Blockland ID.");
+				%this.client.schedule(10, delete, "Server could not verify your Blockland ID.");
 				return;
 			}
 		}
-		else 
+		else
 		{
-			error ("ERROR: servAuthTCPobj::onLine() - Orphan tcp object ", %this);
+			error("ERROR: servAuthTCPobj::onLine() - Orphan tcp object ", %this);
 		}
 	}
 	else if (%word $= "ERROR:")
 	{
-		if (isObject (%this.client))
+		if (isObject(%this.client))
 		{
-			echo (" Authentication Error for " @ %this.client.getPlayerName () @ " (" @ %this.client.getRawIP () @ ") - " @ %line);
-			if (!%this.client.getHasAuthedOnce ())
+			echo(" Authentication Error for " @ %this.client.getPlayerName() @ " (" @ %this.client.getRawIP() @ ") - " @ %line);
+			if (!%this.client.getHasAuthedOnce())
 			{
-				%this.client.schedule (10, delete, "Server experienced an authentication error.");
-				MessageAll ('', '\c2%1 Authentication Error (%2).', %this.client.getPlayerName (), %this.client.getRawIP ());
+				%this.client.schedule(10, delete, "Server experienced an authentication error.");
+				MessageAll('', '\c2%1 Authentication Error (%2).', %this.client.getPlayerName(), %this.client.getRawIP());
 			}
-			else 
+			else
 			{
-				%this.client.schedule (60 * 1000 * 5, authCheck);
+				%this.client.schedule(60 * 1000 * 5, authCheck);
 				%this.done = 1;
 			}
 		}
-		else 
+		else
 		{
-			error ("ERROR: servAuthTCPobj::onLine() - Orphan tcp object ", %this);
+			error("ERROR: servAuthTCPobj::onLine() - Orphan tcp object ", %this);
 		}
 	}
 }
 
-function ServerPlay2D (%profile)
+function ServerPlay2D(%profile)
 {
-	%idx = 0;
-	while (%idx < ClientGroup.getCount ())
+	for (%idx = 0; %idx < ClientGroup.getCount(); %idx++)
 	{
-		ClientGroup.getObject (%idx).play2D (%profile);
-		%idx += 1;
+		ClientGroup.getObject(%idx).play2D(%profile);
 	}
 }
 
-function ServerPlay3D (%profile, %transform)
+function ServerPlay3D(%profile, %transform)
 {
-	%idx = 0;
-	while (%idx < ClientGroup.getCount ())
+	for (%idx = 0; %idx < ClientGroup.getCount(); %idx++)
 	{
-		ClientGroup.getObject (%idx).play3D (%profile, %transform);
-		%idx += 1;
+		ClientGroup.getObject(%idx).play3D(%profile, %transform);
 	}
 }
 
-function portInit (%port)
+function portInit(%port)
 {
 	if (%port == 280000)
 	{
@@ -682,27 +658,25 @@ function portInit (%port)
 	{
 		%port = 28001;
 	}
-	%port = mClampF (%port, 0, 65535);
-	%failCount = 0;
-	while (%failCount < 10 && !setNetPort (%port))
+	%port = mClampF(%port, 0, 65535);
+	for (%failCount = 0; %failCount < 10 && !setNetPort(%port); %failCount++)
 	{
-		echo ("Port init failed on port " @ %port @ " trying next port.");
-		%port += 1;
-		%failCount += 1;
+		echo("Port init failed on port " @ %port @ " trying next port.");
+		%port++;
 	}
 	$Server::Port = %port;
 }
 
-function createServer (%serverType)
+function createServer(%serverType)
 {
-	destroyServer ();
-	echo ("");
+	destroyServer();
+	echo("");
 	$missionSequence = 0;
 	$Server::PlayerCount = 0;
 	$Server::ServerType = %serverType;
 	if (%serverType $= "SinglePlayer" && $Server::Dedicated)
 	{
-		error ("ERROR: createServer() - SinglePlayer mode specified for dedicated server");
+		error("ERROR: createServer() - SinglePlayer mode specified for dedicated server");
 		%serverType = "LAN";
 	}
 	if ($Server::Dedicated)
@@ -713,82 +687,82 @@ function createServer (%serverType)
 	}
 	if (%serverType $= "SinglePlayer")
 	{
-		echo ("Starting Single Player Server");
+		echo("Starting Single Player Server");
 		$Server::LAN = 1;
-		portInit (0);
-		setAllowConnections (0);
+		portInit(0);
+		setAllowConnections(0);
 	}
 	else if (%serverType $= "LAN")
 	{
-		echo ("Starting LAN Server");
+		echo("Starting LAN Server");
 		$Server::LAN = 1;
-		portInit (28050);
-		setAllowConnections (1);
+		portInit(28050);
+		setAllowConnections(1);
 	}
 	else if (%serverType $= "Internet")
 	{
-		echo ("Starting Internet Server");
+		echo("Starting Internet Server");
 		$Server::LAN = 0;
-		$Pref::Server::Port = mFloor ($Pref::Server::Port);
+		$Pref::Server::Port = mFloor($Pref::Server::Port);
 		if ($Pref::Server::Port < 1024 || $Pref::Server::Port > 65535)
 		{
 			$Pref::Server::Port = 28000;
 		}
 		if ($portArg)
 		{
-			portInit ($portArg);
+			portInit($portArg);
 		}
-		else 
+		else
 		{
-			portInit ($Pref::Server::Port);
+			portInit($Pref::Server::Port);
 		}
-		setAllowConnections (1);
+		setAllowConnections(1);
 		if (!$Pref::Net::DisableUPnP && !$noUpnpArg)
 		{
-			if (getUpnpPort () != $Server::Port)
+			if (getUpnpPort() != $Server::Port)
 			{
 				$pref::client::lastUpnpError = 0;
-				upnpAdd ($Server::Port);
+				upnpAdd($Server::Port);
 			}
 		}
 	}
-	$ServerGroup = new SimGroup (ServerGroup);
-	onServerCreated ();
-	buildEnvironmentLists ();
+	$ServerGroup = new SimGroup(ServerGroup);
+	onServerCreated();
+	buildEnvironmentLists();
 	if ($UINameTableCreated == 0)
 	{
-		createUINameTable ();
+		createUINameTable();
 	}
-	createMission ();
+	createMission();
 	$IamAdmin = 2;
 	$EnvGuiServer::HasSetAdvancedOnce = 0;
 	if ($GameModeArg !$= "")
 	{
-		EnvGuiServer::getIdxFromFilenames ();
-		EnvGuiServer::SetSimpleMode ();
+		EnvGuiServer::getIdxFromFilenames();
+		EnvGuiServer::SetSimpleMode();
 		if (!$EnvGuiServer::SimpleMode)
 		{
-			EnvGuiServer::fillAdvancedVarsFromSimple ();
-			EnvGuiServer::SetAdvancedMode ();
+			EnvGuiServer::fillAdvancedVarsFromSimple();
+			EnvGuiServer::SetAdvancedMode();
 		}
 	}
-	else 
+	else
 	{
 		$EnvGuiServer::SkyIdx = 0;
 		$EnvGuiServer::WaterIdx = 0;
 		$EnvGuiServer::GroundIdx = 0;
 		$EnvGuiServer::SkyFile = "Add-Ons/Sky_Blue2/Blue2.dml";
 		$EnvGuiServer::GroundFile = "Add-Ons/Ground_Plate/plate.ground";
-		EnvGuiServer::getIdxFromFilenames ();
+		EnvGuiServer::getIdxFromFilenames();
 		$EnvGuiServer::WaterIdx = 0;
 		$EnvGuiServer::SimpleMode = 1;
-		EnvGuiServer::SetSimpleMode ();
-		DayCycle.setEnabled (0);
-		EnvGuiServer::readAdvancedVarsFromSimple ();
+		EnvGuiServer::SetSimpleMode();
+		DayCycle.setEnabled(0);
+		EnvGuiServer::readAdvancedVarsFromSimple();
 	}
 }
 
-function onUPnPFailure (%errorCode)
+function onUPnPFailure(%errorCode)
 {
 	$pref::client::lastUpnpError = %errorCode;
 	if (%errorCode == 718)
@@ -798,216 +772,200 @@ function onUPnPFailure (%errorCode)
 			$pref::client::lastUpnpError = 0;
 			$Pref::Server::Port = 28100;
 			$Server::Port = 28100;
-			portInit ($Pref::Server::Port);
-			upnpAdd ($Server::Port);
+			portInit($Pref::Server::Port);
+			upnpAdd($Server::Port);
 		}
 	}
 }
 
-function onUPnPDiscoveryFailed ()
+function onUPnPDiscoveryFailed()
 {
 	$pref::client::lastUpnpError = -999;
 }
 
-function destroyServer ()
+function destroyServer()
 {
 	if ($Server::LAN)
 	{
-		echo ("Destroying LAN Server");
+		echo("Destroying LAN Server");
 	}
-	else 
+	else
 	{
-		echo ("Destroying NET Server");
+		echo("Destroying NET Server");
 	}
 	$Server::ServerType = "";
-	setAllowConnections (0);
+	setAllowConnections(0);
 	$missionRunning = 0;
-	if (isEventPending ($LoadSaveFile_Tick_Schedule))
+	if (isEventPending($LoadSaveFile_Tick_Schedule))
 	{
-		cancel ($LoadSaveFile_Tick_Schedule);
+		cancel($LoadSaveFile_Tick_Schedule);
 	}
-	while (ClientGroup.getCount ())
+	while (ClientGroup.getCount())
 	{
-		%client = ClientGroup.getObject (0);
-		%client.delete ();
+		%client = ClientGroup.getObject(0);
+		%client.delete();
 	}
-	endMission ();
-	onServerDestroyed ();
-	if (isEventPending ($WebCom_PostSchedule))
+	endMission();
+	onServerDestroyed();
+	if (isEventPending($WebCom_PostSchedule))
 	{
-		cancel ($WebCom_PostSchedule);
+		cancel($WebCom_PostSchedule);
 	}
 	$Server::GuidList = "";
-	deleteDataBlocks ();
-	if (isEventPending ($LoadingBricks_HandShakeSchedule))
+	deleteDataBlocks();
+	if (isEventPending($LoadingBricks_HandShakeSchedule))
 	{
-		cancel ($LoadingBricks_HandShakeSchedule);
+		cancel($LoadingBricks_HandShakeSchedule);
 	}
 	$LoadingBricks_HandShakeSchedule = 0;
-	if (isEventPending ($UploadSaveFile_Tick_Schedule))
+	if (isEventPending($UploadSaveFile_Tick_Schedule))
 	{
-		cancel ($UploadSaveFile_Tick_Schedule);
+		cancel($UploadSaveFile_Tick_Schedule);
 	}
 	$UploadSaveFile_Tick_Schedule = 0;
-	if (isEventPending ($GameModeInitialResetCheckEvent))
+	if (isEventPending($GameModeInitialResetCheckEvent))
 	{
-		cancel ($GameModeInitialResetCheckEvent);
+		cancel($GameModeInitialResetCheckEvent);
 	}
 	$GameModeInitialResetCheckEvent = 0;
-	deleteVariables ("$InputEvent_*");
-	deleteVariables ("$OutputEvent_*");
-	deleteVariables ("$uiNameTable*");
-	deleteVariables ("$BSD_InvData*");
-	deleteVariables ("$DamageType::*");
-	deleteVariables ("$MiniGame::*");
-	deleteVariables ("$EnvGui::*");
-	deleteVariables ("$EnvGuiServer::*");
-	deleteVariables ("$GameModeGui::*");
-	deleteVariables ("$GameModeGuiServer::*");
-	deleteVariables ("$printNameTable*");
-	deleteVariables ("$printARNumPrints*");
-	deleteVariables ("$printARStart*");
-	deleteVariables ("$printAREnd*");
-	deleteVariables ("$PrintCountIdx*");
+	deleteVariables("$InputEvent_*");
+	deleteVariables("$OutputEvent_*");
+	deleteVariables("$uiNameTable*");
+	deleteVariables("$BSD_InvData*");
+	deleteVariables("$DamageType::*");
+	deleteVariables("$MiniGame::*");
+	deleteVariables("$EnvGui::*");
+	deleteVariables("$EnvGuiServer::*");
+	deleteVariables("$GameModeGui::*");
+	deleteVariables("$GameModeGuiServer::*");
+	deleteVariables("$printNameTable*");
+	deleteVariables("$printARNumPrints*");
+	deleteVariables("$printARStart*");
+	deleteVariables("$printAREnd*");
+	deleteVariables("$PrintCountIdx*");
 	$SaveFileArg = "";
-	echo ("Exporting server prefs...");
-	export ("$Pref::Server::*", "config/server/prefs.cs", 0);
-	export ("$Pref::Net::PacketRateToClient", "config/server/prefs.cs", True);
-	export ("$Pref::Net::PacketRateToServer", "config/server/prefs.cs", True);
-	export ("$Pref::Net::PacketSize", "config/server/prefs.cs", True);
-	export ("$Pref::Net::LagThreshold", "config/server/prefs.cs", True);
-	purgeResources ();
-	DeactivateServerPackages ();
+	echo("Exporting server prefs...");
+	export("$Pref::Server::*", "config/server/prefs.cs", 0);
+	export("$Pref::Net::PacketRateToClient", "config/server/prefs.cs", True);
+	export("$Pref::Net::PacketRateToServer", "config/server/prefs.cs", True);
+	export("$Pref::Net::PacketSize", "config/server/prefs.cs", True);
+	export("$Pref::Net::LagThreshold", "config/server/prefs.cs", True);
+	purgeResources();
+	DeactivateServerPackages();
 }
 
-function DeactivateServerPackages ()
+function DeactivateServerPackages()
 {
-	%numPackages = getNumActivePackages ();
+	%numPackages = getNumActivePackages();
 	if (%numPackages > $numClientPackages)
 	{
 		%serverPackages = "";
-		%i = $numClientPackages;
-		while (%i < %numPackages)
+		for (%i = $numClientPackages; %i < %numPackages; %i++)
 		{
-			%serverPackages = %serverPackages TAB getActivePackage (%i);
-			%i += 1;
+			%serverPackages = %serverPackages TAB getActivePackage(%i);
 		}
-		%serverPackages = trim (%serverPackages);
-		%count = getFieldCount (%serverPackages);
-		%i = 0;
-		while (%i < %count)
+		%serverPackages = trim(%serverPackages);
+		%count = getFieldCount(%serverPackages);
+		for (%i = 0; %i < %count; %i++)
 		{
-			%field = getField (%serverPackages, %i);
-			deactivatePackage (%field);
-			%i += 1;
+			%field = getField(%serverPackages, %i);
+			deactivatePackage(%field);
 		}
 	}
-	resetAllOpCallFunc ();
+	resetAllOpCallFunc();
 }
 
-function resetServerDefaults ()
+function resetServerDefaults()
 {
-	echo ("Resetting server defaults...");
-	exec ("~/server/defaults.cs");
-	exec ("config/server/prefs.cs");
-	loadMission ($Server::MissionFile);
+	echo("Resetting server defaults...");
+	exec("~/server/defaults.cs");
+	exec("config/server/prefs.cs");
+	loadMission($Server::MissionFile);
 }
 
-function addToServerGuidList (%guid)
+function addToServerGuidList(%guid)
 {
-	%count = getFieldCount ($Server::GuidList);
-	%i = 0;
-	while (%i < %count)
+	%count = getFieldCount($Server::GuidList);
+	for (%i = 0; %i < %count; %i++)
 	{
-		if (getField ($Server::GuidList, %i) == %guid)
+		if (getField($Server::GuidList, %i) == %guid)
 		{
 			return;
 		}
-		%i += 1;
 	}
 	$Server::GuidList = $Server::GuidList $= "" ? %guid : $Server::GuidList TAB %guid;
 }
 
-function removeFromServerGuidList (%guid)
+function removeFromServerGuidList(%guid)
 {
-	%count = getFieldCount ($Server::GuidList);
-	%i = 0;
-	while (%i < %count)
+	%count = getFieldCount($Server::GuidList);
+	for (%i = 0; %i < %count; %i++)
 	{
-		if (getField ($Server::GuidList, %i) == %guid)
+		if (getField($Server::GuidList, %i) == %guid)
 		{
-			$Server::GuidList = removeField ($Server::GuidList, %i);
+			$Server::GuidList = removeField($Server::GuidList, %i);
 			return;
 		}
-		%i += 1;
 	}
 }
 
-function onServerInfoQuery ()
+function onServerInfoQuery()
 {
 	return "Doing Ok";
 }
 
-function messageClient (%client, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13)
+function messageClient(%client, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13)
 {
-	commandToClient (%client, 'ServerMessage', %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
+	commandToClient(%client, 'ServerMessage', %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
 }
 
-function messageTeam (%team, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13)
+function messageTeam(%team, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13)
 {
-	%count = ClientGroup.getCount ();
-	%cl = 0;
-	while (%cl < %count)
+	%count = ClientGroup.getCount();
+	for (%cl = 0; %cl < %count; %cl++)
 	{
-		%recipient = ClientGroup.getObject (%cl);
+		%recipient = ClientGroup.getObject(%cl);
 		if (%recipient.team == %team)
 		{
-			messageClient (%recipient, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
+			messageClient(%recipient, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
 		}
-		%cl += 1;
 	}
 }
 
-function messageTeamExcept (%client, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13)
+function messageTeamExcept(%client, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13)
 {
 	%team = %client.team;
-	%count = ClientGroup.getCount ();
-	%cl = 0;
-	while (%cl < %count)
+	%count = ClientGroup.getCount();
+	for (%cl = 0; %cl < %count; %cl++)
 	{
-		%recipient = ClientGroup.getObject (%cl);
+		%recipient = ClientGroup.getObject(%cl);
 		if (%recipient.team == %team && %recipient != %client)
 		{
-			messageClient (%recipient, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
+			messageClient(%recipient, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
 		}
-		%cl += 1;
 	}
 }
 
-function MessageAll (%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13)
+function MessageAll(%msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13)
 {
-	%count = ClientGroup.getCount ();
-	%cl = 0;
-	while (%cl < %count)
+	%count = ClientGroup.getCount();
+	for (%cl = 0; %cl < %count; %cl++)
 	{
-		%client = ClientGroup.getObject (%cl);
-		messageClient (%client, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
-		%cl += 1;
+		%client = ClientGroup.getObject(%cl);
+		messageClient(%client, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
 	}
 }
 
-function messageAllExcept (%client, %team, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13)
+function messageAllExcept(%client, %team, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13)
 {
-	%count = ClientGroup.getCount ();
-	%cl = 0;
-	while (%cl < %count)
+	%count = ClientGroup.getCount();
+	for (%cl = 0; %cl < %count; %cl++)
 	{
-		%recipient = ClientGroup.getObject (%cl);
+		%recipient = ClientGroup.getObject(%cl);
 		if (%recipient != %client && %recipient.team != %team)
 		{
-			messageClient (%recipient, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
+			messageClient(%recipient, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
 		}
-		%cl += 1;
 	}
 }
 
@@ -1015,113 +973,109 @@ $SPAM_PROTECTION_PERIOD = 6000;
 $SPAM_MESSAGE_THRESHOLD = 5;
 $SPAM_PENALTY_PERIOD = 5000;
 $SPAM_MESSAGE = '\c3FLOOD PROTECTION:\cr You must wait another %1 seconds.';
-function GameConnection::spamMessageTimeout (%this)
+function GameConnection::spamMessageTimeout(%this)
 {
 	if (%this.spamMessageCount > 0)
 	{
-		%this.spamMessageCount -= 1;
+		%this.spamMessageCount--;
 	}
 }
 
-function GameConnection::spamReset (%this)
+function GameConnection::spamReset(%this)
 {
 	%this.isSpamming = 0;
 	%this.spamMessageCount = 0;
 }
 
-function spamAlert (%client)
+function spamAlert(%client)
 {
 	if (!%client.isSpamming && %client.spamMessageCount >= $SPAM_MESSAGE_THRESHOLD)
 	{
-		%client.spamProtectStart = getSimTime ();
+		%client.spamProtectStart = getSimTime();
 		%client.isSpamming = 1;
-		%client.schedule ($SPAM_PENALTY_PERIOD * getTimeScale (), spamReset);
+		%client.schedule($SPAM_PENALTY_PERIOD * getTimeScale(), spamReset);
 	}
 	if (%client.isSpamming)
 	{
-		%wait = mCeil (($SPAM_PENALTY_PERIOD * getTimeScale () - (getSimTime () - %client.spamProtectStart)) / 1000);
-		messageClient (%client, "", $SPAM_MESSAGE, %wait);
+		%wait = mCeil(($SPAM_PENALTY_PERIOD * getTimeScale() - (getSimTime() - %client.spamProtectStart)) / 1000);
+		messageClient(%client, "", $SPAM_MESSAGE, %wait);
 		return 1;
 	}
-	%client.spamMessageCount += 1;
-	%client.schedule ($SPAM_PROTECTION_PERIOD * getTimeScale (), spamMessageTimeout);
+	%client.spamMessageCount++;
+	%client.schedule($SPAM_PROTECTION_PERIOD * getTimeScale(), spamMessageTimeout);
 	return 0;
 }
 
-function chatMessageClient (%client, %sender, %voiceTag, %voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
+function chatMessageClient(%client, %sender, %voiceTag, %voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
 {
 	if (!%client.muted[%sender])
 	{
-		commandToClient (%client, 'ChatMessage', %sender, %voiceTag, %voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
+		commandToClient(%client, 'ChatMessage', %sender, %voiceTag, %voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
 	}
 }
 
-function chatMessageTeam (%sender, %team, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
+function chatMessageTeam(%sender, %team, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
 {
-	if (%msgString $= "" || spamAlert (%sender))
+	if (%msgString $= "" || spamAlert(%sender))
 	{
 		return;
 	}
 	%mg = %sender.miniGame;
-	if (isObject (%mg))
+	if (isObject(%mg))
 	{
-		%mg.chatMessageAll (%sender, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
+		%mg.chatMessageAll(%sender, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
 	}
-	else 
+	else
 	{
-		messageClient (%sender, '', '\c5Team chat disabled - You are not in a mini-game.');
+		messageClient(%sender, '', '\c5Team chat disabled - You are not in a mini-game.');
 	}
 	return;
-	if (%msgString $= "" || spamAlert (%sender))
+	if (%msgString $= "" || spamAlert(%sender))
 	{
 		return;
 	}
-	%count = ClientGroup.getCount ();
-	%i = 0;
-	while (%i < %count)
+	%count = ClientGroup.getCount();
+	for (%i = 0; %i < %count; %i++)
 	{
-		%obj = ClientGroup.getObject (%i);
+		%obj = ClientGroup.getObject(%i);
 		if (%obj.team == %sender.team)
 		{
-			chatMessageClient (%obj, %sender, %sender.voiceTag, %sender.voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
+			chatMessageClient(%obj, %sender, %sender.voiceTag, %sender.voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
 		}
-		%i += 1;
 	}
 }
 
-function chatMessageAll (%sender, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
+function chatMessageAll(%sender, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
 {
-	if (%msgString $= "" || spamAlert (%sender))
+	if (%msgString $= "" || spamAlert(%sender))
 	{
 		return;
 	}
-	%count = ClientGroup.getCount ();
-	%i = 0;
-	while (%i < %count)
+	%count = ClientGroup.getCount();
+	for (%i = 0; %i < %count; %i++)
 	{
-		%obj = ClientGroup.getObject (%i);
+		%obj = ClientGroup.getObject(%i);
 		if (%sender.team != 0)
 		{
-			chatMessageClient (%obj, %sender, %sender.voiceTag, %sender.voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
+			chatMessageClient(%obj, %sender, %sender.voiceTag, %sender.voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
 		}
 		else if (%obj.team == %sender.team)
 		{
-			chatMessageClient (%obj, %sender, %sender.voiceTag, %sender.voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
+			chatMessageClient(%obj, %sender, %sender.voiceTag, %sender.voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
 		}
-		%i += 1;
 	}
 }
 
-function serverCmdSAD (%client, %password)
+function serverCmdSAD(%client, %password)
 {
 	if (%client.adminFail)
 	{
 		return;
 	}
-	echo ("Admin attempt by ", %client.getPlayerName (), " BL_ID:", %client.getBLID (), " IP:", %client.getRawIP ());
+	echo("Admin attempt by ", %client.getPlayerName(), " BL_ID:", %client.getBLID(), " IP:", %client.getRawIP());
 	if (%client.bl_id $= "" || %client.bl_id == -1)
 	{
-		echo ("--Failure - Demo players cannot be admin");
+		echo("--Failure - Demo players cannot be admin");
 		return;
 	}
 	if (%password $= "")
@@ -1141,9 +1095,9 @@ function serverCmdSAD (%client, %password)
 		%success = 1;
 		if (%doMessage)
 		{
-			MessageAll ('MsgAdminForce', '\c2%1 has become Super Admin (Password)', %client.getPlayerName ());
+			MessageAll('MsgAdminForce', '\c2%1 has become Super Admin (Password)', %client.getPlayerName());
 		}
-		echo ("--Success! - SUPER ADMIN");
+		echo("--Success! - SUPER ADMIN");
 	}
 	else if (%password $= $Pref::Server::AdminPassword)
 	{
@@ -1157,40 +1111,40 @@ function serverCmdSAD (%client, %password)
 		%success = 1;
 		if (%doMessage)
 		{
-			MessageAll ('MsgAdminForce', '\c2%1 has become Admin (Password)', %client.getPlayerName ());
+			MessageAll('MsgAdminForce', '\c2%1 has become Admin (Password)', %client.getPlayerName());
 		}
-		echo ("--Success! - ADMIN");
+		echo("--Success! - ADMIN");
 	}
 	if (%success)
 	{
-		secureCommandToAll ("zbR4HmJcSY8hdRhr", 'ClientJoin', %client.getPlayerName (), %client, %client.getBLID (), %client.score, %client.isAIControlled (), %client.isAdmin, %client.isSuperAdmin);
+		secureCommandToAll("zbR4HmJcSY8hdRhr", 'ClientJoin', %client.getPlayerName(), %client, %client.getBLID(), %client.score, %client.isAIControlled(), %client.isAdmin, %client.isSuperAdmin);
 		%adminLevel = 1;
 		if (%client.isSuperAdmin)
 		{
 			%adminLevel = 2;
 		}
-		commandToClient (%client, 'setAdminLevel', %adminLevel);
+		commandToClient(%client, 'setAdminLevel', %adminLevel);
 	}
-	else 
+	else
 	{
-		%client.adminTries += 1;
-		echo ("--Failure #", %client.adminTries);
-		commandToClient (%client, 'adminFailure');
+		%client.adminTries++;
+		echo("--Failure #", %client.adminTries);
+		commandToClient(%client, 'adminFailure');
 		if (%client.adminTries > $Game::MaxAdminTries)
 		{
-			MessageAll ('MsgAdminForce', '\c3%1\c2 failed to guess the admin password.', %client.getPlayerName ());
+			MessageAll('MsgAdminForce', '\c3%1\c2 failed to guess the admin password.', %client.getPlayerName());
 			%client.adminFail = 1;
-			%client.schedule (10, delete, "You guessed wrong.");
+			%client.schedule(10, delete, "You guessed wrong.");
 		}
 	}
 }
 
-function GameConnection::sendPlayerListUpdate (%client)
+function GameConnection::sendPlayerListUpdate(%client)
 {
-	secureCommandToAll ("zbR4HmJcSY8hdRhr", 'ClientJoin', %client.getPlayerName (), %client, %client.getBLID (), %client.score, %client.isAIControlled (), %client.isAdmin, %client.isSuperAdmin);
+	secureCommandToAll("zbR4HmJcSY8hdRhr", 'ClientJoin', %client.getPlayerName(), %client, %client.getBLID(), %client.score, %client.isAIControlled(), %client.isAdmin, %client.isSuperAdmin);
 }
 
-function serverCmdSADSetPassword (%client, %password)
+function serverCmdSADSetPassword(%client, %password)
 {
 	if (%client.isSuperAdmin)
 	{
@@ -1198,58 +1152,58 @@ function serverCmdSADSetPassword (%client, %password)
 	}
 }
 
-function serverCmdTeamMessageSent (%client, %text)
+function serverCmdTeamMessageSent(%client, %text)
 {
-	%trimText = trim (%text);
+	%trimText = trim(%text);
 	if (%client.lastChatText $= %trimText)
 	{
-		%chatDelta = (getSimTime () - %client.lastChatTime) / getTimeScale ();
+		%chatDelta = (getSimTime() - %client.lastChatTime) / getTimeScale();
 		if (%chatDelta < 15000)
 		{
 			%client.spamMessageCount = $SPAM_MESSAGE_THRESHOLD;
-			messageClient (%client, '', '\c5Do not repeat yourself.');
+			messageClient(%client, '', '\c5Do not repeat yourself.');
 		}
 	}
-	%client.lastChatTime = getSimTime ();
+	%client.lastChatTime = getSimTime();
 	%client.lastChatText = %trimText;
 	%player = %client.Player;
-	if (isObject (%player))
+	if (isObject(%player))
 	{
-		%player.playThread (3, talk);
-		%player.schedule (strlen (%text) * 50, playThread, 3, root);
+		%player.playThread(3, talk);
+		%player.schedule(strlen(%text) * 50, playThread, 3, root);
 	}
-	%text = chatWhiteListFilter (%text);
-	%text = StripMLControlChars (%text);
-	%text = trim (%text);
-	if (strlen (%text) <= 0)
+	%text = chatWhiteListFilter(%text);
+	%text = StripMLControlChars(%text);
+	%text = trim(%text);
+	if (strlen(%text) <= 0)
 	{
 		return;
 	}
 	if ($Pref::Server::MaxChatLen > 0)
 	{
-		if (strlen (%text) >= $Pref::Server::MaxChatLen)
+		if (strlen(%text) >= $Pref::Server::MaxChatLen)
 		{
-			%text = getSubStr (%text, 0, $Pref::Server::MaxChatLen);
+			%text = getSubStr(%text, 0, $Pref::Server::MaxChatLen);
 		}
 	}
 	%protocol = "http://";
-	%protocolLen = strlen (%protocol);
-	%urlStart = strpos (%text, %protocol);
+	%protocolLen = strlen(%protocol);
+	%urlStart = strpos(%text, %protocol);
 	if (%urlStart == -1)
 	{
 		%protocol = "https://";
-		%protocolLen = strlen (%protocol);
-		%urlStart = strpos (%text, %protocol);
+		%protocolLen = strlen(%protocol);
+		%urlStart = strpos(%text, %protocol);
 	}
 	if (%urlStart == -1)
 	{
 		%protocol = "ftp://";
-		%protocolLen = strlen (%protocol);
-		%urlStart = strpos (%text, %protocol);
+		%protocolLen = strlen(%protocol);
+		%urlStart = strpos(%text, %protocol);
 	}
 	if (%urlStart != -1)
 	{
-		%urlEnd = strpos (%text, " ", %urlStart + 1);
+		%urlEnd = strpos(%text, " ", %urlStart + 1);
 		%skipProtocol = 0;
 		if (%protocol $= "http://")
 		{
@@ -1257,92 +1211,92 @@ function serverCmdTeamMessageSent (%client, %text)
 		}
 		if (%urlEnd == -1)
 		{
-			%fullUrl = getSubStr (%text, %urlStart, strlen (%text) - %urlStart);
-			%url = getSubStr (%text, %urlStart + %protocolLen, (strlen (%text) - %urlStart) - %protocolLen);
+			%fullUrl = getSubStr(%text, %urlStart, strlen(%text) - %urlStart);
+			%url = getSubStr(%text, %urlStart + %protocolLen, (strlen(%text) - %urlStart) - %protocolLen);
 		}
-		else 
+		else
 		{
-			%fullUrl = getSubStr (%text, %urlStart, %urlEnd - %urlStart);
-			%url = getSubStr (%text, %urlStart + %protocolLen, (%urlEnd - %urlStart) - %protocolLen);
+			%fullUrl = getSubStr(%text, %urlStart, %urlEnd - %urlStart);
+			%url = getSubStr(%text, %urlStart + %protocolLen, (%urlEnd - %urlStart) - %protocolLen);
 		}
-		if (strlen (%url) > 0)
+		if (strlen(%url) > 0)
 		{
-			%url = strreplace (%url, "<", "");
-			%url = strreplace (%url, ">", "");
+			%url = strreplace(%url, "<", "");
+			%url = strreplace(%url, ">", "");
 			if (%skipProtocol)
 			{
-				%newText = strreplace (%text, %fullUrl, "<a:" @ %url @ ">" @ %url @ "</a>\c6");
+				%newText = strreplace(%text, %fullUrl, "<a:" @ %url @ ">" @ %url @ "</a>\c6");
 			}
-			else 
+			else
 			{
-				%newText = strreplace (%text, %fullUrl, "<a:" @ %protocol @ %url @ ">" @ %url @ "</a>\c6");
+				%newText = strreplace(%text, %fullUrl, "<a:" @ %protocol @ %url @ ">" @ %url @ "</a>\c6");
 			}
 			%text = %newText;
 		}
 	}
 	if ($Pref::Server::ETardFilter)
 	{
-		if (!chatFilter (%client, %text, $Pref::Server::ETardList, '\c5This is a civilized game.  Please use full words.'))
+		if (!chatFilter(%client, %text, $Pref::Server::ETardList, '\c5This is a civilized game.  Please use full words.'))
 		{
 			return 0;
 		}
 	}
-	chatMessageTeam (%client, %client.team, '\c7%1\c3%2\c7%3\c4: %4', %client.clanPrefix, %client.getPlayerName (), %client.clanSuffix, %text);
-	echo ("(T)", %client.getSimpleName (), ": ", %text);
+	chatMessageTeam(%client, %client.team, '\c7%1\c3%2\c7%3\c4: %4', %client.clanPrefix, %client.getPlayerName(), %client.clanSuffix, %text);
+	echo("(T)", %client.getSimpleName(), ": ", %text);
 }
 
-function serverCmdMessageSent (%client, %text)
+function serverCmdMessageSent(%client, %text)
 {
-	%trimText = trim (%text);
+	%trimText = trim(%text);
 	if (%client.lastChatText $= %trimText)
 	{
-		%chatDelta = (getSimTime () - %client.lastChatTime) / getTimeScale ();
+		%chatDelta = (getSimTime() - %client.lastChatTime) / getTimeScale();
 		if (%chatDelta < 15000)
 		{
 			%client.spamMessageCount = $SPAM_MESSAGE_THRESHOLD;
-			messageClient (%client, '', '\c5Do not repeat yourself.');
+			messageClient(%client, '', '\c5Do not repeat yourself.');
 		}
 	}
-	%client.lastChatTime = getSimTime ();
+	%client.lastChatTime = getSimTime();
 	%client.lastChatText = %trimText;
 	%player = %client.Player;
-	if (isObject (%player))
+	if (isObject(%player))
 	{
-		%player.playThread (3, talk);
-		%player.schedule (strlen (%text) * 50, playThread, 3, root);
+		%player.playThread(3, talk);
+		%player.schedule(strlen(%text) * 50, playThread, 3, root);
 	}
-	%text = chatWhiteListFilter (%text);
-	%text = StripMLControlChars (%text);
-	%text = trim (%text);
-	if (strlen (%text) <= 0)
+	%text = chatWhiteListFilter(%text);
+	%text = StripMLControlChars(%text);
+	%text = trim(%text);
+	if (strlen(%text) <= 0)
 	{
 		return;
 	}
 	if ($Pref::Server::MaxChatLen > 0)
 	{
-		if (strlen (%text) >= $Pref::Server::MaxChatLen)
+		if (strlen(%text) >= $Pref::Server::MaxChatLen)
 		{
-			%text = getSubStr (%text, 0, $Pref::Server::MaxChatLen);
+			%text = getSubStr(%text, 0, $Pref::Server::MaxChatLen);
 		}
 	}
 	%protocol = "http://";
-	%protocolLen = strlen (%protocol);
-	%urlStart = strpos (%text, %protocol);
+	%protocolLen = strlen(%protocol);
+	%urlStart = strpos(%text, %protocol);
 	if (%urlStart == -1)
 	{
 		%protocol = "https://";
-		%protocolLen = strlen (%protocol);
-		%urlStart = strpos (%text, %protocol);
+		%protocolLen = strlen(%protocol);
+		%urlStart = strpos(%text, %protocol);
 	}
 	if (%urlStart == -1)
 	{
 		%protocol = "ftp://";
-		%protocolLen = strlen (%protocol);
-		%urlStart = strpos (%text, %protocol);
+		%protocolLen = strlen(%protocol);
+		%urlStart = strpos(%text, %protocol);
 	}
 	if (%urlStart != -1)
 	{
-		%urlEnd = strpos (%text, " ", %urlStart + 1);
+		%urlEnd = strpos(%text, " ", %urlStart + 1);
 		%skipProtocol = 0;
 		if (%protocol $= "http://")
 		{
@@ -1350,102 +1304,100 @@ function serverCmdMessageSent (%client, %text)
 		}
 		if (%urlEnd == -1)
 		{
-			%fullUrl = getSubStr (%text, %urlStart, strlen (%text) - %urlStart);
-			%url = getSubStr (%text, %urlStart + %protocolLen, (strlen (%text) - %urlStart) - %protocolLen);
+			%fullUrl = getSubStr(%text, %urlStart, strlen(%text) - %urlStart);
+			%url = getSubStr(%text, %urlStart + %protocolLen, (strlen(%text) - %urlStart) - %protocolLen);
 		}
-		else 
+		else
 		{
-			%fullUrl = getSubStr (%text, %urlStart, %urlEnd - %urlStart);
-			%url = getSubStr (%text, %urlStart + %protocolLen, (%urlEnd - %urlStart) - %protocolLen);
+			%fullUrl = getSubStr(%text, %urlStart, %urlEnd - %urlStart);
+			%url = getSubStr(%text, %urlStart + %protocolLen, (%urlEnd - %urlStart) - %protocolLen);
 		}
-		if (strlen (%url) > 0)
+		if (strlen(%url) > 0)
 		{
-			%url = strreplace (%url, "<", "");
-			%url = strreplace (%url, ">", "");
+			%url = strreplace(%url, "<", "");
+			%url = strreplace(%url, ">", "");
 			if (%skipProtocol)
 			{
-				%newText = strreplace (%text, %fullUrl, "<a:" @ %url @ ">" @ %url @ "</a>\c6");
+				%newText = strreplace(%text, %fullUrl, "<a:" @ %url @ ">" @ %url @ "</a>\c6");
 			}
-			else 
+			else
 			{
-				%newText = strreplace (%text, %fullUrl, "<a:" @ %protocol @ %url @ ">" @ %url @ "</a>\c6");
+				%newText = strreplace(%text, %fullUrl, "<a:" @ %protocol @ %url @ ">" @ %url @ "</a>\c6");
 			}
-			echo (%newText);
+			echo(%newText);
 			%text = %newText;
 		}
 	}
 	if ($Pref::Server::ETardFilter)
 	{
-		if (!chatFilter (%client, %text, $Pref::Server::ETardList, '\c5This is a civilized game.  Please use full words.'))
+		if (!chatFilter(%client, %text, $Pref::Server::ETardList, '\c5This is a civilized game.  Please use full words.'))
 		{
 			return 0;
 		}
 	}
-	chatMessageAll (%client, '\c7%1\c3%2\c7%3\c6: %4', %client.clanPrefix, %client.getPlayerName (), %client.clanSuffix, %text);
-	echo (%client.getSimpleName (), ": ", %text);
+	chatMessageAll(%client, '\c7%1\c3%2\c7%3\c6: %4', %client.clanPrefix, %client.getPlayerName(), %client.clanSuffix, %text);
+	echo(%client.getSimpleName(), ": ", %text);
 }
 
-function chatFilter (%client, %text, %badList, %failMessage)
+function chatFilter(%client, %text, %badList, %failMessage)
 {
-	%lwrText = " " @ strlwr (%text) @ " ";
-	%lwrText = strreplace (%lwrText, ".dat", "");
-	%lwrText = strreplace (%lwrText, "/u/", "");
-	%lwrText = strreplace (%lwrText, "?", " ");
-	%lwrText = strreplace (%lwrText, "!", " ");
-	%lwrText = strreplace (%lwrText, ".", " ");
-	%lwrText = strreplace (%lwrText, "/", " ");
-	%lastChar = getSubStr (%badList, strlen (%badList) - 1, 1);
+	%lwrText = " " @ strlwr(%text) @ " ";
+	%lwrText = strreplace(%lwrText, ".dat", "");
+	%lwrText = strreplace(%lwrText, "/u/", "");
+	%lwrText = strreplace(%lwrText, "?", " ");
+	%lwrText = strreplace(%lwrText, "!", " ");
+	%lwrText = strreplace(%lwrText, ".", " ");
+	%lwrText = strreplace(%lwrText, "/", " ");
+	%lastChar = getSubStr(%badList, strlen(%badList) - 1, 1);
 	if (%lastChar !$= ",")
 	{
 		%badList = %badList @ ",";
 	}
 	%offset = 0;
-	%max = strlen (%badList) - 1;
-	%i = 0;
-	while (%offset < %max)
+	%max = strlen(%badList) - 1;
+	for (%i = 0; %offset < %max; %offset += %wordLen + 1)
 	{
-		%i += 1;
+		%i++;
 		if (%i >= 1000)
 		{
-			error ("ERROR: chatFilter() - loop safety hit");
+			error("ERROR: chatFilter() - loop safety hit");
 			return 1;
 		}
-		%nextDelim = strpos (%badList, ",", %offset);
+		%nextDelim = strpos(%badList, ",", %offset);
 		if (%nextDelim == -1)
 		{
 			%offset = %max;
 		}
 		%wordLen = %nextDelim - %offset;
-		%word = getSubStr (%badList, %offset, %wordLen);
-		if (strstr (%lwrText, %word) != -1)
+		%word = getSubStr(%badList, %offset, %wordLen);
+		if (strstr(%lwrText, %word) != -1)
 		{
-			messageClient (%client, '', %failMessage, %word);
+			messageClient(%client, '', %failMessage, %word);
 			return 0;
 		}
-		%offset += %wordLen + 1;
 	}
 	return 1;
 }
 
 $MissionLoadPause = 2000;
-function createMission ()
+function createMission()
 {
-	endMission ();
-	echo ("");
-	echo ("*** CREATING MISSION");
-	echo ("*** Stage 1 create");
-	clearCenterPrintAll ();
-	clearBottomPrintAll ();
-	$missionSequence += 1;
+	endMission();
+	echo("");
+	echo("*** CREATING MISSION");
+	echo("*** Stage 1 create");
+	clearCenterPrintAll();
+	clearBottomPrintAll();
+	$missionSequence++;
 	$missionRunning = 0;
-	if (isObject (MissionGroup))
+	if (isObject(MissionGroup))
 	{
-		MissionGroup.deleteAll ();
-		MissionGroup.delete ();
+		MissionGroup.deleteAll();
+		MissionGroup.delete();
 	}
-	new SimGroup (MissionGroup)
+	new SimGroup(MissionGroup)
 	{
-		new Sky (Sky)
+		new Sky(Sky)
 		{
 			position = "336 136 0";
 			rotation = "1 0 0 0";
@@ -1453,32 +1405,32 @@ function createMission ()
 			Wind = "0 0 0";
 			materialList = "add-ons/sky_blue2/blue2.dml";
 		};
-		new Sun (Sun)
+		new Sun(Sun)
 		{
 			azimuth = 0;
 			elevation = 45;
 			color = "0.700000 0.700000 0.700000 1.000000";
 			ambient = "0.400000 0.400000 0.300000 1.000000";
 		};
-		new fxPlane (groundPlane)
+		new fxPlane(groundPlane)
 		{
 			position = "0 0 -0.5";
 			isSolid = 1;
 		};
-		new SimGroup (PlayerDropPoints)
+		new SimGroup(PlayerDropPoints)
 		{
-			new SpawnSphere ("")
+			new SpawnSphere()
 			{
 				position = "0 0 0.1";
 				dataBlock = "SpawnSphereMarker";
 				radius = 40;
 			};
 		};
-		new fxDayCycle (DayCycle)
+		new fxDayCycle(DayCycle)
 		{
 			position = "0 0 0";
 		};
-		new fxSunLight (SunLight)
+		new fxSunLight(SunLight)
 		{
 			position = "0 0 0";
 			Enable = 1;
@@ -1486,171 +1438,163 @@ function createMission ()
 			RemoteFlareBitmap = "base/lighting/corona.png";
 		};
 	};
-	ServerGroup.add (MissionGroup);
+	ServerGroup.add(MissionGroup);
 	$instantGroup = ServerGroup;
-	setManifestDirty ();
-	if (isObject (MiniGameGroup))
+	setManifestDirty();
+	if (isObject(MiniGameGroup))
 	{
-		endAllMinigames ();
-		MiniGameGroup.delete ();
+		endAllMinigames();
+		MiniGameGroup.delete();
 	}
-	new SimGroup (MiniGameGroup);
-	if (isObject (MissionCleanup))
+	new SimGroup(MiniGameGroup);
+	if (isObject(MissionCleanup))
 	{
-		MissionCleanup.deleteAll ();
-		MissionCleanup.delete ();
+		MissionCleanup.deleteAll();
+		MissionCleanup.delete();
 	}
-	new SimGroup (MissionCleanup);
+	new SimGroup(MissionCleanup);
 	$instantGroup = MissionCleanup;
-	if (isObject (GlobalQuota))
+	if (isObject(GlobalQuota))
 	{
-		GlobalQuota.delete ();
+		GlobalQuota.delete();
 	}
-	new QuotaObject (GlobalQuota)
+	new QuotaObject(GlobalQuota)
 	{
 		AutoDelete = 0;
 	};
-	GlobalQuota.setAllocs_Schedules (9999, 5465489);
-	GlobalQuota.setAllocs_Misc (9999, 5465489);
-	GlobalQuota.setAllocs_Projectile (9999, 5465489);
-	GlobalQuota.setAllocs_Item (9999, 5465489);
-	GlobalQuota.setAllocs_Environment (9999, 5465489);
-	GlobalQuota.setAllocs_Player (9999, 5465489);
-	GlobalQuota.setAllocs_Vehicle (9999, 5465489);
-	ServerGroup.add (GlobalQuota);
-	if (!isObject (QuotaGroup))
+	GlobalQuota.setAllocs_Schedules(9999, 5465489);
+	GlobalQuota.setAllocs_Misc(9999, 5465489);
+	GlobalQuota.setAllocs_Projectile(9999, 5465489);
+	GlobalQuota.setAllocs_Item(9999, 5465489);
+	GlobalQuota.setAllocs_Environment(9999, 5465489);
+	GlobalQuota.setAllocs_Player(9999, 5465489);
+	GlobalQuota.setAllocs_Vehicle(9999, 5465489);
+	ServerGroup.add(GlobalQuota);
+	if (!isObject(QuotaGroup))
 	{
-		new SimGroup (QuotaGroup);
-		RootGroup.add (QuotaGroup);
+		new SimGroup(QuotaGroup);
+		RootGroup.add(QuotaGroup);
 	}
-	if (!isObject (mainBrickGroup))
+	if (!isObject(mainBrickGroup))
 	{
-		new SimGroup (mainBrickGroup);
-		MissionCleanup.add (mainBrickGroup);
+		new SimGroup(mainBrickGroup);
+		MissionCleanup.add(mainBrickGroup);
 	}
-	%count = ClientGroup.getCount ();
-	%i = 0;
-	while (%i < %count)
+	%count = ClientGroup.getCount();
+	for (%i = 0; %i < %count; %i++)
 	{
-		%client = ClientGroup.getObject (%i);
-		if (%client.getBLID () == -1)
+		%client = ClientGroup.getObject(%i);
+		if (%client.getBLID() == -1)
 		{
-			error ("ERROR: loadMissionStage2() - Client \"" @ %client.getPlayerName () @ "\"has no bl_id");
+			error("ERROR: loadMissionStage2() - Client \"" @ %client.getPlayerName() @ "\"has no bl_id");
 		}
-		else if (isObject ("BrickGroup_" @ %client.getBLID ()))
+		else if (isObject("BrickGroup_" @ %client.getBLID()))
 		{
-			%obj = "BrickGroup_" @ %client.getBLID ();
-			%client.brickGroup = %obj.getId ();
-			%client.brickGroup.name = %client.getPlayerName ();
+			%obj = "BrickGroup_" @ %client.getBLID();
+			%client.brickGroup = %obj.getId();
+			%client.brickGroup.name = %client.getPlayerName();
 			%client.brickGroup.client = %client;
 		}
-		else 
+		else
 		{
-			%client.brickGroup = new SimGroup (("BrickGroup_" @ %client.getBLID ()));
-			mainBrickGroup.add (%client.brickGroup);
+			%client.brickGroup = new SimGroup("BrickGroup_" @ %client.getBLID());
+			mainBrickGroup.add(%client.brickGroup);
 			%client.brickGroup.client = %client;
-			%client.brickGroup.name = %client.getPlayerName ();
-			%client.brickGroup.bl_id = %client.getBLID ();
+			%client.brickGroup.name = %client.getPlayerName();
+			%client.brickGroup.bl_id = %client.getBLID();
 		}
-		commandToClient (%client, 'TrustListUpload_Start');
-		%i += 1;
+		commandToClient(%client, 'TrustListUpload_Start');
 	}
 	%groupName = "BrickGroup_888888";
-	if (!isObject (%groupName))
+	if (!isObject(%groupName))
 	{
-		%brickGroup = new SimGroup (%groupName);
+		%brickGroup = new SimGroup(%groupName);
 		%brickGroup.bl_id = 888888;
 		%brickGroup.name = "\c1BL_ID: 888888\c0";
 		%brickGroup.QuotaObject = GlobalQuota;
 		%brickGroup.DoNotDelete = 1;
-		mainBrickGroup.add (%brickGroup);
+		mainBrickGroup.add(%brickGroup);
 	}
 	%groupName = "BrickGroup_999999";
-	if (!isObject (%groupName))
+	if (!isObject(%groupName))
 	{
-		%brickGroup = new SimGroup (%groupName);
+		%brickGroup = new SimGroup(%groupName);
 		%brickGroup.bl_id = 999999;
 		%brickGroup.name = "\c1BL_ID: 999999\c0";
 		%brickGroup.QuotaObject = GlobalQuota;
 		%brickGroup.DoNotDelete = 1;
-		mainBrickGroup.add (%brickGroup);
+		mainBrickGroup.add(%brickGroup);
 	}
 	if ($Server::LAN)
 	{
-		%count = ClientGroup.getCount ();
-		%i = 0;
-		while (%i < %count)
+		%count = ClientGroup.getCount();
+		for (%i = 0; %i < %count; %i++)
 		{
-			%client = ClientGroup.getObject (%i);
+			%client = ClientGroup.getObject(%i);
 			%client.brickGroup = %groupName;
-			%i += 1;
 		}
 	}
-	else 
+	else
 	{
-		%groupName = "BrickGroup_" @ getMyBLID ();
-		if (!isObject (%groupName))
+		%groupName = "BrickGroup_" @ getMyBLID();
+		if (!isObject(%groupName))
 		{
-			%brickGroup = new SimGroup (%groupName);
-			%brickGroup.bl_id = getMyBLID ();
-			mainBrickGroup.add (%brickGroup);
+			%brickGroup = new SimGroup(%groupName);
+			%brickGroup.bl_id = getMyBLID();
+			mainBrickGroup.add(%brickGroup);
 		}
 	}
 	if ($Server::Dedicated && $QuitAfterMissionLoad)
 	{
-		quit ();
+		quit();
 	}
 	if ($Server::Dedicated && $loadBlsArg !$= "")
 	{
-		serverDirectSaveFileLoad ($loadBlsArg, 3);
+		serverDirectSaveFileLoad($loadBlsArg, 3);
 		$loadBlsArg = "";
 	}
-	onMissionLoaded ();
-	purgeResources ();
+	onMissionLoaded();
+	purgeResources();
 	if ($MiniGame::Enabled)
 	{
 		if ($MiniGame::PlayerDataBlockName $= "")
 		{
-			$MiniGame::PlayerDataBlock = PlayerStandardArmor.getId ();
+			$MiniGame::PlayerDataBlock = PlayerStandardArmor.getId();
 		}
-		else 
+		else
 		{
 			$MiniGame::PlayerDataBlock = $uiNameTable_Player[$MiniGame::PlayerDataBlockName];
-			if (!isObject ($MiniGame::PlayerDataBlock))
+			if (!isObject($MiniGame::PlayerDataBlock))
 			{
 				$MiniGame::PlayerDataBlock = $MiniGame::PlayerDataBlockName;
 			}
-			if (!isObject ($MiniGame::PlayerDataBlock))
+			if (!isObject($MiniGame::PlayerDataBlock))
 			{
-				$MiniGame::PlayerDataBlock = PlayerStandardArmor.getId ();
+				$MiniGame::PlayerDataBlock = PlayerStandardArmor.getId();
 			}
 		}
-		%i = 0;
-		while (%i < 15)
+		for (%i = 0; %i < 15; %i++)
 		{
 			if ($MiniGame::StartEquipName[%i] $= "")
 			{
-				
 			}
-			else 
+			else
 			{
 				$MiniGame::StartEquip[%i] = $uiNameTable_Items[$MiniGame::StartEquipName[%i]];
-				if (isObject ($MiniGame::StartEquip[%i]))
+				if (isObject($MiniGame::StartEquip[%i]))
 				{
-					
 				}
-				else if (isObject ($MiniGame::StartEquipName[%i]))
+				else if (isObject($MiniGame::StartEquipName[%i]))
 				{
 					$MiniGame::StartEquip[%i] = $MiniGame::StartEquipName[%i];
 				}
-				else 
+				else
 				{
 					$MiniGame::StartEquip[%i] = 0;
 				}
 			}
-			%i += 1;
 		}
-		$DefaultMiniGame = new ScriptObject ("")
+		$DefaultMiniGame = new ScriptObject()
 		{
 			class = MiniGameSO;
 			owner = 0;
@@ -1688,117 +1632,113 @@ function createMission ()
 			StartEquip4 = $MiniGame::StartEquip4;
 			TimeLimit = $MiniGame::TimeLimit;
 		};
-		MiniGameGroup.add ($DefaultMiniGame);
+		MiniGameGroup.add($DefaultMiniGame);
 	}
 	if ($SaveFileArg !$= "")
 	{
 		if ($GameModeArg $= "")
 		{
-			serverDirectSaveFileLoad ($SaveFileArg, 3, "", 2);
+			serverDirectSaveFileLoad($SaveFileArg, 3, "", 2);
 		}
 		else if ($GameMode::BrickOwnership $= "Host")
 		{
-			serverDirectSaveFileLoad ($SaveFileArg, 3, "", 0);
+			serverDirectSaveFileLoad($SaveFileArg, 3, "", 0);
 		}
 		else if ($GameMode::BrickOwnership $= "SavedOwner")
 		{
-			serverDirectSaveFileLoad ($SaveFileArg, 3, "", 1);
+			serverDirectSaveFileLoad($SaveFileArg, 3, "", 1);
 		}
-		else 
+		else
 		{
-			serverDirectSaveFileLoad ($SaveFileArg, 3, "", 2);
+			serverDirectSaveFileLoad($SaveFileArg, 3, "", 2);
 		}
 	}
 	$missionRunning = 1;
-	%clientIndex = 0;
-	while (%clientIndex < ClientGroup.getCount ())
+	for (%clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++)
 	{
-		ClientGroup.getObject (%clientIndex).loadMission ();
-		%clientIndex += 1;
+		ClientGroup.getObject(%clientIndex).loadMission();
 	}
 }
 
-function endMission ()
+function endMission()
 {
-	if (!isObject (MissionGroup))
+	if (!isObject(MissionGroup))
 	{
 		return;
 	}
-	echo ("*** ENDING MISSION");
-	onMissionEnded ();
-	%clientIndex = 0;
-	while (%clientIndex < ClientGroup.getCount ())
+	echo("*** ENDING MISSION");
+	onMissionEnded();
+	for (%clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++)
 	{
-		%cl = ClientGroup.getObject (%clientIndex);
-		%cl.endMission ();
-		%cl.resetGhosting ();
-		%cl.clearPaths ();
+		%cl = ClientGroup.getObject(%clientIndex);
+		%cl.endMission();
+		%cl.resetGhosting();
+		%cl.clearPaths();
 		%cl.hasSpawnedOnce = 0;
-		%clientIndex += 1;
 	}
 	if ($Server::Dedicated)
 	{
-		setParticleDisconnectMode (1);
+		setParticleDisconnectMode(1);
 	}
-	MissionGroup.deleteAll ();
-	MissionGroup.delete ();
-	MissionCleanup.deleteAll ();
-	MissionCleanup.delete ();
-	$ServerGroup.deleteAll ();
-	$ServerGroup.delete ();
-	$ServerGroup = new SimGroup (ServerGroup);
+	MissionGroup.deleteAll();
+	MissionGroup.delete();
+	MissionCleanup.deleteAll();
+	MissionCleanup.delete();
+	$ServerGroup.deleteAll();
+	$ServerGroup.delete();
+	$ServerGroup = new SimGroup(ServerGroup);
 	if ($Server::Dedicated)
 	{
-		setParticleDisconnectMode (0);
+		setParticleDisconnectMode(0);
 	}
 }
 
-function resetMission ()
+function resetMission()
 {
-	echo ("*** MISSION RESET");
-	MissionCleanup.deleteAll ();
-	MissionCleanup.delete ();
+	echo("*** MISSION RESET");
+	MissionCleanup.deleteAll();
+	MissionCleanup.delete();
 	$instantGroup = ServerGroup;
-	new SimGroup (MissionCleanup);
+	new SimGroup(MissionCleanup);
 	$instantGroup = MissionCleanup;
-	if (isObject (GlobalQuota))
+	if (isObject(GlobalQuota))
 	{
-		GlobalQuota.delete ();
+		GlobalQuota.delete();
 	}
-	new QuotaObject (GlobalQuota)
+	new QuotaObject(GlobalQuota)
 	{
 		AutoDelete = 0;
 	};
-	GlobalQuota.setAllocs_Schedules (9999, 5465489);
-	GlobalQuota.setAllocs_Misc (9999, 5465489);
-	GlobalQuota.setAllocs_Projectile (9999, 5465489);
-	GlobalQuota.setAllocs_Item (9999, 5465489);
-	GlobalQuota.setAllocs_Environment (9999, 5465489);
-	GlobalQuota.setAllocs_Player (9999, 5465489);
-	GlobalQuota.setAllocs_Vehicle (9999, 5465489);
-	ServerGroup.add (GlobalQuota);
-	if (!isObject (QuotaGroup))
+	GlobalQuota.setAllocs_Schedules(9999, 5465489);
+	GlobalQuota.setAllocs_Misc(9999, 5465489);
+	GlobalQuota.setAllocs_Projectile(9999, 5465489);
+	GlobalQuota.setAllocs_Item(9999, 5465489);
+	GlobalQuota.setAllocs_Environment(9999, 5465489);
+	GlobalQuota.setAllocs_Player(9999, 5465489);
+	GlobalQuota.setAllocs_Vehicle(9999, 5465489);
+	ServerGroup.add(GlobalQuota);
+	if (!isObject(QuotaGroup))
 	{
-		new SimGroup (QuotaGroup);
-		RootGroup.add (QuotaGroup);
+		new SimGroup(QuotaGroup);
+		RootGroup.add(QuotaGroup);
 	}
-	onMissionReset ();
+	onMissionReset();
 }
 
-function GameConnection::loadMission (%this)
+function GameConnection::loadMission(%this)
 {
 	%this.currentPhase = 0;
-	if (%this.isAIControlled ())
+	if (%this.isAIControlled())
 	{
-		%this.onClientEnterGame ();
+		%this.onClientEnterGame();
 	}
-	else 
+	else
 	{
-		commandToClient (%this, 'MissionStartPhase1', $missionSequence);
+		commandToClient(%this, 'MissionStartPhase1', $missionSequence);
 	}
 }
 
-function serverCmdMissionStartPhase1Ack (%client, %seq)
+function serverCmdMissionStartPhase1Ack(%client, %seq)
 {
 	if (%seq != $missionSequence || !$missionRunning)
 	{
@@ -1809,16 +1749,16 @@ function serverCmdMissionStartPhase1Ack (%client, %seq)
 		return;
 	}
 	%client.currentPhase = 1;
-	%manifestHash = snapshotGameAssets ();
-	%client.sendManifest (%manifestHash);
+	%manifestHash = snapshotGameAssets();
+	%client.sendManifest(%manifestHash);
 }
 
-function serverCmdBlobDownloadFinished (%client)
+function serverCmdBlobDownloadFinished(%client)
 {
-	%client.transmitDataBlocks ($missionSequence);
+	%client.transmitDataBlocks($missionSequence);
 }
 
-function GameConnection::onDataBlocksDone (%this, %missionSequence)
+function GameConnection::onDataBlocksDone(%this, %missionSequence)
 {
 	if (%missionSequence != $missionSequence)
 	{
@@ -1829,10 +1769,10 @@ function GameConnection::onDataBlocksDone (%this, %missionSequence)
 		return;
 	}
 	%this.currentPhase = 1.5;
-	commandToClient (%this, 'MissionStartPhase2', $missionSequence, $Server::MissionFile);
+	commandToClient(%this, 'MissionStartPhase2', $missionSequence, $Server::MissionFile);
 }
 
-function serverCmdMissionStartPhase2Ack (%client, %seq)
+function serverCmdMissionStartPhase2Ack(%client, %seq)
 {
 	if (%seq != $missionSequence || !$missionRunning)
 	{
@@ -1843,30 +1783,29 @@ function serverCmdMissionStartPhase2Ack (%client, %seq)
 		return;
 	}
 	%client.currentPhase = 2;
-	%client.transmitStaticBrickData ();
-	%client.transmitPaths ();
-	%client.activateGhosting ();
+	%client.transmitStaticBrickData();
+	%client.transmitPaths();
+	%client.activateGhosting();
 }
 
-function GameConnection::clientWantsGhostAlwaysRetry (%client)
+function GameConnection::clientWantsGhostAlwaysRetry(%client)
 {
 	if ($missionRunning)
 	{
-		%client.activateGhosting ();
+		%client.activateGhosting();
 	}
 }
 
-function GameConnection::onGhostAlwaysFailed (%client)
+function GameConnection::onGhostAlwaysFailed(%client)
 {
-	
 }
 
-function GameConnection::onGhostAlwaysObjectsReceived (%client)
+function GameConnection::onGhostAlwaysObjectsReceived(%client)
 {
-	commandToClient (%client, 'MissionStartPhase3', $missionSequence, $Server::MissionFile, $Server::LAN);
+	commandToClient(%client, 'MissionStartPhase3', $missionSequence, $Server::MissionFile, $Server::LAN);
 }
 
-function serverCmdMissionStartPhase3Ack (%client, %seq)
+function serverCmdMissionStartPhase3Ack(%client, %seq)
 {
 	if (%seq != $missionSequence || !$missionRunning)
 	{
@@ -1877,76 +1816,71 @@ function serverCmdMissionStartPhase3Ack (%client, %seq)
 		return;
 	}
 	%client.currentPhase = 3;
-	%client.startMission ();
-	%client.onClientEnterGame ();
+	%client.startMission();
+	%client.onClientEnterGame();
 }
 
-function GameConnection::onConnectRequest (%client, %netAddress, %LANname, %blid, %clanPrefix, %clanSuffix, %clientNonce)
+function GameConnection::onConnectRequest(%client, %netAddress, %LANname, %blid, %clanPrefix, %clanSuffix, %clientNonce)
 {
-	echo ("Got connect request from " @ %netAddress);
+	echo("Got connect request from " @ %netAddress);
 	if (%clientNonce !$= "")
 	{
-		cancelPendingConnection (%clientNonce);
+		cancelPendingConnection(%clientNonce);
 	}
 	if ($Server::LAN)
 	{
-		echo ("  lan name = ", %LANname);
+		echo("  lan name = ", %LANname);
 		if (%LANname $= "")
 		{
 			%LANname = "Blockhead";
 		}
 	}
-	else 
+	else
 	{
-		if (%blid !$= mFloor (%blid))
+		if (%blid !$= mFloor(%blid))
 		{
 			return "CR_BADARGS";
 		}
 		%client.bl_id = %blid;
-		%client.setBLID ("au^timoamyo7zene", %blid);
+		%client.setBLID("au^timoamyo7zene", %blid);
 	}
-	if (%blid != getMyBLID ())
+	if (%blid != getMyBLID())
 	{
-		%reason = $BanManagerSO.isBanned (%blid);
+		%reason = $BanManagerSO.isBanned(%blid);
 		if (%reason)
 		{
-			%reason = getField (%reason, 1);
-			echo ("  BLID " @ %blid @ " is banned, rejecting");
+			%reason = getField(%reason, 1);
+			echo("  BLID " @ %blid @ " is banned, rejecting");
 			%this.client.isBanReject = 1;
 			return "CR_BANNED " @ %reason;
 		}
 	}
 	if (!$Pref::Server::AllowMultiClient)
 	{
-		%count = ClientGroup.getCount ();
-		%i = 0;
-		while (%i < %count)
+		%count = ClientGroup.getCount();
+		for (%i = 0; %i < %count; %i++)
 		{
-			%cl = ClientGroup.getObject (%i);
+			%cl = ClientGroup.getObject(%i);
 			if (%cl == %client)
 			{
-				
 			}
-			else if (%cl.getBLID () != %blid)
+			else if (%cl.getBLID() != %blid)
 			{
-				
 			}
-			else if (%cl.getRawIP () != %client.getRawIP ())
+			else if (%cl.getRawIP() != %client.getRawIP())
 			{
-				
 			}
-			else 
+			else
 			{
-				%cl.schedule (10, delete, "Duplicate client removed (1)");
+				%cl.schedule(10, delete, "Duplicate client removed (1)");
 			}
-			%i += 1;
 		}
 	}
-	%client.clanPrefix = trim (getSubStr (StripMLControlChars (%clanPrefix), 0, 4));
-	%client.clanSuffix = trim (getSubStr (StripMLControlChars (%clanSuffix), 0, 4));
-	%client.LANname = trim (getSubStr (StripMLControlChars (%LANname), 0, 23));
-	%client.netName = trim (StripMLControlChars (%netName));
-	%ip = %client.getRawIP ();
+	%client.clanPrefix = trim(getSubStr(StripMLControlChars(%clanPrefix), 0, 4));
+	%client.clanSuffix = trim(getSubStr(StripMLControlChars(%clanSuffix), 0, 4));
+	%client.LANname = trim(getSubStr(StripMLControlChars(%LANname), 0, 23));
+	%client.netName = trim(StripMLControlChars(%netName));
+	%ip = %client.getRawIP();
 	if ($Server::PlayerCount >= $Pref::Server::MaxPlayers && %ip !$= "local")
 	{
 		return "CR_SERVERFULL";
@@ -1954,207 +1888,193 @@ function GameConnection::onConnectRequest (%client, %netAddress, %LANname, %blid
 	return "";
 }
 
-function AIConnection::onConnect (%client)
+function AIConnection::onConnect(%client)
 {
-	if (!isLANAddress (%client.getRawIP ()))
+	if (!isLANAddress(%client.getRawIP()))
 	{
-		%client.schedule (10, delete);
+		%client.schedule(10, delete);
 		return;
 	}
 	%client.connected = 1;
-	%client.headColor = AvatarColorCheck ("1 1 0 1");
-	%client.chestColor = AvatarColorCheck ("1 1 1 1");
-	%client.hipColor = AvatarColorCheck ("0 0 1 1");
-	%client.llegColor = AvatarColorCheck ("0.1 0.1 0.1 1");
-	%client.rlegColor = AvatarColorCheck ("0.1 0.1 0.1 1");
-	%client.larmColor = AvatarColorCheck ("1 1 1 1");
-	%client.rarmColor = AvatarColorCheck ("1 1 1 1");
-	%client.lhandColor = AvatarColorCheck ("1 1 0 1");
-	%client.rhandColor = AvatarColorCheck ("1 1 0 1");
+	%client.headColor = AvatarColorCheck("1 1 0 1");
+	%client.chestColor = AvatarColorCheck("1 1 1 1");
+	%client.hipColor = AvatarColorCheck("0 0 1 1");
+	%client.llegColor = AvatarColorCheck("0.1 0.1 0.1 1");
+	%client.rlegColor = AvatarColorCheck("0.1 0.1 0.1 1");
+	%client.larmColor = AvatarColorCheck("1 1 1 1");
+	%client.rarmColor = AvatarColorCheck("1 1 1 1");
+	%client.lhandColor = AvatarColorCheck("1 1 0 1");
+	%client.rhandColor = AvatarColorCheck("1 1 0 1");
 }
 
-function GameConnection::onConnect (%client)
+function GameConnection::onConnect(%client)
 {
 	%client.connected = 1;
-	messageClient (%client, 'MsgConnectionError', "", $Pref::Server::ConnectionError);
-	$Server::PlayerCount = ClientGroup.getCount ();
-	%client.authCheck ();
+	messageClient(%client, 'MsgConnectionError', "", $Pref::Server::ConnectionError);
+	$Server::PlayerCount = ClientGroup.getCount();
+	%client.authCheck();
 	return;
 }
 
-function isNameUnique (%client, %name)
+function isNameUnique(%client, %name)
 {
-	%count = ClientGroup.getCount ();
-	%i = 0;
-	while (%i < %count)
+	%count = ClientGroup.getCount();
+	for (%i = 0; %i < %count; %i++)
 	{
-		%test = ClientGroup.getObject (%i);
+		%test = ClientGroup.getObject(%i);
 		if (%client != %test)
 		{
-			%rawName = stripChars (detag (getTaggedString (%test.getPlayerName ())), "\cp\co\c6\c7\c8\c9");
-			if (strcmp (%name, %rawName) == 0)
+			%rawName = stripChars(detag(getTaggedString(%test.getPlayerName())), "\cp\co\c6\c7\c8\c9");
+			if (strcmp(%name, %rawName) == 0)
 			{
 				return 0;
 			}
 		}
-		%i += 1;
 	}
 	return 1;
 }
 
-function GameConnection::onDrop (%client, %reason)
+function GameConnection::onDrop(%client, %reason)
 {
-	$Server::PlayerCount = ClientGroup.getCount ();
+	$Server::PlayerCount = ClientGroup.getCount();
 	if (%client.connected == 1)
 	{
-		$Server::PlayerCount = ClientGroup.getCount () - 1;
-		%client.onClientLeaveGame ();
-		removeFromServerGuidList (%client.guid);
-		if ((!%client.isBanReject && %client.getHasAuthedOnce ()) || $Server::LAN)
+		$Server::PlayerCount = ClientGroup.getCount() - 1;
+		%client.onClientLeaveGame();
+		removeFromServerGuidList(%client.guid);
+		if (!%client.isBanReject && %client.getHasAuthedOnce() || $Server::LAN)
 		{
-			messageAllExcept (%client, -1, '', '\c1%1 has left the game.', %client.getPlayerName ());
-			secureCommandToAllExcept ("zbR4HmJcSY8hdRhr", %client, 'ClientDrop', %client.getPlayerName (), %client);
+			messageAllExcept(%client, -1, '', '\c1%1 has left the game.', %client.getPlayerName());
+			secureCommandToAllExcept("zbR4HmJcSY8hdRhr", %client, 'ClientDrop', %client.getPlayerName(), %client);
 		}
-		echo ("CDROP: " @ %client @ " - " @ %client.getPlayerName () @ " - " @ %client.getAddress ());
+		echo("CDROP: " @ %client @ " - " @ %client.getPlayerName() @ " - " @ %client.getAddress());
 		if (!%client.isBanReject)
 		{
-			if ($Server::PlayerCount == $Pref::Server::MaxPlayers - 1 || getSimTime () - $Server::lastPostTime > 30 * 1000 || $Server::lastPostTime < 30 * 1000)
+			if ($Server::PlayerCount == $Pref::Server::MaxPlayers - 1 || getSimTime() - $Server::lastPostTime > 30 * 1000 || $Server::lastPostTime < 30 * 1000)
 			{
-				WebCom_PostServer ();
+				WebCom_PostServer();
 			}
 		}
 	}
 }
 
-function GameConnection::startMission (%this)
+function GameConnection::startMission(%this)
 {
-	commandToClient (%this, 'MissionStart', $missionSequence);
+	commandToClient(%this, 'MissionStart', $missionSequence);
 }
 
-function GameConnection::endMission (%this)
+function GameConnection::endMission(%this)
 {
-	commandToClient (%this, 'MissionEnd', $missionSequence);
+	commandToClient(%this, 'MissionEnd', $missionSequence);
 }
 
-function GameConnection::syncClock (%client, %time)
+function GameConnection::syncClock(%client, %time)
 {
-	commandToClient (%client, 'syncClock', %time);
+	commandToClient(%client, 'syncClock', %time);
 }
 
-function GameConnection::incScore (%client, %delta)
+function GameConnection::incScore(%client, %delta)
 {
 	%client.score += %delta;
-	%client.setScore (%client.score);
+	%client.setScore(%client.score);
 }
 
-function GameConnection::setScore (%client, %val)
+function GameConnection::setScore(%client, %val)
 {
 	%client.score = %val;
-	%count = ClientGroup.getCount ();
-	%i = 0;
-	while (%i < %count)
+	%count = ClientGroup.getCount();
+	for (%i = 0; %i < %count; %i++)
 	{
-		%cl = ClientGroup.getObject (%i);
+		%cl = ClientGroup.getObject(%i);
 		if (!%cl.playerListOpen)
 		{
-			
 		}
-		else 
+		else
 		{
-			secureCommandToClient ("zbR4HmJcSY8hdRhr", %cl, 'ClientScoreChanged', mFloor (%client.score), %client);
+			secureCommandToClient("zbR4HmJcSY8hdRhr", %cl, 'ClientScoreChanged', mFloor(%client.score), %client);
 		}
-		%i += 1;
 	}
 }
 
-function serverCmdOpenPlayerList (%client)
+function serverCmdOpenPlayerList(%client)
 {
 	%client.playerListOpen = 1;
-	%count = ClientGroup.getCount ();
-	%i = 0;
-	while (%i < %count)
+	%count = ClientGroup.getCount();
+	for (%i = 0; %i < %count; %i++)
 	{
-		%cl = ClientGroup.getObject (%i);
-		secureCommandToClient ("zbR4HmJcSY8hdRhr", %client, 'ClientScoreChanged', mFloor (%cl.score), %cl);
-		%i += 1;
+		%cl = ClientGroup.getObject(%i);
+		secureCommandToClient("zbR4HmJcSY8hdRhr", %client, 'ClientScoreChanged', mFloor(%cl.score), %cl);
 	}
 }
 
-function serverCmdClosePlayerList (%client)
+function serverCmdClosePlayerList(%client)
 {
 	%client.playerListOpen = 0;
 }
 
-function onServerCreated ()
+function onServerCreated()
 {
 	$Server::GameType = "Test App";
 	$Server::MissionType = "Deathmatch";
-	createGame ();
+	createGame();
 }
 
-function onServerDestroyed ()
+function onServerDestroyed()
 {
-	destroyGame ();
+	destroyGame();
 }
 
-function onMissionLoaded ()
+function onMissionLoaded()
 {
-	startGame ();
+	startGame();
 }
 
-function onMissionEnded ()
+function onMissionEnded()
 {
-	endGame ();
+	endGame();
 }
 
-function onMissionReset ()
+function onMissionReset()
 {
-	
 }
 
-function GameConnection::onClientEnterGame (%this)
+function GameConnection::onClientEnterGame(%this)
 {
-	
 }
 
-function GameConnection::onClientLeaveGame (%this)
+function GameConnection::onClientLeaveGame(%this)
 {
-	
 }
 
-function createGame ()
+function createGame()
 {
-	
 }
 
-function destroyGame ()
+function destroyGame()
 {
-	
 }
 
-function startGame ()
+function startGame()
 {
-	
 }
 
-function endGame ()
+function endGame()
 {
-	
 }
 
-function auth_Init_Server ()
+function auth_Init_Server()
 {
-	if (!SteamEnabled () && !$Server::Dedicated)
+	if (!SteamEnabled() && !$Server::Dedicated)
 	{
-		error ("Steam required for non-dedicated servers");
+		error("Steam required for non-dedicated servers");
 		return;
 	}
-	echo ("Starting server authentication...");
-	if (isObject (authTCPobj_Server))
+	echo("Starting server authentication...");
+	if (isObject(authTCPobj_Server))
 	{
-		authTCPobj_Server.delete ();
+		authTCPobj_Server.delete();
 	}
-	new TCPObject (authTCPobj_Server);
+	new TCPObject(authTCPobj_Server);
 	authTCPobj_Server.passPhraseCount = 0;
 	authTCPobj_Server.site = "master3.blockland.us";
 	authTCPobj_Server.port = 80;
@@ -2163,161 +2083,159 @@ function auth_Init_Server ()
 	if ($Server::Dedicated)
 	{
 		%steamTicket = "";
-		%dToken = getDedicatedToken ();
+		%dToken = getDedicatedToken();
 	}
-	else 
+	else
 	{
-		%steamTicket = SteamGetAuthSessionTicket ();
+		%steamTicket = SteamGetAuthSessionTicket();
 		%dToken = "";
 	}
-	%postText = "steamTicket=" @ urlEnc (%steamTicket);
-	%postText = %postText @ "&dToken=" @ urlEnc (%dToken);
-	%postText = %postText @ "&build=" @ urlEnc (getBuildNumber ());
-	%postText = %postText @ "&port=" @ mFloor ($Server::Port);
-	if (getMyBLID () > 0)
+	%postText = "steamTicket=" @ urlEnc(%steamTicket);
+	%postText = %postText @ "&dToken=" @ urlEnc(%dToken);
+	%postText = %postText @ "&build=" @ urlEnc(getBuildNumber());
+	%postText = %postText @ "&port=" @ mFloor($Server::Port);
+	if (getMyBLID() > 0)
 	{
-		%postText = %postText @ "&blid=" @ getMyBLID ();
+		%postText = %postText @ "&blid=" @ getMyBLID();
 	}
 	authTCPobj_Server.postText = %postText;
-	authTCPobj_Server.postTextLen = strlen (%postText);
-	authTCPobj_Server.cmd = "POST " @ authTCPobj_Server.filePath @ " HTTP/1.0\r\n" @ "Host: " @ authTCPobj_Server.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ authTCPobj_Server.postTextLen @ "\r\n" @ "\r\n" @ authTCPobj_Server.postText @ "\r\n";
-	authTCPobj_Server.connect (authTCPobj_Server.site @ ":" @ authTCPobj_Server.port);
+	authTCPobj_Server.postTextLen = strlen(%postText);
+	authTCPobj_Server.cmd = "POST " @ authTCPobj_Server.filePath @ " HTTP/1.0\r\n" @ "Host: " @ authTCPobj_Server.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber() @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ authTCPobj_Server.postTextLen @ "\r\n" @ "\r\n" @ authTCPobj_Server.postText @ "\r\n";
+	authTCPobj_Server.connect(authTCPobj_Server.site @ ":" @ authTCPobj_Server.port);
 }
 
-function authTCPobj_Server::onDNSFailed (%this)
+function authTCPobj_Server::onDNSFailed(%this)
 {
-	error ("Server Auth: DNS error.");
-	%this.schedule (0, disconnect);
-	schedule (5000, 0, "auth_Init_Server");
+	error("Server Auth: DNS error.");
+	%this.schedule(0, disconnect);
+	schedule(5000, 0, "auth_Init_Server");
 }
 
-function authTCPobj_Server::onConnectFailed (%this)
+function authTCPobj_Server::onConnectFailed(%this)
 {
-	error ("Server Auth: Connection failure.  Retrying in 10 seconds...");
-	%this.schedule (0, disconnect);
-	schedule (10000, 0, "auth_Init_Server");
+	error("Server Auth: Connection failure.  Retrying in 10 seconds...");
+	%this.schedule(0, disconnect);
+	schedule(10000, 0, "auth_Init_Server");
 }
 
-function authTCPobj_Server::onConnected (%this)
+function authTCPobj_Server::onConnected(%this)
 {
-	%this.send (%this.cmd);
-	echo ("Server Auth: Connected...");
+	%this.send(%this.cmd);
+	echo("Server Auth: Connected...");
 }
 
-function authTCPobj_Server::onDisconnect (%this)
+function authTCPobj_Server::onDisconnect(%this)
 {
-	
 }
 
-function authTCPobj_Server::onLine (%this, %line)
+function authTCPobj_Server::onLine(%this, %line)
 {
 	if (%this.done)
 	{
 		return;
 	}
-	%word = getWord (%line, 0);
+	%word = getWord(%line, 0);
 	if (%word $= "HTTP/1.1")
 	{
-		%code = getWord (%line, 1);
+		%code = getWord(%line, 1);
 		if (%code != 200)
 		{
-			warn ("WARNING: authTCPobj_Server - got non-200 http response \"" @ %code @ "\"");
+			warn("WARNING: authTCPobj_Server - got non-200 http response \"" @ %code @ "\"");
 		}
 		if (%code >= 400 && %code <= 499)
 		{
-			warn ("WARNING: 4xx error on authTCPobj_Server, retrying");
-			%this.schedule (0, disconnect);
-			%this.schedule (5000, connect, %this.site @ ":" @ %this.port);
+			warn("WARNING: 4xx error on authTCPobj_Server, retrying");
+			%this.schedule(0, disconnect);
+			%this.schedule(5000, connect, %this.site @ ":" @ %this.port);
 		}
 		if (%code >= 300 && %code <= 399)
 		{
-			warn ("WARNING: 3xx error on authTCPobj_Server, will wait for location header");
+			warn("WARNING: 3xx error on authTCPobj_Server, will wait for location header");
 		}
 	}
 	else if (%word $= "Location:")
 	{
-		%url = getWords (%line, 1);
-		warn ("WARNING: authTCPobj_Server - Location redirect to " @ %url);
+		%url = getWords(%line, 1);
+		warn("WARNING: authTCPobj_Server - Location redirect to " @ %url);
 		%this.filePath = %url;
-		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
-		%this.schedule (0, disconnect);
-		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
+		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber() @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
+		%this.schedule(0, disconnect);
+		%this.schedule(500, connect, %this.site @ ":" @ %this.port);
 	}
 	else if (%word $= "Content-Location:")
 	{
-		%url = getWords (%line, 1);
-		warn ("WARNING: authTCPobj_Server - Content-Location redirect to " @ %url);
+		%url = getWords(%line, 1);
+		warn("WARNING: authTCPobj_Server - Content-Location redirect to " @ %url);
 		%this.filePath = %url;
-		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber () @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
-		%this.schedule (0, disconnect);
-		%this.schedule (500, connect, %this.site @ ":" @ %this.port);
+		%this.cmd = "POST " @ %this.filePath @ " HTTP/1.0\r\n" @ "Host: " @ %this.site @ "\r\n" @ "User-Agent: Blockland-r" @ getBuildNumber() @ "\r\n" @ "Content-Type: application/x-www-form-urlencoded\r\n" @ "Content-Length: " @ %this.postTextLen @ "\r\n" @ "\r\n" @ %this.postText @ "\r\n";
+		%this.schedule(0, disconnect);
+		%this.schedule(500, connect, %this.site @ ":" @ %this.port);
 	}
 	else if (%word $= "Set-Cookie:")
 	{
-		%this.cookie = getSubStr (%line, 12, strlen (%line) - 12);
+		%this.cookie = getSubStr(%line, 12, strlen(%line) - 12);
 	}
 	else if (%word $= "BLID")
 	{
-		%blid = getWord (%line, 1);
-		setMyBLID (%blid);
+		%blid = getWord(%line, 1);
+		setMyBLID(%blid);
 	}
 	else if (%word $= "ERROR:")
 	{
-		echo ("Server Auth: " @ %line);
+		echo("Server Auth: " @ %line);
 	}
 	else if (%word $= "FAIL")
 	{
-		%reason = getSubStr (%line, 5, strlen (%line) - 5);
-		echo ("Server Auth: FAILED: " @ %reason);
+		%reason = getSubStr(%line, 5, strlen(%line) - 5);
+		echo("Server Auth: FAILED: " @ %reason);
 	}
 	else if (%word $= "SUCCESS")
 	{
-		echo ("Server Auth: SUCCESS");
-		WebCom_PostServer ();
-		pingMatchMakerLoop ();
+		echo("Server Auth: SUCCESS");
+		WebCom_PostServer();
+		pingMatchMakerLoop();
 	}
 	else if (%word $= "MATCHMAKER")
 	{
-		%val = getWord (%line, 1);
-		setMatchMakerIP (%val);
+		%val = getWord(%line, 1);
+		setMatchMakerIP(%val);
 	}
 	else if (%word $= "MMTOK")
 	{
-		%val = getWord (%line, 1);
-		setMatchMakerToken (%val);
+		%val = getWord(%line, 1);
+		setMatchMakerToken(%val);
 	}
 	else if (%word $= "PREVIEWURL")
 	{
-		%val = getWord (%line, 1);
-		setPreviewURL (%val);
+		%val = getWord(%line, 1);
+		setPreviewURL(%val);
 	}
 	else if (%word $= "PREVIEWWORK")
 	{
-		%val = getWord (%line, 1);
-		setRayTracerWork (%val);
+		%val = getWord(%line, 1);
+		setRayTracerWork(%val);
 	}
 	else if (%word $= "CDNURL")
 	{
-		%val = getWord (%line, 1);
-		setCDNURL (%val);
+		%val = getWord(%line, 1);
+		setCDNURL(%val);
 	}
 	else if (%word $= "YOURIP")
 	{
-		$MyTCPIPAddress = getWord (%line, 1);
+		$MyTCPIPAddress = getWord(%line, 1);
 	}
 	else if (%word $= "NOTE")
 	{
-		%val = getWords (%line, 1, 99);
-		echo ("NOTE: " @ %val);
+		%val = getWords(%line, 1, 99);
+		echo("NOTE: " @ %val);
 	}
 	else if (%word $= "TIMESTAMP")
 	{
-		%val = getWord (%line, 1);
-		setUTC (%val);
+		%val = getWord(%line, 1);
+		setUTC(%val);
 	}
 	else if (%word $= "HATLIST")
 	{
-		
 	}
 }
 
@@ -2332,7 +2250,7 @@ $CrapOnCRC_[-1210805212] = 1;
 $CrapOnCRC_[-2098791133] = 1;
 $CrapOnCRC_[1195909889] = 1;
 $CrapOnName_["AddOn_LightningRainMist"] = 1;
-$CrapOnName_["Brick_\xc5ny\'sbricks"] = 1;
+$CrapOnName_["Brick_Åny'sbricks"] = 1;
 $CrapOnName_["Brick_LargeCubes"] = 1;
 $CrapOnName_["Brick_PrintIcons"] = 1;
 $CrapOnName_["Face_moustachebySocko"] = 1;
@@ -2385,7 +2303,7 @@ $CrapOnName_["Weapon_RocketLauncher"] = 1;
 $CrapOnName_["Weapon_SniperRifle"] = 1;
 $CrapOnName_["Weapon_SniperRiflemod3"] = 1;
 $CrapOnName_["AddOn_Lightning-Rain-Mist"] = 1;
-$CrapOnName_["Brick_\xc5ny\'s-bricks"] = 1;
+$CrapOnName_["Brick_Åny's-bricks"] = 1;
 $CrapOnName_["Brick_Large-Cubes"] = 1;
 $CrapOnName_["Brick_Print-Icons"] = 1;
 $CrapOnName_["Face_moustache-by-Socko"] = 1;
