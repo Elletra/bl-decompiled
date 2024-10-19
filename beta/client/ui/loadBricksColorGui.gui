@@ -1,0 +1,111 @@
+new GuiControl(LoadBricksColorGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "191 115";
+		extent = "258 250";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Color Warning";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(\"LoadBricksColorGui\");";
+
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "11 34";
+			extent = "239 28";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "The brick colors of this file are different then your current color set.  What would you like to do?";
+		};
+		new GuiBitmapButtonCtrl(BTN_LoadBricksColor_Append)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 77";
+			extent = "243 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "LoadBricks($LoadBricksColor_File, 1);Canvas.popDialog(LoadBricksGui);Canvas.popDialog(EscapeMenu);Canvas.popDialog(LoadBricksColorGui);";
+			text = "Add More Colors To Current Set";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 117";
+			extent = "243 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "LoadBricks($LoadBricksColor_File, 2);Canvas.popDialog(LoadBricksGui);Canvas.popDialog(EscapeMenu);Canvas.popDialog(LoadBricksColorGui);";
+			text = "Replace Current Color Set";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 157";
+			extent = "243 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "LoadBricks($LoadBricksColor_File, 3);Canvas.popDialog(LoadBricksGui);Canvas.popDialog(EscapeMenu);Canvas.popDialog(LoadBricksColorGui);";
+			text = "Find the Nearest Match from Current Set";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "78 197";
+			extent = "102 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(\"LoadBricksColorGui\");";
+			accelerator = "escape";
+			text = "Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			wrap = 0;
+		};
+	};
+};

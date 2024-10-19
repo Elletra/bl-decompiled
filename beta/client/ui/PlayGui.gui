@@ -1,0 +1,1212 @@
+new GameTSCtrl(PlayGui)
+{
+	profile = "GuiContentProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	cameraZRot = 0;
+	forceFOV = 0;
+	helpTag = 0;
+	PaintBox = 3232;
+	noCursor = 1;
+
+	new GuiBitmapCtrl(CenterPrintDlg)
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "45 230";
+		extent = "550 20";
+		minExtent = "8 8";
+		visible = 0;
+		bitmap = "./hudfill.png";
+		wrap = 0;
+		helpTag = 0;
+
+		new GuiMLTextCtrl(CenterPrintText)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "center";
+			vertSizing = "center";
+			position = "0 0";
+			extent = "546 14";
+			minExtent = "8 8";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			helpTag = 0;
+		};
+	};
+	new GuiBitmapCtrl(BottomPrintDlg)
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "center";
+		vertSizing = "top";
+		position = "45 375";
+		extent = "550 20";
+		minExtent = "8 8";
+		visible = 0;
+		bitmap = "./hudfill.png";
+		wrap = 0;
+		helpTag = 0;
+
+		new GuiMLTextCtrl(BottomPrintText)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "center";
+			vertSizing = "center";
+			position = "0 0";
+			extent = "546 14";
+			minExtent = "8 8";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			helpTag = 0;
+		};
+	};
+	new GuiBitmapCtrl(LagIcon)
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "572 3";
+		extent = "32 32";
+		minExtent = "8 8";
+		visible = 0;
+		bitmap = "./lagIcon.png";
+		wrap = 0;
+		helpTag = 0;
+	};
+	new GuiBitmapCtrl(HUD_PlantError)
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "relative";
+		vertSizing = "relative";
+		position = "205 345";
+		extent = "255 75";
+		minExtent = "8 2";
+		visible = 0;
+		bitmap = "./PlantErrors/PlantError_Overlap";
+		wrap = 0;
+		hideSchedule = 390;
+	};
+	new GuiHealthBarHud()
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "left";
+		vertSizing = "bottom";
+		position = "451 5";
+		extent = "184 25";
+		minExtent = "8 8";
+		visible = 0;
+		fillColor = "0.972500 0.800000 0.000000 1.000000";
+		frameColor = "0.000000 1.000000 0.000000 0.000000";
+		damageFillColor = "0.000000 0.470600 0.196100 1.000000";
+		pulseRate = 500;
+		pulseThreshold = 0.75;
+		flipped = 0;
+		showFill = 1;
+		showFrame = 1;
+		displayEnergy = 0;
+		helpTag = 0;
+		value = 1;
+	};
+	new GuiCrossHairHud()
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "304 224";
+		extent = "32 32";
+		minExtent = "8 8";
+		visible = 1;
+		bitmap = "./crossHair";
+		wrap = 0;
+		damageFillColor = "0.000000 1.000000 0.000000 1.000000";
+		damageFrameColor = "1.000000 0.600000 0.000000 1.000000";
+		damageRect = "50 4";
+		damageOffset = "0 10";
+		helpTag = 0;
+	};
+	new GuiShapeNameHud()
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "relative";
+		vertSizing = "relative";
+		position = "0 0";
+		extent = "640 480";
+		minExtent = "8 2";
+		visible = 1;
+		fillColor = "0.250000 0.250000 0.250000 0.000000";
+		frameColor = "0.972500 0.800000 0.000000 0.000000";
+		textColor = "1.000000 1.000000 0.909000 1.000000";
+		showFill = 0;
+		showFrame = 0;
+		verticalOffset = 0.85;
+		distanceFade = 0.1;
+		helpTag = 0;
+	};
+	new GuiHealthBarHud()
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "left";
+		vertSizing = "bottom";
+		position = "451 31";
+		extent = "184 7";
+		minExtent = "8 2";
+		visible = 0;
+		fillColor = "0.000000 0.000000 0.000000 0.500000";
+		frameColor = "1.000000 1.000000 1.000000 1.000000";
+		damageFillColor = "0.000000 0.000000 1.000000 1.000000";
+		pulseRate = 0;
+		pulseThreshold = 0.3;
+		flipped = 0;
+		showFill = 1;
+		showFrame = 0;
+		displayEnergy = 1;
+		helpTag = 0;
+	};
+	new GuiBitmapCtrl(Hud_PlantErrorSmall)
+	{
+		profile = "HUDBitmapProfile";
+		horizSizing = "relative";
+		vertSizing = "relative";
+		position = "400 0";
+		extent = "90 70";
+		minExtent = "8 2";
+		visible = 1;
+		wrap = 0;
+	};
+	new GuiBitmapCtrl(HudInvBox)
+	{
+		profile = "HUDBitmapProfile";
+		horizSizing = "center";
+		vertSizing = "bottom";
+		position = "0 704";
+		extent = "640 64";
+		minExtent = "8 2";
+		visible = 1;
+		wrap = 0;
+
+		new GuiBitmapCtrl(HUDInvIcon0)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvActive0)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvIcon1)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "64 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvActive1)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "64 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvIcon2)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "128 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvActive2)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "128 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvIcon3)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "192 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvActive3)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "192 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvIcon4)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "256 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvActive4)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "256 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvIcon5)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "320 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvActive5)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "320 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvIcon6)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "384 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvActive6)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "384 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvIcon7)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "448 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvActive7)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "448 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvIcon8)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "512 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvActive8)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "512 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvIcon9)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "576 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(HUDInvActive9)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "576 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+	};
+	new GuiSwatchCtrl(HUD_BrickNameBG)
+	{
+		profile = "HUDBrickNameProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "192 681";
+		extent = "640 18";
+		minExtent = "8 2";
+		visible = 1;
+		color = "0 0 128 128";
+
+		new GuiTextCtrl(HUD_BrickName)
+		{
+			profile = "HUDBrickNameProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "640 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+		};
+		new GuiTextCtrl(ToolTip_BSD)
+		{
+			profile = "HUDRightTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "640 18";
+			minExtent = "8 2";
+			visible = 0;
+			maxLength = 255;
+		};
+		new GuiTextCtrl(ToolTip_Bricks)
+		{
+			profile = "HUDLeftTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "640 18";
+			minExtent = "8 2";
+			visible = 0;
+			maxLength = 255;
+		};
+	};
+	new GuiSwatchCtrl(HUD_PaintBox)
+	{
+		profile = "HUDBitmapProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "-103 609";
+		extent = "103 154";
+		minExtent = "8 2";
+		visible = 1;
+		color = "0 0 0 64";
+		moveSchedule = 33;
+
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "1 1";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "221 0 0 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "1 18";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "248 204 0 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "1 35";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 120 49 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "1 52";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 80 189 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "1 69";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "253 253 232 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "1 86";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "164 164 164 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "1 103";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "120 120 120 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "1 120";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "51 51 51 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "1 137";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "102 49 0 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "18 1";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "170 0 0 53";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "18 18";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "255 127 0 61";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "18 35";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "216 255 0 46";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "18 52";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "252 244 0 61";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "18 69";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 120 49 57";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "18 86";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 51 163 57";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "18 103";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "140 178 255 53";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "18 120";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "216 216 216 53";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "18 137";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "25 25 25 53";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "35 1";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "216 228 167 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "35 18";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "161 195 138 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "35 35";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "163 188 70 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "35 52";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "193 202 221 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "35 69";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "84 165 175 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "35 86";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "66 84 147 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "52 1";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "249 232 153 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "52 18";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "198 209 59 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "52 35";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "193 218 184 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "52 52";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "182 214 212 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "52 69";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "179 209 226 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "52 86";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "195 112 160 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "69 1";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "149 121 117 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "69 18";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "149 137 114 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "69 35";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "119 144 128 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "69 52";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "116 133 156 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "69 69";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "135 124 144 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "86 1";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "51 51 51 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "86 18";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "255 255 232 77";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "86 35";
+			extent = "16 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "232 232 255 77";
+		};
+		new GuiBitmapCtrl(HUD_PaintActive)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "18 18";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./paintActive";
+			wrap = 0;
+		};
+	};
+	new GuiSwatchCtrl(HUD_PaintNameBG)
+	{
+		profile = "HUDBrickNameProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "-103 591";
+		extent = "103 18";
+		minExtent = "8 2";
+		visible = 1;
+		color = "0 0 128 128";
+
+		new GuiTextCtrl(HUD_PaintName)
+		{
+			profile = "HUDCenterTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "103 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+		};
+		new GuiTextCtrl(ToolTip_Paint)
+		{
+			profile = "HUDCenterTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "103 18";
+			minExtent = "8 2";
+			visible = 0;
+			maxLength = 255;
+		};
+	};
+	new GuiBitmapCtrl(HUD_SuperShift)
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "left";
+		vertSizing = "top";
+		position = "451 356";
+		extent = "184 37";
+		minExtent = "8 2";
+		visible = 0;
+		bitmap = "./supershift";
+		wrap = 0;
+		hideSchedule = 2794;
+	};
+	new GuiSwatchCtrl(HUD_BrickBox)
+	{
+		profile = "HUDBitmapProfile";
+		horizSizing = "center";
+		vertSizing = "bottom";
+		position = "0 699";
+		extent = "640 64";
+		minExtent = "8 2";
+		visible = 1;
+		color = "0 0 0 64";
+
+		new GuiBitmapCtrl(HUD_BrickActive)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "64 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "128 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "192 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "256 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "320 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "384 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "448 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "512 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "576 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+	};
+	new GuiSwatchCtrl(HUD_ToolBox)
+	{
+		profile = "HUDBitmapProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "955 -340";
+		extent = "64 320";
+		minExtent = "8 2";
+		visible = 1;
+		color = "0 0 0 64";
+		moveSchedule = 270;
+
+		new GuiBitmapCtrl(HUD_ToolActive)
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 0;
+			bitmap = "./brickicons/brickIconActive";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./itemIcons/Hammer";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 64";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./itemIcons/Printer";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 128";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 192";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "HUDBitmapProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 256";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+	};
+	new GuiSwatchCtrl(HUD_ToolNameBG)
+	{
+		profile = "HUDBrickNameProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "955 -20";
+		extent = "64 18";
+		minExtent = "8 2";
+		visible = 1;
+		color = "0 0 128 128";
+
+		new GuiTextCtrl(HUD_ToolName)
+		{
+			profile = "HUDCenterTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "64 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+		};
+		new GuiTextCtrl(ToolTip_Tools)
+		{
+			profile = "HUDCenterTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "64 18";
+			minExtent = "8 2";
+			visible = 0;
+			maxLength = 255;
+		};
+	};
+};

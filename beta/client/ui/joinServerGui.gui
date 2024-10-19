@@ -1,0 +1,345 @@
+new GuiChunkedBitmapCtrl(JoinServerGui)
+{
+	profile = "GuiContentProfile";
+	horizSizing = "width";
+	vertSizing = "height";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	bitmap = "./background.jpg";
+	useVariable = 0;
+	tile = 0;
+	helpTag = 0;
+
+	new GuiWindowCtrl(JS_window)
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "0 0";
+		extent = "640 480";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Join Server";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+		closeCommand = "Canvas.getContent().exit();";
+
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "525 34";
+			extent = "87 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JS_sortList(8);";
+			text = "Map";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "9 58";
+			extent = "623 372";
+			minExtent = "8 8";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			defaultLineHeight = 15;
+			helpTag = 0;
+
+			new GuiTextListCtrl(JS_serverList)
+			{
+				profile = "GuiTextArrayProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "603 96";
+				minExtent = "8 8";
+				visible = 1;
+				enumerate = 0;
+				resizeCell = 1;
+				columns = "0 34 65 340 385 404 415 445 510";
+				fitParentWidth = 1;
+				clipColumnText = 1;
+				sortedNumerical = 0;
+				sortedBy = 6;
+				helpTag = 0;
+				sortedAsc = 0;
+				noDuplicates = "false";
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "460 1";
+			extent = "100 23";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.pushDialog(\"filtersGui\");";
+			text = "Filters";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "454 34";
+			extent = "61 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JS_sortList(7);";
+			text = "Mod";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "20 440";
+			extent = "100 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Canvas.getContent().exit();";
+			accelerator = "escape";
+			text = "<< Back";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiControl(JS_queryStatus)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "center";
+			vertSizing = "center";
+			position = "151 209";
+			extent = "338 61";
+			minExtent = "8 8";
+			visible = 0;
+			helpTag = 0;
+
+			new GuiBitmapButtonCtrl(JS_cancelQuery)
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "15 12";
+				extent = "90 36";
+				minExtent = "8 2";
+				visible = 1;
+				command = "Canvas.getContent().cancel();";
+				text = "Cancel";
+				groupNum = -1;
+				buttonType = "PushButton";
+				bitmap = "./button2";
+				wrap = 0;
+			};
+			new GuiProgressCtrl(JS_statusBar)
+			{
+				profile = "GuiProgressProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "115 11";
+				extent = "207 37";
+				minExtent = "8 8";
+				visible = 1;
+				helpTag = 0;
+			};
+			new GuiTextCtrl(JS_statusText)
+			{
+				profile = "GuiProgressTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "116 19";
+				extent = "205 20";
+				minExtent = "8 8";
+				visible = 1;
+				maxLength = 255;
+				helpTag = 0;
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "343 34";
+			extent = "47 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JS_sortNumList(3);";
+			text = "Ping";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "509 440";
+			extent = "100 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Canvas.getContent().join();";
+			text = "Join Server";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiControl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "160 436";
+			extent = "320 41";
+			minExtent = "8 2";
+			visible = 1;
+
+			new GuiBitmapButtonCtrl()
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 4";
+				extent = "100 30";
+				minExtent = "8 2";
+				visible = 1;
+				command = "Canvas.getContent().queryLan();";
+				text = "Query LAN";
+				groupNum = -1;
+				buttonType = "PushButton";
+				bitmap = "./button1";
+				wrap = 0;
+			};
+			new GuiBitmapButtonCtrl()
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "110 4";
+				extent = "100 30";
+				minExtent = "8 2";
+				visible = 1;
+				command = "Canvas.getContent().queryWebMaster();";
+				text = "Query Master";
+				groupNum = -1;
+				buttonType = "PushButton";
+				bitmap = "./button1";
+				wrap = 0;
+			};
+			new GuiBitmapButtonCtrl()
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "220 4";
+				extent = "100 30";
+				minExtent = "8 2";
+				visible = 1;
+				command = "Canvas.pushDialog(\"manualJoin\");";
+				text = "Connect to IP";
+				groupNum = -1;
+				buttonType = "PushButton";
+				bitmap = "./button1";
+				wrap = 0;
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "394 34";
+			extent = "56 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JS_sortNumList(4);";
+			text = "Players";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "10 34";
+			extent = "33 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JS_sortList(0);";
+			text = "Pass";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "161 34";
+			extent = "86 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JS_sortList(2);";
+			text = "Server Name";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "45 34";
+			extent = "31 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JS_sortList(1);";
+			text = "Ded";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+	};
+};

@@ -1,0 +1,77 @@
+new GuiControl(MessageHud)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "width";
+	vertSizing = "height";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	noCursor = 1;
+	isTeamMsg = 0;
+
+	new GuiControl(MessageHud_Frame)
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "5 94";
+		extent = "630 29";
+		minExtent = "8 8";
+		visible = 1;
+
+		new GuiSwatchCtrl(MessageHud_TextSwatch)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "0 0";
+			extent = "55 18";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 128 128";
+
+			new GuiTextCtrl(MessageHud_Text)
+			{
+				profile = "HUDChatTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "5 0";
+				extent = "31 18";
+				minExtent = "8 8";
+				visible = 1;
+				text = "CHAT:";
+				maxLength = 255;
+			};
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "width";
+			vertSizing = "bottom";
+			position = "55 0";
+			extent = "575 18";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 0 128";
+
+			new GuiTextEditCtrl(MessageHud_Edit)
+			{
+				profile = "HUDChatTextEditProfile";
+				horizSizing = "relative";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "544 18";
+				minExtent = "8 8";
+				visible = 1;
+				altCommand = "$ThisControl.eval();";
+				maxLength = 120;
+				escapeCommand = "MessageHud_Edit.onEscape();";
+				historySize = 5;
+				password = 0;
+				tabComplete = 0;
+				sinkAllKeyEvents = 0;
+			};
+		};
+	};
+};

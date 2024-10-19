@@ -1,0 +1,126 @@
+new GuiControl(MainChatHud)
+{
+	profile = "GuiModelessDialogProfile";
+	horizSizing = "width";
+	vertSizing = "height";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	helpTag = 0;
+	noCursor = 1;
+
+	new GuiNoMouseCtrl()
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "relative";
+		vertSizing = "bottom";
+		position = "0 0";
+		extent = "400 300";
+		minExtent = "8 8";
+		visible = 1;
+		helpTag = 0;
+
+		new GuiBitmapCtrl(OuterChatHud)
+		{
+			profile = "BlockChatTextShadowProfile";
+			horizSizing = "width";
+			vertSizing = "bottom";
+			position = "5 5";
+			extent = "390 140";
+			minExtent = "8 8";
+			visible = 1;
+			wrap = 1;
+			helpTag = 0;
+
+			new GuiButtonCtrl(chatPageDown)
+			{
+				profile = "GuiButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "594 126";
+				extent = "36 14";
+				minExtent = "8 8";
+				visible = 0;
+				text = "Dwn";
+				groupNum = -1;
+				buttonType = "PushButton";
+				helpTag = 0;
+			};
+			new GuiScrollCtrl(ChatScrollHud)
+			{
+				profile = "ChatHudScrollProfile";
+				horizSizing = "width";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "390 140";
+				minExtent = "8 8";
+				visible = 1;
+				willFirstRespond = 1;
+				hScrollBar = "alwaysOff";
+				vScrollBar = "alwaysOff";
+				constantThumbHeight = 0;
+				childMargin = "0 0";
+				helpTag = 0;
+
+				new GuiMessageVectorCtrl(ChatHudShadow)
+				{
+					profile = "BlockChatTextShadowProfile";
+					horizSizing = "width";
+					vertSizing = "height";
+					position = "0 0";
+					extent = "386 14";
+					minExtent = "8 8";
+					visible = 1;
+					lineSpacing = 0;
+					lineContinuedIndex = 10;
+					allowedMatches[0] = "http";
+					allowedMatches[1] = "tgeserver";
+					matchColor = "0 0 255 255";
+					maxColorIndex = 5;
+					helpTag = 0;
+				};
+				new GuiMessageVectorCtrl(ChatHud)
+				{
+					profile = "BlockChatTextProfile";
+					horizSizing = "width";
+					vertSizing = "height";
+					position = "0 0";
+					extent = "386 14";
+					minExtent = "8 8";
+					visible = 1;
+					lineSpacing = 0;
+					lineContinuedIndex = 10;
+					allowedMatches[0] = "http";
+					allowedMatches[1] = "tgeserver";
+					matchColor = "0 0 255 255";
+					maxColorIndex = 5;
+					helpTag = 0;
+				};
+			};
+		};
+		new GuiSwatchCtrl(ChatWhosTalkingBox)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "width";
+			vertSizing = "bottom";
+			position = "5 145";
+			extent = "390 18";
+			minExtent = "8 2";
+			visible = 0;
+			color = "0 0 128 128";
+
+			new GuiTextCtrl(chatWhosTalkingText)
+			{
+				profile = "HUDChatTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "630 18";
+				minExtent = "8 2";
+				visible = 1;
+				maxLength = 255;
+			};
+		};
+	};
+};

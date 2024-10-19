@@ -1,0 +1,54 @@
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(PlayerListGui) {
+   profile = "GuiModelessDialogProfile";
+   horizSizing = "right";
+   vertSizing = "bottom";
+   position = "0 0";
+   extent = "640 480";
+   minExtent = "8 8";
+   visible = "1";
+      noCursor = "1";
+      helpTag = "0";
+
+   new GuiBitmapCtrl() {
+      profile = "GuiDefaultProfile";
+      horizSizing = "right";
+      vertSizing = "center";
+      position = "5 42";
+      extent = "156 396";
+      minExtent = "8 8";
+      visible = "1";
+      bitmap = "~/client/ui/hudfill.png";
+      wrap = "0";
+         helpTag = "0";
+
+      new GuiTextCtrl() {
+         profile = "HUDChatTextProfile";
+         horizSizing = "center";
+         vertSizing = "bottom";
+         position = "45 2";
+         extent = "65 20";
+         minExtent = "8 8";
+         visible = "1";
+         text = "Score Board";
+         maxLength = "255";
+            helpTag = "0";
+      };
+      new GuiTextListCtrl(PlayerListGuiList) {
+         profile = "HUDChatTextProfile";
+         horizSizing = "width";
+         vertSizing = "height";
+         position = "0 22";
+         extent = "134 16";
+         minExtent = "8 8";
+         visible = "1";
+         enumerate = "0";
+         resizeCell = "1";
+         columns = "0 120";
+         fitParentWidth = "0";
+         clipColumnText = "0";
+            helpTag = "0";
+      };
+   };
+};
+//--- OBJECT WRITE END ---

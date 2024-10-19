@@ -1,0 +1,141 @@
+new GuiControl(changeMapGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "0 0";
+		extent = "640 480";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Change Map";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+
+		new GuiBitmapCtrl(changeMapPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "223 39";
+			extent = "400 300";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "~/data/missions/bedroom";
+			wrap = 0;
+
+			new GuiTextCtrl(changeMapName)
+			{
+				profile = "MM_CenterProfile";
+				horizSizing = "width";
+				vertSizing = "top";
+				position = "0 280";
+				extent = "400 18";
+				minExtent = "8 2";
+				visible = 1;
+				text = "mapname";
+				maxLength = 255;
+			};
+		};
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "right";
+			vertSizing = "height";
+			position = "17 39";
+			extent = "190 423";
+			minExtent = "8 2";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "dynamic";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiTextListCtrl(changeMapList)
+			{
+				profile = "GuiTextListProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "188 2";
+				minExtent = "8 2";
+				visible = 1;
+				command = "changeMapList.select();";
+				enumerate = 0;
+				resizeCell = 1;
+				columns = 0;
+				fitParentWidth = 1;
+				clipColumnText = 0;
+				description2 = "A blank slate...";
+				description4 = "Name: Bedroom\nAuthor: Eric Hartman";
+				description0 = "This is not a real map\nit's used for making icon screenshots";
+				description3 = "clever description goes here\nline2";
+			};
+		};
+		new GuiMLTextCtrl(changeMapDescription)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "width";
+			vertSizing = "top";
+			position = "222 349";
+			extent = "400 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "Description goes here";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "222 425";
+			extent = "125 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(changemapgui);";
+			accelerator = "escape";
+			text = "<<Back";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl(changeMapButton)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "499 425";
+			extent = "125 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "changeMapButton.click();";
+			text = "Change Map>>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+	};
+};

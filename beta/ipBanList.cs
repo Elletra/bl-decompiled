@@ -1,0 +1,1 @@
+$Ban::numBans = 0;

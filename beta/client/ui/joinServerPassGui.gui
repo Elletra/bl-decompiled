@@ -1,0 +1,108 @@
+new GuiControl(joinServerPassGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "170 161";
+		extent = "300 158";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Enter Password";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(\"joinServerPassGui\");";
+
+		new GuiTextEditCtrl(JSP_txtPass)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "72 68";
+			extent = "215 18";
+			minExtent = "8 2";
+			visible = 1;
+			altCommand = "JoinServerPassGui::enterPass();";
+			accelerator = "return";
+			maxLength = 255;
+			historySize = 0;
+			password = 1;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "196 103";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JoinServerPassGui::enterPass();";
+			accelerator = "return";
+			text = "Connect";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "13 68";
+			extent = "53 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Password:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "12 103";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(\"joinServerPassGui\");";
+			accelerator = "escape";
+			text = "<< Back";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "53 40";
+			extent = "194 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "This server requires a password to join.";
+			maxLength = 255;
+			helpTag = 0;
+		};
+	};
+};

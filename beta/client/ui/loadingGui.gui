@@ -1,0 +1,104 @@
+new GuiControlProfile("LoadingGuiContentProfile")
+{
+	opaque = 1;
+	fillColor = "200 200 200";
+	border = 1;
+	borderColor = "0 0 0";
+};
+new GuiChunkedBitmapCtrl(LoadingGui)
+{
+	profile = "GuiContentProfile";
+	horizSizing = "width";
+	vertSizing = "height";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	bitmap = "./background.jpg";
+	useVariable = 0;
+	tile = 0;
+	helpTag = 0;
+	qLineCount = 0;
+
+	new GuiBitmapCtrl(LOAD_MapPicture)
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "width";
+		vertSizing = "height";
+		position = "0 0";
+		extent = "640 480";
+		minExtent = "8 2";
+		visible = 1;
+		bitmap = "~/data/missions/bedroom";
+		wrap = 0;
+	};
+	new GuiMLTextCtrl(LOAD_MapDescription)
+	{
+		profile = "MapDescriptionTextProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "17 62";
+		extent = "303 14";
+		minExtent = "8 8";
+		visible = 0;
+		lineSpacing = 2;
+		allowColorChars = 0;
+		maxChars = -1;
+		text = "map description";
+		helpTag = 0;
+	};
+	new GuiProgressCtrl(LoadingProgress)
+	{
+		profile = "GuiProgressProfile";
+		horizSizing = "width";
+		vertSizing = "relative";
+		position = "14 420";
+		extent = "596 25";
+		minExtent = "8 8";
+		visible = 1;
+		helpTag = 0;
+
+		new GuiTextCtrl(LoadingProgressTxt)
+		{
+			profile = "HudInvTextProfile";
+			horizSizing = "center";
+			vertSizing = "center";
+			position = "61 3";
+			extent = "474 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "LOADING MISSION";
+			maxLength = 255;
+			helpTag = 0;
+		};
+	};
+	new GuiButtonCtrl()
+	{
+		profile = "GuiButtonProfile";
+		horizSizing = "right";
+		vertSizing = "top";
+		position = "-15 488";
+		extent = "65 25";
+		minExtent = "20 20";
+		visible = 1;
+		command = "disconnect();";
+		accelerator = "escape";
+		text = "CANCEL";
+		groupNum = -1;
+		buttonType = "PushButton";
+		helpTag = 0;
+	};
+	new GuiTextCtrl(LOAD_MapName)
+	{
+		profile = "LoadingMapNameProfile";
+		horizSizing = "center";
+		vertSizing = "bottom";
+		position = "224 20";
+		extent = "192 43";
+		minExtent = "8 8";
+		visible = 0;
+		text = "Map Name";
+		maxLength = 255;
+		helpTag = 0;
+	};
+};

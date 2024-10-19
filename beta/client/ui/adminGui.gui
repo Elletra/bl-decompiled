@@ -1,0 +1,150 @@
+new GuiControl(admingui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "164 10";
+		extent = "312 459";
+		minExtent = "8 2";
+		visible = 1;
+		command = "canvas.popDialog(admingui);";
+		accelerator = "escape";
+		text = "Administrator Menu";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(admingui);";
+		helpTag = 0;
+
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "height";
+			position = "14 54";
+			extent = "186 390";
+			minExtent = "8 2";
+			visible = 1;
+			color = "255 255 255 128";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "212 195";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AdminGui_Wand();";
+			text = "Magic Wand";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "212 75";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "adminGui::ban();";
+			text = "Ban Player";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "212 275";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.pushdialog(changeMapGui);";
+			text = "Change Map";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiTextListCtrl(lstAdminPlayerList)
+		{
+			profile = "GuiTextListProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "16 58";
+			extent = "80 2";
+			minExtent = "8 2";
+			visible = 1;
+			enumerate = 0;
+			resizeCell = 1;
+			columns = 0;
+			fitParentWidth = 1;
+			clipColumnText = 0;
+			helpTag = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "212 35";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "adminGui::kick();";
+			text = "Kick Player";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "212 405";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AdminGui_ClearBricks();";
+			text = "Clear Bricks";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "14 33";
+			extent = "56 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Player List: ";
+			maxLength = 255;
+		};
+	};
+};

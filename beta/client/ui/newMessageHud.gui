@@ -1,0 +1,52 @@
+new GuiControl(newMessageHud)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+	channel = "SAY";
+
+	new GuiSwatchCtrl(NMH_Box)
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "width";
+		vertSizing = "bottom";
+		position = "2 90";
+		extent = "636 18";
+		minExtent = "8 2";
+		visible = 1;
+		color = "0 0 0 0";
+
+		new GuiTextCtrl(NMH_Channel)
+		{
+			profile = "BlockChatChannelProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "2 0";
+			extent = "60 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+		};
+		new GuiTextEditCtrl(NMH_Type)
+		{
+			profile = "HUDChatTextEditProfile";
+			horizSizing = "width";
+			vertSizing = "bottom";
+			position = "60 0";
+			extent = "574 18";
+			minExtent = "8 2";
+			visible = 1;
+			command = "$Thiscontrol.type();";
+			altCommand = "$Thiscontrol.send();";
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+	};
+};

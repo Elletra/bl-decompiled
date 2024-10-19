@@ -1,0 +1,126 @@
+new GuiControl(LoadFileDlg)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "137 78";
+		extent = "378 326";
+		minExtent = "8 8";
+		visible = 1;
+		text = "Load File...";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+		closeCommand = "Canvas.popDialog(LoadFileDlg);";
+		helpTag = 0;
+
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "4 26";
+			extent = "293 295";
+			minExtent = "8 8";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "dynamic";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			defaultLineHeight = 15;
+			helpTag = 0;
+
+			new GuiTextListCtrl(loadFileList)
+			{
+				profile = "GuiTextArrayProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "273 8";
+				minExtent = "8 8";
+				visible = 1;
+				altCommand = "eval($loadFileCommand); Canvas.popDialog(LoadFileDlg);";
+				enumerate = 0;
+				resizeCell = 1;
+				columns = 0;
+				fitParentWidth = 1;
+				clipColumnText = 0;
+				helpTag = 0;
+				noDuplicates = "false";
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "305 238";
+			extent = "60 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "eval($loadFileCommand); Canvas.popDialog(LoadFileDlg);";
+			text = "Load";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "~/client/ui/button2";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "305 278";
+			extent = "60 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Canvas.popDialog(LoadFileDlg);";
+			accelerator = "escape";
+			text = "Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "~/client/ui/button2";
+		};
+	};
+};
+function fillFileList(%filespec, %ctrl)
+{
+	%ctrl.clear();
+	%i = 0;
+	%f = 0;
+	for (%fld = getField(%filespec, 0); %fld !$= ""; %fld = getField(%filespec, %f++))
+	{
+		for (%file = findFirstFile(%fld); %file !$= ""; %file = findNextFile(%fld))
+		{
+			if (getSubStr(%file, 0, 4) !$= "CVS/")
+			{
+				%ctrl.addRow(%i++, %file);
+			}
+		}
+	}
+	%ctrl.sort(0);
+}
+
+function getLoadFilename(%filespec, %callback)
+{
+	$loadFileCommand = "if(loadFileList.getSelectedId() >= 0)" @ %callback @ "(loadFileList.getValue());";
+	Canvas.pushDialog(LoadFileDlg, 99);
+	fillFileList(%filespec, loadFileList);
+}
+

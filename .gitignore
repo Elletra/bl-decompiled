@@ -38,6 +38,8 @@ config/
 *.ml
 *.log
 *.rec
+*.bak
+*.psd
 *.png
 *.jpg
 *.bmp
@@ -47,6 +49,7 @@ config/
 *.wav
 *.ogg
 *.mp3
+*.obj
 
 # Ignore specific files
 crapOns_Cache.cs

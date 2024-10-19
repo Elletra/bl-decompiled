@@ -1,0 +1,186 @@
+new GuiControl(SaveBricksGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl(SaveBricks_Window)
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "56 93";
+		extent = "528 294";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Save Bricks";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(\"SaveBricksGui\");";
+
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 106";
+			extent = "287 121";
+			minExtent = "8 2";
+			visible = 1;
+			color = "200 200 200 255";
+		};
+		new GuiTextEditCtrl(SaveBricks_FileName)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "59 42";
+			extent = "249 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 42";
+			extent = "36 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Name : ";
+			maxLength = 255;
+		};
+		new GuiMLTextEditCtrl(SaveBricks_Description)
+		{
+			profile = "GuiMLTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "26 109";
+			extent = "277 294";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 82";
+			extent = "63 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Description : ";
+			maxLength = 255;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "219 239";
+			extent = "89 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "SaveBricks_Save();";
+			accelerator = "enter";
+			text = "Save";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "20 239";
+			extent = "89 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(\"SaveBricksGui\");";
+			accelerator = "escape";
+			text = "Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "235 97";
+			extent = "60 18";
+			minExtent = "8 2";
+			visible = 1;
+			command = "SaveBricks_Description.setText(\"\");";
+			text = "Clear";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "323 42";
+			extent = "71 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Existing Files : ";
+			maxLength = 255;
+		};
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "321 64";
+			extent = "194 211";
+			minExtent = "8 2";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "dynamic";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+
+			new GuiTextListCtrl(SaveBricks_FileList)
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "174 20";
+				minExtent = "8 2";
+				visible = 1;
+				command = "SaveBricks_ClickFileList();";
+				enumerate = 0;
+				resizeCell = 1;
+				columns = 0;
+				fitParentWidth = 1;
+				clipColumnText = 0;
+			};
+		};
+	};
+};

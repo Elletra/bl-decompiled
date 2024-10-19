@@ -1,0 +1,108 @@
+new GuiControl(manualJoin)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "227 163";
+		extent = "185 153";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Connect to IP";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+		closeCommand = "canvas.popdialog(\"manualJoin\");";
+		helpTag = 0;
+
+		new GuiTextEditCtrl(MJ_txtIP)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "67 71";
+			extent = "104 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "47 102";
+			extent = "90 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "MJ_connect();";
+			text = "Connect";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			wrap = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "20 70";
+			extent = "47 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Server IP:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(MJ_txtJoinPass)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "67 41";
+			extent = "104 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "14 40";
+			extent = "53 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Password:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+	};
+};

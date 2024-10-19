@@ -1,0 +1,34 @@
+datablock TSShapeConstructor(HorseDts)
+{
+	baseShape = "./horse.dts";
+	sequence0 = "./horse_root.dsq root";
+	sequence1 = "./horse_run.dsq run";
+	sequence2 = "./horse_back.dsq back";
+	sequence3 = "./horse_side.dsq side";
+	sequence4 = "./horse_root.dsq look";
+	sequence5 = "./horse_root.dsq crouch";
+	sequence6 = "./horse_root.dsq fall";
+	sequence7 = "./horse_root.dsq land";
+	sequence8 = "./horse_jump.dsq jump";
+	sequence9 = "./horse_run.dsq crouchRun";
+	sequence10 = "./horse_back.dsq crouchBack";
+	sequence11 = "./horse_side.dsq crouchSide";
+	sequence12 = "./horse_root.dsq walk";
+	sequence13 = "./horse_root.dsq death5";
+	sequence14 = "./horse_root.dsq death6";
+	sequence15 = "./horse_root.dsq death7";
+	sequence16 = "./horse_root.dsq death8";
+	sequence17 = "./horse_root.dsq death9";
+	sequence18 = "./horse_root.dsq spearready";
+	sequence19 = "./horse_root.dsq spearThrow";
+	sequence20 = "./horse_root.dsq talk";
+	sequence21 = "./horse_root.dsq headUp";
+	sequence22 = "./horse_root.dsq talk";
+	sequence23 = "./horse_root.dsq headside";
+	sequence24 = "./horse_jump.dsq standjump";
+	sequence25 = "./horse_root.dsq headUp";
+	sequence26 = "./horse_root.dsq armAttack";
+	sequence27 = "./horse_root.dsq armReadyLeft";
+	sequence28 = "./horse_root.dsq armReadyRight";
+	sequence29 = "./horse_root.dsq armReadyBoth";
+};

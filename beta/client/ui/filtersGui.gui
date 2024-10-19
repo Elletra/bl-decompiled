@@ -1,0 +1,155 @@
+new GuiControl(filtersGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "234 128";
+		extent = "171 224";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Filters";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(filtersGui);";
+		helpTag = 0;
+
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 106";
+			extent = "127 30";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$Pref::Filter::NoPassword";
+			text = "No Password";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "84 36";
+			extent = "64 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$pref::Filter::maxPing";
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "84 56";
+			extent = "64 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$pref::Filter::minCpu";
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 136";
+			extent = "127 30";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$Pref::Filter::CurrentVersion";
+			text = "Current Version";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 36";
+			extent = "43 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Max Ping";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 56";
+			extent = "39 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Min CPU";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 76";
+			extent = "127 30";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$Pref::Filter::Dedicated";
+			text = "Dedicated";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+			helpTag = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "40 172";
+			extent = "90 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(filtersGui);";
+			text = "OK";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			wrap = 0;
+		};
+	};
+};

@@ -1,0 +1,146 @@
+new GuiControl(LoadBricksGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl(LoadBricks_Window)
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "0 0";
+		extent = "640 480";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Load Bricks";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(\"SaveBricksGui\");";
+
+		new GuiBitmapCtrl(LoadBricks_Preview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "432 47";
+			extent = "180 180";
+			minExtent = "8 2";
+			visible = 1;
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "477 350";
+			extent = "89 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "LoadBricks_Load();";
+			accelerator = "enter";
+			text = "Load";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiScrollCtrl(LoadBricks_FileScroll)
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "9 85";
+			extent = "395 387";
+			minExtent = "8 2";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "dynamic";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+
+			new GuiTextListCtrl(LoadBricks_FileList)
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "375 20";
+				minExtent = "8 2";
+				visible = 1;
+				command = "LoadBricks_FileClick();";
+				enumerate = 0;
+				resizeCell = 1;
+				columns = 0;
+				fitParentWidth = 1;
+				clipColumnText = 0;
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "477 410";
+			extent = "89 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(\"LoadBricksGui\");";
+			accelerator = "escape";
+			text = "Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiMLTextCtrl(LoadBricks_Description)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "415 235";
+			extent = "210 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "Description goes here";
+		};
+		new GuiPopUpMenuCtrl(LoadBricks_MapMenu)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "94 47";
+			extent = "311 28";
+			minExtent = "8 2";
+			visible = 1;
+			command = "LoadBricks_MapClick();";
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "18 52";
+			extent = "66 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Map Name:";
+			maxLength = 255;
+		};
+	};
+};

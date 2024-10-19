@@ -1,0 +1,159 @@
+new GuiControl(EscapeMenu)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "209 44";
+		extent = "221 392";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Escape Menu";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(\"escapeMenu\");";
+
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 33";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Canvas.pushDialog(optionsDlg);";
+			text = "Options";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 123";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Call Vote";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 173";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.pushDialog(saveBricksGui);";
+			text = "Save Bricks";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 263";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "commandToServer('suicide');";
+			text = "Suicide";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 303";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "escapeFromGame();";
+			text = "Disconnect";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 343";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "quitGame();";
+			text = "Quit";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 213";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "escapeMenu::clickLoadBricks();";
+			text = "Load Bricks";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 83";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "escapeMenu::clickAdmin();";
+			text = "Admin Menu";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+	};
+};

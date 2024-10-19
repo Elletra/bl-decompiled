@@ -1,0 +1,387 @@
+new GuiChunkedBitmapCtrl(startMissionGui)
+{
+	profile = "GuiContentProfile";
+	horizSizing = "width";
+	vertSizing = "height";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	bitmap = "./background.jpg";
+	useVariable = 0;
+	tile = 0;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "0 0";
+		extent = "640 480";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Start Mission";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "15 40";
+			extent = "243 260";
+			minExtent = "8 8";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			defaultLineHeight = 15;
+			helpTag = 0;
+
+			new GuiTextListCtrl(SM_missionList)
+			{
+				profile = "GuiTextArrayProfile";
+				horizSizing = "width";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "223 80";
+				minExtent = "8 8";
+				visible = 1;
+				command = "SM_missionList.select();";
+				enumerate = 0;
+				resizeCell = 1;
+				columns = 0;
+				fitParentWidth = 1;
+				clipColumnText = 0;
+				noDuplicates = "false";
+				description2 = "...";
+				description1 = "...";
+				description5 = "...";
+				description4 = "...";
+				helpTag = 0;
+				description3 = "...";
+			};
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "268 407";
+			extent = "86 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Admin Password:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiBitmapCtrl(SM_MapPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "278 40";
+			extent = "348 261";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "~/data/missions/bedroom";
+			wrap = 0;
+
+			new GuiTextCtrl(SM_MapName)
+			{
+				profile = "HudInvTextProfile";
+				horizSizing = "width";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "350 18";
+				minExtent = "8 2";
+				visible = 0;
+				text = "mapname";
+				maxLength = 255;
+			};
+			new GuiMLTextCtrl(SM_MapDescription)
+			{
+				profile = "MapDescriptionTextProfile";
+				horizSizing = "center";
+				vertSizing = "top";
+				position = "4 229";
+				extent = "339 28";
+				minExtent = "8 2";
+				visible = 1;
+				lineSpacing = 2;
+				allowColorChars = 0;
+				maxChars = -1;
+				text = "map description";
+			};
+		};
+		new GuiCheckBoxCtrl(ML_isMultiplayer)
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "16 337";
+			extent = "112 23";
+			minExtent = "8 8";
+			visible = 1;
+			variable = "$pref::HostMultiPlayer";
+			text = "Multiplayer";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(TxtServerAdminPassword)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "359 407";
+			extent = "93 18";
+			minExtent = "8 8";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(TxtServerName)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "88 360";
+			extent = "364 18";
+			minExtent = "8 8";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "17 360";
+			extent = "66 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Server Name:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "17 384";
+			extent = "57 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Server Info:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(TxtServerInfo)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "88 384";
+			extent = "364 18";
+			minExtent = "8 8";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(TxtServerPassword)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "88 407";
+			extent = "93 18";
+			minExtent = "8 8";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "17 407";
+			extent = "53 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Password:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(TxtServerTimeLimit)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "88 430";
+			extent = "93 18";
+			minExtent = "8 8";
+			visible = 1;
+			variable = "$Pref::Server::TimeLimit";
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "17 430";
+			extent = "49 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Time Limit:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "463 385";
+			extent = "62 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Max Players:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextEditSliderCtrl(SliderNumPlayers)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "526 385";
+			extent = "47 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			format = "%3.0f";
+			range = "1.000000 64.000000";
+			increment = 1;
+			helpTag = 0;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "463 361";
+			extent = "100 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$Pref::Server::FloodProtectionEnabled";
+			text = "Flood Protection";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(TxtServerPort)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "359 430";
+			extent = "93 18";
+			minExtent = "8 8";
+			visible = 1;
+			variable = "$Pref::Server::Port";
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "331 430";
+			extent = "22 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Port:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "481 306";
+			extent = "145 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "SM_StartMission();";
+			text = "Launch Mission >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "15 306";
+			extent = "145 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Canvas.setContent(mainMenuGui);";
+			accelerator = "escape";
+			text = "<< Back";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			wrap = 0;
+		};
+	};
+};

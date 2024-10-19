@@ -1,0 +1,17 @@
+new SimSet(guiClipboard) {
+
+   new GuiBitmapButtonCtrl(AU_Cancel) {
+      profile = "BlockButtonProfile";
+      horizSizing = "left";
+      vertSizing = "top";
+      position = "24 288";
+      extent = "89 34";
+      minExtent = "8 2";
+      visible = "1";
+      command = "canvas.popdialog(AutoUpdateGui);";
+      text = "Cancel";
+      groupNum = "-1";
+      buttonType = "PushButton";
+      bitmap = "base/client/ui/button2";
+   };
+};

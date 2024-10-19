@@ -1,0 +1,91 @@
+new GuiControl(printSelectorDlg)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl(PSD_window)
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "left";
+		vertSizing = "center";
+		position = "333 20";
+		extent = "214 439";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Print Selector";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(\"printSelectorDlg\");";
+		scrollcount = 0;
+		Scroll0 = 16584;
+
+		new GuiButtonCtrl()
+		{
+			profile = "GuiButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "-166 241";
+			extent = "140 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(\"printSelectorDlg\");";
+			accelerator = "escape";
+			text = "exit";
+			groupNum = -1;
+			buttonType = "PushButton";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "69 22";
+			extent = "58 18";
+			minExtent = "8 2";
+			visible = 1;
+			command = "PSD_LettersTab();";
+			text = "Letters";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./tab1";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "10 22";
+			extent = "58 18";
+			minExtent = "8 2";
+			visible = 1;
+			command = "PSD_PrintsTab();";
+			text = "Prints";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./tab1";
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "3 40";
+			extent = "209 2";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./bar1";
+			wrap = 0;
+		};
+	};
+};
