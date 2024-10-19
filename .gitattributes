@@ -1,0 +1,3 @@
+# Automatically convert text file line endings to CRLF
+text=auto
+text eol=crlf
