@@ -736,7 +736,7 @@ function getSaveFilename(%filespec, %callback, %currentFile)
 	SA_directoryList.clear();
 	for (%file = findFirstFile("*"); %file !$= ""; %file = findNextFile("*"))
 	{
-		if (strstr(%file, "/CVS/") != -1)
+		if (strstr(%file, "/CVS/") == -1)
 		{
 			%path = filePath(%file);
 			if (!%unique[%path])
@@ -783,7 +783,7 @@ function SA_directoryList::onSelect(%this, %id)
 	%filespec = %this.getTextById(%id) @ "/" @ $SA_filespec;
 	for (%file = findFirstFile(%filespec); %file !$= ""; %file = findNextFile(%filespec))
 	{
-		if (strstr(%file, "/CVS/") != -1)
+		if (strstr(%file, "/CVS/") == -1)
 		{
 			SA_fileList.addRow(%i++, fileName(%file));
 		}

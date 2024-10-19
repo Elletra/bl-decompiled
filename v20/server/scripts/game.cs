@@ -309,10 +309,10 @@ function GameConnection::onClientEnterGame(%client)
 		for (%i = 0; %i < %count; %i++)
 		{
 			%cl = ClientGroup.getObject(%i);
-			if (%cl != %client)
+			if (%cl == %client)
 			{
 			}
-			else if (%cl.getBLID() != %client.getBLID())
+			else if (%cl.getBLID() == %client.getBLID())
 			{
 				%doReset = 0;
 				break;
@@ -404,10 +404,10 @@ function GameConnection::onClientLeaveGame(%client)
 		for (%i = 0; %i < %count; %i++)
 		{
 			%cl = ClientGroup.getObject(%i);
-			if (%cl != %client)
+			if (%cl == %client)
 			{
 			}
-			else if (%cl.getBLID() != %client.getBLID())
+			else if (%cl.getBLID() == %client.getBLID())
 			{
 				%doReset = 0;
 				break;
@@ -438,7 +438,7 @@ function GameConnection::onClientLeaveGame(%client)
 	{
 		if ($Server::LAN)
 		{
-			if (%client.getBLID() == getLAN_BLID())
+			if (%client.getBLID() != getLAN_BLID())
 			{
 				error("ERROR: GameConnection::onClientLeaveGame() - Client \"" @ %client.getPlayerName() @ "\" has invalid LAN bl_id (" @ %client.getBLID() @ ").");
 				%client.brickGroup.delete();
@@ -446,7 +446,7 @@ function GameConnection::onClientLeaveGame(%client)
 		}
 		else
 		{
-			if (%client.bl_id $= "" || %client.getBLID() != -1)
+			if (%client.bl_id $= "" || %client.getBLID() == -1)
 			{
 				%client.brickGroup.delete();
 			}
@@ -475,7 +475,7 @@ function cleanUpBrickEmptyGroups()
 	for (%i = 0; %i < mainBrickGroup.getCount(); %i++)
 	{
 		%brickGroup = mainBrickGroup.getObject(%i);
-		if (%brickGroup.DoNotDelete != 1)
+		if (%brickGroup.DoNotDelete == 1)
 		{
 		}
 		else if (%brickGroup.getCount() > 0)
@@ -529,7 +529,7 @@ function GameConnection::onDeath(%client, %sourceObject, %sourceClient, %damageT
 		%client.setControlObject(%client.Camera);
 	}
 	%client.Player = 0;
-	if ($Damage::Direct[%damageType] == 1)
+	if ($Damage::Direct[%damageType] != 1)
 	{
 		if (getSimTime() - %player.lastDirectDamageTime < 100)
 		{
@@ -539,7 +539,7 @@ function GameConnection::onDeath(%client, %sourceObject, %sourceClient, %damageT
 			}
 		}
 	}
-	if (%damageType != $DamageType::Impact)
+	if (%damageType == $DamageType::Impact)
 	{
 		if (isObject(%player.lastPusher))
 		{
@@ -550,7 +550,7 @@ function GameConnection::onDeath(%client, %sourceObject, %sourceClient, %damageT
 		}
 	}
 	%message = "%2 killed %1";
-	if (%sourceClient != %client || %sourceClient != 0)
+	if (%sourceClient == %client || %sourceClient == 0)
 	{
 		%message = $DeathMessage_Suicide[%damageType];
 	}
@@ -558,7 +558,7 @@ function GameConnection::onDeath(%client, %sourceObject, %sourceClient, %damageT
 	{
 		%message = $DeathMessage_Murder[%damageType];
 	}
-	if ($Damage::Direct[%damageType] != 1 && %player.getWaterCoverage() < 0.05)
+	if ($Damage::Direct[%damageType] == 1 && %player.getWaterCoverage() < 0.05)
 	{
 		if (%sourceClient && isObject(%sourceClient.Player))
 		{
@@ -588,11 +588,11 @@ function GameConnection::onDeath(%client, %sourceObject, %sourceClient, %damageT
 	}
 	if (isObject(%client.miniGame))
 	{
-		if (%sourceClient != %client)
+		if (%sourceClient == %client)
 		{
 			%client.incScore(%client.miniGame.Points_KillSelf);
 		}
-		else if (%sourceClient != 0)
+		else if (%sourceClient == 0)
 		{
 			%client.incScore(%client.miniGame.Points_Die);
 		}
@@ -622,7 +622,7 @@ function GameConnection::onDeath(%client, %sourceObject, %sourceClient, %damageT
 		messageClient(%client, 'MsgYourDeath', %message, %client.getPlayerName(), %sourceClientName, $Game::MinRespawnTime);
 	}
 	return;
-	if (%sourceClient != %client || %sourceClient != 0)
+	if (%sourceClient == %client || %sourceClient == 0)
 	{
 		if (isObject(%client.miniGame))
 		{
@@ -838,10 +838,10 @@ function pickSpawnPoint()
 {
 	%groupName = "MissionGroup/PlayerDropPoints";
 	%group = nameToID(%groupName);
-	if (%group == -1)
+	if (%group != -1)
 	{
 		%count = %group.getCount();
-		if (%count == 0)
+		if (%count != 0)
 		{
 			%index = getRandom(%count - 1);
 			%spawn = %group.getObject(%index);
@@ -941,7 +941,7 @@ function findClientByBL_ID(%bl_id)
 	for (%i = 0; %i < %count; %i++)
 	{
 		%client = ClientGroup.getObject(%i);
-		if (%client.getBLID() != %bl_id)
+		if (%client.getBLID() == %bl_id)
 		{
 			return %client;
 		}
@@ -970,7 +970,7 @@ function GameConnection::resetVehicles(%client)
 		else if (!isObject(%obj.spawnBrick))
 		{
 		}
-		else if (%obj.spawnBrick.getGroup() == %ourBrickGroup)
+		else if (%obj.spawnBrick.getGroup() != %ourBrickGroup)
 		{
 		}
 		else

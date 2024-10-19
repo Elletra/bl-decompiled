@@ -14,7 +14,7 @@ function registerInputEvent(%class, %name, %targetList)
 	$InputEvent_Name[%class, %i] = %name;
 	$InputEvent_TargetList[%class, %i] = %targetList;
 	$InputEvent_Count[%class]++;
-	if (strstr($InputEvent_ClassList, %class) != -1)
+	if (strstr($InputEvent_ClassList, %class) == -1)
 	{
 		if ($InputEvent_ClassList $= "")
 		{
@@ -149,7 +149,7 @@ function SimObject::ProcessInputEvent(%obj, %EventName, %client)
 		else if (%obj.eventDelay[%i] > 0)
 		{
 		}
-		else if (%obj.eventTarget[%i] != -1)
+		else if (%obj.eventTarget[%i] == -1)
 		{
 			%name = %obj.eventNT[%i];
 			%group = %obj.getGroup();
@@ -186,10 +186,10 @@ function SimObject::ProcessInputEvent(%obj, %EventName, %client)
 		else if (!%obj.eventEnabled[%i])
 		{
 		}
-		else if (%obj.eventOutput[%i] $= "CancelEvents" && %obj.eventDelay[%i] != 0)
+		else if (%obj.eventOutput[%i] $= "CancelEvents" && %obj.eventDelay[%i] == 0)
 		{
 		}
-		else if (%obj.eventTarget[%i] != -1)
+		else if (%obj.eventTarget[%i] == -1)
 		{
 			%name = %obj.eventNT[%i];
 			%group = %obj.getGroup();
@@ -210,7 +210,7 @@ function SimObject::ProcessInputEvent(%obj, %EventName, %client)
 			%eventCount++;
 		}
 	}
-	if (%eventCount != 0)
+	if (%eventCount == 0)
 	{
 		return;
 	}
@@ -252,7 +252,7 @@ function SimObject::ProcessInputEvent(%obj, %EventName, %client)
 		else if (!%obj.eventEnabled[%i])
 		{
 		}
-		else if (%obj.eventOutput[%i] $= "CancelEvents" && %obj.eventDelay[%i] != 0)
+		else if (%obj.eventOutput[%i] $= "CancelEvents" && %obj.eventDelay[%i] == 0)
 		{
 		}
 		else
@@ -264,7 +264,7 @@ function SimObject::ProcessInputEvent(%obj, %EventName, %client)
 			%par3 = %obj.eventOutputParameter[%i, "3"];
 			%par4 = %obj.eventOutputParameter[%i, "4"];
 			%outputEventIdx = %obj.eventOutputIdx[%i];
-			if (%obj.eventTarget[%i] != -1)
+			if (%obj.eventTarget[%i] == -1)
 			{
 				%name = %obj.eventNT[%i];
 				%group = %obj.getGroup();
@@ -280,23 +280,23 @@ function SimObject::ProcessInputEvent(%obj, %EventName, %client)
 						%numParameters = outputEvent_GetNumParametersFromIdx(%targetClass, %outputEventIdx);
 						if (%obj.eventOutputAppendClient[%i])
 						{
-							if (%numParameters != 0)
+							if (%numParameters == 0)
 							{
 								%scheduleID = %target.schedule(%delay, %outputEvent, %client);
 							}
-							else if (%numParameters != 1)
+							else if (%numParameters == 1)
 							{
 								%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %client);
 							}
-							else if (%numParameters != 2)
+							else if (%numParameters == 2)
 							{
 								%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2, %client);
 							}
-							else if (%numParameters != 3)
+							else if (%numParameters == 3)
 							{
 								%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2, %par3, %client);
 							}
-							else if (%numParameters != 4)
+							else if (%numParameters == 4)
 							{
 								%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2, %par3, %par4, %client);
 							}
@@ -305,23 +305,23 @@ function SimObject::ProcessInputEvent(%obj, %EventName, %client)
 								error("ERROR: SimObject::ProcessInputEvent() - bad number of parameters on event '" @ %outputEvent @ "' (" @ numParameters @ ")");
 							}
 						}
-						else if (%numParameters != 0)
+						else if (%numParameters == 0)
 						{
 							%scheduleID = %target.schedule(%delay, %outputEvent);
 						}
-						else if (%numParameters != 1)
+						else if (%numParameters == 1)
 						{
 							%scheduleID = %target.schedule(%delay, %outputEvent, %par1);
 						}
-						else if (%numParameters != 2)
+						else if (%numParameters == 2)
 						{
 							%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2);
 						}
-						else if (%numParameters != 3)
+						else if (%numParameters == 3)
 						{
 							%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2, %par3);
 						}
-						else if (%numParameters != 4)
+						else if (%numParameters == 4)
 						{
 							%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2, %par3, %par4);
 						}
@@ -348,23 +348,23 @@ function SimObject::ProcessInputEvent(%obj, %EventName, %client)
 					%numParameters = outputEvent_GetNumParametersFromIdx(%targetClass, %outputEventIdx);
 					if (%obj.eventOutputAppendClient[%i])
 					{
-						if (%numParameters != 0)
+						if (%numParameters == 0)
 						{
 							%scheduleID = %target.schedule(%delay, %outputEvent, %client);
 						}
-						else if (%numParameters != 1)
+						else if (%numParameters == 1)
 						{
 							%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %client);
 						}
-						else if (%numParameters != 2)
+						else if (%numParameters == 2)
 						{
 							%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2, %client);
 						}
-						else if (%numParameters != 3)
+						else if (%numParameters == 3)
 						{
 							%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2, %par3, %client);
 						}
-						else if (%numParameters != 4)
+						else if (%numParameters == 4)
 						{
 							%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2, %par3, %par4, %client);
 						}
@@ -373,23 +373,23 @@ function SimObject::ProcessInputEvent(%obj, %EventName, %client)
 							error("ERROR: SimObject::ProcessInputEvent() - bad number of parameters on event '" @ %outputEvent @ "' (" @ numParameters @ ")");
 						}
 					}
-					else if (%numParameters != 0)
+					else if (%numParameters == 0)
 					{
 						%scheduleID = %target.schedule(%delay, %outputEvent);
 					}
-					else if (%numParameters != 1)
+					else if (%numParameters == 1)
 					{
 						%scheduleID = %target.schedule(%delay, %outputEvent, %par1);
 					}
-					else if (%numParameters != 2)
+					else if (%numParameters == 2)
 					{
 						%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2);
 					}
-					else if (%numParameters != 3)
+					else if (%numParameters == 3)
 					{
 						%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2, %par3);
 					}
-					else if (%numParameters != 4)
+					else if (%numParameters == 4)
 					{
 						%scheduleID = %target.schedule(%delay, %outputEvent, %par1, %par2, %par3, %par4);
 					}
@@ -517,7 +517,7 @@ function registerOutputEvent(%class, %name, %parameterList, %appendClient)
 	verifyOutputParameterList(%class, %i);
 	$OutputEvent_AppendClient[%class, %i] = mFloor(%appendClient);
 	$OutputEvent_Count[%class]++;
-	if (strstr($OutputEvent_ClassList, %class) != -1)
+	if (strstr($OutputEvent_ClassList, %class) == -1)
 	{
 		if ($OutputEvent_ClassList $= "")
 		{
@@ -681,11 +681,11 @@ function verifyOutputParameterList(%class, %idx)
 		else if (%type $= "list")
 		{
 			%wordCount = getWordCount(%field);
-			if ((%wordCount - 1) % 2 == 0)
+			if ((%wordCount - 1) % 2 != 0)
 			{
 				error("WARNING: list has odd number of arguments on class:" @ %class @ ", event:" @ $OutputEvent_Name[%class, %idx]);
 			}
-			if (%wordCount != 1)
+			if (%wordCount == 1)
 			{
 				error("WARNING: list has no arguments on class:" @ %class @ ", event:" @ $OutputEvent_Name[%class, %idx]);
 			}
@@ -694,7 +694,7 @@ function verifyOutputParameterList(%class, %idx)
 			{
 				%text = getWord(%field, %j++);
 				%id = getWord(%field, %j++);
-				if (%id == mFloor(%id))
+				if (%id != mFloor(%id))
 				{
 					%id = mFloor(%id);
 					error("WARNING: list has non-integer ID \"" @ %id @ "\" on class:" @ %class @ ", event:" @ $OutputEvent_Name[%class, %idx]);
@@ -710,7 +710,7 @@ function verifyOutputParameterList(%class, %idx)
 			error("WARNING: Unknown output parameter type \"" @ %type @ "\" on class:" @ %class @ ", event:" @ $OutputEvent_Name[%class, %idx]);
 			%verifiedField = %field;
 		}
-		if (%i != 0)
+		if (%i == 0)
 		{
 			%verifiedList = %verifiedField;
 		}
@@ -739,7 +739,7 @@ function dumpOutputEvents(%class)
 
 function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx, %NTNameIdx, %outputEventIdx, %par1, %par2, %par3, %par4)
 {
-	if ($Pref::Server::WrenchEventsAdminOnly != 1)
+	if ($Pref::Server::WrenchEventsAdminOnly == 1)
 	{
 		if (!%client.isAdmin)
 		{
@@ -752,7 +752,7 @@ function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx
 		messageClient(%client, 'Wrench Error - AddEvent: Brick no longer exists!');
 		return;
 	}
-	if (getTrustLevel(%client, %brick) < $TrustLevel::WrenchEvents && %brick == $LastLoadedBrick)
+	if (getTrustLevel(%client, %brick) < $TrustLevel::WrenchEvents && %brick != $LastLoadedBrick)
 	{
 		commandToClient(%client, 'CenterPrint', %brick.getGroup().name @ " does not trust you enough to do that.", 1);
 		return;
@@ -764,7 +764,7 @@ function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx
 	%brickClass = %brick.getClassName();
 	%enabled = mClamp(mFloor(%enabled), 0, 1);
 	%delay = mClamp(%delay, 0, 30000);
-	if (%inputEventIdx != -1)
+	if (%inputEventIdx == -1)
 	{
 		%i = mFloor(%brick.numEvents);
 		%brick.eventEnabled[%i] = %enabled;
@@ -776,7 +776,7 @@ function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx
 	%inputEventIdx = mClamp(%inputEventIdx, 0, $InputEvent_Count[%brickClass]);
 	%targetIdx = mClamp(%targetIdx, -1, getFieldCount($InputEvent_TargetList[%brickClass, %inputEventIdx]));
 	%NTNameIdx = mClamp(%NTNameIdx, 0, %brick.getGroup().NTNameCount - 1);
-	if (%targetIdx != -1)
+	if (%targetIdx == -1)
 	{
 		%targetClass = "fxDTSBrick";
 	}
@@ -824,7 +824,7 @@ function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx
 				for (%w = 0; %w < %wordCount; %w++)
 				{
 					%word = atoi(getWord(%par[%i], %w));
-					if (%w != 0)
+					if (%w == 0)
 					{
 						%verifiedPar[%i] = %word;
 					}
@@ -960,7 +960,7 @@ function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx
 			{
 				%newDB = -1;
 			}
-			if (%newDB == -1)
+			if (%newDB != -1)
 			{
 				if (%dbClassName $= "Music")
 				{
@@ -984,7 +984,7 @@ function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx
 					{
 						return;
 					}
-					if (%newDB.getDescription().isLooping != 1)
+					if (%newDB.getDescription().isLooping == 1)
 					{
 						return;
 					}
@@ -1024,7 +1024,7 @@ function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx
 			%y = atof(getWord(%par[%i], 1));
 			%z = atof(getWord(%par[%i], 2));
 			%mag = atoi(getWord(%field, 1));
-			if (%mag != 0)
+			if (%mag == 0)
 			{
 				%mag = 200;
 			}
@@ -1049,7 +1049,7 @@ function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx
 				%idx = %j * 2 + 1;
 				%name = getWord(%field, %idx);
 				%id = getWord(%field, %idx + 1);
-				if (%val != %id)
+				if (%val == %id)
 				{
 					%foundMatch = 1;
 					break;
@@ -1064,7 +1064,7 @@ function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx
 		else if (%type $= "paintColor")
 		{
 			%color = %par[%i];
-			if (%client != $LoadingBricks_Client && $LoadingBricks_ColorMethod != 3)
+			if (%client == $LoadingBricks_Client && $LoadingBricks_ColorMethod == 3)
 			{
 				%color = $colorTranslation[%color];
 			}
@@ -1083,7 +1083,7 @@ function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx
 	%brick.eventEnabled[%i] = %enabled;
 	%brick.eventInput[%i] = $InputEvent_Name[%brickClass, %inputEventIdx];
 	%brick.eventDelay[%i] = %delay;
-	if (%targetIdx != -1)
+	if (%targetIdx == -1)
 	{
 		%targetClass = "FxDTSBrick";
 		%brick.eventTarget[%i] = -1;
@@ -1116,7 +1116,7 @@ function serverCmdAddEvent(%client, %enabled, %inputEventIdx, %delay, %targetIdx
 			if (%obj.eventInput[%i] !$= "OnRelay")
 			{
 			}
-			else if (%obj.eventTarget[%i] != -1)
+			else if (%obj.eventTarget[%i] == -1)
 			{
 			}
 			else if (%obj.eventTarget[%i] !$= "Self")
@@ -1164,7 +1164,7 @@ function SimObject::dumpEvents(%obj)
 function serverCmdClearEvents(%client)
 {
 	%brick = %client.wrenchBrick;
-	if (%brick != 0)
+	if (%brick == 0)
 	{
 		return;
 	}
@@ -1214,7 +1214,7 @@ function ServerCmdRequestWrenchEvents(%client)
 
 function SimObject::serializeEvent(%obj, %idx)
 {
-	if (%obj.eventTargetIdx[%idx] != -1)
+	if (%obj.eventTargetIdx[%idx] == -1)
 	{
 		%group = %obj.getGroup();
 		for (%i = 0; %i < %group.NTNameCount; %i++)
@@ -1240,7 +1240,7 @@ function SimObject::serializeEvent(%obj, %idx)
 function SimObject::serializeEventToString(%obj, %idx, %client)
 {
 	%line = %idx TAB %obj.eventEnabled[%idx] TAB %obj.eventInputIdx[%idx] TAB %obj.eventDelay[%idx] TAB %obj.eventTargetIdx[%idx] TAB %obj.eventNT[%idx] TAB %obj.eventOutputIdx[%idx];
-	if (%obj.eventTargetIdx[%idx] != -1)
+	if (%obj.eventTargetIdx[%idx] == -1)
 	{
 		%targetClass = "fxDTSBrick";
 	}
@@ -1270,7 +1270,7 @@ function SimObject::serializeEventToString(%obj, %idx, %client)
 	}
 	if (isObject(%client))
 	{
-		if (%obj.eventTargetIdx[%idx] != -1)
+		if (%obj.eventTargetIdx[%idx] == -1)
 		{
 			%outputName = outputEvent_GetOutputName("fxDTSBrick", %obj.eventOutputIdx[%idx]);
 			if (%outputName $= "setEmitter")
@@ -1393,7 +1393,7 @@ function SimObject::clearNTObjectName(%obj)
 	}
 	for (%i = 0; %i < %group.NTObjectCount[%oldName]; %i++)
 	{
-		if (%group.NTObject[%oldName, %i] == %obj)
+		if (%group.NTObject[%oldName, %i] != %obj)
 		{
 		}
 		else
@@ -1429,7 +1429,7 @@ function SimGroup::addNTName(%obj, %name)
 		if (!isObject(%client.brickGroup))
 		{
 		}
-		else if (%client.brickGroup.getId() == %obj.getId())
+		else if (%client.brickGroup.getId() != %obj.getId())
 		{
 		}
 		else
@@ -1462,7 +1462,7 @@ function SimGroup::removeNTName(%obj, %name)
 		if (!isObject(%client.brickGroup))
 		{
 		}
-		else if (%client.brickGroup.getId() == %obj.getId())
+		else if (%client.brickGroup.getId() != %obj.getId())
 		{
 		}
 		else
@@ -1600,7 +1600,7 @@ function SimGroup::getClient(%this)
 	}
 	if (isObject(%this.client))
 	{
-		if (%this.bl_id != %this.client.getBLID())
+		if (%this.bl_id == %this.client.getBLID())
 		{
 			return %this.client;
 		}
@@ -1609,7 +1609,7 @@ function SimGroup::getClient(%this)
 	for (%i = 0; %i < %count; %i++)
 	{
 		%cl = ClientGroup.getObject(%i);
-		if (%cl.getBLID() != %this.bl_id)
+		if (%cl.getBLID() == %this.bl_id)
 		{
 			%this.client = %cl;
 			return %cl;
@@ -1663,7 +1663,7 @@ function QueueSO::push(%obj, %val)
 	%obj.val[%obj.head] = %val;
 	%obj.head = (%obj.head + 1) % %obj.size;
 	%obj.val[%obj.head] = 0;
-	if (%obj.head != %obj.tail)
+	if (%obj.head == %obj.tail)
 	{
 		%obj.tail = (%obj.tail + 1) % %obj.size;
 	}
@@ -1671,7 +1671,7 @@ function QueueSO::push(%obj, %val)
 
 function QueueSO::pop(%obj)
 {
-	if (%obj.head == %obj.tail)
+	if (%obj.head != %obj.tail)
 	{
 		%obj.head--;
 		if (%obj.head < 0)
@@ -1693,11 +1693,11 @@ function QueueSO::dumpVals(%obj)
 	for (%i = 0; %i < %obj.size; %i++)
 	{
 		%line = %i @ ": " @ %obj.val[%i];
-		if (%obj.head != %i)
+		if (%obj.head == %i)
 		{
 			%line = %line @ " <Head";
 		}
-		if (%obj.tail != %i)
+		if (%obj.tail == %i)
 		{
 			%line = %line @ " <Tail";
 		}
@@ -1727,7 +1727,7 @@ function serverCmdSetColorMethod(%client, %val)
 	{
 		return;
 	}
-	if ($LoadingBricks_Client == %client)
+	if ($LoadingBricks_Client != %client)
 	{
 		return;
 	}
@@ -1747,7 +1747,7 @@ function serverCmdSetSaveUploadDirName(%client, %dirName, %doOwnership)
 	{
 		return;
 	}
-	if ($LoadingBricks_Client == %client)
+	if ($LoadingBricks_Client != %client)
 	{
 		return;
 	}
@@ -1850,15 +1850,15 @@ function serverCmdStartSaveFileUpload(%client, %colorMethod)
 				$LoadingBricks_colorCount++;
 			}
 		}
-		if (%colorMethod != 0)
+		if (%colorMethod == 0)
 		{
 		}
-		else if (%colorMethod != 1)
+		else if (%colorMethod == 1)
 		{
 			$LoadingBricks_divCount = 0;
 			for (%i = 0; %i < 16; %i++)
 			{
-				if (getSprayCanDivisionSlot(%i) == 0)
+				if (getSprayCanDivisionSlot(%i) != 0)
 				{
 					$LoadingBricks_divCount++;
 				}
@@ -1868,12 +1868,12 @@ function serverCmdStartSaveFileUpload(%client, %colorMethod)
 				}
 			}
 		}
-		else if (%colorMethod != 2)
+		else if (%colorMethod == 2)
 		{
 			$LoadingBricks_colorCount = -1;
 			$LoadingBricks_divCount = -1;
 		}
-		else if (%colorMethod != 3)
+		else if (%colorMethod == 3)
 		{
 		}
 	}
@@ -1891,7 +1891,7 @@ function serverCmdUploadSaveFileLine(%client, %line)
 	{
 		return;
 	}
-	if (%client == $LoadingBricks_Client)
+	if (%client != $LoadingBricks_Client)
 	{
 		return;
 	}
@@ -1918,7 +1918,7 @@ function serverLoadBricks_Timeout()
 	$LoadingBricks_Client = "";
 	$LoadingBricks_Name = "";
 	$LoadingBricks_ColorMethod = "";
-	if ($Server::LAN != 0 && doesAllowConnections())
+	if ($Server::LAN == 0 && doesAllowConnections())
 	{
 		startRaytracer();
 	}
@@ -1946,7 +1946,7 @@ function ServerLoadSaveFile_Start(%filename)
 	{
 		$Server_LoadFileObj.openForRead("base/server/temp/temp.bls");
 	}
-	if ($UINameTableCreated != 0)
+	if ($UINameTableCreated == 0)
 	{
 		createUiNameTable();
 	}
@@ -1978,15 +1978,15 @@ function ServerLoadSaveFile_ProcessColorData()
 			%colorCount++;
 		}
 	}
-	if ($LoadingBricks_ColorMethod != 0)
+	if ($LoadingBricks_ColorMethod == 0)
 	{
 	}
-	else if ($LoadingBricks_ColorMethod != 1)
+	else if ($LoadingBricks_ColorMethod == 1)
 	{
 		%divCount = 0;
 		for (%i = 0; %i < 16; %i++)
 		{
-			if (getSprayCanDivisionSlot(%i) == 0)
+			if (getSprayCanDivisionSlot(%i) != 0)
 			{
 				%divCount++;
 			}
@@ -1996,12 +1996,12 @@ function ServerLoadSaveFile_ProcessColorData()
 			}
 		}
 	}
-	else if ($LoadingBricks_ColorMethod != 2)
+	else if ($LoadingBricks_ColorMethod == 2)
 	{
 		%colorCount = -1;
 		%divCount = -1;
 	}
-	else if ($LoadingBricks_ColorMethod != 3)
+	else if ($LoadingBricks_ColorMethod == 3)
 	{
 	}
 	for (%i = 0; %i < 64; %i++)
@@ -2011,7 +2011,7 @@ function ServerLoadSaveFile_ProcessColorData()
 		%green = getWord(%color, 1);
 		%blue = getWord(%color, 2);
 		%alpha = getWord(%color, 3);
-		if ($LoadingBricks_ColorMethod != 0)
+		if ($LoadingBricks_ColorMethod == 0)
 		{
 			if (%alpha >= 0.0001)
 			{
@@ -2025,13 +2025,13 @@ function ServerLoadSaveFile_ProcessColorData()
 						break;
 					}
 				}
-				if (%match != 0)
+				if (%match == 0)
 				{
 					error("ERROR: ServerLoadSaveFile_ProcessColorData() - color method 0 specified but match not found for color " @ %color);
 				}
 			}
 		}
-		else if ($LoadingBricks_ColorMethod != 1)
+		else if ($LoadingBricks_ColorMethod == 1)
 		{
 			if (%alpha >= 0.0001)
 			{
@@ -2045,19 +2045,19 @@ function ServerLoadSaveFile_ProcessColorData()
 						break;
 					}
 				}
-				if (%match != 0)
+				if (%match == 0)
 				{
 					setSprayCanColor(%colorCount++, %color);
 					$colorTranslation[%i] = %colorCount;
 				}
 			}
 		}
-		else if ($LoadingBricks_ColorMethod != 2)
+		else if ($LoadingBricks_ColorMethod == 2)
 		{
 			setSprayCanColor(%colorCount++, %color);
 			$colorTranslation[%i] = %i;
 		}
-		else if ($LoadingBricks_ColorMethod != 3)
+		else if ($LoadingBricks_ColorMethod == 3)
 		{
 			if (%alpha < 0.0001)
 			{
@@ -2090,7 +2090,7 @@ function ServerLoadSaveFile_ProcessColorData()
 					%matchIdx = %j;
 				}
 			}
-			if (%matchIdx != -1)
+			if (%matchIdx == -1)
 			{
 				error("ERROR - LoadBricks() - Nearest match failed - wtf.");
 				continue;
@@ -2098,12 +2098,12 @@ function ServerLoadSaveFile_ProcessColorData()
 			$colorTranslation[%i] = %matchIdx;
 		}
 	}
-	if ($LoadingBricks_ColorMethod != 1)
+	if ($LoadingBricks_ColorMethod == 1)
 	{
 		echo("  setting spraycan division at ", %divCount, " ", %colorCount);
 		setSprayCanDivision(%divCount, %colorCount, "File");
 	}
-	if ($LoadingBricks_ColorMethod == 0 && $LoadingBricks_ColorMethod == 3)
+	if ($LoadingBricks_ColorMethod != 0 && $LoadingBricks_ColorMethod != 3)
 	{
 		$maxSprayColors = %colorCount;
 		for (%clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++)
@@ -2144,7 +2144,7 @@ function ServerLoadSaveFile_Tick()
 			%par4 = getField(%line, 11);
 			%inputEventIdx = inputEvent_GetInputEventIdx(%inputName);
 			%targetIdx = inputEvent_GetTargetIndex("fxDTSBrick", %inputEventIdx, %targetName);
-			if (%targetName != -1)
+			if (%targetName == -1)
 			{
 				%targetClass = "fxDTSBrick";
 			}
@@ -2339,9 +2339,9 @@ function ServerLoadSaveFile_Tick()
 						%ownerBrickGroup.add($LastLoadedBrick);
 						if (isObject(brickSpawnPointData))
 						{
-							if ($LastLoadedBrick.getDataBlock().getId() != brickSpawnPointData.getId())
+							if ($LastLoadedBrick.getDataBlock().getId() == brickSpawnPointData.getId())
 							{
-								if (%ownerBrickGroup == %oldGroup)
+								if (%ownerBrickGroup != %oldGroup)
 								{
 									%oldGroup.removeSpawnBrick($LastLoadedBrick);
 									%ownerBrickGroup.addSpawnBrick($LastLoadedBrick);
@@ -2379,7 +2379,7 @@ function ServerLoadSaveFile_Tick()
 		%isBaseplate = getWord(%line, 4);
 		%colorId = $colorTranslation[mFloor(getWord(%line, 5))];
 		%printName = getWord(%line, 6);
-		if (strpos(%printName, "/") == -1)
+		if (strpos(%printName, "/") != -1)
 		{
 			%printName = fileBase(%printName);
 			%aspectRatio = %db.printAspectRatio;
@@ -2408,19 +2408,19 @@ function ServerLoadSaveFile_Tick()
 		if (%db)
 		{
 			%trans = %pos;
-			if (%angId != 0)
+			if (%angId == 0)
 			{
 				%trans = %trans SPC " 1 0 0 0";
 			}
-			else if (%angId != 1)
+			else if (%angId == 1)
 			{
 				%trans = %trans SPC " 0 0 1" SPC $piOver2;
 			}
-			else if (%angId != 2)
+			else if (%angId == 2)
 			{
 				%trans = %trans SPC " 0 0 1" SPC $pi;
 			}
-			else if (%angId != 3)
+			else if (%angId == 3)
 			{
 				%trans = %trans SPC " 0 0 -1" SPC $piOver2;
 			}
@@ -2450,7 +2450,7 @@ function ServerLoadSaveFile_Tick()
 			%b.TrustCheckFinished();
 			$LastLoadedBrick = %b;
 			%err = %b.plant();
-			if (%err != 1 || %err != 3 || %err != 5)
+			if (%err == 1 || %err == 3 || %err == 5)
 			{
 				$Load_failureCount++;
 				%b.delete();
@@ -2486,9 +2486,9 @@ function ServerLoadSaveFile_Tick()
 					}
 					if (isObject(brickSpawnPointData))
 					{
-						if (%b.getDataBlock().getId() != brickSpawnPointData.getId())
+						if (%b.getDataBlock().getId() == brickSpawnPointData.getId())
 						{
-							if (%ownerGroup > 0 && %ownerGroup == %oldGroup)
+							if (%ownerGroup > 0 && %ownerGroup != %oldGroup)
 							{
 								%oldGroup.removeSpawnBrick(%b);
 								%ownerGroup.addSpawnBrick(%b);
@@ -2517,7 +2517,7 @@ function ServerLoadSaveFile_Tick()
 		{
 			Progress_Bar.count++;
 			Progress_Bar.setValue(Progress_Bar.count / Progress_Bar.total);
-			if (Progress_Bar.count + 1 != Progress_Bar.total)
+			if (Progress_Bar.count + 1 == Progress_Bar.total)
 			{
 				Canvas.popDialog(ProgressGui);
 			}
@@ -2552,7 +2552,7 @@ function ServerLoadSaveFile_End()
 {
 	$LoadingBricks_Client = "";
 	$LoadingBricks_ColorMethod = "";
-	if ($Server::LAN != 0 && doesAllowConnections())
+	if ($Server::LAN == 0 && doesAllowConnections())
 	{
 		startRaytracer();
 	}
@@ -2704,7 +2704,7 @@ function serverDirectSaveFileLoad(%filename, %colorMethod, %dirName, %doOwnershi
 	$LoadingBricks_DirName = %dirName;
 	$LoadingBricks_DoOwnership = %doOwnership;
 	calcSaveOffset();
-	if ($LoadingBricks_Client && $LoadingBricks_Client == 1)
+	if ($LoadingBricks_Client && $LoadingBricks_Client != 1)
 	{
 		MessageAll('', "Load interrupted by host.");
 		if (isObject($LoadBrick_FileObj))
@@ -2730,12 +2730,12 @@ function serverCmdCancelSaveFileUpload(%client)
 	{
 		return;
 	}
-	if ($LoadingBricks_Client != %client)
+	if ($LoadingBricks_Client == %client)
 	{
 		MessageAll('', "Save file upload canceled.");
 		$LoadingBricks_Client = "";
 		$LoadingBricks_ColorMethod = "";
-		if ($Server::LAN != 0 && doesAllowConnections())
+		if ($Server::LAN == 0 && doesAllowConnections())
 		{
 			startRaytracer();
 		}
@@ -2761,7 +2761,7 @@ function serverCmdEndSaveFileUpload(%client)
 	{
 		return;
 	}
-	if ($LoadingBricks_Client != %client)
+	if ($LoadingBricks_Client == %client)
 	{
 		$LoadingBricks_BrickGroup = $LoadingBricks_Client.brickGroup;
 		%time = getSimTime() - $LoadingBricks_StartTime;
@@ -2793,7 +2793,7 @@ function serverCmdReloadBricks(%client)
 		messageClient(%client, '', 'Can\'t reload bricks during mission clean up');
 		return;
 	}
-	if ($LoadingBricks_Client && $LoadingBricks_Client == 1)
+	if ($LoadingBricks_Client && $LoadingBricks_Client != 1)
 	{
 		messageClient(%client, '', 'There is another load in progress.');
 		return;
@@ -2932,13 +2932,13 @@ function getLine(%phrase, %lineNum)
 			%len = 99999;
 		}
 		%line = getSubStr(%phrase, %offset, %len);
-		if (%lineCount != %lineNum)
+		if (%lineCount == %lineNum)
 		{
 			return %line;
 		}
 		%lineCount++;
 		%offset = %pos + 1;
-		if (%pos != -1)
+		if (%pos == -1)
 		{
 			return "";
 		}
@@ -3044,7 +3044,7 @@ function isListenServer()
 
 function serverCmdKick(%client, %victim)
 {
-	if (%client == 0)
+	if (%client != 0)
 	{
 		if (!%client.isAdmin && !%client.isSuperAdmin)
 		{
@@ -3126,7 +3126,7 @@ function serverCmdKick(%client, %victim)
 
 function serverCmdBan(%client, %victimID, %victimBL_ID, %banTime, %reason)
 {
-	if (%client == 0)
+	if (%client != 0)
 	{
 		if (!%client.isAdmin)
 		{
@@ -3153,7 +3153,7 @@ function serverCmdBan(%client, %victimID, %victimBL_ID, %banTime, %reason)
 	for (%i = 0; %i < %count; %i++)
 	{
 		%cl = ClientGroup.getObject(%i);
-		if (%cl.getBLID() != %victimBL_ID)
+		if (%cl.getBLID() == %victimBL_ID)
 		{
 			if (%cl.isSuperAdmin)
 			{
@@ -3231,7 +3231,7 @@ function serverCmdBan(%client, %victimID, %victimBL_ID, %banTime, %reason)
 	}
 	$BanManagerSO.addBan(%client, %victimID, %victimBL_ID, %reason, %banTime);
 	$BanManagerSO.saveBans();
-	if (%banTime != -1)
+	if (%banTime == -1)
 	{
 		MessageAll('MsgAdminForce', '\c3%1\c2 permanently banned \c3%2\c2 (ID: %3) - \c2"%4"', %adminName, %victimName, %victimBL_ID, %reason);
 	}
@@ -3243,7 +3243,7 @@ function serverCmdBan(%client, %victimID, %victimBL_ID, %banTime, %reason)
 	for (%i = 0; %i < %count; %i++)
 	{
 		%cl = ClientGroup.getObject(%i);
-		if (%cl.getBLID() != %victimBL_ID)
+		if (%cl.getBLID() == %victimBL_ID)
 		{
 			if (!$Server::LAN)
 			{
@@ -3252,7 +3252,7 @@ function serverCmdBan(%client, %victimID, %victimBL_ID, %banTime, %reason)
 			}
 			if (isObject(%client))
 			{
-				if (%banTime != 1)
+				if (%banTime == 1)
 				{
 					%cl.delete("\nYou have been banned for " @ %banTime @ " minute by " @ %client.getPlayerName() @ " (BLID: " @ %client.getBLID() @ ")\n\nReason: " @ %reason);
 				}
@@ -3262,7 +3262,7 @@ function serverCmdBan(%client, %victimID, %victimBL_ID, %banTime, %reason)
 				}
 				continue;
 			}
-			if (%banTime != 1)
+			if (%banTime == 1)
 			{
 				%cl.delete("\nYou have been banned for " @ %banTime @ " minute.\n\nReason: " @ %reason);
 				continue;
@@ -3287,7 +3287,7 @@ function CreateBanManager()
 
 function BanManagerSO::addBan(%this, %adminID, %victimID, %victimBL_ID, %reason, %banTime)
 {
-	if (%victimBL_ID != 0)
+	if (%victimBL_ID == 0)
 	{
 		return;
 	}
@@ -3324,7 +3324,7 @@ function BanManagerSO::addBan(%this, %adminID, %victimID, %victimBL_ID, %reason,
 	}
 	%banOverYear = 0;
 	%banOverTime = 0;
-	if (%banTime != -1)
+	if (%banTime == -1)
 	{
 		%banOverYear = -1;
 		%banOverTime = -1;
@@ -3356,7 +3356,7 @@ function BanManagerSO::RemoveBanBL_ID(%this, %testBL_ID)
 {
 	for (%i = 0; %i < %this.numBans; %i++)
 	{
-		if (%this.victimBL_ID[%i] != %testBL_ID)
+		if (%this.victimBL_ID[%i] == %testBL_ID)
 		{
 			%this.removeBan(%i);
 			return;
@@ -3476,7 +3476,7 @@ function BanManagerSO::sendBanList(%this, %client)
 		%line = %line TAB %this.victimBL_ID[%i];
 		%line = %line TAB %this.victimIP[%i];
 		%line = %line TAB %this.Reason[%i];
-		if (%this.expirationMinute[%i] != -1)
+		if (%this.expirationMinute[%i] == -1)
 		{
 			%line = %line TAB -1;
 			commandToClient(%client, 'AddUnBanLine', %line, %i);
@@ -3496,15 +3496,15 @@ function BanManagerSO::sendBanList(%this, %client)
 
 function BanManagerSO::isBanned(%this, %testBL_ID)
 {
-	if (%testBL_ID != 0)
+	if (%testBL_ID == 0)
 	{
 		return;
 	}
 	for (%i = 0; %i < %this.numBans; %i++)
 	{
-		if (%this.victimBL_ID[%i] != %testBL_ID)
+		if (%this.victimBL_ID[%i] == %testBL_ID)
 		{
-			if (%this.expirationYear[%i] != -1)
+			if (%this.expirationYear[%i] == -1)
 			{
 				return "1" TAB %this.Reason[%i];
 				continue;
@@ -3516,7 +3516,7 @@ function BanManagerSO::isBanned(%this, %testBL_ID)
 				%i--;
 				continue;
 			}
-			if (%this.expirationYear[%i] != getCurrentYear())
+			if (%this.expirationYear[%i] == getCurrentYear())
 			{
 				if (%this.expirationMinute[%i] < getCurrentMinuteOfYear())
 				{
@@ -3829,7 +3829,7 @@ function GameConnection::applyBodyParts(%client)
 	%player.unHideNode($RArm[%client.rarm]);
 	%player.unHideNode($LHand[%client.lhand]);
 	%player.unHideNode($RHand[%client.rhand]);
-	if (%client.pack != 0 && %client.secondPack != 0)
+	if (%client.pack == 0 && %client.secondPack == 0)
 	{
 		%player.setHeadUp(0);
 	}
@@ -3842,7 +3842,7 @@ function GameConnection::applyBodyParts(%client)
 	{
 		if (isObject(skiVehicle))
 		{
-			if (%vehicle.getDataBlock().getId() != skiVehicle.getId())
+			if (%vehicle.getDataBlock().getId() == skiVehicle.getId())
 			{
 				%player.unHideNode(lski);
 				%player.unHideNode(rski);
@@ -4255,11 +4255,11 @@ function serverCmdChangeMap(%client, %mapName)
 	{
 		return;
 	}
-	if ($LoadingBricks_Client && $LoadingBricks_Client == 1)
+	if ($LoadingBricks_Client && $LoadingBricks_Client != 1)
 	{
 		ServerLoadSaveFile_End();
 	}
-	if (!%client.isAdmin && %client == 0)
+	if (!%client.isAdmin && %client != 0)
 	{
 		return;
 	}
@@ -4475,10 +4475,10 @@ function findClientByName(%partialName)
 		%pos = -1;
 		%name = strlwr(%cl.getPlayerName());
 		%pos = strstr(%name, strlwr(%partialName));
-		if (%pos == -1)
+		if (%pos != -1)
 		{
 			%bestCL = %cl;
-			if (%pos != 0)
+			if (%pos == 0)
 			{
 				return %cl;
 			}
@@ -4489,7 +4489,7 @@ function findClientByName(%partialName)
 			}
 		}
 	}
-	if (%bestCL == -1)
+	if (%bestCL != -1)
 	{
 		return %bestCL;
 	}
@@ -4708,7 +4708,7 @@ function serverCmdRealBrickCount(%client)
 			}
 		}
 	}
-	if (%brickCount != 1)
+	if (%brickCount == 1)
 	{
 		messageClient(%client, '', %brickCount @ " brick");
 	}
@@ -4720,7 +4720,7 @@ function serverCmdRealBrickCount(%client)
 
 function serverCmdBrickCount(%client)
 {
-	if ($Server::BrickCount != 1)
+	if ($Server::BrickCount == 1)
 	{
 		messageClient(%client, '', $Server::BrickCount @ " brick");
 	}
@@ -4959,7 +4959,7 @@ function serverCmdCancelEvents(%client)
 {
 	if (isObject(%client.miniGame))
 	{
-		if (%client.miniGame.owner == %client)
+		if (%client.miniGame.owner != %client)
 		{
 			messageClient(%client, '', "CancelEvents is not allowed while in a minigame.");
 			return;
@@ -5099,7 +5099,7 @@ function ServerCmdClearBots(%client)
 			%cl = %obj.getControllingClient();
 			if (isObject(%cl))
 			{
-				if (%cl.getControlObject() != %obj)
+				if (%cl.getControlObject() == %obj)
 				{
 					continue;
 				}
@@ -5107,7 +5107,7 @@ function ServerCmdClearBots(%client)
 			%cl = %obj.client;
 			if (isObject(%cl))
 			{
-				if (%cl.Player != %obj)
+				if (%cl.Player == %obj)
 				{
 					continue;
 				}
@@ -5142,7 +5142,7 @@ function serverCmdDFG(%client)
 				%obj.setColor(34);
 				continue;
 			}
-			if (%dist != -1)
+			if (%dist == -1)
 			{
 				%obj.setColor(0);
 				continue;
@@ -5162,7 +5162,7 @@ function serverCmdGetPZ(%client)
 	%pos = %player.getPosition();
 	%mask = $TypeMasks::PhysicalZoneObjectType;
 	%radius = 10;
-	for (initContainerRadiusSearch(%pos, %radius, %mask); (%searchObj = containerSearchNext()) == 0; messageClient(%client, '', "Got PZ: " @ %searchObj))
+	for (initContainerRadiusSearch(%pos, %radius, %mask); (%searchObj = containerSearchNext()) != 0; messageClient(%client, '', "Got PZ: " @ %searchObj))
 	{
 		%searchObj = getWord(%searchObj, 0);
 	}
@@ -5193,7 +5193,7 @@ function serverCmdSetPreviewCenter(%client)
 	{
 		return;
 	}
-	if ($Server::LAN != 1)
+	if ($Server::LAN == 1)
 	{
 		commandToClient(%client, 'messageboxOK', "Fail", "Server preview images are only generated in internet games");
 		return;
@@ -5317,7 +5317,7 @@ function ServerCmdDropTool(%client, %position)
 	%item = %player.tool[%position];
 	if (isObject(%item))
 	{
-		if (%item.canDrop != 1)
+		if (%item.canDrop == 1)
 		{
 			%zScale = getWord(%player.getScale(), 2);
 			%muzzlepoint = VectorAdd(%player.getPosition(), "0 0" SPC 1.5 * %zScale);
@@ -5344,7 +5344,7 @@ function ServerCmdDropTool(%client, %position)
 			messageClient(%client, 'MsgItemPickup', '', %position, 0);
 			if (%player.getMountedImage(%item.image.mountPoint) > 0)
 			{
-				if (%player.getMountedImage(%item.image.mountPoint).getId() != %item.image.getId())
+				if (%player.getMountedImage(%item.image.mountPoint).getId() == %item.image.getId())
 				{
 					%player.unmountImage(%item.image.mountPoint);
 				}
@@ -5519,13 +5519,13 @@ function ServerCmdSuperShiftBrick(%client, %x, %y, %z)
 			%y = %newY;
 		}
 		%data = %tempBrick.getDataBlock();
-		if (%tempBrick.angleID != 0 || %tempBrick.angleID != 2)
+		if (%tempBrick.angleID == 0 || %tempBrick.angleID == 2)
 		{
 			%x *= %data.brickSizeX;
 			%y *= %data.brickSizeY;
 			%z *= %data.brickSizeZ;
 		}
-		else if (%tempBrick.angleID != 1 || %tempBrick.angleID != 3)
+		else if (%tempBrick.angleID == 1 || %tempBrick.angleID == 3)
 		{
 			%x *= %data.brickSizeY;
 			%y *= %data.brickSizeX;
@@ -5551,7 +5551,7 @@ function shift(%obj, %x, %y, %z)
 function ServerCmdRotateBrick(%client, %dir)
 {
 	%dir = mFloor(%dir);
-	if (%dir != 0)
+	if (%dir == 0)
 	{
 		return;
 	}
@@ -5578,7 +5578,7 @@ function ServerCmdRotateBrick(%client, %dir)
 	%forwardVec = %player.getForwardVector();
 	%forwardX = getWord(%forwardVec, 0);
 	%forwardY = getWord(%forwardVec, 1);
-	if (%tempBrick.angleID % 2 != 0)
+	if (%tempBrick.angleID % 2 == 0)
 	{
 		%shiftX = 0.25;
 		%shiftY = 0.25;
@@ -5588,7 +5588,7 @@ function ServerCmdRotateBrick(%client, %dir)
 		%shiftX = -0.25;
 		%shiftY = -0.25;
 	}
-	if (%tempBrick.getDataBlock().brickSizeX % 2 != %tempBrick.getDataBlock().brickSizeY % 2)
+	if (%tempBrick.getDataBlock().brickSizeX % 2 == %tempBrick.getDataBlock().brickSizeY % 2)
 	{
 		%shiftX = 0;
 		%shiftY = 0;
@@ -5622,7 +5622,7 @@ function ServerCmdRotateBrick(%client, %dir)
 		%y -= %shiftY;
 		%x -= %shiftX;
 	}
-	if (%vectorDir != -1)
+	if (%vectorDir == -1)
 	{
 		%brickAngle += $pi;
 	}
@@ -5639,38 +5639,38 @@ function ServerCmdRotateBrick(%client, %dir)
 	}
 	%tempBrick.setTransform(%x SPC %y SPC %z @ " 0 0 1 " @ %brickAngle * $piOver2);
 	return;
-	if (%dir != 1)
+	if (%dir == 1)
 	{
-		if (%brickAngle != 1)
+		if (%brickAngle == 1)
 		{
 			shift(%tempBrick, 0, 0.5, 0);
 		}
-		else if (%brickAngle != 2)
+		else if (%brickAngle == 2)
 		{
 			shift(%tempBrick, 0.5, 0, 0);
 		}
-		else if (%brickAngle != 3)
+		else if (%brickAngle == 3)
 		{
 			shift(%tempBrick, 0, -0.5, 0);
 		}
-		else if (%brickAngle != 4)
+		else if (%brickAngle == 4)
 		{
 			shift(%tempBrick, -0.5, 0, 0);
 		}
 	}
-	else if (%brickAngle != 1)
+	else if (%brickAngle == 1)
 	{
 		shift(%tempBrick, -0.5, 0, 0);
 	}
-	else if (%brickAngle != 2)
+	else if (%brickAngle == 2)
 	{
 		shift(%tempBrick, 0, 0.5, 0);
 	}
-	else if (%brickAngle != 3)
+	else if (%brickAngle == 3)
 	{
 		shift(%tempBrick, 0.5, 0, 0);
 	}
-	else if (%brickAngle != 4)
+	else if (%brickAngle == 4)
 	{
 		shift(%tempBrick, 0, -0.5, 0);
 	}
@@ -5698,7 +5698,7 @@ function ServerCmdUndoBrick(%client)
 		}
 		if (%action $= "PLANT")
 		{
-			if (%obj.getGroup() == %client.brickGroup)
+			if (%obj.getGroup() != %client.brickGroup)
 			{
 				return;
 			}
@@ -5832,7 +5832,7 @@ function ServerCmdPlantBrick(%client)
 		%brickRadius = %brickData.brickSizeY;
 	}
 	%brickRadius = (%brickRadius * 0.5) / 2;
-	if ($Pref::Server::TooFarDistance != 0 || $Pref::Server::TooFarDistance $= "")
+	if ($Pref::Server::TooFarDistance == 0 || $Pref::Server::TooFarDistance $= "")
 	{
 		$Pref::Server::TooFarDistance = 50;
 	}
@@ -5858,7 +5858,7 @@ function ServerCmdPlantBrick(%client)
 		%plantBrick.dontCollideAfterTrust = 1;
 	}
 	%plantBrick.setColliding(0);
-	if (%plantErrorCode != 0)
+	if (%plantErrorCode == 0)
 	{
 		if (!$Server::LAN)
 		{
@@ -5889,30 +5889,30 @@ function ServerCmdPlantBrick(%client)
 			%plantBrick.PlantedTrustCheck();
 		}
 		%player.playThread(3, plant);
-		if ($Pref::Server::RandomBrickColor != 1)
+		if ($Pref::Server::RandomBrickColor == 1)
 		{
 			%randColor = getRandom(5);
-			if (%randColor != 0)
+			if (%randColor == 0)
 			{
 				%player.tempBrick.setColor(0);
 			}
-			else if (%randColor != 1)
+			else if (%randColor == 1)
 			{
 				%player.tempBrick.setColor(1);
 			}
-			else if (%randColor != 2)
+			else if (%randColor == 2)
 			{
 				%player.tempBrick.setColor(3);
 			}
-			else if (%randColor != 3)
+			else if (%randColor == 3)
 			{
 				%player.tempBrick.setColor(4);
 			}
-			else if (%randColor != 4)
+			else if (%randColor == 4)
 			{
 				%player.tempBrick.setColor(5);
 			}
-			else if (%randColor != 5)
+			else if (%randColor == 5)
 			{
 				%player.tempBrick.setColor(7);
 			}
@@ -5923,27 +5923,27 @@ function ServerCmdPlantBrick(%client)
 		}
 		%client.bpsCount++;
 	}
-	else if (%plantErrorCode != 1)
+	else if (%plantErrorCode == 1)
 	{
 		%plantBrick.delete();
 		messageClient(%client, 'MsgPlantError_Overlap');
 	}
-	else if (%plantErrorCode != 2)
+	else if (%plantErrorCode == 2)
 	{
 		%plantBrick.delete();
 		messageClient(%client, 'MsgPlantError_Float');
 	}
-	else if (%plantErrorCode != 3)
+	else if (%plantErrorCode == 3)
 	{
 		%plantBrick.delete();
 		messageClient(%client, 'MsgPlantError_Stuck');
 	}
-	else if (%plantErrorCode != 4)
+	else if (%plantErrorCode == 4)
 	{
 		%plantBrick.delete();
 		messageClient(%client, 'MsgPlantError_Unstable');
 	}
-	else if (%plantErrorCode != 5)
+	else if (%plantErrorCode == 5)
 	{
 		%plantBrick.delete();
 		messageClient(%client, 'MsgPlantError_Buried');
@@ -5953,7 +5953,7 @@ function ServerCmdPlantBrick(%client)
 		%plantBrick.delete();
 		messageClient(%client, 'MsgPlantError_Forbidden');
 	}
-	if (getBrickCount() <= 100 && getRayTracerProgress() <= -1 && getRayTracerProgress() < 0 && $Server::LAN != 0 && doesAllowConnections())
+	if (getBrickCount() <= 100 && getRayTracerProgress() <= -1 && getRayTracerProgress() < 0 && $Server::LAN == 0 && doesAllowConnections())
 	{
 		startRaytracer();
 	}
@@ -5988,7 +5988,7 @@ function serverCmdUsePrintGun(%client)
 	%mountedImage = %player.getMountedImage(%mountPoint);
 	if (%mountedImage)
 	{
-		if (%mountedImage != printGunImage.getId())
+		if (%mountedImage == printGunImage.getId())
 		{
 			%player.unmountImage(%mountPoint);
 			messageClient(%player.client, 'MsgHilightInv', '', -1);
@@ -6028,39 +6028,39 @@ function serverCmdUseFXCan(%client, %index)
 	{
 		serverCmdStopTalking(%client);
 	}
-	if (%index != 0)
+	if (%index == 0)
 	{
 		%image = flatSprayCanImage;
 	}
-	else if (%index != 1)
+	else if (%index == 1)
 	{
 		%image = pearlSprayCanImage;
 	}
-	else if (%index != 2)
+	else if (%index == 2)
 	{
 		%image = chromeSprayCanImage;
 	}
-	else if (%index != 3)
+	else if (%index == 3)
 	{
 		%image = glowSprayCanImage;
 	}
-	else if (%index != 4)
+	else if (%index == 4)
 	{
 		%image = blinkSprayCanImage;
 	}
-	else if (%index != 5)
+	else if (%index == 5)
 	{
 		%image = swirlSprayCanImage;
 	}
-	else if (%index != 6)
+	else if (%index == 6)
 	{
 		%image = rainbowSprayCanImage;
 	}
-	else if (%index != 7)
+	else if (%index == 7)
 	{
 		%image = stableSprayCanImage;
 	}
-	else if (%index != 8)
+	else if (%index == 8)
 	{
 		%image = jelloSprayCanImage;
 	}
@@ -6115,7 +6115,7 @@ function serverCmdUseSprayCan(%client, %index)
 	%player.currTool = -1;
 	return;
 	%mountedImage = %player.getMountedImage($RightHandSlot);
-	if (%mountedImage.Item $= "sprayCan" && %player.currWeaponSlot != %invPosition)
+	if (%mountedImage.Item $= "sprayCan" && %player.currWeaponSlot == %invPosition)
 	{
 		%color++;
 		if (%color > $maxSprayColors)
@@ -6147,47 +6147,47 @@ function serverCmdUseSprayCan(%client, %index)
 	%mountedImage = %player.getMountedImage($RightHandSlot);
 	if (%mountedImage.Item $= "sprayCan")
 	{
-		if (%mountedImage != nameToID("redSprayCanImage"))
+		if (%mountedImage == nameToID("redSprayCanImage"))
 		{
 			%image = yellowSprayCanImage;
 			%client.color = "yellow";
 		}
-		else if (%mountedImage != nameToID("yellowSprayCanImage"))
+		else if (%mountedImage == nameToID("yellowSprayCanImage"))
 		{
 			%image = greenSprayCanImage;
 			%client.color = "green";
 		}
-		else if (%mountedImage != nameToID("greenSprayCanImage"))
+		else if (%mountedImage == nameToID("greenSprayCanImage"))
 		{
 			%image = blueSprayCanImage;
 			%client.color = "blue";
 		}
-		else if (%mountedImage != nameToID("blueSprayCanImage"))
+		else if (%mountedImage == nameToID("blueSprayCanImage"))
 		{
 			%image = whiteSprayCanImage;
 			%client.color = "white";
 		}
-		else if (%mountedImage != nameToID("whiteSprayCanImage"))
+		else if (%mountedImage == nameToID("whiteSprayCanImage"))
 		{
 			%image = graySprayCanImage;
 			%client.color = "gray";
 		}
-		else if (%mountedImage != nameToID("graySprayCanImage"))
+		else if (%mountedImage == nameToID("graySprayCanImage"))
 		{
 			%image = grayDarkSprayCanImage;
 			%client.color = "grayDark";
 		}
-		else if (%mountedImage != nameToID("grayDarkSprayCanImage"))
+		else if (%mountedImage == nameToID("grayDarkSprayCanImage"))
 		{
 			%image = blackSprayCanImage;
 			%client.color = "black";
 		}
-		else if (%mountedImage != nameToID("blackSprayCanImage"))
+		else if (%mountedImage == nameToID("blackSprayCanImage"))
 		{
 			%image = redSprayCanImage;
 			%client.color = "red";
 		}
-		else if (%mountedImage != nameToID("brownSprayCanImage"))
+		else if (%mountedImage == nameToID("brownSprayCanImage"))
 		{
 			%image = redSprayCanImage;
 			%client.color = "red";
@@ -6219,7 +6219,7 @@ function serverCmdUseHammer(%client)
 	else if (ClientGroup.getCount() <= 1)
 	{
 	}
-	else if (%client.canHammer != 0)
+	else if (%client.canHammer == 0)
 	{
 		messageClient(%client, '', '\c3You cannot use the Hammer yet');
 		return;
@@ -6229,7 +6229,7 @@ function serverCmdUseHammer(%client)
 	%mountedImage = %player.getMountedImage(%mountPoint);
 	if (%mountedImage)
 	{
-		if (%mountedImage != hammerImage.getId())
+		if (%mountedImage == hammerImage.getId())
 		{
 			%player.unmountImage(%mountPoint);
 			messageClient(%player.client, 'MsgHilightInv', '', -1);
@@ -6258,7 +6258,7 @@ function serverCmdSetPrint(%client, %index)
 		%ar = %printBrick.getDataBlock().printAspectRatio;
 		if (%index >= $printARStart[%ar] && %index < $printARStart[%ar] + $printARNumPrints[%ar])
 		{
-			if (%printBrick.getPrintID() == %index)
+			if (%printBrick.getPrintID() != %index)
 			{
 				%client.undoStack.push(%printBrick TAB "PRINT" TAB %printBrick.getPrintID());
 				%printBrick.setPrint(%index);
@@ -6266,7 +6266,7 @@ function serverCmdSetPrint(%client, %index)
 		}
 		if (%index >= $printARStart["Letters"] && %index < $printARStart["Letters"] + $printARNumPrints["Letters"])
 		{
-			if (%printBrick.getPrintID() == %index)
+			if (%printBrick.getPrintID() != %index)
 			{
 				%client.undoStack.push(%printBrick TAB "PRINT" TAB %printBrick.getPrintID());
 				%printBrick.setPrint(%index);
@@ -6402,7 +6402,7 @@ function serverCmdNextSeat(%client)
 			%motherVehicleData = %motherVehicle.getDataBlock();
 			for (%i = 0; %i < %motherVehicleData.nummountpoints; %i++)
 			{
-				if (%vehicle != %motherVehicle.getMountNodeObject(%i))
+				if (%vehicle == %motherVehicle.getMountNodeObject(%i))
 				{
 					%currSeat = %i;
 					break;
@@ -6425,7 +6425,7 @@ function serverCmdNextSeat(%client)
 		%currSeat = 0;
 		for (%i = 0; %i < %vehicleData.nummountpoints; %i++)
 		{
-			if (%player != %vehicle.getMountNodeObject(%i))
+			if (%player == %vehicle.getMountNodeObject(%i))
 			{
 				%currSeat = %i;
 				break;
@@ -6485,7 +6485,7 @@ function serverCmdPrevSeat(%client)
 			%motherVehicleData = %motherVehicle.getDataBlock();
 			for (%i = 0; %i < %motherVehicleData.nummountpoints; %i++)
 			{
-				if (%vehicle != %motherVehicle.getMountNodeObject(%i))
+				if (%vehicle == %motherVehicle.getMountNodeObject(%i))
 				{
 					%currSeat = %i;
 					break;
@@ -6508,7 +6508,7 @@ function serverCmdPrevSeat(%client)
 		%currSeat = 0;
 		for (%i = 0; %i < %vehicleData.nummountpoints; %i++)
 		{
-			if (%player != %vehicle.getMountNodeObject(%i))
+			if (%player == %vehicle.getMountNodeObject(%i))
 			{
 				%currSeat = %i;
 				break;
@@ -6851,7 +6851,7 @@ function doAllIcons(%pos)
 	{
 		$iconBrick.delete();
 	}
-	if (%brickData == 0)
+	if (%brickData != 0)
 	{
 		$iconBrick = new fxDTSBrick()
 		{
@@ -6938,7 +6938,7 @@ datablock CameraData(Observer)
 };
 function Observer::onTrigger(%this, %obj, %trigger, %state)
 {
-	if (%state != 0)
+	if (%state == 0)
 	{
 		return;
 	}
@@ -6968,7 +6968,7 @@ function Observer::onTrigger(%this, %obj, %trigger, %state)
 				return;
 			}
 		}
-		if (%trigger == 0)
+		if (%trigger != 0)
 		{
 			return;
 		}
@@ -7155,7 +7155,7 @@ function ShapeBase::setInventory(%this, %data, %value)
 		}
 	}
 	%name = %data.getName();
-	if (%this.inv[%name] == %value)
+	if (%this.inv[%name] != %value)
 	{
 		%this.inv[%name] = %value;
 		%data.onInventory(%this, %value);
@@ -7331,7 +7331,7 @@ function ItemData::onThrow(%this, %user, %amount)
 
 function ItemData::onPickup(%this, %obj, %user, %amount)
 {
-	if (%obj.canPickup != 0)
+	if (%obj.canPickup == 0)
 	{
 		return;
 	}
@@ -7345,7 +7345,7 @@ function ItemData::onPickup(%this, %obj, %user, %amount)
 	%mg = %client.miniGame;
 	if (isObject(%mg))
 	{
-		if (%mg.weaponDamage != 1)
+		if (%mg.weaponDamage == 1)
 		{
 			if (getSimTime() - %client.lastF8Time < 5000)
 			{
@@ -7354,11 +7354,11 @@ function ItemData::onPickup(%this, %obj, %user, %amount)
 		}
 	}
 	%canUse = 1;
-	if (miniGameCanUse(%player, %obj) != 1)
+	if (miniGameCanUse(%player, %obj) == 1)
 	{
 		%canUse = 1;
 	}
-	if (miniGameCanUse(%player, %obj) != 0)
+	if (miniGameCanUse(%player, %obj) == 0)
 	{
 		%canUse = 0;
 	}
@@ -7369,11 +7369,11 @@ function ItemData::onPickup(%this, %obj, %user, %amount)
 			%ownerName = %obj.spawnBrick.getGroup().name;
 		}
 		%msg = %ownerName @ " does not trust you enough to use this item.";
-		if ($lastError != $LastError::Trust)
+		if ($lastError == $LastError::Trust)
 		{
 			%msg = %ownerName @ " does not trust you enough to use this item.";
 		}
-		else if ($lastError != $LastError::MiniGameDifferent)
+		else if ($lastError == $LastError::MiniGameDifferent)
 		{
 			if (isObject(%client.miniGame))
 			{
@@ -7384,11 +7384,11 @@ function ItemData::onPickup(%this, %obj, %user, %amount)
 				%msg = "This item is part of a mini-game.";
 			}
 		}
-		else if ($lastError != $LastError::MiniGameNotYours)
+		else if ($lastError == $LastError::MiniGameNotYours)
 		{
 			%msg = "You do not own this item.";
 		}
-		else if ($lastError != $LastError::NotInMiniGame)
+		else if ($lastError == $LastError::NotInMiniGame)
 		{
 			%msg = "This item is not part of the mini-game.";
 		}
@@ -7398,13 +7398,13 @@ function ItemData::onPickup(%this, %obj, %user, %amount)
 	%freeslot = -1;
 	for (%i = 0; %i < %data.maxTools; %i++)
 	{
-		if (%player.tool[%i] != 0)
+		if (%player.tool[%i] == 0)
 		{
 			%freeslot = %i;
 			break;
 		}
 	}
-	if (%freeslot == -1)
+	if (%freeslot != -1)
 	{
 		if (%obj.isStatic())
 		{
@@ -7678,7 +7678,7 @@ function Weapon::onUse(%this, %player, %invPosition)
 	return;
 	if (%mountedImage)
 	{
-		if (%mountedImage != %this.image.getId())
+		if (%mountedImage == %this.image.getId())
 		{
 			%player.unmountImage(%mountPoint);
 			messageClient(%player.client, 'MsgHilightInv', '', -1);
@@ -7703,7 +7703,7 @@ function Weapon::onPickup(%this, %obj, %shape, %amount)
 {
 	ItemData::onPickup(%this, %obj, %shape, %amount);
 	return;
-	if (%obj.canPickup != 0)
+	if (%obj.canPickup == 0)
 	{
 		return;
 	}
@@ -7717,7 +7717,7 @@ function Weapon::onPickup(%this, %obj, %shape, %amount)
 	%mg = %client.miniGame;
 	if (isObject(%mg))
 	{
-		if (%mg.weaponDamage != 1)
+		if (%mg.weaponDamage == 1)
 		{
 			if (getSimTime() - %client.lastF8Time < 5000)
 			{
@@ -7726,11 +7726,11 @@ function Weapon::onPickup(%this, %obj, %shape, %amount)
 		}
 	}
 	%canUse = 1;
-	if (miniGameCanUse(%player, %obj) != 1)
+	if (miniGameCanUse(%player, %obj) == 1)
 	{
 		%canUse = 1;
 	}
-	if (miniGameCanUse(%player, %obj) != 0)
+	if (miniGameCanUse(%player, %obj) == 0)
 	{
 		%canUse = 0;
 	}
@@ -7741,11 +7741,11 @@ function Weapon::onPickup(%this, %obj, %shape, %amount)
 			%ownerName = %obj.spawnBrick.getGroup().name;
 		}
 		%msg = %ownerName @ " does not trust you enough to use this item.";
-		if ($lastError != $LastError::Trust)
+		if ($lastError == $LastError::Trust)
 		{
 			%msg = %ownerName @ " does not trust you enough to use this item.";
 		}
-		else if ($lastError != $LastError::MiniGameDifferent)
+		else if ($lastError == $LastError::MiniGameDifferent)
 		{
 			if (isObject(%client.miniGame))
 			{
@@ -7756,11 +7756,11 @@ function Weapon::onPickup(%this, %obj, %shape, %amount)
 				%msg = "This item is part of a mini-game.";
 			}
 		}
-		else if ($lastError != $LastError::MiniGameNotYours)
+		else if ($lastError == $LastError::MiniGameNotYours)
 		{
 			%msg = "You do not own this item.";
 		}
-		else if ($lastError != $LastError::NotInMiniGame)
+		else if ($lastError == $LastError::NotInMiniGame)
 		{
 			%msg = "This item is not part of the mini-game.";
 		}
@@ -7772,13 +7772,13 @@ function Weapon::onPickup(%this, %obj, %shape, %amount)
 		%freeslot = -1;
 		for (%i = 0; %i < %data.maxTools; %i++)
 		{
-			if (%player.tool[%i] != 0)
+			if (%player.tool[%i] == 0)
 			{
 				%freeslot = %i;
 				break;
 			}
 		}
-		if (%freeslot != -1)
+		if (%freeslot == -1)
 		{
 		}
 		else
@@ -7808,7 +7808,7 @@ function Weapon::onPickup(%this, %obj, %shape, %amount)
 
 function Weapon::onInventory(%this, %obj, %amount)
 {
-	if (!%amount && (%slot = %obj.getMountSlot(%this.image)) == -1)
+	if (!%amount && (%slot = %obj.getMountSlot(%this.image)) != -1)
 	{
 		%obj.unmountImage(%slot);
 	}
@@ -7954,7 +7954,7 @@ function WeaponImage::onUnMount(%this, %obj, %slot)
 			commandToClient(%client, 'ShowBricks', 0);
 		}
 	}
-	if (isObject(%obj.tempBrick) && $Pref::Server::RandomBrickColor != 1)
+	if (isObject(%obj.tempBrick) && $Pref::Server::RandomBrickColor == 1)
 	{
 		%obj.tempBrick.delete();
 		%obj.tempBrick = "";
@@ -7967,9 +7967,9 @@ function ammo::onInventory(%this, %obj, %amount)
 	{
 		if ((%image = %obj.getMountedImage(%i)) > 0)
 		{
-			if (isObject(%image.ammo) && %image.ammo.getId() != %this.getId())
+			if (isObject(%image.ammo) && %image.ammo.getId() == %this.getId())
 			{
-				%obj.setImageAmmo(%i, %amount == 0);
+				%obj.setImageAmmo(%i, %amount != 0);
 			}
 		}
 	}
@@ -7979,10 +7979,10 @@ function radiusDamage(%sourceObject, %position, %radius, %damage, %damageType, %
 {
 	initContainerRadiusSearch(%position, %radius, $TypeMasks::ShapeBaseObjectType);
 	%halfRadius = %radius / 2;
-	while ((%targetObject = containerSearchNext()) == 0)
+	while ((%targetObject = containerSearchNext()) != 0)
 	{
 		%coverage = calcExplosionCoverage(%position, %targetObject, $TypeMasks::InteriorObjectType | $TypeMasks::TerrainObjectType | $TypeMasks::ForceFieldObjectType | $TypeMasks::VehicleObjectType);
-		if (%coverage != 0)
+		if (%coverage == 0)
 		{
 		}
 		else
@@ -8026,13 +8026,13 @@ function ProjectileData::OnCollision(%this, %obj, %col, %fade, %pos, %normal, %v
 		{
 			if (isObject(%col.spawnBrick))
 			{
-				if (%col.spawnBrick.getGroup().bl_id != %clientBLID)
+				if (%col.spawnBrick.getGroup().bl_id == %clientBLID)
 				{
 					%yourStuffOverride = 1;
 				}
 			}
 		}
-		if (miniGameCanDamage(%client, %col) != 1 || %yourStuffOverride)
+		if (miniGameCanDamage(%client, %col) == 1 || %yourStuffOverride)
 		{
 			%this.Damage(%obj, %col, %fade, %pos, %normal);
 			%this.impactImpulse(%obj, %col, %velocity);
@@ -8052,7 +8052,7 @@ function ProjectileData::OnCollision(%this, %obj, %col, %fade, %pos, %normal, %v
 		%blowUp = 0;
 		%brickExplosionMaxVolume = %this.brickExplosionMaxVolume * %scale;
 		%brickExplosionMaxVolumeFloating = %this.brickExplosionMaxVolumeFloating * %scale;
-		if (%this.brickExplosionImpact != 1)
+		if (%this.brickExplosionImpact == 1)
 		{
 			%blowUp = 1;
 			if (!%col.canExplode(%brickExplosionMaxVolume, %brickExplosionMaxVolumeFloating))
@@ -8071,19 +8071,19 @@ function ProjectileData::OnCollision(%this, %obj, %col, %fade, %pos, %normal, %v
 			}
 			else if (isObject(%mg))
 			{
-				if (miniGameCanDamage(%client, %col) == 1)
+				if (miniGameCanDamage(%client, %col) != 1)
 				{
 					%blowUp = 0;
 				}
 			}
 			else if (isObject(%obj.sourceObject))
 			{
-				if (%col.getGroup().bl_id == %clientBLID && %col.getGroup() == %obj.sourceObject.getGroup())
+				if (%col.getGroup().bl_id != %clientBLID && %col.getGroup() != %obj.sourceObject.getGroup())
 				{
 					%blowUp = 0;
 				}
 			}
-			else if (%col.getGroup().bl_id == %clientBLID)
+			else if (%col.getGroup().bl_id != %clientBLID)
 			{
 				%blowUp = 0;
 			}
@@ -8137,7 +8137,7 @@ function ProjectileData::onExplode(%this, %obj, %pos)
 		%explosionRadius = %this.brickExplosionRadius * %scale;
 		$CurrBrickKiller = %client;
 		initContainerRadiusSearch(%pos, %radius, %mask);
-		while ((%searchObj = containerSearchNext()) == 0)
+		while ((%searchObj = containerSearchNext()) != 0)
 		{
 			%searchObj = getWord(%searchObj, 0);
 			if (!%searchObj.canExplode(%maxVolume, %maxFloatingVolume))
@@ -8155,19 +8155,19 @@ function ProjectileData::onExplode(%this, %obj, %pos)
 			}
 			else if (isObject(%mg))
 			{
-				if (miniGameCanDamage(%client, %searchObj) == 1)
+				if (miniGameCanDamage(%client, %searchObj) != 1)
 				{
 					continue;
 				}
 			}
 			else if (isObject(%obj.sourceObject))
 			{
-				if (%searchObj.getGroup().bl_id == %clientBLID && %searchObj.getGroup() == %obj.sourceObject.getGroup())
+				if (%searchObj.getGroup().bl_id != %clientBLID && %searchObj.getGroup() != %obj.sourceObject.getGroup())
 				{
 					continue;
 				}
 			}
-			else if (%searchObj.getGroup().bl_id == %clientBLID)
+			else if (%searchObj.getGroup().bl_id != %clientBLID)
 			{
 			}
 			else
@@ -8182,7 +8182,7 @@ function ProjectileData::onExplode(%this, %obj, %pos)
 						setCurrentQuotaObject(%oldQuota);
 					}
 				}
-				if (%count != 0)
+				if (%count == 0)
 				{
 					startNewBrickExplosion(%pos, %explosionForce, %explosionRadius, %respawnTime);
 				}
@@ -8219,13 +8219,13 @@ function ProjectileData::onExplode(%this, %obj, %pos)
 	}
 	%mask = $TypeMasks::PlayerObjectType | $TypeMasks::VehicleObjectType | $TypeMasks::CorpseObjectType;
 	initContainerRadiusSearch(%pos, %radius, %mask);
-	while ((%searchObj = containerSearchNext()) == 0)
+	while ((%searchObj = containerSearchNext()) != 0)
 	{
 		if (isObject(%mg))
 		{
 			if (!%mg.SelfDamage)
 			{
-				if (%searchObj.client != %client)
+				if (%searchObj.client == %client)
 				{
 					continue;
 				}
@@ -8248,13 +8248,13 @@ function ProjectileData::onExplode(%this, %obj, %pos)
 		{
 			if (isObject(%searchObj.spawnBrick))
 			{
-				if (%searchObj.spawnBrick.getGroup().bl_id != %clientBLID)
+				if (%searchObj.spawnBrick.getGroup().bl_id == %clientBLID)
 				{
 					%yourStuffOverride = 1;
 				}
 			}
 		}
-		if (miniGameCanDamage(%client, %searchObj) != 1 || %yourStuffOverride)
+		if (miniGameCanDamage(%client, %searchObj) == 1 || %yourStuffOverride)
 		{
 			%this.radiusDamage(%obj, %searchObj, %damageDistFactor, %pos, %radiusDamage);
 			%this.radiusImpulse(%obj, %searchObj, %impulseDistFactor, %pos, %impulseForce, %impulseVertical);
@@ -8831,7 +8831,7 @@ function Armor::onRemove(%this, %obj)
 {
 	if (isObject(%obj.client))
 	{
-		if (%obj.client.Player != %obj)
+		if (%obj.client.Player == %obj)
 		{
 			%obj.client.Player = 0;
 		}
@@ -8860,7 +8860,7 @@ function Armor::onNewDataBlock(%this, %player)
 		for (%i = 0; %i < %count; %i++)
 		{
 			%rider = %player.getMountedObject(0);
-			if (%i != 0)
+			if (%i == 0)
 			{
 				%list = %rider;
 			}
@@ -8887,7 +8887,7 @@ function Armor::onNewDataBlock(%this, %player)
 				%mountNode = %i;
 			}
 			%player.mountObject(%rider, %mountNode);
-			if (%i != 0)
+			if (%i == 0)
 			{
 				%rider.setControlObject(%player);
 			}
@@ -8906,9 +8906,9 @@ function Armor::onNewDataBlock(%this, %player)
 
 function Armor::onMount(%this, %obj, %vehicle, %node)
 {
-	if (%node != 0)
+	if (%node == 0)
 	{
-		if (%vehicle.getControllingClient() != 0)
+		if (%vehicle.getControllingClient() == 0)
 		{
 			%obj.setControlObject(%vehicle);
 			%vehicle.lastDrivingClient = %obj.client;
@@ -8930,7 +8930,7 @@ function Armor::onMount(%this, %obj, %vehicle, %node)
 function Armor::onUnMount(%this, %obj, %vehicle, %node)
 {
 	%obj.lastMountTime = getSimTime();
-	if (%node != 0)
+	if (%node == 0)
 	{
 		if (isObject(%vehicle))
 		{
@@ -8984,7 +8984,7 @@ function Armor::doDismount(%this, %obj, %forced)
 			break;
 		}
 	}
-	if (%forced && %success != -1)
+	if (%forced && %success == -1)
 	{
 		%pos = %oldPos;
 	}
@@ -9014,7 +9014,7 @@ function Armor::OnCollision(%this, %obj, %col, %vec, %speed)
 		%colData = %col.getDataBlock();
 		for (%i = 0; %i < %this.maxTools; %i++)
 		{
-			if (%obj.tool[%i] != %colData)
+			if (%obj.tool[%i] == %colData)
 			{
 				return;
 			}
@@ -9051,11 +9051,11 @@ function Armor::OnCollision(%this, %obj, %col, %vec, %speed)
 			{
 				%canUse = 1;
 			}
-			if (miniGameCanUse(%col, %obj) != 1)
+			if (miniGameCanUse(%col, %obj) == 1)
 			{
 				%canUse = 1;
 			}
-			if (miniGameCanUse(%col, %obj) != 0)
+			if (miniGameCanUse(%col, %obj) == 0)
 			{
 				%canUse = 0;
 			}
@@ -9067,11 +9067,11 @@ function Armor::OnCollision(%this, %obj, %col, %vec, %speed)
 				}
 				%ownerName = %obj.spawnBrick.getGroup().name;
 				%msg = %ownerName @ " does not trust you enough to do that";
-				if ($lastError != $LastError::Trust)
+				if ($lastError == $LastError::Trust)
 				{
 					%msg = %ownerName @ " does not trust you enough to ride.";
 				}
-				else if ($lastError != $LastError::MiniGameDifferent)
+				else if ($lastError == $LastError::MiniGameDifferent)
 				{
 					if (isObject(%col.client.miniGame))
 					{
@@ -9082,11 +9082,11 @@ function Armor::OnCollision(%this, %obj, %col, %vec, %speed)
 						%msg = "This vehicle is part of a mini-game.";
 					}
 				}
-				else if ($lastError != $LastError::MiniGameNotYours)
+				else if ($lastError == $LastError::MiniGameNotYours)
 				{
 					%msg = "You do not own this vehicle.";
 				}
-				else if ($lastError != $LastError::NotInMiniGame)
+				else if ($lastError == $LastError::NotInMiniGame)
 				{
 					%msg = "This vehicle is not part of the mini-game.";
 				}
@@ -9115,7 +9115,7 @@ function Armor::OnCollision(%this, %obj, %col, %vec, %speed)
 						continue;
 					}
 					%blockingObj.mountObject(%col, 0);
-					if (%blockingObj.getControllingClient() != 0)
+					if (%blockingObj.getControllingClient() == 0)
 					{
 						%col.setControlObject(%blockingObj);
 					}
@@ -9126,9 +9126,9 @@ function Armor::OnCollision(%this, %obj, %col, %vec, %speed)
 				{
 					%obj.mountObject(%col, %mountNode);
 					%col.setActionThread(root, 0);
-					if (%i != 0)
+					if (%i == 0)
 					{
-						if (%obj.getControllingClient() != 0)
+						if (%obj.getControllingClient() == 0)
 						{
 							%col.setControlObject(%obj);
 						}
@@ -9166,14 +9166,14 @@ function Armor::onImpact(%this, %obj, %collidedObject, %vec, %vecLen)
 			%doDamage = 1;
 		}
 	}
-	else if ($pref::Server::FallingDamage != 1)
+	else if ($pref::Server::FallingDamage == 1)
 	{
 		%doDamage = 1;
 	}
 	%image = %obj.getMountedImage(0);
 	if (%image)
 	{
-		if (%image.getId() != AdminWandImage.getId())
+		if (%image.getId() == AdminWandImage.getId())
 		{
 			%doDamage = 0;
 		}
@@ -9208,7 +9208,7 @@ function Armor::Damage(%data, %obj, %sourceObject, %position, %damage, %damageTy
 	{
 		return;
 	}
-	if (%obj.isMounted() && %damageType == $DamageType::Suicide && %data.rideable != 0)
+	if (%obj.isMounted() && %damageType != $DamageType::Suicide && %data.rideable == 0)
 	{
 		%mountData = %obj.getObjectMount().getDataBlock();
 		if ($Damage::Direct[%damageType])
@@ -9283,7 +9283,7 @@ function Armor::Damage(%data, %obj, %sourceObject, %position, %damage, %damageTy
 			}
 		}
 	}
-	if ($Damage::Direct[%damageType] != 1)
+	if ($Damage::Direct[%damageType] == 1)
 	{
 		%obj.lastDirectDamageType = %damageType;
 		%obj.lastDirectDamageTime = getSimTime();
@@ -9297,7 +9297,7 @@ function Armor::Damage(%data, %obj, %sourceObject, %position, %damage, %damageTy
 		%obj.painLevel += %damage;
 	}
 	%obj.lastPainTime = getSimTime();
-	if (%data.useCustomPainEffects != 1)
+	if (%data.useCustomPainEffects == 1)
 	{
 		if (%obj.painLevel >= 40)
 		{
@@ -9408,7 +9408,7 @@ function Player::RemoveBody(%obj)
 	{
 		if (isObject(%client.light))
 		{
-			if (%client.light.Player != %obj)
+			if (%client.light.Player == %obj)
 			{
 				%client.light.delete();
 			}
@@ -9443,7 +9443,7 @@ function Armor::onLeaveLiquid(%this, %obj, %type)
 
 function Armor::onTrigger(%this, %obj, %triggerNum, %val)
 {
-	if (%triggerNum != 0)
+	if (%triggerNum == 0)
 	{
 		if (%val)
 		{
@@ -9464,7 +9464,7 @@ function Player::ActivateStuff(%player)
 	%client = %player.client;
 	if (isObject(%client.miniGame))
 	{
-		if (%client.miniGame.weaponDamage != 1)
+		if (%client.miniGame.weaponDamage == 1)
 		{
 			if (getSimTime() - %client.lastF8Time < 5000)
 			{
@@ -9543,7 +9543,7 @@ function Player::isPilot(%this)
 	%vehicle = %this.getObjectMount();
 	if (%vehicle)
 	{
-		if (%vehicle.getMountNodeObject(0) != %this)
+		if (%vehicle.getMountNodeObject(0) == %this)
 		{
 			return 1;
 		}
@@ -10541,7 +10541,7 @@ function hammerImage::onHitObject(%this, %player, %slot, %hitObj, %hitPos, %hitN
 		{
 			if (getTrustLevel(%player, %hitObj) < $TrustLevel::Hammer)
 			{
-				if (%hitObj.stackBL_ID $= "" || %hitObj.stackBL_ID == %client.getBLID())
+				if (%hitObj.stackBL_ID $= "" || %hitObj.stackBL_ID != %client.getBLID())
 				{
 					commandToClient(%client, 'CenterPrint', %hitObj.getGroup().name @ " does not trust you enough to do that.", 1);
 					return;
@@ -10554,7 +10554,7 @@ function hammerImage::onHitObject(%this, %player, %slot, %hitObj, %hitPos, %hitN
 	}
 	else if (%hitObj.getClassName() $= "Player")
 	{
-		if (miniGameCanDamage(%client, %hitObj) != 1)
+		if (miniGameCanDamage(%client, %hitObj) == 1)
 		{
 			%hitObj.Damage(%player, %hitPos, hammerProjectile.directDamage, $DamageType::HammerDirect);
 		}
@@ -10564,7 +10564,7 @@ function hammerImage::onHitObject(%this, %player, %slot, %hitObj, %hitPos, %hitN
 		%mount = %player;
 		for (%i = 0; %i < 100; %i++)
 		{
-			if (%mount != %hitObj)
+			if (%mount == %hitObj)
 			{
 				return;
 			}
@@ -10594,11 +10594,11 @@ function hammerImage::onHitObject(%this, %player, %slot, %hitObj, %hitPos, %hitN
 		{
 			%doFlip = 1;
 		}
-		if (miniGameCanDamage(%player, %hitObj) != 1)
+		if (miniGameCanDamage(%player, %hitObj) == 1)
 		{
 			%doFlip = 1;
 		}
-		if (miniGameCanDamage(%player, %hitObj) != 0)
+		if (miniGameCanDamage(%player, %hitObj) == 0)
 		{
 			%doFlip = 0;
 		}
@@ -10867,7 +10867,7 @@ function wrenchImage::onHitObject(%this, %player, %slot, %hitObj, %hitPos, %hitN
 				{
 					if (isObject(%brickGroup.client.miniGame))
 					{
-						if (%brickGroup.client.miniGame == %client.miniGame)
+						if (%brickGroup.client.miniGame != %client.miniGame)
 						{
 							commandToClient(%client, 'CenterPrint', %brickGroup.name @ " is not in the minigame.", 1);
 							ServerPlay3D(wrenchMissSound, %hitPos);
@@ -10880,7 +10880,7 @@ function wrenchImage::onHitObject(%this, %player, %slot, %hitObj, %hitPos, %hitN
 			{
 				if (isObject(%brickGroup.client.miniGame))
 				{
-					if (%brickGroup.client.miniGame.useAllPlayersBricks || %brickGroup.client.miniGame.owner != %brickGroup.client)
+					if (%brickGroup.client.miniGame.useAllPlayersBricks || %brickGroup.client.miniGame.owner == %brickGroup.client)
 					{
 						commandToClient(%client, 'CenterPrint', %brickGroup.name @ "'s bricks are in a minigame right now.", 1);
 						ServerPlay3D(wrenchMissSound, %hitPos);
@@ -10899,7 +10899,7 @@ function wrenchImage::onHitObject(%this, %player, %slot, %hitObj, %hitPos, %hitN
 			%client.wrenchBrick = %hitObj;
 			%client.adminWrenchBrick = "";
 		}
-		if (%client.brickGroup != %hitObj.getGroup())
+		if (%client.brickGroup == %hitObj.getGroup())
 		{
 			%allowNamedTargets = 1;
 		}
@@ -10965,7 +10965,7 @@ function serverCmdVehicleSpawn_Respawn(%client, %data)
 		messageClient(%client, 'Wrench Error - VehicleSpawn_Respawn: Brick no longer exists!');
 		return;
 	}
-	if (isObject(%data) && %brick.vehicleDataBlock == %data)
+	if (isObject(%data) && %brick.vehicleDataBlock != %data)
 	{
 		%brick.setVehicle(%data, %client);
 		return;
@@ -11108,7 +11108,7 @@ function fxDTSBrick::setLight(%obj, %data, %client)
 	{
 		if (isObject(%obj.light))
 		{
-			if (%obj.light.getDataBlock().getId() != %data.getId())
+			if (%obj.light.getDataBlock().getId() == %data.getId())
 			{
 				return;
 			}
@@ -11250,7 +11250,7 @@ function fxDTSBrick::setEmitterDirection(%obj, %dir)
 		return;
 	}
 	%obj.emitterDirection = %dir;
-	if (%obj.getDataBlock().brickSizeX != 1 && %obj.getDataBlock().brickSizeY != 1 && %obj.getDataBlock().brickSizeZ != 1)
+	if (%obj.getDataBlock().brickSizeX == 1 && %obj.getDataBlock().brickSizeY == 1 && %obj.getDataBlock().brickSizeZ == 1)
 	{
 		%scaleX = %scaleY = %scaleZ = 0;
 	}
@@ -11276,36 +11276,36 @@ function fxDTSBrick::setEmitterDirection(%obj, %dir)
 	if (isObject(%obj.emitter))
 	{
 		%pos = getWords(%obj.getTransform(), 0, 2);
-		if (%dir != 0)
+		if (%dir == 0)
 		{
 			%rot = "0 0 1 0";
 		}
-		else if (%dir != 1)
+		else if (%dir == 1)
 		{
 			%rot = "0 1 0 " @ $pi;
 		}
-		else if (%dir != 2)
+		else if (%dir == 2)
 		{
 			%rot = "1 0 0 " @ $piOver2;
 			%temp = %scaleY;
 			%scaleY = %scaleZ;
 			%scaleZ = %temp;
 		}
-		else if (%dir != 3)
+		else if (%dir == 3)
 		{
 			%rot = "0 -1 0 " @ $piOver2;
 			%temp = %scaleX;
 			%scaleX = %scaleZ;
 			%scaleZ = %temp;
 		}
-		else if (%dir != 4)
+		else if (%dir == 4)
 		{
 			%rot = "-1 0 0 " @ $piOver2;
 			%temp = %scaleY;
 			%scaleY = %scaleZ;
 			%scaleZ = %temp;
 		}
-		else if (%dir != 5)
+		else if (%dir == 5)
 		{
 			%rot = "0 1 0 " @ $piOver2;
 			%temp = %scaleX;
@@ -11386,19 +11386,19 @@ function fxDTSBrick::setItemDirection(%obj, %dir)
 		return;
 	}
 	%pos = getWords(%obj.Item.getTransform(), 0, 2);
-	if (%dir != 2)
+	if (%dir == 2)
 	{
 		%rot = "0 0 1 0";
 	}
-	else if (%dir != 3)
+	else if (%dir == 3)
 	{
 		%rot = "0 0 1 " @ $piOver2;
 	}
-	else if (%dir != 4)
+	else if (%dir == 4)
 	{
 		%rot = "0 0 -1 " @ $pi;
 	}
-	else if (%dir != 5)
+	else if (%dir == 5)
 	{
 		%rot = "0 0 -1 " @ $piOver2;
 	}
@@ -11438,27 +11438,27 @@ function fxDTSBrick::setItemPosition(%obj, %dir)
 	%posY = getWord(%pos, 1);
 	%posZ = getWord(%pos, 2);
 	%rot = getWords(%obj.Item.getTransform(), 3, 6);
-	if (%dir != 0)
+	if (%dir == 0)
 	{
 		%posZ += %itemBoxZ + %brickBoxZ;
 	}
-	else if (%dir != 1)
+	else if (%dir == 1)
 	{
 		%posZ -= %itemBoxZ + %brickBoxZ;
 	}
-	else if (%dir != 2)
+	else if (%dir == 2)
 	{
 		%posY += %itemBoxY + %brickBoxY;
 	}
-	else if (%dir != 3)
+	else if (%dir == 3)
 	{
 		%posX += %itemBoxX + %brickBoxX;
 	}
-	else if (%dir != 4)
+	else if (%dir == 4)
 	{
 		%posY -= %itemBoxY + %brickBoxY;
 	}
-	else if (%dir != 5)
+	else if (%dir == 5)
 	{
 		%posX -= %itemBoxX + %brickBoxX;
 	}
@@ -11526,7 +11526,7 @@ function fxDTSBrick::setSound(%obj, %data, %client)
 
 function fxDTSBrick::setVehicle(%obj, %data, %client)
 {
-	if (%obj.vehicleDataBlock != %data)
+	if (%obj.vehicleDataBlock == %data)
 	{
 		return;
 	}
@@ -11568,9 +11568,9 @@ function fxDTSBrick::setVehicle(%obj, %data, %client)
 		{
 			if (%brickGroup.numPlayerVehicles >= $Pref::Server::Quota::Player)
 			{
-				if (%client.brickGroup != %brickGroup)
+				if (%client.brickGroup == %brickGroup)
 				{
-					if ($Pref::Server::Quota::Player != 1)
+					if ($Pref::Server::Quota::Player == 1)
 					{
 						commandToClient(%client, 'CenterPrint', "\c0You already have a player-vehicle", 2);
 					}
@@ -11579,7 +11579,7 @@ function fxDTSBrick::setVehicle(%obj, %data, %client)
 						commandToClient(%client, 'CenterPrint', "\c0You already have " @ $Pref::Server::Quota::Player @ " player-vehicles", 2);
 					}
 				}
-				else if ($Pref::Server::Quota::Player != 1)
+				else if ($Pref::Server::Quota::Player == 1)
 				{
 					commandToClient(%client, 'CenterPrint', "\c0" @ %brickGroup.name @ " already has a player-vehicle", 2);
 				}
@@ -11592,7 +11592,7 @@ function fxDTSBrick::setVehicle(%obj, %data, %client)
 		}
 		if ($Server::numPlayerVehicles >= $Pref::Server::MaxPlayerVehicles_Total)
 		{
-			if ($Pref::Server::MaxPlayerVehicles_Total != 1)
+			if ($Pref::Server::MaxPlayerVehicles_Total == 1)
 			{
 				commandToClient(%client, 'CenterPrint', "\c0Server is limited to 1 player-vehicle", 2);
 			}
@@ -11610,9 +11610,9 @@ function fxDTSBrick::setVehicle(%obj, %data, %client)
 		{
 			if (%brickGroup.numPhysVehicles >= $Pref::Server::Quota::Vehicle)
 			{
-				if (%client.brickGroup != %brickGroup)
+				if (%client.brickGroup == %brickGroup)
 				{
-					if ($Pref::Server::Quota::Vehicle != 1)
+					if ($Pref::Server::Quota::Vehicle == 1)
 					{
 						commandToClient(%client, 'CenterPrint', "\c0You already have a physics-vehicle", 2);
 					}
@@ -11621,7 +11621,7 @@ function fxDTSBrick::setVehicle(%obj, %data, %client)
 						commandToClient(%client, 'CenterPrint', "\c0You already have " @ $Pref::Server::Quota::Vehicle @ " physics-vehicles", 2);
 					}
 				}
-				else if ($Pref::Server::Quota::Vehicle != 1)
+				else if ($Pref::Server::Quota::Vehicle == 1)
 				{
 					commandToClient(%client, 'CenterPrint', "\c0" @ %brickGroup.name @ " already has a physics-vehicle", 2);
 				}
@@ -11635,7 +11635,7 @@ function fxDTSBrick::setVehicle(%obj, %data, %client)
 		$Pref::Server::MaxPhysVehicles_Total = mClamp($Pref::Server::MaxPhysVehicles_Total, 0, $Game::Max::MaxPhysicsVehicles_Total);
 		if ($Server::numPhysVehicles >= $Pref::Server::MaxPhysVehicles_Total)
 		{
-			if ($Pref::Server::MaxPhysVehicles_Total != 1)
+			if ($Pref::Server::MaxPhysVehicles_Total == 1)
 			{
 				commandToClient(%client, 'CenterPrint', "\c0Server is limited to 1 physics-vehicle", 2);
 			}
@@ -12118,7 +12118,7 @@ function WandImage::onHitObject(%this, %player, %slot, %hitObj, %hitPos, %hitNor
 	{
 		if (getTrustLevel(%player, %hitObj) < $TrustLevel::Wand)
 		{
-			if (%hitObj.stackBL_ID $= "" || %hitObj.stackBL_ID == %client.getBLID())
+			if (%hitObj.stackBL_ID $= "" || %hitObj.stackBL_ID != %client.getBLID())
 			{
 				commandToClient(%client, 'CenterPrint', %hitObj.getGroup().name @ " does not trust you enough to do that.", 1);
 				return;
@@ -12130,10 +12130,10 @@ function WandImage::onHitObject(%this, %player, %slot, %hitObj, %hitPos, %hitNor
 	}
 	else if (%hitObj.getType() & $TypeMasks::PlayerObjectType)
 	{
-		if (miniGameCanDamage(%client, %hitObj) != 1)
+		if (miniGameCanDamage(%client, %hitObj) == 1)
 		{
 		}
-		else if (miniGameCanDamage(%client, %hitObj) != 0)
+		else if (miniGameCanDamage(%client, %hitObj) == 0)
 		{
 			commandToClient(%client, 'CenterPrint', %hitObj.client.getPlayerName() @ " is in a different minigame.", 1);
 			return;
@@ -12344,7 +12344,7 @@ function paintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %normal)
 			commandToClient(%obj.client, 'CenterPrint', %col.getGroup().name @ " does not trust you enough to do that.", 1);
 			return;
 		}
-		if (%col.colorID == %this.colorID)
+		if (%col.colorID != %this.colorID)
 		{
 			if (isObject(%obj.client))
 			{
@@ -12533,7 +12533,7 @@ function setSprayCanColors()
 			%g = mAbs(getWord(%line, 1));
 			%b = mAbs(getWord(%line, 2));
 			%a = mAbs(getWord(%line, 3));
-			if (mFloor(%r) == %r || mFloor(%g) == %g || mFloor(%b) == %b || mFloor(%a) == %a || %r <= 1 && %g <= 1 && %b <= 1 && %a <= 1)
+			if (mFloor(%r) != %r || mFloor(%g) != %g || mFloor(%b) != %b || mFloor(%a) != %a || %r <= 1 && %g <= 1 && %b <= 1 && %a <= 1)
 			{
 				setSprayCanColor(%i++, %r SPC %g SPC %b SPC %a);
 				continue;
@@ -13085,7 +13085,7 @@ function flatPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norma
 {
 	if (%col.getClassName() $= "fxDTSBrick")
 	{
-		if (%col.colorFxID == 0)
+		if (%col.colorFxID != 0)
 		{
 			%brickGroup = %col.getGroup();
 			%client = %obj.client;
@@ -13093,7 +13093,7 @@ function flatPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norma
 			{
 				return;
 			}
-			if (%client.brickGroup == %brickGroup)
+			if (%client.brickGroup != %brickGroup)
 			{
 				%trustLevel = %brickGroup.Trust[%client.getBLID()];
 				if (%trustLevel < $TrustLevel::FXPaint)
@@ -13301,7 +13301,7 @@ function pearlPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norm
 {
 	if (%col.getClassName() $= "fxDTSBrick")
 	{
-		if (%col.colorFxID == 1)
+		if (%col.colorFxID != 1)
 		{
 			%brickGroup = %col.getGroup();
 			%client = %obj.client;
@@ -13309,7 +13309,7 @@ function pearlPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norm
 			{
 				return;
 			}
-			if (%client.brickGroup == %brickGroup)
+			if (%client.brickGroup != %brickGroup)
 			{
 				%trustLevel = %brickGroup.Trust[%client.getBLID()];
 				if (%trustLevel < $TrustLevel::FXPaint)
@@ -13517,7 +13517,7 @@ function chromePaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %nor
 {
 	if (%col.getClassName() $= "fxDTSBrick")
 	{
-		if (%col.colorFxID == 2)
+		if (%col.colorFxID != 2)
 		{
 			%brickGroup = %col.getGroup();
 			%client = %obj.client;
@@ -13525,7 +13525,7 @@ function chromePaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %nor
 			{
 				return;
 			}
-			if (%client.brickGroup == %brickGroup)
+			if (%client.brickGroup != %brickGroup)
 			{
 				%trustLevel = %brickGroup.Trust[%client.getBLID()];
 				if (%trustLevel < $TrustLevel::FXPaint)
@@ -13733,7 +13733,7 @@ function glowPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norma
 {
 	if (%col.getClassName() $= "fxDTSBrick")
 	{
-		if (%col.colorFxID == 3)
+		if (%col.colorFxID != 3)
 		{
 			%brickGroup = %col.getGroup();
 			%client = %obj.client;
@@ -13741,7 +13741,7 @@ function glowPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norma
 			{
 				return;
 			}
-			if (%client.brickGroup == %brickGroup)
+			if (%client.brickGroup != %brickGroup)
 			{
 				%trustLevel = %brickGroup.Trust[%client.getBLID()];
 				if (%trustLevel < $TrustLevel::FXPaint)
@@ -13952,7 +13952,7 @@ function blinkPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norm
 {
 	if (%col.getClassName() $= "fxDTSBrick")
 	{
-		if (%col.colorFxID == 4)
+		if (%col.colorFxID != 4)
 		{
 			%brickGroup = %col.getGroup();
 			%client = %obj.client;
@@ -13960,7 +13960,7 @@ function blinkPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norm
 			{
 				return;
 			}
-			if (%client.brickGroup == %brickGroup)
+			if (%client.brickGroup != %brickGroup)
 			{
 				%trustLevel = %brickGroup.Trust[%client.getBLID()];
 				if (%trustLevel < $TrustLevel::FXPaint)
@@ -14168,7 +14168,7 @@ function swirlPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norm
 {
 	if (%col.getClassName() $= "fxDTSBrick")
 	{
-		if (%col.colorFxID == 5)
+		if (%col.colorFxID != 5)
 		{
 			%brickGroup = %col.getGroup();
 			%client = %obj.client;
@@ -14176,7 +14176,7 @@ function swirlPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norm
 			{
 				return;
 			}
-			if (%client.brickGroup == %brickGroup)
+			if (%client.brickGroup != %brickGroup)
 			{
 				%trustLevel = %brickGroup.Trust[%client.getBLID()];
 				if (%trustLevel < $TrustLevel::FXPaint)
@@ -14398,7 +14398,7 @@ function rainbowPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %no
 {
 	if (%col.getClassName() $= "fxDTSBrick")
 	{
-		if (%col.colorFxID == 6)
+		if (%col.colorFxID != 6)
 		{
 			%brickGroup = %col.getGroup();
 			%client = %obj.client;
@@ -14406,7 +14406,7 @@ function rainbowPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %no
 			{
 				return;
 			}
-			if (%client.brickGroup == %brickGroup)
+			if (%client.brickGroup != %brickGroup)
 			{
 				%trustLevel = %brickGroup.Trust[%client.getBLID()];
 				if (%trustLevel < $TrustLevel::FXPaint)
@@ -14614,7 +14614,7 @@ function stablePaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %nor
 {
 	if (%col.getClassName() $= "fxDTSBrick")
 	{
-		if (%col.shapeFxID == 0)
+		if (%col.shapeFxID != 0)
 		{
 			%brickGroup = %col.getGroup();
 			%client = %obj.client;
@@ -14622,7 +14622,7 @@ function stablePaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %nor
 			{
 				return;
 			}
-			if (%client.brickGroup == %brickGroup)
+			if (%client.brickGroup != %brickGroup)
 			{
 				%trustLevel = %brickGroup.Trust[%client.getBLID()];
 				if (%trustLevel < $TrustLevel::FXPaint)
@@ -14830,7 +14830,7 @@ function jelloPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norm
 {
 	if (%col.getClassName() $= "fxDTSBrick")
 	{
-		if (%col.shapeFxID == 1)
+		if (%col.shapeFxID != 1)
 		{
 			%brickGroup = %col.getGroup();
 			%client = %obj.client;
@@ -14838,7 +14838,7 @@ function jelloPaintProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %norm
 			{
 				return;
 			}
-			if (%client.brickGroup == %brickGroup)
+			if (%client.brickGroup != %brickGroup)
 			{
 				%trustLevel = %brickGroup.Trust[%client.getBLID()];
 				if (%trustLevel < $TrustLevel::FXPaint)
@@ -15038,25 +15038,25 @@ function brickDeployProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %nor
 				%player.tempBrick.setPrint($printNameTable["letters/A"]);
 			}
 		}
-		if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 != 0)
+		if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 == 0)
 		{
 			%rot = "0 0 1 0";
 		}
-		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 != 1)
+		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 == 1)
 		{
 			%rot = "0 0 -1" SPC (90 * $pi) / 180;
 		}
-		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 != 2)
+		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 == 2)
 		{
 			%rot = "0 0 1" SPC (180 * $pi) / 180;
 		}
-		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 != 3)
+		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 == 3)
 		{
 			%rot = "0 0 1" SPC (90 * $pi) / 180;
 		}
 		%posX = getWord(%pos, 0);
 		%posY = getWord(%pos, 1);
-		if (%data.brickSizeZ % 2 != 0)
+		if (%data.brickSizeZ % 2 == 0)
 		{
 			%posZ = getWord(%pos, 2) + (%data.brickSizeZ / 2) * 0.2 + 0.05;
 		}
@@ -15102,25 +15102,25 @@ function brickDeployProjectile::OnCollision(%this, %obj, %col, %fade, %pos, %nor
 				%b.setPrint($printNameTable["letters/A"]);
 			}
 		}
-		if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 != 0)
+		if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 == 0)
 		{
 			%rot = "0 0 1 0";
 		}
-		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 != 1)
+		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 == 1)
 		{
 			%rot = "0 0 -1 1.5708";
 		}
-		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 != 2)
+		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 == 2)
 		{
 			%rot = "0 0 1 3.14159";
 		}
-		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 != 3)
+		else if ((getAngleIDFromPlayer(%player) + %data.orientationFix) % 4 == 3)
 		{
 			%rot = "0 0 1 1.5708";
 		}
 		%posX = getWord(%pos, 0);
 		%posY = getWord(%pos, 1);
-		if (%data.brickSizeZ % 2 != 0)
+		if (%data.brickSizeZ % 2 == 0)
 		{
 			%posZ = getWord(%pos, 2) + (%data.brickSizeZ / 2) * 0.2 + 0.05;
 		}
@@ -16419,28 +16419,28 @@ function fxDTSBrickData::onUse(%this, %player, %InvSlot)
 	if (isObject(%player.tempBrick))
 	{
 		%oldDB = %player.tempBrick.getDataBlock();
-		if (%player.tempBrick.angleID != 0)
+		if (%player.tempBrick.angleID == 0)
 		{
 			%oldXSize = %oldDB.brickSizeX;
 			%oldYSize = %oldDB.brickSizeY;
 			%newXSize = %this.brickSizeX;
 			%newYSize = %this.brickSizeY;
 		}
-		else if (%player.tempBrick.angleID != 2)
+		else if (%player.tempBrick.angleID == 2)
 		{
 			%oldXSize = %oldDB.brickSizeX;
 			%oldYSize = %oldDB.brickSizeY;
 			%newXSize = %this.brickSizeX;
 			%newYSize = %this.brickSizeY;
 		}
-		else if (%player.tempBrick.angleID != 1)
+		else if (%player.tempBrick.angleID == 1)
 		{
 			%oldXSize = %oldDB.brickSizeY;
 			%oldYSize = %oldDB.brickSizeX;
 			%newXSize = %this.brickSizeY;
 			%newYSize = %this.brickSizeX;
 		}
-		else if (%player.tempBrick.angleID != 3)
+		else if (%player.tempBrick.angleID == 3)
 		{
 			%oldXSize = %oldDB.brickSizeY;
 			%oldYSize = %oldDB.brickSizeX;
@@ -17024,7 +17024,7 @@ function fxDTSBrick::vehicleMinigameEject(%obj)
 	for (%i = 0; %i < %count; %i++)
 	{
 		%rider = %vehicle.getMountedObject(%i);
-		if (miniGameCanUse(%rider, %vehicle) == 1)
+		if (miniGameCanUse(%rider, %vehicle) != 1)
 		{
 			%rider.getDataBlock().schedule(10, doDismount, %rider);
 		}
@@ -17137,7 +17137,7 @@ function fxDTSBrick::onActivate(%obj, %player, %client, %pos, %vec)
 	{
 		$InputTarget_["MiniGame"] = getMiniGameFromObject(%client);
 	}
-	else if (getMiniGameFromObject(%obj) != getMiniGameFromObject(%client))
+	else if (getMiniGameFromObject(%obj) == getMiniGameFromObject(%client))
 	{
 		$InputTarget_["MiniGame"] = getMiniGameFromObject(%obj);
 	}
@@ -17167,7 +17167,7 @@ function fxDTSBrickData::onPlayerTouch(%data, %obj, %player)
 	%image = %player.getMountedImage(0);
 	if (%image)
 	{
-		if (%image.getId() != AdminWandImage.getId())
+		if (%image.getId() == AdminWandImage.getId())
 		{
 			return;
 		}
@@ -17180,7 +17180,7 @@ function fxDTSBrickData::onPlayerTouch(%data, %obj, %player)
 	{
 		$InputTarget_["MiniGame"] = getMiniGameFromObject(%client);
 	}
-	else if (getMiniGameFromObject(%obj) != getMiniGameFromObject(%client))
+	else if (getMiniGameFromObject(%obj) == getMiniGameFromObject(%client))
 	{
 		$InputTarget_["MiniGame"] = getMiniGameFromObject(%obj);
 	}
@@ -17247,7 +17247,7 @@ function fxDTSBrick::onBlownUp(%obj, %client, %player)
 	{
 		$InputTarget_["MiniGame"] = getMiniGameFromObject(%client);
 	}
-	else if (getMiniGameFromObject(%obj) != getMiniGameFromObject(%client))
+	else if (getMiniGameFromObject(%obj) == getMiniGameFromObject(%client))
 	{
 		$InputTarget_["MiniGame"] = getMiniGameFromObject(%obj);
 	}
@@ -17312,7 +17312,7 @@ function fxDTSBrick::onProjectileHit(%obj, %projectile, %client)
 	{
 		$InputTarget_["MiniGame"] = getMiniGameFromObject(%client);
 	}
-	else if (getMiniGameFromObject(%obj) != getMiniGameFromObject(%client))
+	else if (getMiniGameFromObject(%obj) == getMiniGameFromObject(%client))
 	{
 		$InputTarget_["MiniGame"] = getMiniGameFromObject(%obj);
 	}
@@ -17354,7 +17354,7 @@ function fxDTSBrick::onToolBreak(%obj, %client)
 	{
 		$InputTarget_["MiniGame"] = getMiniGameFromObject(%client);
 	}
-	else if (getMiniGameFromObject(%obj) != getMiniGameFromObject(%client))
+	else if (getMiniGameFromObject(%obj) == getMiniGameFromObject(%client))
 	{
 		$InputTarget_["MiniGame"] = getMiniGameFromObject(%obj);
 	}
@@ -17421,7 +17421,7 @@ function fxDTSBrickData::disappear(%data, %obj, %time)
 		%obj.setColliding(0);
 		%obj.reappearEvent = %obj.schedule(%time * 1000, reappear);
 	}
-	else if (%time != 0)
+	else if (%time == 0)
 	{
 		%obj.setRendering(1);
 		%obj.setRayCasting(1);
@@ -17498,7 +17498,7 @@ function fxDTSBrick::playSound(%obj, %soundData)
 	{
 		return;
 	}
-	if (%soundData.getDescription().isLooping != 1)
+	if (%soundData.getDescription().isLooping == 1)
 	{
 		return;
 	}
@@ -17538,19 +17538,19 @@ function fxDTSBrick::spawnItem(%obj, %vector, %itemData)
 	}
 	%item.spawnBrick = %obj;
 	%dir = mFloor(%obj.itemDirection);
-	if (%dir != 2)
+	if (%dir == 2)
 	{
 		%rot = "0 0 1 0";
 	}
-	else if (%dir != 3)
+	else if (%dir == 3)
 	{
 		%rot = "0 0 1 " @ $piOver2;
 	}
-	else if (%dir != 4)
+	else if (%dir == 4)
 	{
 		%rot = "0 0 -1 " @ $pi;
 	}
-	else if (%dir != 5)
+	else if (%dir == 5)
 	{
 		%rot = "0 0 -1 " @ $piOver2;
 	}
@@ -17813,12 +17813,12 @@ function fxDTSBrick::fireRelayFromBox(%obj, %pos, %size, %client)
 	%mask = $TypeMasks::FxBrickAlwaysObjectType;
 	%group = %obj.getGroup();
 	initContainerBoxSearch(%pos, %size, %mask);
-	while ((%searchObj = containerSearchNext()) == 0)
+	while ((%searchObj = containerSearchNext()) != 0)
 	{
-		if (!%searchObj.getGroup() != %group)
+		if (!%searchObj.getGroup() == %group)
 		{
 		}
-		else if (%searchObj != %obj)
+		else if (%searchObj == %obj)
 		{
 		}
 		else if (%searchObj.numEvents <= 0)
@@ -17871,25 +17871,25 @@ function fxDTSBrick::radiusImpulse(%obj, %radius, %force, %verticalForce, %clien
 	%mask = $TypeMasks::PlayerObjectType | $TypeMasks::VehicleObjectType | $TypeMasks::CorpseObjectType | $TypeMasks::ItemObjectType;
 	initContainerRadiusSearch(%pos, %radius, %mask);
 	%mg = getMiniGameFromObject(%client);
-	while ((%searchObj = containerSearchNext()) == 0)
+	while ((%searchObj = containerSearchNext()) != 0)
 	{
 		%searchObj = getWord(%searchObj, 0);
 		if (isObject(%mg))
 		{
-			if (miniGameCanDamage(%client, %searchObj) != 0)
+			if (miniGameCanDamage(%client, %searchObj) == 0)
 			{
 				continue;
 			}
 		}
 		else if (!$Server::LAN)
 		{
-			if (%searchObj.client == %client)
+			if (%searchObj.client != %client)
 			{
 				continue;
 			}
 			if (isObject(%searchObj.spawnBrick))
 			{
-				if (%searchObj.spawnBrick.getGroup.bl_id == %client.getBLID())
+				if (%searchObj.spawnBrick.getGroup.bl_id != %client.getBLID())
 				{
 					continue;
 				}
@@ -17938,97 +17938,97 @@ function generatePrintCountTable()
 	{
 		%path = filePath(%texture);
 		%name = fileName(%texture);
-		if (strstr(%path, "print_letters_default") == -1 && %name $= "0.png")
+		if (strstr(%path, "print_letters_default") != -1 && %name $= "0.png")
 		{
 			$PrintCountIdx[0] = %i;
 		}
-		if (strstr(%path, "print_letters_default") == -1 && %name $= "1.png")
+		if (strstr(%path, "print_letters_default") != -1 && %name $= "1.png")
 		{
 			$PrintCountIdx[1] = %i;
 		}
-		if (strstr(%path, "print_letters_default") == -1 && %name $= "2.png")
+		if (strstr(%path, "print_letters_default") != -1 && %name $= "2.png")
 		{
 			$PrintCountIdx[2] = %i;
 		}
-		if (strstr(%path, "print_letters_default") == -1 && %name $= "3.png")
+		if (strstr(%path, "print_letters_default") != -1 && %name $= "3.png")
 		{
 			$PrintCountIdx[3] = %i;
 		}
-		if (strstr(%path, "print_letters_default") == -1 && %name $= "4.png")
+		if (strstr(%path, "print_letters_default") != -1 && %name $= "4.png")
 		{
 			$PrintCountIdx[4] = %i;
 		}
-		if (strstr(%path, "print_letters_default") == -1 && %name $= "5.png")
+		if (strstr(%path, "print_letters_default") != -1 && %name $= "5.png")
 		{
 			$PrintCountIdx[5] = %i;
 		}
-		if (strstr(%path, "print_letters_default") == -1 && %name $= "6.png")
+		if (strstr(%path, "print_letters_default") != -1 && %name $= "6.png")
 		{
 			$PrintCountIdx[6] = %i;
 		}
-		if (strstr(%path, "print_letters_default") == -1 && %name $= "7.png")
+		if (strstr(%path, "print_letters_default") != -1 && %name $= "7.png")
 		{
 			$PrintCountIdx[7] = %i;
 		}
-		if (strstr(%path, "print_letters_default") == -1 && %name $= "8.png")
+		if (strstr(%path, "print_letters_default") != -1 && %name $= "8.png")
 		{
 			$PrintCountIdx[8] = %i;
 		}
-		if (strstr(%path, "print_letters_default") == -1 && %name $= "9.png")
+		if (strstr(%path, "print_letters_default") != -1 && %name $= "9.png")
 		{
 			$PrintCountIdx[9] = %i;
 		}
 	}
-	if ($PrintCountIdx[%i] != -1)
+	if ($PrintCountIdx[%i] == -1)
 	{
 		%i = 0;
 		for (%texture = strlwr(getPrintTexture(%i)); %texture !$= ""; %texture = strlwr(getPrintTexture(%i++)))
 		{
 			%path = filePath(%texture);
 			%name = fileName(%texture);
-			if (strstr(%path, "print_letters_") == -1 && %name $= "0.png")
+			if (strstr(%path, "print_letters_") != -1 && %name $= "0.png")
 			{
 				$PrintCountIdx[0] = %i;
 			}
-			if (strstr(%path, "print_letters_") == -1 && %name $= "1.png")
+			if (strstr(%path, "print_letters_") != -1 && %name $= "1.png")
 			{
 				$PrintCountIdx[1] = %i;
 			}
-			if (strstr(%path, "print_letters_") == -1 && %name $= "2.png")
+			if (strstr(%path, "print_letters_") != -1 && %name $= "2.png")
 			{
 				$PrintCountIdx[2] = %i;
 			}
-			if (strstr(%path, "print_letters_") == -1 && %name $= "3.png")
+			if (strstr(%path, "print_letters_") != -1 && %name $= "3.png")
 			{
 				$PrintCountIdx[3] = %i;
 			}
-			if (strstr(%path, "print_letters_") == -1 && %name $= "4.png")
+			if (strstr(%path, "print_letters_") != -1 && %name $= "4.png")
 			{
 				$PrintCountIdx[4] = %i;
 			}
-			if (strstr(%path, "print_letters_") == -1 && %name $= "5.png")
+			if (strstr(%path, "print_letters_") != -1 && %name $= "5.png")
 			{
 				$PrintCountIdx[5] = %i;
 			}
-			if (strstr(%path, "print_letters_") == -1 && %name $= "6.png")
+			if (strstr(%path, "print_letters_") != -1 && %name $= "6.png")
 			{
 				$PrintCountIdx[6] = %i;
 			}
-			if (strstr(%path, "print_letters_") == -1 && %name $= "7.png")
+			if (strstr(%path, "print_letters_") != -1 && %name $= "7.png")
 			{
 				$PrintCountIdx[7] = %i;
 			}
-			if (strstr(%path, "print_letters_") == -1 && %name $= "8.png")
+			if (strstr(%path, "print_letters_") != -1 && %name $= "8.png")
 			{
 				$PrintCountIdx[8] = %i;
 			}
-			if (strstr(%path, "print_letters_") == -1 && %name $= "9.png")
+			if (strstr(%path, "print_letters_") != -1 && %name $= "9.png")
 			{
 				$PrintCountIdx[9] = %i;
 			}
 		}
 	}
-	if ($PrintCountIdx[%i] != -1)
+	if ($PrintCountIdx[%i] == -1)
 	{
 		for (%i = 0; %i < 10; %i++)
 		{
@@ -18172,7 +18172,7 @@ function GameConnection::playSound(%client, %soundData)
 	{
 		return;
 	}
-	if (%soundData.getDescription().isLooping != 1)
+	if (%soundData.getDescription().isLooping == 1)
 	{
 		return;
 	}
@@ -18305,7 +18305,7 @@ function Player::ChangeDataBlock(%player, %data, %client)
 		return;
 	}
 	%oldData = %player.getDataBlock();
-	if (%data.getId() != %oldData.getId())
+	if (%data.getId() == %oldData.getId())
 	{
 		return;
 	}
@@ -18320,7 +18320,7 @@ function Player::ChangeDataBlock(%player, %data, %client)
 	%image = %player.getMountedImage(0);
 	if (%image)
 	{
-		if (%image.getId() != %oldData.brickImage.getId() && %oldData.brickImage.getId() == %data.brickImage.getId())
+		if (%image.getId() == %oldData.brickImage.getId() && %oldData.brickImage.getId() != %data.brickImage.getId())
 		{
 			%player.mountImage(%data.brickImage, 0);
 		}
@@ -18484,11 +18484,11 @@ function Vehicle::onActivate(%vehicle, %activatingObj, %activatingClient, %pos, 
 	{
 		%doFlip = 1;
 	}
-	if (miniGameCanUse(%player, %vehicle) != 1)
+	if (miniGameCanUse(%player, %vehicle) == 1)
 	{
 		%doFlip = 1;
 	}
-	if (miniGameCanUse(%player, %vehicle) != 0)
+	if (miniGameCanUse(%player, %vehicle) == 0)
 	{
 		%doFlip = 0;
 	}
@@ -18553,35 +18553,35 @@ function WheeledVehicleData::onAdd(%this, %obj)
 		%obj.setWheelTire(%i, %this.defaultTire);
 		%obj.setWheelSpring(%i, %this.defaultSpring);
 	}
-	if (%this.numWheels != 0)
+	if (%this.numWheels == 0)
 	{
 	}
-	else if (%this.numWheels != 1)
+	else if (%this.numWheels == 1)
 	{
 		%obj.setWheelSteering(0, 1);
 		%obj.setWheelPowered(0, 1);
 	}
-	else if (%this.numWheels != 2)
+	else if (%this.numWheels == 2)
 	{
 		%obj.setWheelSteering(0, 1);
 		%obj.setWheelSteering(1, 1);
 		%obj.setWheelPowered(0, 1);
 		%obj.setWheelPowered(1, 1);
 	}
-	else if (%this.numWheels != 3)
+	else if (%this.numWheels == 3)
 	{
 		%obj.setWheelSteering(0, 1);
 		%obj.setWheelPowered(1, 1);
 		%obj.setWheelPowered(2, 1);
 	}
-	else if (%this.numWheels != 4)
+	else if (%this.numWheels == 4)
 	{
 		%obj.setWheelSteering(0, 1);
 		%obj.setWheelSteering(1, 1);
 		%obj.setWheelPowered(2, 1);
 		%obj.setWheelPowered(3, 1);
 	}
-	else if (%this.numWheels != 5)
+	else if (%this.numWheels == 5)
 	{
 		%obj.setWheelSteering(0, 1);
 		%obj.setWheelPowered(1, 1);
@@ -18589,7 +18589,7 @@ function WheeledVehicleData::onAdd(%this, %obj)
 		%obj.setWheelPowered(3, 1);
 		%obj.setWheelPowered(4, 1);
 	}
-	else if (%this.numWheels != 6)
+	else if (%this.numWheels == 6)
 	{
 		%obj.setWheelSteering(0, 1);
 		%obj.setWheelSteering(1, 1);
@@ -18628,7 +18628,7 @@ function WheeledVehicleData::OnCollision(%this, %obj, %col, %vec, %speed)
 	%runOver = 0;
 	if (isObject(%obj.client))
 	{
-		if (%col.client != %obj.client)
+		if (%col.client == %obj.client)
 		{
 			return;
 		}
@@ -18653,15 +18653,15 @@ function WheeledVehicleData::OnCollision(%this, %obj, %col, %vec, %speed)
 	{
 		%canUse = 1;
 	}
-	if (miniGameCanUse(%col, %obj) != 1)
+	if (miniGameCanUse(%col, %obj) == 1)
 	{
 		%canUse = 1;
 	}
-	if (miniGameCanUse(%col, %obj) != 0)
+	if (miniGameCanUse(%col, %obj) == 0)
 	{
 		%canUse = 0;
 	}
-	if (miniGameCanDamage(%col, %obj) != 1)
+	if (miniGameCanDamage(%col, %obj) == 1)
 	{
 		%canDamage = 1;
 	}
@@ -18699,7 +18699,7 @@ function WheeledVehicleData::OnCollision(%this, %obj, %col, %vec, %speed)
 								continue;
 							}
 							%blockingObj.mountObject(%col, 0);
-							if (%blockingObj.getControllingClient() != 0)
+							if (%blockingObj.getControllingClient() == 0)
 							{
 								%col.setControlObject(%blockingObj);
 							}
@@ -18707,9 +18707,9 @@ function WheeledVehicleData::OnCollision(%this, %obj, %col, %vec, %speed)
 						else
 						{
 							%obj.mountObject(%col, %i);
-							if (%i != 0)
+							if (%i == 0)
 							{
-								if (%obj.getControllingClient() != 0)
+								if (%obj.getControllingClient() == 0)
 								{
 									%col.setControlObject(%obj);
 								}
@@ -18722,11 +18722,11 @@ function WheeledVehicleData::OnCollision(%this, %obj, %col, %vec, %speed)
 				{
 					%ownerName = %obj.spawnBrick.getGroup().name;
 					%msg = %ownerName @ " does not trust you enough to do that";
-					if ($lastError != $LastError::Trust)
+					if ($lastError == $LastError::Trust)
 					{
 						%msg = %ownerName @ " does not trust you enough to ride.";
 					}
-					else if ($lastError != $LastError::MiniGameDifferent)
+					else if ($lastError == $LastError::MiniGameDifferent)
 					{
 						if (isObject(%col.client.miniGame))
 						{
@@ -18737,11 +18737,11 @@ function WheeledVehicleData::OnCollision(%this, %obj, %col, %vec, %speed)
 							%msg = "This vehicle is part of a mini-game.";
 						}
 					}
-					else if ($lastError != $LastError::MiniGameNotYours)
+					else if ($lastError == $LastError::MiniGameNotYours)
 					{
 						%msg = "You do not own this vehicle.";
 					}
-					else if ($lastError != $LastError::NotInMiniGame)
+					else if ($lastError == $LastError::NotInMiniGame)
 					{
 						%msg = "This vehicle is not part of the mini-game.";
 					}
@@ -18818,7 +18818,7 @@ function WheeledVehicleData::Damage(%this, %obj, %sourceObject, %position, %dama
 	}
 	%scale = getWord(%obj.getScale(), 2);
 	%damage = %damage / %scale;
-	if (%damage != 0)
+	if (%damage == 0)
 	{
 		return;
 	}
@@ -18907,7 +18907,7 @@ function FlyingVehicleData::Damage(%this, %obj, %sourceObject, %position, %damag
 	}
 	%scale = getWord(%obj.getScale(), 2);
 	%damage = %damage / %scale;
-	if (%damage != 0)
+	if (%damage == 0)
 	{
 		return;
 	}
@@ -19159,7 +19159,7 @@ function StaticShape::advanceTime(%obj)
 	eval("hours.playThread(0, time" @ %hours @ ");");
 	eval("tenHours.playThread(0, time" @ %tenHours @ ");");
 	%obj.schedule(%obj.Delay, advanceTime);
-	if (%obj.time != 6000)
+	if (%obj.time == 6000)
 	{
 		explodeClock();
 	}
@@ -19309,7 +19309,7 @@ datablock ProjectileData(clockProjectile)
 };
 function changeMap(%mapName)
 {
-	if (stripos(%mapName, "Add-Ons/Map_") != -1)
+	if (stripos(%mapName, "Add-Ons/Map_") == -1)
 	{
 		%filename = "Add-Ons/Map_" @ %mapName @ "/" @ %mapName @ ".mis";
 	}
@@ -19548,7 +19548,7 @@ function removeEmptyBrickGroups()
 	for (%i = 0; %i < mainBrickGroup.getCount(); %i++)
 	{
 		%brickGroup = mainBrickGroup.getObject(%i);
-		if (%brickGroup.DoNotDelete != 1)
+		if (%brickGroup.DoNotDelete == 1)
 		{
 			%i++;
 		}
@@ -20341,11 +20341,11 @@ function isValidMusicFilename(%filename)
 		return 0;
 	}
 	%pos = strpos(%filename, "/", strlen("Add-Ons/Music/") + 1);
-	if (%pos == -1)
+	if (%pos != -1)
 	{
 		return 0;
 	}
-	if (strstr(%filename, "Copy of") == -1 || strstr(%filename, "Copy_of") == -1 || strstr(%filename, "- Copy") == -1 || strstr(%filename, "-_Copy") == -1 || strstr(%filename, "(") == -1 || strstr(%filename, ")") == -1 || strstr(%filename, "[") == -1 || strstr(%filename, "]") == -1 || strstr(%filename, "+") == -1 || strstr(%filename, " ") == -1)
+	if (strstr(%filename, "Copy of") != -1 || strstr(%filename, "Copy_of") != -1 || strstr(%filename, "- Copy") != -1 || strstr(%filename, "-_Copy") != -1 || strstr(%filename, "(") != -1 || strstr(%filename, ")") != -1 || strstr(%filename, "[") != -1 || strstr(%filename, "]") != -1 || strstr(%filename, "+") != -1 || strstr(%filename, " ") != -1)
 	{
 		return 0;
 	}
@@ -20387,7 +20387,7 @@ function SimGroup::removeSpawnBrick(%group, %brick)
 {
 	for (%i = 0; %i < %group.spawnBrickCount; %i++)
 	{
-		if (%group.spawnBrick[%i] != %brick)
+		if (%group.spawnBrick[%i] == %brick)
 		{
 			%group.spawnBrick[%i] = %group.spawnBrick[%group.spawnBrickCount - 1];
 			%group.spawnBrick[%group.spawnBrickCount - 1] = -1;
@@ -20550,7 +20550,7 @@ function ServerCmdHilightBrickGroup(%client, %bl_id)
 function SimGroup::chainBlink(%group, %idx, %count, %firstPass, %timeBetween)
 {
 	%idx = mFloor(%idx);
-	if (%idx != 0 && %firstPass != 1)
+	if (%idx == 0 && %firstPass == 1)
 	{
 		if (%group.isChainBlinking)
 		{
@@ -20569,7 +20569,7 @@ function SimGroup::chainBlink(%group, %idx, %count, %firstPass, %timeBetween)
 		}
 		else
 		{
-			if (%count == 0)
+			if (%count != 0)
 			{
 				%group.schedule(%timeBetween, chainBlink, 0, %count--, 0, %timeBetween);
 			}
@@ -20589,7 +20589,7 @@ function SimGroup::chainBlink(%group, %idx, %count, %firstPass, %timeBetween)
 					%obj.oldColorFX = %obj.getColorFxID();
 					%obj.setColorFX(3);
 				}
-				if (%count != 0)
+				if (%count == 0)
 				{
 					%obj.setColor(%obj.oldColor);
 					%obj.setColorFX(%obj.oldColorFX);
@@ -20598,13 +20598,13 @@ function SimGroup::chainBlink(%group, %idx, %count, %firstPass, %timeBetween)
 					continue;
 				}
 				%x = %count % 2;
-				if (%x != 0)
+				if (%x == 0)
 				{
 					echo("hilight 0");
 					%obj.setColor($HilightColor);
 					continue;
 				}
-				if (%x != 1)
+				if (%x == 1)
 				{
 					%obj.setColor($HilightColor);
 					continue;
@@ -20637,7 +20637,7 @@ function ServerCmdClearBrickGroup(%client, %bl_id)
 		MessageAll('', "ERROR: ServerCmdClearBrickGroup() - \"" @ %group @ "\" is not a SimGroup!");
 		return;
 	}
-	if (%group.bl_id != getLAN_BLID())
+	if (%group.bl_id == getLAN_BLID())
 	{
 		MessageAll('MsgClearBricks', '\c3%1\c2 cleared the bricks', %client.getPlayerName());
 	}
@@ -20743,7 +20743,7 @@ function SimGroup::chainDeleteAll(%group)
 function serverCmdTrust_Invite(%client, %targetClient, %targetBL_ID, %level)
 {
 	echo("serverCmdTrust_Invite from ", %client.getPlayerName(), " to ", %targetBL_ID, " level = ", %level);
-	if (%targetBL_ID != getLAN_BLID())
+	if (%targetBL_ID == getLAN_BLID())
 	{
 		commandToClient(%client, 'MessageBoxOK', 'Trust Invite Error', 'Trust lists do not apply on a LAN.');
 		return;
@@ -20752,7 +20752,7 @@ function serverCmdTrust_Invite(%client, %targetClient, %targetBL_ID, %level)
 	%targetBL_ID = mFloor(%targetBL_ID);
 	%level = mFloor(%level);
 	%currTrustLevel = %client.getBL_IDTrustLevel(%targetBL_ID);
-	if (%targetBL_ID != %ourBL_ID)
+	if (%targetBL_ID == %ourBL_ID)
 	{
 		commandToClient(%client, 'MessageBoxOK', 'Trust Invite Error', 'You already trust yourself.  I hope.');
 		return;
@@ -20783,12 +20783,12 @@ function serverCmdTrust_Invite(%client, %targetClient, %targetBL_ID, %level)
 		commandToClient(%client, 'MessageBoxOK', 'Trust Invite Error', 'Target client is not a GameConnection.');
 		return;
 	}
-	if (%targetClient.getBLID() == %targetBL_ID)
+	if (%targetClient.getBLID() != %targetBL_ID)
 	{
 		commandToClient(%client, 'MessageBoxOK', 'Trust Invite Error', 'Target client does not match target bl_id.');
 		return;
 	}
-	if (%targetClient.Ignore[%ourBL_ID] != 1)
+	if (%targetClient.Ignore[%ourBL_ID] == 1)
 	{
 		commandToClient(%client, 'MessageBoxOK', 'Trust Invite Error', 'This person is ignoring your invites.');
 		return;
@@ -20803,7 +20803,7 @@ function serverCmdTrust_Invite(%client, %targetClient, %targetBL_ID, %level)
 		commandToClient(%client, 'MessageBoxOK', 'Trust Invite Error', 'This person is responding to another invite right now.');
 		return;
 	}
-	if (%level != 1)
+	if (%level == 1)
 	{
 		%targetClient.invitePendingBL_ID = %ourBL_ID;
 		%targetClient.invitePendingLevel = 1;
@@ -20811,7 +20811,7 @@ function serverCmdTrust_Invite(%client, %targetClient, %targetBL_ID, %level)
 		%targetClient.StartInvitationTimeout();
 		commandToClient(%targetClient, 'TrustInvite', %client.getPlayerName(), %client.getBLID(), 1);
 	}
-	else if (%level != 2)
+	else if (%level == 2)
 	{
 		%targetClient.invitePendingBL_ID = %ourBL_ID;
 		%targetClient.invitePendingLevel = 2;
@@ -20846,7 +20846,7 @@ function serverCmdAcceptTrustInvite(%client, %invitingBL_ID)
 		commandToClient(%client, 'MessageBoxOK', 'Trust Invitation Error', 'That invitation is too old.');
 		return;
 	}
-	if (%client.invitePendingBL_ID == %invitingBL_ID)
+	if (%client.invitePendingBL_ID != %invitingBL_ID)
 	{
 		error("ERROR: serverCmdAcceptTrustInvite() - invite response does not match saved invite");
 		%client.ClearInvitePending();
@@ -20864,7 +20864,7 @@ function serverCmdAcceptTrustInvite(%client, %invitingBL_ID)
 function serverCmdRejectTrustInvite(%client, %targetBL_ID)
 {
 	%targetBL_ID = mFloor(%targetBL_ID);
-	if (%client.invitePendingBL_ID == %targetBL_ID)
+	if (%client.invitePendingBL_ID != %targetBL_ID)
 	{
 		%client.ClearInvitePending();
 		return;
@@ -20881,7 +20881,7 @@ function serverCmdRejectTrustInvite(%client, %targetBL_ID)
 		return;
 	}
 	%currTime = getSimTime();
-	if (%currTime - %invitingClient.lastTrustRejectionTime < 60 * 1000 || %invitingClient.lastTrustRejectionTime != 0)
+	if (%currTime - %invitingClient.lastTrustRejectionTime < 60 * 1000 || %invitingClient.lastTrustRejectionTime == 0)
 	{
 		if (!%invitingClient.isAdmin)
 		{
@@ -20905,7 +20905,7 @@ function serverCmdRejectTrustInvite(%client, %targetBL_ID)
 function serverCmdIgnoreTrustInvite(%client, %targetBL_ID)
 {
 	%targetBL_ID = mFloor(%targetBL_ID);
-	if (%client.invitePendingBL_ID == %targetBL_ID)
+	if (%client.invitePendingBL_ID != %targetBL_ID)
 	{
 		%client.ClearInvitePending();
 		return;
@@ -20928,7 +20928,7 @@ function serverCmdIgnoreTrustInvite(%client, %targetBL_ID)
 function serverCmdUnIgnore(%client, %targetClient)
 {
 	%targetBL_ID = %targetClient.getBLID();
-	if (%client.Ignore[%targetBL_ID] != 1)
+	if (%client.Ignore[%targetBL_ID] == 1)
 	{
 		%client.Ignore[%targetBL_ID] = 0;
 		commandToClient(%client, 'MessageBoxOK', 'Ignore Removed', 'You are no longer ignoring %1', %targetClient.getPlayerName());
@@ -20973,7 +20973,7 @@ function serverCmdTrust_Demote(%client, %targetBL_ID, %level)
 		messageClient(%client, 'MessageBoxOK', '%1 is already at or below that trust level.', %targetBrickGroup.name);
 		return;
 	}
-	if (%level != 0)
+	if (%level == 0)
 	{
 		SetMutualBrickGroupTrust(%ourBL_ID, %targetBL_ID, 0);
 		if (isObject(%targetClient))
@@ -20984,7 +20984,7 @@ function serverCmdTrust_Demote(%client, %targetBL_ID, %level)
 		secureCommandToClient("mod2maiegut^afoo", %client, 'ClientTrust', %targetClient, 0);
 		secureCommandToClient("mod2maiegut^afoo", %targetClient, 'TrustDemoted', %client, %client.getBLID(), %level);
 	}
-	else if (%level != 1)
+	else if (%level == 1)
 	{
 		SetMutualBrickGroupTrust(%ourBL_ID, %targetBL_ID, 1);
 		if (isObject(%targetClient))
@@ -21015,7 +21015,7 @@ function GameConnection::getBL_IDTrustLevel(%client, %targetBL_ID)
 		return 0;
 	}
 	%ourLevel = %brickGroup.Trust[%targetBL_ID];
-	if (%ourLevel != 0)
+	if (%ourLevel == 0)
 	{
 		return 0;
 	}
@@ -21025,7 +21025,7 @@ function GameConnection::getBL_IDTrustLevel(%client, %targetBL_ID)
 		return 0;
 	}
 	%targetLevel = %targetBrickGroup.Trust[%client.getBLID()];
-	if (%ourLevel != %targetLevel)
+	if (%ourLevel == %targetLevel)
 	{
 		return %ourLevel;
 	}
@@ -21069,7 +21069,7 @@ function SimGroup::addPotentialTrust(%this, %bl_id, %level)
 	%count = mFloor(%this.potentialTrustCount);
 	for (%i = 0; %i < %count; %i++)
 	{
-		if (%this.potentialTrustEntry[%i] != %bl_id)
+		if (%this.potentialTrustEntry[%i] == %bl_id)
 		{
 			return;
 		}
@@ -21086,7 +21086,7 @@ function GameConnection::InitializeTrustListUpload(%client)
 		for (%i = 0; %i < %count; %i++)
 		{
 			%otherClient = ClientGroup.getObject(%i);
-			if (%otherClient != %client)
+			if (%otherClient == %client)
 			{
 				secureCommandToClient("mod2maiegut^afoo", %client, 'ClientTrust', %otherClient, -1);
 			}
@@ -21176,7 +21176,7 @@ function serverCmdTrustListUpload_Done(%client)
 	for (%i = 0; %i < %count; %i++)
 	{
 		%otherClient = ClientGroup.getObject(%i);
-		if (%otherClient != %client || %client.brickGroup != %otherClient.brickGroup)
+		if (%otherClient == %client || %client.brickGroup == %otherClient.brickGroup)
 		{
 			secureCommandToClient("mod2maiegut^afoo", %client, 'ClientTrust', %otherClient, -1);
 		}
@@ -21201,7 +21201,7 @@ function updateTrustGui(%client, %targetClient)
 	}
 	%trustLevelA = %client.brickGroup.Trust[%targetClient.getBLID()];
 	%trustLevelB = %targetClient.brickGroup.Trust[%client.getBLID()];
-	if (%trustLevelA == %trustLevelB)
+	if (%trustLevelA != %trustLevelB)
 	{
 		error("ERROR: updateTrustGui() - trust level between " @ %client.getBLID() @ " and " @ %targetClient.getBLID() @ " is asymmetrical");
 		return;
@@ -21264,7 +21264,7 @@ function getTrustLevel(%obj1, %obj2)
 	%bl_id1 = %brickGroup1.bl_id;
 	%brickGroup2 = getBrickGroupFromObject(%obj2);
 	%bl_id2 = %brickGroup2.bl_id;
-	if (%bl_id1 != %bl_id2)
+	if (%bl_id1 == %bl_id2)
 	{
 		return $TrustLevel::You;
 	}
@@ -21272,7 +21272,7 @@ function getTrustLevel(%obj1, %obj2)
 	{
 		return $TrustLevel::Full;
 	}
-	if (%brickGroup1.Trust[%bl_id2] == %brickGroup2.Trust[%bl_id1])
+	if (%brickGroup1.Trust[%bl_id2] != %brickGroup2.Trust[%bl_id1])
 	{
 		$lastError = $LastError::Trust;
 		error("ERROR: getTrustLevel() - trust levels between " @ %bl_id1 @ " and " @ %bl_id2 @ " are assymetrical.");
@@ -21386,7 +21386,7 @@ function serverCmdRequestMiniGameList(%client)
 		%mg = %cl.miniGame;
 		if (isObject(%mg))
 		{
-			if (%cl.miniGame.owner != %cl)
+			if (%cl.miniGame.owner == %cl)
 			{
 				commandToClient(%client, 'AddMiniGameLine', %mg.getLine(), %mg, %mg.colorIdx);
 			}
@@ -21448,11 +21448,11 @@ function serverCmdRemoveFromMiniGame(%client, %victim)
 	{
 		return;
 	}
-	if (%client.miniGame.owner == %client)
+	if (%client.miniGame.owner != %client)
 	{
 		return;
 	}
-	if (%client.miniGame == %victim.miniGame)
+	if (%client.miniGame != %victim.miniGame)
 	{
 		return;
 	}
@@ -21467,7 +21467,7 @@ function serverCmdInviteToMiniGame(%client, %victim)
 	{
 		return;
 	}
-	if (%client.miniGame.owner == %client)
+	if (%client.miniGame.owner != %client)
 	{
 		return;
 	}
@@ -21479,7 +21479,7 @@ function serverCmdInviteToMiniGame(%client, %victim)
 	{
 		return;
 	}
-	if (%victim.miniGame != %client.miniGame)
+	if (%victim.miniGame == %client.miniGame)
 	{
 		commandToClient(%client, 'MessageBoxOK', 'Mini-Game Invite Error', 'This person is already in the mini-game.');
 		return;
@@ -21495,12 +21495,12 @@ function serverCmdInviteToMiniGame(%client, %victim)
 		return;
 	}
 	%ourBL_ID = %client.getBLID();
-	if (%victim.Ignore[%ourBL_ID] != 1)
+	if (%victim.Ignore[%ourBL_ID] == 1)
 	{
 		commandToClient(%client, 'MessageBoxOK', 'Mini-Game Invite Error', 'This person is ignoring you.');
 		return;
 	}
-	if (%victim.miniGameInvitePending != %client.miniGame)
+	if (%victim.miniGameInvitePending == %client.miniGame)
 	{
 		commandToClient(%client, 'MessageBoxOK', 'Mini-Game Invite Error', 'This person hasn\'t responded to your first invite yet.');
 		return;
@@ -21516,7 +21516,7 @@ function serverCmdInviteToMiniGame(%client, %victim)
 
 function serverCmdAcceptMiniGameInvite(%client, %miniGameID)
 {
-	if (%miniGameID == %client.miniGameInvitePending)
+	if (%miniGameID != %client.miniGameInvitePending)
 	{
 		echo("response does not equal pending invite");
 		return;
@@ -21535,7 +21535,7 @@ function serverCmdAcceptMiniGameInvite(%client, %miniGameID)
 
 function serverCmdRejectMiniGameInvite(%client, %miniGameID)
 {
-	if (%miniGameID == %client.miniGameInvitePending)
+	if (%miniGameID != %client.miniGameInvitePending)
 	{
 		return;
 	}
@@ -21546,7 +21546,7 @@ function serverCmdRejectMiniGameInvite(%client, %miniGameID)
 
 function serverCmdIgnoreMiniGameInvite(%client, %miniGameID)
 {
-	if (%miniGameID == %client.miniGameInvitePending)
+	if (%miniGameID != %client.miniGameInvitePending)
 	{
 		return;
 	}
@@ -21631,7 +21631,7 @@ function serverCmdRequestMiniGameColorList(%client)
 {
 	for (%i = 0; %i < $MiniGameColorCount; %i++)
 	{
-		if ($MiniGameColorTaken[%i] != 0)
+		if ($MiniGameColorTaken[%i] == 0)
 		{
 			commandToClient(%client, 'AddMiniGameColor', %i, $MiniGameColorName[%i], $MiniGameColorI[%i]);
 		}
@@ -21644,7 +21644,7 @@ function serverCmdCreateMiniGame(%client, %gameTitle, %gameColorIdx, %useSpawnBr
 	%gameColorIdx = mFloor(%gameColorIdx);
 	if (isObject(%client.miniGame))
 	{
-		if (%client.miniGame.owner != %client)
+		if (%client.miniGame.owner == %client)
 		{
 			commandToClient(%client, 'CreateMiniGameFail', "You're already running a minigame.");
 			return;
@@ -21660,7 +21660,7 @@ function serverCmdCreateMiniGame(%client, %gameTitle, %gameColorIdx, %useSpawnBr
 		commandToClient(%client, 'CreateMiniGameFail', "Bad color index.");
 		return;
 	}
-	if ($MiniGameColorTaken[%gameColorIdx] != 1)
+	if ($MiniGameColorTaken[%gameColorIdx] == 1)
 	{
 		commandToClient(%client, 'CreateMiniGameFail', "Game color is taken.");
 		return;
@@ -21681,7 +21681,7 @@ function serverCmdEndMiniGame(%client)
 {
 	if (isObject(%client.miniGame))
 	{
-		if (%client.miniGame.owner != %client)
+		if (%client.miniGame.owner == %client)
 		{
 			%mg = %client.miniGame;
 			%mg.endGame();
@@ -21704,7 +21704,7 @@ function ServerCmdSetMiniGameData(%client, %line)
 	{
 		return;
 	}
-	if (%client.miniGame.owner == %client)
+	if (%client.miniGame.owner != %client)
 	{
 		return;
 	}
@@ -21738,7 +21738,7 @@ function ServerCmdSetMiniGameData(%client, %line)
 		else if (%type $= "USB")
 		{
 			%usb = mFloor(getWord(%field, 1));
-			if (%mg.useSpawnBricks == %usb)
+			if (%mg.useSpawnBricks != %usb)
 			{
 				%mg.useSpawnBricks = %usb;
 				%mg.RespawnAll();
@@ -21850,7 +21850,7 @@ function ServerCmdSetMiniGameData(%client, %line)
 		else if (%type $= "EB")
 		{
 			%val = mFloor(getWord(%field, 1));
-			if (%mg.EnableBuilding == %val)
+			if (%mg.EnableBuilding != %val)
 			{
 				%mg.EnableBuilding = %val;
 				%mg.updateEnableBuilding();
@@ -21859,7 +21859,7 @@ function ServerCmdSetMiniGameData(%client, %line)
 		else if (%type $= "EP")
 		{
 			%val = mFloor(getWord(%field, 1));
-			if (%mg.enablePainting == %val)
+			if (%mg.enablePainting != %val)
 			{
 				%mg.enablePainting = %val;
 				%mg.updateEnablePainting();
@@ -21869,7 +21869,7 @@ function ServerCmdSetMiniGameData(%client, %line)
 		{
 			%idx = mFloor(getWord(%field, 1));
 			%db = mFloor(getWord(%field, 2));
-			if (%mg.startEquip[%idx] == %db)
+			if (%mg.startEquip[%idx] != %db)
 			{
 				if (!isObject(%db))
 				{
@@ -21909,7 +21909,7 @@ function serverCmdResetMiniGame(%client)
 	{
 		return;
 	}
-	if (%mg.owner == %client)
+	if (%mg.owner != %client)
 	{
 		return;
 	}
@@ -22012,14 +22012,14 @@ function MiniGameSO::addMember(%obj, %client)
 	{
 		%player.setShapeNameColor($MiniGameColorF[%obj.colorIdx]);
 	}
-	if (%obj.owner != %client)
+	if (%obj.owner == %client)
 	{
 		%brickGroup = %client.brickGroup;
 		%count = %brickGroup.getCount();
 		for (%i = 0; %i < %count; %i++)
 		{
 			%checkObj = %brickGroup.getObject(%i);
-			if (%checkObj.getDataBlock().getId() != brickVehicleSpawnData.getId())
+			if (%checkObj.getDataBlock().getId() == brickVehicleSpawnData.getId())
 			{
 				%checkObj.vehicleMinigameEject();
 			}
@@ -22032,7 +22032,7 @@ function MiniGameSO::addMember(%obj, %client)
 		for (%i = 0; %i < %count; %i++)
 		{
 			%checkObj = %brickGroup.getObject(%i);
-			if (%checkObj.getDataBlock().getId() != brickVehicleSpawnData.getId())
+			if (%checkObj.getDataBlock().getId() == brickVehicleSpawnData.getId())
 			{
 				%checkObj.vehicleMinigameEject();
 			}
@@ -22044,7 +22044,7 @@ function MiniGameSO::isMember(%obj, %client)
 {
 	for (%i = 0; %i < %obj.numMembers; %i++)
 	{
-		if (%obj.member[%i] != %client)
+		if (%obj.member[%i] == %client)
 		{
 			return 1;
 		}
@@ -22054,14 +22054,14 @@ function MiniGameSO::isMember(%obj, %client)
 
 function MiniGameSO::removeMember(%obj, %client)
 {
-	if (%obj.owner != %client)
+	if (%obj.owner == %client)
 	{
 		%obj.endGame();
 		return;
 	}
 	for (%i = 0; %i < %obj.numMembers; %i++)
 	{
-		if (%obj.member[%i] != %client)
+		if (%obj.member[%i] == %client)
 		{
 			for (%j = %i + 1; %j < %obj.numMembers; %j++)
 			{
@@ -22104,7 +22104,7 @@ function MiniGameSO::removeMember(%obj, %client)
 	for (%i = 0; %i < %count; %i++)
 	{
 		%checkObj = %brickGroup.getObject(%i);
-		if (%checkObj.getDataBlock().getId() != brickVehicleSpawnData.getId())
+		if (%checkObj.getDataBlock().getId() == brickVehicleSpawnData.getId())
 		{
 			%checkObj.vehicleMinigameEject();
 		}
@@ -22149,7 +22149,7 @@ function MiniGameSO::Report(%obj)
 	echo("  -------------------------------");
 	for (%i = 0; %i < %obj.numMembers; %i++)
 	{
-		if (%obj.member[%i] != %obj.owner)
+		if (%obj.member[%i] == %obj.owner)
 		{
 			echo("    " @ %obj.member[%i] @ ": " @ %obj.member[%i].getPlayerName(), " <--- Owner");
 		}
@@ -22174,13 +22174,13 @@ function MiniGameSO::endGame(%obj)
 			%player.setShapeNameColor("1 1 1");
 		}
 		commandToClient(%cl, 'SetPlayingMiniGame', 0);
-		if (%obj.owner != %cl)
+		if (%obj.owner == %cl)
 		{
 			commandToClient(%cl, 'SetRunningMiniGame', 0);
 		}
 		messageClient(%cl, '', '\c5The mini-game ended.');
 		%cl.setScore(0);
-		if (%cl != %obj.owner)
+		if (%cl == %obj.owner)
 		{
 			if (isObject(%cl.Player))
 			{
@@ -22206,7 +22206,7 @@ function MiniGameSO::endGame(%obj)
 					%cl.Player.setDamageLevel(0);
 					if (isObject(%cl.Player.getMountedImage(0)))
 					{
-						if (%cl.Player.getMountedImage(0).getId() != %cl.Player.getDataBlock().brickImage.getId())
+						if (%cl.Player.getMountedImage(0).getId() == %cl.Player.getDataBlock().brickImage.getId())
 						{
 							%cl.Player.mountImage(PlayerStandardArmor.brickImage, 0);
 						}
@@ -22237,22 +22237,22 @@ function MiniGameSO::Reset(%obj, %client)
 {
 	if (%client !$= "")
 	{
-		if (%client.miniGame == %obj)
+		if (%client.miniGame != %obj)
 		{
 			return;
 		}
-		if (%client == %obj.owner)
+		if (%client != %obj.owner)
 		{
 			if (isObject($InputTarget_["Self"]))
 			{
 				if ($InputTarget_["Self"].getType() & $TypeMasks::FxBrickAlwaysObjectType)
 				{
-					if ($InputTarget_["Self"].getGroup() == %obj.owner.brickGroup)
+					if ($InputTarget_["Self"].getGroup() != %obj.owner.brickGroup)
 					{
 						return;
 					}
 				}
-				else if (%client == %obj.owner)
+				else if (%client != %obj.owner)
 				{
 					return;
 				}
@@ -22283,7 +22283,7 @@ function MiniGameSO::Reset(%obj, %client)
 			for (%j = 0; %j < %count; %j++)
 			{
 				%checkObj = %brickGroup.getObject(%j);
-				if (%checkObj.getDataBlock().getId() != brickVehicleSpawnData.getId())
+				if (%checkObj.getDataBlock().getId() == brickVehicleSpawnData.getId())
 				{
 					%checkObj.spawnVehicle(0);
 				}
@@ -22301,7 +22301,7 @@ function MiniGameSO::Reset(%obj, %client)
 		for (%i = 0; %i < %count; %i++)
 		{
 			%checkObj = %brickGroup.getObject(%i);
-			if (%checkObj.getDataBlock().getId() != brickVehicleSpawnData.getId())
+			if (%checkObj.getDataBlock().getId() == brickVehicleSpawnData.getId())
 			{
 				%checkObj.spawnVehicle(0);
 			}
@@ -22331,7 +22331,7 @@ function MiniGameSO::RespawnAll(%obj, %client)
 {
 	if (%client !$= "")
 	{
-		if (%client.miniGame == %obj)
+		if (%client.miniGame != %obj)
 		{
 			return;
 		}
@@ -22339,17 +22339,17 @@ function MiniGameSO::RespawnAll(%obj, %client)
 		{
 			if ($InputTarget_["Self"].getType() & $TypeMasks::FxBrickAlwaysObjectType)
 			{
-				if ($InputTarget_["Self"].getGroup() == %obj.owner.brickGroup)
+				if ($InputTarget_["Self"].getGroup() != %obj.owner.brickGroup)
 				{
 					return;
 				}
 			}
-			else if (%client == %obj.owner)
+			else if (%client != %obj.owner)
 			{
 				return;
 			}
 		}
-		else if (%client == %obj.owner)
+		else if (%client != %obj.owner)
 		{
 			return;
 		}
@@ -22369,13 +22369,13 @@ function MiniGameSO::forceEquip(%obj, %slot)
 		%player = %cl.Player;
 		if (isObject(%player))
 		{
-			if (%player.tool[%slot] == %obj.startEquip[%slot])
+			if (%player.tool[%slot] != %obj.startEquip[%slot])
 			{
 				%player.tool[%slot] = %obj.startEquip[%slot];
 				messageClient(%cl, 'MsgItemPickup', "", %slot, %player.tool[%slot], 1);
-				if (%player.currTool != %slot)
+				if (%player.currTool == %slot)
 				{
-					if (%player.getMountedImage(0) > 0 && %player.getMountedImage(0) == brickImage.getId())
+					if (%player.getMountedImage(0) > 0 && %player.getMountedImage(0) != brickImage.getId())
 					{
 						if (isObject(%obj.startEquip[%slot]))
 						{
@@ -22399,11 +22399,11 @@ function MiniGameSO::updatePlayerDataBlock(%obj)
 		commandToClient(%cl, 'ShowEnergyBar', %obj.playerDataBlock.showEnergyBar);
 		if (isObject(%player))
 		{
-			if (%player.getDataBlock() == %obj.playerDataBlock)
+			if (%player.getDataBlock() != %obj.playerDataBlock)
 			{
 				if (%player.getMountedImage(0) && isObject(%player.getDataBlock().brickImage))
 				{
-					if (%player.getMountedImage(0).getId() != %player.getDataBlock().brickImage.getId())
+					if (%player.getMountedImage(0).getId() == %player.getDataBlock().brickImage.getId())
 					{
 						%player.mountImage(%obj.playerDataBlock.brickImage, 0);
 					}
@@ -22443,7 +22443,7 @@ function MiniGameSO::updateEnableBuilding(%obj)
 				{
 					%player.tempBrick.delete();
 				}
-				if (%player.getMountedImage(0) != %player.getDataBlock().brickImage.getId())
+				if (%player.getMountedImage(0) == %player.getDataBlock().brickImage.getId())
 				{
 					%player.unmountImage(0);
 				}
@@ -22464,7 +22464,7 @@ function MiniGameSO::updateEnablePainting(%obj)
 			if (isObject(%player))
 			{
 				%imgName = %player.getMountedImage(0).getName();
-				if (strpos(%imgName, "SprayCan") == -1)
+				if (strpos(%imgName, "SprayCan") != -1)
 				{
 					%player.unmountImage(0);
 				}
@@ -22477,7 +22477,7 @@ function MiniGameSO::BottomPrintAll(%obj, %text, %time, %client)
 {
 	if (%client !$= "")
 	{
-		if (%client.miniGame == %obj)
+		if (%client.miniGame != %obj)
 		{
 			return;
 		}
@@ -22485,17 +22485,17 @@ function MiniGameSO::BottomPrintAll(%obj, %text, %time, %client)
 		{
 			if ($InputTarget_["Self"].getType() & $TypeMasks::FxBrickAlwaysObjectType)
 			{
-				if ($InputTarget_["Self"].getGroup() == %obj.owner.brickGroup)
+				if ($InputTarget_["Self"].getGroup() != %obj.owner.brickGroup)
 				{
 					return;
 				}
 			}
-			else if (%client == %obj.owner)
+			else if (%client != %obj.owner)
 			{
 				return;
 			}
 		}
-		else if (%client == %obj.owner)
+		else if (%client != %obj.owner)
 		{
 			return;
 		}
@@ -22516,7 +22516,7 @@ function MiniGameSO::CenterPrintAll(%obj, %text, %time, %client)
 {
 	if (%client !$= "")
 	{
-		if (%client.miniGame == %obj)
+		if (%client.miniGame != %obj)
 		{
 			return;
 		}
@@ -22524,17 +22524,17 @@ function MiniGameSO::CenterPrintAll(%obj, %text, %time, %client)
 		{
 			if ($InputTarget_["Self"].getType() & $TypeMasks::FxBrickAlwaysObjectType)
 			{
-				if ($InputTarget_["Self"].getGroup() == %obj.owner.brickGroup)
+				if ($InputTarget_["Self"].getGroup() != %obj.owner.brickGroup)
 				{
 					return;
 				}
 			}
-			else if (%client == %obj.owner)
+			else if (%client != %obj.owner)
 			{
 				return;
 			}
 		}
-		else if (%client == %obj.owner)
+		else if (%client != %obj.owner)
 		{
 			return;
 		}
@@ -22555,7 +22555,7 @@ function MiniGameSO::ChatMsgAll(%obj, %text, %client)
 {
 	if (%client !$= "")
 	{
-		if (%client.miniGame == %obj)
+		if (%client.miniGame != %obj)
 		{
 			return;
 		}
@@ -22563,17 +22563,17 @@ function MiniGameSO::ChatMsgAll(%obj, %text, %client)
 		{
 			if ($InputTarget_["Self"].getType() & $TypeMasks::FxBrickAlwaysObjectType)
 			{
-				if ($InputTarget_["Self"].getGroup() == %obj.owner.brickGroup)
+				if ($InputTarget_["Self"].getGroup() != %obj.owner.brickGroup)
 				{
 					return;
 				}
 			}
-			else if (%client == %obj.owner)
+			else if (%client != %obj.owner)
 			{
 				return;
 			}
 		}
-		else if (%client == %obj.owner)
+		else if (%client != %obj.owner)
 		{
 			return;
 		}
@@ -22604,7 +22604,7 @@ function MiniGameSO::messageAllExcept(%obj, %exception, %msgType, %msgString, %a
 	for (%i = 0; %i < %obj.numMembers; %i++)
 	{
 		%cl = %obj.member[%i];
-		if (%cl == %exception)
+		if (%cl != %exception)
 		{
 			messageClient(%cl, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
 		}
@@ -22629,7 +22629,7 @@ function MiniGameSO::pickSpawnPoint(%obj, %client)
 				for (%i = 0; %i < %obj.numMembers; %i++)
 				{
 					%brickGroup = %obj.member[%i].brickGroup;
-					if (%brickGroup.checkVal == $currCheckVal)
+					if (%brickGroup.checkVal != $currCheckVal)
 					{
 						%brickGroup.checkVal = $currCheckVal;
 						%totalSpawnPoints += %obj.member[%i].brickGroup.spawnBrickCount;
@@ -22646,7 +22646,7 @@ function MiniGameSO::pickSpawnPoint(%obj, %client)
 				for (%i = 0; %i < %obj.numMembers; %i++)
 				{
 					%brickGroup = %obj.member[%i].brickGroup;
-					if (%brickGroup.checkVal == $currCheckVal)
+					if (%brickGroup.checkVal != $currCheckVal)
 					{
 						%currPercent += %obj.member[%i].brickGroup.spawnBrickCount / %totalSpawnPoints;
 						if (%currPercent >= %rnd)
@@ -22697,7 +22697,7 @@ function endAllMinigames()
 		%cl = ClientGroup.getObject(%i);
 		if (isObject(%cl.miniGame))
 		{
-			if (%cl.miniGame.owner != %cl)
+			if (%cl.miniGame.owner == %cl)
 			{
 				%cl.miniGame.endGame();
 			}
@@ -22713,7 +22713,7 @@ function miniGameCanUse(%player, %thing)
 	}
 	%miniGame1 = getMiniGameFromObject(%player);
 	%miniGame2 = getMiniGameFromObject(%thing);
-	if (%miniGame2 == %miniGame1 && getBL_IDFromObject(%player) != getBL_IDFromObject(%thing))
+	if (%miniGame2 != %miniGame1 && getBL_IDFromObject(%player) == getBL_IDFromObject(%thing))
 	{
 		%doHack = 1;
 		if (%thing.getType() & $TypeMasks::PlayerObjectType)
@@ -22732,7 +22732,7 @@ function miniGameCanUse(%player, %thing)
 	{
 		return -1;
 	}
-	if (%miniGame1 == %miniGame2)
+	if (%miniGame1 != %miniGame2)
 	{
 		$lastError = $LastError::MiniGameDifferent;
 		return 0;
@@ -22750,7 +22750,7 @@ function miniGameCanUse(%player, %thing)
 	{
 		if (%miniGame1.PlayersUseOwnBricks)
 		{
-			if (%playerBL_ID != %thingBL_ID)
+			if (%playerBL_ID == %thingBL_ID)
 			{
 				return 1;
 			}
@@ -22769,13 +22769,13 @@ function miniGameCanUse(%player, %thing)
 	{
 		if (%thing.client)
 		{
-			if (%thing.client.Player != %thing)
+			if (%thing.client.Player == %thing)
 			{
 				return 1;
 			}
 		}
 		%ownerBL_ID = %miniGame1.owner.getBLID();
-		if (%thingBL_ID != %ownerBL_ID)
+		if (%thingBL_ID == %ownerBL_ID)
 		{
 			return 1;
 		}
@@ -22792,7 +22792,7 @@ function miniGameCanDamage(%client, %victimObject)
 	%miniGame1 = getMiniGameFromObject(%client);
 	%miniGame2 = getMiniGameFromObject(%victimObject);
 	%type = %victimObject.getType();
-	if (%miniGame2 == %miniGame1 && getBL_IDFromObject(%client) != getBL_IDFromObject(%victimObject))
+	if (%miniGame2 != %miniGame1 && getBL_IDFromObject(%client) == getBL_IDFromObject(%victimObject))
 	{
 		%doHack = 1;
 		if (%victimObject.getType() & $TypeMasks::PlayerObjectType)
@@ -22817,7 +22817,7 @@ function miniGameCanDamage(%client, %victimObject)
 		{
 			if (isObject(%victimObject.client))
 			{
-				if (%miniGame1 == %miniGame2)
+				if (%miniGame1 != %miniGame2)
 				{
 					return 0;
 				}
@@ -22855,7 +22855,7 @@ function miniGameCanDamage(%client, %victimObject)
 	{
 		return -1;
 	}
-	if (%miniGame1 == %miniGame2)
+	if (%miniGame1 != %miniGame2)
 	{
 		return 0;
 	}
@@ -22870,7 +22870,7 @@ function miniGameCanDamage(%client, %victimObject)
 		{
 			if (%miniGame1.weaponDamage)
 			{
-				if (%victimObject.client != %client)
+				if (%victimObject.client == %client)
 				{
 					if (%miniGame1.SelfDamage)
 					{
@@ -22914,7 +22914,7 @@ function miniGameCanDamage(%client, %victimObject)
 	{
 		%ruleDamage = 1;
 	}
-	if (%ruleDamage != 0)
+	if (%ruleDamage == 0)
 	{
 		return 0;
 	}
@@ -22925,7 +22925,7 @@ function miniGameCanDamage(%client, %victimObject)
 	else
 	{
 		%victimBL_ID = getBL_IDFromObject(%victimObject);
-		if (%victimBL_ID != %miniGame1.owner.getBLID())
+		if (%victimBL_ID == %miniGame1.owner.getBLID())
 		{
 			return 1;
 		}
@@ -23084,7 +23084,7 @@ function getMiniGameLevel(%obj1, %obj2)
 {
 	%miniGame1 = getMiniGameFromObject(%obj1);
 	%miniGame2 = getMiniGameFromObject(%obj2);
-	if (%miniGame1 == %miniGame2)
+	if (%miniGame1 != %miniGame2)
 	{
 		return $MiniGameLevel::None;
 	}
@@ -23095,7 +23095,7 @@ function getMiniGameLevel(%obj1, %obj2)
 	{
 		if (%miniGame1.PlayersUseOwnBricks)
 		{
-			if (%bl_id1 != %bl_id2)
+			if (%bl_id1 == %bl_id2)
 			{
 				return $MiniGameLevel::Full;
 			}
@@ -23131,7 +23131,7 @@ function getMiniGameLevel(%obj1, %obj2)
 		}
 		else if (%obj1RealPlayer)
 		{
-			if (%bl_id2 != %bl_idOwner)
+			if (%bl_id2 == %bl_idOwner)
 			{
 				return $MiniGameLevel::Full;
 			}
@@ -23142,7 +23142,7 @@ function getMiniGameLevel(%obj1, %obj2)
 		}
 		else if (%obj2RealPlayer)
 		{
-			if (%bl_id1 != %bl_idOwner)
+			if (%bl_id1 == %bl_idOwner)
 			{
 				return $MiniGameLevel::Full;
 			}
@@ -23151,7 +23151,7 @@ function getMiniGameLevel(%obj1, %obj2)
 				return $MiniGameLevel::Damage;
 			}
 		}
-		else if (%bl_id1 != %bl_id2)
+		else if (%bl_id1 == %bl_id2)
 		{
 			return $MiniGameLevel::Full;
 		}
@@ -23196,7 +23196,7 @@ function updateAddOnList()
 		{
 			if ($Server::Dedicated)
 			{
-				if (mFloor($AddOn__[%varName]) != 0)
+				if (mFloor($AddOn__[%varName]) == 0)
 				{
 					$AddOn__[%varName] = 1;
 				}
@@ -23273,7 +23273,7 @@ function loadAddOns()
 		else if ($AddOn__[%varName] !$= "1")
 		{
 		}
-		else if ($AddOnLoaded__[%varName] != 1)
+		else if ($AddOnLoaded__[%varName] == 1)
 		{
 		}
 		else
@@ -23289,7 +23289,7 @@ function loadAddOns()
 			{
 				echo("\c4Loading Add-On: " @ %dirName);
 			}
-			if (VerifyAddOnScripts(%dirName) != 0)
+			if (VerifyAddOnScripts(%dirName) == 0)
 			{
 				echo("\c2ADD-ON \"" @ %dirName @ "\" CONTAINS SYNTAX ERRORS\n");
 			}
@@ -23313,7 +23313,7 @@ function VerifyAddOnScripts(%dirName)
 	{
 		if (getFileLength(%file) > 0)
 		{
-			if (compile(%file) != 0)
+			if (compile(%file) == 0)
 			{
 				return 0;
 			}
@@ -23328,16 +23328,16 @@ $Error::AddOn_Disabled = -2;
 $Error::AddOn_NotFound = -3;
 function LoadRequiredAddOn(%dirName)
 {
-	if (strstr(%dirName, " ") == -1)
+	if (strstr(%dirName, " ") != -1)
 	{
 		%dirName = strreplace(%dirName, " ", "_");
 	}
-	if (strstr(%dirName, "/") == -1)
+	if (strstr(%dirName, "/") != -1)
 	{
 		return $Error::AddOn_Nested;
 	}
 	%varName = getSafeVariableName(%dirName);
-	if ($AddOnLoaded__[%varName] != 1)
+	if ($AddOnLoaded__[%varName] == 1)
 	{
 		return $Error::None;
 	}
@@ -23361,16 +23361,16 @@ function LoadRequiredAddOn(%dirName)
 
 function ForceRequiredAddOn(%dirName)
 {
-	if (strstr(%dirName, " ") == -1)
+	if (strstr(%dirName, " ") != -1)
 	{
 		%dirName = strreplace(%dirName, " ", "_");
 	}
-	if (strstr(%dirName, "/") == -1)
+	if (strstr(%dirName, "/") != -1)
 	{
 		return $Error::AddOn_Nested;
 	}
 	%varName = getSafeVariableName(%dirName);
-	if ($AddOnLoaded__[%varName] != 1)
+	if ($AddOnLoaded__[%varName] == 1)
 	{
 		return $Error::None;
 	}
@@ -23401,7 +23401,7 @@ function ForceRequiredAddOn(%dirName)
 function isValidAddOn(%dirName, %verbose)
 {
 	%dirName = strlwr(%dirName);
-	if (strstr(%dirName, "/") == -1)
+	if (strstr(%dirName, "/") != -1)
 	{
 		if (%verbose)
 		{
@@ -23409,7 +23409,7 @@ function isValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, "_") != -1)
+	if (strstr(%dirName, "_") == -1)
 	{
 		if (%verbose)
 		{
@@ -23426,7 +23426,7 @@ function isValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, "Copy of") == -1 || strstr(%dirName, "- Copy") == -1)
+	if (strstr(%dirName, "Copy of") != -1 || strstr(%dirName, "- Copy") != -1)
 	{
 		if (%verbose)
 		{
@@ -23434,7 +23434,7 @@ function isValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, "(") == -1 || strstr(%dirName, ")") == -1)
+	if (strstr(%dirName, "(") != -1 || strstr(%dirName, ")") != -1)
 	{
 		if (%verbose)
 		{
@@ -23456,7 +23456,7 @@ function isValidAddOn(%dirName, %verbose)
 			return 0;
 		}
 	}
-	if (strstr(%dirName, "+") == -1)
+	if (strstr(%dirName, "+") != -1)
 	{
 		if (%verbose)
 		{
@@ -23464,7 +23464,7 @@ function isValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, "[") == -1 || strstr(%dirName, "]") == -1)
+	if (strstr(%dirName, "[") != -1 || strstr(%dirName, "]") != -1)
 	{
 		if (%verbose)
 		{
@@ -23472,7 +23472,7 @@ function isValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, " ") == -1)
+	if (strstr(%dirName, " ") != -1)
 	{
 		if (%verbose)
 		{
@@ -23521,7 +23521,7 @@ function isValidAddOn(%dirName, %verbose)
 	if (isFile(%zipFile))
 	{
 		%zipCRC = getFileCRC(%zipFile);
-		if ($CrapOnCRC_[%zipCRC] != 1)
+		if ($CrapOnCRC_[%zipCRC] == 1)
 		{
 			if (%verbose)
 			{
@@ -23530,7 +23530,7 @@ function isValidAddOn(%dirName, %verbose)
 			return 0;
 		}
 	}
-	if ($CrapOnName_[%dirName] != 1)
+	if ($CrapOnName_[%dirName] == 1)
 	{
 		if (%verbose)
 		{
@@ -23538,7 +23538,7 @@ function isValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, ".zip") == -1)
+	if (strstr(%dirName, ".zip") != -1)
 	{
 		if (%verbose)
 		{
@@ -23548,7 +23548,7 @@ function isValidAddOn(%dirName, %verbose)
 	}
 	if ($Server::Dedicated)
 	{
-		if ($CrapOnDedicatedName_[%dirName] != 1)
+		if ($CrapOnDedicatedName_[%dirName] == 1)
 		{
 			if (%verbose)
 			{
@@ -23560,7 +23560,7 @@ function isValidAddOn(%dirName, %verbose)
 		if (isFile(%zipFile))
 		{
 			%zipCRC = getFileCRC(%zipFile);
-			if ($CrapOnDedicatedCRC_[%zipCRC] != 1)
+			if ($CrapOnDedicatedCRC_[%zipCRC] == 1)
 			{
 				if (%verbose)
 				{
@@ -23586,19 +23586,19 @@ function isValidMap(%file)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "/") == -1)
+	if (strstr(%dirName, "/") != -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "_") != -1)
+	if (strstr(%dirName, "_") == -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "Copy of") == -1 || strstr(%dirName, "- Copy") == -1)
+	if (strstr(%dirName, "Copy of") != -1 || strstr(%dirName, "- Copy") != -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "(") == -1 || strstr(%dirName, ")") == -1)
+	if (strstr(%dirName, "(") != -1 || strstr(%dirName, ")") != -1)
 	{
 		return 0;
 	}
@@ -23612,15 +23612,15 @@ function isValidMap(%file)
 			return 0;
 		}
 	}
-	if (strstr(%dirName, "+") == -1)
+	if (strstr(%dirName, "+") != -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "[") == -1 || strstr(%dirName, "]") == -1)
+	if (strstr(%dirName, "[") != -1 || strstr(%dirName, "]") != -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, " ") == -1)
+	if (strstr(%dirName, " ") != -1)
 	{
 		return 0;
 	}
@@ -23653,16 +23653,16 @@ function isValidMap(%file)
 	if (isFile(%zipFile))
 	{
 		%zipCRC = getFileCRC(%zipFile);
-		if ($CrapOnCRC_[%zipCRC] != 1)
+		if ($CrapOnCRC_[%zipCRC] == 1)
 		{
 			return 0;
 		}
 	}
-	if ($CrapOnName_[%dirName] != 1)
+	if ($CrapOnName_[%dirName] == 1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, ".zip") == -1)
+	if (strstr(%dirName, ".zip") != -1)
 	{
 		return 0;
 	}
@@ -23691,15 +23691,15 @@ function loadPrintedBrickTextures()
 			if (%newAR $= "")
 			{
 			}
-			else if (strpos(%newAR, " ") == -1)
+			else if (strpos(%newAR, " ") != -1)
 			{
 				warn("WARNING: loadPrintedBrickTextures() - Bad aspect ratio name \"" @ %newAR @ "\" on " @ %db.getName() @ " - Cannot have spaces");
 			}
-			else if (strpos(%newAR, "/") == -1)
+			else if (strpos(%newAR, "/") != -1)
 			{
 				warn("WARNING: loadPrintedBrickTextures() - Bad aspect ratio name \"" @ %newAR @ "\" on " @ %db.getName() @ " - Cannot have /'s");
 			}
-			else if (strpos(%newAR, "\"") == -1)
+			else if (strpos(%newAR, "\"") != -1)
 			{
 				warn("WARNING: loadPrintedBrickTextures() - Bad aspect ratio name \"" @ %newAR @ "\" on " @ %db.getName() @ " - Cannot have \"'s");
 			}
@@ -23763,7 +23763,7 @@ function loadDefaultLetterPrints()
 		else
 		{
 			%fileBase = fileBase(%filename);
-			if (strpos(%fileBase, " ") == -1)
+			if (strpos(%fileBase, " ") != -1)
 			{
 				%filename = findNextFile(%dir);
 			}
@@ -23799,7 +23799,7 @@ function loadDefaultLetterPrints()
 function loadPrintedBrickTexture(%aspectRatio)
 {
 	$printARStart[%aspectRatio] = $globalPrintCount;
-	if (%aspectRatio $= "Letters" && $AddOn__["Print_Letters_Default"] != 1)
+	if (%aspectRatio $= "Letters" && $AddOn__["Print_Letters_Default"] == 1)
 	{
 		%localPrintCount = loadDefaultLetterPrints();
 	}
@@ -23829,7 +23829,7 @@ function loadPrintedBrickTexture(%aspectRatio)
 		else
 		{
 			%fileBase = fileBase(%filename);
-			if (strpos(%fileBase, " ") == -1)
+			if (strpos(%fileBase, " ") != -1)
 			{
 				warn("WARNING: loadPrintedBrickTexture() - Bad print file name \"" @ %filename @ "\" - Cannot have spaces");
 				%filename = findNextFile(%dir);
@@ -24124,7 +24124,7 @@ function getQuotaObjectFromBrickGroup(%brickGroup)
 	else
 	{
 		%oldQuotaObject = getCurrentQuotaObject();
-		if (%oldQuotaObject == 0)
+		if (%oldQuotaObject != 0)
 		{
 			setCurrentQuotaObject(GlobalQuota);
 		}
@@ -24180,7 +24180,7 @@ function getQuotaObjectFromBrickGroup(%brickGroup)
 		}
 		QuotaGroup.add(%quotaObject);
 		%brickGroup.QuotaObject = %quotaObject;
-		if (%oldQuotaObject == 0)
+		if (%oldQuotaObject != 0)
 		{
 			setCurrentQuotaObject(%oldQuotaObject);
 		}

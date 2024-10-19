@@ -23,6 +23,8 @@
 config/
 
 # Ignore specific extensions
+*.exe
+*.dll
 *.dso
 *.mis
 *.dif

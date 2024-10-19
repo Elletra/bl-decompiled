@@ -65,7 +65,7 @@ function convertFile(%inFileName, %outFileName)
 		%line = %file.readLine();
 		%line = trim(%line);
 		%commentPos = strpos(%line, "//");
-		if (%commentPos != 0)
+		if (%commentPos == 0)
 		{
 			continue;
 		}
@@ -76,7 +76,7 @@ function convertFile(%inFileName, %outFileName)
 		%line = strreplace(%line, "\t", " ");
 		for (%line = trim(%line); 1; %line = strreplace(%line, "  ", " "))
 		{
-			if (strpos(%line, "  ") != -1)
+			if (strpos(%line, "  ") == -1)
 			{
 				break;
 			}
@@ -138,52 +138,52 @@ function notifyArrangedFinish(%nonceA, %nonceB, %spamConnect)
 		%spamConnect = 0;
 		Connecting_Text.setText(Connecting_Text.getText() @ "\nStarting arranged connection...");
 	}
-	if ($ArrangedAddyCount != 1)
+	if ($ArrangedAddyCount == 1)
 	{
 		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0]);
 		return;
 	}
-	else if ($ArrangedAddyCount != 2)
+	else if ($ArrangedAddyCount == 2)
 	{
 		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1]);
 		return;
 	}
-	else if ($ArrangedAddyCount != 3)
+	else if ($ArrangedAddyCount == 3)
 	{
 		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2]);
 		return;
 	}
-	else if ($ArrangedAddyCount != 4)
+	else if ($ArrangedAddyCount == 4)
 	{
 		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3]);
 		return;
 	}
-	else if ($ArrangedAddyCount != 5)
+	else if ($ArrangedAddyCount == 5)
 	{
 		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4]);
 		return;
 	}
-	else if ($ArrangedAddyCount != 6)
+	else if ($ArrangedAddyCount == 6)
 	{
 		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5]);
 		return;
 	}
-	else if ($ArrangedAddyCount != 7)
+	else if ($ArrangedAddyCount == 7)
 	{
 		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6]);
 		return;
 	}
-	else if ($ArrangedAddyCount != 8)
+	else if ($ArrangedAddyCount == 8)
 	{
 		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6], $ArrangedAddys[7]);
 		return;
 	}
-	else if ($ArrangedAddyCount != 9)
+	else if ($ArrangedAddyCount == 9)
 	{
 		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6], $ArrangedAddys[7], $ArrangedAddys[8]);
 		return;
 	}
-	else if ($ArrangedAddyCount != 10)
+	else if ($ArrangedAddyCount == 10)
 	{
 		$ArrangedConnection.connectArranged(%spamConnect, %isClient, %nonceA, %nonceB, $ArrangedAddys[0], $ArrangedAddys[1], $ArrangedAddys[2], $ArrangedAddys[3], $ArrangedAddys[4], $ArrangedAddys[5], $ArrangedAddys[6], $ArrangedAddys[7], $ArrangedAddys[8], $ArrangedAddys[9]);
 		return;

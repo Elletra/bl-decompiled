@@ -30,7 +30,7 @@ function initDedicated()
 	{
 		%mis = $missionArg;
 	}
-	if (!isFile(%mis) || strpos(%mis, "tutorial") == -1)
+	if (!isFile(%mis) || strpos(%mis, "tutorial") != -1)
 	{
 		%base = fileBase(%mis);
 		%mis = "Add-Ons/Map_" @ %base @ "/" @ %base @ ".mis";
@@ -50,10 +50,10 @@ function initDedicated()
 		{
 			%mis = "Add-Ons/Map_Slate/slate.mis";
 		}
-		if (!isFile(%mis) || strpos(%mis, "tutorial") == -1)
+		if (!isFile(%mis) || strpos(%mis, "tutorial") != -1)
 		{
 			%mis = findFirstFile("Add-Ons/Map_*/*.mis");
-			if (strpos(%mis, "tutorial") == -1)
+			if (strpos(%mis, "tutorial") != -1)
 			{
 				%mis = findNextFile("Add-Ons/Map_*/*.mis");
 			}

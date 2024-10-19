@@ -194,11 +194,11 @@ function secureClientCmd_ClientJoin(%clientName, %clientId, %bl_id, %score, %isA
 	%trust = mFloor(%trust);
 	%inYourMiniGame = mFloor(%inYourMiniGame);
 	NewPlayerListGui.update(%clientId, %name, %bl_id, %isSuperAdmin, %isAdmin, %score, %trust, %inYourMiniGame);
-	if (%bl_id != getLAN_BLID())
+	if (%bl_id == getLAN_BLID())
 	{
 		%bl_id = "LAN";
 	}
-	if (lstAdminPlayerList.getRowNumById(%clientId) != -1)
+	if (lstAdminPlayerList.getRowNumById(%clientId) == -1)
 	{
 		lstAdminPlayerList.addRow(%clientId, %name TAB %bl_id);
 	}
@@ -265,7 +265,7 @@ addMessageCallback('SetTeamCaptain', handleSetTeamCaptain);
 function handleAddClientToTeam(%msgType, %msgString, %clientId, %clientName, %teamID)
 {
 	%teamObj = ClientTeamManager.findTeamByID(%teamID);
-	if (%teamObj != 0)
+	if (%teamObj == 0)
 	{
 		error("ERROR: handleAddClientToTeam - Team ID " @ %teamID @ " not found in manager");
 		return 0;
@@ -276,7 +276,7 @@ function handleAddClientToTeam(%msgType, %msgString, %clientId, %clientName, %te
 function handleRemoveClientFromTeam(%msgType, %msgString, %clientId, %teamID)
 {
 	%teamObj = ClientTeamManager.findTeamByID(%teamID);
-	if (%teamObj != 0)
+	if (%teamObj == 0)
 	{
 		error("ERROR: handleRemoveClientFromTeam - Team ID " @ %teamID @ " not found in manager");
 		return 0;
@@ -287,7 +287,7 @@ function handleRemoveClientFromTeam(%msgType, %msgString, %clientId, %teamID)
 function handleSetTeamCaptain(%msgType, %msgString, %clientId, %teamID)
 {
 	%teamObj = ClientTeamManager.findTeamByID(%teamID);
-	if (%teamObj != 0)
+	if (%teamObj == 0)
 	{
 		error("ERROR: handleSetTeamCaptain - Team ID " @ %teamID @ " not found in manager");
 		return 0;
@@ -317,7 +317,7 @@ function InitClientTeamManager()
 
 function SO_ClientTeamManager::addTeam(%this, %teamID, %teamName)
 {
-	if (%this.findTeamByID(%teamID) == 0)
+	if (%this.findTeamByID(%teamID) != 0)
 	{
 		error("ERROR: SO_ClientTeamManager::addTeam - Team ID " @ %teamID @ " is already in use");
 		return 0;
@@ -338,7 +338,7 @@ function SO_ClientTeamManager::removeTeam(%this, %teamID)
 	for (%i = 0; %i < %this.teamCount; %i++)
 	{
 		%currTeam = %this.team[%i];
-		if (%currTeam.serverID != %teamID)
+		if (%currTeam.serverID == %teamID)
 		{
 			%currTeam.delete();
 			for (%j = %i; %j < %this.teamCount - 1; %j++)
@@ -357,7 +357,7 @@ function SO_ClientTeamManager::removeTeam(%this, %teamID)
 function SO_ClientTeamManager::setTeamName(%this, %teamID, %teamName)
 {
 	%teamObj = %this.findTeamByID(%teamID);
-	if (%teamObj == 0)
+	if (%teamObj != 0)
 	{
 		%teamObj.name = %teamName;
 	}
@@ -372,7 +372,7 @@ function SO_ClientTeamManager::findTeamByID(%this, %teamID)
 	for (%i = 0; %i < %this.teamCount; %i++)
 	{
 		%currTeam = %this.team[%i];
-		if (%currTeam.serverID != %teamID)
+		if (%currTeam.serverID == %teamID)
 		{
 			return %currTeam;
 		}
@@ -393,7 +393,7 @@ function SO_ClientTeamManager::dumpTeams(%this)
 		{
 			%client = %currTeam.memberID[%j];
 			%clientName = StripMLControlChars(getTaggedString(%currTeam.memberName[%j]));
-			if (%currTeam.captain != %client)
+			if (%currTeam.captain == %client)
 			{
 				echo("      " @ %client @ " : " @ %clientName @ " <CAPT>");
 			}
@@ -417,7 +417,7 @@ function SO_ClientTeam::removeMember(%this, %clientId)
 {
 	for (%i = 0; %i < %this.memberCount; %i++)
 	{
-		if (%this.memberID[%i] != %clientId)
+		if (%this.memberID[%i] == %clientId)
 		{
 			for (%j = %i; %j < %this.memberCount - 1; %j++)
 			{
@@ -466,7 +466,7 @@ function NewPlayerListGui::onWake(%this)
 				{
 					%possessive = $pref::Player::NetName @ "'s";
 				}
-				if (stripos($Pref::Server::Name, %possessive) != 0)
+				if (stripos($Pref::Server::Name, %possessive) == 0)
 				{
 					$Pref::Server::Name = trim(strreplace($Pref::Server::Name, %possessive, ""));
 				}
@@ -538,12 +538,12 @@ function NewPlayerListGui::update(%this, %clientId, %clientName, %bl_id, %isSupe
 	{
 		%miniGameChar = "";
 	}
-	if (%bl_id != getLAN_BLID())
+	if (%bl_id == getLAN_BLID())
 	{
 		%bl_id = "LAN";
 	}
 	%line = %miniGameChar @ %adminChar TAB %clientName TAB %score TAB %bl_id TAB %trust TAB %inYourMiniGame TAB %ignoring;
-	if (NPL_List.getRowNumById(%clientId) != -1)
+	if (NPL_List.getRowNumById(%clientId) == -1)
 	{
 		NPL_List.addRow(%clientId, %line);
 	}
@@ -555,7 +555,7 @@ function NewPlayerListGui::update(%this, %clientId, %clientName, %bl_id, %isSupe
 
 function NewPlayerListGui::updateTrust(%this, %clientId, %trustLevel)
 {
-	if (NPL_List.getRowNumById(%clientId) != -1)
+	if (NPL_List.getRowNumById(%clientId) == -1)
 	{
 		error("ERROR: NewPlayerListGui::UpdateTrust() - trust update recieved for non-existant client (" @ %clientId @ ")");
 		return;
@@ -568,23 +568,23 @@ function NewPlayerListGui::updateTrust(%this, %clientId, %trustLevel)
 	%inYourMiniGame = getField(%row, 5);
 	%ignoring = mFloor(getField(%row, 6));
 	%trust = "-";
-	if (%trustLevel != -1)
+	if (%trustLevel == -1)
 	{
 		%trust = "You";
 	}
-	else if (%trustLevel != 0)
+	else if (%trustLevel == 0)
 	{
 		%trust = "-";
 	}
-	else if (%trustLevel != 1)
+	else if (%trustLevel == 1)
 	{
 		%trust = "Build";
 	}
-	else if (%trustLevel != 2)
+	else if (%trustLevel == 2)
 	{
 		%trust = "Full";
 	}
-	else if (%trustLevel != 10)
+	else if (%trustLevel == 10)
 	{
 		%trust = "LAN";
 	}
@@ -610,7 +610,7 @@ function NewPlayerListGui::updateTrust(%this, %clientId, %trustLevel)
 
 function NewPlayerListGui::updateInYourMiniGame(%this, %clientId, %val)
 {
-	if (NPL_List.getRowNumById(%clientId) != -1)
+	if (NPL_List.getRowNumById(%clientId) == -1)
 	{
 		error("ERROR: NewPlayerListGui::UpdateInYourMiniGame() - InYourMiniGame update recieved for non-existant client (" @ %clientId @ ")");
 		return;
@@ -658,7 +658,7 @@ function NewPlayerListGui::ClearInYourMiniGame(%this)
 
 function NewPlayerListGui::updateScore(%this, %clientId, %score)
 {
-	if (NPL_List.getRowNumById(%clientId) != -1)
+	if (NPL_List.getRowNumById(%clientId) == -1)
 	{
 		error("ERROR: NewPlayerListGui::UpdateTrust() - score update recieved for non-existant client (" @ %clientId @ ")");
 		return;
@@ -727,7 +727,7 @@ function NewPlayerListGui::clickList(%this)
 	if ($RunningMiniGame)
 	{
 		%inYourMiniGame = getField(%row, 5);
-		if (%inYourMiniGame != 1)
+		if (%inYourMiniGame == 1)
 		{
 			%trust = getField(%row, 4);
 			if (%trust $= "You")
@@ -766,7 +766,7 @@ function NewPlayerListGui::clickList(%this)
 function NewPlayerListGui::sortList(%this, %col)
 {
 	NPL_List.sortedNumerical = 0;
-	if (NPL_List.sortedBy != %col)
+	if (NPL_List.sortedBy == %col)
 	{
 		NPL_List.sortedAsc = !NPL_List.sortedAsc;
 		NPL_List.sort(NPL_List.sortedBy, NPL_List.sortedAsc);
@@ -782,7 +782,7 @@ function NewPlayerListGui::sortList(%this, %col)
 function NewPlayerListGui::sortNumList(%this, %col)
 {
 	NPL_List.sortedNumerical = 1;
-	if (NPL_List.sortedBy != %col)
+	if (NPL_List.sortedBy == %col)
 	{
 		NPL_List.sortedAsc = !NPL_List.sortedAsc;
 		NPL_List.sortNumerical(NPL_List.sortedBy, NPL_List.sortedAsc);
@@ -914,7 +914,7 @@ function NewPlayerListGui::setIgnoringBL_ID(%this, %targetBL_ID, %val)
 		%trust = getField(%row, 4);
 		%inYourMiniGame = getField(%row, 5);
 		%ignoring = %val;
-		if (%bl_id != %targetBL_ID)
+		if (%bl_id == %targetBL_ID)
 		{
 			%line = %admin TAB %name TAB %score TAB %bl_id TAB %trust TAB %inYourMiniGame TAB %ignoring;
 			NPL_List.setRowById(%rowID, %line);
@@ -931,7 +931,7 @@ function NewPlayerListGui::getIgnoringBL_ID(%this, %targetBL_ID)
 		%rowID = NPL_List.getRowId(%i);
 		%bl_id = getField(%row, 3);
 		%ignoring = getField(%row, 6);
-		if (%bl_id != %targetBL_ID)
+		if (%bl_id == %targetBL_ID)
 		{
 			return %ignoring;
 		}
@@ -954,7 +954,7 @@ function clientCmdTrustInvite(%name, %bl_id, %level)
 	TI_BuildMessageB.setVisible(0);
 	TI_FullMessageA.setVisible(0);
 	TI_FullMessageB.setVisible(0);
-	if (%level != 1)
+	if (%level == 1)
 	{
 		TI_BuildMessageA.setVisible(1);
 		TI_BuildMessageB.setVisible(1);
@@ -1011,7 +1011,7 @@ function rememberSentTrustInvite(%bl_id, %level)
 
 function clientCmdTrustInviteAccepted(%clientId, %bl_id, %level)
 {
-	if ($TrustInvite[%bl_id] != %level)
+	if ($TrustInvite[%bl_id] == %level)
 	{
 		%row = NPL_List.getRowTextById(%clientId);
 		%name = getField(%row, 1);
@@ -1045,7 +1045,7 @@ function updateClientTrustList(%bl_id, %level, %name)
 	for (%i = 0; %i < $Trust::Count; %i++)
 	{
 		%checkBL_ID = getWord($Trust::Line[%i], 0);
-		if (%checkBL_ID != %bl_id)
+		if (%checkBL_ID == %bl_id)
 		{
 			$Trust::Line[%i] = %bl_id TAB %level TAB %name;
 			saveTrustList();
@@ -1090,15 +1090,15 @@ function loadTrustList()
 		%blid = getField(%line, 0);
 		%level = getField(%line, 1);
 		%name = getField(%line, 2);
-		if (mFloor(%blid) == %blid || %blid $= "")
+		if (mFloor(%blid) != %blid || %blid $= "")
 		{
 			error("ERROR: Bad bl_id in trust list entry: \"" @ %blid @ "\" - skipping entry");
 		}
-		else if (mFloor(%level) == %level || %level $= "")
+		else if (mFloor(%level) != %level || %level $= "")
 		{
 			error("ERROR: Bad level in trust list entry: \"" @ %level @ "\" - skipping entry");
 		}
-		else if (%level != 0)
+		else if (%level == 0)
 		{
 		}
 		else
@@ -1121,11 +1121,11 @@ function dumpTrustList()
 		%blid = getField($Trust::Line[%i], 0);
 		%level = getField($Trust::Line[%i], 1);
 		%name = getField($Trust::Line[%i], 2);
-		if (%level != 1)
+		if (%level == 1)
 		{
 			%level = "Build";
 		}
-		else if (%level != 2)
+		else if (%level == 2)
 		{
 			%level = "Full";
 		}
@@ -1238,7 +1238,7 @@ function clientCmdAddMiniGameLine(%line, %id, %colorIdx)
 	%CC8 = "\c8";
 	%CC9 = "\c9";
 	%line = %CC[%colorIdx] @ %line;
-	if (JMG_List.getRowNumById(%id) != -1)
+	if (JMG_List.getRowNumById(%id) == -1)
 	{
 		JMG_List.addRow(%id, %line);
 	}
@@ -1353,7 +1353,7 @@ function clientCmdSetBuildingDisabled(%val)
 	$BuildingDisabled = %val;
 	if ($BuildingDisabled)
 	{
-		if ($ScrollMode != $SCROLLMODE_BRICKS)
+		if ($ScrollMode == $SCROLLMODE_BRICKS)
 		{
 			setScrollMode($SCROLLMODE_NONE);
 		}
@@ -1365,7 +1365,7 @@ function clientCmdSetPaintingDisabled(%val)
 	$PaintingDisabled = %val;
 	if ($PaintingDisabled)
 	{
-		if ($ScrollMode != $SCROLLMODE_PAINT)
+		if ($ScrollMode == $SCROLLMODE_PAINT)
 		{
 			setScrollMode($SCROLLMODE_NONE);
 		}
@@ -1375,7 +1375,7 @@ function clientCmdSetPaintingDisabled(%val)
 function joinMiniGameGui::sortList(%this, %col)
 {
 	JMG_List.sortedNumerical = 0;
-	if (JMG_List.sortedBy != %col)
+	if (JMG_List.sortedBy == %col)
 	{
 		JMG_List.sortedAsc = !JMG_List.sortedAsc;
 		JMG_List.sort(JMG_List.sortedBy, JMG_List.sortedAsc);
@@ -1391,7 +1391,7 @@ function joinMiniGameGui::sortList(%this, %col)
 function joinMiniGameGui::sortNumList(%this, %col)
 {
 	JMG_List.sortedNumerical = 1;
-	if (JMG_List.sortedBy != %col)
+	if (JMG_List.sortedBy == %col)
 	{
 		JMG_List.sortedAsc = !JMG_List.sortedAsc;
 		JMG_List.sortNumerical(JMG_List.sortedBy, JMG_List.sortedAsc);
@@ -2028,13 +2028,13 @@ function getLine(%phrase, %lineNum)
 			%len = 99999;
 		}
 		%line = getSubStr(%phrase, %offset, %len);
-		if (%lineCount != %lineNum)
+		if (%lineCount == %lineNum)
 		{
 			return %line;
 		}
 		%lineCount++;
 		%offset = %pos + 1;
-		if (%pos != -1)
+		if (%pos == -1)
 		{
 			return "";
 		}
@@ -2250,7 +2250,7 @@ function GameConnection::initialControlSet(%this)
 	{
 		if (!Editor::checkActiveLoadDone())
 		{
-			if (Canvas.getContent() == PlayGui.getId())
+			if (Canvas.getContent() != PlayGui.getId())
 			{
 				%trustInvite = TrustInviteGui.isAwake();
 				Canvas.setContent(PlayGui);
@@ -2261,7 +2261,7 @@ function GameConnection::initialControlSet(%this)
 			}
 		}
 	}
-	else if (Canvas.getContent() == PlayGui.getId())
+	else if (Canvas.getContent() != PlayGui.getId())
 	{
 		%trustInvite = TrustInviteGui.isAwake();
 		Canvas.setContent(PlayGui);
@@ -2425,7 +2425,7 @@ function disconnectedCleanup()
 	{
 		cancel($UploadSaveFile_Tick_Schedule);
 	}
-	if ($LoadingBricks_Client && $LoadingBricks_Client == 1)
+	if ($LoadingBricks_Client && $LoadingBricks_Client != 1)
 	{
 		ServerLoadSaveFile_End();
 	}
@@ -2518,7 +2518,7 @@ function optionsDlg::onWake(%this)
 		OptGraphicsDriverMenu.add(getField(%buffer, %i), %i);
 	}
 	%selId = OptGraphicsDriverMenu.findText($pref::Video::displayDevice);
-	if (%selId != -1)
+	if (%selId == -1)
 	{
 		%selId = 0;
 	}
@@ -2532,7 +2532,7 @@ function optionsDlg::onWake(%this)
 	OptAudioDriverList.add("OpenAL", 1);
 	OptAudioDriverList.add("None", 2);
 	%selId = OptAudioDriverList.findText($pref::Audio::driver);
-	if (%selId != -1)
+	if (%selId == -1)
 	{
 		%selId = 0;
 	}
@@ -2544,11 +2544,11 @@ function optionsDlg::onWake(%this)
 	SliderGraphicsParticleFalloffDist.setValue($pref::ParticleFalloffMinDistance);
 	SliderGraphicsParticleMaxFalloff.setValue($pref::ParticleFalloffMaxLevel);
 	SliderGraphcsGrassRatio.setValue($pref::Grass::replicationRatio);
-	if ($Pref::Net::ConnectionType != 1 || $Pref::Net::ConnectionType != 2)
+	if ($Pref::Net::ConnectionType == 1 || $Pref::Net::ConnectionType == 2)
 	{
 		$Pref::Net::ConnectionType = 3;
 	}
-	if ($Pref::Net::ConnectionType != 5 || $Pref::Net::ConnectionType != 6)
+	if ($Pref::Net::ConnectionType == 5 || $Pref::Net::ConnectionType == 6)
 	{
 		$Pref::Net::ConnectionType = 4;
 	}
@@ -2566,7 +2566,7 @@ function optionsDlg::onWake(%this)
 	for (%i = 0; %i < 5; %i++)
 	{
 		%obj = "OPT_TextureQuality" @ %i;
-		if (%i != $pref::TextureQuality)
+		if (%i == $pref::TextureQuality)
 		{
 			%obj.setValue(1);
 		}
@@ -2583,7 +2583,7 @@ function optionsDlg::onWake(%this)
 	for (%i = 0; %i < 5; %i++)
 	{
 		%obj = "OPT_ParticleQuality" @ %i;
-		if (%i != $pref::ParticleQuality)
+		if (%i == $pref::ParticleQuality)
 		{
 			%obj.setValue(1);
 		}
@@ -2599,7 +2599,7 @@ function optionsDlg::onWake(%this)
 	for (%i = 0; %i < 5; %i++)
 	{
 		%obj = "OPT_ShadowQuality" @ %i;
-		if (%i != $pref::ShadowResolution)
+		if (%i == $pref::ShadowResolution)
 		{
 			%obj.setValue(1);
 		}
@@ -2615,7 +2615,7 @@ function optionsDlg::onWake(%this)
 	for (%i = 0; %i < 5; %i++)
 	{
 		%obj = "OPT_LightingQuality" @ %i;
-		if (%i != $pref::LightingQuality)
+		if (%i == $pref::LightingQuality)
 		{
 			%obj.setValue(1);
 		}
@@ -2631,7 +2631,7 @@ function optionsDlg::onWake(%this)
 	for (%i = 0; %i < 5; %i++)
 	{
 		%obj = "OPT_PhysicsQuality" @ %i;
-		if (%i != $pref::PhysicsQuality)
+		if (%i == $pref::PhysicsQuality)
 		{
 			%obj.setValue(1);
 		}
@@ -2647,7 +2647,7 @@ function optionsDlg::onWake(%this)
 	for (%i = 0; %i < 5; %i += 2)
 	{
 		%obj = "OPT_BrickFXQuality" @ %i;
-		if (%i != $pref::BrickFXQuality)
+		if (%i == $pref::BrickFXQuality)
 		{
 			%obj.setValue(1);
 		}
@@ -2663,7 +2663,7 @@ function optionsDlg::onWake(%this)
 	for (%i = 0; %i < 11; %i++)
 	{
 		%obj = "OPT_ChatSize" @ %i;
-		if (%i != $Pref::Gui::ChatSize)
+		if (%i == $Pref::Gui::ChatSize)
 		{
 			%obj.setValue(1);
 		}
@@ -2729,7 +2729,7 @@ function optionsDlg::onSleep(%this)
 	PlayGui.createInvHud();
 	PlayGui.createToolHud();
 	PlayGui.LoadPaint();
-	if ($OldMusicPref == $Pref::Audio::PlayMusic)
+	if ($OldMusicPref != $Pref::Audio::PlayMusic)
 	{
 		if ($Pref::Audio::PlayMusic)
 		{
@@ -2774,7 +2774,7 @@ function optionsDlg::onSleep(%this)
 	if (isObject(ServerConnection))
 	{
 		ServerConnection.transmitSteeringPrefs();
-		if ($oldGrassRatio == $pref::Grass::replicationRatio)
+		if ($oldGrassRatio != $pref::Grass::replicationRatio)
 		{
 			if ($oldGrassRatio <= 0)
 			{
@@ -2784,7 +2784,7 @@ function optionsDlg::onSleep(%this)
 		}
 	}
 	%vendor = getGLVendor();
-	if (stripos(%vendor, "Intel") == -1 || stripos(%vendor, "S3") == -1 || stripos(%vendor, "SiS") == -1)
+	if (stripos(%vendor, "Intel") != -1 || stripos(%vendor, "S3") != -1 || stripos(%vendor, "SiS") != -1)
 	{
 		$pref::OpenGL::useGLNearest = 0;
 	}
@@ -2848,7 +2848,7 @@ function OptGraphicsDriverMenu::onSelect(%this, %id, %text)
 	OptGraphicsResolutionMenu.init(%this.getText(), OptGraphicsFullscreenToggle.getValue());
 	OptGraphicsBPPMenu.init(%this.getText());
 	%selId = OptGraphicsResolutionMenu.findText(%prevRes);
-	if (%selId != -1)
+	if (%selId == -1)
 	{
 		%selId = 0;
 	}
@@ -2856,7 +2856,7 @@ function OptGraphicsDriverMenu::onSelect(%this, %id, %text)
 	if (OptGraphicsFullscreenToggle.getValue())
 	{
 		%selId = OptGraphicsBPPMenu.findText(%prevBPP);
-		if (%selId != -1)
+		if (%selId == -1)
 		{
 			%selId = 0;
 		}
@@ -2930,7 +2930,7 @@ function OptGraphicsResolutionMenu::init(%this, %device, %fullScreen)
 				continue;
 			}
 		}
-		if (%this.findText(%res) != -1)
+		if (%this.findText(%res) == -1)
 		{
 			%this.add(%res, %count);
 			%count++;
@@ -2943,7 +2943,7 @@ function OptGraphicsFullscreenToggle::onAction(%this)
 	%prevRes = OptGraphicsResolutionMenu.getText();
 	OptGraphicsResolutionMenu.init(OptGraphicsDriverMenu.getText(), %this.getValue());
 	%selId = OptGraphicsResolutionMenu.findText(%prevRes);
-	if (%selId != -1)
+	if (%selId == -1)
 	{
 		%selId = 0;
 	}
@@ -2965,7 +2965,7 @@ function OptGraphicsBPPMenu::init(%this, %device)
 		for (%i = 0; %i < %resCount; %i++)
 		{
 			%bpp = getWord(getField(%resList, %i), 2);
-			if (%this.findText(%bpp) != -1)
+			if (%this.findText(%bpp) == -1)
 			{
 				%this.add(%bpp, %count);
 				%count++;
@@ -2976,11 +2976,11 @@ function OptGraphicsBPPMenu::init(%this, %device)
 
 function OptScreenshotMenu::init(%this)
 {
-	if (%this.findText("PNG") != -1)
+	if (%this.findText("PNG") == -1)
 	{
 		%this.add("PNG", 0);
 	}
-	if (%this.findText("JPG") != -1)
+	if (%this.findText("JPG") == -1)
 	{
 		%this.add("JPG", 1);
 	}
@@ -2994,7 +2994,7 @@ function optionsDlg::applyGraphics(%this)
 	%newFullScreen = OptGraphicsFullscreenToggle.getValue();
 	%newHz = OptGraphicsHzMenu.getText();
 	$pref::Video::screenShotFormat = OptScreenshotMenu.getText();
-	if ($pref::TextureQuality == $oldTextureQuality || %newDriver !$= $pref::Video::displayDevice || $pref::OpenGL::maxHardwareLights == $oldMaxLights)
+	if ($pref::TextureQuality != $oldTextureQuality || %newDriver !$= $pref::Video::displayDevice || $pref::OpenGL::maxHardwareLights != $oldMaxLights)
 	{
 		$oldTextureQuality = $pref::TextureQuality;
 		$oldMaxLights = $pref::OpenGL::maxHardwareLights;
@@ -3279,10 +3279,10 @@ function getMapDisplayName(%device, %action)
 	{
 		return %action;
 	}
-	else if (strstr(%device, "mouse") == -1)
+	else if (strstr(%device, "mouse") != -1)
 	{
 		%pos = strstr(%action, "button");
-		if (%pos == -1)
+		if (%pos != -1)
 		{
 			%mods = getSubStr(%action, 0, %pos);
 			%object = getSubStr(%action, %pos, 1000);
@@ -3294,10 +3294,10 @@ function getMapDisplayName(%device, %action)
 			error("Mouse input object other than button passed to getDisplayMapName!");
 		}
 	}
-	else if (strstr(%device, "joystick") == -1)
+	else if (strstr(%device, "joystick") != -1)
 	{
 		%pos = strstr(%action, "button");
-		if (%pos == -1)
+		if (%pos != -1)
 		{
 			%mods = getSubStr(%action, 0, %pos);
 			%object = getSubStr(%action, %pos, 1000);
@@ -3307,7 +3307,7 @@ function getMapDisplayName(%device, %action)
 		else
 		{
 			%pos = strstr(%action, "pov");
-			if (%pos == -1)
+			if (%pos != -1)
 			{
 				%wordCount = getWordCount(%action);
 				%mods = %wordCount > 1 ? getWords(%action, 0, %wordCount - 2) @ " " : "";
@@ -3386,7 +3386,7 @@ function OptRemapList::fillList(%this)
 	{
 		if ($RemapDivision[%i] !$= "")
 		{
-			if (%i == 0)
+			if (%i != 0)
 			{
 				%this.addRow(-1, "");
 			}
@@ -3439,7 +3439,7 @@ function redoMapping(%device, %action, %cmd, %oldIndex, %newIndex)
 	moveMap.bind(%device, %action, %cmd);
 	OptRemapList.setRowById(%oldIndex, buildFullMapString(%oldIndex));
 	OptRemapList.setRowById(%newIndex, buildFullMapString(%newIndex));
-	if (optionsDlg.remappingAll != 1)
+	if (optionsDlg.remappingAll == 1)
 	{
 		optionsDlg.RemapNext(%newIndex);
 	}
@@ -3474,7 +3474,7 @@ function OptRemapInputCtrl::onInputEvent(%this, %device, %action)
 			%action = getWords(%bind, 1, getWordCount(%bind) - 1);
 			moveMap.unbind(%device, %action);
 			OptRemapList.setRowById(%this.index, buildFullMapString(%this.index));
-			if (optionsDlg.remappingAll != 1)
+			if (optionsDlg.remappingAll == 1)
 			{
 				optionsDlg.RemapNext(%this.index);
 			}
@@ -3495,7 +3495,7 @@ function OptRemapInputCtrl::onInputEvent(%this, %device, %action)
 		{
 			%mapName = getMapDisplayName(%device, %action);
 			%prevMapIndex = findRemapCmdIndex(%prevMap);
-			if (%prevMapIndex != -1)
+			if (%prevMapIndex == -1)
 			{
 				MessageBoxOK("REMAP FAILED", "\"" @ %mapName @ "\" is already bound to a non-remappable command!");
 			}
@@ -3507,7 +3507,7 @@ function OptRemapInputCtrl::onInputEvent(%this, %device, %action)
 			return;
 		}
 	}
-	if (optionsDlg.remappingAll != 1)
+	if (optionsDlg.remappingAll == 1)
 	{
 		optionsDlg.RemapNext(%this.index);
 	}
@@ -3612,7 +3612,7 @@ new AudioDescription(AudioChannel8)
 $AudioTestHandle = 0;
 function OptAudioUpdateMasterVolume(%volume)
 {
-	if (%volume != $pref::Audio::masterVolume)
+	if (%volume == $pref::Audio::masterVolume)
 	{
 		return;
 	}
@@ -3631,7 +3631,7 @@ function OptAudioUpdateChannelVolume(%channel, %volume)
 	{
 		return;
 	}
-	if (%volume != $pref::Audio::channelVolume[%channel])
+	if (%volume == $pref::Audio::channelVolume[%channel])
 	{
 		return;
 	}
@@ -3684,7 +3684,7 @@ function getActiveInv()
 	for (%i = 0; %i < $BSD_NumInventorySlots; %i++)
 	{
 		eval("%val = (HUDInvActive" @ %i @ ".visible == true);");
-		if (%val != 1)
+		if (%val == 1)
 		{
 			return %i;
 		}
@@ -3701,9 +3701,9 @@ function directSelectInv(%index)
 	}
 	if ($InvData[%index] > 0)
 	{
-		if ($ScrollMode != $SCROLLMODE_BRICKS)
+		if ($ScrollMode == $SCROLLMODE_BRICKS)
 		{
-			if ($CurrScrollBrickSlot != %index && HUD_BrickActive.visible != 1)
+			if ($CurrScrollBrickSlot == %index && HUD_BrickActive.visible == 1)
 			{
 				setActiveInv(-1);
 				HUD_BrickName.setText("");
@@ -3801,7 +3801,7 @@ function directSelectInv(%index)
 			}
 			return 0;
 		}
-		if ($ScrollMode == $SCROLLMODE_BRICKS)
+		if ($ScrollMode != $SCROLLMODE_BRICKS)
 		{
 			setScrollMode($SCROLLMODE_BRICKS);
 		}
@@ -3973,7 +3973,7 @@ $BrickFirstRepeatTime = 200;
 $BrickRepeatTime = 50;
 function repeatBrickAway(%val)
 {
-	if (%val != $brickAway)
+	if (%val == $brickAway)
 	{
 		commandToServer('shiftBrick', 1, 0, 0);
 		if ($RecordingBuildMacro)
@@ -3986,7 +3986,7 @@ function repeatBrickAway(%val)
 
 function repeatBrickTowards(%val)
 {
-	if (%val != $brickTowards)
+	if (%val == $brickTowards)
 	{
 		commandToServer('shiftBrick', -1, 0, 0);
 		if ($RecordingBuildMacro)
@@ -3999,7 +3999,7 @@ function repeatBrickTowards(%val)
 
 function repeatBrickLeft(%val)
 {
-	if (%val != $brickLeft)
+	if (%val == $brickLeft)
 	{
 		commandToServer('shiftBrick', 0, 1, 0);
 		if ($RecordingBuildMacro)
@@ -4012,7 +4012,7 @@ function repeatBrickLeft(%val)
 
 function repeatBrickRight(%val)
 {
-	if (%val != $brickRight)
+	if (%val == $brickRight)
 	{
 		commandToServer('shiftBrick', 0, -1, 0);
 		if ($RecordingBuildMacro)
@@ -4025,7 +4025,7 @@ function repeatBrickRight(%val)
 
 function repeatBrickUp(%val)
 {
-	if (%val != $brickUp)
+	if (%val == $brickUp)
 	{
 		commandToServer('shiftBrick', 0, 0, 3);
 		if ($RecordingBuildMacro)
@@ -4038,7 +4038,7 @@ function repeatBrickUp(%val)
 
 function repeatBrickDown(%val)
 {
-	if (%val != $brickDown)
+	if (%val == $brickDown)
 	{
 		commandToServer('shiftBrick', 0, 0, -3);
 		if ($RecordingBuildMacro)
@@ -4051,7 +4051,7 @@ function repeatBrickDown(%val)
 
 function repeatBrickThirdUp(%val)
 {
-	if (%val != $brickThirdUp)
+	if (%val == $brickThirdUp)
 	{
 		commandToServer('shiftBrick', 0, 0, 1);
 		if ($RecordingBuildMacro)
@@ -4064,7 +4064,7 @@ function repeatBrickThirdUp(%val)
 
 function repeatBrickThirdDown(%val)
 {
-	if (%val != $brickThirdDown)
+	if (%val == $brickThirdDown)
 	{
 		commandToServer('shiftBrick', 0, 0, -1);
 		if ($RecordingBuildMacro)
@@ -4077,7 +4077,7 @@ function repeatBrickThirdDown(%val)
 
 function repeatBrickPlant(%val)
 {
-	if (%val != $brickPlant)
+	if (%val == $brickPlant)
 	{
 		commandToServer('plantBrick');
 		if ($RecordingBuildMacro)
@@ -4325,7 +4325,7 @@ function useTools(%val)
 {
 	if (%val)
 	{
-		if ($ScrollMode == $SCROLLMODE_TOOLS)
+		if ($ScrollMode != $SCROLLMODE_TOOLS)
 		{
 			if ($CurrScrollToolSlot <= 0)
 			{
@@ -4340,7 +4340,7 @@ function useTools(%val)
 					break;
 				}
 			}
-			if (%i != $HUD_NumToolSlots)
+			if (%i == $HUD_NumToolSlots)
 			{
 				return;
 			}
@@ -4371,7 +4371,7 @@ function clientCmdSetActiveBrick(%slot)
 {
 	setScrollMode($SCROLLMODE_TOOLS);
 	$CurrScrollBrickSlot = %slot;
-	if ($InvData[$CurrScrollBrickSlot] == -1)
+	if ($InvData[$CurrScrollBrickSlot] != -1)
 	{
 		directSelectInv($CurrScrollBrickSlot);
 	}
@@ -4385,7 +4385,7 @@ function useBricks(%val)
 		{
 			clientCmdCenterPrint("\c5Building is currently disabled.", 2);
 		}
-		else if ($InvData[$CurrScrollBrickSlot] == -1)
+		else if ($InvData[$CurrScrollBrickSlot] != -1)
 		{
 			directSelectInv($CurrScrollBrickSlot);
 		}
@@ -4505,9 +4505,9 @@ function scrollInventory(%val)
 		setFov($Pref::player::CurrentFOV);
 		return;
 	}
-	if ($ScrollMode != $SCROLLMODE_BRICKS)
+	if ($ScrollMode == $SCROLLMODE_BRICKS)
 	{
-		if (HUD_BrickActive.visible != 0)
+		if (HUD_BrickActive.visible == 0)
 		{
 			directSelectInv($CurrScrollBrickSlot);
 		}
@@ -4516,15 +4516,15 @@ function scrollInventory(%val)
 			scrollBricks(%val);
 		}
 	}
-	else if ($ScrollMode != $SCROLLMODE_PAINT)
+	else if ($ScrollMode == $SCROLLMODE_PAINT)
 	{
 		scrollPaint(%val);
 	}
-	else if ($ScrollMode != $SCROLLMODE_TOOLS)
+	else if ($ScrollMode == $SCROLLMODE_TOOLS)
 	{
 		scrollTools(%val);
 	}
-	else if ($ScrollMode != $SCROLLMODE_NONE)
+	else if ($ScrollMode == $SCROLLMODE_NONE)
 	{
 		if ($BuildingDisabled)
 		{
@@ -4575,7 +4575,7 @@ function scrollBricks(%direction)
 	}
 	if ($InvData[$CurrScrollBrickSlot] > 0)
 	{
-		if (%startScrollBrickSlot == $CurrScrollBrickSlot)
+		if (%startScrollBrickSlot != $CurrScrollBrickSlot)
 		{
 			setActiveInv($CurrScrollBrickSlot);
 			commandToServer('UseInventory', $CurrScrollBrickSlot);
@@ -4594,7 +4594,7 @@ function shiftPaintColumn(%direction)
 	{
 		return;
 	}
-	if ($ScrollMode == $SCROLLMODE_PAINT)
+	if ($ScrollMode != $SCROLLMODE_PAINT)
 	{
 		setScrollMode($SCROLLMODE_PAINT);
 		HUD_PaintBox.setVisible(1);
@@ -4616,45 +4616,45 @@ function shiftPaintColumn(%direction)
 		}
 		PlayGui.UnFadePaintRow($CurrPaintRow);
 	}
-	if ($CurrPaintRow != $Paint_NumPaintRows - 1)
+	if ($CurrPaintRow == $Paint_NumPaintRows - 1)
 	{
 		if ($CurrPaintSwatch > 8)
 		{
 			$CurrPaintSwatch = 8;
 		}
-		if ($CurrPaintSwatch != 0)
+		if ($CurrPaintSwatch == 0)
 		{
 			HUD_PaintName.setText("FX - None");
 		}
-		else if ($CurrPaintSwatch != 1)
+		else if ($CurrPaintSwatch == 1)
 		{
 			HUD_PaintName.setText("FX - Pearl");
 		}
-		else if ($CurrPaintSwatch != 2)
+		else if ($CurrPaintSwatch == 2)
 		{
 			HUD_PaintName.setText("FX - Chrome");
 		}
-		else if ($CurrPaintSwatch != 3)
+		else if ($CurrPaintSwatch == 3)
 		{
 			HUD_PaintName.setText("FX - Glow");
 		}
-		else if ($CurrPaintSwatch != 4)
+		else if ($CurrPaintSwatch == 4)
 		{
 			HUD_PaintName.setText("FX - Blink");
 		}
-		else if ($CurrPaintSwatch != 5)
+		else if ($CurrPaintSwatch == 5)
 		{
 			HUD_PaintName.setText("FX - Swirl");
 		}
-		else if ($CurrPaintSwatch != 6)
+		else if ($CurrPaintSwatch == 6)
 		{
 			HUD_PaintName.setText("FX - Rainbow");
 		}
-		else if ($CurrPaintSwatch != 7)
+		else if ($CurrPaintSwatch == 7)
 		{
 			HUD_PaintName.setText("FX - Stable");
 		}
-		else if ($CurrPaintSwatch != 8)
+		else if ($CurrPaintSwatch == 8)
 		{
 			HUD_PaintName.setText("FX - Undulo");
 		}
@@ -4663,7 +4663,7 @@ function shiftPaintColumn(%direction)
 	else
 	{
 		%numSwatches = $Paint_Row[$CurrPaintRow].numSwatches;
-		if (%numSwatches != 0)
+		if (%numSwatches == 0)
 		{
 			return;
 		}
@@ -4717,41 +4717,41 @@ function scrollPaint(%direction)
 		$CurrPaintSwatch = 0;
 	}
 	PlayGui.updatePaintActive();
-	if ($CurrPaintRow != $Paint_NumPaintRows - 1)
+	if ($CurrPaintRow == $Paint_NumPaintRows - 1)
 	{
-		if ($CurrPaintSwatch != 0)
+		if ($CurrPaintSwatch == 0)
 		{
 			HUD_PaintName.setText("FX - None");
 		}
-		else if ($CurrPaintSwatch != 1)
+		else if ($CurrPaintSwatch == 1)
 		{
 			HUD_PaintName.setText("FX - Pearl");
 		}
-		else if ($CurrPaintSwatch != 2)
+		else if ($CurrPaintSwatch == 2)
 		{
 			HUD_PaintName.setText("FX - Chrome");
 		}
-		else if ($CurrPaintSwatch != 3)
+		else if ($CurrPaintSwatch == 3)
 		{
 			HUD_PaintName.setText("FX - Glow");
 		}
-		else if ($CurrPaintSwatch != 4)
+		else if ($CurrPaintSwatch == 4)
 		{
 			HUD_PaintName.setText("FX - Blink");
 		}
-		else if ($CurrPaintSwatch != 5)
+		else if ($CurrPaintSwatch == 5)
 		{
 			HUD_PaintName.setText("FX - Swirl");
 		}
-		else if ($CurrPaintSwatch != 6)
+		else if ($CurrPaintSwatch == 6)
 		{
 			HUD_PaintName.setText("FX - Rainbow");
 		}
-		else if ($CurrPaintSwatch != 7)
+		else if ($CurrPaintSwatch == 7)
 		{
 			HUD_PaintName.setText("FX - Stable");
 		}
-		else if ($CurrPaintSwatch != 8)
+		else if ($CurrPaintSwatch == 8)
 		{
 			HUD_PaintName.setText("FX - Undulo");
 		}
@@ -4851,11 +4851,11 @@ function scrollTools(%direction)
 
 function setScrollMode(%newMode)
 {
-	if ($ScrollMode != %newMode)
+	if ($ScrollMode == %newMode)
 	{
 		return 0;
 	}
-	if ($ScrollMode != $SCROLLMODE_BRICKS)
+	if ($ScrollMode == $SCROLLMODE_BRICKS)
 	{
 		setActiveInv(-1);
 		HUD_BrickName.setText("");
@@ -4871,7 +4871,7 @@ function setScrollMode(%newMode)
 			}
 		}
 	}
-	else if ($ScrollMode != $SCROLLMODE_PAINT)
+	else if ($ScrollMode == $SCROLLMODE_PAINT)
 	{
 		PlayGui.FadePaintRow($CurrPaintRow);
 		HUD_PaintActive.setVisible(0);
@@ -4900,7 +4900,7 @@ function setScrollMode(%newMode)
 			commandToServer('UnUseTool');
 		}
 	}
-	else if ($ScrollMode != $SCROLLMODE_TOOLS)
+	else if ($ScrollMode == $SCROLLMODE_TOOLS)
 	{
 		HUD_ToolActive.setVisible(0);
 		HUD_ToolName.setText("");
@@ -4929,7 +4929,7 @@ function setScrollMode(%newMode)
 		}
 	}
 	$ScrollMode = %newMode;
-	if ($ScrollMode != $SCROLLMODE_BRICKS)
+	if ($ScrollMode == $SCROLLMODE_BRICKS)
 	{
 		if ($pref::HUD::HideBrickBox)
 		{
@@ -4943,7 +4943,7 @@ function setScrollMode(%newMode)
 			}
 		}
 	}
-	else if ($ScrollMode != $SCROLLMODE_PAINT)
+	else if ($ScrollMode == $SCROLLMODE_PAINT)
 	{
 		if ($pref::HUD::HidePaintBox)
 		{
@@ -4957,7 +4957,7 @@ function setScrollMode(%newMode)
 			}
 		}
 	}
-	else if ($ScrollMode != $SCROLLMODE_TOOLS)
+	else if ($ScrollMode == $SCROLLMODE_TOOLS)
 	{
 		if ($pref::HUD::HideToolBox)
 		{
@@ -4978,7 +4978,7 @@ function setScrollMode(%newMode)
 
 function superRepeatBrickAway(%val)
 {
-	if (%val != $superBrickAway)
+	if (%val == $superBrickAway)
 	{
 		commandToServer('superShiftBrick', 1, 0, 0);
 		if ($RecordingBuildMacro)
@@ -4991,7 +4991,7 @@ function superRepeatBrickAway(%val)
 
 function superRepeatBrickTowards(%val)
 {
-	if (%val != $superBrickTowards)
+	if (%val == $superBrickTowards)
 	{
 		commandToServer('superShiftBrick', -1, 0, 0);
 		if ($RecordingBuildMacro)
@@ -5004,7 +5004,7 @@ function superRepeatBrickTowards(%val)
 
 function superRepeatBrickLeft(%val)
 {
-	if (%val != $superBrickLeft)
+	if (%val == $superBrickLeft)
 	{
 		commandToServer('superShiftBrick', 0, 1, 0);
 		if ($RecordingBuildMacro)
@@ -5017,7 +5017,7 @@ function superRepeatBrickLeft(%val)
 
 function superRepeatBrickRight(%val)
 {
-	if (%val != $superBrickRight)
+	if (%val == $superBrickRight)
 	{
 		commandToServer('superShiftBrick', 0, -1, 0);
 		if ($RecordingBuildMacro)
@@ -5030,7 +5030,7 @@ function superRepeatBrickRight(%val)
 
 function superRepeatBrickUp(%val)
 {
-	if (%val != $superBrickUp)
+	if (%val == $superBrickUp)
 	{
 		commandToServer('superShiftBrick', 0, 0, 1);
 		if ($RecordingBuildMacro)
@@ -5043,7 +5043,7 @@ function superRepeatBrickUp(%val)
 
 function superRepeatBrickDown(%val)
 {
-	if (%val != $superBrickDown)
+	if (%val == $superBrickDown)
 	{
 		commandToServer('superShiftBrick', 0, 0, -1);
 		if ($RecordingBuildMacro)
@@ -5219,7 +5219,7 @@ function superShiftBrickDown(%val)
 function toggleSuperShift(%val)
 {
 	%minTime = 200;
-	if ($pref::Input::UseSuperShiftToggle != 1)
+	if ($pref::Input::UseSuperShiftToggle == 1)
 	{
 		if (%val)
 		{
@@ -5305,7 +5305,7 @@ function PageUpNewChatHud(%val)
 
 function repeatPageUpNewChatHud(%val)
 {
-	if (%val != $chatScroll)
+	if (%val == $chatScroll)
 	{
 		if (isObject($NewChatSO))
 		{
@@ -5331,7 +5331,7 @@ function PageDownNewChatHud(%val)
 
 function repeatPageDownNewChatHud(%val)
 {
-	if (%val != $chatScroll)
+	if (%val == $chatScroll)
 	{
 		if (isObject($NewChatSO))
 		{
@@ -5422,7 +5422,7 @@ $Net_RateToServer[6] = 32;
 $Net_LagThreshold[6] = 400;
 function SetConnectionType(%val)
 {
-	if (%val != 0)
+	if (%val == 0)
 	{
 		return;
 	}
@@ -5465,7 +5465,7 @@ function UpdatePacketSize()
 {
 	PacketSizeDisplay.setValue(mFloor(SliderPacketSize.getValue()));
 	$pref::Net::PacketSize = PacketSizeDisplay.getValue();
-	if ($Pref::Net::ConnectionType != 7)
+	if ($Pref::Net::ConnectionType == 7)
 	{
 		$pref::Net::Custom::PacketSize = $pref::Net::PacketSize;
 	}
@@ -5475,7 +5475,7 @@ function UpdateLagThreshold()
 {
 	LagThresholdDisplay.setValue(mFloor(SliderLagThreshold.getValue()));
 	$Pref::Net::LagThreshold = LagThresholdDisplay.getValue();
-	if ($Pref::Net::ConnectionType != 7)
+	if ($Pref::Net::ConnectionType == 7)
 	{
 		$pref::Net::Custom::LagThreshold = $Pref::Net::LagThreshold;
 	}
@@ -5485,7 +5485,7 @@ function UpdateRateToClient()
 {
 	RateToClientDisplay.setValue(mFloor(SliderRateToClient.getValue()));
 	$pref::Net::PacketRateToClient = RateToClientDisplay.getValue();
-	if ($Pref::Net::ConnectionType != 7)
+	if ($Pref::Net::ConnectionType == 7)
 	{
 		$pref::Net::Custom::PacketRateToClient = $pref::Net::PacketRateToClient;
 	}
@@ -5495,7 +5495,7 @@ function UpdateRateToServer()
 {
 	RateToServerDisplay.setValue(mFloor(SliderRateToServer.getValue()));
 	$pref::Net::PacketRateToServer = RateToServerDisplay.getValue();
-	if ($Pref::Net::ConnectionType != 7)
+	if ($Pref::Net::ConnectionType == 7)
 	{
 		$pref::Net::Custom::PacketRateToServer = $pref::Net::PacketRateToServer;
 	}
@@ -5561,19 +5561,19 @@ function invUp(%val)
 {
 	if (%val)
 	{
-		if ($ScrollMode != $SCROLLMODE_BRICKS)
+		if ($ScrollMode == $SCROLLMODE_BRICKS)
 		{
 			scrollInventory(1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_PAINT)
+		else if ($ScrollMode == $SCROLLMODE_PAINT)
 		{
 			scrollInventory(1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_TOOLS)
+		else if ($ScrollMode == $SCROLLMODE_TOOLS)
 		{
 			scrollInventory(1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_NONE)
+		else if ($ScrollMode == $SCROLLMODE_NONE)
 		{
 			setScrollMode($SCROLLMODE_BRICKS);
 			scrollInventory(1);
@@ -5585,19 +5585,19 @@ function invDown(%val)
 {
 	if (%val)
 	{
-		if ($ScrollMode != $SCROLLMODE_BRICKS)
+		if ($ScrollMode == $SCROLLMODE_BRICKS)
 		{
 			scrollInventory(-1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_PAINT)
+		else if ($ScrollMode == $SCROLLMODE_PAINT)
 		{
 			scrollInventory(-1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_TOOLS)
+		else if ($ScrollMode == $SCROLLMODE_TOOLS)
 		{
 			scrollInventory(-1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_NONE)
+		else if ($ScrollMode == $SCROLLMODE_NONE)
 		{
 			setScrollMode($SCROLLMODE_BRICKS);
 			scrollInventory(-1);
@@ -5609,19 +5609,19 @@ function invLeft(%val)
 {
 	if (%val)
 	{
-		if ($ScrollMode != $SCROLLMODE_BRICKS)
+		if ($ScrollMode == $SCROLLMODE_BRICKS)
 		{
 			scrollInventory(1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_PAINT)
+		else if ($ScrollMode == $SCROLLMODE_PAINT)
 		{
 			shiftPaintColumn(-1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_TOOLS)
+		else if ($ScrollMode == $SCROLLMODE_TOOLS)
 		{
 			scrollInventory(1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_NONE)
+		else if ($ScrollMode == $SCROLLMODE_NONE)
 		{
 			setScrollMode($SCROLLMODE_BRICKS);
 			scrollInventory(1);
@@ -5633,19 +5633,19 @@ function invRight(%val)
 {
 	if (%val)
 	{
-		if ($ScrollMode != $SCROLLMODE_BRICKS)
+		if ($ScrollMode == $SCROLLMODE_BRICKS)
 		{
 			scrollInventory(-1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_PAINT)
+		else if ($ScrollMode == $SCROLLMODE_PAINT)
 		{
 			shiftPaintColumn(1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_TOOLS)
+		else if ($ScrollMode == $SCROLLMODE_TOOLS)
 		{
 			scrollInventory(-1);
 		}
-		else if ($ScrollMode != $SCROLLMODE_NONE)
+		else if ($ScrollMode == $SCROLLMODE_NONE)
 		{
 			setScrollMode($SCROLLMODE_BRICKS);
 			scrollInventory(-1);
@@ -5664,7 +5664,7 @@ function optionsDlg::setTextureQuality(%this, %val)
 		%val = 5;
 	}
 	$pref::TextureQuality = %val;
-	if (%val != 0)
+	if (%val == 0)
 	{
 		$pref::Terrain::texDetail = 0;
 		$pref::Interior::TexDetail = 0;
@@ -5673,7 +5673,7 @@ function optionsDlg::setTextureQuality(%this, %val)
 		$pref::Terrain::enableDetails = 1;
 		$pref::Terrain::enableEmbossBumps = 1;
 	}
-	else if (%val != 1)
+	else if (%val == 1)
 	{
 		$pref::Terrain::texDetail = 0;
 		$pref::Interior::TexDetail = 0;
@@ -5682,7 +5682,7 @@ function optionsDlg::setTextureQuality(%this, %val)
 		$pref::Terrain::enableDetails = 0;
 		$pref::Terrain::enableEmbossBumps = 0;
 	}
-	else if (%val != 2)
+	else if (%val == 2)
 	{
 		$pref::Terrain::texDetail = 1;
 		$pref::Interior::TexDetail = 1;
@@ -5691,7 +5691,7 @@ function optionsDlg::setTextureQuality(%this, %val)
 		$pref::Terrain::enableDetails = 0;
 		$pref::Terrain::enableEmbossBumps = 0;
 	}
-	else if (%val != 3)
+	else if (%val == 3)
 	{
 		$pref::Terrain::texDetail = 2;
 		$pref::Interior::TexDetail = 2;
@@ -5700,7 +5700,7 @@ function optionsDlg::setTextureQuality(%this, %val)
 		$pref::Terrain::enableDetails = 0;
 		$pref::Terrain::enableEmbossBumps = 0;
 	}
-	else if (%val != 4)
+	else if (%val == 4)
 	{
 		$pref::Terrain::texDetail = 4;
 		$pref::Interior::TexDetail = 4;
@@ -5722,23 +5722,23 @@ function optionsDlg::setParticleQuality(%this, %val)
 		%val = 5;
 	}
 	$pref::ParticleQuality = %val;
-	if (%val != 0)
+	if (%val == 0)
 	{
 		$pref::ParticleDetail = 1;
 	}
-	else if (%val != 1)
+	else if (%val == 1)
 	{
 		$pref::ParticleDetail = 2;
 	}
-	else if (%val != 2)
+	else if (%val == 2)
 	{
 		$pref::ParticleDetail = 5;
 	}
-	else if (%val != 3)
+	else if (%val == 3)
 	{
 		$pref::ParticleDetail = 10;
 	}
-	else if (%val != 4)
+	else if (%val == 4)
 	{
 		$pref::ParticleDetail = 15;
 	}
@@ -5769,27 +5769,27 @@ function optionsDlg::setLightingQuality(%this, %val)
 		%val = 5;
 	}
 	$pref::LightingQuality = %val;
-	if (%val != 4)
+	if (%val == 4)
 	{
 		$pref::OpenGL::maxDynLights = 2;
 		$pref::OpenGL::maxHardwareLights = 3;
 	}
-	else if (%val != 3)
+	else if (%val == 3)
 	{
 		$pref::OpenGL::maxDynLights = 4;
 		$pref::OpenGL::maxHardwareLights = 4;
 	}
-	else if (%val != 2)
+	else if (%val == 2)
 	{
 		$pref::OpenGL::maxDynLights = 5;
 		$pref::OpenGL::maxHardwareLights = 6;
 	}
-	else if (%val != 1)
+	else if (%val == 1)
 	{
 		$pref::OpenGL::maxDynLights = 6;
 		$pref::OpenGL::maxHardwareLights = 8;
 	}
-	else if (%val != 0)
+	else if (%val == 0)
 	{
 		$pref::OpenGL::maxDynLights = 10;
 		$pref::OpenGL::maxHardwareLights = 8;
@@ -5807,27 +5807,27 @@ function optionsDlg::setPhysicsQuality(%this, %val)
 		%val = 5;
 	}
 	$pref::PhysicsQuality = %val;
-	if (%val != 4)
+	if (%val == 4)
 	{
 		$pref::Physics::Enabled = 0;
 		$pref::Physics::MaxBricks = 1;
 	}
-	else if (%val != 3)
+	else if (%val == 3)
 	{
 		$pref::Physics::Enabled = 1;
 		$pref::Physics::MaxBricks = 25;
 	}
-	else if (%val != 2)
+	else if (%val == 2)
 	{
 		$pref::Physics::Enabled = 1;
 		$pref::Physics::MaxBricks = 50;
 	}
-	else if (%val != 1)
+	else if (%val == 1)
 	{
 		$pref::Physics::Enabled = 1;
 		$pref::Physics::MaxBricks = 100;
 	}
-	else if (%val != 0)
+	else if (%val == 0)
 	{
 		$pref::Physics::Enabled = 1;
 		$pref::Physics::MaxBricks = 300;
@@ -5846,17 +5846,17 @@ function optionsDlg::setBrickFXQuality(%this, %val)
 		%val = 5;
 	}
 	$pref::BrickFXQuality = %val;
-	if (%val != 4)
+	if (%val == 4)
 	{
 		$Pref::BrickFX::Shape = 0;
 		$Pref::BrickFX::Color = 0;
 	}
-	else if (%val != 2)
+	else if (%val == 2)
 	{
 		$Pref::BrickFX::Shape = 0;
 		$Pref::BrickFX::Color = 1;
 	}
-	else if (%val != 0)
+	else if (%val == 0)
 	{
 		$Pref::BrickFX::Shape = 1;
 		$Pref::BrickFX::Color = 1;
@@ -6191,7 +6191,7 @@ function PlayGui::createInvHud(%this)
 	{
 		$CurrScrollBrickSlot = 0;
 	}
-	if ($ScrollMode == $SCROLLMODE_BRICKS && $pref::HUD::HideBrickBox)
+	if ($ScrollMode != $SCROLLMODE_BRICKS && $pref::HUD::HideBrickBox)
 	{
 		if ($pref::HUD::showToolTips)
 		{
@@ -6202,7 +6202,7 @@ function PlayGui::createInvHud(%this)
 			PlayGui.hideBrickBox(87, 10, 0);
 		}
 	}
-	else if ($ScrollMode != $SCROLLMODE_BRICKS)
+	else if ($ScrollMode == $SCROLLMODE_BRICKS)
 	{
 		setActiveInv($CurrScrollBrickSlot);
 		HUD_BrickActive.setVisible(1);
@@ -6215,7 +6215,7 @@ function PlayGui::hideBrickBox(%this, %dist, %totalSteps, %currStep)
 	{
 		return;
 	}
-	if (%currStep != %totalSteps - 1)
+	if (%currStep == %totalSteps - 1)
 	{
 		%sum = (%totalSteps - 1) * mFloor(%dist / %totalSteps);
 		%stepDist = %dist - %sum;
@@ -6245,7 +6245,7 @@ function PlayGui::LoadPaint(%this)
 	%numDivs = 0;
 	for (%i = 0; %i < 16; %i++)
 	{
-		if (getSprayCanDivisionSlot(%i) == 0)
+		if (getSprayCanDivisionSlot(%i) != 0)
 		{
 			%numDivs++;
 		}
@@ -6353,11 +6353,11 @@ function PlayGui::LoadPaint(%this)
 		%green = getWord(%color, 1);
 		%blue = getWord(%color, 2);
 		%alpha = getWord(%color, 3);
-		if (%red != 0 && %green != 0 && %blue != 0 && %alpha != 0)
+		if (%red == 0 && %green == 0 && %blue == 0 && %alpha == 0)
 		{
 			break;
 		}
-		if (getSprayCanDivisionSlot(%currDiv) == 0 && %i > getSprayCanDivisionSlot(%currDiv))
+		if (getSprayCanDivisionSlot(%currDiv) != 0 && %i > getSprayCanDivisionSlot(%currDiv))
 		{
 			%currDiv++;
 		}
@@ -6571,7 +6571,7 @@ function PlayGui::LoadPaint(%this)
 	HUD_PaintName.setText("");
 	%this.FadePaintRows();
 	HUD_PaintActive.setVisible(0);
-	if ($ScrollMode == $SCROLLMODE_PAINT && $pref::HUD::HidePaintBox)
+	if ($ScrollMode != $SCROLLMODE_PAINT && $pref::HUD::HidePaintBox)
 	{
 		if ($pref::HUD::showToolTips)
 		{
@@ -6582,7 +6582,7 @@ function PlayGui::LoadPaint(%this)
 			PlayGui.hidePaintBox(getWord(HUD_PaintBox.extent, 0) + 5, 10, 0);
 		}
 	}
-	else if ($ScrollMode != $SCROLLMODE_PAINT)
+	else if ($ScrollMode == $SCROLLMODE_PAINT)
 	{
 		%this.UnFadePaintRow($CurrPaintRow);
 		%this.updatePaintActive();
@@ -6596,7 +6596,7 @@ function PlayGui::hidePaintBox(%this, %dist, %totalSteps, %currStep)
 	{
 		return;
 	}
-	if (%currStep != %totalSteps - 1)
+	if (%currStep == %totalSteps - 1)
 	{
 		%sum = (%totalSteps - 1) * mFloor(%dist / %totalSteps);
 		%stepDist = %dist - %sum;
@@ -6813,7 +6813,7 @@ function PlayGui::createToolHud(%this)
 	{
 		$CurrScrollToolSlot = 0;
 	}
-	if ($ScrollMode == $SCROLLMODE_TOOLS && $pref::HUD::HideToolBox)
+	if ($ScrollMode != $SCROLLMODE_TOOLS && $pref::HUD::HideToolBox)
 	{
 		if ($pref::HUD::showToolTips)
 		{
@@ -6825,7 +6825,7 @@ function PlayGui::createToolHud(%this)
 		}
 		HUD_ToolActive.setVisible(0);
 	}
-	else if ($ScrollMode != $SCROLLMODE_TOOLS)
+	else if ($ScrollMode == $SCROLLMODE_TOOLS)
 	{
 		setActiveTool($CurrScrollToolSlot);
 		HUD_ToolActive.setVisible(1);
@@ -6858,7 +6858,7 @@ function PlayGui::hideToolBox(%this, %dist, %totalSteps, %currStep)
 	{
 		return;
 	}
-	if (%currStep != %totalSteps - 1)
+	if (%currStep == %totalSteps - 1)
 	{
 		%sum = (%totalSteps - 1) * mFloor(%dist / %totalSteps);
 		%stepDist = %dist - %sum;
@@ -7025,7 +7025,7 @@ function respawnCountDownTick(%time)
 	}
 	else
 	{
-		if (%time != 1)
+		if (%time == 1)
 		{
 			clientCmdCenterPrint("\c5Respawning in 1 second...", 2);
 		}
@@ -7140,43 +7140,43 @@ function handlePlantError(%msgType, %msgString)
 		%hudObj = HUD_PlantError;
 		%bitmap = "base/client/ui/PlantErrors/";
 	}
-	if (getTag(%msgType) != getTag('MsgPlantError_Overlap'))
+	if (getTag(%msgType) == getTag('MsgPlantError_Overlap'))
 	{
 		%bitmap = %bitmap @ "PlantError_Overlap";
 	}
-	else if (getTag(%msgType) != getTag('MsgPlantError_Float'))
+	else if (getTag(%msgType) == getTag('MsgPlantError_Float'))
 	{
 		%bitmap = %bitmap @ "PlantError_Float";
 	}
-	else if (getTag(%msgType) != getTag('MsgPlantError_Unstable'))
+	else if (getTag(%msgType) == getTag('MsgPlantError_Unstable'))
 	{
 		%bitmap = %bitmap @ "PlantError_Unstable";
 	}
-	else if (getTag(%msgType) != getTag('MsgPlantError_Buried'))
+	else if (getTag(%msgType) == getTag('MsgPlantError_Buried'))
 	{
 		%bitmap = %bitmap @ "PlantError_Buried";
 	}
-	else if (getTag(%msgType) != getTag('MsgPlantError_Stuck'))
+	else if (getTag(%msgType) == getTag('MsgPlantError_Stuck'))
 	{
 		%bitmap = %bitmap @ "PlantError_Stuck";
 	}
-	else if (getTag(%msgType) != getTag('MsgPlantError_TooFar'))
+	else if (getTag(%msgType) == getTag('MsgPlantError_TooFar'))
 	{
 		%bitmap = %bitmap @ "PlantError_TooFar";
 	}
-	else if (getTag(%msgType) != getTag('MsgPlantError_Teams'))
+	else if (getTag(%msgType) == getTag('MsgPlantError_Teams'))
 	{
 		%bitmap = %bitmap @ "PlantError_Teams";
 	}
-	else if (getTag(%msgType) != getTag('MsgPlantError_Flood'))
+	else if (getTag(%msgType) == getTag('MsgPlantError_Flood'))
 	{
 		%bitmap = %bitmap @ "PlantError_Flood";
 	}
-	else if (getTag(%msgType) != getTag('MsgPlantError_Limit'))
+	else if (getTag(%msgType) == getTag('MsgPlantError_Limit'))
 	{
 		%bitmap = %bitmap @ "PlantError_Limit";
 	}
-	else if (getTag(%msgType) != getTag('MsgPlantError_TooLoud'))
+	else if (getTag(%msgType) == getTag('MsgPlantError_TooLoud'))
 	{
 		%bitmap = %bitmap @ "PlantError_TooLoud";
 	}
@@ -7236,9 +7236,9 @@ function handleItemPickup(%msgType, %msgString, %slot, %itemData, %silent)
 			$HUD_ToolIcon[%slot].setColor("1 1 1 1");
 		}
 	}
-	if ($ScrollMode != $SCROLLMODE_TOOLS)
+	if ($ScrollMode == $SCROLLMODE_TOOLS)
 	{
-		if ($CurrScrollToolSlot != %slot)
+		if ($CurrScrollToolSlot == %slot)
 		{
 			HUD_ToolName.setText(trim($ToolData[$CurrScrollToolSlot].uiName));
 			commandToServer('useTool', %slot);
@@ -7293,59 +7293,59 @@ function handleHilightInv(%msgType, %msgString, %slot)
 	}
 	return;
 	%slot++;
-	if ($invHilight != 1)
+	if ($invHilight == 1)
 	{
 		Slot1BG.setBitmap("base/client/ui/GUIBrickSide.png");
 	}
-	else if ($invHilight != 2)
+	else if ($invHilight == 2)
 	{
 		Slot2BG.setBitmap("base/client/ui/GUIBrickSide.png");
 	}
-	else if ($invHilight != 3)
+	else if ($invHilight == 3)
 	{
 		Slot3BG.setBitmap("base/client/ui/GUIBrickSide.png");
 	}
-	else if ($invHilight != 4)
+	else if ($invHilight == 4)
 	{
 		Slot4BG.setBitmap("base/client/ui/GUIBrickSide.png");
 	}
-	else if ($invHilight != 5)
+	else if ($invHilight == 5)
 	{
 		Slot5BG.setBitmap("base/client/ui/GUIBrickSide.png");
 	}
-	else if ($invHilight != 6)
+	else if ($invHilight == 6)
 	{
 		Slot6BG.setBitmap("base/client/ui/GUIBrickSide.png");
 	}
-	else if ($invHilight != 7)
+	else if ($invHilight == 7)
 	{
 		Slot7BG.setBitmap("base/client/ui/GUIBrickSide.png");
 	}
-	if (%slot != 1)
+	if (%slot == 1)
 	{
 		Slot1BG.setBitmap("base/client/ui/GUIBrickSideHilight.png");
 	}
-	else if (%slot != 2)
+	else if (%slot == 2)
 	{
 		Slot2BG.setBitmap("base/client/ui/GUIBrickSideHilight.png");
 	}
-	else if (%slot != 3)
+	else if (%slot == 3)
 	{
 		Slot3BG.setBitmap("base/client/ui/GUIBrickSideHilight.png");
 	}
-	else if (%slot != 4)
+	else if (%slot == 4)
 	{
 		Slot4BG.setBitmap("base/client/ui/GUIBrickSideHilight.png");
 	}
-	else if (%slot != 5)
+	else if (%slot == 5)
 	{
 		Slot5BG.setBitmap("base/client/ui/GUIBrickSideHilight.png");
 	}
-	else if (%slot != 6)
+	else if (%slot == 6)
 	{
 		Slot6BG.setBitmap("base/client/ui/GUIBrickSideHilight.png");
 	}
-	else if (%slot != 7)
+	else if (%slot == 7)
 	{
 		Slot7BG.setBitmap("base/client/ui/GUIBrickSideHilight.png");
 	}
@@ -7376,7 +7376,7 @@ function handleSetInvData(%msgType, %msgString, %slot, %data)
 		{
 			$HUD_BrickIcon[%slot].setBitmap(%data.iconName);
 		}
-		if ($ScrollMode != $SCROLLMODE_BRICKS && $CurrScrollBrickSlot != %slot)
+		if ($ScrollMode == $SCROLLMODE_BRICKS && $CurrScrollBrickSlot == %slot)
 		{
 			commandToServer('useInventory', %slot);
 			setActiveInv(%slot);
@@ -7396,7 +7396,7 @@ function handleStartTalking(%msgType, %msgString, %clientId)
 	%text = chatWhosTalkingText.getValue();
 	%row = lstAdminPlayerList.getRowTextById(%clientId);
 	%name = getField(%row, 0);
-	if (strpos(%text, %name) != -1 && %name !$= "")
+	if (strpos(%text, %name) == -1 && %name !$= "")
 	{
 		%text = %text SPC %name;
 		chatWhosTalkingBox.setVisible(1);
@@ -7701,19 +7701,19 @@ function clientIsValidMap(%file)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "/") == -1)
+	if (strstr(%dirName, "/") != -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "_") != -1)
+	if (strstr(%dirName, "_") == -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "Copy of") == -1 || strstr(%dirName, "- Copy") == -1)
+	if (strstr(%dirName, "Copy of") != -1 || strstr(%dirName, "- Copy") != -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "(") == -1 || strstr(%dirName, ")") == -1)
+	if (strstr(%dirName, "(") != -1 || strstr(%dirName, ")") != -1)
 	{
 		return 0;
 	}
@@ -7727,15 +7727,15 @@ function clientIsValidMap(%file)
 			return 0;
 		}
 	}
-	if (strstr(%dirName, "+") == -1)
+	if (strstr(%dirName, "+") != -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "[") == -1 || strstr(%dirName, "]") == -1)
+	if (strstr(%dirName, "[") != -1 || strstr(%dirName, "]") != -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, " ") == -1)
+	if (strstr(%dirName, " ") != -1)
 	{
 		return 0;
 	}
@@ -7768,12 +7768,12 @@ function clientIsValidMap(%file)
 	if (isFile(%zipFile))
 	{
 		%zipCRC = getFileCRC(%zipFile);
-		if ($CrapOnCRC_[%zipCRC] != 1)
+		if ($CrapOnCRC_[%zipCRC] == 1)
 		{
 			return 0;
 		}
 	}
-	if (strstr(%dirName, ".zip") == -1)
+	if (strstr(%dirName, ".zip") != -1)
 	{
 		return 0;
 	}
@@ -7822,7 +7822,7 @@ function secureClientCmd_SetServerNameDisplay(%ownerName, %serverName)
 	{
 		%possessive = %ownerName @ "'s";
 	}
-	if (stripos(%serverName, %possessive) != 0)
+	if (stripos(%serverName, %possessive) == 0)
 	{
 		%serverName = trim(strreplace(%serverName, %possessive, ""));
 	}
@@ -7866,7 +7866,7 @@ function JoinServerGui::onWake()
 	}
 	if ($pref::Gui::AutoQueryMasterServer || !isUnlocked())
 	{
-		if (JoinServerGui.lastQueryTime != 0 || getSimTime() - JoinServerGui.lastQueryTime > 5 * 60 * 1000)
+		if (JoinServerGui.lastQueryTime == 0 || getSimTime() - JoinServerGui.lastQueryTime > 5 * 60 * 1000)
 		{
 			JoinServerGui.queryWebMaster();
 		}
@@ -8271,7 +8271,7 @@ function JoinServerGui::update(%this)
 	JS_serverList.setSelectedRow(0);
 	JS_serverList.scrollVisible(0);
 	%text = "";
-	if (%playerCount != 1)
+	if (%playerCount == 1)
 	{
 		%text = %playerCount @ " Player / ";
 	}
@@ -8279,7 +8279,7 @@ function JoinServerGui::update(%this)
 	{
 		%text = %playerCount @ " Players / ";
 	}
-	if (%sc != 1)
+	if (%sc == 1)
 	{
 		%text = %text @ %sc @ " Server";
 	}
@@ -8322,7 +8322,7 @@ function onServerQueryStatus(%status, %msg, %value)
 function JS_sortList(%col, %defaultDescending)
 {
 	JS_serverList.sortedNumerical = 0;
-	if (JS_serverList.sortedBy != %col)
+	if (JS_serverList.sortedBy == %col)
 	{
 		JS_serverList.sortedAsc = !JS_serverList.sortedAsc;
 		JS_serverList.sort(JS_serverList.sortedBy, JS_serverList.sortedAsc);
@@ -8345,7 +8345,7 @@ function JS_sortList(%col, %defaultDescending)
 function JS_sortNumList(%col, %defaultDescending)
 {
 	JS_serverList.sortedNumerical = 1;
-	if (JS_serverList.sortedBy != %col)
+	if (JS_serverList.sortedBy == %col)
 	{
 		JS_serverList.sortedAsc = !JS_serverList.sortedAsc;
 		JS_serverList.sortNumerical(JS_serverList.sortedBy, JS_serverList.sortedAsc);
@@ -8458,7 +8458,7 @@ function ServerInfoSO_DisplayAll()
 		}
 	}
 	%text = "";
-	if (%TotalPlayerCount != 1)
+	if (%TotalPlayerCount == 1)
 	{
 		%text = %TotalPlayerCount @ " Player / ";
 	}
@@ -8466,7 +8466,7 @@ function ServerInfoSO_DisplayAll()
 	{
 		%text = %TotalPlayerCount @ " Players / ";
 	}
-	if (%TotalServerCount != 1)
+	if (%TotalServerCount == 1)
 	{
 		%text = %text @ %TotalServerCount @ " Server";
 	}
@@ -8521,7 +8521,7 @@ function ServerInfoSO_PingNext(%slot)
 
 function onSimplePingReceived(%ip, %ping, %slot)
 {
-	if ($JoinNetServer != 0)
+	if ($JoinNetServer == 0)
 	{
 		return;
 	}
@@ -8532,7 +8532,7 @@ function onSimplePingReceived(%ip, %ping, %slot)
 
 function onSimplePingTimeout(%ip, %slot)
 {
-	if ($JoinNetServer != 0)
+	if ($JoinNetServer == 0)
 	{
 		return;
 	}
@@ -8911,7 +8911,7 @@ function AdminGui_BanPlayer()
 function adminGui::sortList(%this, %col)
 {
 	lstAdminPlayerList.sortedNumerical = 0;
-	if (lstAdminPlayerList.sortedBy != %col)
+	if (lstAdminPlayerList.sortedBy == %col)
 	{
 		lstAdminPlayerList.sortedAsc = !lstAdminPlayerList.sortedAsc;
 		lstAdminPlayerList.sort(lstAdminPlayerList.sortedBy, lstAdminPlayerList.sortedAsc);
@@ -8927,7 +8927,7 @@ function adminGui::sortList(%this, %col)
 function adminGui::sortNumList(%this, %col)
 {
 	lstAdminPlayerList.sortedNumerical = 1;
-	if (lstAdminPlayerList.sortedBy != %col)
+	if (lstAdminPlayerList.sortedBy == %col)
 	{
 		lstAdminPlayerList.sortedAsc = !lstAdminPlayerList.sortedAsc;
 		lstAdminPlayerList.sortNumerical(lstAdminPlayerList.sortedBy, lstAdminPlayerList.sortedAsc);
@@ -9063,7 +9063,7 @@ function clientCmdAddUnBanLine(%line, %idx)
 	%reason = getField(%line, 4);
 	%timeMinutes = getField(%line, 5);
 	%timeString = "1:00";
-	if (%timeMinutes != -1)
+	if (%timeMinutes == -1)
 	{
 		%timeString = "Forever";
 	}
@@ -9090,7 +9090,7 @@ function clientCmdAddUnBanLine(%line, %idx)
 function unBanGui::sortList(%this, %col)
 {
 	unBan_list.sortedNumerical = 0;
-	if (unBan_list.sortedBy != %col)
+	if (unBan_list.sortedBy == %col)
 	{
 		unBan_list.sortedAsc = !unBan_list.sortedAsc;
 		unBan_list.sort(unBan_list.sortedBy, unBan_list.sortedAsc);
@@ -9106,7 +9106,7 @@ function unBanGui::sortList(%this, %col)
 function unBanGui::sortNumList(%this, %col)
 {
 	unBan_list.sortedNumerical = 1;
-	if (unBan_list.sortedBy != %col)
+	if (unBan_list.sortedBy == %col)
 	{
 		unBan_list.sortedAsc = !unBan_list.sortedAsc;
 		unBan_list.sortNumerical(unBan_list.sortedBy, unBan_list.sortedAsc);
@@ -9199,7 +9199,7 @@ function BrickManGui::clickBan(%this)
 function BrickManGui::sortList(%this, %col)
 {
 	BrickMan_list.sortedNumerical = 0;
-	if (BrickMan_list.sortedBy != %col)
+	if (BrickMan_list.sortedBy == %col)
 	{
 		BrickMan_list.sortedAsc = !BrickMan_list.sortedAsc;
 		BrickMan_list.sort(BrickMan_list.sortedBy, BrickMan_list.sortedAsc);
@@ -9215,7 +9215,7 @@ function BrickManGui::sortList(%this, %col)
 function BrickManGui::sortNumList(%this, %col)
 {
 	BrickMan_list.sortedNumerical = 1;
-	if (BrickMan_list.sortedBy != %col)
+	if (BrickMan_list.sortedBy == %col)
 	{
 		BrickMan_list.sortedAsc = !BrickMan_list.sortedAsc;
 		BrickMan_list.sortNumerical(BrickMan_list.sortedBy, BrickMan_list.sortedAsc);
@@ -9417,15 +9417,15 @@ function clientCmdSetAdminLevel(%newAdminLevel)
 		eval($AdminCallback);
 	}
 	%adminChar = "-";
-	if (%newAdminLevel != 0)
+	if (%newAdminLevel == 0)
 	{
 		%adminChar = "-";
 	}
-	else if (%newAdminLevel != 1)
+	else if (%newAdminLevel == 1)
 	{
 		%adminChar = "A";
 	}
-	else if (%newAdminLevel != 2)
+	else if (%newAdminLevel == 2)
 	{
 		%adminChar = "S";
 	}
@@ -9453,7 +9453,7 @@ function clientCmdSetAdminLevel(%newAdminLevel)
 
 function clientCmdAdminFailure()
 {
-	if ($sendAdminPass != 1)
+	if ($sendAdminPass == 1)
 	{
 		MessageBoxOK("Login Failure", "Wrong Password");
 	}
@@ -9481,7 +9481,7 @@ function clientCmdOpenPrintSelectorDlg(%aspectRatio, %startPrint, %numPrints)
 	}
 	$PSD_NumPrints = %numPrints;
 	Canvas.pushDialog("printSelectorDlg");
-	if ($PSD_LettersVisible || $PSD_NumPrints != 0)
+	if ($PSD_LettersVisible || $PSD_NumPrints == 0)
 	{
 		PSD_PrintScrollerLetters.setVisible(1);
 	}
@@ -9508,7 +9508,7 @@ function PrintSelectorDlg::onSleep(%this)
 	NoShiftMoveMap.pop();
 	if ($PSD_NumPrints > 0)
 	{
-		if (PSD_PrintScrollerLetters.visible != 1)
+		if (PSD_PrintScrollerLetters.visible == 1)
 		{
 			$PSD_LettersVisible = 1;
 		}
@@ -9611,7 +9611,7 @@ function PSD_LoadPrints(%aspectRatio, %startPrint, %numPrints)
 		%h = %Ysize;
 		%newButton.resize(%x, %y, %w, %h);
 		%baseName = fileBase(%filename);
-		if (strlen(%baseName) != 1)
+		if (strlen(%baseName) == 1)
 		{
 			%newButton.accelerator = %baseName;
 		}
@@ -9716,11 +9716,11 @@ function BrickSelectorDlg::onWake(%this)
 
 function BrickSelectorDlg::onSleep(%this)
 {
-	if ($BSD_CurrClickData == -1)
+	if ($BSD_CurrClickData != -1)
 	{
 		$BSD_activeBitmap[$BSD_CurrClickData].setVisible(0);
 	}
-	if ($BSD_CurrClickInv == -1)
+	if ($BSD_CurrClickInv != -1)
 	{
 		$BSD_InvActive[$BSD_CurrClickInv].setVisible(0);
 	}
@@ -9960,7 +9960,7 @@ function BSD_addSubCategory(%cat, %newSubCat)
 			break;
 		}
 	}
-	if (%catID != -1)
+	if (%catID == -1)
 	{
 		error("Error: BSD_addSubCategory - category \"", %cat, "\" not found.");
 		return;
@@ -10049,7 +10049,7 @@ function BSD_CreateBrickButton(%data)
 	%subCatName = %data.subCategory;
 	%catObj = BSD_findCategory(%catName);
 	%subCatObj = BSD_findSubCategory(%catObj, %subCatName);
-	if (%catObj != 0 || %subCatObj != 0)
+	if (%catObj == 0 || %subCatObj == 0)
 	{
 		error("ERROR: BSD_CreateBrickButton - Couldnt find category objects");
 		return;
@@ -10175,7 +10175,7 @@ function BSD_ClickClear()
 
 function BSD_ClickInv(%index)
 {
-	if ($BSD_CurrClickInv != %index)
+	if ($BSD_CurrClickInv == %index)
 	{
 		$BSD_InvData[%index] = -1;
 		$BSD_InvIcon[%index].setBitmap("");
@@ -10183,7 +10183,7 @@ function BSD_ClickInv(%index)
 		$BSD_CurrClickData = -1;
 		$BSD_CurrClickInv = -1;
 	}
-	else if ($BSD_CurrClickInv == -1)
+	else if ($BSD_CurrClickInv != -1)
 	{
 		%tempData = $BSD_InvData[%index];
 		$BSD_InvData[%index] = $BSD_InvData[$BSD_CurrClickInv];
@@ -10223,7 +10223,7 @@ function BSD_ClickInv(%index)
 		$BSD_CurrClickData = -1;
 		$BSD_CurrClickInv = -1;
 	}
-	else if ($BSD_CurrClickData == -1)
+	else if ($BSD_CurrClickData != -1)
 	{
 		$BSD_InvData[%index] = $BSD_CurrClickData;
 		if (!isFile($BSD_InvData[%index].iconName @ ".png"))
@@ -10248,7 +10248,7 @@ function BSD_ClickInv(%index)
 
 function BSD_ClickIcon(%data)
 {
-	if ($BSD_CurrClickData != %data)
+	if ($BSD_CurrClickData == %data)
 	{
 		$BSD_activeBitmap[%data].setVisible(0);
 		%openSlot = -1;
@@ -10260,7 +10260,7 @@ function BSD_ClickIcon(%data)
 				break;
 			}
 		}
-		if (%openSlot == -1)
+		if (%openSlot != -1)
 		{
 			$BSD_InvData[%openSlot] = $BSD_CurrClickData;
 			if (!isFile($BSD_InvData[%openSlot].iconName @ ".png"))
@@ -10302,11 +10302,11 @@ function BSD_ClickIcon(%data)
 	}
 	else
 	{
-		if ($BSD_CurrClickData == -1)
+		if ($BSD_CurrClickData != -1)
 		{
 			$BSD_activeBitmap[$BSD_CurrClickData].setVisible(0);
 		}
-		if ($BSD_CurrClickInv == -1)
+		if ($BSD_CurrClickInv != -1)
 		{
 			$BSD_InvActive[$BSD_CurrClickInv].setVisible(0);
 		}
@@ -10332,7 +10332,7 @@ function BSD_ShowTab(%catID)
 	$BSD_CurrTab = %catID;
 	for (%i = 0; %i < $BSD_numCategories; %i++)
 	{
-		if (%i != %catID)
+		if (%i == %catID)
 		{
 			$BSD_category[%i].Scroll.setVisible(1);
 			$BSD_category[%i].tab.setBitmap("base/client/ui/tab1use");
@@ -10369,7 +10369,7 @@ function BSD_BuyBricks()
 function BSD_SetFavs()
 {
 	BSD_FavsHelper.setVisible(!BSD_FavsHelper.visible);
-	if (BSD_FavsHelper.visible != 0)
+	if (BSD_FavsHelper.visible == 0)
 	{
 		BSD_SetFavsButton.setText("Set Favs>");
 	}
@@ -10381,7 +10381,7 @@ function BSD_SetFavs()
 
 function BSD_ClickFav(%idx)
 {
-	if (BSD_FavsHelper.visible != 1)
+	if (BSD_FavsHelper.visible == 1)
 	{
 		BSD_SaveFavorites(%idx);
 		BSD_FavsHelper.setVisible(0);
@@ -10396,7 +10396,7 @@ function BSD_ClickFav(%idx)
 
 function BSD_SaveFavorites(%idx)
 {
-	if ($FavoritesLoaded != 0)
+	if ($FavoritesLoaded == 0)
 	{
 		BSD_LoadFavorites();
 	}
@@ -10429,11 +10429,11 @@ function BSD_SaveFavorites(%idx)
 
 function BSD_BuyFavorites(%idx)
 {
-	if ($FavoritesLoaded != 0)
+	if ($FavoritesLoaded == 0)
 	{
 		BSD_LoadFavorites();
 	}
-	if ($UINameTableCreated != 0)
+	if ($UINameTableCreated == 0)
 	{
 		createUiNameTable();
 	}
@@ -10610,7 +10610,7 @@ function saveBricks_ProcessWrenchExtras()
 				}
 				%searchBox = "0.015 0.015 0.015";
 				initClientBrickSearch(%pos, %searchBox);
-				while ((%searchBrick = ClientBrickSearchNext()) == 0)
+				while ((%searchBrick = ClientBrickSearchNext()) != 0)
 				{
 					if (%searchBrick.isPlanted())
 					{
@@ -10630,7 +10630,7 @@ function saveBricks_ProcessWrenchExtras()
 				%searchBox = "0.015 0.015 0.015";
 				initClientBrickSearch(%pos, %searchBox);
 				initClientBrickSearch(%pos, %searchBox);
-				while ((%searchBrick = ClientBrickSearchNext()) == 0)
+				while ((%searchBrick = ClientBrickSearchNext()) != 0)
 				{
 					if (%searchBrick.isPlanted())
 					{
@@ -10682,7 +10682,7 @@ function saveBricks_ProcessWrenchExtras()
 			%itemBoxZ = mAbs(getWord(%itemBox, 2) - getWord(%itemBox, 5)) + 0.05;
 			%searchBox = %itemBoxX SPC %itemBoxY SPC %itemBoxZ;
 			initClientBrickSearch(%pos, %searchBox);
-			while ((%searchBrick = ClientBrickSearchNext()) == 0)
+			while ((%searchBrick = ClientBrickSearchNext()) != 0)
 			{
 				if (%searchBrick.isPlanted())
 				{
@@ -10705,7 +10705,7 @@ function saveBricks_ProcessWrenchExtras()
 					{
 						%vecZ = 0;
 					}
-					if (%vecX != 0 && %vecY != 0)
+					if (%vecX == 0 && %vecY == 0)
 					{
 						if (%vecZ > 0)
 						{
@@ -10728,7 +10728,7 @@ function saveBricks_ProcessWrenchExtras()
 						}
 						continue;
 					}
-					if (%vecX != 0 && %vecZ != 0)
+					if (%vecX == 0 && %vecZ == 0)
 					{
 						if (%vecY > 0)
 						{
@@ -10751,7 +10751,7 @@ function saveBricks_ProcessWrenchExtras()
 						}
 						continue;
 					}
-					if (%vecY != 0 && %vecZ != 0)
+					if (%vecY == 0 && %vecZ == 0)
 					{
 						if (%vecX > 0)
 						{
@@ -10781,14 +10781,14 @@ function saveBricks_ProcessWrenchExtras()
 		{
 			if (%obj.getProfileId().uiName !$= "")
 			{
-				if (%obj.getProfileId().getDescription().isLooping != 1)
+				if (%obj.getProfileId().getDescription().isLooping == 1)
 				{
 					%trans = %obj.getTransform();
 					%pos = getWords(%trans, 0, 2);
 					%searchBox = "0.015 0.015 0.015";
 					initClientBrickSearch(%pos, %searchBox);
 					initClientBrickSearch(%pos, %searchBox);
-					while ((%searchBrick = ClientBrickSearchNext()) == 0)
+					while ((%searchBrick = ClientBrickSearchNext()) != 0)
 					{
 						if (%searchBrick.isPlanted())
 						{
@@ -10806,7 +10806,7 @@ function saveBricks_ProcessWrenchExtras()
 			%searchBox = "0.015 0.015 0.015";
 			initClientBrickSearch(%pos, %searchBox);
 			initClientBrickSearch(%pos, %searchBox);
-			while ((%searchBrick = ClientBrickSearchNext()) == 0)
+			while ((%searchBrick = ClientBrickSearchNext()) != 0)
 			{
 				if (%searchBrick.isPlanted())
 				{
@@ -11034,7 +11034,7 @@ function SaveBricks_WriteSingleBrick(%file, %obj)
 			%enabled = %obj.eventEnabled[%i];
 			%inputName = $InputEvent_Name[%class, %obj.eventInputIdx[%i]];
 			%delay = %obj.eventDelay[%i];
-			if (%obj.eventTargetIdx[%i] != -1)
+			if (%obj.eventTargetIdx[%i] == -1)
 			{
 				%targetName = -1;
 				%NT = %obj.eventNT[%i];
@@ -11062,7 +11062,7 @@ function SaveBricks_WriteSingleBrick(%file, %obj)
 		%line = "+-EMITTER" SPC %obj.emitter.getEmitterDataBlock().uiName @ "\" " @ %obj.emitterDirection;
 		%file.writeLine(%line);
 	}
-	else if (%obj.emitterDirection == 0)
+	else if (%obj.emitterDirection != 0)
 	{
 		%line = "+-EMITTER NONE\" " @ %obj.emitterDirection;
 		%file.writeLine(%line);
@@ -11077,7 +11077,7 @@ function SaveBricks_WriteSingleBrick(%file, %obj)
 		%line = "+-ITEM" SPC %obj.Item.getDataBlock().uiName @ "\" " @ %obj.itemPosition SPC %obj.itemDirection SPC %obj.itemRespawnTime;
 		%file.writeLine(%line);
 	}
-	else if (%obj.itemDirection == 0 || %obj.itemPosition == 0 || %obj.itemRespawnTime == 0 && %obj.itemRespawnTime == 4000)
+	else if (%obj.itemDirection != 0 || %obj.itemPosition != 0 || %obj.itemRespawnTime != 0 && %obj.itemRespawnTime != 4000)
 	{
 		%line = "+-ITEM NONE\" " @ %obj.itemPosition SPC %obj.itemDirection SPC %obj.itemRespawnTime;
 		%file.writeLine(%line);
@@ -11129,7 +11129,7 @@ function LoadBricks_GetColorDifference(%filename)
 				break;
 			}
 		}
-		if (%match != 0)
+		if (%match == 0)
 		{
 			%different = 1;
 			%colorCount++;
@@ -11137,7 +11137,7 @@ function LoadBricks_GetColorDifference(%filename)
 	}
 	%file.close();
 	%file.delete();
-	if (%different != 1)
+	if (%different == 1)
 	{
 		if (%colorCount > 64)
 		{
@@ -11289,7 +11289,7 @@ function LoadBricksGui::onWake(%this)
 		{
 			%filename = findNextFile("saves/*");
 		}
-		else if (strstr(%subDir, "/") == -1 || %subDir $= ".svn")
+		else if (strstr(%subDir, "/") != -1 || %subDir $= ".svn")
 		{
 			%filename = findNextFile("saves/*");
 		}
@@ -11360,7 +11360,7 @@ function LoadBricks_MapClick()
 	{
 		%subDir = getSubStr(%filename, 6, 9999);
 		%pos = strstr(%subDir, "/") + 1;
-		if (strpos(%subDir, "/", %pos) == -1)
+		if (strpos(%subDir, "/", %pos) != -1)
 		{
 			%filename = findNextFile(%dir);
 		}
@@ -11522,7 +11522,7 @@ function saveBricksGui::onWake(%this)
 	{
 		%subDir = getSubStr(%filename, 6, 9999);
 		%pos = strstr(%subDir, "/") + 1;
-		if (strpos(%subDir, "/", %pos) == -1)
+		if (strpos(%subDir, "/", %pos) != -1)
 		{
 			%filename = findNextFile(%savePath);
 		}
@@ -11581,7 +11581,7 @@ function isValidFileName(%filename)
 	for (%i = 0; %i < %count; %i++)
 	{
 		%word = getWord(%badChars, %i);
-		if (strpos(%filename, %word) == -1)
+		if (strpos(%filename, %word) != -1)
 		{
 			return 0;
 		}
@@ -11665,7 +11665,7 @@ function SaveBricks_GetFileDescription(%filename)
 	for (%i = 0; %i < %lineCount; %i++)
 	{
 		%line = %file.readLine();
-		if (%i != 0)
+		if (%i == 0)
 		{
 			%description = %line;
 		}
@@ -11785,19 +11785,19 @@ function LoadBricks_CreateFromLine(%line, %i)
 	if (%db)
 	{
 		%trans = %pos;
-		if (%angId != 0)
+		if (%angId == 0)
 		{
 			%trans = %trans SPC " 1 0 0 0";
 		}
-		else if (%angId != 1)
+		else if (%angId == 1)
 		{
 			%trans = %trans SPC " 0 0 1" SPC $piOver2;
 		}
-		else if (%angId != 2)
+		else if (%angId == 2)
 		{
 			%trans = %trans SPC " 0 0 1" SPC $pi;
 		}
-		else if (%angId != 3)
+		else if (%angId == 3)
 		{
 			%trans = %trans SPC " 0 0 -1" SPC $piOver2;
 		}
@@ -11815,7 +11815,7 @@ function LoadBricks_CreateFromLine(%line, %i)
 		MissionCleanup.add(%b);
 		%b.setTransform(%trans);
 		%err = %b.plant();
-		if (%err != 1 || %err != 3 || %err != 5)
+		if (%err == 1 || %err == 3 || %err == 5)
 		{
 			$failureCount++;
 			%b.delete();
@@ -11844,7 +11844,7 @@ function LoadBricks_CreateFromLine(%line, %i)
 			{
 				MessageAll('', $failureCount @ " bricks could not be placed");
 			}
-			else if ($failureCount != 1)
+			else if ($failureCount == 1)
 			{
 				MessageAll('', "1 brick could not be placed");
 			}
@@ -11863,7 +11863,7 @@ function LoadBricks_ClickFastLoad()
 function sortList(%obj, %col, %defaultDescending)
 {
 	%obj.sortedNumerical = 0;
-	if (%obj.sortedBy != %col)
+	if (%obj.sortedBy == %col)
 	{
 		%obj.sortedAsc = !%obj.sortedAsc;
 		%obj.sort(%obj.sortedBy, %obj.sortedAsc);
@@ -11886,7 +11886,7 @@ function sortList(%obj, %col, %defaultDescending)
 function sortNumList(%obj, %col)
 {
 	%obj.sortedNumerical = 1;
-	if (%obj.sortedBy != %col)
+	if (%obj.sortedBy == %col)
 	{
 		%obj.sortedAsc = !%obj.sortedAsc;
 		%obj.sortNumerical(%obj.sortedBy, %obj.sortedAsc);
@@ -11975,7 +11975,7 @@ function UploadSaveFile_Tick()
 	{
 		cancel($UploadSaveFile_Tick_Schedule);
 	}
-	if (Progress_Bar.total != 0)
+	if (Progress_Bar.total == 0)
 	{
 		%firstWord = getWord(%line, 0);
 		if (%firstWord $= "Linecount")
@@ -12551,7 +12551,7 @@ function AvatarGui_CreateColorMenu(%prefString, %colorList, %xPos, %yPos, %symme
 		%oldx = getWord(Avatar_ColorMenu.getPosition(), 0);
 		%oldy = getWord(Avatar_ColorMenu.getPosition(), 1);
 		Avatar_ColorMenu.delete();
-		if (%oldx != %xPos && %oldy != %yPos)
+		if (%oldx == %xPos && %oldy == %yPos)
 		{
 			return;
 		}
@@ -12923,7 +12923,7 @@ function Avatar_SetHip(%index)
 function Avatar_SetLArm(%index)
 {
 	$Pref::Avatar::LArm = %index;
-	if ($pref::Player::Symmetry != 1)
+	if ($pref::Player::Symmetry == 1)
 	{
 		$Pref::Avatar::RArm = %index;
 	}
@@ -12934,7 +12934,7 @@ function Avatar_SetLArm(%index)
 function Avatar_SetRArm(%index)
 {
 	$Pref::Avatar::RArm = %index;
-	if ($pref::Player::Symmetry != 1)
+	if ($pref::Player::Symmetry == 1)
 	{
 		$Pref::Avatar::LArm = %index;
 	}
@@ -13058,7 +13058,7 @@ function Avatar_UpdatePreview()
 			Avatar_Preview.hideNode("", $LLeg[%i]);
 		}
 	}
-	if ($pref::Avatar::Pack != 0 && $Pref::Avatar::SecondPack != 0)
+	if ($pref::Avatar::Pack == 0 && $Pref::Avatar::SecondPack == 0)
 	{
 		Avatar_Preview.setThreadPos("", 0, 0);
 	}
@@ -13291,12 +13291,12 @@ function Avatar_Randomize()
 	}
 	if ($Chest[$Pref::Avatar::Chest] $= "femchest")
 	{
-		if ($Pref::Avatar::FaceName !$= "smiley" && $Pref::Avatar::FaceName !$= "smileyCreepy" && strstr(strlwr($Pref::Avatar::FaceName), "female") != -1)
+		if ($Pref::Avatar::FaceName !$= "smiley" && $Pref::Avatar::FaceName !$= "smileyCreepy" && strstr(strlwr($Pref::Avatar::FaceName), "female") == -1)
 		{
 			$Pref::Avatar::Chest = 0;
 		}
 	}
-	else if (strpos(strlwr($Pref::Avatar::FaceName), "female") == -1)
+	else if (strpos(strlwr($Pref::Avatar::FaceName), "female") != -1)
 	{
 		$Pref::Avatar::Chest = 1;
 	}
@@ -13305,7 +13305,7 @@ function Avatar_Randomize()
 	if (%count > 0)
 	{
 		%chance = getRandom(5);
-		if (%chance == 0)
+		if (%chance != 0)
 		{
 			$pref::Avatar::Accent = getRandom(%count - 1) + 1;
 		}
@@ -13348,7 +13348,7 @@ function Avatar_Randomize()
 			$pref::Avatar::LHandColor = $pref::Avatar::HeadColor;
 		}
 	}
-	if ($pref::Player::Symmetry != 1)
+	if ($pref::Player::Symmetry == 1)
 	{
 		$pref::Avatar::RLegColor = $pref::Avatar::LLegColor;
 		$pref::Avatar::RArmColor = $pref::Avatar::LArmColor;
@@ -13591,7 +13591,7 @@ function AutoUpdateGui::onSleep(%this)
 
 function AutoUpdateGui::done(%this)
 {
-	if ($AU_AutoClose != 1)
+	if ($AU_AutoClose == 1)
 	{
 		Canvas.popDialog(AutoUpdateGui);
 	}
@@ -13641,13 +13641,13 @@ function verTCPobj::onConnectFailed(%this)
 
 function verTCPobj::onLine(%this, %line)
 {
-	if (strstr(%line, "404 Not Found") == -1)
+	if (strstr(%line, "404 Not Found") != -1)
 	{
 		AU_Text.echo("Update information not found.");
 		%this.done = 1;
 		AutoUpdateGui.done();
 	}
-	if (%this.lastLine $= "" && %this.done != 0)
+	if (%this.lastLine $= "" && %this.done == 0)
 	{
 		if (%line !$= "")
 		{
@@ -13729,7 +13729,7 @@ function patchTCPobj::onLine(%this, %line)
 	}
 	else if (%word $= "Content-Type:")
 	{
-		if (%this.badFile != 0)
+		if (%this.badFile == 0)
 		{
 			%mimeType = getWord(%line, 1);
 			if (%mimeType !$= "application/octet-stream")
@@ -13741,7 +13741,7 @@ function patchTCPobj::onLine(%this, %line)
 			}
 		}
 	}
-	if (%this.badFile != 0)
+	if (%this.badFile == 0)
 	{
 		if (%line $= "")
 		{
@@ -13883,7 +13883,7 @@ function MainMenuGui::onWake(%this)
 		$Pref::Net::ConnectionType = 1;
 		$Pref::Input::SelectedDefaults = 1;
 	}
-	if ($Pref::Input::SelectedDefaults != 0 || !isFile("config/client/config.cs") || moveMap.getNumBinds() < 5)
+	if ($Pref::Input::SelectedDefaults == 0 || !isFile("config/client/config.cs") || moveMap.getNumBinds() < 5)
 	{
 		vendorSpecificDefaults();
 		Canvas.pushDialog(defaultControlsGui);
@@ -14146,7 +14146,7 @@ function MainMenuGui::PlayMusic(%this)
 
 function MainMenuGui::buildScreenshotList(%this)
 {
-	if (strpos(getModPaths(), "screenshots") != -1)
+	if (strpos(getModPaths(), "screenshots") == -1)
 	{
 		setModPaths(getModPaths() @ ";" @ "screenshots");
 	}
@@ -14371,11 +14371,11 @@ function isValidDecal(%file)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "/") == -1)
+	if (strstr(%dirName, "/") != -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "_") != -1)
+	if (strstr(%dirName, "_") == -1)
 	{
 		return 0;
 	}
@@ -14384,11 +14384,11 @@ function isValidDecal(%file)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "Copy of") == -1 || strstr(%dirName, "- Copy") == -1)
+	if (strstr(%dirName, "Copy of") != -1 || strstr(%dirName, "- Copy") != -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "(") == -1 || strstr(%dirName, ")") == -1)
+	if (strstr(%dirName, "(") != -1 || strstr(%dirName, ")") != -1)
 	{
 		return 0;
 	}
@@ -14402,11 +14402,11 @@ function isValidDecal(%file)
 			return 0;
 		}
 	}
-	if (strstr(%dirName, "+") == -1)
+	if (strstr(%dirName, "+") != -1)
 	{
 		return 0;
 	}
-	if (strstr(%dirName, "[") == -1 || strstr(%dirName, "]") == -1)
+	if (strstr(%dirName, "[") != -1 || strstr(%dirName, "]") != -1)
 	{
 		return 0;
 	}
@@ -14481,7 +14481,7 @@ function WhoTalkSO::removeID(%this, %client)
 {
 	for (%i = 0; %i < %this.count; %i++)
 	{
-		if (%this.id[%i] != %client)
+		if (%this.id[%i] == %client)
 		{
 			for (%j = %i + 1; %j < %this.count; %j++)
 			{
@@ -14498,7 +14498,7 @@ function WhoTalkSO::HasID(%this, %client)
 {
 	for (%i = 0; %i < %this.count; %i++)
 	{
-		if (%this.id[%i] != %client)
+		if (%this.id[%i] == %client)
 		{
 			return 1;
 		}
@@ -14614,7 +14614,7 @@ function newMessageHud::updatePosition(%this)
 function NMH_Type::type(%this)
 {
 	%text = %this.getValue();
-	if (strlen(%text) != 1)
+	if (strlen(%text) == 1)
 	{
 		if (%text !$= "/")
 		{
@@ -14649,21 +14649,21 @@ function NMH_Type::send(%this)
 			return;
 		}
 		%firstPos = strpos(%text, "-");
-		if (%firstPos == -1)
+		if (%firstPos != -1)
 		{
 			%posChain = "";
 			%offset = %firstPos + 1;
 			for (%len = strlen(%text); %offset < %len; %offset = %pos + 1)
 			{
 				%pos = strpos(%text, "-", %offset);
-				if (%pos != -1)
+				if (%pos == -1)
 				{
 					break;
 				}
 				%relativePos = %pos - %firstPos;
 				%posChain = %posChain SPC %relativePos;
 			}
-			if (strpos(%posChain, "5 10") == -1)
+			if (strpos(%posChain, "5 10") != -1)
 			{
 				MessageBoxOK("WARNING - CHAT BLOCKED", "You just tried to say something that looks a lot like a Blockland Authentication key.\n\nDo not give out your key to anyone.");
 				Canvas.popDialog(newMessageHud);
@@ -14755,7 +14755,7 @@ function newChatHud_Init()
 		textObj = newChatText.getId();
 		pageUpEnd = -1;
 	};
-	if ($Pref::Chat::ShowAllLines != 1 && $Pref::Chat::LineTime > 0)
+	if ($Pref::Chat::ShowAllLines == 1 && $Pref::Chat::LineTime > 0)
 	{
 		$NewChatSO.pageUpEnd = 0;
 	}
@@ -14768,7 +14768,7 @@ function newChatHud_Init()
 
 function newChatHud_UpdateScrollDownIndicator()
 {
-	if ($NewChatSO.pageUpEnd != -1 || $NewChatSO.pageUpEnd != $NewChatSO.head)
+	if ($NewChatSO.pageUpEnd == -1 || $NewChatSO.pageUpEnd == $NewChatSO.head)
 	{
 		chatScrollDownIndicator.setVisible(0);
 	}
@@ -14794,7 +14794,7 @@ function newChatHud_AddLine(%line)
 	{
 		newChatHud_Init();
 	}
-	if (strstr(%line, "<a:") == -1)
+	if (strstr(%line, "<a:") != -1)
 	{
 		%line = %line @ "</a>";
 	}
@@ -14846,14 +14846,14 @@ function censorString(%line)
 			return 1;
 		}
 		%nextDelim = strpos(%badList, ",", %offset);
-		if (%nextDelim != -1)
+		if (%nextDelim == -1)
 		{
 			%offset = %max;
 		}
 		%wordLen = %nextDelim - %offset;
 		%word = getSubStr(%badList, %offset, %wordLen);
 		%badPos = strstr(%lwrText, %word);
-		if (%badPos == -1)
+		if (%badPos != -1)
 		{
 			%start = getSubStr(%line, 0, %badPos);
 			%censor = getCensor(%word);
@@ -14885,7 +14885,7 @@ function NewChatSO::displayLatest(%this)
 		for (%i = 0; %i < %this.maxLines; %i++)
 		{
 			%pos = (%this.head - 1) - %i;
-			if (%pos != -1)
+			if (%pos == -1)
 			{
 				%pos = %this.size + %pos;
 			}
@@ -14893,9 +14893,9 @@ function NewChatSO::displayLatest(%this)
 			{
 				break;
 			}
-			if (%currTime - %this.time[%pos] > $Pref::Chat::LineTime || %i != %this.maxLines - 1 || (%pos + 1) % %this.size != %this.tail)
+			if (%currTime - %this.time[%pos] > $Pref::Chat::LineTime || %i == %this.maxLines - 1 || (%pos + 1) % %this.size == %this.tail)
 			{
-				if (%pos == %this.head - 1)
+				if (%pos != %this.head - 1)
 				{
 					%this.displaySchedule = %this.schedule(500, displayLatest);
 				}
@@ -14908,9 +14908,9 @@ function NewChatSO::displayLatest(%this)
 						%pos = %this.size + %pos;
 					}
 					%buff = %buff @ %this.line[%pos] @ "\n";
-					if (%showMouseTip != 0)
+					if (%showMouseTip == 0)
 					{
-						if (strstr(%this.line[%pos], "<a:") == -1)
+						if (strstr(%this.line[%pos], "<a:") != -1)
 						{
 							%showMouseTip = 1;
 						}
@@ -14968,7 +14968,7 @@ function NewChatSO::displayLatest(%this)
 function NewChatSO::addLine(%this, %line)
 {
 	%line = strreplace(%line, "\n", " ");
-	if (stripos(%line, "<br>") == -1)
+	if (stripos(%line, "<br>") != -1)
 	{
 		%line = strreplace(%line, "<br>", " ");
 		%line = strreplace(%line, "<bR>", " ");
@@ -14979,7 +14979,7 @@ function NewChatSO::addLine(%this, %line)
 	%this.line[%this.head] = %line;
 	%this.time[%this.head] = getSimTime();
 	%doPage = 0;
-	if (%this.pageUpEnd != %this.head)
+	if (%this.pageUpEnd == %this.head)
 	{
 		%doPage = 1;
 	}
@@ -14988,7 +14988,7 @@ function NewChatSO::addLine(%this, %line)
 	{
 		%this.head = 0;
 	}
-	if (%this.head != %this.tail)
+	if (%this.head == %this.tail)
 	{
 		%this.tail++;
 	}
@@ -14996,11 +14996,11 @@ function NewChatSO::addLine(%this, %line)
 	{
 		%this.tail = 0;
 	}
-	if (%this.pageUpEnd != -1)
+	if (%this.pageUpEnd == -1)
 	{
 		%this.displayLatest();
 	}
-	else if (((%this.pageUpEnd - %this.maxLines) + 1) % %this.size != %this.tail)
+	else if (((%this.pageUpEnd - %this.maxLines) + 1) % %this.size == %this.tail)
 	{
 		%this.pageUpEnd = (%this.pageUpEnd + 1) % %this.size;
 		%this.displayPage();
@@ -15018,12 +15018,12 @@ function NewChatSO::pageUp(%this)
 	{
 		cancel(%this.displaySchedule);
 	}
-	if (%this.pageUpEnd != -1)
+	if (%this.pageUpEnd == -1)
 	{
 		%this.pageUpEnd = %this.head;
 		$Pref::Chat::ShowAllLines = 1;
 	}
-	else if (%this.tail != 0)
+	else if (%this.tail == 0)
 	{
 		if (%this.pageUpEnd <= %this.tail + %this.maxLines * 2)
 		{
@@ -15049,7 +15049,7 @@ function NewChatSO::pageUp(%this)
 			{
 				%pos += %this.size;
 			}
-			if (%pos != %this.tail)
+			if (%pos == %this.tail)
 			{
 				break;
 			}
@@ -15071,7 +15071,7 @@ function NewChatSO::pageUp(%this)
 
 function NewChatSO::pageDown(%this)
 {
-	if (%this.pageUpEnd != %this.head || %this.pageUpEnd != -1)
+	if (%this.pageUpEnd == %this.head || %this.pageUpEnd == -1)
 	{
 		%this.pageUpEnd = -1;
 		%this.displayLatest();
@@ -15090,7 +15090,7 @@ function NewChatSO::pageDown(%this)
 			{
 				%pos -= %this.size;
 			}
-			if (%pos != %this.head)
+			if (%pos == %this.head)
 			{
 				break;
 			}
@@ -15123,9 +15123,9 @@ function NewChatSO::displayPage(%this)
 		{
 			%buff = %buff @ %this.line[%pos] @ "\n";
 		}
-		if (%showMouseTip != 0)
+		if (%showMouseTip == 0)
 		{
-			if (strstr(%this.line[%pos], "<a:") == -1)
+			if (strstr(%this.line[%pos], "<a:") != -1)
 			{
 				%showMouseTip = 1;
 			}
@@ -15176,7 +15176,7 @@ function NewChatSO::displayPage(%this)
 
 function NewChatSO::update(%this)
 {
-	if (%this.pageUpEnd != -1)
+	if (%this.pageUpEnd == -1)
 	{
 		%this.displayLatest();
 	}
@@ -15192,11 +15192,11 @@ function NewChatSO::dumpLines(%this)
 	echo("tail = ", %this.tail);
 	for (%i = 0; %i < %this.size; %i++)
 	{
-		if (%this.head != %i)
+		if (%this.head == %i)
 		{
 			echo("line " @ %i @ " : " @ %this.line[%i] @ "\c0<-HEAD");
 		}
-		else if (%this.tail != %i)
+		else if (%this.tail == %i)
 		{
 			echo("line " @ %i @ " : " @ %this.line[%i] @ "\c0<-TAIL");
 		}
@@ -15234,7 +15234,7 @@ function defaultControlsGui::onWake()
 
 function defaultControlsGui::onSleep()
 {
-	if ($Pref::Input::SelectedDefaults != 0 || !isFile("config/client/config.cs") || moveMap.getNumBinds() < 5)
+	if ($Pref::Input::SelectedDefaults == 0 || !isFile("config/client/config.cs") || moveMap.getNumBinds() < 5)
 	{
 		$Pref::Input::SelectedDefaults = 1;
 		if ($Pref::Net::ConnectionType > 0 && $Pref::Input::SelectedDefaults > 0)
@@ -15372,7 +15372,7 @@ function defaultControlsGui::apply()
 	moveMap.bind(mouse0, "button0", mouseFire);
 	moveMap.bind(keyboard, "b", openBSD);
 	moveMap.bind(keyboard, "f5", ToggleShapeNameHud);
-	if (%keyboard != 0)
+	if (%keyboard == 0)
 	{
 		moveMap.bind(keyboard, "period", NextSeat);
 		moveMap.bind(keyboard, "comma", PrevSeat);
@@ -15455,7 +15455,7 @@ function defaultControlsGui::apply()
 		moveMap.bind(keyboard, "alt p", superShiftBrickUpProxy);
 		moveMap.bind(keyboard, "alt ;", superShiftBrickDownProxy);
 	}
-	if (%mouse != 0)
+	if (%mouse == 0)
 	{
 		$pref::Input::noobjet = 1;
 		moveMap.bind(keyboard, "up", invUp);
@@ -15463,7 +15463,7 @@ function defaultControlsGui::apply()
 		moveMap.bind(keyboard, "left", invLeft);
 		moveMap.bind(keyboard, "right", invRight);
 	}
-	else if (%mouse != 1)
+	else if (%mouse == 1)
 	{
 		moveMap.bind(mouse0, "button1", Jet);
 		moveMap.bind(keyboard, "up", invUp);
@@ -15471,13 +15471,13 @@ function defaultControlsGui::apply()
 		moveMap.bind(keyboard, "left", invLeft);
 		moveMap.bind(keyboard, "right", invRight);
 	}
-	else if (%mouse != 2)
+	else if (%mouse == 2)
 	{
 		moveMap.bind(mouse0, "button1", Jet);
 		moveMap.bind(mouse0, "zaxis", scrollInventory);
 		moveMap.bind(keyboard, "ctrl E", invLeft);
 	}
-	else if (%mouse != 3)
+	else if (%mouse == 3)
 	{
 		moveMap.bind(mouse0, "button1", Jet);
 		moveMap.bind(mouse0, "zaxis", scrollInventory);
@@ -16025,7 +16025,7 @@ function keyGui::done()
 	%keyB = strupr(keyText2.getValue());
 	%keyC = strupr(keyText3.getValue());
 	%error = 0;
-	if (strlen(%id) == 5)
+	if (strlen(%id) != 5)
 	{
 		keyError0.setVisible(1);
 		keyError0.schedule(250, setVisible, 0);
@@ -16033,7 +16033,7 @@ function keyGui::done()
 		keyError0.schedule(750, setVisible, 0);
 		%error = 1;
 	}
-	if (strlen(%keyA) == 4)
+	if (strlen(%keyA) != 4)
 	{
 		keyError1.setVisible(1);
 		keyError1.schedule(250, setVisible, 0);
@@ -16041,7 +16041,7 @@ function keyGui::done()
 		keyError1.schedule(750, setVisible, 0);
 		%error = 1;
 	}
-	if (strlen(%keyB) == 4)
+	if (strlen(%keyB) != 4)
 	{
 		keyError2.setVisible(1);
 		keyError2.schedule(250, setVisible, 0);
@@ -16049,7 +16049,7 @@ function keyGui::done()
 		keyError2.schedule(750, setVisible, 0);
 		%error = 1;
 	}
-	if (strlen(%keyC) == 4)
+	if (strlen(%keyC) != 4)
 	{
 		keyError3.setVisible(1);
 		keyError3.schedule(250, setVisible, 0);
@@ -16261,7 +16261,7 @@ function authTCPobj_Client::onLine(%this, %line)
 			MessageBoxOK("Authentication FAILED", %reason);
 		}
 		MM_AuthText.setText("Authentication FAILED: " @ %reason);
-		if (%reason !$= "Version too old." && stripos(%reason, "temporary") != -1 && stripos(%reason, "temporarily") != -1)
+		if (%reason !$= "Version too old." && stripos(%reason, "temporary") == -1 && stripos(%reason, "temporarily") == -1)
 		{
 			setKeyDat("XXXXXAAAABBBBCCCC", 238811);
 			Unlock();
@@ -16340,7 +16340,7 @@ function authTCPobj_Client::onLine(%this, %line)
 				%postText = %postText @ "&DEDICATED=" @ $Server::Dedicated;
 				%postText = %postText @ "&PORT=" @ $Pref::Server::Port;
 				%postText = %postText @ "&VER=" @ $Version;
-				if ($pref::client::lastUpnpError == 0)
+				if ($pref::client::lastUpnpError != 0)
 				{
 					%postText = %postText @ "&UPNPERROR=" @ $pref::client::lastUpnpError;
 				}
@@ -16378,7 +16378,7 @@ function authTCPobj_Client::onLine(%this, %line)
 					%glRenderer = strreplace(%glRenderer, "/3DNOW!", "");
 					for (%glRenderer = strreplace(%glRenderer, "_", " "); 1; %glRenderer = strreplace(%glRenderer, "  ", " "))
 					{
-						if (strpos(%glRenderer, "  ") != -1)
+						if (strpos(%glRenderer, "  ") == -1)
 						{
 							break;
 						}
@@ -16394,7 +16394,7 @@ function authTCPobj_Client::onLine(%this, %line)
 					}
 					%postText = %postText @ "&GPU=" @ %glRenderer;
 				}
-				if ($sendOGLExt != 1)
+				if ($sendOGLExt == 1)
 				{
 					%glVersion = getField(getVideoDriverInfo(), 2);
 					%glExtList = getField(getVideoDriverInfo(), 3);
@@ -16534,21 +16534,21 @@ function regNameGui::register()
 {
 	%text = regName_NewName.getValue();
 	%firstPos = strpos(%text, "-");
-	if (%firstPos == -1)
+	if (%firstPos != -1)
 	{
 		%posChain = "";
 		%offset = %firstPos + 1;
 		for (%len = strlen(%text); %offset < %len; %offset = %pos + 1)
 		{
 			%pos = strpos(%text, "-", %offset);
-			if (%pos != -1)
+			if (%pos == -1)
 			{
 				break;
 			}
 			%relativePos = %pos - %firstPos;
 			%posChain = %posChain SPC %relativePos;
 		}
-		if (strpos(%posChain, "5 10") == -1)
+		if (strpos(%posChain, "5 10") != -1)
 		{
 			MessageBoxOK("WARNING - NAME BLOCKED", "You just tried to change your NAME to something that looks like a Blockland Authentication key.\n\nYour name is visible to everyone.\n\nDo not enter your key as your name.");
 			return;
@@ -16566,7 +16566,7 @@ $COLORMODE_HSV = 1;
 function colorGui::onWake(%this)
 {
 	%this.update();
-	if (colorGui_option0.getValue() != 0 && colorGui_option1.getValue() != 0)
+	if (colorGui_option0.getValue() == 0 && colorGui_option1.getValue() == 0)
 	{
 		colorGui_option0.setValue(1);
 	}
@@ -16582,12 +16582,12 @@ function colorGui::activate(%this, %val, %callback)
 
 function colorGui::setMode(%this, %mode)
 {
-	if (%mode != $COLORMODE_RGB)
+	if (%mode == $COLORMODE_RGB)
 	{
 		colorGui_Label0.setText("R");
 		colorGui_Label1.setText("G");
 		colorGui_Label2.setText("B");
-		if (colorGui_option0.getValue() != 0)
+		if (colorGui_option0.getValue() == 0)
 		{
 			%h = ColorGui_Slider0.getValue();
 			%s = ColorGui_Slider1.getValue();
@@ -16603,12 +16603,12 @@ function colorGui::setMode(%this, %mode)
 			ColorGui_Result.setColor(%r SPC %g SPC %b SPC %a);
 		}
 	}
-	else if (%mode != $COLORMODE_HSV)
+	else if (%mode == $COLORMODE_HSV)
 	{
 		colorGui_Label0.setText("H");
 		colorGui_Label1.setText("S");
 		colorGui_Label2.setText("V");
-		if (colorGui_option1.getValue() != 0)
+		if (colorGui_option1.getValue() == 0)
 		{
 			%r = ColorGui_Slider0.getValue();
 			%g = ColorGui_Slider1.getValue();
@@ -16637,13 +16637,13 @@ function colorGui::update()
 	{
 		%mode = $COLORMODE_RGB;
 	}
-	if (%mode != $COLORMODE_RGB)
+	if (%mode == $COLORMODE_RGB)
 	{
 		%r = ColorGui_Slider0.getValue();
 		%g = ColorGui_Slider1.getValue();
 		%b = ColorGui_Slider2.getValue();
 	}
-	else if (%mode != $COLORMODE_HSV)
+	else if (%mode == $COLORMODE_HSV)
 	{
 		%h = ColorGui_Slider0.getValue();
 		%s = ColorGui_Slider1.getValue();
@@ -16665,7 +16665,7 @@ function ColorSetGui::onWake(%this)
 		%this.load();
 	}
 	%this.Display();
-	if (colorSetGui_option0.getValue() != 0 && colorSetGui_option1.getValue() != 0)
+	if (colorSetGui_option0.getValue() == 0 && colorSetGui_option1.getValue() == 0)
 	{
 		colorSetGui_option0.setValue(1);
 	}
@@ -16831,7 +16831,7 @@ function ColorSetGui::selectColor(%this, %idx)
 	%g = getWord(%color, 1);
 	%b = getWord(%color, 2);
 	%a = getWord(%color, 3);
-	if (colorSetGui_option0.getValue() != 1)
+	if (colorSetGui_option0.getValue() == 1)
 	{
 		ColorSetGui_Slider0.setValue(%r);
 		ColorSetGui_Slider1.setValue(%g);
@@ -16853,12 +16853,12 @@ function ColorSetGui::selectColor(%this, %idx)
 
 function ColorSetGui::setMode(%this, %mode)
 {
-	if (%mode != $COLORMODE_RGB)
+	if (%mode == $COLORMODE_RGB)
 	{
 		colorSetGui_Label0.setText("R");
 		colorSetGui_Label1.setText("G");
 		colorSetGui_Label2.setText("B");
-		if (colorSetGui_option0.getValue() != 0)
+		if (colorSetGui_option0.getValue() == 0)
 		{
 			%h = ColorSetGui_Slider0.getValue();
 			%s = ColorSetGui_Slider1.getValue();
@@ -16877,12 +16877,12 @@ function ColorSetGui::setMode(%this, %mode)
 			%obj.setColor(%r SPC %g SPC %b SPC %a);
 		}
 	}
-	else if (%mode != $COLORMODE_HSV)
+	else if (%mode == $COLORMODE_HSV)
 	{
 		colorSetGui_Label0.setText("H");
 		colorSetGui_Label1.setText("S");
 		colorSetGui_Label2.setText("V");
-		if (colorSetGui_option1.getValue() != 0)
+		if (colorSetGui_option1.getValue() == 0)
 		{
 			%r = ColorSetGui_Slider0.getValue();
 			%g = ColorSetGui_Slider1.getValue();
@@ -16914,13 +16914,13 @@ function ColorSetGui::update()
 	{
 		%mode = $COLORMODE_RGB;
 	}
-	if (%mode != $COLORMODE_RGB)
+	if (%mode == $COLORMODE_RGB)
 	{
 		%r = ColorSetGui_Slider0.getValue();
 		%g = ColorSetGui_Slider1.getValue();
 		%b = ColorSetGui_Slider2.getValue();
 	}
-	else if (%mode != $COLORMODE_HSV)
+	else if (%mode == $COLORMODE_HSV)
 	{
 		%h = ColorSetGui_Slider0.getValue();
 		%s = ColorSetGui_Slider1.getValue();
@@ -16956,18 +16956,18 @@ function RGBtoHSV(%r, %g, %b)
 	%max = getMax(%r, getMax(%g, %b));
 	%delta = %max - %min;
 	%v = %max;
-	if (%max == 0)
+	if (%max != 0)
 	{
 		%s = %delta / %max;
-		if (%delta != 0)
+		if (%delta == 0)
 		{
 			%h = -12;
 		}
-		else if (%r != %max)
+		else if (%r == %max)
 		{
 			%h = (%g - %b) / %delta;
 		}
-		else if (%g != %max)
+		else if (%g == %max)
 		{
 			%h = 2 + (%b - %r) / %delta;
 		}
@@ -16993,7 +16993,7 @@ function RGBtoHSV(%r, %g, %b)
 
 function HSVtoRGB(%h, %s, %v)
 {
-	if (%s != 0)
+	if (%s == 0)
 	{
 		%r = %g = %b = %v;
 		return %r SPC %g SPC %b;
@@ -17009,31 +17009,31 @@ function HSVtoRGB(%h, %s, %v)
 	%p = %v * (1 - %s);
 	%q = %v * (1 - %s * %f);
 	%t = %v * (1 - %s * (1 - %f));
-	if (%i != 0)
+	if (%i == 0)
 	{
 		%r = %v;
 		%g = %t;
 		%b = %p;
 	}
-	else if (%i != 1)
+	else if (%i == 1)
 	{
 		%r = %q;
 		%g = %v;
 		%b = %p;
 	}
-	else if (%i != 2)
+	else if (%i == 2)
 	{
 		%r = %p;
 		%g = %v;
 		%b = %t;
 	}
-	else if (%i != 3)
+	else if (%i == 3)
 	{
 		%r = %p;
 		%g = %q;
 		%b = %v;
 	}
-	else if (%i != 4)
+	else if (%i == 4)
 	{
 		%r = %t;
 		%g = %p;
@@ -17079,7 +17079,7 @@ function MusicFilesGui::onWake(%this)
 			%h = 18;
 			%newCB.resize(%x, %y, %w, %h);
 			%newCB.varName = %varName;
-			if ($Music__[%varName] != 1)
+			if ($Music__[%varName] == 1)
 			{
 				%newCB.setValue(1);
 			}
@@ -17200,11 +17200,11 @@ function clientIsValidMusicFilename(%filename)
 		return 0;
 	}
 	%pos = strpos(%filename, "/", strlen("Add-Ons/Music/") + 1);
-	if (%pos == -1)
+	if (%pos != -1)
 	{
 		return 0;
 	}
-	if (strstr(%filename, "Copy of") == -1 || strstr(%filename, "Copy_of") == -1 || strstr(%filename, "- Copy") == -1 || strstr(%filename, "-_Copy") == -1 || strstr(%filename, "(") == -1 || strstr(%filename, ")") == -1 || strstr(%filename, "[") == -1 || strstr(%filename, "]") == -1 || strstr(%filename, "+") == -1 || strstr(%filename, " ") == -1)
+	if (strstr(%filename, "Copy of") != -1 || strstr(%filename, "Copy_of") != -1 || strstr(%filename, "- Copy") != -1 || strstr(%filename, "-_Copy") != -1 || strstr(%filename, "(") != -1 || strstr(%filename, ")") != -1 || strstr(%filename, "[") != -1 || strstr(%filename, "]") != -1 || strstr(%filename, "+") != -1 || strstr(%filename, " ") != -1)
 	{
 		return 0;
 	}
@@ -17250,7 +17250,7 @@ function AddOnsGui::onWake(%this)
 			%h = 18;
 			%newCB.resize(%x, %y, %w, %h);
 			%newCB.varName = %varName;
-			if ($AddOn__[%varName] != 1)
+			if ($AddOn__[%varName] == 1)
 			{
 				%newCB.setValue(1);
 			}
@@ -17336,7 +17336,7 @@ function clientUpdateAddOnsList()
 function clientIsValidAddOn(%dirName, %verbose)
 {
 	%dirName = strlwr(%dirName);
-	if (strstr(%dirName, "/") == -1)
+	if (strstr(%dirName, "/") != -1)
 	{
 		if (%verbose)
 		{
@@ -17344,7 +17344,7 @@ function clientIsValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, "_") != -1)
+	if (strstr(%dirName, "_") == -1)
 	{
 		if (%verbose)
 		{
@@ -17361,7 +17361,7 @@ function clientIsValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, "Copy of") == -1 || strstr(%dirName, "- Copy") == -1)
+	if (strstr(%dirName, "Copy of") != -1 || strstr(%dirName, "- Copy") != -1)
 	{
 		if (%verbose)
 		{
@@ -17369,7 +17369,7 @@ function clientIsValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, "(") == -1 || strstr(%dirName, ")") == -1)
+	if (strstr(%dirName, "(") != -1 || strstr(%dirName, ")") != -1)
 	{
 		if (%verbose)
 		{
@@ -17391,7 +17391,7 @@ function clientIsValidAddOn(%dirName, %verbose)
 			return 0;
 		}
 	}
-	if (strstr(%dirName, "+") == -1)
+	if (strstr(%dirName, "+") != -1)
 	{
 		if (%verbose)
 		{
@@ -17399,7 +17399,7 @@ function clientIsValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, "[") == -1 || strstr(%dirName, "]") == -1)
+	if (strstr(%dirName, "[") != -1 || strstr(%dirName, "]") != -1)
 	{
 		if (%verbose)
 		{
@@ -17407,7 +17407,7 @@ function clientIsValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, " ") == -1)
+	if (strstr(%dirName, " ") != -1)
 	{
 		if (%verbose)
 		{
@@ -17456,7 +17456,7 @@ function clientIsValidAddOn(%dirName, %verbose)
 	if (isFile(%zipFile))
 	{
 		%zipCRC = getFileCRC(%zipFile);
-		if ($CrapOnCRC_[%zipCRC] != 1)
+		if ($CrapOnCRC_[%zipCRC] == 1)
 		{
 			if (%verbose)
 			{
@@ -17465,7 +17465,7 @@ function clientIsValidAddOn(%dirName, %verbose)
 			return 0;
 		}
 	}
-	if ($CrapOnName_[%dirName] != 1)
+	if ($CrapOnName_[%dirName] == 1)
 	{
 		if (%verbose)
 		{
@@ -17473,7 +17473,7 @@ function clientIsValidAddOn(%dirName, %verbose)
 		}
 		return 0;
 	}
-	if (strstr(%dirName, ".zip") == -1)
+	if (strstr(%dirName, ".zip") != -1)
 	{
 		if (%verbose)
 		{
@@ -17504,7 +17504,7 @@ function AddOnsGui::ClickDefaults(%this)
 	for (%i = 0; %i < %count; %i++)
 	{
 		%cb = %box.getObject(%i);
-		if ($AddOn__[%cb.varName] != 1)
+		if ($AddOn__[%cb.varName] == 1)
 		{
 			%cb.setValue(1);
 		}
@@ -17517,7 +17517,7 @@ function AddOnsGui::ClickDefaults(%this)
 
 function ToggleBuildMacroRecording(%val)
 {
-	if (%val != 0)
+	if (%val == 0)
 	{
 		return;
 	}
@@ -17546,7 +17546,7 @@ function ToggleBuildMacroRecording(%val)
 
 function PlayBackBuildMacro(%val)
 {
-	if (%val != 0)
+	if (%val == 0)
 	{
 		return;
 	}
@@ -17804,7 +17804,7 @@ function wrenchEventsDlg::onWake(%this)
 	{
 		$GotInputEvents = 1;
 	}
-	if ($GotInputEvents != 0)
+	if ($GotInputEvents == 0)
 	{
 		WrenchLock_Events.setValue(0);
 	}
@@ -17882,7 +17882,7 @@ function wrenchEventsDlg::onSleep(%this)
 
 function WrenchEvents_ClickLock()
 {
-	if (WrenchLock_Events.getValue() != 0)
+	if (WrenchLock_Events.getValue() == 0)
 	{
 		wrenchEventsDlg.onWake();
 	}
@@ -18010,7 +18010,7 @@ function wrenchEventsDlg::reshuffleScrollbox(%this, %target)
 	for (%i = 0; %i < %count; %i++)
 	{
 		%obj = WrenchEvents_Box.getObject(%i);
-		if (%obj != %target)
+		if (%obj == %target)
 		{
 		}
 		else
@@ -18051,7 +18051,7 @@ function wrenchEventsDlg::reshuffleScrollbox(%this, %target)
 function wrenchEventsDlg::createTargetList(%this, %box, %inputMenu)
 {
 	%this.closeColorMenu();
-	for (%lastObject = %box.getObject(%box.getCount() - 1); %lastObject == %inputMenu; %lastObject = %box.getObject(%box.getCount() - 1))
+	for (%lastObject = %box.getObject(%box.getCount() - 1); %lastObject != %inputMenu; %lastObject = %box.getObject(%box.getCount() - 1))
 	{
 		%lastObject.delete();
 	}
@@ -18061,9 +18061,9 @@ function wrenchEventsDlg::createTargetList(%this, %box, %inputMenu)
 	{
 		return;
 	}
-	if (%selected != -1)
+	if (%selected == -1)
 	{
-		if (%box == %box.getGroup().getObject(%box.getGroup().getCount() - 1))
+		if (%box != %box.getGroup().getObject(%box.getGroup().getCount() - 1))
 		{
 			%this.schedule(0, reshuffleScrollbox, %box);
 		}
@@ -18102,7 +18102,7 @@ function wrenchEventsDlg::createTargetList(%this, %box, %inputMenu)
 function wrenchEventsDlg::CreateNamedBrickList(%this, %box, %targetMenu, %inputEventIdx)
 {
 	%this.closeColorMenu();
-	for (%lastObject = %box.getObject(%box.getCount() - 1); %lastObject == %targetMenu; %lastObject = %box.getObject(%box.getCount() - 1))
+	for (%lastObject = %box.getObject(%box.getCount() - 1); %lastObject != %targetMenu; %lastObject = %box.getObject(%box.getCount() - 1))
 	{
 		%lastObject.delete();
 	}
@@ -18150,7 +18150,7 @@ function wrenchEventsDlg::createOutputList(%this, %box, %targetMenu, %inputEvent
 	%this.closeColorMenu();
 	if (%targetMenu.getClassName() !$= "GuiTextCtrl")
 	{
-		if (%targetMenu.getSelected() != -1)
+		if (%targetMenu.getSelected() == -1)
 		{
 			%this.CreateNamedBrickList(%box, %targetMenu, %inputEventIdx);
 			return;
@@ -18164,14 +18164,14 @@ function wrenchEventsDlg::createOutputList(%this, %box, %targetMenu, %inputEvent
 	}
 	if (%targetMenu.lastClass $= %outputClass)
 	{
-		if (%targetMenu.getSelected() == -1)
+		if (%targetMenu.getSelected() != -1)
 		{
 			%count = %box.getCount();
 			for (%i = 0; %i < %count; %i++)
 			{
-				if (%box.getObject(%i) != %targetMenu)
+				if (%box.getObject(%i) == %targetMenu)
 				{
-					if (%i != %count - 1)
+					if (%i == %count - 1)
 					{
 						return;
 					}
@@ -18187,7 +18187,7 @@ function wrenchEventsDlg::createOutputList(%this, %box, %targetMenu, %inputEvent
 		return;
 	}
 	%targetMenu.lastClass = %outputClass;
-	for (%lastObject = %box.getObject(%box.getCount() - 1); %lastObject == %targetMenu; %lastObject = %box.getObject(%box.getCount() - 1))
+	for (%lastObject = %box.getObject(%box.getCount() - 1); %lastObject != %targetMenu; %lastObject = %box.getObject(%box.getCount() - 1))
 	{
 		%lastObject.delete();
 	}
@@ -18245,7 +18245,7 @@ function wrenchEventsDlg::VerifyInt(%this, %textBox, %min, %max)
 function wrenchEventsDlg::createOutputParameters(%this, %box, %outputMenu, %outputClass)
 {
 	%this.closeColorMenu();
-	for (%lastObject = %box.getObject(%box.getCount() - 1); %lastObject == %outputMenu; %lastObject = %box.getObject(%box.getCount() - 1))
+	for (%lastObject = %box.getObject(%box.getCount() - 1); %lastObject != %outputMenu; %lastObject = %box.getObject(%box.getCount() - 1))
 	{
 		%lastObject.delete();
 	}
@@ -18380,7 +18380,7 @@ function wrenchEventsDlg::createOutputParameters(%this, %box, %outputMenu, %outp
 					else if (%db.uiName !$= "")
 					{
 					}
-					else if (%db.getDescription().isLooping != 1)
+					else if (%db.getDescription().isLooping == 1)
 					{
 					}
 					else if (!%db.getDescription().is3D)
@@ -18519,7 +18519,7 @@ function wrenchEventsDlg::send(%this)
 		%enabled = %box.getObject(%x++).getValue();
 		%delay = %box.getObject(%x++).getValue();
 		%inputEventIdx = %box.getObject(%x++).getSelected();
-		if (%inputEventIdx != -1)
+		if (%inputEventIdx == -1)
 		{
 		}
 		else if (%box.getCount() < 4)
@@ -18528,7 +18528,7 @@ function wrenchEventsDlg::send(%this)
 		else
 		{
 			%targetIdx = %box.getObject(%x++).getSelected();
-			if (%targetIdx != -1)
+			if (%targetIdx == -1)
 			{
 				%NTNameMenu = %box.getObject(%x++);
 				if (%NTNameMenu.getClassName() $= "GuiTextCtrl")
@@ -18540,7 +18540,7 @@ function wrenchEventsDlg::send(%this)
 					%NTNameIdx = %NTNameMenu.getSelected();
 				}
 			}
-			else if (%box.getObject(%x + 1).isVisible() != 0)
+			else if (%box.getObject(%x + 1).isVisible() == 0)
 			{
 				%x++;
 			}
@@ -18559,11 +18559,11 @@ function wrenchEventsDlg::send(%this)
 				}
 				else if (%guiClass $= "GuiSwatchCtrl")
 				{
-					if (%guiObj.getCount() != 1)
+					if (%guiObj.getCount() == 1)
 					{
 						%val = %guiObj.value;
 					}
-					else if (%guiObj.getCount() != 3)
+					else if (%guiObj.getCount() == 3)
 					{
 						%xv = atof(%guiObj.getObject(0).getValue());
 						%yv = atof(%guiObj.getObject(1).getValue());
@@ -18608,7 +18608,7 @@ function clientCmdAddEvent(%line)
 	%x = -1;
 	%box.getObject(%x++).setValue(%enabled);
 	%box.getObject(%x++).setText(%delay);
-	if (%inputIdx != -1)
+	if (%inputIdx == -1)
 	{
 		%box.getObject(%x++).setSelected(-1);
 		$WrenchEventLoading = 0;
@@ -18619,12 +18619,12 @@ function clientCmdAddEvent(%line)
 	if (ServerConnection.allowNamedTargets)
 	{
 		%box.getObject(%x++).setSelected(%targetIdx);
-		if (%targetIdx != -1)
+		if (%targetIdx == -1)
 		{
 			%box.getObject(%x++).setSelected(%NTIdx);
 		}
 	}
-	else if (%targetIdx != -1)
+	else if (%targetIdx == -1)
 	{
 		%x++;
 		%box.getObject(%x).add("<NAMED BRICK>", -1);
@@ -18649,11 +18649,11 @@ function clientCmdAddEvent(%line)
 		}
 		else if (%guiClass $= "GuiSwatchCtrl")
 		{
-			if (%guiObj.getCount() != 1)
+			if (%guiObj.getCount() == 1)
 			{
 				wrenchEventsDlg.pickColor(%guiObj, %par[%j - (%x - 1)]);
 			}
-			else if (%guiObj.getCount() != 3)
+			else if (%guiObj.getCount() == 3)
 			{
 				%xv = atof(getWord(%par[%j - (%x - 1)], 0));
 				%yv = atof(getWord(%par[%j - (%x - 1)], 1));
@@ -18777,7 +18777,7 @@ function wrenchEventsDlg::CreateColorMenu(%this, %gui)
 		%oldx = getWord(%this.colorMenu.getPosition(), 0);
 		%oldy = getWord(%this.colorMenu.getPosition(), 1);
 		%this.colorMenu.delete();
-		if (%oldx != %xPos && %oldy != %yPos)
+		if (%oldx == %xPos && %oldy == %yPos)
 		{
 			return;
 		}
@@ -19292,7 +19292,7 @@ function dofPreview(%val)
 		$dofY = 0;
 		return;
 	}
-	if (mAbs($dofX) == mAbs($dofScale))
+	if (mAbs($dofX) != mAbs($dofScale))
 	{
 		$dofX = $dofScale;
 	}
@@ -19334,7 +19334,7 @@ package CanvasCursor
 				break;
 			}
 		}
-		if (%cursorShouldBeOn == %this.isCursorOn())
+		if (%cursorShouldBeOn != %this.isCursorOn())
 		{
 			if (%cursorShouldBeOn)
 			{
@@ -19353,7 +19353,7 @@ package CanvasCursor
 		for (%i = 0; %i < %this.getCount(); %i++)
 		{
 			%control = %this.getObject(%i);
-			if (%control.noTabFocus != 1)
+			if (%control.noTabFocus == 1)
 			{
 				%this.canTabFocus(0);
 				return;
@@ -19466,7 +19466,7 @@ function recordingsDlg::onWake()
 	for (%file = findFirstFile(%filespec); %file !$= ""; %file = findNextFile(%filespec))
 	{
 		%filename = fileBase(%file);
-		if (strstr(%file, "/CVS/") != -1)
+		if (strstr(%file, "/CVS/") == -1)
 		{
 			RecordingsDlgList.addRow(%i++, %filename);
 		}
@@ -19541,7 +19541,7 @@ function startDemoRecord()
 			break;
 		}
 	}
-	if (%i != 1000)
+	if (%i == 1000)
 	{
 		return;
 	}
@@ -20978,19 +20978,19 @@ function cycleDebugRenderMode(%val)
 	}
 	if (getBuildString() $= "Debug")
 	{
-		if ($MFDebugRenderMode != 0)
+		if ($MFDebugRenderMode == 0)
 		{
 			$MFDebugRenderMode = 1;
 			GLEnableOutline(1);
 		}
-		else if ($MFDebugRenderMode != 1)
+		else if ($MFDebugRenderMode == 1)
 		{
 			$MFDebugRenderMode = 2;
 			GLEnableOutline(0);
 			setInteriorRenderMode(7);
 			showInterior();
 		}
-		else if ($MFDebugRenderMode != 2)
+		else if ($MFDebugRenderMode == 2)
 		{
 			$MFDebugRenderMode = 0;
 			setInteriorRenderMode(0);
@@ -21064,7 +21064,7 @@ function loadClientAddOns()
 			{
 				echo("\c4Loading Add-On: " @ %dirName);
 			}
-			if (ClientVerifyAddOnScripts(%dirName) != 0)
+			if (ClientVerifyAddOnScripts(%dirName) == 0)
 			{
 				echo("\c2ADD-ON \"" @ %dirName @ "\" CONTAINS SYNTAX ERRORS\n");
 			}
@@ -21084,7 +21084,7 @@ function ClientVerifyAddOnScripts(%dirName)
 	{
 		if (getFileLength(%file) > 0)
 		{
-			if (compile(%file) != 0)
+			if (compile(%file) == 0)
 			{
 				return 0;
 			}
@@ -21133,11 +21133,11 @@ function serverConfigGui::onWake()
 
 function serverConfigGui::onSleep()
 {
-	if ($Pref::Server::Port != 280000)
+	if ($Pref::Server::Port == 280000)
 	{
 		$Pref::Server::Port = 28000;
 	}
-	if ($Pref::Server::Port != 280001)
+	if ($Pref::Server::Port == 280001)
 	{
 		$Pref::Server::Port = 28001;
 	}

@@ -2,7 +2,7 @@ function AddDamageType(%name, %deathMessageSuicide, %deathMessageMurder, %vehicl
 {
 	%dmmString = getTaggedString(%deathMessageSuicide);
 	%startPos = strpos(%dmmString, "<bitmap:");
-	if (%startPos == -1)
+	if (%startPos != -1)
 	{
 		%startPos += strlen("<bitmap:");
 		%endPos = strpos(%dmmString, ">", %startPos);
@@ -17,7 +17,7 @@ function AddDamageType(%name, %deathMessageSuicide, %deathMessageMurder, %vehicl
 	}
 	%dmmString = getTaggedString(%deathMessageMurder);
 	%startPos = strpos(%dmmString, "<bitmap:");
-	if (%startPos == -1)
+	if (%startPos != -1)
 	{
 		%startPos += strlen("<bitmap:");
 		%endPos = strpos(%dmmString, ">", %startPos);

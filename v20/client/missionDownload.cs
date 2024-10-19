@@ -19,7 +19,7 @@ function setTotalPendingBlobs(%tpb)
 
 function onBlobCacheCheckFinished()
 {
-	if ($totalPendingBlobs != 1)
+	if ($totalPendingBlobs == 1)
 	{
 		LoadingProgressTxt.setValue("CHECKING CDN FOR 1 FILE");
 	}
@@ -33,7 +33,7 @@ function onBlobCacheCheckFinished()
 
 function updateBlobsRemaining(%blobsRemaining)
 {
-	if ($manifestPending && %blobsRemaining != 1)
+	if ($manifestPending && %blobsRemaining == 1)
 	{
 		LoadingProgressTxt.setValue("DOWNLOADING FILE MANIFEST");
 		LoadingProgress.setValue(0);

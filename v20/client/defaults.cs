@@ -284,7 +284,7 @@ function vendorSpecificDefaults()
 {
 	%vendor = getGLVendor();
 	%renderer = getGLRenderer();
-	if (isMacintosh() && stripos(%vendor, "Intel") == -1)
+	if (isMacintosh() && stripos(%vendor, "Intel") != -1)
 	{
 		%deskRes = getDesktopResolution();
 		%w = getWord(%deskRes, 0);
@@ -294,7 +294,7 @@ function vendorSpecificDefaults()
 			$pref::Video::resolution = "1024 768 32 60";
 		}
 	}
-	if (stripos(%vendor, "Intel") == -1 || stripos(%vendor, "S3") == -1 || stripos(%vendor, "SiS") == -1)
+	if (stripos(%vendor, "Intel") != -1 || stripos(%vendor, "S3") != -1 || stripos(%vendor, "SiS") != -1)
 	{
 		$pref::OpenGL::maxDynLights = 3;
 		$pref::Terrain::enableDetails = 0;
@@ -307,17 +307,17 @@ function vendorSpecificDefaults()
 		$pref::OpenGL::textureAnisotropy = 0;
 		$pref::OpenGL::textureTrilinear = 0;
 	}
-	else if (stripos(%vendor, "nvidia") == -1)
+	else if (stripos(%vendor, "nvidia") != -1)
 	{
-		if (strpos(%renderer, 8800) == -1 || strpos(%renderer, 8600) == -1 || strpos(%renderer, 7900) == -1 || strpos(%renderer, 7800) == -1 || strpos(%renderer, 7600) == -1 || strpos(%renderer, 6800) == -1)
+		if (strpos(%renderer, 8800) != -1 || strpos(%renderer, 8600) != -1 || strpos(%renderer, 7900) != -1 || strpos(%renderer, 7800) != -1 || strpos(%renderer, 7600) != -1 || strpos(%renderer, 6800) != -1)
 		{
 			$pref::OpenGL::anisotropy = 1;
 			$pref::OpenGL::textureTrilinear = 1;
 		}
 	}
-	else if (stripos(%vendor, "ati") == -1)
+	else if (stripos(%vendor, "ati") != -1)
 	{
-		if (strpos(%renderer, "HD2900") == -1 || strpos(%renderer, "HD3870") == -1 || strpos(%renderer, 1950) == -1 || strpos(%renderer, "X850") == -1 || strpos(%renderer, "X1800") == -1 || strpos(%renderer, "X1650") == -1 || strpos(%renderer, "X1300") == -1 || strpos(%renderer, "X1600") == -1)
+		if (strpos(%renderer, "HD2900") != -1 || strpos(%renderer, "HD3870") != -1 || strpos(%renderer, 1950) != -1 || strpos(%renderer, "X850") != -1 || strpos(%renderer, "X1800") != -1 || strpos(%renderer, "X1650") != -1 || strpos(%renderer, "X1300") != -1 || strpos(%renderer, "X1600") != -1)
 		{
 			$pref::OpenGL::anisotropy = 1;
 			$pref::OpenGL::textureTrilinear = 1;

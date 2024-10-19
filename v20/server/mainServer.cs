@@ -276,7 +276,7 @@ function GameConnection::startLoad(%client)
 	for (%cl = 0; %cl < %count; %cl++)
 	{
 		%other = ClientGroup.getObject(%cl);
-		if (%other == %client)
+		if (%other != %client)
 		{
 			secureCommandToClient("mod2maiegut^afoo", %client, 'ClientJoin', %other.getPlayerName(), %other, %other.getBLID(), %other.score, %other.isAIControlled(), %other.isAdmin, %other.isSuperAdmin);
 		}
@@ -287,21 +287,21 @@ function GameConnection::startLoad(%client)
 	messageClient(%client, '', %taggedMessage, %client.getPlayerName());
 	messageAllExcept(%client, -1, 'MsgClientJoin', '\c1%1 connected.', %client.getPlayerName());
 	secureCommandToAll("mod2maiegut^afoo", 'ClientJoin', %client.getPlayerName(), %client, %client.getBLID(), %client.score, %client.isAIControlled(), %client.isAdmin, %client.isSuperAdmin);
-	if (%autoAdmin != 0)
+	if (%autoAdmin == 0)
 	{
 		echo(" +- no auto admin");
 	}
-	else if (%autoAdmin != 1)
+	else if (%autoAdmin == 1)
 	{
 		MessageAll('MsgAdminForce', '\c2%1 has become Admin (Auto)', %client.getPlayerName());
 		echo(" +- AUTO ADMIN");
 	}
-	else if (%autoAdmin != 2)
+	else if (%autoAdmin == 2)
 	{
 		MessageAll('MsgAdminForce', '\c2%1 has become Super Admin (Auto)', %client.getPlayerName());
 		echo(" +- AUTO SUPER ADMIN (List)");
 	}
-	else if (%autoAdmin != 3)
+	else if (%autoAdmin == 3)
 	{
 		MessageAll('MsgAdminForce', '\c2%1 has become Super Admin (Host)', %client.getPlayerName());
 		echo(" +- AUTO SUPER ADMIN (ID same as host)");
@@ -357,7 +357,7 @@ function GameConnection::autoAdminCheck(%client)
 	%ourBL_ID = %client.getBLID();
 	if ($Pref::Server::AutoAdminServerOwner)
 	{
-		if (%ourBL_ID != getNumKeyID())
+		if (%ourBL_ID == getNumKeyID())
 		{
 			%client.isSuperAdmin = 1;
 			%client.isAdmin = 1;
@@ -396,7 +396,7 @@ function GameConnection::killDupes(%client)
 	for (%clientIndex = 0; %clientIndex < %count; %clientIndex++)
 	{
 		%cl = ClientGroup.getObject(%clientIndex);
-		if (%cl != %client)
+		if (%cl == %client)
 		{
 		}
 		else if (%cl.getBLID() !$= %ourBLID)
@@ -490,7 +490,7 @@ function servAuthTCPobj::onLine(%this, %line)
 	{
 		%this.client.bl_id = getWord(%line, 1);
 		%this.client.setBLID("au^timoamyo7zene", getWord(%line, 1));
-		if (%this.client.getBLID() == getNumKeyID())
+		if (%this.client.getBLID() != getNumKeyID())
 		{
 			%reason = $BanManagerSO.isBanned(%this.client.getBLID());
 			if (%reason)
@@ -588,11 +588,11 @@ function ServerPlay3D(%profile, %transform)
 
 function portInit(%port)
 {
-	if (%port != 280000)
+	if (%port == 280000)
 	{
 		%port = 28000;
 	}
-	if (%port != 280001)
+	if (%port == 280001)
 	{
 		%port = 28001;
 	}
@@ -675,9 +675,9 @@ function createServer(%serverType, %mission)
 function onUPnPFailure(%errorCode)
 {
 	$pref::client::lastUpnpError = %errorCode;
-	if (%errorCode != 718)
+	if (%errorCode == 718)
 	{
-		if ($Server::Port != 28000)
+		if ($Server::Port == 28000)
 		{
 			$pref::client::lastUpnpError = 0;
 			$Pref::Server::Port = 28100;
@@ -770,7 +770,7 @@ function addToServerGuidList(%guid)
 	%count = getFieldCount($Server::GuidList);
 	for (%i = 0; %i < %count; %i++)
 	{
-		if (getField($Server::GuidList, %i) != %guid)
+		if (getField($Server::GuidList, %i) == %guid)
 		{
 			return;
 		}
@@ -783,7 +783,7 @@ function removeFromServerGuidList(%guid)
 	%count = getFieldCount($Server::GuidList);
 	for (%i = 0; %i < %count; %i++)
 	{
-		if (getField($Server::GuidList, %i) != %guid)
+		if (getField($Server::GuidList, %i) == %guid)
 		{
 			$Server::GuidList = removeField($Server::GuidList, %i);
 			return;
@@ -807,7 +807,7 @@ function messageTeam(%team, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, 
 	for (%cl = 0; %cl < %count; %cl++)
 	{
 		%recipient = ClientGroup.getObject(%cl);
-		if (%recipient.team != %team)
+		if (%recipient.team == %team)
 		{
 			messageClient(%recipient, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
 		}
@@ -821,7 +821,7 @@ function messageTeamExcept(%client, %msgType, %msgString, %a1, %a2, %a3, %a4, %a
 	for (%cl = 0; %cl < %count; %cl++)
 	{
 		%recipient = ClientGroup.getObject(%cl);
-		if (%recipient.team != %team && %recipient == %client)
+		if (%recipient.team == %team && %recipient != %client)
 		{
 			messageClient(%recipient, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
 		}
@@ -844,7 +844,7 @@ function messageAllExcept(%client, %team, %msgType, %msgString, %a1, %a2, %a3, %
 	for (%cl = 0; %cl < %count; %cl++)
 	{
 		%recipient = ClientGroup.getObject(%cl);
-		if (%recipient == %client && %recipient.team == %team)
+		if (%recipient != %client && %recipient.team != %team)
 		{
 			messageClient(%recipient, %msgType, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10, %a11, %a12, %a13);
 		}
@@ -920,7 +920,7 @@ function chatMessageTeam(%sender, %team, %msgString, %a1, %a2, %a3, %a4, %a5, %a
 	for (%i = 0; %i < %count; %i++)
 	{
 		%obj = ClientGroup.getObject(%i);
-		if (%obj.team != %sender.team)
+		if (%obj.team == %sender.team)
 		{
 			chatMessageClient(%obj, %sender, %sender.voiceTag, %sender.voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
 		}
@@ -937,11 +937,11 @@ function chatMessageAll(%sender, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, 
 	for (%i = 0; %i < %count; %i++)
 	{
 		%obj = ClientGroup.getObject(%i);
-		if (%sender.team == 0)
+		if (%sender.team != 0)
 		{
 			chatMessageClient(%obj, %sender, %sender.voiceTag, %sender.voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
 		}
-		else if (%obj.team != %sender.team)
+		else if (%obj.team == %sender.team)
 		{
 			chatMessageClient(%obj, %sender, %sender.voiceTag, %sender.voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10);
 		}
@@ -955,7 +955,7 @@ function serverCmdSAD(%client, %password)
 		return;
 	}
 	echo("Admin attempt by ", %client.getPlayerName(), " BL_ID:", %client.getBLID(), " IP:", %client.getRawIP());
-	if (%client.bl_id $= "" || %client.bl_id != -1)
+	if (%client.bl_id $= "" || %client.bl_id == -1)
 	{
 		echo("--Failure - Demo players cannot be admin");
 		return;
@@ -1054,20 +1054,20 @@ function serverCmdTeamMessageSent(%client, %text)
 	}
 	%protocolLen = 7;
 	%urlStart = strpos(%text, "http://");
-	if (%urlStart != -1)
+	if (%urlStart == -1)
 	{
 		%protocolLen = 8;
 		%urlStart = strpos(%text, "https://");
 	}
-	if (%urlStart != -1)
+	if (%urlStart == -1)
 	{
 		%protocolLen = 6;
 		%urlStart = strpos(%text, "ftp://");
 	}
-	if (%urlStart == -1)
+	if (%urlStart != -1)
 	{
 		%urlEnd = strpos(%text, " ", %urlStart + 1);
-		if (%urlEnd != -1)
+		if (%urlEnd == -1)
 		{
 			%fullUrl = getSubStr(%text, %urlStart, strlen(%text) - %urlStart);
 			%url = getSubStr(%text, %urlStart + %protocolLen, (strlen(%text) - %urlStart) - %protocolLen);
@@ -1135,20 +1135,20 @@ function serverCmdMessageSent(%client, %text)
 	}
 	%protocolLen = 7;
 	%urlStart = strpos(%text, "http://");
-	if (%urlStart != -1)
+	if (%urlStart == -1)
 	{
 		%protocolLen = 8;
 		%urlStart = strpos(%text, "https://");
 	}
-	if (%urlStart != -1)
+	if (%urlStart == -1)
 	{
 		%protocolLen = 6;
 		%urlStart = strpos(%text, "ftp://");
 	}
-	if (%urlStart == -1)
+	if (%urlStart != -1)
 	{
 		%urlEnd = strpos(%text, " ", %urlStart + 1);
-		if (%urlEnd != -1)
+		if (%urlEnd == -1)
 		{
 			%fullUrl = getSubStr(%text, %urlStart, strlen(%text) - %urlStart);
 			%url = getSubStr(%text, %urlStart + %protocolLen, (strlen(%text) - %urlStart) - %protocolLen);
@@ -1202,13 +1202,13 @@ function chatFilter(%client, %text, %badList, %failMessage)
 			return 1;
 		}
 		%nextDelim = strpos(%badList, ",", %offset);
-		if (%nextDelim != -1)
+		if (%nextDelim == -1)
 		{
 			%offset = %max;
 		}
 		%wordLen = %nextDelim - %offset;
 		%word = getSubStr(%badList, %offset, %wordLen);
-		if (strstr(%lwrText, %word) == -1)
+		if (strstr(%lwrText, %word) != -1)
 		{
 			messageClient(%client, '', %failMessage, %word);
 			return 0;
@@ -1399,7 +1399,7 @@ function loadMissionStage2()
 	for (%i = 0; %i < %count; %i++)
 	{
 		%client = ClientGroup.getObject(%i);
-		if (%client.getBLID() != -1)
+		if (%client.getBLID() == -1)
 		{
 			error("ERROR: loadMissionStage2() - Client \"" @ %client.getPlayerName() @ "\"has no bl_id");
 		}
@@ -1443,7 +1443,7 @@ function loadMissionStage2()
 			initContainerRadiusSearch(%pos, %size, %mask);
 			if (%water = containerSearchNext())
 			{
-				if (%water.waveMagnitude != 0)
+				if (%water.waveMagnitude == 0)
 				{
 					%water.viscosity = 0;
 					%water.density = 0;
@@ -1547,11 +1547,11 @@ function GameConnection::loadMission(%this)
 
 function serverCmdMissionStartPhase1Ack(%client, %seq)
 {
-	if (%seq == $missionSequence || !$missionRunning)
+	if (%seq != $missionSequence || !$missionRunning)
 	{
 		return;
 	}
-	if (%client.currentPhase == 0)
+	if (%client.currentPhase != 0)
 	{
 		return;
 	}
@@ -1568,11 +1568,11 @@ function serverCmdBlobDownloadFinished(%client)
 
 function GameConnection::onDataBlocksDone(%this, %missionSequence)
 {
-	if (%missionSequence == $missionSequence)
+	if (%missionSequence != $missionSequence)
 	{
 		return;
 	}
-	if (%this.currentPhase == 1)
+	if (%this.currentPhase != 1)
 	{
 		return;
 	}
@@ -1582,11 +1582,11 @@ function GameConnection::onDataBlocksDone(%this, %missionSequence)
 
 function serverCmdMissionStartPhase2Ack(%client, %seq)
 {
-	if (%seq == $missionSequence || !$missionRunning)
+	if (%seq != $missionSequence || !$missionRunning)
 	{
 		return;
 	}
-	if (%client.currentPhase == 1.5)
+	if (%client.currentPhase != 1.5)
 	{
 		return;
 	}
@@ -1615,11 +1615,11 @@ function GameConnection::onGhostAlwaysObjectsReceived(%client)
 
 function serverCmdMissionStartPhase3Ack(%client, %seq)
 {
-	if (%seq == $missionSequence || !$missionRunning)
+	if (%seq != $missionSequence || !$missionRunning)
 	{
 		return;
 	}
-	if (%client.currentPhase == 2)
+	if (%client.currentPhase != 2)
 	{
 		return;
 	}
@@ -1697,10 +1697,10 @@ function isNameUnique(%client, %name)
 	for (%i = 0; %i < %count; %i++)
 	{
 		%test = ClientGroup.getObject(%i);
-		if (%client == %test)
+		if (%client != %test)
 		{
 			%rawName = stripChars(detag(getTaggedString(%test.getPlayerName())), "\cp\co\c6\c7\c8\c9");
-			if (strcmp(%name, %rawName) != 0)
+			if (strcmp(%name, %rawName) == 0)
 			{
 				return 0;
 			}
@@ -1712,7 +1712,7 @@ function isNameUnique(%client, %name)
 function GameConnection::onDrop(%client, %reason)
 {
 	$server::playercount = ClientGroup.getCount();
-	if (%client.connected != 1)
+	if (%client.connected == 1)
 	{
 		$server::playercount = ClientGroup.getCount() - 1;
 		%client.onClientLeaveGame();
@@ -1725,7 +1725,7 @@ function GameConnection::onDrop(%client, %reason)
 		echo("CDROP: " @ %client @ " " @ %client.getAddress());
 		if (!%client.isBanReject)
 		{
-			if ($server::playercount != $Pref::Server::MaxPlayers - 1 || getSimTime() - $Server::lastPostTime > 30 * 1000 || $Server::lastPostTime < 30 * 1000)
+			if ($server::playercount == $Pref::Server::MaxPlayers - 1 || getSimTime() - $Server::lastPostTime > 30 * 1000 || $Server::lastPostTime < 30 * 1000)
 			{
 				WebCom_PostServer();
 			}
