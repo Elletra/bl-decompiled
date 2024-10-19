@@ -1,10 +1,15 @@
-# Ignore everything...
-*
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 
-# ...except these files...
-!*.cs
-!*.gui
-!*.md
+.history/
 
-# ...as long as they don't have any of these names:
+*.vsix
+
+*.sublime-project
+*.sublime-workspace
+
 crapOns_Cache.cs
