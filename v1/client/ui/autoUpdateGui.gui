@@ -1,0 +1,170 @@
+new GuiControl(AutoUpdateGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl(AU_Window)
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "70 73";
+		extent = "500 333";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Auto-Updater";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popdialog(AutoUpdateDialog);";
+
+		new GuiProgressCtrl(AU_Progress)
+		{
+			profile = "GuiProgressProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "10 173";
+			extent = "479 42";
+			minExtent = "8 2";
+			visible = 1;
+		};
+		new GuiBitmapButtonCtrl(AU_Cancel)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "24 288";
+			extent = "89 34";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popdialog(AutoUpdateGui);";
+			text = "Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+		new GuiMLTextCtrl(AU_Text)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "20 30";
+			extent = "457 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "what\nwhat\nwhat";
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 240";
+			extent = "86 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Download Speed:";
+			maxLength = 255;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 260";
+			extent = "77 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Time Remaining:";
+			maxLength = 255;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 220";
+			extent = "73 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Data Recieved:";
+			maxLength = 255;
+		};
+		new GuiTextCtrl(AU_Data)
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "114 220";
+			extent = "55 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "0/0";
+			maxLength = 255;
+		};
+		new GuiTextCtrl(AU_Speed)
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "129 240";
+			extent = "25 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "0 k/s";
+			maxLength = 255;
+		};
+		new GuiTextCtrl(AU_Time)
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "125 260";
+			extent = "42 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "00:00:00";
+			maxLength = 255;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "126 296";
+			extent = "247 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Note: You cannot pause or resume downloads yet.";
+			maxLength = 255;
+		};
+		new GuiBitmapButtonCtrl(AU_Done)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "388 288";
+			extent = "89 34";
+			minExtent = "8 2";
+			visible = 0;
+			command = "canvas.popdialog(AutoUpdateGui);";
+			text = "Done";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+		};
+	};
+};

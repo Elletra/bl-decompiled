@@ -1,0 +1,237 @@
+new GuiControl(InspectDlg)
+{
+	profile = "GuiDialogProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl(InspectTitle)
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "relative";
+		vertSizing = "height";
+		position = "20 20";
+		extent = "200 400";
+		minExtent = "8 8";
+		visible = 1;
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+		closeCommand = "Canvas.popDialog(InspectDlg);";
+		selectfillColor = 253;
+		opaque = "true";
+		helpTag = 0;
+		fillColor = 250;
+		font = "12 244 Arial";
+
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "7 26";
+			extent = "45 20";
+			minExtent = "8 2";
+			visible = 1;
+			command = "InspectApply();";
+			text = "APPLY";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "~/client/ui/button2";
+			mKeepCached = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "56 27";
+			extent = "30 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Name:";
+			maxLength = 255;
+			helpTag = 0;
+			font = "12 244 Arial";
+		};
+		new GuiTextEditCtrl(InspectObjectName)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "width";
+			vertSizing = "bottom";
+			position = "98 27";
+			extent = "72 18";
+			minExtent = "8 8";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "3 47";
+			extent = "192 348";
+			minExtent = "8 8";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+			helpTag = 0;
+
+			new GuiInspector(InspectFields)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "width";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "184 8";
+				minExtent = "8 8";
+				visible = 1;
+				editControlOffset = 5;
+				entryHeight = 16;
+				textExtent = 80;
+				entrySpacing = 2;
+				maxMenuExtent = 380;
+				useFieldGrouping = 1;
+				helpTag = 0;
+			};
+		};
+	};
+	new GuiWindowCtrl(InspectTreeTitle)
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "relative";
+		vertSizing = "height";
+		position = "230 20";
+		extent = "200 400";
+		minExtent = "8 8";
+		visible = 1;
+		text = "TREE VIEW";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+		closeCommand = "Canvas.popDialog(InspectDlg);";
+		helpTag = 0;
+
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "3 27";
+			extent = "192 368";
+			minExtent = "8 8";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "dynamic";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+			helpTag = 0;
+
+			new GuiTreeViewCtrl(InspectTreeView)
+			{
+				profile = "GuiTreeViewProfile";
+				horizSizing = "width";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "72 64";
+				minExtent = "8 8";
+				visible = 1;
+				allowMultipleSelections = 0;
+				recurseSets = 0;
+				helpTag = 0;
+			};
+		};
+	};
+};
+exec("./InspectAddFieldDlg.gui");
+function inspect(%obj)
+{
+	Canvas.popDialog("InspectDlg");
+	Canvas.pushDialog("InspectDlg", 30);
+	InspectFields.inspect(%obj);
+	InspectObjectName.setValue(%obj.getName());
+	InspectTitle.setValue(%obj.getId() @ ": " @ %obj.getName());
+}
+
+function InspectApply()
+{
+	InspectFields.APPLY(InspectObjectName.getValue());
+}
+
+function InspectTreeView::onSelect(%this, %obj)
+{
+	inspect(%obj);
+}
+
+function Tree(%obj)
+{
+	Canvas.popDialog("InspectDlg");
+	Canvas.pushDialog("InspectDlg", 20);
+	InspectTreeView.open(%obj);
+}
+
+function GuiInspector::toggleDynamicGroupScript(%this, %obj)
+{
+	%this.toggleDynamicGroupExpand();
+	%this.inspect(%obj);
+}
+
+function GuiInspector::toggleGroupScript(%this, %obj, %fieldName)
+{
+	%this.toggleGroupExpand(%obj, %fieldName);
+	%this.inspect(%obj);
+}
+
+function GuiInspector::setAllGroupStateScript(%this, %obj, %groupState)
+{
+	%this.setAllGroupState(%groupState);
+	%this.inspect(%obj);
+}
+
+function GuiInspector::addDynamicField(%this, %obj)
+{
+	InspectAddFieldDlg.object = %obj;
+	InspectAddFieldDlg.inspector = %this;
+	InspectAddFieldName.setValue("");
+	InspectAddFieldValue.setValue("");
+	Canvas.pushDialog(InspectAddFieldDlg, 99);
+}
+
+function InspectAddFieldDlg::doAction(%this)
+{
+	if (InspectAddFieldName.getValue() $= "" || InspectAddFieldValue.getValue() $= "")
+	{
+		return;
+	}
+	eval(%this.object @ "." @ firstWord(InspectAddFieldName.getValue()) @ " = " @ InspectAddFieldValue.getValue() @ ";");
+	%this.inspector.inspect(%this.object);
+}
+

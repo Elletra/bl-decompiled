@@ -1,0 +1,166 @@
+new GuiControl(regNameGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "166 164";
+		extent = "307 152";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Register Name";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 0;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(regNameGui);";
+
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "13 35";
+			extent = "69 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Current Name:";
+			maxLength = 255;
+		};
+		new GuiTextCtrl(regName_currName)
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "93 35";
+			extent = "50 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Blockhead";
+			maxLength = 255;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "26 65";
+			extent = "56 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "New Name:";
+			maxLength = 255;
+		};
+		new GuiTextEditCtrl(regName_NewName)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "92 65";
+			extent = "191 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 23;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "178 98";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "regNameGui::register();";
+			text = "Register >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "38 98";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(regNameGui);";
+			accelerator = "escape";
+			text = "<< Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+	};
+	new GuiWindowCtrl(regName_registerWindow)
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "166 164";
+		extent = "307 152";
+		minExtent = "8 2";
+		visible = 0;
+		text = "Registering Name...";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 0;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "regName_registerWindow.setVisible(false);";
+
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "108 98";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(regNameGui);";
+			accelerator = "escape";
+			text = "<< Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiTextCtrl(regName_actionText)
+		{
+			profile = "MM_LeftProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "118 52";
+			extent = "70 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Registering...";
+			maxLength = 255;
+		};
+	};
+};

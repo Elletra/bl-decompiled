@@ -1,3 +1,9 @@
+# Ignore files without extensions
+*
+!/**/
+!*.*
+
+# Visual Studio Code files
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -9,7 +15,38 @@
 
 *.vsix
 
+# Sublime Text files
 *.sublime-project
 *.sublime-workspace
 
+# Ignore config/ folders
+config/
+
+# Ignore specific extensions
+*.dso
+*.mis
+*.dif
+*.ter
+*.blb
+*.bls
+*.dts
+*.dsq
+*.gft
+*.ifl
+*.hfl
+*.dml
+*.ml
+*.log
+*.rec
+*.png
+*.jpg
+*.bmp
+*.gif
+*.log
+*.txt
+*.wav
+*.ogg
+*.mp3
+
+# Ignore specific files
 crapOns_Cache.cs

@@ -1,0 +1,68 @@
+new GuiControl(newMessageHud)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+	channel = "TEAM";
+	noCursor = 1;
+
+	new GuiSwatchCtrl(NMH_Box)
+	{
+		profile = "GuiDefaultProfile";
+		horizSizing = "width";
+		vertSizing = "bottom";
+		position = "0 416";
+		extent = "636 40";
+		minExtent = "8 2";
+		visible = 1;
+		color = "0 0 0 0";
+
+		new GuiTextCtrl(NMH_Channel)
+		{
+			profile = "BlockChatChannelSize10Profile";
+			horizSizing = "right";
+			vertSizing = "height";
+			position = "2 0";
+			extent = "190 40";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+		};
+		new GuiTextEditCtrl(NMH_Type)
+		{
+			profile = "HUDChatTextEditSize10Profile";
+			horizSizing = "width";
+			vertSizing = "bottom";
+			position = "89 0";
+			extent = "545 40";
+			minExtent = "8 2";
+			visible = 1;
+			command = "$Thiscontrol.type();";
+			altCommand = "$Thiscontrol.send();";
+			maxLength = 255;
+			historySize = 10;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+	};
+	new GuiButtonCtrl()
+	{
+		profile = "GuiButtonProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "-200 -200";
+		extent = "140 30";
+		minExtent = "8 2";
+		visible = 1;
+		command = "canvas.popDialog(newMessageHud);";
+		accelerator = "escape";
+		text = "Button";
+		groupNum = -1;
+		buttonType = "PushButton";
+	};
+};

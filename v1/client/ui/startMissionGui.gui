@@ -1,0 +1,479 @@
+new GuiControl(startMissionGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "width";
+	vertSizing = "height";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	helpTag = 0;
+	useVariable = 0;
+	tile = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "0 0";
+		extent = "640 480";
+		minExtent = "640 480";
+		visible = 1;
+		text = "Start Game";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 1;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(StartMissionGui);";
+
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "width";
+			vertSizing = "top";
+			position = "17 390";
+			extent = "607 74";
+			minExtent = "8 2";
+			visible = 1;
+			color = "220 220 220 255";
+		};
+		new GuiTextEditCtrl(TxtServerName)
+		{
+			profile = "BlockTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "109 397";
+			extent = "364 18";
+			minExtent = "8 8";
+			visible = 1;
+			variable = "$Pref::Server::Name";
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(TxtServerPassword)
+		{
+			profile = "BlockTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "109 418";
+			extent = "93 18";
+			minExtent = "8 8";
+			visible = 1;
+			variable = "$Pref::Server::Password";
+			maxLength = 255;
+			historySize = 0;
+			password = 1;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(TxtServerAdminPasswordCRAP)
+		{
+			profile = "BlockTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "380 418";
+			extent = "93 18";
+			minExtent = "8 8";
+			visible = 1;
+			variable = "$Pref::Server::AdminPassword";
+			maxLength = 255;
+			historySize = 0;
+			password = 1;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "BlockTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "380 439";
+			extent = "93 18";
+			minExtent = "8 8";
+			visible = 1;
+			variable = "$Pref::Server::SuperAdminPassword";
+			maxLength = 255;
+			historySize = 0;
+			password = 1;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "257 439";
+			extent = "118 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Super Admin Password:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiScrollCtrl()
+		{
+			profile = "BlockScrollProfile";
+			horizSizing = "right";
+			vertSizing = "height";
+			position = "17 40";
+			extent = "243 260";
+			minExtent = "8 8";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+			helpTag = 0;
+			defaultLineHeight = 15;
+
+			new GuiTextListCtrl(SM_missionList)
+			{
+				profile = "GuiTextArrayProfile";
+				horizSizing = "width";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "226 160";
+				minExtent = "8 8";
+				visible = 1;
+				command = "SM_missionList.select();";
+				enumerate = 0;
+				resizeCell = 1;
+				columns = 0;
+				fitParentWidth = 1;
+				clipColumnText = 0;
+				helpTag = 0;
+				description4 = "...";
+				noDuplicates = "false";
+				description5 = "...";
+				description3 = "...";
+				description2 = "...";
+				description1 = "...";
+			};
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "289 418";
+			extent = "86 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Admin Password:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiBitmapCtrl(SM_MapPreview)
+		{
+			profile = "BlockTextEditProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "276 40";
+			extent = "348 260";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "~/data/missions/bedroom";
+			wrap = 0;
+			lockAspectRatio = 0;
+			overflowImage = 0;
+			keepCached = 0;
+
+			new GuiTextCtrl(SM_MapName)
+			{
+				profile = "HudInvTextProfile";
+				horizSizing = "width";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "350 18";
+				minExtent = "8 2";
+				visible = 0;
+				text = "mapname";
+				maxLength = 255;
+			};
+			new GuiMLTextCtrl(SM_MapDescription)
+			{
+				profile = "MapDescriptionTextProfile";
+				horizSizing = "right";
+				vertSizing = "top";
+				position = "4 228";
+				extent = "339 28";
+				minExtent = "8 2";
+				visible = 1;
+				lineSpacing = 2;
+				allowColorChars = 0;
+				maxChars = -1;
+				text = "map description";
+				maxBitmapHeight = -1;
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "17 306";
+			extent = "145 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(StartMissionGui);";
+			accelerator = "escape";
+			text = "<< Back";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "38 397";
+			extent = "66 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Server Name:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "186 313";
+			extent = "60 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "ServerType:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "38 418";
+			extent = "53 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Password:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "484 421";
+			extent = "62 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Max Players:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiPopUpMenuCtrl(SM_PlayerCountMenu)
+		{
+			profile = "GuiPopUpMenuProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "552 421";
+			extent = "44 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 25;
+			maxPopupHeight = 50;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "484 397";
+			extent = "100 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$Pref::Server::FloodProtectionEnabled";
+			text = "Flood Protection";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+			helpTag = 0;
+		};
+		new GuiRadioCtrl(SM_OPTInternet)
+		{
+			profile = "GuiRadioProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "397 310";
+			extent = "53 24";
+			minExtent = "8 2";
+			visible = 1;
+			command = "startMissionGui.clickInternet();";
+			text = "Internet";
+			groupNum = 1;
+			buttonType = "RadioButton";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "479 306";
+			extent = "145 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "SM_StartMission();";
+			text = "Launch Game >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiRadioCtrl(SM_OptSinglePlayer)
+		{
+			profile = "GuiRadioProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "258 310";
+			extent = "78 24";
+			minExtent = "8 2";
+			visible = 1;
+			command = "startMissionGui.ClickSinglePlayer();";
+			text = "Single Player";
+			groupNum = 1;
+			buttonType = "RadioButton";
+		};
+		new GuiRadioCtrl(SM_OptLAN)
+		{
+			profile = "GuiRadioProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "347 310";
+			extent = "39 24";
+			minExtent = "8 2";
+			visible = 1;
+			command = "startMissionGui.ClickLAN();";
+			text = "LAN";
+			groupNum = 1;
+			buttonType = "RadioButton";
+		};
+		new GuiSwatchCtrl(SM_OptionsBlocker)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 391";
+			extent = "599 70";
+			minExtent = "8 2";
+			visible = 1;
+			color = "220 220 220 200";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "16 364";
+			extent = "113 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.pushDialog(ServerconfigGui);";
+			text = "Advanced Config";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "136 364";
+			extent = "113 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.pushDialog(MusicFilesGui);";
+			text = "Music Files";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "256 364";
+			extent = "113 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.pushDialog(AddOnsGui);";
+			text = "Add-Ons";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapCtrl(SM_demoBanner1)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "338 306";
+			extent = "54 32";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./demobanner";
+			wrap = 0;
+			lockAspectRatio = 1;
+			overflowImage = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl(SM_demoBanner2)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "384 306";
+			extent = "84 32";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./demobanner";
+			wrap = 0;
+			lockAspectRatio = 1;
+			overflowImage = 0;
+			keepCached = 0;
+		};
+	};
+};

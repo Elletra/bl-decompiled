@@ -1,0 +1,2906 @@
+new GuiControl(optionsDlg)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "5 5";
+		extent = "630 470";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Options";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 0;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+
+		new GuiControl(OptGraphicsPane)
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "4 55";
+			extent = "626 414";
+			minExtent = "8 8";
+			visible = 1;
+			helpTag = 0;
+
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "300 140";
+				extent = "316 189";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "312 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "92 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Lighting Quality";
+					maxLength = 255;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "104 192";
+				extent = "95 137";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "91 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "71 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Particle Quality";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiRadioCtrl(OPT_ParticleQuality4)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 32";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setParticleQuality(4);";
+					text = "Minimum";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ParticleQuality3)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 52";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setParticleQuality(3);";
+					text = "Low";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ParticleQuality2)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 72";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setParticleQuality(2);";
+					text = "Medium";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ParticleQuality1)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 92";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setParticleQuality(1);";
+					text = "High";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ParticleQuality0)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 112";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setParticleQuality(0);";
+					text = "Best";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "202 192";
+				extent = "95 137";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "91 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiRadioCtrl(OPT_ShadowQuality4)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 32";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setShadowQuality(4);";
+					text = "Minimum";
+					groupNum = 2;
+					buttonType = "RadioButton";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "77 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Shadow Quality";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiRadioCtrl(OPT_ShadowQuality3)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 52";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setShadowQuality(3);";
+					text = "Low";
+					groupNum = 2;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ShadowQuality2)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 72";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setShadowQuality(2);";
+					text = "Medium";
+					groupNum = 2;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ShadowQuality1)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 92";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setShadowQuality(1);";
+					text = "High";
+					groupNum = 2;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ShadowQuality0)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 112";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setShadowQuality(0);";
+					text = "Best";
+					groupNum = 2;
+					buttonType = "RadioButton";
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "300 7";
+				extent = "316 130";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "312 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiRadioCtrl(OPT_ChatSize1)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "99 95";
+					extent = "16 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "OPT_SetChatSize(1);";
+					text = " ";
+					groupNum = 5;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ChatSize0)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "79 95";
+					extent = "16 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "OPT_SetChatSize(0);";
+					text = " ";
+					groupNum = 5;
+					buttonType = "RadioButton";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "18 101";
+					extent = "49 18";
+					minExtent = "8 8";
+					visible = 1;
+					text = "Chat Size:";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiRadioCtrl(OPT_ChatSize2)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "119 95";
+					extent = "16 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "OPT_SetChatSize(2);";
+					text = " ";
+					groupNum = 5;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ChatSize3)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "139 95";
+					extent = "16 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "OPT_SetChatSize(3);";
+					text = " ";
+					groupNum = 5;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ChatSize4)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "159 95";
+					extent = "16 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "OPT_SetChatSize(4);";
+					text = " ";
+					groupNum = 5;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ChatSize5)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "179 95";
+					extent = "16 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "OPT_SetChatSize(5);";
+					text = " ";
+					groupNum = 5;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ChatSize6)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "199 95";
+					extent = "16 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "OPT_SetChatSize(6);";
+					text = " ";
+					groupNum = 5;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ChatSize7)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "219 95";
+					extent = "16 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "OPT_SetChatSize(7);";
+					text = " ";
+					groupNum = 5;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ChatSize8)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "239 95";
+					extent = "16 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "OPT_SetChatSize(8);";
+					text = " ";
+					groupNum = 5;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ChatSize9)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "259 95";
+					extent = "16 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "OPT_SetChatSize(9);";
+					text = " ";
+					groupNum = 5;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ChatSize10)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "279 95";
+					extent = "16 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "OPT_SetChatSize(10);";
+					text = " ";
+					groupNum = 5;
+					buttonType = "RadioButton";
+				};
+				new GuiCheckBoxCtrl(OptGraphicsVsyncToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "159 51";
+					extent = "137 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::HUD::showToolTips";
+					text = "Show Tool Tips";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsVsyncToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "159 31";
+					extent = "137 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Video::useSmallPlantErrors";
+					text = "Small Plant Errors";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsVsyncToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "49 31";
+					extent = "106 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::HUD::HidePaintBox";
+					text = "Hide Paint Box";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsVsyncToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "49 51";
+					extent = "106 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::HUD::HideToolBox";
+					text = "Hide Tool Box";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsVsyncToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "49 71";
+					extent = "106 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::HUD::HideBrickBox";
+					text = "Hide Brick Box";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "58 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Gui Settings";
+					maxLength = 255;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 192";
+				extent = "95 137";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "91 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiRadioCtrl(OPT_TextureQuality0)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 112";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setTextureQuality(0);";
+					text = "Best";
+					groupNum = -1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_TextureQuality1)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 92";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setTextureQuality(1);";
+					text = "High";
+					groupNum = -1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_TextureQuality2)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 72";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setTextureQuality(2);";
+					text = "Medium";
+					groupNum = -1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_TextureQuality3)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 52";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setTextureQuality(3);";
+					text = "Low";
+					groupNum = -1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_TextureQuality4)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "23 32";
+					extent = "71 15";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.setTextureQuality(4);";
+					text = "Minimum";
+					groupNum = -1;
+					buttonType = "RadioButton";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "LoadingBarTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "73 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Texture Quality";
+					maxLength = 255;
+					helpTag = 0;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 7";
+				extent = "291 182";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "287 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "77 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Display Settings";
+					maxLength = 255;
+				};
+				new GuiPopUpMenuCtrl(OptScreenshotMenu)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "107 150";
+					extent = "74 23";
+					minExtent = "8 2";
+					visible = 1;
+					maxLength = 255;
+					maxPopupHeight = 200;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "10 152";
+					extent = "95 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Screenshot Format:";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "38 111";
+					extent = "67 18";
+					minExtent = "8 8";
+					visible = 1;
+					text = "Refresh Rate:";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiPopUpMenuCtrl(OptGraphicsHZMenu)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "107 109";
+					extent = "74 23";
+					minExtent = "8 8";
+					visible = 1;
+					maxLength = 255;
+					maxPopupHeight = 200;
+					helpTag = 0;
+				};
+				new GuiPopUpMenuCtrl(OptGraphicsBPPMenu)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "107 83";
+					extent = "74 23";
+					minExtent = "8 8";
+					visible = 1;
+					maxLength = 255;
+					maxPopupHeight = 200;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "59 85";
+					extent = "46 18";
+					minExtent = "8 8";
+					visible = 1;
+					text = "Bit Depth:";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "52 59";
+					extent = "53 18";
+					minExtent = "8 8";
+					visible = 1;
+					text = "Resolution:";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiPopUpMenuCtrl(OptGraphicsResolutionMenu)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "107 57";
+					extent = "74 23";
+					minExtent = "8 8";
+					visible = 1;
+					maxLength = 255;
+					maxPopupHeight = 200;
+					helpTag = 0;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsVsyncToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "188 49";
+					extent = "137 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Video::disableVerticalSync";
+					text = "Disable Vsync";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsFullscreenToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "188 29";
+					extent = "104 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Video::fullScreen";
+					text = "Fullscreen";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiPopUpMenuCtrl(OptGraphicsDriverMenu)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "107 31";
+					extent = "74 23";
+					minExtent = "8 8";
+					visible = 1;
+					maxLength = 255;
+					maxPopupHeight = 200;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "35 33";
+					extent = "70 18";
+					minExtent = "8 8";
+					visible = 1;
+					text = "Display Driver:";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiButtonCtrl()
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "189 84";
+					extent = "91 48";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.applyGraphics();";
+					text = "APPLY";
+					groupNum = -1;
+					buttonType = "PushButton";
+				};
+			};
+			new GuiSliderCtrl(SliderDynLights)
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "305 243";
+				extent = "304 34";
+				minExtent = "8 8";
+				visible = 1;
+				variable = "$pref::OpenGL::maxDynLights";
+				command = "OPT_DynLightsDrop();";
+				range = "1.000000 32.000000";
+				ticks = 22;
+				value = 15;
+				helpTag = 0;
+			};
+			new GuiCheckBoxCtrl(OptGraphicsVsyncToggle)
+			{
+				profile = "GuiCheckBoxProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "317 283";
+				extent = "141 23";
+				minExtent = "8 8";
+				visible = 1;
+				variable = "$pref::Interior::DynamicLights";
+				text = "Dynamic Lights (Interiors)";
+				groupNum = -1;
+				buttonType = "ToggleButton";
+				helpTag = 0;
+				maxLength = 255;
+			};
+			new GuiSliderCtrl(SliderMaxLights)
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "305 193";
+				extent = "304 34";
+				minExtent = "8 8";
+				visible = 1;
+				variable = "$pref::OpenGL::maxHardwareLights";
+				command = "OPT_MaxLightsDrop();";
+				range = "1.000000 8.000000";
+				ticks = 22;
+				value = 8;
+				helpTag = 0;
+			};
+			new GuiCheckBoxCtrl(OptGraphicsVsyncToggle)
+			{
+				profile = "GuiCheckBoxProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "317 298";
+				extent = "141 23";
+				minExtent = "8 8";
+				visible = 1;
+				variable = "$pref::Terrain::dynamicLights";
+				text = "Dynamic Lights (Terrain)";
+				groupNum = -1;
+				buttonType = "ToggleButton";
+				helpTag = 0;
+				maxLength = 255;
+			};
+			new GuiTextCtrl()
+			{
+				profile = "GuiTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "310 174";
+				extent = "84 18";
+				minExtent = "8 2";
+				visible = 1;
+				text = "Hardware Lights:";
+				maxLength = 255;
+				helpTag = 0;
+			};
+			new GuiTextCtrl()
+			{
+				profile = "GuiTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "310 224";
+				extent = "72 18";
+				minExtent = "8 2";
+				visible = 1;
+				text = "Texture Lights:";
+				maxLength = 255;
+				helpTag = 0;
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 332";
+				extent = "610 36";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "282 29";
+			extent = "87 25";
+			minExtent = "8 2";
+			visible = 1;
+			command = "optionsDlg.setPane(Controls);";
+			text = "Controls";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./tab1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "192 29";
+			extent = "87 25";
+			minExtent = "8 2";
+			visible = 1;
+			command = "optionsDlg.setPane(Network);";
+			text = "Network";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./tab1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "102 29";
+			extent = "87 25";
+			minExtent = "8 2";
+			visible = 1;
+			command = "optionsDlg.setPane(Audio);";
+			text = "Audio";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./tab1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "12 29";
+			extent = "87 25";
+			minExtent = "8 2";
+			visible = 1;
+			command = "optionsDlg.setPane(Graphics);";
+			text = "Graphics";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./tab1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "493 27";
+			extent = "111 25";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Canvas.pushDialog(AvatarGui);";
+			text = "AvatarOptions";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "3 54";
+			extent = "624 2";
+			minExtent = "8 2";
+			visible = 1;
+			color = "149 152 166 255";
+		};
+		new GuiControl(OptNetworkPane)
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "4 55";
+			extent = "626 414";
+			minExtent = "8 8";
+			visible = 0;
+			helpTag = 0;
+
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 181";
+				extent = "610 34";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "157 7";
+				extent = "459 171";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "455 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "85 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Custom Settings";
+					maxLength = 255;
+				};
+				new GuiSliderCtrl(SliderPacketSize)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "122 28";
+					extent = "331 20";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "value";
+					altCommand = "UpdatePacketSize();";
+					range = "200.000000 450.000000";
+					ticks = 10;
+					value = 350;
+					helpTag = 0;
+				};
+				new GuiTextCtrl(PacketSizeDisplay)
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "93 29";
+					extent = "18 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = 200;
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 29";
+					extent = "56 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Packet Size";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 54";
+					extent = "69 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Lag Threshold";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiTextCtrl(LagThresholdDisplay)
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "93 54";
+					extent = "18 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = 200;
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 80";
+					extent = "63 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Rate to Client";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiSliderCtrl(SliderLagThreshold)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "122 54";
+					extent = "331 20";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "value";
+					altCommand = "UpdateLagThreshold();";
+					range = "200.000000 600.000000";
+					ticks = 10;
+					value = 400;
+					helpTag = 0;
+				};
+				new GuiSliderCtrl(SliderRateToClient)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "122 80";
+					extent = "331 20";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "value";
+					altCommand = "UpdateRateToClient();";
+					range = "10.000000 32.000000";
+					ticks = 22;
+					value = 20;
+					helpTag = 0;
+				};
+				new GuiTextCtrl(RateToClientDisplay)
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "93 80";
+					extent = "12 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = 200;
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiSliderCtrl(SliderRateToServer)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "122 105";
+					extent = "331 20";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "value";
+					altCommand = "UpdateRateToServer();";
+					range = "8.000000 32.000000";
+					ticks = 24;
+					value = 24;
+					helpTag = 0;
+				};
+				new GuiTextCtrl(RateToServerDisplay)
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "93 106";
+					extent = "12 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = 200;
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 106";
+					extent = "70 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Rate to Server";
+					maxLength = 255;
+					helpTag = 0;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 7";
+				extent = "148 171";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "144 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "85 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Connection Type";
+					maxLength = 255;
+				};
+				new GuiRadioCtrl(OPT_ConnectionType1)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "26 21";
+					extent = "140 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "SetConnectionType(1);";
+					text = "14.4k Modem";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ConnectionType2)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "26 41";
+					extent = "140 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "SetConnectionType(2);";
+					text = "28.8k Modem";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ConnectionType3)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "26 61";
+					extent = "140 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "SetConnectionType(3);";
+					text = "56.6k Modem";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ConnectionType4)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "26 81";
+					extent = "140 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "SetConnectionType(4);";
+					text = "DSL / ADSL";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ConnectionType5)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "26 101";
+					extent = "140 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "SetConnectionType(5);";
+					text = "Cable";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ConnectionType6)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "26 121";
+					extent = "140 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "SetConnectionType(6);";
+					text = "T1 / LAN";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+				new GuiRadioCtrl(OPT_ConnectionType7)
+				{
+					profile = "GuiRadioProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "26 141";
+					extent = "140 30";
+					minExtent = "8 2";
+					visible = 1;
+					command = "SetConnectionType(7);";
+					text = "Custom...";
+					groupNum = 1;
+					buttonType = "RadioButton";
+				};
+			};
+			new GuiCheckBoxCtrl()
+			{
+				profile = "GuiCheckBoxProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "154 51";
+				extent = "140 30";
+				minExtent = "8 2";
+				visible = 0;
+				variable = "$Pref::Net::DownloadTextures";
+				text = "Download Textures";
+				groupNum = -1;
+				buttonType = "ToggleButton";
+			};
+			new GuiTextCtrl()
+			{
+				profile = "GuiTextProfile";
+				horizSizing = "center";
+				vertSizing = "bottom";
+				position = "138 190";
+				extent = "349 18";
+				minExtent = "8 2";
+				visible = 1;
+				text = "Note: You must reconnect to the server for these settings to take effect.";
+				maxLength = 255;
+				helpTag = 0;
+			};
+			new GuiSwatchCtrl(CustomNetworkBlocker)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "157 4";
+				extent = "462 175";
+				minExtent = "8 2";
+				visible = 1;
+				color = "200 200 200 192";
+			};
+			new GuiCheckBoxCtrl()
+			{
+				profile = "GuiCheckBoxProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "154 28";
+				extent = "140 30";
+				minExtent = "8 2";
+				visible = 0;
+				variable = "$Pref::Net::DownloadSounds";
+				text = "Download Sounds";
+				groupNum = -1;
+				buttonType = "ToggleButton";
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 218";
+				extent = "610 150";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+			};
+		};
+		new GuiControl(OptControlsPane)
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "4 55";
+			extent = "626 414";
+			minExtent = "8 8";
+			visible = 0;
+			helpTag = 0;
+
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "268 171";
+				extent = "101 197";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "left";
+					vertSizing = "top";
+					position = "4 114";
+					extent = "91 38";
+					minExtent = "8 2";
+					visible = 1;
+					command = "canvas.pushDialog(DefaultControlsGui);";
+					text = "Defaults >>";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./button2";
+					mKeepCached = 0;
+					mColor = "255 255 255 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "left";
+					vertSizing = "top";
+					position = "4 74";
+					extent = "91 38";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.RemapAll();";
+					text = "Remap All";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./button2";
+					mKeepCached = 0;
+					mColor = "255 255 255 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "left";
+					vertSizing = "top";
+					position = "4 34";
+					extent = "91 38";
+					minExtent = "8 2";
+					visible = 1;
+					command = "optionsDlg.clearAllBinds();";
+					text = "Clear All";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./button2";
+					mKeepCached = 0;
+					mColor = "255 255 255 255";
+				};
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "-45 2";
+					extent = "144 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "372 171";
+				extent = "244 197";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "240 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "45 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Options";
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl()
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "22 151";
+					extent = "163 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Input::FastFirstThirdPerson";
+					text = " Fast 1st/3rd Person Switch";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OPT_SSSmartToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "42 131";
+					extent = "94 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Input::UseSuperShiftSmartToggle";
+					text = " Smart Toggle";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					enabled = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl()
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "22 111";
+					extent = "137 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Input::UseSuperShiftToggle";
+					command = "OPT_SSSmartToggle.setVisible($pref::Input::UseSuperShiftToggle);";
+					text = " Use Super Shift Toggle";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl()
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "22 91";
+					extent = "137 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Input::QueueBrickBuying";
+					text = " Queue Brick Buying";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl()
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "22 71";
+					extent = "137 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Input::ReverseBrickScroll";
+					text = " Reverse Brick Scrolling";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl()
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "22 51";
+					extent = "137 23";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Input::noobjet";
+					text = " Use Jump/Jet Combo";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptControlsMouseInvert)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "22 30";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Input::MouseInvert";
+					text = " Invert Mouse";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 7";
+				extent = "262 361";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "241 2";
+					extent = "22 185";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "258 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "68 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Control Name";
+					maxLength = 255;
+				};
+				new GuiScrollCtrl()
+				{
+					profile = "BlockScrollProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 22";
+					extent = "258 337";
+					minExtent = "8 8";
+					visible = 1;
+					willFirstRespond = 1;
+					hScrollBar = "alwaysOff";
+					vScrollBar = "alwaysOn";
+					constantThumbHeight = 0;
+					childMargin = "0 0";
+					rowHeight = 40;
+					columnWidth = 30;
+					helpTag = 0;
+					defaultLineHeight = 15;
+
+					new GuiTextListCtrl(OptRemapList)
+					{
+						profile = "GuiTextListProfile";
+						horizSizing = "right";
+						vertSizing = "bottom";
+						position = "1 1";
+						extent = "241 1712";
+						minExtent = "8 8";
+						visible = 1;
+						altCommand = "OptRemapList.doRemap();";
+						enumerate = 0;
+						resizeCell = 1;
+						columns = "0 160";
+						fitParentWidth = 1;
+						clipColumnText = 0;
+						helpTag = 0;
+					};
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "166 3";
+					extent = "75 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Key Binding";
+					maxLength = 255;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "271 89";
+				extent = "345 79";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "341 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "100 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Keyboard Turn Rate";
+					maxLength = 255;
+				};
+				new GuiSliderCtrl(Slider_KeyboardTurnSpeed)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "6 32";
+					extent = "331 34";
+					minExtent = "8 8";
+					visible = 1;
+					range = "0.020000 1.000000";
+					ticks = 10;
+					value = 1;
+					helpTag = 0;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "271 7";
+				extent = "345 79";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "width";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "341 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "85 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Mouse Sensitivity";
+					maxLength = 255;
+				};
+				new GuiSliderCtrl(SliderControlsMouseSensitivity)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "6 32";
+					extent = "331 34";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "value";
+					range = "0.020000 2.000000";
+					ticks = 10;
+					value = 1;
+					helpTag = 0;
+				};
+			};
+		};
+		new GuiControl(OptAudioPane)
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "4 55";
+			extent = "626 414";
+			minExtent = "8 8";
+			visible = 0;
+			helpTag = 0;
+
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "430 7";
+				extent = "186 301";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "182 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "70 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Audio Options";
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl()
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "17 125";
+					extent = "158 30";
+					minExtent = "8 2";
+					visible = 1;
+					variable = "$Pref::Audio::TurnOffAltTab";
+					text = "Turn Off Sound On Alt+Tab";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+				};
+				new GuiCheckBoxCtrl()
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "17 95";
+					extent = "158 30";
+					minExtent = "8 2";
+					visible = 1;
+					variable = "$Pref::Audio::PlayMusic";
+					text = "Play Music";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+				};
+				new GuiCheckBoxCtrl()
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "17 65";
+					extent = "158 30";
+					minExtent = "8 2";
+					visible = 1;
+					variable = "$Pref::Audio::PlayBrickPlantsound";
+					text = "Play Brick Plant Sounds";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+				};
+				new GuiCheckBoxCtrl()
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "17 45";
+					extent = "158 30";
+					minExtent = "8 2";
+					visible = 1;
+					variable = "$Pref::Audio::PlayBrickMoveSound";
+					text = "Play Brick Movement Sounds";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+				};
+				new GuiCheckBoxCtrl()
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "17 25";
+					extent = "158 30";
+					minExtent = "8 2";
+					visible = 1;
+					variable = "$Pref::Audio::PlantErrorSound";
+					text = "Play Brick Plant Error Sound";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 7";
+				extent = "421 136";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "417 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "61 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Audio Driver";
+					maxLength = 255;
+				};
+				new GuiScrollCtrl()
+				{
+					profile = "BlockScrollProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "112 30";
+					extent = "302 99";
+					minExtent = "8 2";
+					visible = 1;
+					willFirstRespond = 1;
+					hScrollBar = "alwaysOff";
+					vScrollBar = "alwaysOn";
+					constantThumbHeight = 0;
+					childMargin = "0 0";
+					rowHeight = 10;
+					columnWidth = 30;
+					helpTag = 0;
+
+					new GuiMLTextCtrl(OptAudioInfo)
+					{
+						profile = "GuiMLTextProfile";
+						horizSizing = "width";
+						vertSizing = "bottom";
+						position = "1 1";
+						extent = "290 56";
+						minExtent = "8 8";
+						visible = 1;
+						lineSpacing = 2;
+						allowColorChars = 0;
+						maxChars = -1;
+						maxBitmapHeight = -1;
+						helpTag = 0;
+					};
+				};
+				new GuiPopUpMenuCtrl(OptAudioDriverList)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "7 29";
+					extent = "99 23";
+					minExtent = "8 8";
+					visible = 1;
+					maxLength = 255;
+					maxPopupHeight = 200;
+					helpTag = 0;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 146";
+				extent = "421 162";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "417 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "47 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Volume";
+					maxLength = 255;
+				};
+				new GuiSliderCtrl(OptAudioVolumeSim)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "108 120";
+					extent = "305 34";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "value";
+					altCommand = "OptAudioUpdateChannelVolume($SimAudioType, OptAudioVolumeSim.value);";
+					range = "0.000000 1.000000";
+					ticks = 10;
+					value = 0.8;
+					helpTag = 0;
+				};
+				new GuiSliderCtrl(OptAudioVolumeShell)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "108 78";
+					extent = "305 34";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "value";
+					altCommand = "OptAudioUpdateChannelVolume($GuiAudioType, OptAudioVolumeShell.value);";
+					range = "0.000000 1.000000";
+					ticks = 10;
+					value = 0.8;
+					helpTag = 0;
+				};
+				new GuiSliderCtrl(OptAudioVolumeMaster)
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "108 36";
+					extent = "305 34";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "value";
+					altCommand = "OptAudioUpdateMasterVolume(OptAudioVolumeMaster.value);";
+					range = "0.000000 1.000000";
+					ticks = 10;
+					value = 0.8;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 36";
+					extent = "91 18";
+					minExtent = "8 8";
+					visible = 1;
+					text = "Master Volume";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "18 78";
+					extent = "83 18";
+					minExtent = "8 8";
+					visible = 1;
+					text = "Shell Volume";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "BlockButtonProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "29 120";
+					extent = "69 18";
+					minExtent = "8 8";
+					visible = 1;
+					text = "Sim Volume";
+					maxLength = 255;
+					helpTag = 0;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 311";
+				extent = "610 57";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+			};
+		};
+		new GuiControl(OptAdvGraphicsPane)
+		{
+			profile = "BlockDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "4 55";
+			extent = "626 414";
+			minExtent = "8 8";
+			visible = 0;
+			helpTag = 0;
+
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "208 241";
+				extent = "408 80";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "404 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "56 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Gui Options";
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsTexturedFog)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "24 53";
+					extent = "137 29";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$Pref::Gui::ColorEscapeMenu";
+					text = "Colored Escape Menu";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsTexturedFog)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "24 39";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Gui::ShowBrickSlotNumbers";
+					text = "Show Brick Slot Numbers";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsTexturedFog)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "24 23";
+					extent = "146 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Gui::AutoQueryMasterServer";
+					text = "Auto Query Master Server";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 7";
+				extent = "199 314";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "208 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "137 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Advanced Graphics Options";
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsTexturedFog)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 237";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::OpenGL::doAnimatedLights";
+					text = "Animated Lights";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsTexturedFog)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 213";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Terrain::enableEmbossBumps";
+					text = "Terrain Emboss Textures";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsTexturedFog)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 197";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Terrain::enableDetails";
+					text = "Terrain Detail Textures";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsTexturedFog)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 169";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::OpenGL::useGLNearest";
+					text = "Use Sharp Filter (Slower)";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsTexturedFog)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 153";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Interior::TexturedFog";
+					text = "Textured Fog";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsVertexLighting)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 137";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Interior::VertexLighting";
+					text = "Vertex Lighting";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsEnvMapToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 121";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::environmentMaps";
+					text = "Environment Maps";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsTrilinearToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 105";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::OpenGL::textureTrilinear";
+					text = "Trilinear Filtering";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptPlayerRenderPlayer)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 89";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::Player::renderMyPlayer";
+					text = "Render Player";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsPrecipitationToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 73";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::precipitationOn";
+					text = "Precipitation";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsDecalsToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 57";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::decalsOn";
+					text = "Decals";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsSkyToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 42";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::SkyOn";
+					text = "Sky";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+				new GuiCheckBoxCtrl(OptGraphicsCloudsToggle)
+				{
+					profile = "GuiCheckBoxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "21 26";
+					extent = "137 25";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::CloudsOn";
+					text = "Clouds";
+					groupNum = -1;
+					buttonType = "ToggleButton";
+					helpTag = 0;
+					maxLength = 255;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "208 119";
+				extent = "408 119";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "2 2";
+					extent = "404 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiTextCtrl()
+				{
+					profile = "OptionsMenuTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "9 3";
+					extent = "41 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Particles";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiSliderCtrl()
+				{
+					profile = "GuiSliderProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "85 79";
+					extent = "310 30";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::ParticleFalloffMaxLevel";
+					range = "1.000000 10.000000";
+					ticks = 32;
+					value = 1;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "24 79";
+					extent = "56 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Max Falloff:";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "26 49";
+					extent = "54 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Falloff Dist:";
+					maxLength = 255;
+					helpTag = 0;
+				};
+				new GuiSliderCtrl()
+				{
+					profile = "GuiSliderProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "85 49";
+					extent = "310 30";
+					minExtent = "8 8";
+					visible = 1;
+					variable = "$pref::ParticleFalloffMinDistance";
+					range = "5.000000 100.000000";
+					ticks = 32;
+					value = 30.0167;
+					helpTag = 0;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "90 27";
+					extent = "33 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Quality";
+					maxLength = 255;
+				};
+				new GuiTextCtrl()
+				{
+					profile = "GuiTextProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "330 27";
+					extent = "62 18";
+					minExtent = "8 2";
+					visible = 1;
+					text = "Performance";
+					maxLength = 255;
+				};
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "205 7";
+				extent = "411 109";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+
+				new GuiSwatchCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "-17 2";
+					extent = "426 21";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+			};
+			new GuiTextCtrl()
+			{
+				profile = "GuiTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "569 31";
+				extent = "33 18";
+				minExtent = "8 2";
+				visible = 1;
+				text = "Quality";
+				maxLength = 255;
+			};
+			new GuiSliderCtrl(SliderGraphicsDistanceMod)
+			{
+				profile = "GuiSliderProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "295 81";
+				extent = "310 30";
+				minExtent = "8 8";
+				visible = 1;
+				variable = "value";
+				range = "0.100000 1.000000";
+				ticks = 32;
+				value = 1;
+				helpTag = 0;
+			};
+			new GuiTextCtrl()
+			{
+				profile = "GuiTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "300 31";
+				extent = "62 18";
+				minExtent = "8 2";
+				visible = 1;
+				text = "Performance";
+				maxLength = 255;
+			};
+			new GuiBitmapButtonCtrl()
+			{
+				profile = "BlockButtonProfile";
+				horizSizing = "left";
+				vertSizing = "top";
+				position = "169 369";
+				extent = "91 38";
+				minExtent = "8 2";
+				visible = 1;
+				command = "optionsDlg.applyGraphics();";
+				text = "Apply";
+				groupNum = -1;
+				buttonType = "PushButton";
+				bitmap = "./button2";
+				mKeepCached = 0;
+				mColor = "255 255 255 255";
+			};
+			new GuiTextCtrl()
+			{
+				profile = "GuiTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "215 81";
+				extent = "75 18";
+				minExtent = "8 2";
+				visible = 1;
+				text = "Draw Distance:";
+				maxLength = 255;
+				helpTag = 0;
+			};
+			new GuiCheckBoxCtrl(OptPlayerRenderPlayer)
+			{
+				profile = "GuiCheckBoxProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "-147 110";
+				extent = "137 25";
+				minExtent = "8 8";
+				visible = 1;
+				variable = "$pref::Player::renderMyItems";
+				text = "Render Items";
+				groupNum = -1;
+				buttonType = "ToggleButton";
+				helpTag = 0;
+				maxLength = 255;
+			};
+			new GuiTextCtrl()
+			{
+				profile = "GuiTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "234 49";
+				extent = "56 18";
+				minExtent = "8 2";
+				visible = 1;
+				text = "Anisotropy:";
+				maxLength = 255;
+				helpTag = 0;
+			};
+			new GuiSliderCtrl(SliderGraphicsAnisotropy)
+			{
+				profile = "GuiScrollProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "295 49";
+				extent = "310 30";
+				minExtent = "8 8";
+				visible = 1;
+				variable = "value";
+				range = "0.000000 1.000000";
+				ticks = 32;
+				value = 1;
+				helpTag = 0;
+			};
+			new GuiSwatchCtrl()
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 324";
+				extent = "610 44";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 255 200";
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "372 29";
+			extent = "87 25";
+			minExtent = "8 2";
+			visible = 1;
+			command = "optionsDlg.setPane(AdvGraphics);";
+			text = "Advanced";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./tab1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "269 424";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Canvas.popDialog(optionsDlg);";
+			accelerator = "escape";
+			text = "Done";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+	};
+};

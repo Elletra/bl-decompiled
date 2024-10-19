@@ -1,0 +1,3887 @@
+new GuiControl(AvatarGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+	hasLoaded = 1;
+
+	new GuiWindowCtrl(Avatar_Window)
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "46 0";
+		extent = "547 480";
+		minExtent = "8 2";
+		visible = 1;
+		accelerator = "escape";
+		text = "Player Appearance";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popdialog(AvatarGui);";
+
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 317";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 179";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 179";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 248";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 317";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 317";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 248";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 179";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 110";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 41";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 110";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 41";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiSwatchCtrl(Avatar_SecondPackColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "278 110";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 111 212 255";
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "356 41";
+			extent = "159 339";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiObjectView(Avatar_Preview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "295 36";
+			extent = "258 387";
+			minExtent = "8 2";
+			visible = 1;
+			cameraZRot = 0;
+			forceFOV = 35;
+			lightDirection = "0.721277 0.57735 0.57735";
+			lightColor = "1.000000 1.000000 1.000000 1.000000";
+			ambientColor = "0.500000 0.500000 0.500000 1.000000";
+			helpTag = 0;
+		};
+		new GuiSwatchCtrl(Avatar_LeftLegColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "278 317";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "27 117 196 255";
+		};
+		new GuiSwatchCtrl(Avatar_LeftHandColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "278 248";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "254 254 232 255";
+		};
+		new GuiSwatchCtrl(Avatar_LeftArmColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "278 179";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 111 212 255";
+		};
+		new GuiSwatchCtrl(Avatar_HatColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "180 41";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 120 50 255";
+		};
+		new GuiSwatchCtrl(Avatar_PackColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "180 110";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 255 255 255";
+		};
+		new GuiSwatchCtrl(Avatar_RightArmColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "180 179";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 111 212 255";
+		};
+		new GuiSwatchCtrl(Avatar_RightHandColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "180 248";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "254 254 232 255";
+		};
+		new GuiSwatchCtrl(Avatar_RightLegColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "180 317";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "27 117 196 255";
+		};
+		new GuiSwatchCtrl(Avatar_HipColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "82 317";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 255 255";
+		};
+		new GuiSwatchCtrl(Avatar_TorsoColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "82 179";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 0 255";
+		};
+		new GuiSwatchCtrl(Avatar_HeadColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "82 41";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "255 224 156 255";
+		};
+		new GuiSwatchCtrl(Avatar_AccentColor)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "278 41";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			color = "236 131 173 255";
+		};
+		new GuiSwatchCtrl(Avatar_HeadBG)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 41";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			color = "255 224 156 255";
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 41";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiSwatchCtrl(Avatar_SecondPackBG)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 110";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 0 0";
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 248";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiSwatchCtrl(Avatar_DecalBG)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 110";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 0 255";
+		};
+		new GuiBitmapCtrl(Avatar_ChestPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 179";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/Chest/chest";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_LLegPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 317";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/LLeg/LShoe";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "167 399";
+			extent = "137 23";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+
+			new GuiTextCtrl()
+			{
+				profile = "GuiTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "3 2";
+				extent = "51 18";
+				minExtent = "8 8";
+				visible = 1;
+				text = "Clan Tags:";
+				maxLength = 255;
+				helpTag = 0;
+			};
+			new GuiTextEditCtrl(Avatar_Prefix)
+			{
+				profile = "GuiTextEditProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "56 2";
+				extent = "38 18";
+				minExtent = "8 2";
+				visible = 1;
+				maxLength = 4;
+				historySize = 0;
+				password = 0;
+				tabComplete = 0;
+				sinkAllKeyEvents = 0;
+				helpTag = 0;
+			};
+			new GuiTextEditCtrl(Avatar_Suffix)
+			{
+				profile = "GuiTextEditProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "96 2";
+				extent = "38 18";
+				minExtent = "8 2";
+				visible = 1;
+				maxLength = 4;
+				historySize = 0;
+				password = 0;
+				tabComplete = 0;
+				sinkAllKeyEvents = 0;
+				helpTag = 0;
+			};
+		};
+		new GuiBitmapCtrl(Avatar_RArmPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 179";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/RArm/RArmSlim";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_RLegPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 317";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/RLeg/RShoe";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_LArmPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 179";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/LArm/LArm";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_HipPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 317";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/hip/pants";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_LHandPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 248";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/LHand/LHook";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_DecalPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 110";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/decal/decals/Space-New.png";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_RHandPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 248";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/RHand/RHook";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_FacePreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 41";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/face/Faces/smileyEvil2.png";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_PackPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 110";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/Pack/bucket";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 41";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_FaceMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 110";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_DecalMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 110";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_PackMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_HatPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 41";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/Hat/copHat";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 41";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_HatMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_AccentPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 41";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/Accent/plume";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 41";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_AccentMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapCtrl(Avatar_SecondPackPreview)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 110";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./avatarIcons/SecondPack/epauletsRankC";
+			wrap = 0;
+			keepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 110";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_SecondPackMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 179";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_ChestMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 179";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_RArmMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 179";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_LArmMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 248";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_RHandMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 248";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_LHandMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "119 317";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_RLegMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "217 317";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_LLegMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 317";
+			extent = "64 64";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_TogglePartMenu(Avatar_HipMenu);";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btndecalA";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "180 432";
+			extent = "186 37";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_Done();";
+			text = "Done";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "385 366";
+			extent = "103 23";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_Randomize();";
+			text = "Randomize!";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "20 398";
+			extent = "103 23";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.pushDialog(colorSetGui);";
+			text = "Color Set >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 271";
+			extent = "65 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$pref::Player::Symmetry";
+			text = "Symmetry";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "82 179";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickTorsoColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "82 41";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickHeadColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "82 317";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickHipColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "180 317";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickRightLegColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "278 317";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickLeftLegColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "180 248";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickRightHandColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "278 248";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickLeftHandColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "278 179";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickLeftArmColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "180 179";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickRightArmColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "180 110";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickPackColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "278 110";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickSecondPackColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "180 41";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickHatColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "278 41";
+			extent = "32 32";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Avatar_ClickAccentColor();";
+			text = " ";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./btnPartColor";
+			mKeepCached = 0;
+		};
+		new GuiBitmapCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "306 399";
+			extent = "203 23";
+			minExtent = "8 2";
+			visible = 1;
+			bitmap = "./btnDecalBG";
+			wrap = 0;
+			keepCached = 0;
+
+			new GuiTextCtrl()
+			{
+				profile = "GuiTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "4 2";
+				extent = "54 18";
+				minExtent = "8 8";
+				visible = 1;
+				text = "LAN Name:";
+				maxLength = 255;
+				helpTag = 0;
+			};
+			new GuiTextEditCtrl(Avatar_Name)
+			{
+				profile = "GuiTextEditProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "59 2";
+				extent = "141 18";
+				minExtent = "8 2";
+				visible = 1;
+				variable = "$pref::Player::LANName";
+				text = "Blockhead";
+				maxLength = 23;
+				historySize = 0;
+				password = 0;
+				tabComplete = 0;
+				sinkAllKeyEvents = 0;
+				helpTag = 0;
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "192 3";
+			extent = "62 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AvatarGui.ClickSetFavs();";
+			text = "Set Favs »";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+		};
+		new GuiScrollCtrl(Avatar_LHandMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "281 248";
+			extent = "140 64";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_LHandMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "128 64";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/LHand/LHand";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetLHand(0,58054);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/LHand/LHook";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetLHand(1,58056);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_RHandMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "183 248";
+			extent = "140 64";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_RHandMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "128 64";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/RHand/RHand";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetRHand(0,58047);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/RHand/RHook";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetRHand(1,58049);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_LArmMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "281 179";
+			extent = "140 64";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_LArmMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "128 64";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/LArm/LArm";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetLArm(0,58040);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/LArm/LArmSlim";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetLArm(1,58042);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_RArmMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "183 179";
+			extent = "140 64";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_RArmMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "128 64";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/RArm/RArm";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetRArm(0,58033);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/RArm/RArmSlim";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetRArm(1,58035);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_LLegMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "281 317";
+			extent = "140 64";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_LLegMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "128 64";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/LLeg/LShoe";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetLLeg(0,58026);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/LLeg/LPeg";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetLLeg(1,58028);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_RLegMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "183 317";
+			extent = "140 64";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_RLegMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "128 64";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/RLeg/RShoe";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetRLeg(0,58019);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/RLeg/RPeg";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetRLeg(1,58021);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_HipMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "85 317";
+			extent = "140 64";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_hipMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "128 64";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/hip/pants";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetHip(0,58012);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/hip/skirtHip";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetHip(1,58014);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_ChestMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "85 179";
+			extent = "140 64";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_ChestMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "128 64";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Chest/chest";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetChest(0,58005);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Chest/femchest";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetChest(1,58007);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_HatMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "183 41";
+			extent = "268 128";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_HatMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "256 128";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Hat/none";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetHat(0,57984);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Hat/helmet";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetHat(1,57986);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Hat/pointyHelmet";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetHat(2,57988);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Hat/flareHelmet";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetHat(3,57990);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Hat/scoutHat";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetHat(4,57992);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Hat/bicorn";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetHat(5,57994);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Hat/copHat";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetHat(6,57996);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Hat/knitHat";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetHat(7,57998);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_SecondPackMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "281 46";
+			extent = "268 128";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_SecondPackMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "256 128";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/SecondPack/none";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetSecondPack(0,57967);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/SecondPack/epaulets";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetSecondPack(1,57969);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/SecondPack/epauletsRankA";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetSecondPack(2,57971);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/SecondPack/epauletsRankB";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetSecondPack(3,57973);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/SecondPack/epauletsRankC";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetSecondPack(4,57975);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/SecondPack/epauletsRankD";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetSecondPack(5,57977);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/SecondPack/ShoulderPads";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetSecondPack(6,57979);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_PackMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "183 46";
+			extent = "268 128";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_PackMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "256 128";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Pack/none";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetPack(0,57950);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Pack/armor";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetPack(1,57952);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Pack/bucket";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetPack(2,57954);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Pack/cape";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetPack(3,57956);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Pack/pack";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetPack(4,57958);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Pack/quiver";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetPack(5,57960);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Pack/tank";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetPack(6,57962);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_DecalMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "85 46";
+			extent = "268 256";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_DecalMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "256 256";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Space-Old.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(0,57915);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Space-New.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(1,57917);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Space-Nasa.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(2,57919);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Mod-Suit.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(3,57921);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Mod-Prisoner.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(4,57923);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Mod-Police.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(5,57925);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Mod-Pilot.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(6,57927);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Mod-DareDevil.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(7,57929);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Mod-Army.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(8,57931);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Medieval-YARLY.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(9,57933);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Medieval-Tunic.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(10,57935);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Medieval-Rider.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(11,57937);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 192";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Medieval-ORLY.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 192";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(12,57939);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 192";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Medieval-Lion.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 192";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(13,57941);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 192";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/Medieval-Eagle.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 192";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(14,57943);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 192";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/decal/decals/AAA-None.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 192";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetDecal(15,57945);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiScrollCtrl(Avatar_FaceMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "85 41";
+			extent = "268 192";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiBitmapCtrl(Avatar_faceMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "256 192";
+				minExtent = "8 2";
+				visible = 1;
+				bitmap = "./btnDecalBG";
+				wrap = 1;
+				keepCached = 0;
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/smileyRedBeard2.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(0,57888);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/smileyRedBeard.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(1,57890);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/SmileyPirate3.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(2,57892);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/SmileyPirate2.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(3,57894);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/SmileyPirate1.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(4,57896);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/smileyIce2.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(5,57898);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/smileyIce1.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(6,57900);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/SmileyFemale1.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 64";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(7,57902);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/smileyEvil2.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(8,57904);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/smileyEvil1.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(9,57906);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/smileyCreepy.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(10,57908);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/face/Faces/smiley.png";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 128";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetFace(11,57910);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiSwatchCtrl(AV_FavsHelper)
+		{
+			profile = "BlockWindowProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "192 25";
+			extent = "269 27";
+			minExtent = "8 2";
+			visible = 1;
+			color = "78 83 235 240";
+
+			new GuiTextCtrl()
+			{
+				profile = "BlockWindowProfile";
+				horizSizing = "center";
+				vertSizing = "bottom";
+				position = "22 3";
+				extent = "225 18";
+				minExtent = "8 2";
+				visible = 1;
+				text = "^^^ Click a number to set favorites ^^^";
+				maxLength = 255;
+			};
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton0)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "442 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AvatarGui.clickFav(0);";
+			accelerator = 0;
+			text = 0;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton9)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "422 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AvatarGui.clickFav(9);";
+			accelerator = 9;
+			text = 9;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton8)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "402 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AvatarGui.clickFav(8);";
+			accelerator = 8;
+			text = 8;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton7)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "382 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AvatarGui.clickFav(7);";
+			accelerator = 7;
+			text = 7;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton6)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "362 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AvatarGui.clickFav(6);";
+			accelerator = 6;
+			text = 6;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton5)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "342 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AvatarGui.clickFav(5);";
+			accelerator = 5;
+			text = 5;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton4)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "322 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AvatarGui.clickFav(4);";
+			accelerator = 4;
+			text = 4;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton3)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "302 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AvatarGui.clickFav(3);";
+			accelerator = 3;
+			text = 3;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton2)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "282 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AvatarGui.clickFav(2);";
+			accelerator = 2;
+			text = 2;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "262 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "AvatarGui.clickFav(1);";
+			accelerator = 1;
+			text = 1;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiScrollCtrl(Avatar_AccentMenu)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "281 41";
+			extent = "268 64";
+			minExtent = "8 2";
+			visible = 0;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiSwatchCtrl(Avatar_AccentMenuBG)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "256 64";
+				minExtent = "8 2";
+				visible = 1;
+				color = "255 255 0 204";
+
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Accent/none";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetAccent(0,61152);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Accent/plume";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetAccent(1,61154);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Accent/triplume";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetAccent(2,61156);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+				new GuiBitmapCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					bitmap = "./avatarIcons/Accent/septplume";
+					wrap = 0;
+					keepCached = 1;
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "192 0";
+					extent = "64 64";
+					minExtent = "8 2";
+					visible = 1;
+					command = "Avatar_SetAccent(3,61158);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btndecal";
+					mKeepCached = 0;
+				};
+			};
+		};
+	};
+};

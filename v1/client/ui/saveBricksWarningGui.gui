@@ -1,0 +1,76 @@
+new GuiControl(saveBricksWarningGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "151 141";
+		extent = "337 197";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Remote Save Warning";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(SaveBricksWarningGui);";
+
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "30 43";
+			extent = "277 56";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "You are attempting to save bricks from another server.  Because of the way the game's network communication works, you will only be able to save the bricks that you have seen.  ";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "123 144";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(SaveBricksWarningGui);canvas.pushDialog(saveBricksGui);";
+			text = "OK";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "79 107";
+			extent = "178 30";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$Pref::Gui::IgnoreRemoteSaveWarning";
+			text = "Do not show this message again";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+	};
+};

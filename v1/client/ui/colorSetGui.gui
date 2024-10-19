@@ -1,0 +1,1227 @@
+new GuiControl(ColorSetGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "28 96";
+		extent = "583 287";
+		minExtent = "583 287";
+		visible = 1;
+		text = "Color Set";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(colorSetGui);";
+
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "224 39";
+			extent = "95 95";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 0 255";
+		};
+		new GuiScrollCtrl(ColorSet_Scroll)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "right";
+			vertSizing = "height";
+			position = "13 39";
+			extent = "204 192";
+			minExtent = "8 2";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 40;
+			columnWidth = 30;
+
+			new GuiSwatchCtrl(ColorSet_Box)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "0 0";
+				extent = "192 192";
+				minExtent = "8 2";
+				visible = 1;
+				color = "0 0 0 0";
+
+				new GuiSwatchCtrl(ColorSetSwatch0)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "221 0 0 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(0);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch1)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "248 204 0 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(1);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch2)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 120 50 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(2);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch3)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 81 190 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(3);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch4)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "254 254 232 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(4);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch5)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "160 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "165 165 165 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "160 0";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(5);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch6)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "120 120 120 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(6);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch7)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "51 51 51 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(7);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch8)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "102 50 0 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(8);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch9)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "230 87 20 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(9);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch10)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "191 46 123 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(10);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch11)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "160 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "99 0 30 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "160 32";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(11);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch12)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "34 69 69 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(12);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch13)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 36 85 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(13);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch14)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "27 117 196 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(14);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch15)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "255 255 255 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(15);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch16)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "0 0 0 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(16);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch17)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "160 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "236 131 173 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "160 64";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(17);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch18)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "255 224 156 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(18);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch19)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "200 235 125 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(19);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch20)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "138 178 141 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(20);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch21)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "178 169 231 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(21);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch22)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "244 224 200 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(22);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch23)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "160 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "216 0 128 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "160 96";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(23);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch24)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "212 255 128 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(24);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch25)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "230 255 216 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(25);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch26)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "230 255 216 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(26);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch27)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "216 122 177 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(27);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch28)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "230 255 216 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "128 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(28);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch29)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "160 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "230 255 216 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "160 128";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(29);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch30)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 160";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "216 97 167 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "0 160";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(30);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch31)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 160";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "11 255 49 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "32 160";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(31);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch32)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 160";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "11 255 49 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "64 160";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(32);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+				new GuiSwatchCtrl(ColorSetSwatch33)
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 160";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					color = "11 255 49 255";
+				};
+				new GuiBitmapButtonCtrl()
+				{
+					profile = "GuiDefaultProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "96 160";
+					extent = "32 32";
+					minExtent = "8 2";
+					visible = 1;
+					command = "colorSetGui.selectColor(33);";
+					text = " ";
+					groupNum = -1;
+					buttonType = "PushButton";
+					bitmap = "./btnColor";
+					mKeepCached = 0;
+				};
+			};
+		};
+		new GuiSwatchCtrl(ColorSet_Result)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "226 41";
+			extent = "91 91";
+			minExtent = "8 2";
+			visible = 1;
+			color = "221 0 0 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "143 221";
+			extent = "60 18";
+			minExtent = "8 2";
+			visible = 1;
+			command = "colorSetGui.addColor();";
+			text = "Add";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "471 237";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "colorSetGui.save();canvas.popDialog(colorSetGui);";
+			text = "Save >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "18 237";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "colorSetGui.load();canvas.popDialog(colorSetGui);";
+			accelerator = "escape";
+			text = "<< Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "226 141";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "colorSetGui.deleteColor();";
+			text = "Delete";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiSliderCtrl(ColorSetGui_Slider3)
+		{
+			profile = "GuiSliderProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "339 161";
+			extent = "224 31";
+			minExtent = "8 2";
+			visible = 1;
+			altCommand = "ColorSetGui::update();";
+			range = "0.200000 1.000000";
+			ticks = 10;
+			value = 1;
+		};
+		new GuiSliderCtrl(ColorSetGui_Slider2)
+		{
+			profile = "GuiSliderProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "339 131";
+			extent = "224 31";
+			minExtent = "8 2";
+			visible = 1;
+			altCommand = "ColorSetGui::update();";
+			range = "0.000000 1.000000";
+			ticks = 10;
+			value = 0;
+		};
+		new GuiSliderCtrl(ColorSetGui_Slider1)
+		{
+			profile = "GuiSliderProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "339 101";
+			extent = "224 31";
+			minExtent = "8 2";
+			visible = 1;
+			altCommand = "ColorSetGui::update();";
+			range = "0.000000 1.000000";
+			ticks = 10;
+			value = 0;
+		};
+		new GuiSliderCtrl(ColorSetGui_Slider0)
+		{
+			profile = "GuiSliderProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "339 71";
+			extent = "224 31";
+			minExtent = "8 2";
+			visible = 1;
+			altCommand = "ColorSetGui::update();";
+			range = "0.000000 1.000000";
+			ticks = 10;
+			value = 0.867;
+		};
+		new GuiRadioCtrl(ColorSetGui_option0)
+		{
+			profile = "GuiRadioProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "372 42";
+			extent = "60 18";
+			minExtent = "8 2";
+			visible = 1;
+			command = "ColorSetGui.setMode(0);";
+			text = "RGB";
+			groupNum = 1;
+			buttonType = "RadioButton";
+		};
+		new GuiRadioCtrl(ColorSetGui_option1)
+		{
+			profile = "GuiRadioProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "422 42";
+			extent = "60 18";
+			minExtent = "8 2";
+			visible = 1;
+			command = "ColorSetGui.setMode(1);";
+			text = "HSV";
+			groupNum = 1;
+			buttonType = "RadioButton";
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "328 42";
+			extent = "29 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Mode:";
+			maxLength = 255;
+		};
+		new GuiTextCtrl(ColorSetGui_Label0)
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "328 72";
+			extent = "8 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "R";
+			maxLength = 255;
+		};
+		new GuiTextCtrl(ColorSetGui_Label1)
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "328 102";
+			extent = "8 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "G";
+			maxLength = 255;
+		};
+		new GuiTextCtrl(ColorSetGui_Label2)
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "328 132";
+			extent = "8 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "B";
+			maxLength = 255;
+		};
+		new GuiTextCtrl(ColorSetGui_Label3)
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "328 162";
+			extent = "8 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "A";
+			maxLength = 255;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "226 191";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "colorSetGui.defaults();";
+			text = "Defaults";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+	};
+};

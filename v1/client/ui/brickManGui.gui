@@ -1,0 +1,217 @@
+new GuiControl(BrickManGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "right";
+		vertSizing = "center";
+		position = "0 28";
+		extent = "316 423";
+		minExtent = "316 200";
+		visible = 1;
+		text = "Brick Management";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(BrickManGui);";
+
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "14 56";
+			extent = "191 354";
+			minExtent = "8 2";
+			visible = 1;
+			color = "255 255 255 128";
+		};
+		new GuiScrollCtrl()
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "14 56";
+			extent = "192 354";
+			minExtent = "8 2";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiTextListCtrl(BrickMan_List)
+			{
+				profile = "GuiTextListProfile";
+				horizSizing = "left";
+				vertSizing = "height";
+				position = "0 0";
+				extent = "180 16";
+				minExtent = "8 2";
+				visible = 1;
+				enumerate = 0;
+				resizeCell = 0;
+				columns = "0 50 135";
+				fitParentWidth = 1;
+				clipColumnText = 1;
+				helpTag = 0;
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "14 34";
+			extent = "50 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "BrickManGui.sortNumList(0);";
+			text = "BL_ID";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 1;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "69 34";
+			extent = "50 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "BrickManGui.sortList(1);";
+			text = "Name";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 1;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "130 34";
+			extent = "77 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "BrickManGui.sortNumList(2);";
+			text = "# Bricks";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 1;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "214 56";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "BrickManGui.clickClear();";
+			text = "Clear";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "214 96";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "BrickManGui.clickHilight();";
+			text = "Hilight";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "214 373";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(BrickManGui);Canvas.pushDialog(AdminGui);";
+			accelerator = "escape";
+			text = "Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "214 141";
+			extent = "91 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "BrickManGui.clickBan();";
+			text = "Ban >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 0 0 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "214 266";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "BrickManGui.clickClearAll();";
+			text = "CLEAR ALL";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 0 0 255";
+		};
+	};
+};

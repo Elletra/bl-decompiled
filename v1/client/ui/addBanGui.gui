@@ -1,0 +1,164 @@
+new GuiControl(addBanGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl(AddBan_Window)
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "132 165";
+		extent = "375 150";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Ban";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "11 37";
+			extent = "71 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Length of Ban:";
+			maxLength = 255;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "11 63";
+			extent = "40 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Reason:";
+			maxLength = 255;
+		};
+		new GuiPopUpMenuCtrl(AddBan_Days)
+		{
+			profile = "GuiPopUpMenuProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "163 37";
+			extent = "54 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiPopUpMenuCtrl(AddBan_Hours)
+		{
+			profile = "GuiPopUpMenuProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "223 37";
+			extent = "54 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiPopUpMenuCtrl(AddBan_Minutes)
+		{
+			profile = "GuiPopUpMenuProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "283 37";
+			extent = "81 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiCheckBoxCtrl(addBan_forever)
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "96 36";
+			extent = "60 20";
+			minExtent = "8 2";
+			visible = 1;
+			command = "addBanGui.clickForever();";
+			text = "Forever";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiSwatchCtrl(AddBan_TimeBlocker)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "156 31";
+			extent = "214 32";
+			minExtent = "8 2";
+			visible = 0;
+			color = "200 200 200 200";
+		};
+		new GuiTextEditCtrl(addBan_reason)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "56 63";
+			extent = "308 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 128;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "246 99";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "addBanGui.ban();";
+			text = "BAN >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "38 99";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(addBanGui);";
+			accelerator = "escape";
+			text = "Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+	};
+};

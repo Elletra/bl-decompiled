@@ -1,0 +1,1078 @@
+new GuiControl(CreateMiniGameGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl(CMG_Window)
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "53 13";
+		extent = "534 402";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Create Mini-Game";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(CreateMiniGameGui);";
+
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "10 39";
+			extent = "64 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>Game Title";
+			maxBitmapHeight = -1;
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "82 37";
+			extent = "183 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::Title";
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "18 346";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(CreateMiniGameGui);";
+			accelerator = "escape";
+			text = "<< Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl(CMG_CreateButton)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "425 346";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickCreate();";
+			text = "Create >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiPopUpMenuCtrl(CMG_PlayerDataBlock)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "198 181";
+			extent = "133 22";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "199 238";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::FallingDamage";
+			text = "Falling Damage";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "199 258";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::WeaponDamage";
+			text = "Weapon Damage";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "369 258";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::EnableWand";
+			text = "Enable Wand";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "369 278";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::EnableBuilding";
+			text = "Enable Building";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "118 211";
+			extent = "36 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::Points::BreakBrick";
+			maxLength = 4;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "16 213";
+			extent = "94 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>Breaking a Brick";
+			maxBitmapHeight = -1;
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "26 191";
+			extent = "94 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "Points";
+			maxBitmapHeight = -1;
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "16 253";
+			extent = "94 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>Killing a Player";
+			maxBitmapHeight = -1;
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "118 251";
+			extent = "36 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::Points::KillPlayer";
+			maxLength = 4;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "118 271";
+			extent = "36 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::Points::KillSelf";
+			maxLength = 4;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "16 273";
+			extent = "94 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>Killing Yourself";
+			maxBitmapHeight = -1;
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "118 291";
+			extent = "36 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::Points::Die";
+			maxLength = 4;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "16 293";
+			extent = "94 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>Dying";
+			maxBitmapHeight = -1;
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "288 101";
+			extent = "36 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::RespawnTime";
+			maxLength = 3;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "186 103";
+			extent = "94 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>P. Respawn Time";
+			maxBitmapHeight = -1;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "30 104";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::InviteOnly";
+			text = "Invite-Only";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "30 124";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::UseAllPlayersBricks";
+			text = "Include All Player's Bricks";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "20 205";
+			extent = "141 2";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 0 255";
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "199 208";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::UseSpawnBricks";
+			text = "Use Spawn Bricks";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "277 39";
+			extent = "64 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>Game Color";
+			maxBitmapHeight = -1;
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "26 81";
+			extent = "94 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "System";
+			maxBitmapHeight = -1;
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "20 95";
+			extent = "141 2";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 0 255";
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "196 81";
+			extent = "94 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "Gameplay";
+			maxBitmapHeight = -1;
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "190 95";
+			extent = "141 2";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 0 255";
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "118 231";
+			extent = "36 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::Points::PlantBrick";
+			maxLength = 4;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "16 233";
+			extent = "94 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>Planting a Brick";
+			maxBitmapHeight = -1;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "199 278";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::SelfDamage";
+			text = "Self Damage";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "366 81";
+			extent = "94 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "Starting Equipment";
+			maxBitmapHeight = -1;
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "360 95";
+			extent = "141 2";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 0 255";
+		};
+		new GuiPopUpMenuCtrl(CMG_StartEquip0)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "368 102";
+			extent = "133 22";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiPopUpMenuCtrl(CMG_StartEquip1)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "368 132";
+			extent = "133 22";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiPopUpMenuCtrl(CMG_StartEquip2)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "368 162";
+			extent = "133 22";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiPopUpMenuCtrl(CMG_StartEquip3)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "368 192";
+			extent = "133 22";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiPopUpMenuCtrl(CMG_StartEquip4)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "368 222";
+			extent = "133 22";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiPopUpMenuCtrl(CMG_ColorList)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "348 36";
+			extent = "95 18";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickColorList();";
+			maxLength = 255;
+			maxPopupHeight = 200;
+			colorF10 = "0 0 0";
+			colorF3 = "0 1 0";
+			colorF4 = "0 0.501961 0";
+			colorI11 = "128 128 0";
+			colorI9 = "255 128 255";
+			colorI4 = "0 128 0";
+			colorI1 = "255 128 0";
+			colorI8 = "0 0 255";
+			colorF6 = "0 0.501961 0.501961";
+			colorF2 = "1 1 0";
+			colorF5 = "0 1 1";
+			colorI2 = "255 255 0";
+			colorI5 = "0 255 255";
+			colorI7 = "0 128 255";
+			colorI6 = "0 128 128";
+			colorF1 = "1 0.501961 0";
+			colorI3 = "0 255 0";
+			colorF7 = "0 0.501961 1";
+			colorF0 = "1 0 0";
+			colorF9 = "0 0 0";
+			colorF11 = "0.501961 0.501961 0";
+			colorF8 = "1 0.501961 1";
+			colorI10 = "0 0 0";
+			colorI0 = "255 0 0";
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton0)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "442 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickFav(0);";
+			accelerator = 0;
+			text = 0;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton9)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "422 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickFav(9);";
+			accelerator = 9;
+			text = 9;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton8)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "402 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickFav(8);";
+			accelerator = 8;
+			text = 8;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton7)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "382 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickFav(7);";
+			accelerator = 7;
+			text = 7;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton6)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "362 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickFav(6);";
+			accelerator = 6;
+			text = 6;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton5)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "342 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickFav(5);";
+			accelerator = 5;
+			text = 5;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton4)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "322 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickFav(4);";
+			accelerator = 4;
+			text = 4;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton3)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "302 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickFav(3);";
+			accelerator = 3;
+			text = 3;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl(BSD_FavButton2)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "282 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickFav(2);";
+			accelerator = 2;
+			text = 2;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "262 3";
+			extent = "19 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickFav(1);";
+			accelerator = 1;
+			text = 1;
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "192 3";
+			extent = "62 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.ClickSetFavs();";
+			text = "Set Favs »";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiSwatchCtrl(CMG_Swatch)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "443 37";
+			extent = "38 16";
+			minExtent = "8 2";
+			visible = 1;
+			color = "255 0 0 255";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "443 36";
+			extent = "38 1";
+			minExtent = "8 1";
+			visible = 1;
+			color = "255 255 255 255";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "443 53";
+			extent = "38 1";
+			minExtent = "8 1";
+			visible = 1;
+			color = "0 0 0 255";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "480 37";
+			extent = "1 16";
+			minExtent = "1 1";
+			visible = 1;
+			color = "0 0 0 255";
+		};
+		new GuiSwatchCtrl(CMG_ColorBlocker)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "277 32";
+			extent = "209 25";
+			minExtent = "8 2";
+			visible = 0;
+			color = "200 200 200 200";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "325 346";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickReset();";
+			text = "Reset >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "192 192 255 255";
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "369 298";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::EnablePainting";
+			text = "Enable Painting";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "30 144";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::PlayersUseOwnBricks";
+			text = "Players Use Own Bricks";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiSwatchCtrl(CMG_FavsHelper)
+		{
+			profile = "BlockWindowProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "192 25";
+			extent = "269 27";
+			minExtent = "8 2";
+			visible = 0;
+			color = "78 83 235 240";
+
+			new GuiTextCtrl()
+			{
+				profile = "BlockWindowProfile";
+				horizSizing = "center";
+				vertSizing = "bottom";
+				position = "22 3";
+				extent = "225 18";
+				minExtent = "8 2";
+				visible = 1;
+				text = "^^^ Click a number to set favorites ^^^";
+				maxLength = 255;
+			};
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "199 298";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::VehicleDamage";
+			text = "Vehicle Damage";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "179 123";
+			extent = "101 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>V. Respawn Time";
+			maxBitmapHeight = -1;
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "288 121";
+			extent = "36 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::VehicleRespawnTime";
+			maxLength = 3;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "200 164";
+			extent = "101 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "Player Type:";
+			maxBitmapHeight = -1;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "118 346";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "CreateMiniGameGui.clickEnd();";
+			text = "End";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 0 0 255";
+		};
+		new GuiSwatchCtrl(CMG_EndBlocker)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "114 345";
+			extent = "100 42";
+			minExtent = "8 2";
+			visible = 1;
+			color = "200 200 200 200";
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "199 318";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::BrickDamage";
+			text = "Brick Damage";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "179 143";
+			extent = "101 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>B. Respawn Time";
+			maxBitmapHeight = -1;
+		};
+		new GuiTextEditCtrl()
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "288 141";
+			extent = "36 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$MiniGame::BrickRespawnTime";
+			maxLength = 3;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+	};
+};

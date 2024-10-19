@@ -1,0 +1,148 @@
+new GuiControl(filtersGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "227 129";
+		extent = "186 222";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Filters";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(filtersGui);";
+		helpTag = 0;
+
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "34 71";
+			extent = "127 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$Pref::Filter::NoPassword";
+			text = "No Password";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+			helpTag = 0;
+		};
+		new GuiPopUpMenuCtrl(Filter_PingMenu)
+		{
+			profile = "GuiPopUpMenuProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "88 132";
+			extent = "73 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "34 51";
+			extent = "127 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$Pref::Filter::Dedicated";
+			text = "Dedicated";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+			helpTag = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "48 170";
+			extent = "90 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(filtersGui);";
+			text = "OK";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			wrap = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "34 132";
+			extent = "51 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Ping under";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "34 91";
+			extent = "127 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$Pref::Filter::NotEmpty";
+			text = "Not Empty";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+			helpTag = 0;
+		};
+		new GuiCheckBoxCtrl()
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "34 111";
+			extent = "127 18";
+			minExtent = "8 2";
+			visible = 1;
+			variable = "$Pref::Filter::NotFull";
+			text = "Not full";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "12 30";
+			extent = "140 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Only show servers that are..";
+			maxLength = 255;
+		};
+	};
+};

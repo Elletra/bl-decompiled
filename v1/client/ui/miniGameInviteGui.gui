@@ -1,0 +1,178 @@
+new GuiControl(MiniGameInviteGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl(MGI_Window)
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "173 136";
+		extent = "293 164";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Mini-Game Invitation";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 0;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "101 113";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "MiniGameInviteGui.clickReject();";
+			accelerator = "escape";
+			text = "Reject";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "10 113";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "MiniGameInviteGui.clickAccept();";
+			text = "Accept";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "191 113";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "MiniGameInviteGui.clickIgnore();";
+			text = "Ignore";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "37 85";
+			extent = "58 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>BL_ID:";
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "37 55";
+			extent = "58 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>Title:";
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "37 70";
+			extent = "58 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>Creator:";
+		};
+		new GuiMLTextCtrl(MGI_Title)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "101 55";
+			extent = "170 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "Blockhead's Game";
+		};
+		new GuiMLTextCtrl(MGI_Name)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "101 70";
+			extent = "170 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "Blockhead";
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "13 33";
+			extent = "266 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "You have recieved a mini-game invitation:";
+		};
+		new GuiMLTextCtrl(MGI_BL_ID)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "101 85";
+			extent = "170 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = 912380;
+		};
+	};
+};

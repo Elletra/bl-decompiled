@@ -1,0 +1,198 @@
+new GuiControl(keyGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "189 159";
+		extent = "262 161";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Authentication Key";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popdialog(keyGui);";
+
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "33 36";
+			extent = "196 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Enter your Blockland Authentication Key:";
+			maxLength = 255;
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "24 64";
+			extent = "214 33";
+			minExtent = "8 2";
+			visible = 1;
+			color = "130 131 133 133";
+
+			new GuiSwatchCtrl(keyError3)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "166 3";
+				extent = "45 26";
+				minExtent = "8 2";
+				visible = 0;
+				color = "255 0 0 255";
+			};
+			new GuiSwatchCtrl(keyError2)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "114 3";
+				extent = "45 26";
+				minExtent = "8 2";
+				visible = 0;
+				color = "255 0 0 255";
+			};
+			new GuiSwatchCtrl(keyError1)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "62 3";
+				extent = "45 26";
+				minExtent = "8 2";
+				visible = 0;
+				color = "255 0 0 255";
+			};
+			new GuiSwatchCtrl(keyError0)
+			{
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "3 3";
+				extent = "52 26";
+				minExtent = "8 2";
+				visible = 0;
+				color = "255 0 0 255";
+			};
+			new GuiTextEditCtrl(keyText0)
+			{
+				profile = "GuiTextEditProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "6 7";
+				extent = "45 18";
+				minExtent = "8 2";
+				visible = 1;
+				command = "keyGui::type(0);";
+				maxLength = 5;
+				historySize = 0;
+				password = 0;
+				tabComplete = 0;
+				sinkAllKeyEvents = 0;
+			};
+			new GuiTextEditCtrl(keyText1)
+			{
+				profile = "GuiTextEditProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "66 7";
+				extent = "37 18";
+				minExtent = "8 2";
+				visible = 1;
+				command = "keyGui::type(1);";
+				maxLength = 4;
+				historySize = 0;
+				password = 0;
+				tabComplete = 0;
+				sinkAllKeyEvents = 0;
+			};
+			new GuiTextEditCtrl(keyText2)
+			{
+				profile = "GuiTextEditProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "118 7";
+				extent = "37 18";
+				minExtent = "8 2";
+				visible = 1;
+				command = "keyGui::type(2);";
+				maxLength = 4;
+				historySize = 0;
+				password = 0;
+				tabComplete = 0;
+				sinkAllKeyEvents = 0;
+			};
+			new GuiTextEditCtrl(keyText3)
+			{
+				profile = "GuiTextEditProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "170 7";
+				extent = "37 18";
+				minExtent = "8 2";
+				visible = 1;
+				command = "keyGui::type(3);";
+				maxLength = 4;
+				historySize = 0;
+				password = 0;
+				tabComplete = 0;
+				sinkAllKeyEvents = 0;
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "145 110";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "keyGui::done();";
+			text = "Unlock >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "25 110";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popdialog(keyGui);";
+			text = "Demo Mode";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+	};
+};

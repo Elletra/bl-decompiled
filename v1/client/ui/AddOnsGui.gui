@@ -1,0 +1,67 @@
+new GuiControl(AddOnsGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "180 78";
+		extent = "280 323";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Add-Ons";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(AddOnsGui);";
+
+		new GuiScrollCtrl(AOG_Scroll)
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "10 34";
+			extent = "261 223";
+			minExtent = "8 2";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 40;
+			columnWidth = 30;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "94 270";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(AddOnsGui);";
+			accelerator = "escape";
+			text = "Done";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+	};
+};

@@ -1,0 +1,126 @@
+new GuiControl(manualJoin)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "208 152";
+		extent = "224 157";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Connect to IP";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popdialog(\"manualJoin\");";
+		helpTag = 0;
+
+		new GuiTextEditCtrl(MJ_txtIP)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "67 71";
+			extent = "139 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "116 103";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "MJ_connect();";
+			text = "Connect >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			wrap = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "20 70";
+			extent = "47 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Server IP:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(MJ_txtJoinPass)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "67 41";
+			extent = "139 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 1;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "14 40";
+			extent = "53 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Password:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "16 103";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(manualJoin);";
+			text = "<< Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			wrap = 0;
+		};
+	};
+};

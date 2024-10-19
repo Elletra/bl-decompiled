@@ -1,0 +1,101 @@
+new GuiControl(demoBrickLimitGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "158 80";
+		extent = "323 334";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Demo Brick Limit Reached!";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(demoBrickLimitGui);";
+
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "29 35";
+			extent = "264 162";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<font:Arial: 18><just:center>You've run out of bricks!<Br><br><just:left>The full of Blockland version lets you...<br><Br>" @ "<lmargin%:10><font:arial:24>» <font:arial:18>Use up to <font:arial bold:18>128,000 bricks!<font:arial:18><br>" @ "<lmargin%:10><font:arial:24>» <font:arial:18>Play online!<br>" @ "<lmargin%:10><font:arial:24>» <font:arial:18><a:www.blockland.us/index.asp?p=features>Much more!</a><br>";
+			maxBitmapHeight = -1;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "58 205";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "gotoWebPage(\"Http://blockland.us/index.asp?p=store\");";
+			text = "Buy Now";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "58 245";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.pushDialog(keyGui);";
+			text = "Enter Key";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl(DBLG_StartOver)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "18 297";
+			extent = "106 24";
+			minExtent = "8 2";
+			visible = 1;
+			command = "commandtoServer('clearBricks');canvas.popDialog(demobricklimitgui);";
+			text = "Start Over";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 128";
+			wrap = 0;
+		};
+	};
+};

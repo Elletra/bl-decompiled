@@ -1,0 +1,111 @@
+new GuiControl(ConsoleDlg)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "0 0";
+		extent = "640 370";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Console";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "0 0";
+			extent = "640 353";
+			minExtent = "8 2";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "dynamic";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 40;
+			columnWidth = 30;
+
+			new GuiConsole(testArrayCtrl)
+			{
+				profile = "GuiConsoleProfile";
+				position = "1 1";
+				visible = 1;
+			};
+		};
+		new GuiConsoleEditCtrl(ConsoleEntry)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "width";
+			vertSizing = "top";
+			position = "0 352";
+			extent = "640 18";
+			minExtent = "8 2";
+			visible = 1;
+			altCommand = "ConsoleEntry::eval();";
+			maxLength = 255;
+			historySize = 20;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 1;
+			useSiblingScroller = 1;
+		};
+	};
+};
+$ConsoleActive = 0;
+function ConsoleEntry::eval()
+{
+	%text = ConsoleEntry.getValue();
+	echo("==>" @ %text);
+	eval(%text);
+	ConsoleEntry.setValue("");
+}
+
+function ToggleConsole(%make)
+{
+	if (getSimTime() - $lastToggleConsoleTime < 100)
+	{
+		return;
+	}
+	$lastToggleConsoleTime = getSimTime();
+	if (%make)
+	{
+		if ($ConsoleActive)
+		{
+			if ($enableDirectInput)
+			{
+				activateKeyboard();
+			}
+			Canvas.popDialog(ConsoleDlg);
+			$ConsoleActive = 0;
+		}
+		else
+		{
+			if ($enableDirectInput)
+			{
+				deactivateKeyboard();
+			}
+			Canvas.pushDialog(ConsoleDlg, 99);
+			$ConsoleActive = 1;
+		}
+	}
+}
+

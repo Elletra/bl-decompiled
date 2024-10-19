@@ -1,0 +1,176 @@
+new GuiControl(escapeMenu)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "209 29";
+		extent = "221 421";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Escape Menu";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(\"escapeMenu\");";
+
+		new GuiBitmapButtonCtrl(EM_Options)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 33";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Canvas.pushDialog(optionsDlg);alxPlay(note0sound);";
+			text = "Options";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl(EM_MiniGames)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 133";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "escapeMenu::clickMinigames();";
+			text = "Mini-Games";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "170 170 170 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl(EM_SaveBricks)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 233";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "escapeMenu::clickSaveBricks();";
+			text = "Save Bricks";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "50 130 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl(EM_PlayerList)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 93";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.pushDialog(NewPlayerListGui);Canvas.popDialog(escapeMenu);";
+			text = "Player List";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "50 255 50 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl(EM_Disconnect)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 333";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "escapeFromGame();";
+			text = "Disconnect";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 150 0 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl(EM_Quit)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 373";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "quitGame();";
+			text = "Quit";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 75 0 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl(EM_LoadBricks)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 273";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "escapeMenu::clickLoadBricks();";
+			text = "Load Bricks";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "50 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl(EM_AdminMenu)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 173";
+			extent = "207 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "escapeMenu::clickAdmin();";
+			text = "Admin Menu";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 50 255";
+			wrap = 0;
+		};
+	};
+};

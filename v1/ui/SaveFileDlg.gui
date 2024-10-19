@@ -1,0 +1,216 @@
+new GuiControl(SaveFileDlg)
+{
+	profile = "GuiDialogProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "131 77";
+		extent = "378 328";
+		minExtent = "8 8";
+		visible = 1;
+		text = "Save File...";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+		closeCommand = "Canvas.popDialog(SaveFileDlg);";
+		helpTag = 0;
+
+		new GuiPopUpMenuCtrl(SA_directoryList)
+		{
+			profile = "GuiPopUpMenuProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "68 30";
+			extent = "226 19";
+			minExtent = "8 8";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+			helpTag = 0;
+		};
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "8 52";
+			extent = "286 248";
+			minExtent = "8 8";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "dynamic";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 40;
+			columnWidth = 30;
+			helpTag = 0;
+			defaultLineHeight = 15;
+
+			new GuiTextListCtrl(SA_fileList)
+			{
+				profile = "GuiTextArrayProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "267 8";
+				minExtent = "8 8";
+				visible = 1;
+				altCommand = "doSACallback();";
+				enumerate = 0;
+				resizeCell = 1;
+				columns = 0;
+				fitParentWidth = 1;
+				clipColumnText = 0;
+				noDuplicates = "false";
+				helpTag = 0;
+			};
+		};
+		new GuiButtonCtrl()
+		{
+			profile = "GuiButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "305 245";
+			extent = "60 20";
+			minExtent = "8 8";
+			visible = 1;
+			command = "doSACallback();";
+			text = "Save";
+			groupNum = -1;
+			buttonType = "PushButton";
+			helpTag = 0;
+		};
+		new GuiButtonCtrl()
+		{
+			profile = "GuiButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "305 280";
+			extent = "60 20";
+			minExtent = "8 8";
+			visible = 1;
+			command = "Canvas.popDialog(SaveFileDlg);";
+			accelerator = "escape";
+			text = "Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(SA_nameEdit)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "8 303";
+			extent = "286 18";
+			minExtent = "8 8";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "10 31";
+			extent = "44 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Directory";
+			maxLength = 255;
+			helpTag = 0;
+		};
+	};
+};
+function getSaveFilename(%filespec, %callback, %currentFile)
+{
+	$SA_callback = %callback;
+	$SA_filespec = %filespec;
+	%hasPath = filePath(%currentFile) $= "" ? 0 : 1;
+	Canvas.pushDialog(SaveFileDlg, 99);
+	%i = 0;
+	%unique = 0;
+	SA_directoryList.clear();
+	for (%file = findFirstFile("*"); %file !$= ""; %file = findNextFile("*"))
+	{
+		if (strstr(%file, "/CVS/") == -1)
+		{
+			%path = filePath(%file);
+			if (!%unique[%path])
+			{
+				%i++;
+				%unique[%path] = %i;
+				SA_directoryList.add(%path, %i);
+				if (!%hasPath)
+				{
+					if (isFile(%path @ "/" @ %currentFile))
+					{
+						%currentFile = %path @ "/" @ %currentFile;
+						%hasPath = 1;
+					}
+				}
+			}
+		}
+	}
+	SA_directoryList.sort();
+	if (%unique[filePath(%currentFile)])
+	{
+		SA_directoryList.setSelected(%unique[filePath(%currentFile)]);
+	}
+	else
+	{
+		SA_directoryList.setSelected(1);
+	}
+	SA_nameEdit.setValue(fileName(%currentFile));
+}
+
+function doSACallback()
+{
+	if (SA_nameEdit.getValue() !$= "" && SA_directoryList.getValue() !$= "")
+	{
+		%file = SA_directoryList.getValue() @ "/" @ SA_nameEdit.getValue();
+		eval($SA_callback @ "(\"" @ %file @ "\");");
+	}
+	Canvas.popDialog(SaveFileDlg);
+}
+
+function SA_directoryList::onSelect(%this, %id)
+{
+	SA_fileList.clear();
+	%filespec = %this.getTextById(%id) @ "/" @ $SA_filespec;
+	for (%file = findFirstFile(%filespec); %file !$= ""; %file = findNextFile(%filespec))
+	{
+		if (strstr(%file, "/CVS/") == -1)
+		{
+			SA_fileList.addRow(%i++, fileName(%file));
+		}
+	}
+	SA_fileList.sort(0);
+}
+
+function SA_fileList::onSelect(%this, %id)
+{
+	SA_nameEdit.setValue(%this.getRowTextById(%id));
+}
+

@@ -1,0 +1,237 @@
+new GuiControl(JoinMiniGameGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl(JMG_Window)
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "0 95";
+		extent = "640 289";
+		minExtent = "469 253";
+		visible = 1;
+		text = "Mini-Games";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(JoinMiniGameGui);";
+
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "536 240";
+			extent = "96 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(JoinMiniGameGui);";
+			accelerator = "escape";
+			text = "Close";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "536 54";
+			extent = "96 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JoinMiniGameGui.clickJoin();";
+			text = "Join";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "11 54";
+			extent = "520 224";
+			minExtent = "8 2";
+			visible = 1;
+			color = "0 0 0 192";
+		};
+		new GuiScrollCtrl(JMG_Scroll)
+		{
+			profile = "ColorScrollProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "11 54";
+			extent = "520 224";
+			minExtent = "8 2";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+
+			new GuiTextListCtrl(JMG_List)
+			{
+				profile = "MiniGameListProfile";
+				horizSizing = "left";
+				vertSizing = "height";
+				position = "0 0";
+				extent = "508 2";
+				minExtent = "8 2";
+				visible = 1;
+				command = "JoinMiniGameGui.clickList();";
+				enumerate = 0;
+				resizeCell = 0;
+				columns = "0 102 165 493";
+				fitParentWidth = 1;
+				clipColumnText = 1;
+				helpTag = 0;
+				sortedAsc = 0;
+				sortedNumerical = 0;
+				sortedBy = 0;
+			};
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "286 33";
+			extent = "83 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JoinMiniGameGui.sortList(2);";
+			text = "Game Title";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 1;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "15 33";
+			extent = "68 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JoinMiniGameGui.sortList(0);";
+			text = "Creator";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 1;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "104 33";
+			extent = "57 19";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JoinMiniGameGui.sortNumList(1);";
+			text = "BL_ID";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 1;
+			mColor = "255 255 255 255";
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "536 154";
+			extent = "96 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JoinMiniGameGui.clickCreate();";
+			text = "Create/Edit >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "536 104";
+			extent = "96 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "JoinMiniGameGui.clickLeave();";
+			text = "Leave";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiSwatchCtrl(JMG_JoinBlocker)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "534 53";
+			extent = "102 39";
+			minExtent = "8 2";
+			visible = 1;
+			color = "200 200 200 200";
+		};
+		new GuiSwatchCtrl(JMG_LeaveBlocker)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "left";
+			vertSizing = "bottom";
+			position = "534 103";
+			extent = "102 39";
+			minExtent = "8 2";
+			visible = 1;
+			color = "200 200 200 200";
+		};
+		new GuiSwatchCtrl(JMG_CreateBlocker)
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "363 153";
+			extent = "102 39";
+			minExtent = "8 2";
+			visible = 0;
+			color = "200 200 200 200";
+		};
+	};
+};

@@ -1,0 +1,192 @@
+new GuiControl(TrustInviteGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl(TI_Window)
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "173 136";
+		extent = "293 208";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Trust Invitation";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 0;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "101 157";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "TrustInviteGui.clickReject();";
+			accelerator = "escape";
+			text = "Reject";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "10 157";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "TrustInviteGui.clickAccept();";
+			text = "Accept";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "191 157";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "TrustInviteGui.clickIgnore();";
+			text = "Ignore";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiMLTextCtrl(TI_FullMessageA)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "22 33";
+			extent = "248 14";
+			minExtent = "8 2";
+			visible = 0;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "You have recieved a FULL TRUST invitation from:";
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "37 55";
+			extent = "58 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>Name:";
+		};
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "37 70";
+			extent = "58 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "<just:right>BL_ID:";
+		};
+		new GuiMLTextCtrl(TI_Name)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "101 55";
+			extent = "170 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "Blockhead99";
+		};
+		new GuiMLTextCtrl(TI_BL_ID)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "101 70";
+			extent = "170 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = 912380;
+		};
+		new GuiMLTextCtrl(TI_BuildMessageB)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "13 93";
+			extent = "266 28";
+			minExtent = "8 2";
+			visible = 0;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "If you accept this invitation, you be able to build on and paint each other's bricks.";
+		};
+		new GuiMLTextCtrl(TI_BuildMessageA)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "22 33";
+			extent = "248 14";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "You have recieved a BUILD TRUST invitation from:";
+		};
+		new GuiMLTextCtrl(TI_FullMessageB)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "13 93";
+			extent = "266 56";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "If you accept this invitation, you be able to build on, paint, and DESTROY each other's bricks.\n\nConsider this carefully.";
+		};
+	};
+};

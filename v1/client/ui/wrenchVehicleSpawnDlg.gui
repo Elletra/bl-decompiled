@@ -1,0 +1,198 @@
+new GuiControl(WrenchVehicleSpawnDlg)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl(WrenchVehicleSpawn_Window)
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "158 147";
+		extent = "323 186";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Wrench Vehicle Spawn";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(wrenchVehicleSpawnDlg);";
+
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "16 137";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(wrenchVehicleSpawnDlg);";
+			accelerator = "escape";
+			text = "<< Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "217 137";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "wrenchVehicleSpawnDlg.send();";
+			text = "Send >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiPopUpMenuCtrl(WrenchVehicleSpawn_Vehicles)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "86 70";
+			extent = "162 22";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "23 73";
+			extent = "39 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Vehicle:";
+			maxLength = 255;
+		};
+		new GuiCheckBoxCtrl(WrenchVehicleSpawnLock_Vehicles)
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "254 70";
+			extent = "58 22";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Lock";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiTextEditCtrl(WrenchVehicleSpawn_Name)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "86 43";
+			extent = "162 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 0;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiCheckBoxCtrl(WrenchVehicleSpawnLock_Name)
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "254 42";
+			extent = "140 22";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Lock";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "23 43";
+			extent = "57 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Brick Name:";
+			maxLength = 255;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "top";
+			position = "116 137";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "wrenchVehicleSpawnDlg.respawn();";
+			text = "< Respawn >";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "192 192 255 255";
+		};
+		new GuiCheckBoxCtrl(WrenchVehicleSpawnLock_ReColorVehicle)
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "254 100";
+			extent = "58 22";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Lock";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiCheckBoxCtrl(WrenchVehicleSpawn_ReColorVehicle)
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "86 100";
+			extent = "163 22";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Re-Color Vehicle";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "14 39";
+			extent = "286 27";
+			minExtent = "8 2";
+			visible = 1;
+			color = "200 200 200 200";
+		};
+	};
+};

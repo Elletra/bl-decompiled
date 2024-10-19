@@ -1,0 +1,126 @@
+new GuiControl(InspectAddFieldDlg)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "209 177";
+		extent = "221 125";
+		minExtent = "8 8";
+		visible = 1;
+		text = "Add dynamic field...";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "Canvas.popDialog(InspectAddFieldDlg);";
+		helpTag = 0;
+
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "22 32";
+			extent = "30 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Name:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "21 58";
+			extent = "31 18";
+			minExtent = "8 8";
+			visible = 1;
+			text = "Value:";
+			maxLength = 255;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(InspectAddFieldValue)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "62 58";
+			extent = "146 18";
+			minExtent = "8 8";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiTextEditCtrl(InspectAddFieldName)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "62 32";
+			extent = "146 18";
+			minExtent = "8 8";
+			visible = 1;
+			maxLength = 255;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+			helpTag = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "122 85";
+			extent = "66 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Canvas.popDialog(InspectAddFieldDlg);";
+			accelerator = "escape";
+			text = "CANCEL";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "~/client/ui/button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "28 85";
+			extent = "66 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(InspectAddFieldDlg);InspectAddFieldDlg.doAction();";
+			accelerator = "return";
+			text = "OK";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "~/client/ui/button2";
+			mKeepCached = 0;
+		};
+	};
+};

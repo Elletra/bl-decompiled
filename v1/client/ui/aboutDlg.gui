@@ -1,0 +1,81 @@
+new GuiControl(aboutDlg)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "132 93";
+		extent = "376 318";
+		minExtent = "8 8";
+		visible = 1;
+		text = "About...";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "Canvas.popDialog(aboutDlg);";
+		helpTag = 0;
+
+		new GuiMLTextCtrl(aboutText)
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "width";
+			vertSizing = "bottom";
+			position = "19 39";
+			extent = "336 260";
+			minExtent = "8 8";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "This is a test";
+			maxBitmapHeight = -1;
+			helpTag = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "279 275";
+			extent = "78 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Canvas.popDialog(aboutDlg);";
+			text = "OK";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+			helpTag = 0;
+		};
+	};
+};
+function aboutDlg::onWake(%this)
+{
+	%text = "<just:center><font:Arial Bold:20>Torque Game Engine\n( v1.3 )\n" @ "<font:Arial:12>" @ getCompileTimeString() @ ", " @ getBuildString() @ "Build\n\n" @ "<font:Arial:16>Copyright (c) 2001 <a:www.garagegames.com>GarageGames.Com</a>\n" @ "Portions Copyright (c) 2001 by Sierra Online, Inc.\n\n" @ "<bitmap:" @ ExpandFilename("./gglogo150.png") @ ">";
+	aboutText.setText(%text);
+}
+
+function aboutText::onURL(%this, %url)
+{
+	echo(%this);
+	echo(%url);
+	gotoWebPage(%url);
+}
+

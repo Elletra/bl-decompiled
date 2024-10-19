@@ -1,0 +1,49 @@
+new GuiControl(NewChatHud)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+	noCursor = 1;
+
+	new GuiMLTextCtrl(newChatText)
+	{
+		profile = "BlockChatTextProfile";
+		horizSizing = "width";
+		vertSizing = "bottom";
+		position = "2 20";
+		extent = "640 14";
+		minExtent = "8 2";
+		visible = 1;
+		lineSpacing = 12;
+		allowColorChars = 1;
+		maxChars = -1;
+		text = "\c0what \c1what \c2what \c3what \c4what \c5hat \c6what \c7what";
+	};
+	new GuiTextCtrl(chatWhosTalkingText)
+	{
+		profile = "MM_LeftProfile";
+		horizSizing = "width";
+		vertSizing = "bottom";
+		position = "-1 0";
+		extent = "630 18";
+		minExtent = "8 2";
+		visible = 1;
+		maxLength = 255;
+	};
+	new GuiTextCtrl(chatScrollDownIndicator)
+	{
+		profile = "MM_LeftProfile";
+		horizSizing = "right";
+		vertSizing = "bottom";
+		position = "4 40";
+		extent = "27 18";
+		minExtent = "8 2";
+		visible = 1;
+		text = "VVV";
+		maxLength = 255;
+	};
+};

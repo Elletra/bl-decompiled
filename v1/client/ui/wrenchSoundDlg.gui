@@ -1,0 +1,155 @@
+new GuiControl(WrenchSoundDlg)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl(WrenchSound_Window)
+	{
+		profile = "GuiWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "158 150";
+		extent = "323 179";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Wrench Sound";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(wrenchSoundDlg);";
+
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "16 130";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(wrenchSoundDlg);";
+			accelerator = "escape";
+			text = "<< Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "left";
+			vertSizing = "top";
+			position = "217 130";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "wrenchSoundDlg.send();";
+			text = "Send >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			mColor = "255 255 255 255";
+		};
+		new GuiPopUpMenuCtrl(WrenchSound_Sounds)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "86 70";
+			extent = "162 22";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 255;
+			maxPopupHeight = 200;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "23 73";
+			extent = "34 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Sound:";
+			maxLength = 255;
+		};
+		new GuiCheckBoxCtrl(WrenchSoundLock_Sounds)
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "254 70";
+			extent = "58 22";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Lock";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiTextEditCtrl(WrenchSound_Name)
+		{
+			profile = "GuiTextEditProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "86 43";
+			extent = "162 18";
+			minExtent = "8 2";
+			visible = 1;
+			maxLength = 0;
+			historySize = 0;
+			password = 0;
+			tabComplete = 0;
+			sinkAllKeyEvents = 0;
+		};
+		new GuiCheckBoxCtrl(WrenchSoundLock_Name)
+		{
+			profile = "GuiCheckBoxProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "254 42";
+			extent = "140 22";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Lock";
+			groupNum = -1;
+			buttonType = "ToggleButton";
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "23 43";
+			extent = "57 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Brick Name:";
+			maxLength = 255;
+		};
+		new GuiSwatchCtrl()
+		{
+			profile = "GuiDefaultProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "14 39";
+			extent = "286 27";
+			minExtent = "8 2";
+			visible = 1;
+			color = "200 200 200 200";
+		};
+	};
+};

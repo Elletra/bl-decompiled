@@ -1,0 +1,115 @@
+new GuiControl(LoadBricksColorGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "191 115";
+		extent = "258 250";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Color Warning";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(\"LoadBricksColorGui\");";
+
+		new GuiMLTextCtrl()
+		{
+			profile = "GuiMLTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "11 34";
+			extent = "239 28";
+			minExtent = "8 2";
+			visible = 1;
+			lineSpacing = 2;
+			allowColorChars = 0;
+			maxChars = -1;
+			text = "The brick colors of this file are different then your current color set.  What would you like to do?";
+		};
+		new GuiBitmapButtonCtrl(BTN_LoadBricksColor_Append)
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 151";
+			extent = "243 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "ColorWarning_ClickAppend();";
+			text = "Add More Colors To Current Set";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 111";
+			extent = "243 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "ColorWarning_ClickReplace();";
+			text = "Replace Current Color Set";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "7 71";
+			extent = "243 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "ColorWarning_ClickMatch();";
+			text = "Find the Nearest Match from Current Set";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button1";
+			mKeepCached = 0;
+			wrap = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "center";
+			vertSizing = "bottom";
+			position = "83 197";
+			extent = "91 36";
+			minExtent = "8 2";
+			visible = 1;
+			command = "ColorWarning_ClickCancel();";
+			accelerator = "escape";
+			text = "Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+			wrap = 0;
+		};
+	};
+};

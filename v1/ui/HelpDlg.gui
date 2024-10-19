@@ -1,0 +1,128 @@
+new GuiControl(HelpDlg)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = 1;
+	helpTag = 0;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "78 43";
+		extent = "483 393";
+		minExtent = "300 200";
+		visible = 1;
+		text = "Help";
+		maxLength = 255;
+		resizeWidth = 1;
+		resizeHeight = 1;
+		canMove = 1;
+		canClose = 1;
+		canMinimize = 1;
+		canMaximize = 1;
+		minSize = "50 50";
+		closeCommand = "Canvas.popDialog(HelpDlg);";
+		helpTag = 0;
+
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "right";
+			vertSizing = "height";
+			position = "8 31";
+			extent = "132 354";
+			minExtent = "8 8";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "dynamic";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 10;
+			columnWidth = 30;
+			helpTag = 0;
+
+			new GuiTextListCtrl(HelpFileList)
+			{
+				profile = "GuiTextListProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "130 32";
+				minExtent = "8 8";
+				visible = 1;
+				enumerate = 0;
+				resizeCell = 1;
+				columns = 0;
+				fitParentWidth = 1;
+				clipColumnText = 0;
+				fileName4 = "base/help/5. World Editor.hfl";
+				fileName1 = "base/help/0. Credits.hfl";
+				fileName9 = "base/client/help/1. Credits.hfl";
+				fileName6 = "base/help/3. Gui Editor.hfl";
+				fileName7 = "base/help/2. License.hfl";
+				fileName0 = "base/help/1. Controls.hfl";
+				fileName8 = "base/help/10. Terrain Texture Painter.hfl";
+				fileName5 = "base/help/4. Mission Editor Overview.hfl";
+				fileName2 = "base/help/7. Terrain Editor.hfl";
+				fileName3 = "base/help/6. Mission Area Editor.hfl";
+				entryCount = 2;
+				helpTag = 0;
+			};
+		};
+		new GuiScrollCtrl()
+		{
+			profile = "GuiScrollProfile";
+			horizSizing = "width";
+			vertSizing = "height";
+			position = "143 31";
+			extent = "333 354";
+			minExtent = "8 8";
+			visible = 1;
+			willFirstRespond = 1;
+			hScrollBar = "alwaysOff";
+			vScrollBar = "alwaysOn";
+			constantThumbHeight = 0;
+			childMargin = "0 0";
+			rowHeight = 40;
+			columnWidth = 30;
+			helpTag = 0;
+
+			new GuiMLTextCtrl(HelpText)
+			{
+				profile = "GuiMLTextProfile";
+				horizSizing = "width";
+				vertSizing = "bottom";
+				position = "1 1";
+				extent = "315 757";
+				minExtent = "8 8";
+				visible = 1;
+				lineSpacing = 2;
+				allowColorChars = 0;
+				maxChars = -1;
+				helpTag = 0;
+			};
+		};
+		new GuiButtonCtrl()
+		{
+			profile = "GuiButtonProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "52 -37";
+			extent = "140 30";
+			minExtent = "8 2";
+			visible = 1;
+			command = "Canvas.popDialog(HelpDlg);";
+			accelerator = "escape";
+			text = "Button";
+			groupNum = -1;
+			buttonType = "PushButton";
+		};
+	};
+};

@@ -1,0 +1,178 @@
+new GuiControl(DefaultControlsGui)
+{
+	profile = "GuiDefaultProfile";
+	horizSizing = "right";
+	vertSizing = "bottom";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 2";
+	visible = 1;
+
+	new GuiWindowCtrl()
+	{
+		profile = "BlockWindowProfile";
+		horizSizing = "center";
+		vertSizing = "center";
+		position = "201 66";
+		extent = "237 347";
+		minExtent = "8 2";
+		visible = 1;
+		text = "Default Controls";
+		maxLength = 255;
+		resizeWidth = 0;
+		resizeHeight = 0;
+		canMove = 0;
+		canClose = 1;
+		canMinimize = 0;
+		canMaximize = 0;
+		minSize = "50 50";
+		closeCommand = "canvas.popDialog(DefaultControlsGui);";
+
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "13 32";
+			extent = "175 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Select your hardware configuration:";
+			maxLength = 255;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "13 62";
+			extent = "35 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Mouse:";
+			maxLength = 255;
+		};
+		new GuiTextCtrl()
+		{
+			profile = "GuiTextProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "13 182";
+			extent = "50 18";
+			minExtent = "8 2";
+			visible = 1;
+			text = "Keyboard:";
+			maxLength = 255;
+		};
+		new GuiRadioCtrl(OPT_Mouse0)
+		{
+			profile = "GuiRadioProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 83";
+			extent = "78 30";
+			minExtent = "8 2";
+			visible = 1;
+			text = " One Button";
+			groupNum = 1;
+			buttonType = "RadioButton";
+		};
+		new GuiRadioCtrl(OPT_Mouse1)
+		{
+			profile = "GuiRadioProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 103";
+			extent = "78 30";
+			minExtent = "8 2";
+			visible = 1;
+			text = " Two Button";
+			groupNum = 1;
+			buttonType = "RadioButton";
+		};
+		new GuiRadioCtrl(OPT_Mouse2)
+		{
+			profile = "GuiRadioProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 123";
+			extent = "117 30";
+			minExtent = "8 2";
+			visible = 1;
+			text = " Two Button + Wheel";
+			groupNum = 1;
+			buttonType = "RadioButton";
+		};
+		new GuiRadioCtrl(OPT_Mouse3)
+		{
+			profile = "GuiRadioProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 143";
+			extent = "142 30";
+			minExtent = "8 2";
+			visible = 0;
+			text = " Two Button + Tilt Wheel";
+			groupNum = 1;
+			buttonType = "RadioButton";
+		};
+		new GuiRadioCtrl(OPT_Keyboard0)
+		{
+			profile = "GuiRadioProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 203";
+			extent = "142 30";
+			minExtent = "8 2";
+			visible = 1;
+			text = " Standard Keyboard";
+			groupNum = 2;
+			buttonType = "RadioButton";
+		};
+		new GuiRadioCtrl(OPT_Keyboard1)
+		{
+			profile = "GuiRadioProfile";
+			horizSizing = "right";
+			vertSizing = "bottom";
+			position = "24 223";
+			extent = "170 30";
+			minExtent = "8 2";
+			visible = 1;
+			text = " Laptop Keyboard (No NumPad)";
+			groupNum = 2;
+			buttonType = "RadioButton";
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "128 282";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "DefaultControlsGui.apply();";
+			text = "Apply >>";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+		new GuiBitmapButtonCtrl()
+		{
+			profile = "BlockButtonProfile";
+			horizSizing = "right";
+			vertSizing = "top";
+			position = "18 282";
+			extent = "91 38";
+			minExtent = "8 2";
+			visible = 1;
+			command = "canvas.popDialog(DefaultControlsGui);";
+			text = "<< Cancel";
+			groupNum = -1;
+			buttonType = "PushButton";
+			bitmap = "./button2";
+			mKeepCached = 0;
+		};
+	};
+};
